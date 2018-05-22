@@ -1,4 +1,5 @@
-# Login
+# MAPFRE CUSTOMER PORTAL
+[logo]: https://github.com/northout/mafreB2C/blob/master/src/assets/img/MAPFRE%20INS%20Horiz%20Red%20Process%403x.png "Mapfre Customer Portal App"
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
