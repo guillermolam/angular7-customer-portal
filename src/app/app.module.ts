@@ -1,3 +1,4 @@
+import { AuthenticationService } from './_services/authentication-service.service';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { UserService } from "./_services/user.service";
@@ -6,7 +7,6 @@ import { RoutingModule } from "./app.routing";
 import { CookieService } from "angular2-cookie/services/cookies.service";
 import { RouterModule } from "@angular/router";
 import { JwtInterceptor } from "./_helpers/jwt.interceptor";
-import { AuthenticationService } from "./login/authentication-service.service";
 import { AuthGuard } from "./_guards/auth.guard";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";

@@ -1,7 +1,7 @@
+import { AuthenticationService } from './../_services/authentication-service.service';
 import { UserService } from "./../_services/user.service";
 import { AlertService } from "./../_services/alert.service";
 import { User } from "./../_models/user";
-import { AuthenticationService } from "./authentication-service.service";
 import { MapfreSwitchComponent } from "./../mapfre-switch/mapfre-switch.component";
 import { Component, OnInit } from "@angular/core";
 import {
