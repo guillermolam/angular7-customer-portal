@@ -1,12 +1,11 @@
 # MAPFRE CUSTOMER PORTAL
 [logo]: https://github.com/northout/mafreB2C/blob/master/src/assets/img/MAPFRE%20INS%20Horiz%20Red%20Process%403x.png "Mapfre Customer Portal App"
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-You can also run`ng serv --ssl true`. Install a CORS plugin for your browser and Navigate to `https://localhost:4200`.
+
+You can also run`ng serve --ssl true`. Install a CORS plugin for your browser and Navigate to `https://localhost:4200`.
 
 ## Code scaffolding
 
