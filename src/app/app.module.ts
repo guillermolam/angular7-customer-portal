@@ -1,3 +1,5 @@
+import { MockBackend } from '@angular/http/testing';
+import { fakeBackendProvider } from './_helpers/fake-backend';
 import { AuthenticationService } from './_services/authentication-service.service';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,7 +19,7 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { MapfreSwitchComponent } from "./mapfre-switch/mapfre-switch.component";
 import { AlertComponent } from "./alert/alert.component";
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from "@angular/common/http";
 import { SignupComponent } from "./signup/signup.component";
 import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 import { AccountMainComponent } from "./account-main/account-main.component";
@@ -48,20 +50,26 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    GooglePlaceModule
+    GooglePlaceModule,
+    HttpClientModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
+    HttpClientModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
     },
     CookieService,
-    UserService
+    UserService,
+
+    // providers used to create fake backend
+    fakeBackendProvider,
+    MockBackend
   ],
   bootstrap: [AppComponent]
 })

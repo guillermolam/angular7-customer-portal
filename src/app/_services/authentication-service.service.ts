@@ -1,28 +1,44 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
+import { Injectable } from "@angular/core";
 import "rxjs/add/operator/map";
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: HttpClient) { }
+  public token: string;
 
-  login(email: string, password: string) {
-    const headers = {username: email, password};
-    return this.http.post<any>("https://amazon.mapfreusa.com/identity/EDSMWebService/services/user/login/B2C?attribs='y'", {}, {headers})
-      .map((anEmail) => {
-        // login successful if there"s a jwt token in the response
-        if (anEmail && anEmail.token) {
-          // store email details and jwt token in local storage to keep email logged in between page refreshes
-          localStorage.setItem("currentemail", JSON.stringify(anEmail));
+  constructor(private http: HttpClient) {
+    // set token if saved in local storage
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    this.token = currentUser && currentUser.token;
+  }
+
+  login(username: string, password: string): Observable<boolean> {
+    return this.http
+      .post("/api/identity/users/login", JSON.stringify({ username, password }))
+      .map((response: Response) => response.json())
+      .map( (token) => {
+        // login successful if there's a jwt token in the response
+        if (token) {
+          // store username and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({ username, token })
+          );
+
+          // return true to indicate successful login
+          return true;
+        } else {
+          // return false to indicate failed login
+          return false;
         }
-
-        return anEmail;
       });
   }
 
-  logout() {
-    // remove email from local storage to log email out
-    localStorage.removeItem("currentemail");
+  logout(): void {
+    // clear token remove user from local storage to log user out
+    this.token = null;
+    localStorage.removeItem("currentUser");
   }
 }

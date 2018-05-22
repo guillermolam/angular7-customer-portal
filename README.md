@@ -1,5 +1,5 @@
 # MAPFRE CUSTOMER PORTAL
-[logo]: https://github.com/northout/mafreB2C/blob/master/src/assets/img/MAPFRE%20INS%20Horiz%20Red%20Process%403x.png "Mapfre Customer Portal App"
+[logo]: https://noticias.mapfre.com/wp-content/uploads/2017/01/2542x457-logo-mapfre.jpg "Mapfre Customer Portal App"
 
 ## Development server
 

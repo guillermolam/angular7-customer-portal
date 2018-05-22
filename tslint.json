@@ -4,6 +4,11 @@
         "tslint:recommended",
         "tslint-sonarts"
     ],
+    "linterOptions": {
+        "exclude":[
+            "*.fake-backend.ts"
+        ]
+    },
     "jsRules": {},
     "rules": {
         "no-collection-size-mischeck": true,
