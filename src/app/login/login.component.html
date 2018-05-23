@@ -17,7 +17,7 @@
     <!-- Email -->
     <div class="md-form">
       <i class="fa fa-envelope prefix grey-text"></i>
-      <input type="email" class="form-control" name="email" formControlName="email"  required mdbInputDirective />
+      <input type="email" id="email" class="form-control" name="email" formControlName="email"  required mdbInputDirective />
       <label for="email">Your email</label>
       <div *ngIf="loginForm.controls['email'].errors && !loginForm.controls['email'].pristine" class="help-block">
         <div [hidden]="!loginForm.controls['email'].errors.required">Email is required.</div>
@@ -28,7 +28,7 @@
     <!-- Password -->
     <div class="md-form">
       <i class="fa fa-lock prefix grey-text"></i>
-      <input type="password" class="form-control" name="password" formControlName="password" required mdbInputDirective />
+      <input id="password" type="password" class="form-control" name="password" formControlName="password" required mdbInputDirective />
       <label for="password">Password</label>
       <div *ngIf="loginForm.submitted && !password.valid" class="help-block">
         <div class="alert alert-danger">Password is required</div>
@@ -41,8 +41,8 @@
     </div>
 
     <div class="text-center mt-4">
-      <input type="submit" [disabled]="!loginForm.valid" class="btn btn-mapfre-red waves-light" mdbWavesEffect value="Login">
-      <input type="submit" (click)="register()" [routerLink]="['/signup']" class="btn btn-mapfre-red waves-light" mdbWavesEffect
+      <input type="submit" [disabled]="!loginForm.valid" class="btn btn-mapfre-red waves-light" mdbWavesEffect value="Login" id="login_btn">
+      <input type="button" (click)="register()" [routerLink]="['/signup']" class="btn btn-mapfre-red waves-light" mdbWavesEffect
         value="Register">
     </div>
 
