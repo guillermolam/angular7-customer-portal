@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from './../_services/authentication-service.service';
 import { UserService } from "./../_services/user.service";
 import { AlertService } from "./../_services/alert.service";
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(
+    private http: HttpClient,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -50,6 +52,17 @@ export class LoginComponent implements OnInit {
     // Recover User Observable if coming from a different page
     this.userService.$user.subscribe((user) => {
       this.createForm(user);
+    });
+
+    this.http.get(
+      "/b2cwebapp/account/loginView?state=MA"
+    ).toPromise(
+    ).then((rsp) => {
+      console.log("responded");
+      console.log(rsp);
+    }).catch((err) => {
+      console.log("error");
+      console.log(err);
     });
   }
 
@@ -78,10 +91,10 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.putCookie();
     this.authenticationService
-      .login(this.user.email, this.user.password)
+      .loginLegacy(this.user.email, this.user.password)
       .subscribe(
         (data) => {
-          this.router.navigate(['/account']);
+          this.router.navigate(['/dashboard']);
         },
         (error) => {
           this.alertService.error(error);
