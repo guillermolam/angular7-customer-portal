@@ -4,15 +4,16 @@ pipeline{
 		AWS_BIN = '/root/.local/bin/aws'
 	}
 	  stages {
+		  //Installing the dependencies need to carryout the subsequent stages
+		   stage("Install dependencies"){
+			steps{
+				sh "npm install"
+			}
+		}
 		stage("Static Analysis") {
 			steps{
               	// removing .spec.ts from linting
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
-			}
-		}
-        stage("Install dependencies"){
-			steps{
-				sh "npm install"
 			}
 		}
 		 stage("Create build"){
@@ -20,15 +21,13 @@ pipeline{
 				sh "npm run build"
 			}
 		}
-        stage("Deploy to AWS S3"){
+        stage("Deploy to AWS EC2"){
 			steps {
-				withAWS(region: 'us-east-1',
-				credentials: 'Anjaneya_AWS_CREDS') {
-					s3Upload(file: 'dist',
-					bucket: 'dev.mapfre.b2c')
+				//remove the old files
+				sh "ssh ec2-user@ec2-18-205-178-104.compute-1.amazonaws.com rm -rf /var/www/html/"
 				}
 			}
 		}
 	}
-}
+
 

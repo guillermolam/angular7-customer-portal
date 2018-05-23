@@ -17,7 +17,11 @@
     <!-- Email -->
     <div class="md-form">
       <i class="fa fa-envelope prefix grey-text"></i>
+<<<<<<< HEAD
       <input type="email" class="form-control" name="j_username" formControlName="email"  required mdbInputDirective />
+=======
+      <input type="email" id="email" class="form-control" name="email" formControlName="email"  required mdbInputDirective />
+>>>>>>> 2ddfce92834686689cfd38d08088d4c3a18b8309
       <label for="email">Your email</label>
       <div *ngIf="loginForm.controls['email'].errors && !loginForm.controls['email'].pristine" class="help-block">
         <div [hidden]="!loginForm.controls['email'].errors.required">Email is required.</div>
@@ -28,7 +32,11 @@
     <!-- Password -->
     <div class="md-form">
       <i class="fa fa-lock prefix grey-text"></i>
+<<<<<<< HEAD
       <input type="password" class="form-control" name="j_password" formControlName="password" required mdbInputDirective />
+=======
+      <input id="password" type="password" class="form-control" name="password" formControlName="password" required mdbInputDirective />
+>>>>>>> 2ddfce92834686689cfd38d08088d4c3a18b8309
       <label for="password">Password</label>
       <div *ngIf="loginForm.submitted && !password.valid" class="help-block">
         <div class="alert alert-danger">Password is required</div>
@@ -42,10 +50,15 @@
 
     
     <div class="text-center mt-4">
+<<<<<<< HEAD
       <!--Submit / Login Button-->
       <input type="submit" [disabled]="!loginForm.valid" class="btn btn-mapfre-red waves-light" mdbWavesEffect value="Login">
       <!--Register Button-->
       <input type="submit" (click)="register()" [routerLink]="['/signup']" class="btn btn-mapfre-red waves-light" mdbWavesEffect
+=======
+      <input type="submit" [disabled]="!loginForm.valid" class="btn btn-mapfre-red waves-light" mdbWavesEffect value="Login" id="login_btn">
+      <input type="button" (click)="register()" [routerLink]="['/signup']" class="btn btn-mapfre-red waves-light" mdbWavesEffect
+>>>>>>> 2ddfce92834686689cfd38d08088d4c3a18b8309
         value="Register">
     </div>
 
