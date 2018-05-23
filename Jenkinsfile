@@ -21,12 +21,10 @@ pipeline{
 				sh "npm run build"
 			}
 		}
-        stage("Deploy to AWS S3"){
+        stage("Deploy to AWS EC2"){
 			steps {
-				withAWS(region: 'us-east-1',
-				credentials: 'Anjaneya_AWS_CREDS') {
-					s3Upload(file: 'dist',
-					bucket: 'dev.mapfre.b2c')
+				//remove the old files
+				sh "ssh ec2-user@ec2-18-205-178-104.compute-1.amazonaws.com rm -rf /var/www/html/"
 				}
 			}
 		}
