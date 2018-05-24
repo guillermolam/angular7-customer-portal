@@ -23,7 +23,7 @@ pipeline{
 		}
         stage("Deploy to AWS EC2"){
 			steps {
-				//remove the old files
+				sh "cp ../../MyJenkinsKeyPair.pem ."
 				sh "cp ../../ssh.sh ."
 				sh "bash ssh.sh"
 				}
