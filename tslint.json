@@ -1,9 +1,7 @@
 {
-    "defaultSeverity": "error",
+    "defaultSeverity": "warning",
     "extends": [
-        "tslint:recommended",
-        "tslint-sonarts"
-    ],
+        "tslint:recommended"    ],
     "linterOptions": {
         "exclude":[
             "*.fake-backend.ts"

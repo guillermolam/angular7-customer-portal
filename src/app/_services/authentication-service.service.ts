@@ -13,8 +13,30 @@ export class AuthenticationService {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.token = currentUser && currentUser.token;
   }
+  loginLegacy(username: string, password: string): Observable<any> {
+    return this.http
+      .post(
+        "/b2cwebapp/j_spring_security_check",
+        {
+          j_username : username,
+          j_password : password,
+          j__url: "account/loginView"
+        },
+        {
+          params: {
+            j_username : username,
+            j_password : password,
+            j__url: "account/loginView"
+          },
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          }
+        })
+      .map((response: Response) => response.json);
+  }
 
   login(username: string, password: string): Observable<boolean> {
+    console.log("Authentication Service POST to Login service");
     return this.http
       .post("/api/identity/users/login", JSON.stringify({ username, password }))
       .map((response: Response) => response.json())
