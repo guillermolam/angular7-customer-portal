@@ -24,7 +24,7 @@ pipeline{
         stage("Deploy to AWS EC2"){
 			steps {
 				//remove the old files
-				sh "ssh jenkins@18.205.178.104 rm -rf /var/www/html/"
+				sh "bash ssh.sh"
 				}
 			}
 		}
