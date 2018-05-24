@@ -3,55 +3,6 @@
   <form *ngIf="signUpForm" [formGroup]="signUpForm" (ngSubmit)="signUpForm.form.valid && register()" novalidate class="centered-form">
     <h2>We are making awesome insurance. Could we take care of you too?</h2>
 
-    <!-- Policy Number-->
-    <div class="md-form">
-      <i class="fa fa-file-text prefix grey-text"></i>
-      <label for="policyNumberId">Policy Number</label>
-      <input type="text" id="policyNumberId" class="form-control" name="policyNumber" formControlName="policyNumber" mdbInputDirective/>
-      <div *ngIf="signUpForm.controls['policyNumber'].errors && !signUpForm.controls['policyNumber'].pristine" class="help-block">
-        <div [hidden]="!signUpForm.controls['policyNumber'].errors.required">Policy Number is required.</div>
-        <div [hidden]="!signUpForm.controls['policyNumber'].errors.policyNumber">Policy Number is invalid.</div>
-      </div>
-    </div>
-
-    <div formGroupName="name">
-      <!-- First Name-->
-      <div class="md-form">
-        <i class="fa fa-user prefix grey-text"></i>
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" class="form-control" name="firstName" formControlName="firstName" mdbInputDirective/>
-        <div *ngIf="signUpForm.submitted && !firstName.valid" class="help-block">
-          <div class="alert alert-danger">First Name is required</div>
-        </div>
-      </div>
-
-      <!-- Last Name-->
-      <div class="md-form">
-        <i class="fa fa-user prefix grey-text"></i>
-        <label for="lastNameId">Last Name</label>
-        <input type="text" id="lastNameId" class="form-control" name="lastName" formControlName="lastName" mdbInputDirective/>
-        <div *ngIf="signUpForm.submitted && !lastName.valid" class="help-block">
-          <div class="alert alert-danger">Last Name is required</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Address -->
-    <div class="md-form">
-      <div class="row">
-        <div class="col">
-          <i class="fa fa-address-book prefix grey-text"></i>
-          <label for="addressId"></label>
-          <input type="text" id="addressId" class="form-control" name="address" formControlName="address" placeholder="Address" mdbInputDirective
-            ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" />
-        </div>
-        <!-- Apt / Unit -->
-        <div class="col-md-2">
-          <label for="addressUnitId">Apt/Unit</label>
-          <input type="text" id="addressUnitId" class="form-control" name="addressUnit" mdbInputDirective />
-        </div>
-      </div>
-    </div>
 
     <!-- Email -->
     <div class="md-form">
@@ -73,11 +24,20 @@
       </div>
     </div>
 
+    <!-- Confirm Password -->
+    <div class="md-form">
+        <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+        <label for="confirmPasswordId">Confirm Password</label>
+        <input id="confirmPasswordId" type="password" class="form-control" name="confirmPassword" formControlName="confirmPassword" mdbInputDirective/>
+        <div *ngIf="signUpForm.submitted && !password.valid" class="help-block">
+          <div class="alert alert-danger">Confirm Password is required</div>
+        </div>
+      </div>
+
+
     <!--Register Button-->
     <div class="md-form">
       <button [disabled]="loading" class="btn btn-mapfre-red">Register</button>
-      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
-      />
       <!--Cancel-->
       <a [routerLink]="['/login']" (click)="cancel()" class="btn btn-link">Cancel</a>
     </div>
