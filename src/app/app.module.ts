@@ -27,7 +27,6 @@ import { AccountHeaderComponent } from "./account-main/account-header/account-he
 import { SidenavComponent } from "./account-main/sidenav/sidenav.component";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LegacyLoginComponent } from './legacy-login/legacy-login.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +41,7 @@ import { LegacyLoginComponent } from './legacy-login/legacy-login.component';
     SidenavComponent,
     HeaderComponent,
     FooterComponent,
-    DashboardComponent,
-    LegacyLoginComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
