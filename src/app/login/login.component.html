@@ -18,7 +18,7 @@
     <div class="md-form">
       <i class="fa fa-envelope prefix grey-text"></i>
       <input type="email" class="form-control" name="j_username" formControlName="email"  required mdbInputDirective />
-      <label for="email">Your email</label>
+      <label for="email" [innerHtml]="'YOUR_EMAIL' | translate"></label>
       <div *ngIf="loginForm.controls['email'].errors && !loginForm.controls['email'].pristine" class="help-block">
         <div [hidden]="!loginForm.controls['email'].errors.required">Email is required.</div>
         <div [hidden]="!loginForm.controls['email'].errors.email">Email is invalid.</div>
@@ -29,7 +29,7 @@
     <div class="md-form">
       <i class="fa fa-lock prefix grey-text"></i>
       <input type="password" class="form-control" name="j_password" formControlName="password" required mdbInputDirective />
-      <label for="password">Password</label>
+      <label for="password" [innerHtml]="'YOUR_PASSWORD' | translate"></label>
       <div *ngIf="loginForm.submitted && !password.valid" class="help-block">
         <div class="alert alert-danger">Password is required</div>
       </div>
@@ -37,21 +37,21 @@
 
     <!-- Remember me Switch/Toggle -->
     <div class="text-center switch mt-4">
-      <mapfre-switch textLabel="Remember me"></mapfre-switch>
+      <mapfre-switch textLabel="{{'REMEMBER_ME' | translate}}"></mapfre-switch>
     </div>
 
     
     <div class="text-center mt-4">
       <!--Submit / Login Button-->
-      <input type="submit" [disabled]="!loginForm.valid" class="btn btn-mapfre-red waves-light" mdbWavesEffect value="Login">
+      <input type="submit" [disabled]="!loginForm.valid" class="btn btn-mapfre-red waves-light" mdbWavesEffect value="{{'LOGIN' | translate }}">
       <!--Register Button-->
       <input type="submit" (click)="register()" [routerLink]="['/signup']" class="btn btn-mapfre-red waves-light" mdbWavesEffect
-        value="Register">
+        value="{{'REGISTER' | translate }}">
     </div>
 
     <!--Forgot Password-->
     <p class="text-center">
-      <a [routerLink]="['/forgotpassword']" class="red-text">Forgot password</a>
+      <a [routerLink]="['/forgotpassword']" class="red-text" [innerHtml]="'FORGOT_PASS' | translate"></a>
     </p>
 
     <!-- Spring security route -->

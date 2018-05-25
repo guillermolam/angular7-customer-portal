@@ -27,6 +27,8 @@ import { AccountHeaderComponent } from "./account-main/account-header/account-he
 import { SidenavComponent } from "./account-main/sidenav/sidenav.component";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {TranslateModule} from '@ngx-translate/core';
+import { Language } from "./app.language";
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     ReactiveFormsModule,
     GooglePlaceModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot()
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
@@ -66,7 +69,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     },
     CookieService,
     UserService,
-
+    Language,
+    
     // providers used to create fake backend
     fakeBackendProvider,
     MockBackend
