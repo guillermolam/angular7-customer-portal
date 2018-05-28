@@ -10,10 +10,11 @@ import { _ } from 'underscore';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent extends AppComponent implements OnInit {
-	defaultLang:string = "";
+	defaultLang:string =  navigator.language;
 	constructor(public translate: TranslateService, public _languages:Language) { 
 		super(translate, _languages);
-		this.defaultLang = _languages['lang'][0]['name'];
+		this.defaultLang =  ( this.defaultLang.indexOf("-") !==-1 ) ?  this.defaultLang.slice(0, this.defaultLang.indexOf("-")).toUpperCase() : this.defaultLang.toUpperCase();
+		this.changeLang(this.defaultLang)
 	}
 
 	ngOnInit() {

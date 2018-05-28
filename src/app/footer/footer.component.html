@@ -8,8 +8,8 @@
       <!--First column-->
       <div class="col-md-6">
         <h5 class="text-uppercase"></h5>
-        <p>MAPFRE Insurance is a brand and service of MAPFRE U.S.A Corp. and its affiliates. Learn about
-          <a href="https://www.mapfreinsurance.com/en/about-us/where-we-are/" title="Our Companies">Our Companies</a>.</p>
+        <p>   {{"FOOTER_TEXT" | translate}}
+          <a href="https://www.mapfreinsurance.com/en/about-us/where-we-are/" title="{{'OUR_COMPANIES' | translate}}">{{"OUR_COMPANIES" | translate}}</a>.</p>
       </div>
       <!--/.First column-->
 
@@ -19,19 +19,19 @@
         <ul class="list-unstyled">
           <ul class="header-links">
             <li>
-              <a href="https://www.mapfreinsurance.com/en/privacy-policy/" tabindex="0">Privacy Policy</a>
+              <a href="https://www.mapfreinsurance.com/en/privacy-policy/" tabindex="0" [innerHtml]="'PRIVACY' | translate"></a>
             </li>
             <li>
-              <a href="https://www.mapfreinsurance.com/en/terms-conditions/" tabindex="0">Terms &amp; Conditions</a>
+              <a href="https://www.mapfreinsurance.com/en/terms-conditions/" tabindex="0" [innerHtml]="'TERMS' | translate"></a>
             </li>
             <li>
-              <a href="https://www.mapfreinsurance.com/en/quote-disclosure/default.jsp" tabindex="0">Quote Disclosure</a>
+              <a href="https://www.mapfreinsurance.com/en/quote-disclosure/default.jsp" tabindex="0" [innerHtml]="'QUOTE' | translate"></a>
             </li>
             <li>
-              <a href="https://www.mapfreinsurance.com/en/about-us/careers/" tabindex="0">Careers</a>
+              <a href="https://www.mapfreinsurance.com/en/about-us/careers/" tabindex="0" [innerHtml]="'CAREERS' | translate"></a>
             </li>
             <li>
-              <a href="https://www.mapfreinsurance.com/en/contact/" tabindex="0">Contact</a>
+              <a href="https://www.mapfreinsurance.com/en/contact/" tabindex="0" [innerHtml]="'CONTACT' | translate"></a>
             </li>
           </ul>
         </ul>
@@ -76,7 +76,7 @@
   <!--Copyright-->
   <div class="footer-copyright py-3 text-center">
     <span>©
-      <span id="year"></span> MAPFRE U.S.A Corp. All rights reserved.</span>
+      <span id="year"></span> {{"RIGHTS" | translate}}</span>
   </div>
   <!--/.Copyright-->
 

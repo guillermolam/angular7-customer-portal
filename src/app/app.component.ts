@@ -14,12 +14,15 @@ export class AppComponent {
 
 	ngOnInit() {
 		let self = this;
+		let lang = navigator.language;
+
+		lang =  ( lang.indexOf("-") !==-1 ) ?  lang.slice(0, lang.indexOf("-")).toUpperCase() : lang.toUpperCase();
 
 		_.each(self._languages['lang'], function(val, index	){
 			self.translate.setTranslation(val['identifier'], val['sentences']);
 		})
-		self.translate.setDefaultLang('EN');
-        self.setLang("EN");
+		self.translate.setDefaultLang(lang);
+        self.setLang(lang);
 	}
 
 	setLang(lang:string) {
