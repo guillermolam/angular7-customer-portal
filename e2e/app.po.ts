@@ -18,21 +18,21 @@ export class AppPage {
   }
 
   addEmail(email: string) {
-		element(by.id('email')).clear();
-    element(by.id('email')).sendKeys(email);
+		element(by.css('input[type="email"]')).clear();
+    element(by.css('input[type="email"]')).sendKeys(email);
   }
 
   addPassword(password: string) {
-      element(by.id('password')).clear();
-  		element(by.id('password')).sendKeys(password);
+      element(by.css('input[type="password"]')).clear();
+  		element(by.css('input[type="password"]')).sendKeys(password);
   }
 
   login() {
-    return element(by.id('login_btn')).click();
+    return element(by.css('input[type="submit"]')).click();
   }
 
   isEnabled() {
-  	return element(by.id('login_btn')).isEnabled();
+  	return element(by.css('input[type="submit"]')).isEnabled();
   }
 
   browserWait() {

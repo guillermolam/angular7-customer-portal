@@ -45,7 +45,7 @@
       <!--Submit / Login Button-->
       <input type="submit" [disabled]="!loginForm.valid" class="btn btn-mapfre-red waves-light" mdbWavesEffect value="{{'LOGIN' | translate }}">
       <!--Register Button-->
-      <input type="submit" (click)="register()" [routerLink]="['/signup']" class="btn btn-mapfre-red waves-light" mdbWavesEffect
+      <input type="button" (click)="register()" [routerLink]="['/signup']" class="btn btn-mapfre-red waves-light" mdbWavesEffect
         value="{{'REGISTER' | translate }}">
     </div>
 
