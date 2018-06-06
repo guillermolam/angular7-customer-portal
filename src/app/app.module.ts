@@ -1,6 +1,6 @@
 import { MockBackend } from '@angular/http/testing';
-import { fakeBackendProvider } from './_helpers/fake-backend';
-import { AuthenticationService } from './_services/authentication-service.service';
+//import { fakeBackendProvider } from './_helpers/fake-backend';
+import { AuthenticationService } from './_services/_iam/authentication-service.service';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { UserService } from "./_services/user.service";
@@ -72,7 +72,7 @@ import { Language } from "./app.language";
     Language,
     
     // providers used to create fake backend
-    fakeBackendProvider,
+   // fakeBackendProvider,
     MockBackend
   ],
   bootstrap: [AppComponent]

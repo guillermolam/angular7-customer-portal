@@ -2,6 +2,7 @@ import { AlertService } from "./../_services/alert.service";
 import { User } from "./../_models/user";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { environment } from "../../environments/environment"; 
 import {
   FormGroup,
   FormControl,
@@ -19,6 +20,7 @@ export class SignupComponent implements OnInit {
   user: User;
   signUpForm: FormGroup;
   loading = false;
+  backend_server_url = environment.backend_server_url;
 
   emailsInUse = ["glam@mapfreusa.com", "rpena@mapfreusa.com"];
 
@@ -57,22 +59,36 @@ export class SignupComponent implements OnInit {
 
   register() {
     this.loading = true;
-    return this.http.post("/api/users", this.user).subscribe(
+    this.userData.updateUser(this.signUpForm.value);
+    return this.http.post(this.backend_server_url+"/api/users", this.user,{
+    headers: {
+      "Content-Type": "application/json"
+
+    }
+    }).subscribe(
       (data) => {
         // set success message and pass true paramater to persist the message after redirecting to the login page
         this.alertService.success("Registration successful", true);
         this.router.navigate(["/login"]);
       },
       (error) => {
+        console.log(error);
+        
         this.alertService.error(error);
         this.loading = false;
       }
     );
   }
 
-  isEmailInUse(email: string) {
+ /* isEmailInUse(email: string) {
     this.emailsInUse.find((ref) => {
       return email === ref;
+    });
+  }*/
+  isEmailInUse() {
+    this.emailsInUse.find((ref) => {
+      console.log("email - "+ this.signUpForm.value.email);
+      return this.signUpForm.value.email === ref;
     });
   }
 }

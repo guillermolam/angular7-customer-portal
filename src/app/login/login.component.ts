@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AuthenticationService } from './../_services/authentication-service.service';
+import { AuthenticationService } from './../_services/_iam/authentication-service.service';
 import { UserService } from "./../_services/user.service";
 import { AlertService } from "./../_services/alert.service";
 import { User } from "./../_models/user";
@@ -13,6 +13,7 @@ import {
 } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { CookieService } from "angular2-cookie/services/cookies.service";
+import { environment } from "../../environments/environment"; 
 
 @Component({
   selector: "app-login",
@@ -91,7 +92,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.putCookie();
     this.authenticationService
-      .loginLegacy(this.user.email, this.user.password)
+      .login(this.user.email, this.user.password)
       .subscribe(
         (data) => {
           this.router.navigate(['/dashboard']);

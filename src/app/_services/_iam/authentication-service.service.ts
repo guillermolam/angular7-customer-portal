@@ -3,42 +3,28 @@ import { HttpClientModule } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
 import "rxjs/add/operator/map";
+import { environment } from "../../../environments/environment"; 
 
 @Injectable()
 export class AuthenticationService {
   public token: string;
+  public backend_server_url = environment.backend_server_url;
 
   constructor(private http: HttpClient) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.token = currentUser && currentUser.token;
   }
-  loginLegacy(username: string, password: string): Observable<any> {
-    return this.http
-      .post(
-        "/b2cwebapp/j_spring_security_check",
-        {
-          j_username : username,
-          j_password : password,
-          j__url: "account/loginView"
-        },
-        {
-          params: {
-            j_username : username,
-            j_password : password,
-            j__url: "account/loginView"
-          },
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          }
-        })
-      .map((response: Response) => response.json);
-  }
+
 
   login(username: string, password: string): Observable<boolean> {
     console.log("Authentication Service POST to Login service");
     return this.http
-      .post("/api/identity/users/login", JSON.stringify({ username, password }))
+      .post(this.backend_server_url+"/api/login", JSON.stringify({ username, password }),{
+        headers: {
+          "Content-Type": "application/json"
+        }
+        })
       .map((response: Response) => response.json())
       .map( (token) => {
         // login successful if there's a jwt token in the response
