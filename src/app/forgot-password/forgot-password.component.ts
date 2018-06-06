@@ -5,6 +5,7 @@ import { UserService } from "./../_services/user.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { User } from "./../_models/user";
 import { Component, OnInit } from "@angular/core";
+import { AuthenticationService } from './../_services/_iam/authentication-service.service';
 
 @Component({
   selector: "app-forgot-password",
@@ -20,8 +21,9 @@ export class ForgotPasswordComponent implements OnInit {
     private userData: UserService,
     private router: Router,
     private http: HttpClient,
-    private alertService: AlertService
-  ) {}
+    private alertService: AlertService,
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit() {
     this.user = new User();
@@ -41,5 +43,10 @@ export class ForgotPasswordComponent implements OnInit {
 
   cancel() {
     this.userData.updateUser(this.user);
+  }
+
+  //Send a TemporaryPassword to the customer for passwordreset
+  sendTempPassword() {
+    this.authenticationService.passwordReset(this.user.email);
   }
 }

@@ -53,15 +53,12 @@ export class Language {
             "CAREERS" : "Carreras",
             "CONTACT" : "Contacto",
             "RIGHTS" : "MAPFRE U.S.A Corp. Todos los derechos reservados.",
-<<<<<<< HEAD
-=======
 
             "EMAIL_REQUIRED" : "Correo electronico es requerido.",
             "EMAIL_INVALID" : "El correo electrónico es invalido.",
             "PASSWORD_REQUIRED" : "Se requiere contraseña.",
             "CONF_PASS_REQUIRED" : "Confirmar contraseña es obligatorio.",
             "PASSWORDS_NOT_MATCH" : "La contraseña y la contraseña no coinciden.",
->>>>>>> 1df071524595dae3c390a8352cce4824698f4544
         }
     }];
 }

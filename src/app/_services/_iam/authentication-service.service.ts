@@ -20,7 +20,7 @@ export class AuthenticationService {
   login(username: string, password: string): Observable<boolean> {
     console.log("Authentication Service POST to Login service");
     return this.http
-      .post(this.backend_server_url+"/api/login", JSON.stringify({ username, password }),{
+      .post(this.backend_server_url+"/api/login1", JSON.stringify({ username, password }),{
         headers: {
           "Content-Type": "application/json"
         }
@@ -42,6 +42,29 @@ export class AuthenticationService {
           return false;
         }
       });
+  }
+
+  //Password Reset Functionality
+  passwordReset(email: string): Observable<boolean> {
+    console.log("Password Reset Service POST");
+    return this.http
+      .post(this.backend_server_url+"/api/users/password", JSON.stringify({ email }),{
+        headers: {
+          "Content-Type": "application/json"
+        }
+        })
+      .map((res: Response) => {
+        if (res) {
+        if (res.status === 200) {
+          console.log("Password Reset Succesfully");
+            return true
+        }
+        else {
+          console.log("Password Reset Failed.Headers - " + res.headers);
+            return false
+        }
+      }
+    });
   }
 
   logout(): void {
