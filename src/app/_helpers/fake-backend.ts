@@ -19,7 +19,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         const jwtBearer = 'Bearer fake-jwt-token';
 
         // wrap in delayed observable to simulate server api call
+<<<<<<< HEAD
         return Observable.of(users).mergeMap(() => {
+=======
+        return Observable.of(null).mergeMap(() => {
+>>>>>>> 1df071524595dae3c390a8352cce4824698f4544
 
             // authenticate
             if (request.url.endsWith('/api/authenticate') && request.method === 'POST') {
@@ -80,7 +84,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (request.url.endsWith('/api/users') && request.method === 'POST') {
                 // get new user object from post body
                 const newUser = request.body;
+<<<<<<< HEAD
                 console.log("Username - "+newUser.username);
+=======
+
+>>>>>>> 1df071524595dae3c390a8352cce4824698f4544
                 // validation
                 const duplicateUser = users.filter((user) => { return user.username === newUser.username; }).length;
                 if (duplicateUser) {

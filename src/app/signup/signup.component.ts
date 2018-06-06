@@ -2,7 +2,10 @@ import { AlertService } from "./../_services/alert.service";
 import { User } from "./../_models/user";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+<<<<<<< HEAD
 import { environment } from "../../environments/environment"; 
+=======
+>>>>>>> 1df071524595dae3c390a8352cce4824698f4544
 import {
   FormGroup,
   FormControl,
@@ -11,6 +14,10 @@ import {
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../_services/user.service";
+<<<<<<< HEAD
+=======
+import {TranslateService} from '@ngx-translate/core';
+>>>>>>> 1df071524595dae3c390a8352cce4824698f4544
 
 @Component({
   templateUrl: "./signup.component.html",
@@ -20,7 +27,10 @@ export class SignupComponent implements OnInit {
   user: User;
   signUpForm: FormGroup;
   loading = false;
+<<<<<<< HEAD
   backend_server_url = environment.backend_server_url;
+=======
+>>>>>>> 1df071524595dae3c390a8352cce4824698f4544
 
   emailsInUse = ["glam@mapfreusa.com", "rpena@mapfreusa.com"];
 
@@ -46,7 +56,7 @@ export class SignupComponent implements OnInit {
 
   createForm() {
     this.signUpForm = this.fb.group({
-      email: [this.user.email, Validators.required],
+      email: [this.user.email, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')] ],
       password: [this.user.password, Validators.required],
       confirmPassword: ['', Validators.required]
     });

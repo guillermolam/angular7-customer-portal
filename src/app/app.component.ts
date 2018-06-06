@@ -21,7 +21,7 @@ export class AppComponent {
 		_.each(self._languages['lang'], function(val, index	){
 			self.translate.setTranslation(val['identifier'], val['sentences']);
 		})
-		self.translate.setDefaultLang(lang);
+		self.translate.setDefaultLang('EN');
         self.setLang(lang);
 	}
 
