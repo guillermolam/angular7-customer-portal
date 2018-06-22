@@ -1,0 +1,77 @@
+@import "../../../../../styles.scss";
+
+
+$button-gray: $lite-gray;
+
+.btn.mapfre {
+    font-family: $button-font-family;
+    font-size: $font-size-sm;
+    border:  2px solid;
+    box-shadow: none;
+    @include border-radius(50px);
+    
+    // ---- Colors -----
+    &.success {
+        background-color: $mapfre-green; 
+        border-color: $mapfre-green;
+        color: $white;
+        &:focus {
+            outline: $mapfre-green;
+        }
+        &:hover {
+            color: $white; 
+            background-color: darken($mapfre-green, 2%);
+            border-color: darken($mapfre-green, 2%);
+        }
+    }
+
+    &.default {
+        background-color: $mapfre-red;
+        border-color: $mapfre-red;
+        color: $white;
+        &:focus {
+            outline: $mapfre-red;
+        }
+        &:hover {
+            color: $white; 
+            background-color: darken($mapfre-red, 2%);
+            border-color: darken($mapfre-red, 2%);
+        }
+    }
+
+    &.clear {
+        background-color: transparent;
+        border-color: $button-gray;
+        color: $button-gray;
+        font-weight: bold;
+        &:focus {
+            outline: $button-gray
+        }
+        &:hover {
+            color: $white; 
+            background-color: $button-gray;
+        }
+    }
+
+    &.disabled {
+        
+    }
+
+    // ----- Sizing -------
+    &.small-padding {
+        height: 32px;
+        padding: 3px;
+    }
+    &.full-padding {
+        padding: $padding-vertical/1.25;
+    }
+    &.full {
+        display: block;
+        width: 100%;
+    }
+    &.seventy-five {
+        width: 75%;
+    }
+    
+}
+

@@ -1,0 +1,9 @@
+
+<div [ngSwitch]="inputType">
+    <a class="btn mapfre {{additionalClasses}}" *ngSwitchCase="'button'"><ng-content></ng-content></a>
+    <input 
+        type="submit" class="btn mapfre {{additionalClasses}}" 
+        value="{{translateValue}}" [disabled]="isFormValid()"
+        *ngSwitchCase="'submit'" />
+</div>
+<!-- [disabled]="isFormValid()" -->

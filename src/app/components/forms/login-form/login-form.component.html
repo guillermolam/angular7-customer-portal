@@ -1,0 +1,63 @@
+<form [formGroup]="loginForm" 
+  name="loginForm" (ngSubmit)="loginForm.valid && login()" novalidate 
+  class="centered-form" method="post" action="/b2cwebapp/j_spring_security_check">
+  
+  <div *ngFor="let input of inputs">
+    <mapfre-validation [input]="input" [form]="loginForm"></mapfre-validation>
+  </div>
+   
+  <div class="row">
+    <div class="col-sm">
+      <mapfre-switch [copyRight]="true" (switchOn)="onRememberMe($event)">
+          {{'REMEMBER_ME' | translate}}
+      </mapfre-switch>
+    </div>
+    <div class="col-sm">
+      <mapfre-link
+        [additionalClasses]="'small-link underline switch-line-up'"
+        [target]="_self"
+        >{{ 'FORGOT_PASS' | translate }}
+      </mapfre-link>
+    </div>
+  </div>
+  <div class="row group-login">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'success full full-padding'"
+        [disabledValue]="!loginForm.valid"
+        [inputType]="'submit'"
+        [translateValue]="'LOGIN' | translate"
+      ></mapfre-button>
+    </div>
+  </div>
+  <div class="row text-center group-register">
+    <div class="col">
+      <div class="register-copy">
+          {{ 'FIRST_TIME' | translate }}?
+      </div>
+      <mapfre-button
+        [inputType]="'button'"
+        [additionalClasses]="'clear small-padding seventy-five'"
+        [routerLink]="['/signup']"
+        (click)="register()"
+      >  {{ 'CREATE_ACCOUNT' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
+  <input name="j_url" id="j_url" type="hidden" value="account/loginView" />
+</form>
+      
+     <!-- <div class="text-center mt-4">
+       
+        <input type="submit"  class="btn btn-mapfre-red waves-light" mdbWavesEffect value="{{'LOGIN' | translate }}">
+       
+        <input type="button"  [routerLink]="['/signup']" class="btn btn-mapfre-red waves-light" mdbWavesEffect
+          value="{{'REGISTER' | translate }}">
+      </div>
+  
+      
+      <p class="text-center">
+        <a [routerLink]="['/forgotpassword']" class="red-text" [innerHtml]="'FORGOT_PASS' | translate"></a>
+      </p> -->
+  
+      <!-- Spring security route -->

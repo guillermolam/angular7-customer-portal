@@ -1,0 +1,18 @@
+@import "../../../../styles.scss";
+
+.card.mapfre {
+    background-color: $white;
+    border: thin solid lighten($lite-gray, 13%);
+    box-shadow: none;
+    //border: none;
+    padding: $padding-horizontal * 1.6;
+    //@include box-shadow(-2px, 2px, 2px, $mapfre-gray);
+    
+    &.card-center {
+        margin: auto;
+    }
+
+    &.login {
+        width: 330px
+    }
+}

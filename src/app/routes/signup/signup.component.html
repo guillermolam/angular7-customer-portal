@@ -1,0 +1,46 @@
+<div class="container col-4 mt-5 full-page">
+
+    <form *ngIf="signUpForm" [formGroup]="signUpForm" (ngSubmit)="signUpForm.valid && register()" novalidate class="centered-form">
+      <h2 [innerHtml]="'SIGNUPTEXT' | translate"></h2>
+  
+  
+      <!-- Email -->
+      <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <label for="emailId" [innerHtml]="'YOUR_EMAIL' | translate"></label>
+        <input id="emailId" type="text" class="form-control" name="email" formControlName="email" mdbInputDirective required />
+        <div *ngIf="signUpForm.controls['email'].errors && !signUpForm.controls['email'].pristine" class="help-block">
+          <div class="alert alert-danger" *ngIf="signUpForm.controls['email'].errors.required" [innerHtml]="'EMAIL_REQUIRED' | translate"></div>
+          <div class="alert alert-danger" *ngIf="signUpForm.controls['email'].errors.pattern" [innerHtml]="'EMAIL_INVALID' | translate"></div>
+        </div>
+      </div>
+  
+      <!-- Password -->
+      <div class="md-form">
+        <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+        <label for="passwordId" [innerHtml]="'YOUR_PASSWORD' | translate"></label>
+        <input id="passwordId" type="password" class="form-control" name="password" formControlName="password" mdbInputDirective/>
+        <div *ngIf="signUpForm.controls['password'].errors && !signUpForm.controls['password'].pristine" class="help-block">
+          <div class="alert alert-danger" [innerHtml]="'PASSWORD_REQUIRED' | translate"></div>
+        </div>
+      </div>
+  
+      <!-- Confirm Password -->
+      <div class="md-form">
+          <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+          <label for="confirmPasswordId" [innerHtml]="'CONF_PASS' | translate">Confirm Password</label>
+          <input id="confirmPasswordId" type="password" class="form-control" name="confirmPassword" formControlName="confirmPassword" mdbInputDirective/>
+          <div *ngIf="signUpForm.controls['confirmPassword'].errors && !signUpForm.controls['confirmPassword'].pristine" class="help-block">
+            <div class="alert alert-danger" [innerHtml]="'CONF_PASS_REQUIRED' | translate"></div>
+          </div>
+        </div>
+  
+  
+      <!--Register Button-->
+      <div class="md-form">
+        <button type="submit" [disabled]="!signUpForm.valid" class="btn btn-mapfre-red" [innerHtml]="'REGISTER' | translate"></button>
+        <!--Cancel-->
+        <a [routerLink]="['/login']" (click)="cancel()" class="btn btn-link" [innerHtml]="'CANCEL' | translate">Cancel</a>
+      </div>
+    </form>
+  </div>

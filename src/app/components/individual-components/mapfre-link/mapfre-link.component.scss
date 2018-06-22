@@ -1,0 +1,31 @@
+@import "../../../../styles.scss";
+
+a { 
+    color: $link-color;
+    padding: 0 $padding-vertical;
+    text-decoration: none;
+}
+i {
+    float: left;
+    font-size: $link-icon-font-size;
+    font-weight: 900;
+    margin-top: -5px;
+    padding-right: $padding-horizontal/1.5;
+}
+
+.mapfre {   
+    &.underline {
+        text-decoration: underline;
+    }
+    &.small-link {
+        font-size: $link-font-size/2;
+    }
+    &.normal-link {
+        font-size: $link-font-size;
+    }
+    &.switch-line-up {
+        position: ABSOLUTE;
+        right: 0;
+        top: 4px;
+    }
+}

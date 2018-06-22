@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { Observable, Subject, ReplaySubject, from, of, range, BehaviorSubject } from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
 import { User } from "../_models/user";
 
 @Injectable()

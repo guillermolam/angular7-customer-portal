@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import {TranslateService} from '@ngx-translate/core';
-import {Language} from './app.language';
+import { TranslateService } from '@ngx-translate/core';
+import { Language } from './app.language';
 import { _ } from 'underscore';
 
 @Component({

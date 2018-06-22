@@ -1,0 +1,12 @@
+<label class="switch-mapfre">
+  <div *ngIf="copyLeft" class="copy-left">
+    <span class="slider-text"><ng-content></ng-content></span>
+  </div>
+  <div>
+    <input type="checkbox" (change)="switchValueOnOff($event)" >
+    <span class="slider round"></span>
+  </div>
+  <div *ngIf="copyRight" class="copy-right">
+    <span class="slider-text"><ng-content></ng-content></span>
+  </div>
+</label>

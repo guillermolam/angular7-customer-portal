@@ -1,0 +1,31 @@
+// --- Base Colors --- //
+$black:         #000;
+$darkGrey:      #333;
+$gray:          #666;
+$lite-gray:      #ccc;
+$lite-gray-2:    #ddd;
+$white:         #fff;
+
+// --- Brand Colors --- //
+$mapfre-red:     #D81E05;
+$mapfre-blue:   #eee;
+$mapfre-green:  #333;
+
+// ---- Defaults ----- //
+//Fonts
+$font-family-base: 'Noto Sans';
+
+
+//Sizing
+$font-size-base: 16px; 
+$font-size-sm: $font-size-base/1.5;
+$link-icon-font-size: $font-size-base/2;
+$link-font-size: $font-size-base; 
+$margin-vertical: 15px;
+$margin-horizontal: 15px;
+$padding-horizontal: 15px;
+$padding-vertical: 15px;
+
+// ----- OverRides ----- //
+$link-color: $mapfre-red;
+$button-font-family: $font-family-base;

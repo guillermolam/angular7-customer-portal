@@ -9,11 +9,11 @@ export class Language {
         "sentences":{
             "YOUR_EMAIL" : "Your email",
             "YOUR_PASSWORD" : "Your password",
-            "REMEMBER_ME" : "Remember me",
-            "FORGOT_PASS" : "Forgot password",
+            "REMEMBER_ME" : "Remember Me",
+            "FORGOT_PASS" : "Forgot Password",
             "LOGIN" : "Login",
             "REGISTER" : "Register",
-            "CONF_PASS" : "Confirm password",
+            "CONF_PASS" : "Confirm Password",
             "CANCEL" : "Cancel",
             "SIGNUPTEXT" : "We are making awesome insurance. Could we take care of you too?",
             "FOOTER_TEXT" : "MAPFRE Insurance is a brand and service of MAPFRE U.S.A Corp. and its affiliates. Learn about",
@@ -31,6 +31,13 @@ export class Language {
             "PASSWORD_REQUIRED" : "Password is required.",
             "CONF_PASS_REQUIRED" : "Confirm Password is required.",
             "PASSWORDS_NOT_MATCH" : "Password and confirm password does not match.",
+
+            "EMAIL" : "Email",
+            "PASSWORD" : "Password",
+            "CREATE_ACCOUNT" : "Create Account",
+            "FIRST_TIME": "First Time",
+            "SIGN_IN" : "Sign In",
+            "CUSTOMER_ACCESS" : "Customer Access"
         }
     },{
         "identifier" : "ES",
@@ -54,11 +61,19 @@ export class Language {
             "CONTACT" : "Contacto",
             "RIGHTS" : "MAPFRE U.S.A Corp. Todos los derechos reservados.",
 
+
             "EMAIL_REQUIRED" : "Correo electronico es requerido.",
             "EMAIL_INVALID" : "El correo electrónico es invalido.",
             "PASSWORD_REQUIRED" : "Se requiere contraseña.",
             "CONF_PASS_REQUIRED" : "Confirmar contraseña es obligatorio.",
             "PASSWORDS_NOT_MATCH" : "La contraseña y la contraseña no coinciden.",
+
+            "EMAIL" : "Correo Electrónico",
+            "PASSWORD" : "Contraseña",
+            "CREATE_ACCOUNT" : "Create Account",
+            "FIRST_TIME": "First Time",
+            "SIGN_IN" : "Sign In",
+            "CUSTOMER_ACCESS" : "Customer Access"
         }
     }];
 }

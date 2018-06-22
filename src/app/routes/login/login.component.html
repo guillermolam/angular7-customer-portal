@@ -1,0 +1,15 @@
+<div class="col-sm-8 col-sm-offset-2">
+  <app-alert></app-alert>
+  <!-- <router-outlet></router-outlet> why is this here? -->
+</div>
+
+<mapfre-card additionalClasses="login card-center">
+  <div class="row text-center">
+    <div class="col"> 
+      <h1 class="title-copy">
+        <mapfre-icon [iconClasses]="'fa fa-users'" [title]="true"></mapfre-icon>
+        {{ 'Customer Access' | translate }}</h1> 
+    </div>
+  </div>
+  <app-login-form [inputs]="inputs"></app-login-form>
+</mapfre-card>

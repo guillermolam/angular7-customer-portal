@@ -1,0 +1,75 @@
+@import "../../../../../styles.scss";
+
+$small-font-size: 12px;
+$switch-text-color: #737373;
+
+.switch-mapfre {
+  display: inline-block;
+  position: relative;
+  width: 49px;
+  height: 25px;
+  input {
+    display: none;
+    &:checked + .slider {
+      background-color: $mapfre-red;
+    }
+  }
+  
+  .slider {
+    background-color: $lite-gray;
+    cursor: pointer;
+    height: 20px;
+    width: 50px;
+    position: absolute;
+    @include transition(.4s);
+    &.round {
+      position: absolute;
+      @include border-radius(34px);
+    }
+  }
+  
+  [type="checkbox"] + span:before {
+    background-color: $white;
+    border-color: $white;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    top: 2px;
+    position: absolute;
+    @include transition(.4s);
+    @include border-radius(50%);
+  }
+  [type="checkbox"]:checked + span:before {
+    left: 30px;
+    top: 2px;
+  }
+
+  .slider-text {
+    float: right;
+    font-size: $small-font-size;
+    color: $switch-text-color; 
+    white-space: nowrap;
+    vertical-align: middle;
+    
+    &.selected {
+      color: $mapfre-red;
+    }
+  }
+  [type="checkbox"]:checked + .slider-text {
+    color: $mapfre-red;
+  }
+}
+
+.copy-left {
+  float: right;
+  margin-top: 3px;
+  padding-right: 55px;
+}
+.copy-right{
+  float: left; 
+  margin-top: 1px;
+  padding-left: 55px;
+ 
+}
+

@@ -1,0 +1,42 @@
+.bold {
+    font-weight: 900;
+}
+.btn-mapfre-default { 
+    background-color: $mapfre-red;
+    color: $white;
+}
+
+.center {
+    text-align: center;
+}
+.card-center {
+    margin: auto;
+}
+.mapfre-content {
+    margin-top: 100px;
+}
+.prefix {
+    float: left;
+    padding-right: $padding-vertical;
+}
+.right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+
+.title-copy {
+    font-size: $font-size-base * 1.25;
+    padding: $padding-vertical 0;
+    font-family: $font-family-base;
+}
+
+//Class overdies - these need to be done better
+.navbar {
+    box-shadow: none;
+}
+.red {
+    background-color: $mapfre-red !important; 
+}
+

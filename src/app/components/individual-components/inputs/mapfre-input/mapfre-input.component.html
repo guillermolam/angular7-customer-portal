@@ -1,0 +1,35 @@
+<div [ngSwitch]="icon" class="prefix">
+  <i class="fa {{iconClasses}}" *ngSwitchCase="true"></i>
+</div>
+<div [ngSwitch]="isThisRequired">
+  <input 
+    class="form-control {{additionalClasses}}" 
+    type="{{inputType}}"
+    id="{{inputName}}" 
+    name="{{inputName}}" 
+    mdbInputDirective
+    *ngSwitchCase="false"
+    placeholder="no"
+    [formControlName]="controlInput()"
+  />
+  <input class="form-control {{additionalClasses}}" 
+    type="{{inputType}}"
+    id="{{inputName}}" 
+    name="{{inputName}}"
+    mdbInputDirective
+    required
+    *ngSwitchCase="true"
+    placeholder="yes"
+    [formControlName]="controlInput()"
+  />
+</div>
+<mapfre-label forInput="{{inputName}}"><ng-content></ng-content></mapfre-label>
+
+<p>
+iconsClasses: {{iconClasses}} <br />
+icon: {{icon}}  <br />
+additionalClasses: {{additionalClasses}} <br />
+inputType:  {{inputType}} <br />
+inputName: {{inputName}} <br />
+isThisRequired: {{isThisRequired}} <br />
+</p>
