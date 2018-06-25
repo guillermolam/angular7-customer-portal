@@ -7,6 +7,7 @@ import { GooglePlaceModule }        from "ngx-google-places-autocomplete";
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from "@angular/common/http";
 //import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MDBBootstrapModule }       from "angular-bootstrap-md";
+
 import { MockBackend }              from '@angular/http/testing';
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { RouterModule }             from "@angular/router";
@@ -85,6 +86,7 @@ import { DynamicFormsComponent } from './components/forms/dynamic-forms/dynamic-
     FormsModule,
     GooglePlaceModule,
     HttpClientModule,
+    MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     RoutingModule,
     TranslateModule.forRoot()

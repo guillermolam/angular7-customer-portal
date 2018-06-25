@@ -10,17 +10,17 @@ export class LoginService {
   getInputs() {
     let inputs: FormBase<any>[] = [
       new TextBox({
-        key: 'emailAddress',
-        additionalClasses: 'form-control testing-classes',
+        key: 'loginEmail',
+        additionalClasses: 'form-control',
         label: 'Email',
         required: true,
         type: 'email'
       }),
       new TextBox({
-        key: 'password',
-        additionalClasses: 'form-control testing-classes2',
+        key: 'loginPassword',
+        additionalClasses: 'form-control',
         label: 'Password',
-        required: false,
+        required: true,
         type: 'password'
       })
     ]

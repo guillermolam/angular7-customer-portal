@@ -1,18 +1,32 @@
-<mdb-navbar SideClass="navbar fixed-top scrolling-navbar ie-nav red" [containerInside]="true">
-    <logo>
-      <img src="../../assets/img/mapfre_ins_white.png" />
-      <!-- Basic dropdown -->
-      <!--Dropdown primary-->
-      <div class="dropdown" hidden>
-        <!--Trigger-->
-        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{defaultLang}}</button>
-        
-        <!--Menu-->
-        <div class="dropdown-menu dropdown-primary">
-          <a class="dropdown-item" href="javascript:void(0);" *ngFor="let lang of _languages['lang']" (click)="changeLang(lang['identifier'])" [innerHtml]="lang['name']"></a>
-          <!-- <a class="dropdown-item" href="javascript:void(0);" (click)="changeLang('es')">Spanish</a> -->
-        </div>
-      </div>
-      <!--/Dropdown primary-->
-    </logo>
-  </mdb-navbar>
+<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark red scrolling-navbar ie-nav" [containerInside]="true">
+  <logo>
+    <a route="/"><img src="../../assets/img/mapfre_ins_white.png" /></a>
+  </logo>
+  <links>
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item active waves-light" mdbWavesEffect>
+              <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+              <a class="nav-link">Features</a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+              <a class="nav-link">Pricing</a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+              <a class="nav-link">Opinions</a>
+          </li>
+      </ul>
+      <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item waves-light" mdbWavesEffect>
+              <a class="nav-link"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+              <a class="nav-link"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+              <a class="nav-link"><i class="fa fa-instagram"></i></a>
+          </li>
+      </ul>
+  </links>
+</mdb-navbar>

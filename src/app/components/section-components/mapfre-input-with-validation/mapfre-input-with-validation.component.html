@@ -30,7 +30,7 @@
       <div [ngSwitch]="input.icon" class="prefix">
         <i [class]="input.iconClasses" *ngSwitchCase="true"></i>
       </div>
-      <!-- [ngSwitch]="input.controlType" -->
+      <div *ngIf="input.type == 'email'">
         <input
           [formControlName]="input.key" 
           [class]="input.additionalClasses" 
@@ -38,8 +38,22 @@
           [id]="input.key" 
           [name]="input.key" 
           mdbInputDirective
+          ngModel
+          email
+         />
+        <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
+      </div>
+      <div *ngIf="input.type != 'email'">
+        <input
+          [formControlName]="input.key" 
+          [class]="input.additionalClasses" 
+          [type]="input.type"
+          [id]="input.key" 
+          [name]="input.key"  
+          mdbInputDirective
         />
-      <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
+        <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
+      </div>
       <div class="help-block">
         <div class="error" *ngIf="!isValid">{{input.label}} is required</div>
       </div>
