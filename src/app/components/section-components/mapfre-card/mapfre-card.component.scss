@@ -1,18 +1,20 @@
 @import "../../../../styles.scss";
 
+$mapfre-card-bg-color:          $white;
+$mapfre-card-border-color:      lighten($lite-gray, 13%);   
+$mapfre-card-padding:           $padding-horizontal * 1.6;
+
 .card.mapfre {
-    background-color: $white;
-    border: thin solid lighten($lite-gray, 13%);
-    box-shadow: none;
-    //border: none;
-    padding: $padding-horizontal * 1.6;
-    //@include box-shadow(-2px, 2px, 2px, $mapfre-gray);
-    
+    background-color:           $mapfre-card-bg-color;
+    border:                     thin solid $mapfre-card-border-color;
+    box-shadow:                 none;
+    padding:                    $mapfre-card-padding;
+   
     &.card-center {
-        margin: auto;
+        margin:                 auto;
     }
 
     &.login {
-        width: 330px
+        width:                  330px
     }
 }

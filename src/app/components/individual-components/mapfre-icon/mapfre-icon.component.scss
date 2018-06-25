@@ -1,5 +1,16 @@
 @import "../../../../styles.scss";
+$mapfre-icon-padding:           $padding-vertical/1.25;
+$mapfre-icon-color:             $lite-gray;
 
 .title-icon {
-    padding-bottom: $padding-vertical;
+    padding-bottom: $mapfre-icon-padding;
+}
+
+.label-icon {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    i {
+        color: $mapfre-icon-color;
+    }
 }

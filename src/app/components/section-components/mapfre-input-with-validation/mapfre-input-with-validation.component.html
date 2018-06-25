@@ -17,7 +17,20 @@
          />
         <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
       </div>
-      <div *ngIf="input.type != 'email'">
+      <div *ngIf="input.type == 'password'">
+        <input
+          [formControlName]="input.key" 
+          [class]="input.additionalClasses" 
+          [type]="showPassword ? 'text' : 'password'"
+          [id]="input.key" 
+          [name]="input.key"
+          mdbInputDirective
+          ngModel
+         />
+        <mapfre-icon password="true" (onClickShowPassword)="showPasswordFunction($event)"></mapfre-icon>
+        <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
+      </div>
+      <div *ngIf="input.type != 'email' && input.type != 'password' ">
         <input
           [formControlName]="input.key" 
           [class]="input.additionalClasses" 

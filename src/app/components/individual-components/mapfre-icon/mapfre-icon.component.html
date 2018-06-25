@@ -1,6 +1,17 @@
 <div *ngIf="title" class="title-icon">
     <i class="{{iconClasses}} fa-2x"></i>
+    <span class="sr-only sr-only-focusable">{{ 'Title Icon' | translate }}</span>
 </div>
-<span *ngIf="!title">
-        <i class="{{iconClasses}}"></i>
+<span *ngIf="password">
+    <a (click)="showPasswordFunction($event)" class="label-icon">
+        <i class="fas" 
+            [ngClass]="{'fa-eye-slash': !passwordShow, 'fa-eye': passwordShow}">
+        </i>
+        <span class="sr-only sr-only-focusable">{{ screenReaderText | translate }}</span>
+    </a>
 </span>
+<span *ngIf="!title && !password">
+    <i class="{{iconClasses}}"></i>
+    <span class="sr-only sr-only-focusable"><ng-content></ng-content></span>
+</span>
+

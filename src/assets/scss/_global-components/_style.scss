@@ -1,13 +1,18 @@
+$global-body-bg-color:                      $lite-gray-2;
+$global-prefix-padding-right:               $padding-vertical;
+$global-title-font-size:                    $font-size-base * 1.25;
+$global-title-font-family:                  $font-family-base;
+$global-red-override:                       $mapfre-red !important;
+
+body {
+    background-color:                       $global-body-bg-color;
+}
 input[type=text]:focus {
     outline:                                none;
 }
 
 .bold {
     font-weight:                            900;
-}
-.btn-mapfre-default { 
-    background-color:                       $mapfre-red;
-    color:                                  $white;
 }
 
 .center {
@@ -21,7 +26,7 @@ input[type=text]:focus {
 }
 .prefix {
     float:                                  left;
-    padding-right:                          $padding-vertical;
+    padding-right:                          $global-title-font-size;
 }
 .right {
     text-align:                             right;
@@ -31,9 +36,9 @@ input[type=text]:focus {
 }
 
 .title-copy {
-    font-size:                              $font-size-base * 1.25;
-    padding:                                $padding-vertical 0;
-    font-family:                            $font-family-base;
+    font-size:                              $global-title-font-size;
+    padding:                                $global-title-font-size 0;
+    font-family:                            $global-title-font-family;
 }
 
 // ---- class overrides ----
@@ -41,6 +46,6 @@ input[type=text]:focus {
     box-shadow:                             none;
 }
 .red-background, .red {
-    background-color:                       $mapfre-red !important; 
+    background-color:                       $global-red-override; 
 }
 

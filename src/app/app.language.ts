@@ -37,7 +37,9 @@ export class Language {
             "CREATE_ACCOUNT" : "Create Account",
             "FIRST_TIME": "First Time",
             "SIGN_IN" : "Sign In",
-            "CUSTOMER_ACCESS" : "Customer Access"
+            "CUSTOMER_ACCESS" : "Customer Access",
+            "SHOW_PASSWORD": "Show Password",
+            "HIDE_PASSWORD" : "Hide Password"
         }
     },{
         "identifier" : "ES",
