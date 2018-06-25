@@ -1,75 +1,81 @@
 @import "../../../../../styles.scss";
 
-$small-font-size: 12px;
-$switch-text-color: #737373;
+$switch-font-size-small:            $font-size-base/1.25;
+$switch-text-color:                 $gray;
+
+$switch-background-color-inactive:  $lite-gray;
+$switch-background-color-active:    $mapfre-red;
+$switch-checkmark-color:            $white;
+$switch-font-color-active:          $mapfre-red;
+
 
 .switch-mapfre {
-  display: inline-block;
-  position: relative;
-  width: 49px;
-  height: 25px;
+  display:                        inline-block;
+  height:                         25px;
+  position:                       relative;
+  width:                          49px;
   input {
-    display: none;
+    display:                      none;
     &:checked + .slider {
-      background-color: $mapfre-red;
+      background-color:           $switch-background-color-active;
     }
   }
   
   .slider {
-    background-color: $lite-gray;
-    cursor: pointer;
-    height: 20px;
-    width: 50px;
-    position: absolute;
+    background-color:             $switch-background-color-inactive;
+    cursor:                       pointer;
+    height:                       20px;
+    width:                        50px;
+    position:                     absolute;
     @include transition(.4s);
     &.round {
-      position: absolute;
+      position:                   absolute;
       @include border-radius(34px);
     }
   }
   
   [type="checkbox"] + span:before {
-    background-color: $white;
-    border-color: $white;
-    content: "";
-    height: 15px;
-    width: 15px;
-    left: 4px;
-    top: 2px;
-    position: absolute;
+    background-color:             $switch-checkmark-color;
+    border-color:                 $switch-checkmark-color;
+    content:                      "";
+    height:                       15px;
+    width:                        15px;
+    left:                         4px;
+    top:                          2px;
+    position:                     absolute;
     @include transition(.4s);
     @include border-radius(50%);
   }
   [type="checkbox"]:checked + span:before {
-    left: 30px;
-    top: 2px;
+    left:                         30px;
+    top:                          2px;
   }
 
   .slider-text {
-    float: right;
-    font-size: $small-font-size;
-    color: $switch-text-color; 
-    white-space: nowrap;
-    vertical-align: middle;
+    float:                        right;
+    font-size:                    $switch-font-size-small;
+    color:                        $switch-text-color; 
+    white-space:                  nowrap;
+    vertical-align:               middle;
     
     &.selected {
-      color: $mapfre-red;
+      color:                      $switch-background-color-active;
     }
   }
   [type="checkbox"]:checked + .slider-text {
-    color: $mapfre-red;
+    color:                        $switch-font-color-active;
   }
 }
 
 .copy-left {
-  float: right;
-  margin-top: 3px;
-  padding-right: 55px;
+  float:                          right;
+  margin-top:                     3px;
+  padding-right:                  55px;
 }
 .copy-right{
-  float: left; 
-  margin-top: 1px;
-  padding-left: 55px;
+  float:                          left; 
+  margin-top:                     1px;
+  padding-left:                   55px;
  
 }
 

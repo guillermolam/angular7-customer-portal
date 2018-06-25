@@ -1,31 +1,41 @@
 @import "../../../../styles.scss";
 
+$mapfre-link-color:             $mapfre-red;
+$mapfre-link-color-teal:        $mapfre-teal;
+$mapfre-link-font-size-small:   $link-font-size/1.25;
+$mapfre-link-font-size-base:    $link-font-size;
+$mapfre-link-icon-top:          -5px;
+$mapfre-link-icon-right:        $padding-horizontal/1.5;
+$mapfre-link-padding:           0 $padding-vertical;
+
 a { 
-    color: $link-color;
-    padding: 0 $padding-vertical;
-    text-decoration: none;
+    padding:                    $mapfre-link-padding;
+    text-decoration:            none;
 }
 i {
-    float: left;
-    font-size: $link-icon-font-size;
-    font-weight: 900;
-    margin-top: -5px;
-    padding-right: $padding-horizontal/1.5;
+    float:                      left;
+    font-size:                  $link-icon-font-size;
+    font-weight:                900;
+    margin-top:                 $mapfre-link-icon-top;
+    padding-right:              $mapfre-link-icon-right;
 }
 
 .mapfre {   
     &.underline {
-        text-decoration: underline;
+        text-decoration:        underline;
     }
     &.small-link {
-        font-size: $link-font-size/2;
+        font-size:              $mapfre-link-font-size-small;
     }
     &.normal-link {
-        font-size: $link-font-size;
+        font-size:              $mapfre-link-font-size-base;
     }
     &.switch-line-up {
-        position: ABSOLUTE;
-        right: 0;
-        top: 4px;
+        position:               absolute;
+        right:                  0;
+        top:                    0px;
+    }
+    &.teal-link {
+        color:                  $mapfre-link-color-teal;
     }
 }

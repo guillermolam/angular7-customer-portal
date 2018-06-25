@@ -1,77 +1,82 @@
 @import "../../../../../styles.scss";
 
+$button-color-gray-clear:               $lite-gray;
+$button-color-bg-success:               $mapfre-green;
+$button-color-text-success:             $white;
+$button-color-bg-default:               $mapfre-red;
+$button-color-text-default:             $white;
 
-$button-gray: $lite-gray;
+$button-small-font-size:                $font-size-sm;
+$button-small-height:                   32px;
+$button-small-padding:                  6px;
+$button-full-font-size:                 $font-size-base;
+$button-full-padding-size:              $padding-vertical/1.25;
 
 .btn.mapfre {
-    font-family: $button-font-family;
-    font-size: $font-size-sm;
-    border:  2px solid;
-    box-shadow: none;
+    border:                             2px solid;
+    box-shadow:                         none;
+    font-family:                        $button-font-family;
     @include border-radius(50px);
     
     // ---- Colors -----
     &.success {
-        background-color: $mapfre-green; 
-        border-color: $mapfre-green;
-        color: $white;
+        background-color:               $button-color-bg-success; 
+        border-color:                   $button-color-bg-success;
+        color:                          $button-color-text-success;
         &:focus {
-            outline: $mapfre-green;
+            outline:                    $button-color-bg-success;
         }
         &:hover {
             color: $white; 
-            background-color: darken($mapfre-green, 2%);
-            border-color: darken($mapfre-green, 2%);
+            background-color:           darken($button-color-bg-success, 2%);
+            border-color:               darken($button-color-bg-success, 2%);
         }
     }
 
     &.default {
-        background-color: $mapfre-red;
-        border-color: $mapfre-red;
-        color: $white;
+        background-color:               $button-color-bg-default;
+        border-color:                   $button-color-bg-default;
+        color:                          $button-color-bg-default;
         &:focus {
-            outline: $mapfre-red;
+            outline:                    $button-color-bg-default;
         }
         &:hover {
-            color: $white; 
-            background-color: darken($mapfre-red, 2%);
-            border-color: darken($mapfre-red, 2%);
+            color:                      $button-color-bg-default; 
+            background-color:           darken($button-color-bg-default, 2%);
+            border-color:               darken($button-color-bg-default, 2%);
         }
     }
 
     &.clear {
-        background-color: transparent;
-        border-color: $button-gray;
-        color: $button-gray;
-        font-weight: bold;
+        background-color:               transparent;
+        border-color:                   $button-color-gray-clear;
+        color:                          $button-color-gray-clear;
+        font-weight:                    bold;
         &:focus {
-            outline: $button-gray
+            outline:                    $button-color-gray-clear;
         }
         &:hover {
             color: $white; 
-            background-color: $button-gray;
+            background-color:           $button-color-gray-clear;
         }
-    }
-
-    &.disabled {
-        
     }
 
     // ----- Sizing -------
     &.small-padding {
-        height: 32px;
-        padding: 6px;
+        font-size:                      $button-small-font-size;
+        height:                         $button-small-height;
+        padding:                        $button-small-padding;
     }
     &.full-padding {
-        padding: $padding-vertical/1.25;
+        font-size:                      $button-full-font-size;
+        padding:                        $button-full-padding-size;
     }
     &.full {
-        display: block;
-        width: 100%;
+        display:                        block;
+        margin-left:                    0;
+        width:                          100%;
     }
     &.seventy-five {
-        width: 75%;
-    }
-    
+        width:                          75%;
+    }  
 }
-

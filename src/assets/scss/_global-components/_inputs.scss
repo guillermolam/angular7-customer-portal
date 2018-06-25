@@ -1,58 +1,70 @@
-$input-label-font-size: $font-size-base/1.15;
+$input-label-font-size:         $font-size-base/1.15;
+$input-label-left-position:     $margin-horizontal/1.25;
+$input-label-padding-bottom:    $padding-vertical*2.5;
+
+$input-validation-label-right:  $margin-horizontal;
+$input-validation-help-top:     $padding-vertical/2.5;
+
+$input-success-color:           #00c851;
+$input-error-color:             $mapfre-red;
+$input-active-color:            $mapfre-blue;
+$input-inactive-color:          $lite-gray;
 
 .input-field.mapfre {
-    height: 60px;
-    position: relative; 
-    //padding-bottom: $padding-vertical*2.5;
-    margin-top: $margin-vertical;
+    height:                     60px;
+    position:                   relative; 
+    padding-bottom:             $input-label-padding-bottom;
 
     input {
-        border: none;
-        border-bottom: 2px solid $lite-gray;
-        outline: none;
+        border:                 none;
+        border-bottom:          2px solid $input-inactive-color;
+        outline:                none;
+        padding-top:            0.5rem;
         @include border-radius(0);
         @include transition(0.2s);
-
         &:focus {
-            border-bottom-color: $mapfre-blue;
-            outline: none;
+            border-bottom-color: $input-active-color;
+            outline:            none;
         }
     }
     
     label {
-        color: $lite-gray;
-        cursor: text;
-        font-size: $input-label-font-size;
-        left: $margin-horizontal * 2;
-        position: absolute;
-        text-transform: capitalize;
-        top: 0; // top: $margin-vertical/1.5;
+        color:                  $input-inactive-color;
+        cursor:                 text;
+        font-size:              $input-label-font-size;
+        text-transform:         capitalize;
+        top:                    0; 
         @include transition(0.2s);
-
         &.active {
-            color: $mapfre-blue;
-            font-size: 10px;
-            top: -5px;
+            color:              $input-active-color;
+            font-size:          10px;
+        }
+        &.input-label {
+            left:                   $input-label-left-position; 
+            margin-bottom:          0;
+            margin-top:             10px;
+            position:               absolute;
+            &.active {
+                top:                -15px;
+            }
         }
     }
     .counter-danger + label {
-        color: $mapfre-red;
+        color:                  $input-error-color;
     }
 
     .counter-success + label {
-        color: #00c851 // green success will this color change?
+        color:                  $input-success-color;
     }
     .inputVal {
-        display: none;
-        right:  $margin-horizontal;
+        display:                none;
+        right:                  $input-validation-label-right;
     }
 
     .help-block .error {
-        color: $mapfre-red;
-        font-size: $input-label-font-size / 2;
-        padding-top: $padding-vertical/2.5;
-        text-align: right;
-        
+        color:                  $input-error-color;
+        font-size:              $input-label-font-size / 2;
+        padding-top:            $input-validation-help-top;
+        text-align:             right;
     }
-
 }

@@ -6,7 +6,7 @@
     <mapfre-validation [input]="input" [form]="loginForm"></mapfre-validation>
   </div>
    
-  <div class="row">
+  <div class="row group-remember">
     <div class="col-sm">
       <mapfre-switch [copyRight]="true" (switchOn)="onRememberMe($event)">
           {{'REMEMBER_ME' | translate}}
@@ -14,7 +14,7 @@
     </div>
     <div class="col-sm">
       <mapfre-link
-        [additionalClasses]="'small-link underline switch-line-up'"
+        [additionalClasses]="'small-link underline switch-line-up teal-link'"
         [target]="_self"
         >{{ 'FORGOT_PASS' | translate }}
       </mapfre-link>

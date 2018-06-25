@@ -1,35 +1,36 @@
 // --- Base Colors --- //
-$black:          #000;
-$darkGrey:       #333;
-$gray:           #666;
-$lite-gray:      #ccc;
-$lite-gray-2:    #ddd;
-$white:          #fff;
+$black:                     #000;
+$dark-gray:                 #333;
+$med-gray:                  #4C4C4C;
+$gray:                      #737373;
+$lite-gray:                 #ccc;
+$white:                     #fff;
 
 // --- Brand Colors --- //
-$mapfre-red:     #EE3124; //#D81E05; 
-$mapfre-blue:    #0A4BB3;
-$mapfre-green:   #C6DB81;
-$mapfre-gray:    #67686B;
+$mapfre-red:                #EE3124; //#D81E05; 
+$mapfre-blue:               #0A4BB3;
+$mapfre-green:              #C6DB81;
+$mapfre-gray:               #67686B;
+$mapfre-teal:               #006580;
 
 // ---- Defaults ----- //
 //Fonts
-$font-family-base: 'Noto Sans';
+$font-family-base:          'Noto Sans';
 
 
 
 
 //Sizing
-$font-size-base: 16px; 
-$font-size-sm: $font-size-base/1.5;
-$link-icon-font-size: $font-size-base/2;
-$link-font-size: $font-size-base; 
-$margin-vertical: 15px;
-$margin-horizontal: 15px;
-$padding-horizontal: 15px;
-$padding-vertical: 15px;
+$font-size-base:            16px; 
+$font-size-sm:              $font-size-base/1.5;
+$link-icon-font-size:       $font-size-base/2;
+$link-font-size:            $font-size-base; 
+$margin-vertical:           15px;
+$margin-horizontal:         15px;
+$padding-horizontal:        15px;
+$padding-vertical:          15px;
 
 // ----- OverRides ----- //
-$default-color: $mapfre-red;
-$link-color: $mapfre-red;
-$button-font-family: $font-family-base;
+$default-color:             $mapfre-red;
+$link-color:                $mapfre-red;
+$button-font-family:        $font-family-base;

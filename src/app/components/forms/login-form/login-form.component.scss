@@ -1,11 +1,23 @@
 @import "../../../../styles.scss";
 
+$login-register-copy-color:     $med-gray;
+$login-register-copy-size:      $font-size-sm;
+
+$login-remember-me-group:       $margin-vertical;
+$login-inputs-group:            $padding-vertical *2;
+$login-login-group:             $padding-vertical;
+
+
 .group-inputs {
-    padding-bottom: $padding-vertical;
+    padding-bottom:             $login-inputs-group;
 }
 
 .group-login {
-    padding-bottom: $padding-vertical*2;
+    padding-bottom:             $login-login-group;
+}
+
+.group-remember {
+    margin-top:                 $login-remember-me-group;
 }
 
 .group-register {
@@ -13,5 +25,6 @@
 }
 
 .register-copy {
-    
+    color:                      $login-register-copy-color;
+    font-size:                  $login-register-copy-size;
 }

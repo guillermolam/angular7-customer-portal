@@ -1,29 +1,3 @@
-<!--<div class="input-field mapfre">
-  <mapfre-input
-    icon="{{icon}}"
-    iconClasses="{{iconClasses}}"
-    inputType="{{inputType}}"
-    additionalClasses="{{additionalClasses}}" 
-    inputName="{{inputNameValue}}" 
-    formControlName="{{inputType}}" 
-    required="{{required}}">
-    <ng-content></ng-content>
-  </mapfre-input>
-  <div *ngIf="validation">
-    <div *ngIf="inputGroupControl?.errors && !inputGroupControl?.pristine" class="help-block">
-      <div 
-        class="alert alert-danger" 
-        *ngIf="inputGroupControl?.errors.required && inputGroupControlType" 
-        [innerHtml]="'EMAIL_REQUIRED' | translate">
-      </div>
-      <div 
-        class="alert alert-danger" 
-        *ngIf="inputGroupControlType && !inputGroupControl?.errors.required" 
-        [innerHtml]="'EMAIL_INVALID' | translate">
-      </div>
-    </div>
-  </div>
-</div> -->
 <div class="row input-field mapfre">
   <div class="col">
     <div [formGroup]="form" class="input-field mapfre">
