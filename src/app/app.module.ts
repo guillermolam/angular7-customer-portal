@@ -52,7 +52,8 @@ import { SignupComponent }          from "./routes/signup/signup.component";
 import { TestingComponent }         from './routes/testing/testing.component';
 
 import { DynamicFormsComponent } from './components/forms/dynamic-forms/dynamic-forms.component';
-
+import { ForgotPasswordFormComponent } from './components/forms/forgot-password-form/forgot-password-form.component';
+import { RepeatPasswordDirectiveDirective } from './_directives/forms/repeat-password/repeat-password-directive.directive';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,8 @@ import { DynamicFormsComponent } from './components/forms/dynamic-forms/dynamic-
     MapfreCardComponent,
     MapfreIconComponent,
     DynamicFormsComponent,
+    ForgotPasswordFormComponent,
+    RepeatPasswordDirectiveDirective,
   ],
   imports: [
     BrowserModule,

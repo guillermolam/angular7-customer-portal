@@ -1,6 +1,6 @@
 <form [formGroup]="loginForm" 
   name="loginForm" (ngSubmit)="loginForm.valid && login()"  
-  class="centered-form" method="post" action="/b2cwebapp/j_spring_security_check">
+  method="post" action="/b2cwebapp/j_spring_security_check">
   
   <div *ngFor="let input of inputs">
     <mapfre-validation [input]="input" [form]="loginForm"></mapfre-validation>

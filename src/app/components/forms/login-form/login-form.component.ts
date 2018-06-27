@@ -40,11 +40,12 @@ export class LoginFormComponent implements OnInit {
     private ipt: FormBaseControlService
   ) {}
 
-  onRememberMe($event) {
-    this.rememberMe = $event;
+  onRememberMe(event) {
+    this.rememberMe = event;
   }
 
   ngOnInit() {
+    console.log(this.inputs)
     this.loginForm = this.ipt.toFormGroup(this.inputs);
 
     // Recover cookie if exists
@@ -58,37 +59,8 @@ export class LoginFormComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
-
-    // Recover User Observable if coming from a different page
-   /* this.userService.$user.subscribe((user) => {
-      this.createForm(user);
-    });*/
-
-    
-    /*this.http.get(
-      "/b2cwebapp/account/loginView?state=MA"
-    ).toPromise(
-    ).then((rsp) => {
-      console.log("responded");
-      console.log(rsp);
-    }).catch((err) => {
-      console.log("error");
-      console.log(err);
-    }); */
   }
-
-  /*createForm(user: User) {
-    this.loginForm = this.fb.group({
-      email: [user.email, [Validators.required, Validators.email]],
-      password: [user.password, [Validators.required]]
-    });
-  }*/
-
-  /*register() {
-    this.userService.updateUser(this.loginForm.value);
-    this.router.navigateByUrl("signup");
-  }*/
-
+  
   putCookie() {
     if(this.rememberMe) {
       this._cookieService.put("username", this.user.email);
@@ -104,8 +76,40 @@ export class LoginFormComponent implements OnInit {
     this.putCookie();
     
     console.log(this.user);
+  }
+}
+
+
+   // Recover User Observable if coming from a different page
+   /* this.userService.$user.subscribe((user) => {
+      this.createForm(user);
+    });*/
+
     
-    /* this.authenticationService
+    /*this.http.get(
+      "/b2cwebapp/account/loginView?state=MA"
+    ).toPromise(
+    ).then((rsp) => {
+      console.log("responded");
+      console.log(rsp);
+    }).catch((err) => {
+      console.log("error");
+      console.log(err);
+    }); */
+  /*createForm(user: User) {
+    this.loginForm = this.fb.group({
+      email: [user.email, [Validators.required, Validators.email]],
+      password: [user.password, [Validators.required]]
+    });
+  }*/
+
+  /*register() {
+    this.userService.updateUser(this.loginForm.value);
+    this.router.navigateByUrl("signup");
+  }*/
+
+  // for the login() 
+/* this.authenticationService
       .login(this.user.email, this.user.password)
       .subscribe(
         (data) => {
@@ -117,5 +121,3 @@ export class LoginFormComponent implements OnInit {
         }
       );
       */
-  }
-}

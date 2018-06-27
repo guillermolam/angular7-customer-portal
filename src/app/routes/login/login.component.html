@@ -3,12 +3,12 @@
   <!-- <router-outlet></router-outlet> why is this here? -->
 </div>
 
-<mapfre-card additionalClasses="login card-center">
+<mapfre-card additionalClasses="login card-center small-card">
   <div class="row text-center">
     <div class="col"> 
       <h1 class="title-copy">
         <mapfre-icon [iconClasses]="'fas fa-user-lock'" [title]="true"></mapfre-icon>
-        {{ 'Customer Access' | translate }}</h1> 
+        {{ 'CUSTOMER_ACCESS' | translate }}</h1> 
     </div>
   </div>
   <app-login-form [inputs]="inputs"></app-login-form>

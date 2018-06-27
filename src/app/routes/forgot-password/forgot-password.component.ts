@@ -1,45 +1,21 @@
-import { AlertService } from "../../_services/alert.service";
-import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
-import { UserService } from "../../_services/user.service";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { User } from "../../_models/user";
-import { Component, OnInit } from "@angular/core";
+import { Component } from '@angular/core';
+
+import { FormBase } from '../../_models/form-base';
+import { ForgotPasswordService } from '../../_services/forms/forgot-password/forgot-password.service';
 
 @Component({
-  selector: "app-forgot-password",
-  templateUrl: "./forgot-password.component.html",
-  styleUrls: ["./forgot-password.component.scss"]
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss'],
+  providers: [ ForgotPasswordService ]
 })
-export class ForgotPasswordComponent implements OnInit {
-  user: User;
-  forgotPasswordForm: FormGroup;
+export class ForgotPasswordComponent  {
 
-  constructor(
-    private fb: FormBuilder,
-    private userData: UserService,
-    private router: Router,
-    private http: HttpClient,
-    private alertService: AlertService
-  ) {}
-
-  ngOnInit() {
-    this.user = new User();
-
-    this.userData.$user.subscribe((user) => {
-      this.user.email = user.email;
-    });
-
-    this.createForm();
+  inputs: any[];
+ 
+  constructor(service: ForgotPasswordService) {
+    this.inputs = service.getInputs();
   }
+   
 
-  createForm() {
-    this.forgotPasswordForm = this.fb.group({
-      email: [this.user.email, Validators.required]
-    });
-  }
-
-  cancel() {
-    this.userData.updateUser(this.user);
-  }
 }

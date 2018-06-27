@@ -13,7 +13,7 @@ import { TestingComponent } from "./routes/testing/testing.component";
 const appRoutes: Routes = [
   { path: "", component: LoginComponent, canActivate: [AuthGuard] },
   { path: "dasboard", component: DashboardComponent},
-  { path: "forgotpassword", component: ForgotPasswordComponent },
+  { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   { path: "testing", component: TestingComponent },

@@ -8,24 +8,23 @@
         <input
           [formControlName]="input.key" 
           [class]="input.additionalClasses" 
-          [type]="input.type"
+          [type]="input.type" 
           [id]="input.key" 
           [name]="input.key" 
           mdbInputDirective
-          ngModel
           email
          />
         <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
       </div>
-      <div *ngIf="input.type == 'password'">
+      <div *ngIf="input.type == 'password'" [appRepeatPasswordDirective]="input.key"
+      >
         <input
           [formControlName]="input.key" 
           [class]="input.additionalClasses" 
           [type]="showPassword ? 'text' : 'password'"
           [id]="input.key" 
-          [name]="input.key"
+          [name]="input.key" 
           mdbInputDirective
-          ngModel
          />
         <mapfre-icon password="true" (onClickShowPassword)="showPasswordFunction($event)"></mapfre-icon>
         <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
@@ -36,14 +35,64 @@
           [class]="input.additionalClasses" 
           [type]="input.type"
           [id]="input.key" 
-          [name]="input.key"  
+          [name]="input.key"
+          [(ngModel)]="input.value"  
           mdbInputDirective
         />
         <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
       </div>
-      <div class="help-block">
+      <div class="help-block" *ngIf="(input.key != 'forgotPassword') && (input.key != 'forgotPasswordRepeat')">
         <div class="error" *ngIf="!isValid">{{input.label}} is required</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- The 'create a new password' field uses this validation; however, it renders after the 'repeat password' field.  -->
+<div class="password-rules-list" *ngIf="input.key == 'forgotPassword' || input.key == 'createNewPassword'">
+  <div class="row">
+    <div class="col">
+      {{ 'YOUR_PASSWORD_SHOULD_BE' | translate }}
+    </div>
+  </div>
+  <div class="row" [ngClass]="{'valid': passwordRules('ruleOne'), 'error': !passwordRules('ruleOne')}">
+      <div class="col">
+          <mapfre-icon [iconClasses]="'fas'"></mapfre-icon>
+      </div>
+    <div class="col">
+      {{ 'PASSWORD_RULE_ONE' | translate }}
+    </div>
+  </div>
+  <div class="row" [ngClass]="{'valid': passwordRules('ruleTwo'), 'error': !passwordRules('ruleTwo')}">
+      <div class="col">
+          <mapfre-icon [iconClasses]="'fas'"></mapfre-icon>
+      </div>
+    <div class="col">
+        {{ 'PASSWORD_RULE_TWO' | translate }}
+    </div>
+  </div>
+  <div class="row" [ngClass]="{'valid': passwordRules('ruleThree'), 'error': !passwordRules('ruleThree')}">
+      <div class="col">
+          <mapfre-icon [iconClasses]="'fas'"></mapfre-icon>
+      </div>
+    <div class="col">
+        {{ 'PASSWORD_RULE_THREE' | translate }}
+    </div>
+  </div>
+  <div class="row" [ngClass]="{'valid': passwordRules('ruleFour'), 'error': !passwordRules('ruleFour')}">
+      <div class="col">
+          <mapfre-icon [iconClasses]="'fas'"></mapfre-icon>
+      </div>
+    <div class="col">
+        {{ 'PASSWORD_RULE_FOUR' | translate }}
+    </div>
+  </div>
+  <div class="row" [ngClass]="{'valid': passwordRules('ruleFive'), 'error': !passwordRules('ruleFive')}">
+      <div class="col">
+          <mapfre-icon [iconClasses]="'fas'"></mapfre-icon>
+      </div>
+    <div class="col">
+        {{ 'PASSWORD_RULE_FIVE' | translate }}
     </div>
   </div>
 </div>

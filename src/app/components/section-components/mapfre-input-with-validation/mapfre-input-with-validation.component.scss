@@ -1,8 +1,20 @@
 @import "../../../../styles.scss";
+$validation-error-color:    $mapfre-red;
+$validation-valid-color:    $mapfre-green;
 /* 
     ----- Information -----
     The Input styles are in the global-component folder in assets/scss/_global-components/_inputs.scss. 
     This is due to the use of multiple components being used for this particular section. 
 
 */
+.hide-validation {
+    display: none;
+}
+
+.error {
+    color: $validation-error-color;
+}
+.valid {
+    color: $validation-valid-color;
+}
 
