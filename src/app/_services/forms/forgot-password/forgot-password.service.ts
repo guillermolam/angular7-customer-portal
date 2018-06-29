@@ -9,21 +9,22 @@ export class ForgotPasswordService {
   getInputs() {
     let inputs: FormBase<any>[] = [
       new TextBox({
-        key: 'forgotPassword',
+        key: 'createPassword',
         additionalClasses: 'form-control',
-        label: 'Password',
+        label: 'New Password',
+        maxLength: 24,
+        minLength: 7,
+      //  pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])$/g,
         required: true,
         type: 'password',
-        minLength: 7,
-        maxLength: 24
       }),
       new TextBox({
-        key: 'forgotPasswordRepeat',
+        key: 'repeatPassword',
         additionalClasses: 'form-control',
         label: 'Repeat Password',
         required: true,
-        type: 'password'
-      })
+        type: 'password',
+      }),
     ]
     return inputs;
   }

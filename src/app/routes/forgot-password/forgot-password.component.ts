@@ -16,6 +16,4 @@ export class ForgotPasswordComponent  {
   constructor(service: ForgotPasswordService) {
     this.inputs = service.getInputs();
   }
-   
-
 }

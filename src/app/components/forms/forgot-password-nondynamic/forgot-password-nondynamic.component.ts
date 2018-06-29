@@ -13,18 +13,19 @@ import { UserService }                from "../../../_services/user.service";
 import { User }                       from "../../../_models/user";
 
 @Component({
-  selector: 'app-forgot-password-form',
-  templateUrl: './forgot-password-form.component.html',
-  styleUrls: ['./forgot-password-form.component.scss'],
+  selector: 'app-forgot-password-form-nondynamic',
+  templateUrl: './forgot-password-nondynamic.component.html',
+  styleUrls: ['./forgot-password-nondynamic.component.scss'],
   providers: [ FormBaseControlService ]
 
 })
-export class ForgotPasswordFormComponent implements OnInit {
-  @Input() inputs: FormBase<any>[] = [];
-  loading: boolean =        false;
-  returnUrl:                string;
-  user:                     User;
+export class ForgotPasswordNondynamicComponent implements OnInit {
   forgotPasswordForm:       FormGroup;
+  loading:                  boolean = false;
+  returnUrl:                string;
+  repeatPassword:           boolean;
+  showPassword:             boolean;
+  user:                     User;
   
   constructor(
     private _cookieService: CookieService,
@@ -37,15 +38,55 @@ export class ForgotPasswordFormComponent implements OnInit {
     private userService: UserService,
     private userData: UserService,
     private ipt: FormBaseControlService
-  ) {}
-
-  ngOnInit() {
-    this.forgotPasswordForm = this.ipt.toFormGroup(this.inputs);
-    this.user = new User();
+  ) {
+    this.createForm()
   }
 
-  createNewPassword(): void {
+  createForm() {
+    this.forgotPasswordForm= this.fb.group({
+      createPassword:
+      [ '',
+        [
+          Validators.required,
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g)
+        ]
+      ],
+      repeatPassword:
+      [ '',
+        Validators.required
+      ]
+    }, {
+      validator: this.pwdMatchValidator 
+      }
+    )}
+  
+  pwdMatchValidator(frm: FormGroup) {
+    return frm.get('createPassword').value === frm.get('repeatPassword').value
+       ? null : {'mismatch': true};
+  }
 
+  showPasswordFunction(event): void {
+    this.showPassword = event;
+  }
+
+  passwordRules(reg: string): boolean {
+    // Within the actual validation these five rules have been made into one.
+    let rules: {} = {
+      'ruleOne':    /^(?=.*[a-z])(?=.*[A-Z])/g,
+      'ruleTwo':    /^(?=.*[0-9])/g,
+      'ruleThree':  /^(?=.*[!@#\$%\^&\*])/g,
+      'ruleFour':   /^(?=.{7,})/g,
+      'ruleFive':   /^.{1,24}$/g,
+      'all':        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g
+    };
+    let inputValue = this.forgotPasswordForm.controls['createPassword'].value;
+    if( inputValue != undefined && rules[reg].test(inputValue) ) return true;
+  }
+
+  ngOnInit() {
+    //this.forgotPasswordForm = this.ipt.toFormGroup(this.inputs);
+    this.user = new User();
+    console.log(this.forgotPasswordForm)
   }
 }
 /*
@@ -66,3 +107,4 @@ this.userData.$user.subscribe((user) => {
   }
  
 */
+

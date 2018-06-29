@@ -7,9 +7,14 @@ import { FormBase } from '../_models/form-base';
 export class FormBaseControlService {
   constructor() { }
 
+  matchPasswords(input: FormControl, group: FormGroup) {
+    let password = input.value == group['createPassword'].value;
+    return password ? null : { matchPasswords: true }
+  }
+
   toFormGroup(inputs: FormBase<any>[] ) {
     let group: any = {},
-        passwordReg: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])$/g;
+        pattern: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])$/g;
 
     inputs.forEach(input => {
       if( input.value == 'email' ){
@@ -17,18 +22,27 @@ export class FormBaseControlService {
           new FormControl(input.value || '',  [Validators.required, Validators.email] ) : 
           new FormControl(input.value || '',  Validators.email);
       }
-      else if(input.key == 'forgotPassword' || input.key == 'registerPassword'){
-        group[input.key] = new FormControl(input.value, [
-          Validators.required, 
-          Validators.minLength(input.minLength), 
-          Validators.maxLength(input.maxLength),
-          Validators.pattern(passwordReg)
-        ]);
+      else if(input.key == 'createPassword'){
+        group[input.key] = new FormControl
+        (
+          input.value, 
+          [
+            Validators.required, 
+            Validators.minLength(input.minLength), 
+            Validators.maxLength(input.maxLength),
+            Validators.pattern(pattern) 
+          ]
+        );
       }
-      else if( input.minLength <= 1 ){
-        group[input.key] = input.required ? 
-          new FormControl(input.value || '',  [Validators.required, Validators.minLength(input.minLength)] ) : 
-          new FormControl(input.value || '',  Validators.minLength(input.minLength));
+      else if(input.key == 'repeatPassword'){
+        group[input.key] = new FormControl
+        (
+          input.value,
+          [
+            Validators.required,
+            //matchPasswords
+          ]
+        );
       }
       else {
         group[input.key] = input.required ? 

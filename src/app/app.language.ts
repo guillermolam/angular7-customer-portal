@@ -39,7 +39,15 @@ export class Language {
             "SIGN_IN" : "Sign In",
             "CUSTOMER_ACCESS" : "Customer Access",
             "SHOW_PASSWORD": "Show Password",
-            "HIDE_PASSWORD" : "Hide Password"
+            "HIDE_PASSWORD" : "Hide Password",
+            "YOUR_PASSWORD_SHOULD_BE" : "Your Password Should Be",
+            "PASSWORD_RULE_ONE" : "Rule One",
+            "PASSWORD_RULE_TWO" : "Rule Two",
+            "PASSWORD_RULE_THREE" : "Rule Three",
+            "PASSWORD_RULE_FOUR" : "Rule Four",
+            "PASSWORD_RULE_FIVE" : "Rule Five",
+            "DOES_NOT_PASS" : "Does Not Pass",
+            "PASSES_THE_RULE": "Passes the Rule"
         }
     },{
         "identifier" : "ES",
@@ -79,7 +87,15 @@ export class Language {
             "SIGN_IN" : "Sign In",
             "CUSTOMER_ACCESS" : "Customer Access",
             "SHOW_PASSWORD": "Show Password",
-            "HIDE_PASSWORD" : "Hide Password"
+            "HIDE_PASSWORD" : "Hide Password",
+            "YOUR_PASSWORD_SHOULD_BE" : "Your Password Should Be",
+            "PASSWORD_RULE_ONE" : "Rule One",
+            "PASSWORD_RULE_TWO" : "Rule Two",
+            "PASSWORD_RULE_THREE" : "Rule Three",
+            "PASSWORD_RULE_FOUR" : "Rule Four",
+            "PASSWORD_RULE_FIVE" : "Rule Five",
+            "DOES_NOT_PASS" : "Does Not Pass",
+            "PASSES_THE_RULE": "Passes the Rule"
         }
     }];
 }

@@ -45,7 +45,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.inputs)
     this.loginForm = this.ipt.toFormGroup(this.inputs);
 
     // Recover cookie if exists

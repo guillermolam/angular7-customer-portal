@@ -13,7 +13,6 @@ export class MapfreIputWithValidationComponent {
   @Input()  input: FormBase<any>;
   @Input()  form: FormGroup;
             showPassword: boolean = false;
-
   @Output() inputValidationCheck = new EventEmitter<boolean>();
   
   showPasswordFunction(event): void {
@@ -31,9 +30,10 @@ export class MapfreIputWithValidationComponent {
       'ruleTwo':    /^(?=.*[0-9])/g,
       'ruleThree':  /^(?=.*[!@#\$%\^&\*])/g,
       'ruleFour':   /^(?=.{7,})/g,
-      'ruleFive':   /^.{1,24}$/g
+      'ruleFive':   /^.{1,24}$/g,
+      'all':        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g
     };
-    let inputValue = this.form.controls[this.input.key].value;
+    let inputValue = this.form.controls['createPassword'].value;
     if( inputValue != undefined && rules[reg].test(inputValue) ) return true;
   }
 }

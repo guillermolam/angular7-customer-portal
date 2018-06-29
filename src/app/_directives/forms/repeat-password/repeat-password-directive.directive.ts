@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input, Renderer, SimpleChanges } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Directive({
   selector: '[appRepeatPasswordDirective]'
@@ -6,19 +7,13 @@ import { Directive, ElementRef, Input, Renderer, SimpleChanges } from '@angular/
 export class RepeatPasswordDirectiveDirective {
   passwordValidation: boolean = false;
   @Input('appRepeatPasswordDirective') f: string;
-  @Input('validationRepeatPasswordDirective') s: boolean;
 
-  constructor(public el: ElementRef, public renderer: Renderer) {}
+  constructor(public el: ElementRef, public renderer: Renderer, public fg: FormGroup) {}
 
   repeatPasswordFunction(inputKey: string): void {
     if(inputKey == "forgotPasswordRepeat") this.renderer.setElementStyle(this.el.nativeElement, 'display', 'none');
   }
-
-  validationCheck(val): void {
-    console.log(val, "check");
-   // if(val) this.renderer.setElementStyle(this.el.nativeElement, 'display', 'block');
-  }
-
+  
   ngOnInit() {
     this.repeatPasswordFunction(this.f);
   }

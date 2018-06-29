@@ -54,6 +54,9 @@ import { TestingComponent }         from './routes/testing/testing.component';
 import { DynamicFormsComponent } from './components/forms/dynamic-forms/dynamic-forms.component';
 import { ForgotPasswordFormComponent } from './components/forms/forgot-password-form/forgot-password-form.component';
 import { RepeatPasswordDirectiveDirective } from './_directives/forms/repeat-password/repeat-password-directive.directive';
+import { ForgotPasswordNondynamicComponent } from './components/forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
+import { SendEmailFormComponent } from './components/forms/send-email-form/send-email-form.component';
+import { EmailConfirmationComponent } from './components/confirmations/email-confirmation/email-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +85,9 @@ import { RepeatPasswordDirectiveDirective } from './_directives/forms/repeat-pas
     DynamicFormsComponent,
     ForgotPasswordFormComponent,
     RepeatPasswordDirectiveDirective,
+    ForgotPasswordNondynamicComponent,
+    SendEmailFormComponent,
+    EmailConfirmationComponent,
   ],
   imports: [
     BrowserModule,
