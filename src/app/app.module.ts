@@ -18,7 +18,7 @@ import { AppComponent }             from "./app.component";
 import { Language }                 from "./app.language"; 
 import { RoutingModule }            from "./app.routing";
 // ----- Helpers | Service | Guard ----- //
-//import { fakeBackendProvider }    from './_helpers/fake-backend';
+import { fakeBackendProvider }    from './_helpers/fake-backend';
 //import { AuthenticationService }  from './_services/authentication-service.service';
 import { AuthenticationService }    from './_services/_iam/authentication-service.service';
 import { AlertService }             from "./_services/alert.service";
@@ -123,7 +123,7 @@ import { RepeatPasswordDirectiveDirective }   from './_directives/forms/repeat-p
     MockBackend,
     UserService,
     // providers used to create fake backend
-    // fakeBackendProvider,
+    fakeBackendProvider,
 
   ],
   bootstrap: [AppComponent]

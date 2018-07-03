@@ -25,7 +25,11 @@
           [name]="input.key" 
           mdbInputDirective
          />
-        <mapfre-icon password="true" (onClickShowPassword)="showPasswordFunction($event)"></mapfre-icon>
+        <mapfre-icon 
+          password="true" 
+          [showIconsForPassword]="input.showPasswordIcon"
+          (onClickShowPassword)="showPasswordFunction($event)">
+        </mapfre-icon>
         <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
         <div *ngIf="input.key != 'repeatPassword'; else repeatPassword"></div>
       </div>

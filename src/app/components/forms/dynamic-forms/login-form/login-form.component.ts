@@ -58,8 +58,9 @@ export class LoginFormComponent implements OnInit {
           },
           (error) => 
           {
-            this.alertService.error(error);
-            this.loading = false;
+            console.log(error)
+            //this.alertService.error(error);
+            //this.loading = false;
           }
         )
       ;
@@ -82,6 +83,9 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit() 
   {
+    this.userService.$user.subscribe((user) => {
+      
+    });
     this.loginForm = this.ipt.toFormGroup(this.inputs);
 
     // Recover cookie if exists
@@ -95,6 +99,16 @@ export class LoginFormComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/" ;
+    this.http.get(
+      "/b2cwebapp/account/loginView?state=MA"
+    ).toPromise(
+    ).then((rsp) => {
+      console.log("responded");
+      console.log(rsp);
+    }).catch((err) => {
+      console.log("error");
+      console.log(err);
+    });
   }
 }
 
@@ -104,7 +118,12 @@ export class LoginFormComponent implements OnInit {
       this.createForm(user);
     });*/
 
-    
+  /*register() {
+    this.userService.updateUser(this.loginForm.value);
+    this.router.navigateByUrl("signup");
+  }*/
+
+
     /*this.http.get(
       "/b2cwebapp/account/loginView?state=MA"
     ).toPromise(
@@ -122,8 +141,4 @@ export class LoginFormComponent implements OnInit {
     });
   }*/
 
-  /*register() {
-    this.userService.updateUser(this.loginForm.value);
-    this.router.navigateByUrl("signup");
-  }*/
 

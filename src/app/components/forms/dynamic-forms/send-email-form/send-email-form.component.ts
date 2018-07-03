@@ -17,14 +17,15 @@ export class SendEmailFormComponent implements OnInit {
   loading:                          boolean = false;
   returnUrl:                        string;
   passwordEmailForm:                FormGroup;
-  @Output() emailAddressOuput:      EventEmitter<string> = new EventEmitter();
+  @Output() emailAddressOuput:      EventEmitter<boolean> = new EventEmitter();
 
   isValid(event): boolean{
     return this.inputValidation = event === undefined ? false : event;
   }
 
-  sendEmail(e): void{
+  sendEmail(): void{
     let emailAddress = this.passwordEmailForm.controls['sendEmail'].value;
+    //insert backend service here. No matter what still have the bottom bit go through
     this.emailAddressOuput.emit(emailAddress);
   }
   

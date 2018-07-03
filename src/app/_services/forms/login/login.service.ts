@@ -14,6 +14,7 @@ export class LoginService {
         additionalClasses: 'form-control',
         label: 'Email',
         required: true,
+        showIconsForPassword: false,
         type: 'email'
       }),
       new TextBox({
@@ -21,6 +22,7 @@ export class LoginService {
         additionalClasses: 'form-control',
         label: 'Password',
         required: true,
+        showIconsForPassword: false,
         type: 'password'
       })
     ]

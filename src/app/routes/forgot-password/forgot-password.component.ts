@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute }           from '@angular/router';
 
-import { FormBase }               from '../../_models/form-base';
-import { EmailFormService }       from '../../_services/forms/forgot-password/email-form/email-form.service';
+import { FormBase }                 from '../../_models/form-base';
+import { EmailFormService }         from '../../_services/forms/forgot-password/email-form/email-form.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,15 +18,15 @@ export class ForgotPasswordComponent  {
   testingIdParm:          string;
   successChangePassword:  boolean;
  
-  constructor(
+  constructor (
     emailService: EmailFormService,
     private activatedRoute: ActivatedRoute
   ) {
     this.emailInputs = emailService.getInputs();
   }
 
-  showConfirmation(event): boolean{
-    return event;
+  showConfirmation(event): void {
+    this.successChangePassword = event;
   }
 
   ngOnInit(): void {
@@ -37,11 +37,6 @@ export class ForgotPasswordComponent  {
         this.successChangePassword = params.successChangePassword;
       }
     );
-
-    /*this.activatedRoute.params.subscribe((params: Params) => {
-      this.sentEmail = params['sentEmail']
-    });*/
-    
   }
 
 }
