@@ -20,7 +20,7 @@ import { User }                       from "../../../../_models/user";
 
 })
 export class ForgotPasswordNondynamicComponent implements OnInit {
-  @Input() pString:         string;
+  @Input() routeParamaterString: string;
   forgotPasswordForm:       FormGroup;
   loading:                  boolean = false;
   returnUrl:                string;
@@ -29,6 +29,7 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
   user:                     User;
   
   @Output() userConfirmation: EventEmitter<boolean> = new EventEmitter();
+  @Output() expireLinkOutput: EventEmitter<boolean> = new EventEmitter();
   
   constructor(
     private authenticationService: AuthenticationService,
@@ -42,6 +43,13 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
     private ipt: FormBaseControlService
   ) {
     this.createForm()
+  }
+
+  checkForExpiredPassword(param) {
+    let testingParam = 'testingforexpireparam';
+    if(param == testingParam) {
+      this.expireLinkOutput.emit(true);
+    }
   }
 
   createForm() {
@@ -60,11 +68,7 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
     }, {
       validator: this.pwdMatchValidator 
       }
-    )}
-  
-  pwdMatchValidator(frm: FormGroup) {
-    return frm.get('createPassword').value === frm.get('repeatPassword').value
-       ? null : {'mismatch': true};
+    )
   }
 
   passwordRules(reg: string): boolean {
@@ -80,9 +84,14 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
     if( inputValue != undefined && rules[reg].test(inputValue) ) return true;
   }
 
+  pwdMatchValidator(frm: FormGroup) {
+    return frm.get('createPassword').value === frm.get('repeatPassword').value
+       ? null : {'mismatch': true};
+  }
+
   setNewPassword(frm: FormGroup): void{
     let password = this.forgotPasswordForm.controls['createPassword'].value,
-        temporaryParamater = this.pString,
+        temporaryParamater = this.routeParamaterString,
         user = new User();
 
     user.password = password;
@@ -98,7 +107,7 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
   }
 
   ngOnInit() {
-   //this.user = new User();
+    this.checkForExpiredPassword(this.routeParamaterString);
   }
 }
 

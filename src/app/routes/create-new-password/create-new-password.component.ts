@@ -13,42 +13,34 @@ import { ForgotPasswordService }  from '../../_services/forms/forgot-password/fo
 })
 
 export class CreateNewPasswordComponent implements OnInit {
-  passwordInputs:         any[];
-  successChangePassword:  boolean;
-  paramsSub:              any;
- 
-  constructor(
-    passwordService:        ForgotPasswordService,
-    private activatedRoute: ActivatedRoute,
+  expiredLink:                    boolean = false;
+  paramSubmission:                any;
+  passwordInputs:                 any[];
+  private successChangePassword:  boolean;
+  
+  constructor
+  (
+    private passwordService:      ForgotPasswordService,
+    private activatedRoute:       ActivatedRoute,
   ) {
     this.passwordInputs = passwordService.getInputs();
   }
 
-  userConfirmation(event): void{
+  expireLinkFunction(event): void
+  {
+    this.expiredLink = event;
+  }
+
+  userConfirmation(event): void 
+  {
     this.successChangePassword = event;
   }
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe(
-      params => this.paramsSub = params['temporaryPassword']
+  ngOnInit(): void 
+  {
+    this.activatedRoute.params.subscribe
+    (
+      params => this.paramSubmission = params['temporaryPassword']
     );
-    console.log(this.paramsSub);
-  }    
-
- 
-
-
-    /*this.activatedRoute.paramMap
-      .subscribe(params => {
-        this.testingParm = params.testingParm;
-        this.testingIdParm = params.testingIdParm;
-        this.successChangePassword = params.successChangePassword;
-      }
-    );*/
-
-    /*this.activatedRoute.params.subscribe((params: Params) => {
-      this.sentEmail = params['sentEmail']
-    });*/
-    
-
+  }        
 }
