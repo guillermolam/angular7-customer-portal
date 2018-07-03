@@ -30,7 +30,7 @@ import { UserService }              from "./_services/user.service";
 import { AlertComponent }           from "./components/individual-components/alert/alert.component";
 import { FooterComponent }          from './components/section-components/footer/footer.component';
 import { HeaderComponent }          from './components/section-components/header/header.component';
-import { LoginFormComponent }       from './components/forms/login-form/login-form.component';
+import { LoginFormComponent }       from './components/forms/dynamic-forms/login-form/login-form.component';
 import { MapfreButtonComponent }    from './components/individual-components/inputs/mapfre-button/mapfre-button.component';
 import { MapfreCardComponent }      from './components/section-components/mapfre-card/mapfre-card.component';
 import { MapfreFormComponent }      from './components/section-components/mapfre-form/mapfre-form.component';
@@ -51,12 +51,18 @@ import { LoginComponent }           from "./routes/login/login.component";
 import { SignupComponent }          from "./routes/signup/signup.component";
 import { TestingComponent }         from './routes/testing/testing.component';
 
-import { DynamicFormsComponent } from './components/forms/dynamic-forms/dynamic-forms.component';
-import { ForgotPasswordFormComponent } from './components/forms/forgot-password-form/forgot-password-form.component';
-import { RepeatPasswordDirectiveDirective } from './_directives/forms/repeat-password/repeat-password-directive.directive';
-import { ForgotPasswordNondynamicComponent } from './components/forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
-import { SendEmailFormComponent } from './components/forms/send-email-form/send-email-form.component';
-import { EmailConfirmationComponent } from './components/confirmations/email-confirmation/email-confirmation.component';
+import { DynamicFormsComponent }              from './components/forms/dynamic-forms/dynamic-form-testing/dynamic-forms.component';
+import { ForgotPasswordFormComponent }        from './components/forms/dynamic-forms/forgot-password-form/forgot-password-form.component';
+import { SendEmailFormComponent }             from './components/forms/dynamic-forms/send-email-form/send-email-form.component';
+import { EmailConfirmationComponent }         from './components/confirmations/email-confirmation/email-confirmation.component';
+import { SendEmailFormNONDynamicComponent }   from './components/forms/non-dynamic-forms/send-email-form/send-email-form.component';
+import { ForgotPasswordNondynamicComponent }  from './components/forms/non-dynamic-forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
+
+
+import { RepeatPasswordDirectiveDirective }   from './_directives/forms/repeat-password/repeat-password-directive.directive';
+import { CreateNewPasswordComponent } from './routes/create-new-password/create-new-password.component';
+
+
 
 @NgModule({
   declarations: [
@@ -88,6 +94,8 @@ import { EmailConfirmationComponent } from './components/confirmations/email-con
     ForgotPasswordNondynamicComponent,
     SendEmailFormComponent,
     EmailConfirmationComponent,
+    SendEmailFormNONDynamicComponent,
+    CreateNewPasswordComponent
   ],
   imports: [
     BrowserModule,

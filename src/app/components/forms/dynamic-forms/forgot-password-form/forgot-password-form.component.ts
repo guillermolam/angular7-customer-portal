@@ -4,23 +4,22 @@ import { HttpClient }                 from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute }     from "@angular/router";
 // --- Components | Services | Models --- //
-import { AlertService }               from "../../../_services/alert.service";
-import { AuthenticationService }      from '../../../_services/_iam/authentication-service.service';
-import { environment }                from "../../../../environments/environment";
-import { FormBase }                   from '../../../_models/form-base';
-import { FormBaseControlService }     from '../../../_services/form-base-control.service';
-import { UserService }                from "../../../_services/user.service";
-import { User }                       from "../../../_models/user";
+import { AlertService }               from "../../../../_services/alert.service";
+import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
+import { environment }                from "../../../../../environments/environment";
+import { FormBase }                   from '../../../../_models/form-base';
+import { FormBaseControlService }     from '../../../../_services/form-base-control.service';
+import { UserService }                from "../../../../_services/user.service";
+import { User }                       from "../../../../_models/user";
 
 @Component({
   selector: 'app-forgot-password-form',
   templateUrl: './forgot-password-form.component.html',
   styleUrls: ['./forgot-password-form.component.scss'],
   providers: [ FormBaseControlService ]
-
 })
 export class ForgotPasswordFormComponent implements OnInit {
-  @Input() inputs: FormBase<any>[] = [];
+  @Input() inputs:          FormBase<any>[] = [];
   loading: boolean =        false;
   returnUrl:                string;
   user:                     User;

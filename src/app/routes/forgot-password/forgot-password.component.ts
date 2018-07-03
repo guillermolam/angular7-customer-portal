@@ -1,19 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { FormBase } from '../../_models/form-base';
-import { ForgotPasswordService } from '../../_services/forms/forgot-password/forgot-password.service';
+import { FormBase }               from '../../_models/form-base';
+import { EmailFormService }       from '../../_services/forms/forgot-password/email-form/email-form.service';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss'],
-  providers: [ ForgotPasswordService ]
+  providers: [ EmailFormService ]
 })
-export class ForgotPasswordComponent  {
 
-  inputs: any[];
+export class ForgotPasswordComponent  {
+  emailInputs:            any[];
+  sentEmail:              boolean;
+  testingParm:            boolean;
+  testingIdParm:          string;
+  successChangePassword:  boolean;
  
-  constructor(service: ForgotPasswordService) {
-    this.inputs = service.getInputs();
+  constructor(
+    emailService: EmailFormService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.emailInputs = emailService.getInputs();
   }
+
+  showConfirmation(event): boolean{
+    return event;
+  }
+
+  ngOnInit(): void {
+    this.activatedRoute.queryParams
+      .subscribe(params => {
+        this.testingParm = params.testingParm;
+        this.testingIdParm = params.testingIdParm;
+        this.successChangePassword = params.successChangePassword;
+      }
+    );
+
+    /*this.activatedRoute.params.subscribe((params: Params) => {
+      this.sentEmail = params['sentEmail']
+    });*/
+    
+  }
+
 }
