@@ -18,9 +18,8 @@ import { AppComponent }             from "./app.component";
 import { Language }                 from "./app.language"; 
 import { RoutingModule }            from "./app.routing";
 // ----- Helpers | Service | Guard ----- //
-//import { fakeBackendProvider } from './_helpers/fake-backend';
-//import { fakeBackendProvider } from './_helpers/fake-backend';
-//import { AuthenticationService } from './_services/authentication-service.service';
+//import { fakeBackendProvider }    from './_helpers/fake-backend';
+//import { AuthenticationService }  from './_services/authentication-service.service';
 import { AuthenticationService }    from './_services/_iam/authentication-service.service';
 import { AlertService }             from "./_services/alert.service";
 import { AuthGuard }                from "./_guards/auth.guard";
@@ -45,11 +44,13 @@ import { AccountMainComponent }     from "./account-main/account-main.component"
 import { AccountHeaderComponent }   from "./account-main/account-header/account-header.component";
 import { SidenavComponent }         from "./account-main/sidenav/sidenav.component";
 // ----- Routes ----- //
+import { CreateNewPasswordComponent } from './routes/create-new-password/create-new-password.component';
 import { DashboardComponent }       from './routes/dashboard/dashboard.component';
 import { ForgotPasswordComponent }  from "./routes/forgot-password/forgot-password.component";
 import { LoginComponent }           from "./routes/login/login.component";
 import { SignupComponent }          from "./routes/signup/signup.component";
 import { TestingComponent }         from './routes/testing/testing.component';
+
 
 import { DynamicFormsComponent }              from './components/forms/dynamic-forms/dynamic-form-testing/dynamic-forms.component';
 import { ForgotPasswordFormComponent }        from './components/forms/dynamic-forms/forgot-password-form/forgot-password-form.component';
@@ -60,8 +61,6 @@ import { ForgotPasswordNondynamicComponent }  from './components/forms/non-dynam
 
 
 import { RepeatPasswordDirectiveDirective }   from './_directives/forms/repeat-password/repeat-password-directive.directive';
-import { CreateNewPasswordComponent } from './routes/create-new-password/create-new-password.component';
-
 
 
 @NgModule({

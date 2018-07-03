@@ -3,7 +3,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject, ReplaySubject, from, of, range, BehaviorSubject } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
-import { environment } from "../../../environments/environment"; 
+import { environment } from "../../../environments/environment";
+import 'rxjs/add/operator/map'
+import 'rxjs/add/observable/of'; 
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/materialize';
+import 'rxjs/add/operator/dematerialize'; 
 
 @Injectable()
 export class AuthenticationService {
@@ -24,7 +31,7 @@ export class AuthenticationService {
         headers: {
           "Content-Type": "application/json"
         }
-        })
+      })
       .map((response: Response) => response.json())
       .map( (token) => {
         // login successful if there's a jwt token in the response

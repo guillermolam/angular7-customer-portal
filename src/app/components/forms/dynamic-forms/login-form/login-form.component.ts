@@ -39,31 +39,50 @@ export class LoginFormComponent implements OnInit {
     private ipt:                    FormBaseControlService
   ) {}
 
-  login(): void 
+  login() 
   {   
     this.user =                     new User();
-    this.user.email =               this.loginForm.value.emailAddress;
-    this.user.password  =           this.loginForm.value.password;
+    this.user.email =               this.loginForm.value.loginEmail;
+    this.user.password  =           this.loginForm.value.loginPassword;
     this.loading =                  true;
     this.putCookie();
-    console.log(this.user);
-   
+    
+    if(this.user) 
+    {
+      this.authenticationService
+        .login (this.user.email, this.user.password)
+        .subscribe (
+          (data) => 
+          {
+            this.router.navigate(['/dashboard']);
+          },
+          (error) => 
+          {
+            this.alertService.error(error);
+            this.loading = false;
+          }
+        )
+      ;
+    }
   }
 
-  onRememberMe(event): void {
+  onRememberMe (event): void 
+  {
     this.rememberMe = event;
   }
   
-  putCookie(): void {
-    if(this.rememberMe) {
+  putCookie (): void 
+  {
+    if(this.rememberMe) 
+    {
       this._cookieService.put("username", this.user.email);
       this._cookieService.put("password", this.user.password);
     }
   }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
     this.loginForm = this.ipt.toFormGroup(this.inputs);
-    console.log(this.loginForm);
 
     // Recover cookie if exists
     if (this._cookieService.get("remember")) {
@@ -75,7 +94,7 @@ export class LoginFormComponent implements OnInit {
     this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
+    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/" ;
   }
 }
 
@@ -108,16 +127,3 @@ export class LoginFormComponent implements OnInit {
     this.router.navigateByUrl("signup");
   }*/
 
-  // for the login() 
-/* this.authenticationService
-      .login(this.user.email, this.user.password)
-      .subscribe(
-        (data) => {
-          this.router.navigate(['/dashboard']);
-        },
-        (error) => {
-          this.alertService.error(error);
-          this.loading = false;
-        }
-      );
-      */
