@@ -20,32 +20,50 @@ import { User }                       from "../../../../_models/user";
   providers: [ FormBaseControlService ]
 })
 export class LoginFormComponent implements OnInit {
-@Input() 
-  inputs: FormBase<any>[] = [];
-  loading: boolean =    false;
-  loginForm:            FormGroup;
-  returnUrl:            string;
-  rememberMe: boolean = false;
-  user:                 User;
+@Input() inputs:                    FormBase<any>[] = [];
+  loading:                          boolean = false;
+  loginForm:                        FormGroup;
+  returnUrl:                        string;
+  rememberMe:                       boolean = false;
+  user:                             User;
   
   constructor(
-    private _cookieService: CookieService,
-    private authenticationService: AuthenticationService,
-    private alertService: AlertService,
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private route: ActivatedRoute,
-    private router: Router,
-    private userService: UserService,
-    private ipt: FormBaseControlService
+    private _cookieService:         CookieService,
+    private authenticationService:  AuthenticationService,
+    private alertService:           AlertService,
+    private fb:                     FormBuilder,
+    private http:                   HttpClient,
+    private route:                  ActivatedRoute,
+    private router:                 Router,
+    private userService:            UserService,
+    private ipt:                    FormBaseControlService
   ) {}
 
-  onRememberMe(event) {
+  login(): void 
+  {   
+    this.user =                     new User();
+    this.user.email =               this.loginForm.value.emailAddress;
+    this.user.password  =           this.loginForm.value.password;
+    this.loading =                  true;
+    this.putCookie();
+    console.log(this.user);
+   
+  }
+
+  onRememberMe(event): void {
     this.rememberMe = event;
+  }
+  
+  putCookie(): void {
+    if(this.rememberMe) {
+      this._cookieService.put("username", this.user.email);
+      this._cookieService.put("password", this.user.password);
+    }
   }
 
   ngOnInit() {
     this.loginForm = this.ipt.toFormGroup(this.inputs);
+    console.log(this.loginForm);
 
     // Recover cookie if exists
     if (this._cookieService.get("remember")) {
@@ -58,23 +76,6 @@ export class LoginFormComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
-  }
-  
-  putCookie() {
-    if(this.rememberMe) {
-      this._cookieService.put("username", this.user.email);
-      this._cookieService.put("password", this.user.password);
-    }
-  }
-
-  login() {   
-    this.user           = new User();
-    this.user.email     = this.loginForm.value.emailAddress;
-    this.user.password  = this.loginForm.value.password;
-    this.loading        = true;
-    this.putCookie();
-    
-    console.log(this.user);
   }
 }
 
