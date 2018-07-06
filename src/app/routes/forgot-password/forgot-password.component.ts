@@ -30,13 +30,12 @@ export class ForgotPasswordComponent  {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams
+    /*this.activatedRoute.queryParams
       .subscribe(params => {
         this.testingParm = params.testingParm;
         this.testingIdParm = params.testingIdParm;
         this.successChangePassword = params.successChangePassword;
       }
-    );
+    );*/
   }
-
 }

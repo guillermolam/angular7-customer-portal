@@ -1,75 +1,78 @@
 @import "../../../../../styles.scss";
 
-$button-color-gray-clear:               $lite-gray;
-$button-color-bg-success:               $mapfre-green;
-$button-color-text-success:             $white;
-$button-color-bg-default:               $mapfre-red;
-$button-color-text-default:             $white;
+$mapfre-button-color-gray-clear:               $lite-gray;
+$mapfre-button-color-bg-success:               $mapfre-green;
+$mapfre-button-color-text-success:             $white;
+$mapfre-button-color-bg-default:               $mapfre-red;
+$mapfre-button-color-text-default:             $white;
 
-$button-small-font-size:                $font-size-sm;
-$button-small-height:                   32px;
-$button-small-padding:                  6px;
-$button-full-font-size:                 $font-size-base;
-$button-full-padding-size:              $padding-vertical/1.25;
+$mapfre-button-color-default:                  $white;
+
+$mapfre-button-small-font-size:                $font-size-sm;
+$mapfre-button-small-height:                   32px;
+$mapfre-button-small-padding:                  6px;
+$mapfre-button-full-font-size:                 $font-size-base;
+$mapfre-button-full-padding-size:              $padding-vertical/1.25;
+$mapfre-button-font-family:                    $button-font-family;
 
 .btn.mapfre {
     border:                             2px solid;
     box-shadow:                         none;
-    font-family:                        $button-font-family;
+    font-family:                        $mapfre-button-font-family;
     @include border-radius(50px);
     
     // ---- Colors -----
     &.success {
-        background-color:               $button-color-bg-success; 
-        border-color:                   $button-color-bg-success;
-        color:                          $button-color-text-success;
+        background-color:               $mapfre-button-color-bg-success; 
+        border-color:                   $mapfre-button-color-bg-success;
+        color:                          $mapfre-button-color-text-success;
         &:focus {
-            outline:                    $button-color-bg-success;
+            outline:                    $mapfre-button-color-bg-success;
         }
         &:hover {
             color: $white; 
-            background-color:           darken($button-color-bg-success, 2%);
-            border-color:               darken($button-color-bg-success, 2%);
+            background-color:           darken($mapfre-button-color-bg-success, 2%);
+            border-color:               darken($mapfre-button-color-bg-success, 2%);
         }
     }
 
     &.default {
-        background-color:               $button-color-bg-default;
-        border-color:                   $button-color-bg-default;
-        color:                          $button-color-bg-default;
+        background-color:               $mapfre-button-color-bg-default;
+        border-color:                   $mapfre-button-color-bg-default;
+        color:                          $mapfre-button-color-default;
         &:focus {
-            outline:                    $button-color-bg-default;
+            outline:                    $mapfre-button-color-bg-default;
         }
         &:hover {
-            color:                      $button-color-bg-default; 
-            background-color:           darken($button-color-bg-default, 2%);
-            border-color:               darken($button-color-bg-default, 2%);
+            //color:                    $mapfre-button-color-bg-default; 
+            background-color:           darken($mapfre-button-color-bg-default, 15%);
+            border-color:               darken($mapfre-button-color-bg-default, 15%);
         }
     }
 
     &.clear {
         background-color:               transparent;
-        border-color:                   $button-color-gray-clear;
-        color:                          $button-color-gray-clear;
+        border-color:                   $mapfre-button-color-gray-clear;
+        color:                          $mapfre-button-color-gray-clear;
         font-weight:                    bold;
         &:focus {
-            outline:                    $button-color-gray-clear;
+            outline:                    $mapfre-button-color-gray-clear;
         }
         &:hover {
             color: $white; 
-            background-color:           $button-color-gray-clear;
+            background-color:           $mapfre-button-color-gray-clear;
         }
     }
 
     // ----- Sizing -------
     &.small-padding {
-        font-size:                      $button-small-font-size;
-        height:                         $button-small-height;
-        padding:                        $button-small-padding;
+        font-size:                      $mapfre-button-small-font-size;
+        height:                         $mapfre-button-small-height;
+        padding:                        $mapfre-button-small-padding;
     }
     &.full-padding {
-        font-size:                      $button-full-font-size;
-        padding:                        $button-full-padding-size;
+        font-size:                      $mapfre-button-full-font-size;
+        padding:                        $mapfre-button-full-padding-size;
     }
     &.full {
         display:                        block;

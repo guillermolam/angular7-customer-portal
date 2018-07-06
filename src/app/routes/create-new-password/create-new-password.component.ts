@@ -26,9 +26,13 @@ export class CreateNewPasswordComponent implements OnInit {
     this.passwordInputs = passwordService.getInputs();
   }
 
-  expireLinkFunction(event): void
+  checkForExpiredPassword(param): void 
   {
-    this.expiredLink = event;
+    let testingParam = 'testingforexpireparam';
+    //insert service
+    if(param == testingParam) {
+      this.expiredLink = false;
+    }
   }
 
   userConfirmation(event): void 
@@ -40,7 +44,10 @@ export class CreateNewPasswordComponent implements OnInit {
   {
     this.activatedRoute.params.subscribe
     (
-      params => this.paramSubmission = params['temporaryPassword']
+      params => [
+        this.paramSubmission = params['temporaryPassword']
+      ]
     );
+    this.checkForExpiredPassword(this.paramSubmission) 
   }        
 }

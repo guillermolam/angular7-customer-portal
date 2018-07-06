@@ -45,13 +45,6 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
     this.createForm()
   }
 
-  checkForExpiredPassword(param) {
-    let testingParam = 'testingforexpireparam';
-    if(param == testingParam) {
-      this.expireLinkOutput.emit(true);
-    }
-  }
-
   createForm() {
     this.forgotPasswordForm = this.fb.group({
       createPassword:
@@ -107,7 +100,7 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.checkForExpiredPassword(this.routeParamaterString);
+
   }
 }
 
@@ -117,14 +110,6 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
 this.userData.$user.subscribe((user) => {
       this.user.email = user.email;
     });
-
-    this.createForm();
-  createForm() {
-    this.forgotPasswordForm = this.fb.group({
-      email: [this.user.email, Validators.required]
-    });
-  }
-
   cancel() {
     this.userData.updateUser(this.user);
   }

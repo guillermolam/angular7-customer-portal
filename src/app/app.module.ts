@@ -61,6 +61,10 @@ import { ForgotPasswordNondynamicComponent }  from './components/forms/non-dynam
 
 
 import { RepeatPasswordDirectiveDirective }   from './_directives/forms/repeat-password/repeat-password-directive.directive';
+import { MapfreAlertComponent } from './components/individual-components/mapfre-alert/mapfre-alert.component';
+import { DesignSystemComponent } from './routes/design-system/design-system.component';
+import { MapfreCodeComponent } from './components/individual-components/mapfre-code/mapfre-code.component';
+import { MapfreNotificationsComponent } from './components/individual-components/mapfre-notifications/mapfre-notifications.component';
 
 
 @NgModule({
@@ -94,7 +98,11 @@ import { RepeatPasswordDirectiveDirective }   from './_directives/forms/repeat-p
     SendEmailFormComponent,
     EmailConfirmationComponent,
     SendEmailFormNONDynamicComponent,
-    CreateNewPasswordComponent
+    CreateNewPasswordComponent,
+    MapfreAlertComponent,
+    DesignSystemComponent,
+    MapfreCodeComponent,
+    MapfreNotificationsComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,10 @@ $validation-valid-color:    $mapfre-green;
     This is due to the use of multiple components being used for this particular section. 
 
 */
+.mapfre-validation-rules {
+    height: auto;
+}
+
 .hide-validation {
     display: none;
     @include transition(5s);

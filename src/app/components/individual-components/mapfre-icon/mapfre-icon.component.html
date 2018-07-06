@@ -10,8 +10,8 @@
         <span class="sr-only sr-only-focusable"><ng-content></ng-content></span>
     </a>
     <a (click)="showPasswordFunction($event)" class="label-icon" *ngIf="!showIconsForPassword">
-        <span *ngIf="!passwordShow">{{ 'SHOW' | translate}}</span>
-        <span *ngIf="passwordShow">{{ 'HIDE' | translate}}</span>
+        <span class="label-text" *ngIf="!passwordShow">{{ 'SHOW' | translate}}</span>
+        <span class="label-text" *ngIf="passwordShow">{{ 'HIDE' | translate}}</span>
     </a>
 </span>
 <span *ngIf="!title && !password">

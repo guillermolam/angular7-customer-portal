@@ -1,6 +1,7 @@
 @import "../../../../styles.scss";
 $mapfre-icon-padding:           $padding-vertical/1.25;
 $mapfre-icon-color:             $lite-gray;
+$mapfre-icon-label-font-size:   12px;
 
 .title-icon {
     padding-bottom: $mapfre-icon-padding;
@@ -8,9 +9,20 @@ $mapfre-icon-color:             $lite-gray;
 
 .label-icon {
     position: absolute;
-    top: 12px;
     right: 15px;
+    top: 12px;
+
+    .label-text {
+        color: $mapfre-icon-color;
+        font-size: $mapfre-icon-label-font-size;
+    }
+    
     i {
         color: $mapfre-icon-color;
+         
     }
+}
+
+i {
+    margin-right: 15px;
 }

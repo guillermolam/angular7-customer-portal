@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
     moduleId: module.id,
-    selector: "mapfre-alert",
+    selector: "app-alert",
     templateUrl: "alert.component.html"
 })
 

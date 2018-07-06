@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" [ngClass]="{'mapfre-validation-rules': input.key == 'repeatPassword' }">
   <div class="col">
     <div [formGroup]="form" class="input-field mapfre">
       <div [ngSwitch]="input.icon" class="prefix">

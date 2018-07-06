@@ -3,7 +3,7 @@
     <button 
         class="btn mapfre {{additionalClasses}}"
         [disabled]="!isFormValid()" 
-        *ngSwitchCase="'button'"
+        *ngSwitchCase="'button-form'"
     >
         <ng-content></ng-content>
     </button>
@@ -14,4 +14,10 @@
         [disabled]="!isFormValid()"
         *ngSwitchCase="'submit'" 
     />
+    <button 
+        class="btn mapfre {{additionalClasses}}"
+        *ngSwitchDefault
+    >
+        <ng-content></ng-content>
+    </button>
 </div>
