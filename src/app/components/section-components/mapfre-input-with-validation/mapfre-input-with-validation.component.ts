@@ -10,9 +10,9 @@ import { FormBase }         from '../../../_models/form-base';
 })
 
 export class MapfreIputWithValidationComponent {
-  @Input()  input: FormBase<any>;
-  @Input()  form: FormGroup;
-            showPassword: boolean = false;
+  @Input()  input:                      FormBase<any>;
+  @Input()  form:                       FormGroup;
+            showPassword:               boolean = false;
   @Output() inputValidationCheck = new EventEmitter<boolean>();
   
   showPasswordFunction(event): void {
@@ -20,7 +20,9 @@ export class MapfreIputWithValidationComponent {
   }
 
   get isValid() { 
-    return this.form.controls[this.input.key].valid; 
+    let formValid = this.form.controls[this.input.key].valid; 
+    this.inputValidationCheck.emit(formValid);
+    return formValid;
   }
 
   passwordRules(reg: string): boolean {

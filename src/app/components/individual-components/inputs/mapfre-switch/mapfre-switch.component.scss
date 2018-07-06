@@ -8,74 +8,82 @@ $switch-background-color-active:    $mapfre-red;
 $switch-checkmark-color:            $white;
 $switch-font-color-active:          $mapfre-red;
 
+.copy {
+  font-size:                        $switch-font-size-small;
+  color:                            $switch-text-color; 
+  &.copy-left {
+    float:                          left;
+    margin-top:                     2px;
+    padding-right:                  5px;
+  }
+  &.copy-right {
+    position:                       absolute;
+    left:                           70px;
+  }
+}
+
+.switch.mapfre {
+  clear:                            both;
+  height:                           20px;
+  width:                            auto;
+}
 
 .switch-mapfre {
-  display:                        inline-block;
-  height:                         25px;
-  position:                       relative;
-  width:                          49px;
+  height:                           25px;
+  position:                         relative;
+  width:                            49px;
   input {
-    display:                      none;
+    display:                        none;
     &:checked + .slider {
-      background-color:           $switch-background-color-active;
+      background-color:             $switch-background-color-active;
     }
   }
   
   .slider {
-    background-color:             $switch-background-color-inactive;
-    cursor:                       pointer;
-    height:                       20px;
-    width:                        50px;
-    position:                     absolute;
+    background-color:               $switch-background-color-inactive;
+    cursor:                         pointer;
+    height:                         20px;
+    width:                          50px;
+    position:                       absolute;
     @include transition(.4s);
     &.round {
-      position:                   absolute;
+      position:                     absolute;
       @include border-radius(34px);
     }
   }
   
   [type="checkbox"] + span:before {
-    background-color:             $switch-checkmark-color;
-    border-color:                 $switch-checkmark-color;
-    content:                      "";
-    height:                       15px;
-    width:                        15px;
-    left:                         4px;
-    top:                          2px;
-    position:                     absolute;
+    background-color:               $switch-checkmark-color;
+    border-color:                   $switch-checkmark-color;
+    content:                        "";
+    height:                         15px;
+    width:                          15px;
+    left:                           4px;
+    top:                            2px;
+    position:                       absolute;
     @include transition(.4s);
     @include border-radius(50%);
   }
   [type="checkbox"]:checked + span:before {
-    left:                         30px;
-    top:                          2px;
+    left:                           30px;
+    top:                            2px;
   }
 
   .slider-text {
-    float:                        right;
-    font-size:                    $switch-font-size-small;
-    color:                        $switch-text-color; 
-    white-space:                  nowrap;
-    vertical-align:               middle;
+    //float:                        right;
+    font-size:                      $switch-font-size-small;
+    color:                          $switch-text-color; 
+    white-space:                    nowrap;
+    vertical-align:                 middle;
     
     &.selected {
-      color:                      $switch-background-color-active;
+      color:                        $switch-background-color-active;
     }
   }
   [type="checkbox"]:checked + .slider-text {
-    color:                        $switch-font-color-active;
+    color:                          $switch-font-color-active;
   }
 }
 
-.copy-left {
-  float:                          right;
-  margin-top:                     3px;
-  padding-right:                  55px;
-}
-.copy-right{
-  float:                          left; 
-  margin-top:                     1px;
-  padding-left:                   55px;
- 
-}
+
 

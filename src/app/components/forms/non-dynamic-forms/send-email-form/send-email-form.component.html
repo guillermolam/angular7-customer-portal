@@ -1,0 +1,39 @@
+<form 
+  action="/b2cwebapp/j_spring_security_check"
+  class="nondynamic-form"
+  [formGroup]="passwordEmailForm" 
+  method="post"
+  name="passwordEmailForm" 
+  (ngSubmit)="passwordEmailForm.valid && sendEmail()">
+  
+  <div class="row">
+    <div class="col">
+      <input
+          formControlName="sendEmail" 
+          class="form-control" 
+          type="email" 
+          id="sendEmail" 
+          name="sendEmail" 
+          required
+          mdbInputDirective
+          email
+      />
+      <mapfre-label [forInput]="sendEmail">Email</mapfre-label>
+        
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <mapfre-button
+        [inputType]="'button'"
+        [additionalClasses]="'success full'"
+        (click)="sendEmail()"
+        [disabled]="passwordEmailForm.valid"
+      >  
+        {{ 'SEND_EMAIL' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
+
+</form>

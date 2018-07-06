@@ -8,11 +8,10 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ['./mapfre-button.component.scss']
 })
 export class MapfreButtonComponent implements OnInit {
-  @Input() additionalClasses: string;
- // @Input() clickFunction: string;
-  @Input() disabledValue: boolean;
-  @Input() inputType: string ;
-  @Input() translateValue: string
+  @Input() additionalClasses: string = 'default';
+  @Input() disabledValue:     boolean;
+  @Input() inputType:         string;
+  @Input() translateValue:    string;
 
   constructor(
     private fb: FormBuilder,
@@ -20,14 +19,15 @@ export class MapfreButtonComponent implements OnInit {
     private router: Router,
   ) {}
 
-  isFormValid(){
-    if( this.disabledValue ) {
+  isFormValid(): boolean{
+    if(this.disabledValue == undefined){
       return true;
     }
     else {
-      return false;
+      return this.disabledValue;
     }
   }
   ngOnInit() {
+  
   }
 }
