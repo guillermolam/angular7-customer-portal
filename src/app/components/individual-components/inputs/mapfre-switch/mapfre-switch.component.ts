@@ -23,7 +23,6 @@ export class MapfreSwitchComponent {
     this.switchOn.emit(bool);
   }
   ngOnInit(): void {
-    console.log(this.copyLeft, this.copyRight);
     
   }
 }
