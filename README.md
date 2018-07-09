@@ -29,7 +29,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Problem with AppModule
+## Problem with AppModule ["ERROR in No NgModule metadata found for 'AppModule'."]
 This is typacally a result of having a different node.js or angular-cli version.
 Steps to solve this issue are as follows:
 
@@ -46,6 +46,7 @@ Also, most likely you want to also update your local project version, because in
 `npm uninstall --save-dev angular-cli`
 `npm install --save-dev @angular/cli@latest`
 `npm install`
+On tsconfig.json add this: `"include": ["src/**/*.ts","node_modules/angular-bootstrap-md/**/*.ts" ]`
 
 ## Further help
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

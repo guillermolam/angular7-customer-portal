@@ -56,7 +56,7 @@ export class Language {
             "YOUR_EMAIL" : "Tu correo electrónico",
             "YOUR_PASSWORD" : "Tu contraseña",
             "REMEMBER_ME" : "Recuérdame",
-            "FORGOT_PASS" : "Se te olvidó tu contraseña",
+            "FORGOT_PASS" : "Recordar tu contraseña",
             "LOGIN" : "Iniciar sesión",
             "REGISTER" : "Registro",
             "CONF_PASS" : "Confirmar contraseña",
@@ -66,15 +66,15 @@ export class Language {
             "OUR_COMPANIES" : "Nuestras empresas",
             "PRIVACY" : "Política de privacidad",
             "TERMS" : "Términos y condiciones",
-            "QUOTE" : "Divulgación de cotización",
-            "CAREERS" : "Carreras",
+            "QUOTE" : "Cotización",
+            "CAREERS" : "Empleo",
             "CONTACT" : "Contacto",
             "RIGHTS" : "MAPFRE U.S.A Corp. Todos los derechos reservados.",
 
 
-            "EMAIL_REQUIRED" : "Correo electronico es requerido.",
+            "EMAIL_REQUIRED" : "Correo electronico es obligatorio.",
             "EMAIL_INVALID" : "El correo electrónico es invalido.",
-            "PASSWORD_REQUIRED" : "Se requiere contraseña.",
+            "PASSWORD_REQUIRED" : "Contraseña obligatoria.",
             "CONF_PASS_REQUIRED" : "Confirmar contraseña es obligatorio.",
             "PASSWORDS_NOT_MATCH" : "La contraseña y la contraseña no coinciden.",
 
@@ -82,20 +82,20 @@ export class Language {
             "PASSWORD" : "Contraseña",
 
             //These need to be translated
-            "CREATE_ACCOUNT" : "Create Account",
-            "FIRST_TIME": "First Time",
-            "SIGN_IN" : "Sign In",
-            "CUSTOMER_ACCESS" : "Customer Access",
-            "SHOW_PASSWORD": "Show Password",
-            "HIDE_PASSWORD" : "Hide Password",
-            "YOUR_PASSWORD_SHOULD_BE" : "Your Password Should Be",
-            "PASSWORD_RULE_ONE" : "Rule One",
-            "PASSWORD_RULE_TWO" : "Rule Two",
-            "PASSWORD_RULE_THREE" : "Rule Three",
-            "PASSWORD_RULE_FOUR" : "Rule Four",
-            "PASSWORD_RULE_FIVE" : "Rule Five",
-            "DOES_NOT_PASS" : "Does Not Pass",
-            "PASSES_THE_RULE": "Passes the Rule"
+            "CREATE_ACCOUNT" : "Crear Cuenta",
+            "FIRST_TIME": "Primera vez",
+            "SIGN_IN" : "Iniciar sesion",
+            "CUSTOMER_ACCESS" : "Acceso de clientes",
+            "SHOW_PASSWORD": "Mostrar contraseña",
+            "HIDE_PASSWORD" : "Ocultar contraseña",
+            "YOUR_PASSWORD_SHOULD_BE" : "Su contraseña deberia ser",
+            "PASSWORD_RULE_ONE" : "Primera regla",
+            "PASSWORD_RULE_TWO" : "Segunda regla",
+            "PASSWORD_RULE_THREE" : "Tercera regla",
+            "PASSWORD_RULE_FOUR" : "Cuarta regla",
+            "PASSWORD_RULE_FIVE" : "Quinta regla",
+            "DOES_NOT_PASS" : "no pasa",
+            "PASSES_THE_RULE": "pasa"
         }
     }];
 }
