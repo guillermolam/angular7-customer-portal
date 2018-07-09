@@ -1,6 +1,8 @@
-<form [formGroup]="loginForm" 
-  name="loginForm" (ngSubmit)="loginForm.valid && login()"  
-  method="post" action="/b2cwebapp/j_spring_security_check">
+<form 
+  [formGroup]="loginForm" 
+  name="loginForm"  
+  (ngSubmit)="loginForm.valid && login()" 
+  >
   
   <div *ngFor="let input of inputs">
     <mapfre-validation [input]="input" [form]="loginForm"></mapfre-validation>
@@ -16,15 +18,17 @@
       <mapfre-link
         [additionalClasses]="'small-link underline switch-line-up teal-link'"
         [target]="_self"
+        [routerLink]="['/forgot-password']"
         >{{ 'FORGOT_PASS' | translate }}
       </mapfre-link>
+     
     </div>
   </div>
   <div class="row group-login">
     <div class="col">
       <mapfre-button
         [additionalClasses]="'success full full-padding'"
-        [disabledValue]="!loginForm.valid"
+        [disabledValue]="loginForm.valid"
         [inputType]="'submit'"
         [translateValue]="'LOGIN' | translate"
       ></mapfre-button>

@@ -11,6 +11,7 @@ export class FormBase<T> {
     maxLength:          number;
     required:           boolean;
     order:              number;
+    showPasswordIcon:   boolean;
     
     constructor(options: 
     {
@@ -25,7 +26,8 @@ export class FormBase<T> {
         minLength?:         number,
         maxLength?:         number,
         required?:          boolean,
-        order?:             number
+        order?:             number,
+        showPasswordIcon?:   boolean
     } = {}) 
     {
         this.value =                options.value;
@@ -39,5 +41,6 @@ export class FormBase<T> {
         this.maxLength =            options.maxLength === undefined ? 128 : options.maxLength;
         this.required =             !!options.required;
         this.order =                options.order === undefined ? 1 : options.order;
+        this.showPasswordIcon =     !!options.showPasswordIcon;
     }
 }

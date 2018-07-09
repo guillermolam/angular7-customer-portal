@@ -18,9 +18,8 @@ import { AppComponent }             from "./app.component";
 import { Language }                 from "./app.language"; 
 import { RoutingModule }            from "./app.routing";
 // ----- Helpers | Service | Guard ----- //
-//import { fakeBackendProvider } from './_helpers/fake-backend';
-//import { fakeBackendProvider } from './_helpers/fake-backend';
-//import { AuthenticationService } from './_services/authentication-service.service';
+//import { fakeBackendProvider }    from './_helpers/fake-backend';
+//import { AuthenticationService }  from './_services/authentication-service.service';
 import { AuthenticationService }    from './_services/_iam/authentication-service.service';
 import { AlertService }             from "./_services/alert.service";
 import { AuthGuard }                from "./_guards/auth.guard";
@@ -30,7 +29,7 @@ import { UserService }              from "./_services/user.service";
 import { AlertComponent }           from "./components/individual-components/alert/alert.component";
 import { FooterComponent }          from './components/section-components/footer/footer.component';
 import { HeaderComponent }          from './components/section-components/header/header.component';
-import { LoginFormComponent }       from './components/forms/login-form/login-form.component';
+import { LoginFormComponent }       from './components/forms/dynamic-forms/login-form/login-form.component';
 import { MapfreButtonComponent }    from './components/individual-components/inputs/mapfre-button/mapfre-button.component';
 import { MapfreCardComponent }      from './components/section-components/mapfre-card/mapfre-card.component';
 import { MapfreFormComponent }      from './components/section-components/mapfre-form/mapfre-form.component';
@@ -45,18 +44,28 @@ import { AccountMainComponent }     from "./account-main/account-main.component"
 import { AccountHeaderComponent }   from "./account-main/account-header/account-header.component";
 import { SidenavComponent }         from "./account-main/sidenav/sidenav.component";
 // ----- Routes ----- //
+import { CreateNewPasswordComponent } from './routes/create-new-password/create-new-password.component';
 import { DashboardComponent }       from './routes/dashboard/dashboard.component';
 import { ForgotPasswordComponent }  from "./routes/forgot-password/forgot-password.component";
 import { LoginComponent }           from "./routes/login/login.component";
 import { SignupComponent }          from "./routes/signup/signup.component";
 import { TestingComponent }         from './routes/testing/testing.component';
 
-import { DynamicFormsComponent } from './components/forms/dynamic-forms/dynamic-forms.component';
-import { ForgotPasswordFormComponent } from './components/forms/forgot-password-form/forgot-password-form.component';
-import { RepeatPasswordDirectiveDirective } from './_directives/forms/repeat-password/repeat-password-directive.directive';
-import { ForgotPasswordNondynamicComponent } from './components/forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
-import { SendEmailFormComponent } from './components/forms/send-email-form/send-email-form.component';
-import { EmailConfirmationComponent } from './components/confirmations/email-confirmation/email-confirmation.component';
+
+import { DynamicFormsComponent }              from './components/forms/dynamic-forms/dynamic-form-testing/dynamic-forms.component';
+import { ForgotPasswordFormComponent }        from './components/forms/dynamic-forms/forgot-password-form/forgot-password-form.component';
+import { SendEmailFormComponent }             from './components/forms/dynamic-forms/send-email-form/send-email-form.component';
+import { EmailConfirmationComponent }         from './components/confirmations/email-confirmation/email-confirmation.component';
+import { SendEmailFormNONDynamicComponent }   from './components/forms/non-dynamic-forms/send-email-form/send-email-form.component';
+import { ForgotPasswordNondynamicComponent }  from './components/forms/non-dynamic-forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
+
+
+import { RepeatPasswordDirectiveDirective }   from './_directives/forms/repeat-password/repeat-password-directive.directive';
+import { MapfreAlertComponent } from './components/individual-components/mapfre-alert/mapfre-alert.component';
+import { DesignSystemComponent } from './routes/design-system/design-system.component';
+import { MapfreCodeComponent } from './components/individual-components/mapfre-code/mapfre-code.component';
+import { MapfreNotificationsComponent } from './components/individual-components/mapfre-notifications/mapfre-notifications.component';
+
 
 @NgModule({
   declarations: [
@@ -88,6 +97,12 @@ import { EmailConfirmationComponent } from './components/confirmations/email-con
     ForgotPasswordNondynamicComponent,
     SendEmailFormComponent,
     EmailConfirmationComponent,
+    SendEmailFormNONDynamicComponent,
+    CreateNewPasswordComponent,
+    MapfreAlertComponent,
+    DesignSystemComponent,
+    MapfreCodeComponent,
+    MapfreNotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +131,7 @@ import { EmailConfirmationComponent } from './components/confirmations/email-con
     MockBackend,
     UserService,
     // providers used to create fake backend
-    // fakeBackendProvider,
+    //fakeBackendProvider,
 
   ],
   bootstrap: [AppComponent]

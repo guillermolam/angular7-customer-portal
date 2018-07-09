@@ -7,10 +7,10 @@ import { FormBuilder, FormGroup, Validator} from '@angular/forms';
   styleUrls: ["./mapfre-switch.component.scss"]
 })
 export class MapfreSwitchComponent {
-  @Input() copyLeft: boolean;
-  @Input() copyRight: boolean;
+  @Input() copyLeft:      boolean;
+  @Input() copyRight:     boolean;
 
-  @Output() switchOn = new EventEmitter<boolean>();
+  @Output() switchOn:     EventEmitter<boolean> = new EventEmitter<boolean>();
 
   switchValueOnOff(e) {
     let bool;
@@ -21,5 +21,8 @@ export class MapfreSwitchComponent {
       bool = false;
     }
     this.switchOn.emit(bool);
+  }
+  ngOnInit(): void {
+    
   }
 }

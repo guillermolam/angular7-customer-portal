@@ -1,0 +1,27 @@
+<form 
+  action="/b2cwebapp/j_spring_security_check"
+  [formGroup]="passwordEmailForm" 
+  method="post"
+  name="passwordEmailForm" 
+  (ngSubmit)="passwordEmailForm.valid && sendEmail()">
+  
+  <div *ngFor="let input of inputs">
+    <mapfre-validation [input]="input" [form]="passwordEmailForm" (inputValidationCheck)=isValid($event)></mapfre-validation>
+  </div>
+
+  <div class="row text-center group-submit">
+    <div class="col">
+        <mapfre-button
+        [additionalClasses]="'success full'"
+        [disabledValue]="inputValidation"
+        [inputType]="'button'"
+      >  {{ 'SEND_EMAIL' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
+  <!--<input name="j_url" id="j_url" type="hidden" value="account/forgotPassword" />-->
+</form>
+
+<div>
+
+</div>
