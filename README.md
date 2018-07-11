@@ -35,18 +35,18 @@ Steps to solve this issue are as follows:
 
 In order to update the angular-cli package installed globally in your system, you need to run:
 
-`npm uninstall -g angular-cli` (Yes, this is mandatory and you need to uninstall and install back again)
-`npm cache clean` or `npm cache verify` (if npm > 5)
-`npm install -g @angular/cli@latest`
+`npm uninstall -g @angular/cli` (Yes, this is mandatory and you need to uninstall and install back again).
+`npm cache clean` or `npm cache verify` (if npm > 5).
+`npm install -g @angular/cli@latest`.
 Depending on your system, you may need to prefix the above commands with sudo.
 
 Also, most likely you want to also update your local project version, because inside your project directory it will be selected with higher priority than the global one:
 
-`rm -rf node_modules`
-`npm uninstall --save-dev angular-cli`
-`npm install --save-dev @angular/cli@latest`
-`npm install`
-On tsconfig.json add this: `"include": ["src/**/*.ts","node_modules/angular-bootstrap-md/**/*.ts" ]`
+`rm -rf node_modules`.
+`npm uninstall --save-dev @angular/cli`.
+`npm install --save-dev @angular/cli@latest`.
+`npm install`.
+On tsconfig.json add this: `"include": ["src/**/*.ts","node_modules/angular-bootstrap-md/**/*.ts" ]`.
 
 ## Further help
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
