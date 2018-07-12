@@ -2,7 +2,7 @@
 
 $mapfre-alert-background-default:   $dark-gray;
 $mapfre-alert-background-caution:   $mapfre-alert-background-default; //for the moment
-$mapfre-alert-background-error:     $mapfre-red; //for the moment
+$mapfre-alert-background-error:     $error-color;
 $mapfre-alert-background-success:   $mapfre-alert-background-default; //for the moment
 
 $mapfre-alert-color-default:        $white;
@@ -10,41 +10,47 @@ $mapfre-alert-color-caution:        $mapfre-alert-color-default;
 $mapfre-alert-color-error:          $mapfre-alert-color-default;
 $mapfre-alert-color-success:        $mapfre-alert-color-default;
 
+$mapfre-alert-font-size:            12px;
+$mapfre-alert-copy-padding:         $default-margin-padding - 3px;
+
 .mapfre.alert {
+    font-size:                      $mapfre-alert-font-size;
+    font-style:                     italic;
+    font-weight:                    100;
+
     &.caution {
-        background: $mapfre-alert-background-caution;
-        color:      $mapfre-alert-color-caution;
+        background:                 $mapfre-alert-background-caution;
+        color:                      $mapfre-alert-color-caution;
     }
 
     &.default {
-        background: $mapfre-alert-background-default;
-        color:      $mapfre-alert-color-default;
+        background:                 $mapfre-alert-background-default;
+        color:                      $mapfre-alert-color-default;
     }
 
     &.error {
-        background: $mapfre-alert-background-error;
-        color:      $mapfre-alert-color-error;
+        background:                 $mapfre-alert-background-error;
+        color:                      $mapfre-alert-color-error;
     }
 
     &.success {
-        background: $mapfre-alert-background-success;
-        color:      $mapfre-alert-color-success;
+        background:                 $mapfre-alert-background-success;
+        color:                      $mapfre-alert-color-success;
     }
 
     &.toast {
-        margin: -24px;
-        margin-bottom: 0;
-        border-radius: 0.25rem 0.25rem 0 0;
+        margin:                     -24px;
+        margin-bottom:              0;
+        border-radius:              0.25rem 0.25rem 0 0;
 
     }
 }
-
 .close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+   // position:                       relative;
+   // top:                            10px;
+   // right:                          20px;
 
     i {
-        font-size: 16px;
+        //font-size:                  14px;
     }
 }

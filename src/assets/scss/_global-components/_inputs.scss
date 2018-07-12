@@ -1,70 +1,78 @@
-$input-label-font-size:         $font-size-base/1.15;
-$input-label-left-position:     $margin-horizontal/1.25;
-$input-label-padding-bottom:    $padding-vertical*2.5;
-
-$input-validation-label-right:  $margin-horizontal;
-$input-validation-help-top:     $padding-vertical/2.5;
-
-$input-success-color:           #00c851;
-$input-error-color:             $mapfre-red;
-$input-active-color:            $mapfre-blue;
-$input-inactive-color:          $lite-gray;
+//size
+$input-label-font-size:                     $font-size-base;
+$input-error-label-font-size:               $input-label-font-size / 1.25;
+$input-active-font-size:                    $font-size-base - 0.125;
+//positioning
+$input-label-left-position:                 $margin-horizontal / 1.25;
+$input-label-padding-bottom:                $padding-vertical * 2.5;
+$input-padding:                             $padding-vertical;
+$input-validation-label-right:              $margin-horizontal;
+$input-validation-help-top:                 $padding-vertical / 2.5;
+$input-padding-half:                        $defualt-margin-padding;
+//colors
+$input-success-color:                       $success-color;
+$input-error-color:                         $mapfre-red;
+$input-active-color:                        $mapfre-blue; 
+$input-inactive-color:                      $mapfre-lite-gray;
 
 .input-field.mapfre {
-    height:                     60px;
-    position:                   relative; 
-    padding-bottom:             $input-label-padding-bottom;
+    height:                                 60px;
+    position:                               relative; 
+    padding-bottom:                         $input-label-padding-bottom;
 
     input {
-        border:                 none;
-        border-bottom:          2px solid $input-inactive-color;
-        outline:                none;
-        padding-top:            0.5rem;
+        border:                             none;
+        border-bottom:                      2px solid $input-inactive-color;
+        font-size:                          $input-label-font-size;
+        outline:                            none;
+        padding:                            $input-padding-half/2 $input-padding-half;
         @include border-radius(0);
         @include transition(0.2s);
+        
         &:focus {
-            border-bottom-color: $input-active-color;
-            outline:            none;
+            border-bottom-color:            $input-active-color;
+            outline:                        none;
         }
     }
     
     label {
-        color:                  $input-inactive-color;
-        cursor:                 text;
-        font-size:              $input-label-font-size;
-        text-transform:         capitalize;
-        top:                    0; 
+        color:                              $input-inactive-color;
+        cursor:                             text;
+        font-size:                          $input-label-font-size;
+        text-transform:                     capitalize;
+        top:                                3px; 
         @include transition(0.2s);
+        
         &.active {
-            color:              $input-active-color;
-            font-size:          10px;
+            color:                          $input-active-color;
+            font-size:                      $input-active-font-size;
         }
+        
         &.input-label {
-            left:                   $input-label-left-position; 
-            margin-bottom:          0;
-            margin-top:             10px;
-            position:               absolute;
+            left:                           $input-padding-half; 
+            margin-bottom:                  0;
+            position:                       absolute;
+           
             &.active {
-                top:                -15px;
+                top:                        -10px;
             }
         }
     }
     .counter-danger + label {
-        color:                  $input-error-color;
+        color:                              $input-error-color;
     }
 
     .counter-success + label {
-        color:                  $input-success-color;
+        color:                              $input-success-color;
     }
     .inputVal {
-        display:                none;
-        right:                  $input-validation-label-right;
+        display:                            none;
+        right:                              $input-validation-label-right;
     }
 
     .help-block .error {
-        color:                  $input-error-color;
-        font-size:              $input-label-font-size / 2;
-        padding-top:            $input-validation-help-top;
-        text-align:             right;
+        color:                              $input-error-color;
+        font-size:                          $input-error-label-font-size;
+        padding-top:                        $input-validation-help-top;
     }
 }

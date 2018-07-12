@@ -1,4 +1,6 @@
-<div class="row" [ngClass]="{'mapfre-validation-rules': input.key == 'repeatPassword' }">
+<div class="row {{input.type}}-input" 
+  [ngClass]="{'mapfre-validation-rules': input.key == 'repeatPassword' }"
+>
   <div class="col">
     <div [formGroup]="form" class="input-field mapfre">
       <div [ngSwitch]="input.icon" class="prefix">
@@ -6,8 +8,10 @@
       </div>
       <div *ngIf="input.type == 'email'">
         <input
+          (blur)="OnBlur()"
+          [class]="input.additionalClasses"
+          [data-error]="input.validationMessage" 
           [formControlName]="input.key" 
-          [class]="input.additionalClasses" 
           [type]="input.type" 
           [id]="input.key" 
           [name]="input.key" 
@@ -18,8 +22,10 @@
       </div>
       <div *ngIf="input.type == 'password'">
         <input
-          [formControlName]="input.key" 
-          [class]="input.additionalClasses" 
+          (blur)="OnBlur()"
+          [class]="input.additionalClasses"
+          [data-error]="input.validationMessage" 
+          [formControlName]="input.key"  
           [type]="showPassword ? 'text' : 'password'"
           [id]="input.key" 
           [name]="input.key" 
@@ -35,8 +41,10 @@
       </div>
       <div *ngIf="input.type != 'email' && input.type != 'password' ">
         <input
-          [formControlName]="input.key" 
-          [class]="input.additionalClasses" 
+          (blue)="OnBlur()"
+          [class]="input.additionalClasses"
+          [data-error]="input.validationMessage" 
+          [formControlName]="input.key"  
           [type]="input.type"
           [id]="input.key" 
           [name]="input.key"
@@ -46,7 +54,7 @@
         <mapfre-label [forInput]="input.key">{{input.label}}</mapfre-label>
       </div>
       <div class="help-block" *ngIf="(input.key != 'createPassword') && (input.key != 'repeatPassword')">
-        <div class="error" *ngIf="!isValid">{{input.label}} is required</div>
+        <div class="error" *ngIf="!isValid && notOnPageLoad">{{input.validationMessageError}}</div>
       </div>
     </div>
   </div>

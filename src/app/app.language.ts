@@ -47,7 +47,8 @@ export class Language {
             "PASSWORD_RULE_FOUR" : "Rule Four",
             "PASSWORD_RULE_FIVE" : "Rule Five",
             "DOES_NOT_PASS" : "Does Not Pass",
-            "PASSES_THE_RULE": "Passes the Rule"
+            "PASSES_THE_RULE": "Passes the Rule",
+            "INVALID_USERNAME_PASSWORD": "Invalid Username and/or Password"
         }
     },{
         "identifier" : "ES",
@@ -81,7 +82,6 @@ export class Language {
             "EMAIL" : "Correo Electrónico",
             "PASSWORD" : "Contraseña",
 
-            //These need to be translated
             "CREATE_ACCOUNT" : "Crear Cuenta",
             "FIRST_TIME": "Primera vez",
             "SIGN_IN" : "Iniciar sesion",
@@ -95,7 +95,8 @@ export class Language {
             "PASSWORD_RULE_FOUR" : "Cuarta regla",
             "PASSWORD_RULE_FIVE" : "Quinta regla",
             "DOES_NOT_PASS" : "no pasa",
-            "PASSES_THE_RULE": "pasa"
+            "PASSES_THE_RULE": "pasa",
+            "INVALID_USERNAME_PASSWORD": "Inválido correo electrónico y/o contraseña"
         }
     }];
 }

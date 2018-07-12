@@ -14,13 +14,15 @@ export class LoginService {
         additionalClasses: 'form-control',
         label: 'Email',
         required: true,
-        type: 'email'
+        type: 'email',
+        validationMessageError: 'Please Enter A Valid Email',
       }),
       new TextBox({
         key: 'loginPassword',
         additionalClasses: 'form-control',
         label: 'Password',
         required: true,
+        showPasswordIcon: true,
         type: 'password'
       })
     ]

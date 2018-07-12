@@ -6,18 +6,21 @@ $login-register-copy-size:      $font-size-sm;
 $login-remember-me-group:       $margin-vertical;
 $login-inputs-group:            $padding-vertical *2;
 $login-login-group:             $padding-vertical;
-
+$login-hr-margin-top:           $padding-vertical *2;
+$login-hr-margin-bottom:        $padding-vertical *1.5;
 
 .group-inputs {
     padding-bottom:             $login-inputs-group;
 }
 
 .group-login {
-    padding-bottom:             $login-login-group;
+   padding-top:                 $login-login-group;
 }
 
 .group-remember {
-    margin-top:                 $login-remember-me-group;
+    .forgot-password {
+        text-align: right;
+    }
 }
 
 .group-register {
@@ -27,4 +30,9 @@ $login-login-group:             $padding-vertical;
 .register-copy {
     color:                      $login-register-copy-color;
     font-size:                  $login-register-copy-size;
+}
+
+.hr-login {
+    margin-top:                 $login-hr-margin-top;
+    margin-bottom:              $login-hr-margin-bottom;
 }

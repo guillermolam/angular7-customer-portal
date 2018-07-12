@@ -1,28 +1,42 @@
 @import "../../../../styles.scss";
-$mapfre-icon-padding:           $padding-vertical/1.25;
-$mapfre-icon-color:             $lite-gray;
-$mapfre-icon-label-font-size:   12px;
+$mapfre-icon-padding-full:      $padding-vertical / 1.14;
+$mapfre-icon-padding-half:      $defualt-margin-padding;
+
+$mapfre-icon-color-inactive:    $lite-gray;
+$mapfre-icon-color-active:      $mapfre-blue;
+
+$mapfre-icon-font-size:         $font-size-base * 1.72;
+$mapfre-icon-label-font-size:   $font-size-base;
+$mapfre-icon-alert-font-size:   $default-margin-padding * 3;
+
 
 .title-icon {
-    padding-bottom: $mapfre-icon-padding;
+    padding-bottom:             $mapfre-icon-padding-full;
 }
 
 .label-icon {
-    position: absolute;
-    right: 15px;
-    top: 12px;
+    position:                   absolute;
+    right:                      $mapfre-icon-padding-half;
+    top:                        0px; //$mapfre-icon-padding-half / 2;
 
     .label-text {
-        color: $mapfre-icon-color;
-        font-size: $mapfre-icon-label-font-size;
+        color:                  $mapfre-icon-color-inactive;
+        font-size:              $mapfre-icon-label-font-size;
     }
     
     i {
-        color: $mapfre-icon-color;
-         
+        color:                  $mapfre-icon-color-inactive;
+        font-size:              $mapfre-icon-font-size;
+        @include transition(0.5s);
     }
 }
 
-i {
-    margin-right: 15px;
+.alert-icon {
+    font-size:                  $mapfre-icon-alert-font-size;
+}
+
+.mapfre.icon-container {
+    .active i {
+        color:                  $mapfre-icon-color-active;
+    }
 }

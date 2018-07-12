@@ -1,16 +1,18 @@
 @import "../../../../styles.scss";
 
-$mapfre-link-color:             $mapfre-red;
-$mapfre-link-color-teal:        $mapfre-teal;
-$mapfre-link-font-size-small:   $link-font-size/1.25;
-$mapfre-link-font-size-base:    $link-font-size;
+$mapfre-link-color:             $mapfre-blue;
+$mapfre-link-border-bottom-color: $mapfre-blue;
+$mapfre-link-color-red:         $mapfre-red;
+$mapfre-link-font-size-small:   0.75rem;
+$mapfre-link-font-size-base:    0.875rem;
+$mapfre-link-font-size-large:   1rem;
 $mapfre-link-icon-top:          -5px;
 $mapfre-link-icon-right:        $padding-horizontal/1.5;
 $mapfre-link-padding:           0 $padding-vertical;
 
 a { 
-    padding:                    $mapfre-link-padding;
     text-decoration:            none;
+    @include transition(1s);
 }
 i {
     float:                      left;
@@ -20,22 +22,36 @@ i {
     padding-right:              $mapfre-link-icon-right;
 }
 
-.mapfre {   
+.mapfre {  
+    span {
+        color:                  $mapfre-link-color;
+    }
+
     &.underline {
-        text-decoration:        underline;
+       border-bottom:           thin solid $mapfre-link-border-bottom-color;
+       @include transition(1s);
+       &:hover {
+           border-bottom-color:  transparent;
+       }
     }
     &.small-link {
         font-size:              $mapfre-link-font-size-small;
     }
     &.normal-link {
         font-size:              $mapfre-link-font-size-base;
+        border-bottom:           thin solid transparent;
+        &:hover {
+            border-bottom-color:  $mapfre-link-border-bottom-color;
+        }
+    }
+    &.large-link {
+        font-size:              $mapfre-link-font-size-large;
     }
     &.switch-line-up {
-        position:               absolute;
-        right:                  0;
-        top:                    0px;
+        position:               relative;
+        top:                    5px;
     }
-    &.teal-link {
-        color:                  $mapfre-link-color-teal;
+    &.red-link {
+        color:                  $mapfre-link-color-red;
     }
 }

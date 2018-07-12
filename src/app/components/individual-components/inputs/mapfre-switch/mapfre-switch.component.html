@@ -1,9 +1,9 @@
-<label class="mapfre switch">
+<label class="mapfre switch-container">
   <div class="copy" [ngClass]="{ 'copy-right': copyRight, 'copy-left': copyLeft, 'copy-left': (copyLeft == undefined && copyRight == undefined)}">
     <span class="slider-text"><ng-content></ng-content></span>
   </div>
-  <div class="switch-mapfre" [ngClass]="{ 'copy-right-label': copyRight, 'copy-left-label': copyLeft, 'copy-left-label': (copyLeft == undefined && copyRight == undefined)}">
+  <div class="switch fat">
     <input type="checkbox" (change)="switchValueOnOff($event)">
-    <span class="slider round"></span>
+    <span class="slider round"></span> 
   </div>
-</label>
+</label> 

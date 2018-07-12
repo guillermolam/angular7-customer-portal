@@ -1,33 +1,45 @@
 <div *ngIf="message">
   <div *ngFor="let alertTypeObject of alertTypeObjects">
-      <div 
-        class="mapfre alert toast {{alertTypeObject.className}}" 
-        *ngIf="message.type == alertTypeObject.alertType"
-      >
-        <div class="content">
-          <mapfre-icon iconClasses="{{alertTypeObject.iconClass}}"></mapfre-icon>
-          <span>{{message.text}}</span>
+    <div 
+      class="mapfre alert {{alertTypeObject.className}}" 
+      *ngIf="message.type == alertTypeObject.alertType"
+    >
+      <div class="content row">
+        <div class="col-2">
+            <mapfre-icon iconClasses="{{alertTypeObject.iconClass}}"></mapfre-icon>
         </div>
-        <a class="close" (click)="closeAlert()">
-          <i class="fa fa-times"></i>
-        </a>
+        <div class="col-9 copy no-gutters">
+            {{message.text.statusText}}
+        </div>
+        <div class="col-1" *ngIf="closeButton">
+          <a class="close" (click)="closeAlert()">
+              <i class="fa fa-times"></i>
+            </a>
+        </div>
       </div>
     </div>
+  </div>
 </div>
 
 <div *ngIf="nonDynamic">
   <div *ngFor="let alertTypeObject of alertTypeObjects">
     <div 
       class="mapfre alert {{alertTypeObject.className}}" 
-      *ngIf="alertType == alertTypeObject.alertType"
+      
     >
-      <div class="content">
-        <mapfre-icon iconClasses="{{alertTypeObject.iconClass}}"></mapfre-icon>
-        <span><ng-content></ng-content></span>
+      <div class="content row">
+        <div class="col-2">
+            <mapfre-icon iconClasses="{{alertTypeObject.iconClass}}"></mapfre-icon>
+        </div>
+        <div class="col-9 copy no-gutters">
+          <ng-content></ng-content>
+        </div>
+        <div class="col-1" *ngIf="closeButton">
+          <a class="close" (click)="closeAlert()">
+              <i class="fa fa-times"></i>
+            </a>
+        </div>
       </div>
-      <a class="close" (click)="closeAlert()">
-        <i class="fa fa-times"></i>
-      </a>
     </div>
   </div> 
 </div>
