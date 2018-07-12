@@ -10,6 +10,7 @@ import { AlertService } from "../../../_services/alert.service";
 })
 export class MapfreAlertComponent implements OnInit {
   @Input() alertType:   string = 'default';
+  @Input() closeButton: boolean = false;
   @Input() nonDynamic:  boolean = false;
   message:              any;
 
@@ -19,22 +20,22 @@ export class MapfreAlertComponent implements OnInit {
     {
       "alertType":    "default",
       "className":    "default",
-      "iconClass":    "fas fa-info"    
+      "iconClass":    "fas fa-info alert-icon"    
     },
     {
       "alertType":    "error",
       "className":    "error",
-      "iconClass":    "fas fa-exclamation-triangle"    
+      "iconClass":    "fas fa-times-circle alert-icon"    
     },
     {
       "alertType":    "caution",
       "className":    "caution",
-      "iconClass":    "fas fa-exclamation-triangle"    
+      "iconClass":    "fas fa-exclamation-triangle alert-icon"    
     },
     {
       "alertType":    "success",
       "className":    "success",
-      "iconClass":    "fas fa-thumbs-up"    
+      "iconClass":    "fas fa-thumbs-up alert-icon"    
     },
   ];
 
@@ -43,7 +44,10 @@ export class MapfreAlertComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.alertService.getMessage().subscribe((message) => { this.message = message; });
+    this.alertService.getMessage().subscribe((message) => { 
+      this.message = message; 
+    });
+   
   }
 
 }

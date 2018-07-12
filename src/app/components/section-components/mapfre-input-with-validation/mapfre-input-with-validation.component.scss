@@ -1,6 +1,6 @@
 @import "../../../../styles.scss";
-$validation-error-color:    $mapfre-red;
-$validation-valid-color:    $mapfre-green;
+$mapfre-validation-error-color:            $mapfre-red;
+$mapfre-validation-valid-color:            $mapfre-green;
 /* 
     ----- Information -----
     The Input styles are in the global-component folder in assets/scss/_global-components/_inputs.scss. 
@@ -8,31 +8,34 @@ $validation-valid-color:    $mapfre-green;
 
 */
 .mapfre-validation-rules {
-    height: auto;
+    height:                         auto;
 }
 
 .hide-validation {
-    display: none;
-    @include transition(5s);
+    display:                        none;
+    @include                        transition(5s);
 }
 
 .show-validation {
-    display: block;
-    @include transition(5s);
+    display:                        block;
+    @include                        transition(5s);
 }
 
 .error {
-    color: $validation-error-color;
+    color:                          $mapfre-validation-error-color;
 }
 
 .valid {
-    color: $validation-valid-color;
+    color:                          $mapfre-validation-valid-color;
     @include transition(1s);
     i {
         &:before {
-            content: '\f058';
-            font-family: FontAwesome;
+            content:                '\f058';
+            font-family:            FontAwesome;
         }
     }
 }
 
+.password-input {
+    padding-top:                    14px;
+}

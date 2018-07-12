@@ -47,7 +47,8 @@ export class Language {
             "PASSWORD_RULE_FOUR" : "Rule Four",
             "PASSWORD_RULE_FIVE" : "Rule Five",
             "DOES_NOT_PASS" : "Does Not Pass",
-            "PASSES_THE_RULE": "Passes the Rule"
+            "PASSES_THE_RULE": "Passes the Rule",
+            "INVALID_USERNAME_PASSWORD": "Invalid Username and/or Password"
         }
     },{
         "identifier" : "ES",
@@ -95,7 +96,8 @@ export class Language {
             "PASSWORD_RULE_FOUR" : "Rule Four",
             "PASSWORD_RULE_FIVE" : "Rule Five",
             "DOES_NOT_PASS" : "Does Not Pass",
-            "PASSES_THE_RULE": "Passes the Rule"
+            "PASSES_THE_RULE": "Passes the Rule",
+            "INVALID_USERNAME_PASSWORD": "Invalid Username and/or Password"
         }
     }];
 }

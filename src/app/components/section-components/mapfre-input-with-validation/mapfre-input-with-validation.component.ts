@@ -13,6 +13,7 @@ export class MapfreIputWithValidationComponent {
   @Input()  input:                      FormBase<any>;
   @Input()  form:                       FormGroup;
             showPassword:               boolean = false;
+            notOnPageLoad:              boolean = false;
   @Output() inputValidationCheck = new EventEmitter<boolean>();
   
   showPasswordFunction(event): void {
@@ -20,9 +21,13 @@ export class MapfreIputWithValidationComponent {
   }
 
   get isValid() { 
-    let formValid = this.form.controls[this.input.key].valid; 
+    let formValid = this.form.controls[this.input.key].valid;
     this.inputValidationCheck.emit(formValid);
     return formValid;
+  }
+
+  OnBlur(): void{
+    this.notOnPageLoad = true;
   }
 
   passwordRules(reg: string): boolean {
@@ -37,5 +42,10 @@ export class MapfreIputWithValidationComponent {
     };
     let inputValue = this.form.controls['createPassword'].value;
     if( inputValue != undefined && rules[reg].test(inputValue) ) return true;
+  }
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    
   }
 }

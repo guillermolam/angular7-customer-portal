@@ -1,28 +1,45 @@
 $global-body-bg-color:                      $lite-gray-2;
+$global-hr-color:                           $lite-gray-3;
 $global-prefix-padding-right:               $padding-vertical;
-$global-title-font-size:                    $font-size-base * 1.25;
+$global-title-font-size:                    $font-size-base + 0.25;
 $global-title-font-family:                  $font-family-base;
 $global-red-override:                       $mapfre-red !important;
 
 body {
     background-color:                       $global-body-bg-color;
 }
-input[type=text]:focus {
-    outline:                                none;
+
+hr {
+    border:                                 solid thin $global-hr-color;
 }
 
-.bold {
+
+*:focus,
+.form-control:focus,
+input:focus,
+textarea:focus {
+    outline:                                none;
+    box-shadow:                             none;
+}
+
+.bold,
+.strong {
     font-weight:                            900;
 }
 
 .center {
     text-align:                             center;
 }
-.card-center {
+
+.center-margin {
     margin:                                 auto;
 }
+
 .mapfre-content {
-    margin-top:                             100px;
+    margin-top:                             75px;
+    @include media-breakpoint-down(xxs) {
+        margin-top:                         10%;
+    }
 }
 .prefix {
     float:                                  left;
@@ -41,7 +58,19 @@ input[type=text]:focus {
     font-family:                            $global-title-font-family;
 }
 
+.uppercase {
+    text-transform: uppercase;
+    span {
+        text-transform: uppercase;
+    }
+}
+
 // ---- class overrides ----
+.container {
+    @include media-breakpoint-down(xxs) {
+        padding: 0;
+    }
+}
 .navbar {
     box-shadow:                             none;
 }

@@ -59,8 +59,7 @@ export class LoginFormComponent implements OnInit {
           (error) => 
           {
             console.log(error)
-            //this.alertService.error(error);
-            //this.loading = false;
+            this.alertService.error(error);
           }
         )
       ;
@@ -121,24 +120,6 @@ export class LoginFormComponent implements OnInit {
   /*register() {
     this.userService.updateUser(this.loginForm.value);
     this.router.navigateByUrl("signup");
-  }*/
-
-
-    /*this.http.get(
-      "/b2cwebapp/account/loginView?state=MA"
-    ).toPromise(
-    ).then((rsp) => {
-      console.log("responded");
-      console.log(rsp);
-    }).catch((err) => {
-      console.log("error");
-      console.log(err);
-    }); */
-  /*createForm(user: User) {
-    this.loginForm = this.fb.group({
-      email: [user.email, [Validators.required, Validators.email]],
-      password: [user.password, [Validators.required]]
-    });
   }*/
 
 

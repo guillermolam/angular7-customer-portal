@@ -5,33 +5,62 @@ $med-gray:                  #4C4C4C;
 $gray:                      #737373;
 $lite-gray:                 #ccc;
 $lite-gray-2:               #F7F7F7;
+$lite-gray-3:               #EAE9E9;
 $white:                     #fff;
 
 // --- Brand Colors --- //
-$mapfre-red:                #EE3124; //#D81E05; 
-$mapfre-blue:               #0A4BB3;
+$mapfre-red:                #EE3124;    //#D81E05; 
+$mapfre-blue:               #006580;    //#0A4BB3; 
+$mapfre-lite-gray:          #C4C4C4;
 $mapfre-green:              #C6DB81;
 $mapfre-gray:               #67686B;
 $mapfre-teal:               #006580;
 
+// --- Specific Colors --- //
+$success-color:             #00c851;
+$error-color:               #BE0F0F;
+
 // ---- Defaults ----- //
 //Fonts
 $font-family-base:          'Noto Sans';
-
-
+$defualt-margin-padding:    8px;
+$default-margin-padding:    $defualt-margin-padding;
 
 
 //Sizing
-$font-size-base:            16px; 
+$font-size-base:            0.875rem;  //14px
 $font-size-sm:              $font-size-base/1.5;
 $link-icon-font-size:       $font-size-base/2;
 $link-font-size:            $font-size-base; 
-$margin-vertical:           15px;
-$margin-horizontal:         15px;
-$padding-horizontal:        15px;
-$padding-vertical:          15px;
+$margin-vertical:           $defualt-margin-padding * 2;
+$margin-horizontal:         $defualt-margin-padding * 2;
+$padding-horizontal:        $defualt-margin-padding * 2;
+$padding-vertical:          $defualt-margin-padding * 2;
+
+// --- The Custom Grid --- //
+$xxxs:                      0;
+$xxs:                       320px;
+$xs:                        375px;
+$sm:                        576px;
+$md:                        768px;
+$lg:                        992px;
+$xl:                        1200px;
+$xxl:                       1440px;
+
 
 // ----- OverRides ----- //
+$grid-breakpoints: (
+    xxxs:   $xxxs,
+    xxs:    $xxs,
+    xs:     $xs, 
+    s:      $sm, 
+    m:      $md, 
+    l:      $lg, 
+    xl:     $xl,
+    xxl:    $xxl 
+);
+
+$spacer:                    $defualt-margin-padding;
 $default-color:             $mapfre-red;
 $link-color:                $mapfre-red;
 $button-font-family:        $font-family-base;
