@@ -1,6 +1,17 @@
 pipeline{
 	agent { docker { image 'mdv-docdevl01:18444/jenkins-customer-portal-agent' } }
 	  stages {
+
+		   // cloning code into the container
+        stage('clone and setup gradle wrapper'){
+         environment {
+                BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
+            }
+            //removing old code if there is any, initializing new local repo and cloning into it.
+            steps{
+                sh 'rm -rf customer-portal && git init && git clone https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/customer-portal.git'
+            }
+        }
 		  //Installing the dependencies need to carryout the subsequent stages
 		   stage("Install dependencies"){
 			steps{
