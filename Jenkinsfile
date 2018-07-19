@@ -34,13 +34,21 @@ pipeline{
 		stage("Create Docker Image"){
 
 			steps{
-					sh 'docker build -t ${JOB_NAME} .'
+					sh 'docker build -t ${JOB_NAME}:${BUILD_NUMBER} .'
+			}
+		}
+
+		stage("Publish Docker Image"){
+
+			steps{
+					sh 'docker tag ${JOB_NAME}:${BUILD_NUMBER} mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
+					sh 'docker rmi ${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
 
 		stage("Run App"){
 			steps{
-					sh 'docker build -t ${JOB_NAME} .'
+					sh 'docker run -d --name customer-portal -p 80:80 mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
        //stage("Deploy to AWS EC2"){
