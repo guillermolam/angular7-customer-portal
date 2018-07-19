@@ -6,7 +6,6 @@ pipeline{
         stage('clone and setup gradle wrapper'){
          environment {
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
-				def app-name = "${JOB_NAME}"
             }
             //removing old code if there is any, initializing new local repo and cloning into it.
             steps{
@@ -35,13 +34,13 @@ pipeline{
 		stage("Create Docker Image"){
 
 			steps{
-					sh 'docker build -t ${app-name} .'
+					sh 'docker build -t ${JOB_NAME} .'
 			}
 		}
 
 		stage("Run App"){
 			steps{
-					sh 'docker build -t ${app-name} .'
+					sh 'docker build -t ${JOB_NAME} .'
 			}
 		}
        //stage("Deploy to AWS EC2"){
