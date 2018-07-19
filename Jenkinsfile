@@ -1,5 +1,6 @@
 pipeline{
-	agent { docker { image 'mdv-docdevl01:18444/jenkins-customer-portal-agent' } }
+	//agent { docker { image 'mdv-docdevl01:18444/jenkins-customer-portal-agent' } }
+	agent { any }
 	  stages {
 
 		   // cloning code into the container
