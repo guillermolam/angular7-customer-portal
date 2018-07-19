@@ -4,10 +4,10 @@ import { FormBase } from '../../_models/form-base';
 import { LoginService } from '../../_services/forms/login/login.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [ LoginService ]
+  selector:     'app-login',
+  templateUrl:  './login.component.html',
+  styleUrls:    ['./login.component.scss'],
+  providers:    [ LoginService ]
 })
 export class LoginComponent  {
 

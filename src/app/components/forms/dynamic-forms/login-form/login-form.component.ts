@@ -77,6 +77,7 @@ export class LoginFormComponent implements OnInit {
     {
       this._cookieService.put("username", this.user.email);
       this._cookieService.put("password", this.user.password);
+      console.log(this._cookieService)
     }
   }
 

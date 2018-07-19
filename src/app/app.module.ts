@@ -65,6 +65,8 @@ import { MapfreAlertComponent } from './components/individual-components/mapfre-
 import { DesignSystemComponent } from './routes/design-system/design-system.component';
 import { MapfreCodeComponent } from './components/individual-components/mapfre-code/mapfre-code.component';
 import { MapfreNotificationsComponent } from './components/individual-components/mapfre-notifications/mapfre-notifications.component';
+import { HelpComponent } from './components/static-modals/help/help.component';
+import { MapfreModalComponent } from './components/section-components/mapfre-modal/mapfre-modal.component';
 
 
 @NgModule({
@@ -102,7 +104,9 @@ import { MapfreNotificationsComponent } from './components/individual-components
     MapfreAlertComponent,
     DesignSystemComponent,
     MapfreCodeComponent,
-    MapfreNotificationsComponent
+    MapfreNotificationsComponent,
+    HelpComponent,
+    MapfreModalComponent
   ],
   imports: [
     BrowserModule,

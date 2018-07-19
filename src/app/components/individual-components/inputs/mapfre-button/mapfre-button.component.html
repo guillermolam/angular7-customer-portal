@@ -1,23 +1,44 @@
-
 <div [ngSwitch]="inputType">
-    <button 
-        class="btn mapfre {{additionalClasses}}"
-        [disabled]="!isFormValid()" 
-        *ngSwitchCase="'button-form'"
-    >
-        <ng-content></ng-content>
-    </button>
-    <input 
-        type="submit" 
-        class="btn mapfre {{additionalClasses}}" 
-        value="submit" 
-        [disabled]="!isFormValid()"
-        *ngSwitchCase="'submit'" 
-    />
-    <button 
-        class="btn mapfre {{additionalClasses}}"
-        *ngSwitchDefault
-    >
-        <ng-content></ng-content>
-    </button>
+	<button 
+		class="btn mapfre {{additionalClasses}}"
+		[disabled]="!isFormValid()" 
+		*ngSwitchCase="'button-form'"
+		mdbWavesEffect
+	>
+		<ng-content></ng-content>
+	</button>
+	
+	<input 
+		type="submit" 
+		class="btn mapfre waves-light {{additionalClasses}}" 
+		value="submit" 
+		[disabled]="!isFormValid()"
+		*ngSwitchCase="'submit'"
+		mdbWavesEffect 
+	/>
+	
+	<button
+		class="btn mapfre waves-light {{additionalClasses}}"
+		data-toggle="modal" 
+		type="button"
+		*ngSwitchCase="'modal'"
+		[data-target]="modalId"
+		[ngClass]="{'btn-icon': screenReader, 'default': !moreCSSClasses(additionalClasses) }"
+		mdbWavesEffect
+	>
+		<span *ngIf="showIcons">
+			<mapfre-icon [iconClasses]="iconClasses"></mapfre-icon> 
+		</span>
+		<span class="button-content"
+			[ngClass]="{'sr-only sr-only-focusable': screenReader }">
+			{{ buttonCopy | translate }}
+		</span>
+	</button>
+
+	<button 
+		class="btn mapfre waves-light {{additionalClasses}}"
+		*ngSwitchDefault
+		mdbWavesEffect>
+		<ng-content></ng-content>
+	</button>
 </div>

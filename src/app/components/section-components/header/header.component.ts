@@ -11,16 +11,13 @@ import { Language } from '../../../app.language';
 })
 
 export class HeaderComponent extends AppComponent implements OnInit {
+	
 	defaultLang:string =  navigator.language;
+
 	constructor(public translate: TranslateService, public _languages:Language) { 
 		super(translate, _languages);
 		this.defaultLang =  ( this.defaultLang.indexOf("-") !==-1 ) ?  this.defaultLang.slice(0, this.defaultLang.indexOf("-")).toUpperCase() : this.defaultLang.toUpperCase();
 		this.changeLang(this.defaultLang)
-	}
-
-	ngOnInit() {
-		console.log(this.defaultLang);
-						
 	}
 
 	changeLang(lang:string) {
@@ -32,6 +29,11 @@ export class HeaderComponent extends AppComponent implements OnInit {
 			self.defaultLang = "Choose Language";
 		}
 		self.setLang(lang);
+	}
+
+	ngOnInit() {
+		console.log(this.defaultLang);
+						
 	}
 
 }

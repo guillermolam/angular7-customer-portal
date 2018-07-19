@@ -1,10 +1,10 @@
 @import "../../../../../styles.scss";
 
-$mapfre-switch-font-color:                  $gray;
-$mapfre-switch-font-color-active:           $mapfre-blue;
-$mapfre-switch-bg-color-inactive:           $lite-gray;
-$mapfre-switch-bg-color-active:             $mapfre-blue;
-$mapfre-switch-bg-color-checkmark-full:     $white;
+$mapfre-switch-font-color:                      $gray;
+$mapfre-switch-font-color-active:               $mapfre-blue;
+$mapfre-switch-bg-color-inactive:               $lite-gray;
+$mapfre-switch-bg-color-active:                 $mapfre-blue;
+$mapfre-switch-bg-color-checkmark-full:         $white;
 $mapfre-switch-bg-color-checkmark-inline-inactive:   $lite-gray;
 $mapfre-switch-bg-color-checkmark-inline-active: $mapfre-blue;
 
@@ -12,138 +12,137 @@ $mapfre-switch-bg-color-slider-fat-inactive:    #F1F1F1;
 $mapfre-switch-bg-color-checkmark-fat-inactive: #F1F1F1;
 $mapfre-switch-bg-color-checkmark-fat-active:   $mapfre-blue;
 
-$mapfre-switch-font-size:                   $font-size-base;
+$mapfre-switch-font-size:                       $font-size-base;
 
 .mapfre.switch-container {
-  clear:                                  both;
-  position:                               relative;
-  top:                                    3px;
+  clear:                                        both;
+  position:                                     relative;
+  top:                                          3px;
 
   .copy {
-    color:                                $mapfre-switch-font-color; 
-    font-size:                            $mapfre-switch-font-size;
+    color:                                      $mapfre-switch-font-color; 
+    font-size:                                  $mapfre-switch-font-size;
       
     &.copy-left {
-      float:                                left;
-      padding-right:                        5px;
+      float:                                    left;
+      padding-right:                            5px;
     }
     
     &.copy-right {
-      float:                                right;
-      padding-left:                         42px;
+      float:                                    right;
+      padding-left:                             42px;
     }
   }
 
   .slider-text {
-    color:                                $mapfre-switch-font-color; 
-    font-size:                            $mapfre-switch-font-size;
-    white-space:                          nowrap;
-    vertical-align:                       middle;
+    color:                                      $mapfre-switch-font-color; 
+    font-size:                                  $mapfre-switch-font-size;
+    white-space:                                nowrap;
+    vertical-align:                             middle;
     
     &.selected {
-      color:                              $mapfre-switch-bg-color-active;
+      color:                                    $mapfre-switch-bg-color-active;
     }
   }
 
   .switch {
-    position:                                 relative;
-    
-    .slider {
-      cursor:                               pointer;
-      width:                                50px;
-      position:                             absolute;
-      @include transition(.4s);
-    }
+    position:                                   relative;
 
     input {
-      display:                              none;
+      display:                                  none;
       &:checked + .slider {
-        background-color:                   $mapfre-switch-bg-color-active;
+        background-color:                       $mapfre-switch-bg-color-active;
       }
     }
     
     [type="checkbox"] + .slider:before {
-      content:                              "";
-      height:                               15px;
-      width:                                15px;
-      left:                                 5px;
-      position:                             absolute;
+      content:                                  "";
+      height:                                   15px;
+      width:                                    15px;
+      left:                                     5px;
+      position:                                 absolute;
       @include transition(.4s);
       @include border-radius(50%);
     }
     [type="checkbox"]:checked + .slider:before {
-      left:                                 30px;
+      left:                                     30px;
     }
 
-    &.full {
-      .slider {
-        background-color:                     $mapfre-switch-bg-color-inactive;
-        height:                               20px;
-      }
-
-      [type="checkbox"] + .slider:before {
-        background-color:                    $mapfre-switch-bg-color-checkmark-full;
-        border-color:                        $mapfre-switch-bg-color-checkmark-full;
-        top: 2px;
-      }
-
-      [type="checkbox"]:checked + .slider:before {
-        top:                                  2px;
-      }
-  
-    }
-
-    &.inline {
-      top:                                    8px;
-      
-      .slider {
-        background-color:                     $mapfre-switch-bg-color-inactive;
-        height:                               5px;
-      }
-      
-      [type="checkbox"] + .slider:before {
-        background-color:                     $mapfre-switch-bg-color-checkmark-inline-inactive;
-        border-color:                         $mapfre-switch-bg-color-checkmark-inline-inactive;
-        top:                                  -4px;
-        @include box-shadow();
-      }
-
-      [type="checkbox"]:checked + .slider:before {
-        background-color:                    $mapfre-switch-bg-color-checkmark-inline-active;
-        border-color:                        $mapfre-switch-bg-color-checkmark-inline-active;
-        top:                                  -4px;
-      }
+    .slider {
+      cursor:                                   pointer;
+      width:                                    50px;
+      position:                                 absolute;
+      @include transition(.4s);
     }
 
     &.fat {
-      top:                                    6px;
+      top:                                      6px;
       
       .slider {
-        background-color:                     $mapfre-switch-bg-color-slider-fat-inactive;
-        height:                               14px;
-        left:                                 3px;
-        width:                                34px;
+        background-color:                       $mapfre-switch-bg-color-slider-fat-inactive;
+        height:                                 14px;
+        left:                                   3px;
+        width:                                  34px;
       }
 
       [type="checkbox"]:checked + .slider {
-        background-color:                     $mapfre-switch-bg-color-checkmark-fat-inactive;
+        background-color:                       $mapfre-switch-bg-color-checkmark-fat-inactive;
       }
       
       [type="checkbox"] + .slider:before {
-        background-color:                     $mapfre-switch-bg-color-checkmark-fat-inactive;
-        border-color:                         $mapfre-switch-bg-color-checkmark-fat-inactive;
-        height:                               20px;
-        left:                                 0;
-        top:                                  -4px;
-        width:                                20px;
+        background-color:                       $mapfre-switch-bg-color-checkmark-fat-inactive;
+        border-color:                           $mapfre-switch-bg-color-checkmark-fat-inactive;
+        height:                                 20px;
+        left:                                   0;
+        top:                                    -4px;
+        width:                                  20px;
         box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);//@include box-shadow();
       }
 
       [type="checkbox"]:checked + .slider:before {
-        background-color:                     $mapfre-switch-bg-color-checkmark-fat-active;
-        border-color:                         $mapfre-switch-bg-color-checkmark-fat-active;
-        left:                                 16px;
-        top:                                  -4px;
+        background-color:                       $mapfre-switch-bg-color-checkmark-fat-active;
+        border-color:                           $mapfre-switch-bg-color-checkmark-fat-active;
+        left:                                   16px;
+        top:                                    -4px;
+      }
+    }
+
+    &.full {
+      .slider {
+        background-color:                       $mapfre-switch-bg-color-inactive;
+        height:                                 20px;
+      }
+
+      [type="checkbox"] + .slider:before {
+        background-color:                       $mapfre-switch-bg-color-checkmark-full;
+        border-color:                           $mapfre-switch-bg-color-checkmark-full;
+        top: 2px;
+      }
+
+      [type="checkbox"]:checked + .slider:before {
+        top:                                    2px;
+      }
+    }
+
+    &.inline {
+      top:                                      8px;
+      
+      .slider {
+        background-color:                       $mapfre-switch-bg-color-inactive;
+        height:                                 5px;
+      }
+      
+      [type="checkbox"] + .slider:before {
+        background-color:                       $mapfre-switch-bg-color-checkmark-inline-inactive;
+        border-color:                           $mapfre-switch-bg-color-checkmark-inline-inactive;
+        top:                                    -4px;
+        @include box-shadow();
+      }
+
+      [type="checkbox"]:checked + .slider:before {
+        background-color:                       $mapfre-switch-bg-color-checkmark-inline-active;
+        border-color:                           $mapfre-switch-bg-color-checkmark-inline-active;
+        top:                                     -4px;
       }
     }
   }

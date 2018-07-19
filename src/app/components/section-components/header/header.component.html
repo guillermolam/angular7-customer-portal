@@ -1,5 +1,12 @@
-<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark red scrolling-navbar ie-nav" [containerInside]="true">
-  <logo>
-    <a route="/"><img src="../../assets/img/mapfre_ins_white.png" /></a>
-  </logo>
-</mdb-navbar>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark red scrolling-navbar ie-nav">
+  <div class="container">
+    <div class="brand">
+        <a [routerLink]="['/']">
+          <img src="../../assets/img/logos/mapfre_ins_white.png" alt="Mapfre Insurance" class="logo" />
+        </a>
+    </div>
+    <div class="navbar-nav nav-flex-icons">
+        <mapfre-modal-help></mapfre-modal-help>
+      </div>
+  </div>
+</nav>

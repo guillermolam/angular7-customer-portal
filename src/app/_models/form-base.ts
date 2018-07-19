@@ -1,35 +1,35 @@
 export class FormBase<T> {
-    value:              T;
-    additionalClasses:  string;
-    controlType:        string;
-    customRegExVal:     RegExp;
-    key:                string;
-    icon:               boolean;
-    iconClasses:        string;
-    label:              string;
-    minLength:          number;
-    maxLength:          number;
-    required:           boolean;
-    order:              number;
-    showPasswordIcon:   boolean;
-    validationMessageError:  string;
+    value:                          T;
+    additionalClasses:              string;
+    controlType:                    string;
+    customRegExVal:                 RegExp;
+    key:                            string;
+    icon:                           boolean;
+    iconClasses:                    string;
+    label:                          string;
+    minLength:                      number;
+    maxLength:                      number;
+    required:                       boolean;
+    order:                          number;
+    showPasswordIcon:               boolean;
+    validationMessageError:         string;
     
     constructor(options: 
     {
-        value?:             T,
-        additionalClasses?: string,
-        controlType?:       string,
-        customRegExVal?:    RegExp,
-        key?:               string,
-        icon?:              boolean,
-        iconClasses?:       string,
-        label?:             string,
-        minLength?:         number,
-        maxLength?:         number,
-        required?:          boolean,
-        order?:             number,
-        showPasswordIcon?:  boolean,
-        validationMessageError?: string,
+        value?:                     T,
+        additionalClasses?:         string,
+        controlType?:               string,
+        customRegExVal?:            RegExp,
+        key?:                       string,
+        icon?:                      boolean,
+        iconClasses?:               string,
+        label?:                     string,
+        minLength?:                 number,
+        maxLength?:                 number,
+        required?:                  boolean,
+        order?:                     number,
+        showPasswordIcon?:          boolean,
+        validationMessageError?:    string,
     } = {}) 
     {
         this.value =                options.value;

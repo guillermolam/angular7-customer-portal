@@ -1,6 +1,6 @@
 @import "../../../../styles.scss";
 
-$mapfre-code-background: #333;
+$mapfre-code-background:   #333;
 $mapfre-code-color:        #fff;
 
 .mapfre.code-block {
@@ -8,13 +8,12 @@ $mapfre-code-color:        #fff;
     color:            $mapfre-code-color; 
     display:          block; 
     margin:           15px 0;
-   // padding:          15px;
 
+    code {
+        color:       $mapfre-code-color;  
+    }
     pre {
         margin:      0;
         padding:     0;
-    }
-    code {
-        color:       $mapfre-code-color;  
     }
 }

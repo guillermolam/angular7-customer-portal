@@ -1,23 +1,32 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { FormGroup }        from '@angular/forms';
- 
-import { FormBase }         from '../../../_models/form-base';
+import { Component, EventEmitter, HostListener, Input, Output, OnInit } from '@angular/core';
+import { FormGroup }                    from '@angular/forms';  
+import { FormBase }                     from '../../../_models/form-base';
  
 @Component({
   selector: 'mapfre-validation',
   templateUrl: './mapfre-input-with-validation.component.html',
-  styleUrls: ['./mapfre-input-with-validation.component.scss']
+  styleUrls: ['./mapfre-input-with-validation.component.scss'],
+  //host: { '(document:keypress)': 'checkCapsLock($event)' }
 })
 
 export class MapfreIputWithValidationComponent {
   @Input()  input:                      FormBase<any>;
   @Input()  form:                       FormGroup;
-            showPassword:               boolean = false;
+            capsLock:                   boolean = false;
             notOnPageLoad:              boolean = false;
-  @Output() inputValidationCheck = new EventEmitter<boolean>();
+            notOnFocus:                 boolean = false;
+            showPassword:               boolean = false;
   
-  showPasswordFunction(event): void {
-    this.showPassword = event;
+  @Output() inputValidationCheck:       EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @HostListener( 'window:keydown', ['$event'] ) 
+  OnKeyDown(event) {
+    this.checkCapsLock(event);
+  }
+
+  @HostListener( 'window:keyup', ['$event'] ) 
+  OnKeyUp(event) {
+    this.checkCapsLock(event);
   }
 
   get isValid() { 
@@ -26,8 +35,23 @@ export class MapfreIputWithValidationComponent {
     return formValid;
   }
 
-  OnBlur(): void{
+  OnBlur(): void {
     this.notOnPageLoad = true;
+  }
+
+  OnFocus(): void {
+    this.notOnFocus = true;
+  }
+
+  checkCapsLock(event: KeyboardEvent): void {
+    if( event.code === 'CapsLock' ) {
+      if( event.getModifierState && event.getModifierState( 'CapsLock' ) ) {
+        this.capsLock = true;
+      }
+      else {
+        this.capsLock = false;
+      }
+    }
   }
 
   passwordRules(reg: string): boolean {
@@ -43,9 +67,12 @@ export class MapfreIputWithValidationComponent {
     let inputValue = this.form.controls['createPassword'].value;
     if( inputValue != undefined && rules[reg].test(inputValue) ) return true;
   }
+  
+  showPasswordFunction(event): void {
+    this.showPassword = event;
+  }
+
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    
+  
   }
 }

@@ -24,14 +24,11 @@ export class Language {
             "CAREERS" : "Careers",
             "CONTACT" : "Contact",
             "RIGHTS" : "MAPFRE U.S.A Corp. All rights reserved.",
-
-
             "EMAIL_REQUIRED" : "Email is required.",
             "EMAIL_INVALID" : "Email is invalid.",
             "PASSWORD_REQUIRED" : "Password is required.",
             "CONF_PASS_REQUIRED" : "Confirm Password is required.",
             "PASSWORDS_NOT_MATCH" : "Password and confirm password does not match.",
-
             "EMAIL" : "Email",
             "PASSWORD" : "Password",
             "CREATE_ACCOUNT" : "Create Account",
@@ -48,7 +45,14 @@ export class Language {
             "PASSWORD_RULE_FIVE" : "Rule Five",
             "DOES_NOT_PASS" : "Does Not Pass",
             "PASSES_THE_RULE": "Passes the Rule",
-            "INVALID_USERNAME_PASSWORD": "Invalid Username and/or Password"
+            "INVALID_USERNAME_PASSWORD": "Invalid Username and/or Password",
+            
+            "MODAL_HELP_TITLE": "Help",
+            "MODAL_HELP_CUSTOMER_PORTAL": "Your MAPFRE Account allows you to access your policy documents, report claims, and make payments any time.",
+            "MODAL_HELP_TROUBLE_ACCESSING": "Trouble accessing your account?",
+            "MODAL_HELP_DONT_HESITATE": "Please don’t hesitate to contact our Customer Service Department.",
+            "CALL_US": "Call Us",
+            "EMAIL_US": "Email Us",
         }
     },{
         "identifier" : "ES",
@@ -71,17 +75,13 @@ export class Language {
             "CAREERS" : "Empleo",
             "CONTACT" : "Contacto",
             "RIGHTS" : "MAPFRE U.S.A Corp. Todos los derechos reservados.",
-
-
             "EMAIL_REQUIRED" : "Correo electronico es obligatorio.",
             "EMAIL_INVALID" : "El correo electrónico es invalido.",
             "PASSWORD_REQUIRED" : "Contraseña obligatoria.",
             "CONF_PASS_REQUIRED" : "Confirmar contraseña es obligatorio.",
             "PASSWORDS_NOT_MATCH" : "La contraseña y la contraseña no coinciden.",
-
             "EMAIL" : "Correo Electrónico",
             "PASSWORD" : "Contraseña",
-
             "CREATE_ACCOUNT" : "Crear Cuenta",
             "FIRST_TIME": "Primera vez",
             "SIGN_IN" : "Iniciar sesion",
@@ -96,7 +96,14 @@ export class Language {
             "PASSWORD_RULE_FIVE" : "Quinta regla",
             "DOES_NOT_PASS" : "no pasa",
             "PASSES_THE_RULE": "pasa",
-            "INVALID_USERNAME_PASSWORD": "Inválido correo electrónico y/o contraseña"
+            "INVALID_USERNAME_PASSWORD": "Inválido correo electrónico y/o contraseña",
+            
+            "MODAL_HELP_TITLE": "Help",
+            "MODAL_HELP_CUSTOMER_PORTAL": "Your MAPFRE Account allows you to access your policy documents, report claims, and make payments any time.",
+            "MODAL_HELP_TROUBLE_ACCESSING": "Trouble accessing your account?",
+            "MODAL_HELP_DONT_HESITATE": "Please don’t hesitate to contact our Customer Service Department.",
+            "CALL_US": "Call Us",
+            "EMAIL_US": "Email Us",
         }
     }];
 }

@@ -13,13 +13,24 @@ hr {
     border:                                 solid thin $global-hr-color;
 }
 
+a,
+button {
+    @include transition(1s);
+}
+
+
+input[type="text"]:focus,
+textarea:focus {
+    outline:                               0;
+    box-shadow:                            none;
+}
 
 *:focus,
-.form-control:focus,
-input:focus,
+.form-control:focus:not(input[type="text"]),
+input[type="submit"]:focus, input:focus,
 textarea:focus {
-    outline:                                none;
-    box-shadow:                             none;
+    outline:                               0;
+    box-shadow:                            none;
 }
 
 .bold,
@@ -33,6 +44,16 @@ textarea:focus {
 
 .center-margin {
     margin:                                 auto;
+}
+
+.grid-modal-footer {
+    display:                                grid;
+    grid-template-columns:                  2fr 9fr 1fr;
+}
+
+.logo {
+    max-width:                              350px;
+    width:                                  100%;
 }
 
 .mapfre-content {
@@ -59,16 +80,16 @@ textarea:focus {
 }
 
 .uppercase {
-    text-transform: uppercase;
+    text-transform:                         uppercase;
     span {
-        text-transform: uppercase;
+        text-transform:                     uppercase;
     }
 }
 
 // ---- class overrides ----
 .container {
     @include media-breakpoint-down(xxs) {
-        padding: 0;
+        padding:                            0;
     }
 }
 .navbar {
@@ -78,3 +99,6 @@ textarea:focus {
     background-color:                       $global-red-override; 
 }
 
+.modal-backdrop { //temp solution
+    z-index: 1028;
+}

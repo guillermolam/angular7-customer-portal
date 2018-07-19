@@ -6,11 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./mapfre-link.component.scss']
 })
 export class MapfreLinkComponent implements OnInit {
-  @Input() icon: boolean;
-  @Input() additionalClasses: string;
-  @Input() iconClasses: string;
-  @Input() target: string;
-  @Input() url: string;
+  @Input() additionalClasses:                 string;
+  @Input() icon:                              boolean;
+  @Input() iconClasses:                       string;
+  @Input() target:                            string;
+  @Input() url:                               string;
 
   constructor() { }
 

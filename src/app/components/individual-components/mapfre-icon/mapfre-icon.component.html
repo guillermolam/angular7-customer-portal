@@ -2,15 +2,19 @@
     <i class="{{iconClasses}} fa-2x"></i>
     <span class="sr-only sr-only-focusable">{{ 'Title Icon' | translate }}</span>
 </div>
+
+<span *ngIf="!title && !password">
+    <i class="{{iconClasses}}"></i>
+    <span class="sr-only sr-only-focusable"><ng-content></ng-content></span>
+</span>
+
 <span *ngIf="password" 
-    class="mapfre icon-container" 
-    [ngClass]="{ 'password' : password }"
->
-    <a (click)="showPasswordFunction($event)" 
+    class="mapfre icon-container show-password" 
+    [ngClass]="{ 'password' : password, 'show': onFocusShowIcon  }">
+    <a  (click)="showPasswordFunction($event)" 
         [class.active]="passwordShow"
         class="label-icon" 
-        *ngIf="showIconsForPassword"
-    >
+        *ngIf="showIconsForPassword">
         <i class="fas" 
             [ngClass]="{'fa-eye-slash': !passwordShow, 'fa-eye': passwordShow}">
         </i>
@@ -20,14 +24,8 @@
 
     <a (click)="showPasswordFunction($event)"
         class="label-icon" 
-        *ngIf="!showIconsForPassword"
-    >
+        *ngIf="!showIconsForPassword">
         <span class="label-text" *ngIf="!passwordShow">{{ 'SHOW' | translate}}</span>
         <span class="label-text" *ngIf="passwordShow">{{ 'HIDE' | translate}}</span>
     </a>
 </span>
-<span *ngIf="!title && !password">
-    <i class="{{iconClasses}}"></i>
-    <span class="sr-only sr-only-focusable"><ng-content></ng-content></span>
-</span>
-

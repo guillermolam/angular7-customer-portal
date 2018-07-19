@@ -27,12 +27,12 @@ $login-hr-margin-bottom:        $padding-vertical *1.5;
 
 }
 
-.register-copy {
-    color:                      $login-register-copy-color;
-    font-size:                  $login-register-copy-size;
-}
-
 .hr-login {
     margin-top:                 $login-hr-margin-top;
     margin-bottom:              $login-hr-margin-bottom;
+}
+
+.register-copy {
+    color:                      $login-register-copy-color;
+    font-size:                  $login-register-copy-size;
 }

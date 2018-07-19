@@ -1,2 +1,14 @@
 @import "../../../../styles.scss";
 
+.navbar {
+    @include media-breakpoint-up(xxs) {
+        .logo {
+            max-width: 250px;
+        }
+    }
+    @include media-breakpoint-up(xs) {
+        .logo {
+            max-width: 250px;
+        }
+    }
+}
