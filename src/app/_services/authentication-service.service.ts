@@ -44,8 +44,8 @@ export class AuthenticationService {
 
   login(username: string, password: string): Observable<boolean> {
     console.log("Authentication Service POST to Login service");
-    return this.http
-      .post("/api/identity/users/login", JSON.stringify({ username, password }))
+    return this.http 
+      .get(`/auth/oauth/v2/token?grant_type=password&client_credentials&username=${username}&password=${password}&client_id=9e8881c6-9fd2-4113-8602-6affc18a6fdd&client_secret=01c5ebc0-8242-4025-b93d-0ad5e168b845&scope=oob`)
       .map((response: Response) => response.json())
       .map( (token) => {
         // login successful if there's a jwt token in the response
