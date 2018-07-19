@@ -1,6 +1,5 @@
-pipeline{
-	//agent { docker { image 'mdv-docdevl01:18444/jenkins-customer-portal-agent' } }
-	agent any 
+/*pipeline{
+	agent { docker { image 'mdv-docdevl01:18444/jenkins-customer-portal-agent' } }
 	  stages {
 
 		   // cloning code into the container
@@ -45,6 +44,20 @@ pipeline{
       //			}
 		//	}
 		}
-	}
+	}*/
 
+pipeline{
+
+agent any 
+stages {
+
+		   // cloning code into the container
+        stage('clone and setup gradle wrapper'){
+			steps{
+				docker --version;
+			}
+		}
+}
+
+}
 
