@@ -46,12 +46,12 @@ pipeline{
 			}
 		}
 
-		stage("Stop App"){
-			steps{
+		//stage("Stop App"){
+			//steps{
 					//sh 'docker stop ${JOB_NAME}'
 					//sh 'docker rm ${JOB_NAME}' 
-			}
-		}
+			//}
+		//}
 		stage("Run App"){
 			steps{
 					sh 'docker run -d --name ${JOB_NAME} -p 80:80 mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
