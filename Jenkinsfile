@@ -42,6 +42,7 @@ pipeline{
 
 			steps{
 					sh 'docker tag customer-portal:${BUILD_NUMBER} mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
+					sh 'docker push mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
 					sh 'docker rmi customer-portal:${BUILD_NUMBER}'
 			}
 		}
@@ -57,13 +58,7 @@ pipeline{
 					sh 'docker run -d --name customer-portal -p 80:80 mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
 			}
 		}
-       //stage("Deploy to AWS EC2"){
-	   //		steps {
-	   //		sh "cp ../../ssh.sh ."
-	   //		sh "bash ssh.sh"
-      //			}
-		//	}
-		}
 	}
+}
 
 
