@@ -15,7 +15,8 @@ pipeline{
 		  //Installing the dependencies need to carryout the subsequent stages
 		   stage("Install dependencies"){
 			steps{
-				sh "npm install && npm i -g @angular/core@^2.3.1 && npm i -g @angular/common@^2.0.0 && npm i -g @angular/compiler@^2.3.1 && npm i -g typescript"
+				//sh "npm install && npm i -g @angular/core@^2.3.1 && npm i -g @angular/common@^2.0.0 && npm i -g @angular/compiler@^2.3.1 && npm i -g typescript"
+				sh "npm install"
 			}
 		}
 		stage("Static Analysis") {
@@ -26,7 +27,7 @@ pipeline{
 		}
 		 stage("Create build"){
 			steps{
-				sh "npm run build"
+				sh "npm build"
 			}
 		}
 
