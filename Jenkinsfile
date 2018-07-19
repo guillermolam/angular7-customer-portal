@@ -1,9 +1,9 @@
 pipeline{
-	agent { docker { image 'mdv-docdevl01:18444/jenkins-customer-portal-agent' } }
+	agent any
 	  stages {
 
 		   // cloning code into the container
-        stage('clone and setup gradle wrapper'){
+        stage('Clone the latest code'){
          environment {
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
             }
@@ -15,7 +15,8 @@ pipeline{
 		  //Installing the dependencies need to carryout the subsequent stages
 		   stage("Install dependencies"){
 			steps{
-				sh "npm install && npm i -g @angular/core@^2.3.1 && npm i -g @angular/common@^2.0.0 && npm i -g @angular/compiler@^2.3.1 && npm i -g typescript"
+				//sh "npm reinstall node-sass"
+				sh "npm install"
 			}
 		}
 		stage("Static Analysis") {
@@ -27,6 +28,33 @@ pipeline{
 		 stage("Create build"){
 			steps{
 				sh "npm run build"
+			}
+		}
+
+		stage("Create Docker Image"){
+
+			steps{
+					sh 'docker build -t customer-portal:${BUILD_NUMBER} .'
+			}
+		}
+
+		stage("Publish Docker Image"){
+
+			steps{
+					sh 'docker tag customer-portal:${BUILD_NUMBER} mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
+					sh 'docker rmi customer-portal:${BUILD_NUMBER}'
+			}
+		}
+
+		stage("Stop App"){
+			steps{
+					sh 'docker stop customer-portal'
+					sh 'docker rm customer-portal' 
+			}
+		}
+		stage("Run App"){
+			steps{
+					sh 'docker run -d --name customer-portal -p 80:80 mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
 			}
 		}
        //stage("Deploy to AWS EC2"){

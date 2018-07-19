@@ -1,0 +1,13 @@
+pipeline{
+	agent any
+	  stages {
+		// docker build
+        stage('build docker images'){
+         steps{
+             sh 'docker build -t customer-portal .'
+            }
+        }
+      }	
+}
+
+
