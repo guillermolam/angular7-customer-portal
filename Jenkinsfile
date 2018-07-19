@@ -48,8 +48,8 @@ pipeline{
 
 		stage("Stop App"){
 			steps{
-					sh 'docker stop ${JOB_NAME}'
-					sh 'docker rm ${JOB_NAME}' 
+					//sh 'docker stop ${JOB_NAME}'
+					//sh 'docker rm ${JOB_NAME}' 
 			}
 		}
 		stage("Run App"){
