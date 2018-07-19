@@ -6,6 +6,7 @@ pipeline{
         stage('clone and setup gradle wrapper'){
          environment {
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
+				def app-name = "${JOB_NAME}"
             }
             //removing old code if there is any, initializing new local repo and cloning into it.
             steps{
@@ -15,7 +16,7 @@ pipeline{
 		  //Installing the dependencies need to carryout the subsequent stages
 		   stage("Install dependencies"){
 			steps{
-				//sh "npm install && npm i -g @angular/core@^2.3.1 && npm i -g @angular/common@^2.0.0 && npm i -g @angular/compiler@^2.3.1 && npm i -g typescript"
+				//sh "npm reinstall node-sass"
 				sh "npm install"
 			}
 		}
@@ -32,6 +33,13 @@ pipeline{
 		}
 
 		stage("Create Docker Image"){
+
+			steps{
+					sh 'docker build -t customer-portal .'
+			}
+		}
+
+		stage("Run App"){
 			steps{
 					sh 'docker build -t customer-portal .'
 			}
