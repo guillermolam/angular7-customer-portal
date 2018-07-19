@@ -7,20 +7,20 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ['./mapfre-button.component.scss']
 })
 export class MapfreButtonComponent implements OnInit {
-  @Input() additionalClasses:       string = 'btn-info';
-  @Input() buttonCopy:              string;
-  @Input() disabledValue:           boolean;
-  @Input() iconClasses:             string;
-  @Input() inputType:               string;
-  @Input() modalId:                 string;
-  @Input() modalFunctionId:         string;
-  @Input() screenReader:            boolean = false;
-  @Input() showIcons:               boolean = false;
-  @Input() translateValue:          string;
+  @Input() additionalClasses:                   string = 'btn-info';
+  @Input() buttonCopy:                          string;
+  @Input() disabledValue:                       boolean;
+  @Input() iconClasses:                         string;
+  @Input() inputType:                           string;
+  @Input() modalId:                             string;
+  @Input() modalFunctionId:                     string;
+  @Input() screenReader:                        boolean = false;
+  @Input() showIcons:                           boolean = false;
+  @Input() translateValue:                      string;
 
   constructor(
-    private activeRoute:            ActivatedRoute,
-    private router:                 Router,
+    private activeRoute:                        ActivatedRoute,
+    private router:                             Router,
   ) {}
 
   public moreCSSClasses(classes: string): boolean{

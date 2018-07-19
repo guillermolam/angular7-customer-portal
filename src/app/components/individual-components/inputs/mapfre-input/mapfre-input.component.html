@@ -4,23 +4,23 @@
 <div [ngSwitch]="isThisRequired">
   <input 
     class="form-control {{additionalClasses}}" 
-    type="{{inputType}}"
-    id="{{inputName}}" 
-    name="{{inputName}}" 
-    mdbInputDirective
-    *ngSwitchCase="false"
-    placeholder="no"
-    [formControlName]="controlInput()"
-  />
-  <input class="form-control {{additionalClasses}}" 
-    type="{{inputType}}"
     id="{{inputName}}" 
     name="{{inputName}}"
+    placeholder="no" 
+    type="{{inputType}}"
+    [formControlName]="controlInput()"
+    mdbInputDirective
+    *ngSwitchCase="false"
+  />
+  <input class="form-control {{additionalClasses}}" 
+    id="{{inputName}}" 
+    name="{{inputName}}"
+    placeholder="yes"
+    type="{{inputType}}"
     mdbInputDirective
     required
-    *ngSwitchCase="true"
-    placeholder="yes"
     [formControlName]="controlInput()"
+    *ngSwitchCase="true"
   />
 </div>
 <mapfre-label forInput="{{inputName}}"><ng-content></ng-content></mapfre-label>

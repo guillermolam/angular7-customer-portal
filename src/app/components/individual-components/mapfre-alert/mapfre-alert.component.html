@@ -23,10 +23,7 @@
 
 <div *ngIf="nonDynamic">
   <div *ngFor="let alertTypeObject of alertTypeObjects">
-    <div 
-      class="mapfre alert {{alertTypeObject.className}}" 
-      
-    >
+    <div class="mapfre alert {{alertTypeObject.className}}">
       <div class="content row">
         <div class="col-2">
             <mapfre-icon iconClasses="{{alertTypeObject.iconClass}}"></mapfre-icon>

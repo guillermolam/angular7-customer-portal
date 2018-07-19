@@ -6,13 +6,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./mapfre-icon.component.scss']
 })
 export class MapfreIconComponent implements OnInit {
-  @Input() iconClasses:           string;
-  @Input() title:                 boolean = false;
-  @Input() password:              boolean;
-  @Input() passwordShow:          boolean = false;
-  @Input() onFocusShowIcon:       boolean = false;
-  @Input() showIconsForPassword:  boolean;
-           screenReaderText:      string = 'SHOW_PASSWORD';
+  @Input() iconClasses:                       string;
+  @Input() title:                             boolean = false;
+  @Input() password:                          boolean;
+  @Input() passwordShow:                      boolean = false;
+  @Input() onFocusShowIcon:                   boolean = false;
+  @Input() showIconsForPassword:              boolean;
+           screenReaderText:                  string = 'SHOW_PASSWORD';
   
   @Output() onClickShowPassword = new EventEmitter<boolean>();
 
