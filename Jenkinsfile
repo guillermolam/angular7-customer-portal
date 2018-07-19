@@ -1,5 +1,5 @@
 pipeline{
-	agent { docker { image 'mdv-docdevl01:18444/jenkins-customer-portal-agent' } }
+	agent any
 	  stages {
 
 		   // cloning code into the container
@@ -32,7 +32,7 @@ pipeline{
 
 		stage("Create Docker Image"){
 			steps{
-					sh 'docker --version'
+					sh 'docker build -t customer-portal .'
 			}
 		}
        //stage("Deploy to AWS EC2"){
