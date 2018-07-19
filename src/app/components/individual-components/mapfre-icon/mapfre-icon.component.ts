@@ -10,15 +10,15 @@ export class MapfreIconComponent implements OnInit {
   @Input() title:                 boolean = false;
   @Input() password:              boolean;
   @Input() passwordShow:          boolean = false;
+  @Input() onFocusShowIcon:       boolean = false;
   @Input() showIconsForPassword:  boolean;
-          screenReaderText:       string = 'SHOW_PASSWORD';
+           screenReaderText:      string = 'SHOW_PASSWORD';
   
   @Output() onClickShowPassword = new EventEmitter<boolean>();
 
   showPasswordFunction(event): void {
     this.passwordShow = !this.passwordShow;
     this.onClickShowPassword.emit(this.passwordShow);
-    this.screenReaderText = this.passwordShow ? 'HIDE_PASSWORD' : 'SHOW_PASSWORD'; 
   }
   
   constructor() { }

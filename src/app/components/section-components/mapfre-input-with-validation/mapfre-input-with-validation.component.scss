@@ -1,41 +1,69 @@
 @import "../../../../styles.scss";
-$mapfre-validation-error-color:            $mapfre-red;
-$mapfre-validation-valid-color:            $mapfre-green;
+$mapfre-validation-error-color:             $mapfre-red;
+$mapfre-validation-info-color:              $mapfre-blue;
+$mapfre-validation-valid-color:             $mapfre-green;
+
+$mapfre-validation-info-padding-left:       $default-margin-padding;
+$mapfre-validation-info-font-size:          0.7rem;
 /* 
     ----- Information -----
     The Input styles are in the global-component folder in assets/scss/_global-components/_inputs.scss. 
     This is due to the use of multiple components being used for this particular section. 
 
 */
-.mapfre-validation-rules {
-    height:                         auto;
+input:focus, .form-control:focus { /* this is temporary */
+    outline: 0;
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 
-.hide-validation {
-    display:                        none;
-    @include                        transition(5s);
+.error-block {
+    color:                                  $mapfre-validation-error-color;
 }
 
-.show-validation {
-    display:                        block;
-    @include                        transition(5s);
-}
-
-.error {
-    color:                          $mapfre-validation-error-color;
-}
-
-.valid {
-    color:                          $mapfre-validation-valid-color;
-    @include transition(1s);
-    i {
-        &:before {
-            content:                '\f058';
-            font-family:            FontAwesome;
-        }
+.help-block {
+    font-size:                              $mapfre-validation-info-font-size;
+    height:                                 20px;
+    padding-left:                           $mapfre-validation-info-padding-left;
+    padding-top:                            $mapfre-validation-info-padding-left/2;
+    position:                               relative;
+    
+    span {
+        position:                           absolute;
     }
 }
 
+.hide-validation {
+    display:                                none;
+    @include transition(5s);
+}
+
+.info-block {
+    color:                                  $mapfre-validation-info-color;
+}    
+
+.mapfre-validation-rules {
+    height:                                 auto;
+}
+
 .password-input {
-    padding-top:                    14px;
+    padding-top:                            14px;
+}
+
+.show-validation {
+    display:                                block;
+    @include transition(5s);
+}
+
+.valid {
+    color:                                  $mapfre-validation-valid-color;
+    @include transition(1s);
+
+    i {
+        &:before {
+            content:                        '\f058';
+            font-family:                    FontAwesome;
+        }
+    }
 }

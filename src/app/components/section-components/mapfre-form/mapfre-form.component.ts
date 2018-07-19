@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MapfreFormComponent implements OnInit {
   @Input() formName:        any;
   @Input() submitFunction:  any;
-  validForm:                any;
+           validForm:       any;
 
   constructor() { }
 

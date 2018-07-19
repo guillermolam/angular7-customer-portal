@@ -1,0 +1,42 @@
+{
+    "short_name":   "Mapfre Dashboard",
+    "name":         "Mapfre Insurance Customer Portal",
+    "icons": [
+        {
+            "src": "src/assets/img/favicon/android/mdpi/ic_launcher_APP.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "src/assets/img/favicon/android/hdpi/ic_launcher_APP.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "src/assets/img/favicon/android/xhdpi/ic_launcher_APP.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "src/assets/img/favicon/android/xxhdpi/ic_launcher_APP.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "src/assets/img/favicon/android/xxxhdpi/ic_launcher_APP.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "src/assets/img/favicon/android/play/ic_launcher_APP.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/login",
+    "background_color": "#C4C4C4",
+    "display": "standalone",
+    "scope": "/login/",
+    "theme_color": "#C4C4C4"
+}
+
