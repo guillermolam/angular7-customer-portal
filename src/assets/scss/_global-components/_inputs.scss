@@ -75,38 +75,8 @@ $input-inactive-color:                      $mapfre-lite-gray;
     }
 
     .counter-danger { //overriding  mdn 
-        border-bottom: 2px solid #F44336 !important;
-        box-shadow: none !important;
+        border-bottom:                      2px solid #F44336 !important;
+        box-shadow:                         none !important;
     }
 }
 
-.btn-icon {
-	background: transparent;
-	border: none;
-	border-radius: 50%;
-	box-shadow: none;
-	color: $white;
-	height: 40px;
-	padding-left: 6px;
-	padding-top: 7px;
-	position: relative;
-	width: 40px;
-	@include transition(1s);
-	
-	i {
-		&.large-icons {
-			font-size: $font-size-base *2;
-		}
-		&.small-icons {
-			font-size: $font-size-base;
-			position: absolute;
-			top: 10px;
-			left: 10px;
-		}	
-	}
-
-	&:hover {
-		background: rgba(0,0,0,0.3);
-		box-shadow: none;
-	}
-}
