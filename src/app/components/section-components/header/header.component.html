@@ -6,7 +6,53 @@
         </a>
     </div>
     <div class="navbar-nav nav-flex-icons">
-        <mapfre-modal-help></mapfre-modal-help>
-      </div>
+      <mapfre-modal [modalOptions]="headerHelpModalOptions">
+        <div class="modal-body">
+          <hr class="header" />
+          <div>
+            {{ 'MODAL_HELP_CUSTOMER_PORTAL' | translate }}
+          </div>
+          <hr class="body" />
+          <div class="modal-strong">
+            {{ 'MODAL_HELP_TROUBLE_ACCESSING' | translate }}
+          </div>
+          <div class="modal-small">
+            {{ 'MODAL_HELP_DONT_HESITATE' | translate }}
+          </div>
+        </div>
+        <a href="tel:8844993403" class="grid-modal-footer modal-footer">
+          <div>
+            <i class="fas fa-phone"></i>
+          </div>
+          <div>
+            <div>
+            {{ 'CALL_US' | translate }}
+            </div>
+            <div class="info">
+            884.499.3403
+            </div>
+          </div>
+          <div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </a> 
+        <a href="mailto:consumerportal@mapfreusa.com" class="grid-modal-footer modal-footer">
+          <div>
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <div>
+            {{ 'EMAIL_US' | translate }}
+            </div>
+            <div class="info">
+            consumerportal@mapfreusa.com
+            </div>
+          </div>
+          <div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </a> 
+      </mapfre-modal>
+    </div>
   </div>
 </nav>

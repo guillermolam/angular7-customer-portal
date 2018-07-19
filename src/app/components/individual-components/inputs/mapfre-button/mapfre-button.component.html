@@ -1,4 +1,4 @@
-<div [ngSwitch]="inputType">
+<span [ngSwitch]="inputType">
 	<button 
 		class="btn mapfre {{additionalClasses}}"
 		[disabled]="!isFormValid()" 
@@ -41,4 +41,4 @@
 		mdbWavesEffect>
 		<ng-content></ng-content>
 	</button>
-</div>
+</span>
