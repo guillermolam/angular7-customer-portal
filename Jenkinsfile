@@ -35,13 +35,13 @@ pipeline{
 		stage("Create Docker Image"){
 
 			steps{
-					sh 'docker build -t customer-portal .'
+					sh 'docker build -t ${app-name} .'
 			}
 		}
 
 		stage("Run App"){
 			steps{
-					sh 'docker build -t customer-portal .'
+					sh 'docker build -t ${app-name} .'
 			}
 		}
        //stage("Deploy to AWS EC2"){
