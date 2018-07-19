@@ -29,6 +29,14 @@ pipeline{
 				sh "npm run build"
 			}
 		}
+
+		stage("Create Docker Image"){
+			steps{
+				script{
+					def uiImage =  docker.build("${JOB_NAME}:${BUILD_NUMBER}")
+				}
+			}
+		}
        //stage("Deploy to AWS EC2"){
 	   //		steps {
 	   //		sh "cp ../../ssh.sh ."
