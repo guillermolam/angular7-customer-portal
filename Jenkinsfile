@@ -3,7 +3,7 @@ pipeline{
 	  stages {
 
 		   // cloning code into the container
-        stage('clone and setup gradle wrapper'){
+        stage('Clone the latest code'){
          environment {
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
             }
