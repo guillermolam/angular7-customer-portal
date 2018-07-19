@@ -46,12 +46,12 @@ pipeline{
 			}
 		}
 
-		//stage("Stop App"){
-			//steps{
-					//sh 'docker stop customer-portal'
-					//sh 'docker rm customer-portal' 
-			//}
-		//}
+		stage("Stop App"){
+			steps{
+					sh 'docker stop customer-portal'
+					sh 'docker rm customer-portal' 
+			}
+		}
 		stage("Run App"){
 			steps{
 					sh 'docker run -d --name customer-portal -p 80:80 mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
