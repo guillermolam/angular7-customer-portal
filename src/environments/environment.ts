@@ -5,9 +5,11 @@
 
 export const environment = {
   production: false,
-  backend_server_url: 'http://localhost:8084'
+<<<<<<< HEAD
+=======
+  //backend_server_url: 'http://localhost:8084'
   //backend_server_url: 'http://mdv-docdevl01:8081'
-  //backend_server_url: 'https://dev.mapfreapis.com:8443',
+>>>>>>> 6d21a1000acb2b120de7a775fc62415d2ea49ff1
+  backend_server_url: 'https://dev.mapfreapis.com:8443',
 };
 
-//https://dev.mapfreapis.com:8443/auth/oauth/v2/token?grant_type=password&client_credentials&username=testoauth&password=Abcd!234&client_id=9e8881c6-9fd2-4113-8602-6affc18a6fdd&client_secret=01c5ebc0-8242-4025-b93d-0ad5e168b845&scope=oob

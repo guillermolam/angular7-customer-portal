@@ -1,0 +1,41 @@
+$global-modal-small-color:          $lite-gray;
+$global-modal-small-font-size:      $font-size-base * 0.86;
+$global-modal-small-padding-top:    $default-margin-padding *2;
+$global-modal-small-padding-bottom: $default-margin-padding;
+
+.modal-small {
+	color:                          $global-modal-small-color;
+	font-size:                      $global-modal-small-font-size;
+	padding-top:                    $global-modal-small-padding-top;
+	padding-bottom:                 $global-modal-small-padding-bottom;
+	font-weight:                    100;
+}
+
+.modal-strong {
+	font-weight:                    700;
+}
+
+a.grid-modal-footer {
+    color: $mapfre-blue;
+    font-size: 1rem;
+    font-weight: 700;
+
+    .fas {
+        font-size: 24px;
+    }
+
+    .fa-chevron-right {
+        font-size: 1rem;
+    }
+
+    .info {
+        color: $lite-gray;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    &:hover {
+        text-decoration: none;
+        background: rgba(0, 0, 0, 0.1);
+    }
+}
