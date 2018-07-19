@@ -29,13 +29,6 @@ pipeline{
 				sh "npm run build"
 			}
 		}
-		stage("SonarQube analysis") {
-         node {
-             withSonarQubeEnv('SonarQube Server') {
-                   sh './gradlew --info sonarqube'
-               }
-           }
-       }
        //stage("Deploy to AWS EC2"){
 	   //		steps {
 	   //		sh "cp ../../ssh.sh ."
