@@ -68,9 +68,9 @@ import { MapfreNotificationsComponent }       from './components/individual-comp
 import { HelpComponent }                      from './components/static-modals/help/help.component';
 import { MapfreModalComponent }               from './components/section-components/mapfre-modal/mapfre-modal.component';
 
-import { ForgotPasswordConfirmationComponent } from   './components/confirmations/forgot-password/forgot-password.component';            
-import { ForgotPasswordSetConfirmationComponent } from            './components/confirmations/forgot-password-set/forgot-password-set.component';
-import { MapfreLoadingComponent }              from  './components/individual-components/mapfre-loading/mapfre-loading.component';       
+import { ForgotPasswordConfirmationComponent } from  './components/confirmations/forgot-password/forgot-password.component';            
+import { ForgotPasswordSetConfirmationComponent } from './components/confirmations/forgot-password-set/forgot-password-set.component';
+import { MapfreLoadingComponent }              from './components/individual-components/mapfre-loading/mapfre-loading.component';       
 import { MapfreTooltipComponent }              from './components/individual-components/mapfre-tooltip/mapfre-tooltip.component';       
 import { MapfreDropdownComponent }             from './components/section-components/mapfre-dropdown/mapfre-dropdown.component'; 
 
