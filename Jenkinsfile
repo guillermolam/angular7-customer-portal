@@ -35,7 +35,7 @@ pipeline{
 		stage("Create Docker Image"){
 
 			steps{
-					sh 'docker build -t ${JOB_NAME}:${BUILD_NUMBER} .'
+					sh 'docker build -t ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER} .'
 			}
 		}
 
@@ -44,22 +44,20 @@ pipeline{
 				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
 			steps{
-					sh 'docker tag ${JOB_NAME}:${BUILD_NUMBER} mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
-					sh 'docker login --username $DOCKER_NEXUS_CREDS_USR --password $DOCKER_NEXUS_CREDS_PSW mdv-docdevl01:18444'
-					sh 'docker push mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
-					sh 'docker rmi ${JOB_NAME}:${BUILD_NUMBER}'
+					sh 'docker login --username $DOCKER_NEXUS_CREDS_USR --password $DOCKER_NEXUS_CREDS_PSW ${NEXUS_REPO_URL}'
+					sh 'docker push ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
+					sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
 
-		stage("Stop App"){
+		stage("Stop and remove the old Container"){
 			steps{
-					sh 'docker stop customer-portal'
-					sh 'docker rm customer-portal' 
+					sh 'docker stop ${CUSTOMER_PORTAL_APP_NAME} || true && docker rm ${CUSTOMER_PORTAL_APP_NAME} || true'
 			}
 		}
 		stage("Run App"){
 			steps{
-					sh 'docker run -d --name customer-portal -p 80:80 mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
+					sh 'docker run -d --name ${CUSTOMER_PORTAL_APP_NAME} -p 80:80 ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
 	}
