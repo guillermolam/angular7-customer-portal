@@ -6,7 +6,6 @@ pipeline{
         stage('Clone the latest code'){
          environment {
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
-				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
             //removing old code if there is any, initializing new local repo and cloning into it.
             steps{
@@ -44,6 +43,7 @@ pipeline{
 				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
 			steps{
+					// login into nexus docker, push the image to nexus and remove from local.
 					sh 'docker login --username $DOCKER_NEXUS_CREDS_USR --password $DOCKER_NEXUS_CREDS_PSW ${NEXUS_REPO_URL}'
 					sh 'docker push ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
 					sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
