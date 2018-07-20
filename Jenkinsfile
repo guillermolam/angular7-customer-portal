@@ -51,6 +51,9 @@ pipeline{
 		}
 
 		stage("Stop and remove the old Container"){
+			environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
 			steps{
 					// Stopping the old app, removing the container as well as the image
 					sh 'docker stop ${CUSTOMER_PORTAL_APP_NAME} || true && docker rm ${CUSTOMER_PORTAL_APP_NAME} || true && docker rmi $(docker images |grep ${NEXUS_REPO_URL}/${JOB_NAME}) || true'
