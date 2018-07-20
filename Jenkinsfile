@@ -52,11 +52,13 @@ pipeline{
 
 		stage("Stop and remove the old Container"){
 			steps{
-					sh 'docker stop ${CUSTOMER_PORTAL_APP_NAME} || true && docker rm ${CUSTOMER_PORTAL_APP_NAME} || true'
+					// Stopping the old app, removing the container as well as the image
+					sh 'docker stop ${CUSTOMER_PORTAL_APP_NAME} || true && docker rm ${CUSTOMER_PORTAL_APP_NAME} || true && docker rmi $(docker images |grep ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}) || true'
 			}
 		}
 		stage("Run App"){
 			steps{
+					// Running the app with the new image
 					sh 'docker run -d --name ${CUSTOMER_PORTAL_APP_NAME} -p 80:80 ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
