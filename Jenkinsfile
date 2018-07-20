@@ -40,7 +40,9 @@ pipeline{
 		}
 
 		stage("Publish Docker Image"){
-
+			 environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
 			steps{
 					sh 'docker tag ${JOB_NAME}:${BUILD_NUMBER} mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
 					sh 'docker login --username $DOCKER_NEXUS_CREDS_USR --password $DOCKER_NEXUS_CREDS_PSW mdv-docdevl01:18444'
