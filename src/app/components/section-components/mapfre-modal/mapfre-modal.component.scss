@@ -1,27 +1,27 @@
 @import "../../../../styles.scss";
 
-$mapfre-modal-link-color:                 $mapfre-blue;
-$mapfre-modal-link-font-size:             $font-size-base;
-$mapfre-modal-info-color:                 $lite-gray;
-$mapfre-modal-info-font-size:             $font-size-base * 0.5;
+$mapfre-modal-link-color:                 					$mapfre-blue;
+$mapfre-modal-link-font-size:             					$font-size-base;
+$mapfre-modal-info-color:                 					$lite-gray;
+$mapfre-modal-info-font-size:             					$font-size-base * 0.5;
 
-$mapfre-modal-close-font-size:						56px;
-$mapfre-modal-body-font-size:							1rem;
-$mapfre-modal-title-color: 								$mapfre-blue;
-$mapfre-modal-grid-color: 								#737373;
+$mapfre-modal-close-font-size:								56px;
+$mapfre-modal-body-font-size:								1rem;
+$mapfre-modal-title-color: 									$mapfre-blue;
+$mapfre-modal-grid-color: 								  #737373;
 
-$mapfre-modal-grid-font-size: 						1rem;
-$mapfre-modal-grid-font-weight:				 		700;
+$mapfre-modal-grid-font-size: 								1rem;
+$mapfre-modal-grid-font-weight:				 				700;
 
 .close {
-	font-size: 															$mapfre-modal-clode-font-size;
-	font-weight: 														100;
-	margin-top: 														-33px !important;
-	text-shadow: 														none !important;
+	font-size: 												$mapfre-modal-close-font-size;
+	font-weight: 											100;
+	margin-top: 											-33px !important;
+	text-shadow: 											none !important;
 }
 
 .modal-body {
-	font-size: 															$mapfre-modal-body-font-size;  
+	font-size: 												$mapfre-modal-body-font-size;  
 }
 
 .modal-content {
@@ -29,30 +29,30 @@ $mapfre-modal-grid-font-weight:				 		700;
 }
 
 .modal-footer {
-  justify-content: 												flex-start;
+  justify-content: 											flex-start;
 }
 
 .modal-header {
-	border-bottom: 													none;
-	padding-bottom: 												0
+	border-bottom: 											none;
+	padding-bottom: 										0
 }
 
 .modal-title {
 	color: #737373;
-	text-transform: 											uppercase;
+	text-transform: 										uppercase;
 }
 
 a.grid-modal-footer {
-	color: 																$mapfre-modal-grid-color; 
-	font-size: 														$mapfre-modal-grid-font-size; 
-	font-weight: 													$mapfre-modal-grid-font-weight; 
+	color: 													$mapfre-modal-grid-color; 
+	font-size: 												$mapfre-modal-grid-font-size; 
+	font-weight: 											$mapfre-modal-grid-font-weight; 
 
 	.fas {
-			font-size: 												24px;
+			font-size: 										24px;
 	}
 
 	.fa-chevron-right {
-			font-size: 												1rem;
+			font-size: 										1rem;
 	}
 
 	.info {
