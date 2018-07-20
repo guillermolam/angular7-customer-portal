@@ -6,6 +6,7 @@ pipeline{
         stage('Clone the latest code'){
          environment {
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
+				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
             //removing old code if there is any, initializing new local repo and cloning into it.
             steps{
@@ -34,16 +35,17 @@ pipeline{
 		stage("Create Docker Image"){
 
 			steps{
-					sh 'docker build -t customer-portal:${BUILD_NUMBER} .'
+					sh 'docker build -t ${JOB_NAME}:${BUILD_NUMBER} .'
 			}
 		}
 
 		stage("Publish Docker Image"){
 
 			steps{
-					sh 'docker tag customer-portal:${BUILD_NUMBER} mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
-					sh 'docker push mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
-					sh 'docker rmi customer-portal:${BUILD_NUMBER}'
+					sh 'docker tag ${JOB_NAME}:${BUILD_NUMBER} mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
+					sh 'docker login --username $DOCKER_NEXUS_CREDS --password $DOCKER_NEXUS_PSW mdv-docdevl01:18444'
+					sh 'docker push mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
+					sh 'docker rmi ${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
 
@@ -55,7 +57,7 @@ pipeline{
 		}
 		stage("Run App"){
 			steps{
-					sh 'docker run -d --name customer-portal -p 80:80 mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
+					sh 'docker run -d --name customer-portal -p 80:80 mdv-docdevl01:18444/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
 	}
