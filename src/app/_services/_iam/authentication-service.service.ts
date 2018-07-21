@@ -22,7 +22,6 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-
   login(username: string, password: string): Observable<any> {
     const url = environment.api_gateway_url + "/auth/oauth/v2/token";
     const body = {}; 
