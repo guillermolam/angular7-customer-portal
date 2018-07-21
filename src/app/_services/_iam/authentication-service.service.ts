@@ -24,9 +24,10 @@ export class AuthenticationService {
 
 
   login(username: string, password: string): Observable<any> {
-    console.log("Authentication Service POST to Login service");
+    console.log("hola");
     const url = environment.api_gateway_url + "/auth/oauth/v2/token";
     const body = {}; 
+    //return this.http.post("https://dev.mapfreapis.com:8443/mapfre/samples/oauth/v1/", body);
     return this.http
       .post(url, body,
       {
@@ -42,14 +43,15 @@ export class AuthenticationService {
           "Content-Type": "application/x-www-form-urlencoded"
         }
       })
-      .map((response: Response) => response.json())
-      .map( (token) => {
+      //.map((response: Response) => response.json() )
+      .map( (access_token) => {
+        console.log(access_token);
         // login successful if there's a jwt token in the response
-        if (token) {
+        if (access_token) {
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem(
             "currentUser",
-            JSON.stringify({ username, token })
+            JSON.stringify({ username, access_token })
           );
           // return true to indicate successful login
           return true;
