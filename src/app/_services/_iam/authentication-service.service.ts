@@ -24,10 +24,8 @@ export class AuthenticationService {
 
 
   login(username: string, password: string): Observable<any> {
-    console.log("hola");
     const url = environment.api_gateway_url + "/auth/oauth/v2/token";
     const body = {}; 
-    //return this.http.post("https://dev.mapfreapis.com:8443/mapfre/samples/oauth/v1/", body);
     return this.http
       .post(url, body,
       {
