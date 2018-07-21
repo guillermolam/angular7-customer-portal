@@ -22,7 +22,7 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<boolean> {
     const url = environment.api_gateway_url + "/auth/oauth/v2/token";
     const body = {}; 
     return this.http
@@ -40,7 +40,6 @@ export class AuthenticationService {
           "Content-Type": "application/x-www-form-urlencoded"
         }
       })
-      //.map((response: Response) => response.json() )
       .map( (access_token) => {
         console.log(access_token);
         // login successful if there's a jwt token in the response
