@@ -48,7 +48,7 @@ export class AuthenticationService {
       .post("/auth/oauth/v2/token",
       {
         params : {
-          grant_type: 'password&client_credentials',
+          grant_type: 'password',
           username: 'testoauth',
           password: 'Abcd!234',
           client_id:'9e8881c6-9fd2-4113-8602-6affc18a6fdd',
