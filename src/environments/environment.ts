@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `.angular.json`.
 
 export const environment = {
-  backend_server_url: 'https://mapfreapis.com:8443',
-  envName: 'prod',
-  production: true,
+  production: false,
+  api_gateway_url: 'https://dev.mapfreapis.com:8443',
+  backend_server_url: 'http://mdv-docdevl01:8081'
 };

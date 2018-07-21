@@ -1,9 +1,9 @@
 pipeline{
-	agent { docker { image 'mdv-docdevl01:18444/jenkins-customer-portal-agent' } }
+	agent any
 	  stages {
 
 		   // cloning code into the container
-        stage('clone and setup gradle wrapper'){
+        stage('Clone the latest code'){
          environment {
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
             }
@@ -15,7 +15,8 @@ pipeline{
 		  //Installing the dependencies need to carryout the subsequent stages
 		   stage("Install dependencies"){
 			steps{
-				sh "npm install && npm i -g @angular/core@^2.3.1 && npm i -g @angular/common@^2.0.0 && npm i -g @angular/compiler@^2.3.1 && npm i -g typescript"
+				//sh "npm reinstall node-sass"
+				sh "npm install"
 			}
 		}
 		stage("Static Analysis") {
@@ -29,13 +30,42 @@ pipeline{
 				sh "npm run build"
 			}
 		}
-       //stage("Deploy to AWS EC2"){
-	   //		steps {
-	   //		sh "cp ../../ssh.sh ."
-	   //		sh "bash ssh.sh"
-      //			}
-		//	}
+
+		stage("Create Docker Image"){
+
+			steps{
+					sh 'docker build -t ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER} .'
+			}
+		}
+
+		stage("Publish Docker Image"){
+			 environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
+			steps{
+					// login into nexus docker, push the image to nexus and remove from local.
+					sh 'docker login --username $DOCKER_NEXUS_CREDS_USR --password $DOCKER_NEXUS_CREDS_PSW ${NEXUS_REPO_URL}'
+					sh 'docker push ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
+					sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
+			}
+		}
+
+		stage("Stop and remove the old Container"){
+			environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
+			steps{
+					// Stopping the old app, removing the container as well as the image
+					sh 'docker stop ${CUSTOMER_PORTAL_APP_NAME} || true && docker rm ${CUSTOMER_PORTAL_APP_NAME} || true && docker rmi $(docker images |grep ${NEXUS_REPO_URL}/${JOB_NAME}) || true'
+			}
+		}
+		stage("Run App"){
+			steps{
+					// Running the app with the new image
+					sh 'docker run -d --name ${CUSTOMER_PORTAL_APP_NAME} -p 80:80 ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
+			}
 		}
 	}
+}
 
 
