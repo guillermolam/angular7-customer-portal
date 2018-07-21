@@ -34,36 +34,38 @@ pipeline{
 		stage("Create Docker Image"){
 
 			steps{
-					sh 'docker build -t customer-portal:${BUILD_NUMBER} .'
+					sh 'docker build -t ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER} .'
 			}
 		}
 
 		stage("Publish Docker Image"){
-
+			 environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
 			steps{
-					sh 'docker tag customer-portal:${BUILD_NUMBER} mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
-					sh 'docker rmi customer-portal:${BUILD_NUMBER}'
+					// login into nexus docker, push the image to nexus and remove from local.
+					sh 'docker login --username $DOCKER_NEXUS_CREDS_USR --password $DOCKER_NEXUS_CREDS_PSW ${NEXUS_REPO_URL}'
+					sh 'docker push ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
+					sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
 
-		stage("Stop App"){
+		stage("Stop and remove the old Container"){
+			environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
 			steps{
-					sh 'docker stop customer-portal'
-					sh 'docker rm customer-portal' 
+					// Stopping the old app, removing the container as well as the image
+					sh 'docker stop ${CUSTOMER_PORTAL_APP_NAME} || true && docker rm ${CUSTOMER_PORTAL_APP_NAME} || true && docker rmi $(docker images |grep ${NEXUS_REPO_URL}/${JOB_NAME}) || true'
 			}
 		}
 		stage("Run App"){
 			steps{
-					sh 'docker run -d --name customer-portal -p 80:80 mdv-docdevl01:18444/customer-portal:${BUILD_NUMBER}'
+					// Running the app with the new image
+					sh 'docker run -d --name ${CUSTOMER_PORTAL_APP_NAME} -p 80:80 ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
-       //stage("Deploy to AWS EC2"){
-	   //		steps {
-	   //		sh "cp ../../ssh.sh ."
-	   //		sh "bash ssh.sh"
-      //			}
-		//	}
-		}
 	}
+}
 
 

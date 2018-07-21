@@ -14,7 +14,7 @@ import { TestingComponent }           from "./routes/testing/testing.component";
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent, canActivate: [AuthGuard] },
-  { path: "dasboard", component: DashboardComponent},
+  { path: "dashboard", component: DashboardComponent},
   { path: "design-system", component: DesignSystemComponent },
   { path: "forgotpassword", component: ForgotPasswordComponent },
   { path: "forgotpassword/:temporaryPassword", component: CreateNewPasswordComponent },

@@ -63,7 +63,7 @@ export class SignupComponent implements OnInit {
   register() {
     this.loading = true;
     this.userData.updateUser(this.signUpForm.value);
-    return this.http.post(this.backend_server_url+"/api/users", this.user,{
+    return this.http.post(environment.backend_server_url+"/api/users", this.user,{
     headers: {
       "Content-Type": "application/json"
 

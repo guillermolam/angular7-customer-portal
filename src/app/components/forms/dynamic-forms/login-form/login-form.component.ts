@@ -97,18 +97,6 @@ export class LoginFormComponent implements OnInit {
     // reset login status
     this.authenticationService.logout();
 
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/" ;
-    this.http.get(
-      "/b2cwebapp/account/loginView?state=MA"
-    ).toPromise(
-    ).then((rsp) => {
-      console.log("responded");
-      console.log(rsp);
-    }).catch((err) => {
-      console.log("error");
-      console.log(err);
-    });
   }
 }
 
