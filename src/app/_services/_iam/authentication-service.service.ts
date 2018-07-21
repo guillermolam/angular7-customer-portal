@@ -23,11 +23,12 @@ export class AuthenticationService {
   }
 
 
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string): Observable<any> {
     console.log("Authentication Service POST to Login service");
+    const url = environment.api_gateway_url + "/auth/oauth/v2/token";
+    const body = {}; 
     return this.http
-      .post(
-        environment.api_gateway_url + "/auth/oauth/v2/token",
+      .post(url, body,
       {
         params : {
           grant_type: 'password',
