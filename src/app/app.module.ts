@@ -5,7 +5,6 @@ import { CookieService }                      from "angular2-cookie/services/coo
 import { FormsModule }                        from "@angular/forms";
 import { GooglePlaceModule }                  from "ngx-google-places-autocomplete";
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from "@angular/common/http";
-//import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MDBBootstrapModule }                 from "angular-bootstrap-md";
 
 import { MockBackend }                        from '@angular/http/testing';
@@ -19,7 +18,6 @@ import { Language }                           from "./app.language";
 import { RoutingModule }                      from "./app.routing";
 // ----- Helpers | Service | Guard ----- //
 //import { fakeBackendProvider }              from './_helpers/fake-backend';
-//import { AuthenticationService }            from './_services/authentication-service.service';
 import { AuthenticationService }              from './_services/_iam/authentication-service.service';
 import { AlertService }                       from "./_services/alert.service";
 import { AuthGuard }                          from "./_guards/auth.guard";
