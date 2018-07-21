@@ -15,7 +15,6 @@ import 'rxjs/add/operator/dematerialize';
 @Injectable()
 export class AuthenticationService {
   public token: string;
-  public backend_server_url = environment.backend_server_url;
 
   constructor(private http: HttpClient) {
     // set token if saved in local storage
@@ -27,9 +26,19 @@ export class AuthenticationService {
   login(username: string, password: string): Observable<boolean> {
     console.log("Authentication Service POST to Login service");
     return this.http
-      .post(this.backend_server_url+"/api/login", JSON.stringify({ username, password }),{
-        headers: {
-          "Content-Type": "application/json"
+      .post(
+        environment.api_gateway_url + "/auth/oauth/v2/token",
+      {
+        params : {
+          grant_type: 'password',
+          username: 'testoauth',
+          password: 'Abcd!234',
+          client_id:'9e8881c6-9fd2-4113-8602-6affc18a6fdd',
+          client_secret: '01c5ebc0-8242-4025-b93d-0ad5e168b845',
+          scope: 'oob'
+        },
+        headers : {
+          "Content-Type": "application/x-www-form-urlencoded"
         }
       })
       .map((response: Response) => response.json())
@@ -41,7 +50,6 @@ export class AuthenticationService {
             "currentUser",
             JSON.stringify({ username, token })
           );
-
           // return true to indicate successful login
           return true;
         } else {
