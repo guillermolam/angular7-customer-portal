@@ -5,8 +5,6 @@
 
 export const environment = {
   production: false,
-  //backend_server_url: 'http://localhost:8084'
-  //backend_server_url: 'http://mdv-docdevl01:8081'
-  backend_server_url: 'https://dev.mapfreapis.com:8443',
+  api_gateway_url: 'https://dev.mapfreapis.com:8443'
 };
 
