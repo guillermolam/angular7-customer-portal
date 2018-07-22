@@ -1,5 +1,5 @@
 <label class="mapfre switch-container">
-  <div class="copy" [ngClass]="{ 'copy-right': copyRight, 'copy-left': copyLeft, 'copy-left': (copyLeft == undefined && copyRight == undefined)}">
+  <div class="copy" [ngClass]="{ 'copy-right': copyRight, 'copy-left': copyLeft, 'copy-default': (copyLeft == undefined && copyRight == undefined)}">
     <span class="slider-text"><ng-content></ng-content></span>
   </div>
   <div class="switch fat">

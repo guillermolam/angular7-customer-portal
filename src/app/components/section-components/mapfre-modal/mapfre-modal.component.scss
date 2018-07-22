@@ -20,6 +20,11 @@ $mapfre-modal-grid-font-weight:				 				700;
 	text-shadow: 											none !important;
 }
 
+.help {
+	position: absolute;
+	top: -30px;
+}
+
 .modal-body {
 	font-size: 												$mapfre-modal-body-font-size;  
 }
@@ -56,13 +61,13 @@ a.grid-modal-footer {
 	}
 
 	.info {
-			color: 														$lite-gray;
-			font-size: 												12px;
-			font-weight: 											400;
+			color: 											$lite-gray;
+			font-size: 										12px;
+			font-weight: 									400;
 	}
 
 	&:hover {
-			text-decoration: 									none;
-			background: 										rgba(0, 0, 0, 0.1);
+			text-decoration: 								none;
+			background: 									rgba(0, 0, 0, 0.1);
 	}
 }

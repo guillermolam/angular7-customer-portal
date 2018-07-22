@@ -1,29 +1,34 @@
 <mapfre-button
-	[additionalClasses]="modalOptions.additionalButtonClasses"
-	[buttonCopy]="modalOptions.buttonCopy"
+	[additionalClasses]="modalOptions?.additionalButtonClasses"
+	[buttonCopy]="modalOptions?.buttonCopy"
 	[inputType]="'modal'"
-	[iconClasses]="modalOptions.iconClasses"
-	[modalId]="modalOptions.modalId"
-	[screenReader]="modalOptions.screenReader"
-	[showIcons]="modalOptions.showIcons"
-	(click)="modal.show()">
+	[iconClasses]="modalOptions?.iconClasses"
+	[modalId]="modalOptions?.modalId"
+	[screenReader]="modalOptions?.screenReader"
+	[showIcons]="modalOptions?.showIcons"
+	(click)="modal.show(); whereIsTheHelpButton($event)">
 </mapfre-button>
 <div mdbModal
 	#modal="mdb-modal" 
 	class="modal fade" 
-	[id]="modalOptions.modalId" 
+	[id]="modalOptions?.modalId" 
 	[config]="{backdrop: modalOverLay}" 
 	tabindex="-1" 
 	role="dialog" 
-	aria-labelledby="{{modalId}}" 
+	aria-labelledby="{{modalOptions?.modalId}}" 
 	aria-hidden="true">
-	<div [ngClass]="{'modal-dialog modal-sm modal-side modal-top-right': midHighResolution, 'modal-dialog modal-sm modal-dialog-centered': !midHighResolution}" 
-		role="document">
+	<div 
+		class="modal-dialog modal-sm" 
+		role="document"	
+		[ngClass]="{
+			'help': modalOptions?.typeOfModal == 'header' 
+		}"   
+		[style.left]="helpButtonPositionLeft">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title w-100" id="myModalLabel">
-						<mapfre-icons [iconsClasses]="modalOptions.iconClasses"></mapfre-icons> 
-						{{ modalOptions.modalTranslateCopy | translate }}</h4>
+						<mapfre-icons [iconsClasses]="modalOptions?.iconClasses"></mapfre-icons> 
+						{{ modalOptions?.modalTranslateCopy | translate }}</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
 							<span aria-hidden="true">&times;</span>
 					</button>

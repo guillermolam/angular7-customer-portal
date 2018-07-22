@@ -16,7 +16,7 @@ export class CreateNewPasswordComponent implements OnInit {
   expiredLink:                    boolean = false;
   paramSubmission:                any;
   passwordInputs:                 any[];
-  private successChangePassword:  boolean;
+  successChangePassword:  boolean;
   
   constructor
   (

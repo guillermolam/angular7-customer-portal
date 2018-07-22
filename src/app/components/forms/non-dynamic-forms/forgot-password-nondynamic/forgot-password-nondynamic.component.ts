@@ -82,7 +82,7 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
        ? null : {'mismatch': true};
   }
 
-  setNewPassword(frm: FormGroup): void{
+  setNewPassword(): void{
     let password = this.forgotPasswordForm.controls['createPassword'].value,
         temporaryParamater = this.routeParamaterString,
         user = new User();

@@ -1,12 +1,13 @@
 export class ModalOptions {
 	additionalButtonClasses:        				string;
-	screenReader:  									boolean;
 	buttonCopy:                     				string;
+	iconClasses:                    				string;
 	modalId:                        				string;
 	modalTranslateCopy:             				string;
-	iconClasses:                    				string;
+	typeOfModal:									string;
 	accessibilityReaderOnly:        				boolean;
 	modalClickEvent:                				boolean;
+	screenReader:  									boolean;
 	showIcons:                      				boolean;
 
 	constructor(options:{
@@ -16,6 +17,7 @@ export class ModalOptions {
 		modalId?: 									string,
 		modalTranslateCopy?: 						string,
 		iconClasses?: 								string,
+		typeOfModal?:								string;
 		accessibilityReaderOnly?: 					boolean,
 		modalClickEvent?: 							boolean,
 		showIcons?: 								boolean,
@@ -26,6 +28,7 @@ export class ModalOptions {
 		this.modalId = 								options.modalId || '';
 		this.modalTranslateCopy = 					options.modalTranslateCopy || '';
 		this.iconClasses = 							options.iconClasses || '';
+		this.typeOfModal =							options.typeOfModal || 'default';
 		this.accessibilityReaderOnly = 				!!options.accessibilityReaderOnly;
 		this.modalClickEvent = 						!!options.modalClickEvent;
 		this.showIcons = 							!!options.showIcons;

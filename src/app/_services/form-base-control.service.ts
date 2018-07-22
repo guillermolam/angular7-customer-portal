@@ -13,14 +13,26 @@ export class FormBaseControlService {
   }
 
   toFormGroup(inputs: FormBase<any>[] ) {
-    let group: any = {},
-        pattern: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])$/g;
+    let group:            any = {},
+        pattern:          RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])$/g,
+        emailPattern:     RegExp = /^^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
     inputs.forEach(input => {
-      if( input.value == 'email' ){
+      if( input.inputType == 'email' ){
         group[input.key] = input.required ? 
-          new FormControl(input.value || '',  [Validators.required, Validators.email] ) : 
-          new FormControl(input.value || '',  Validators.email);
+          new FormControl(input.value || '',  [Validators.required, Validators.pattern(emailPattern)] ) : 
+          new FormControl(input.value || '',  Validators.pattern(emailPattern));
+      }
+      else if(input.inputType =='password' && input.key != 'createPassword'){
+        group[input.key] = new FormControl
+        (
+          input.value, 
+          [
+            Validators.required, 
+            Validators.minLength(input.minLength), 
+            Validators.maxLength(input.maxLength)
+          ]
+        );
       }
       else if(input.key == 'createPassword'){
         group[input.key] = new FormControl
