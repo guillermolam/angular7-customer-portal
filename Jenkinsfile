@@ -30,6 +30,9 @@ pipeline{
 				sh "npm run build"
 			}
 		}
+		stage("Building SONARQUBE") {
+			sh './gradlew clean sonarqube'
+		}
 
 		stage("Create Docker Image"){
 
