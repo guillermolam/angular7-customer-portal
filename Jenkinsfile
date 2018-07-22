@@ -31,7 +31,9 @@ pipeline{
 			}
 		}
 		stage("Building SONARQUBE") {
-			sh './gradlew clean sonarqube'
+			steps{
+			sh "./gradlew clean sonarqube"
+			}
 		}
 
 		stage("Create Docker Image"){
