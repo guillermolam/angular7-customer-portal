@@ -30,8 +30,8 @@ export class AuthenticationService {
       {
         params : {
           grant_type: 'password',
-          username: 'testoauth',
-          password: 'Abcd!234',
+          username: username,
+          password: password,
           client_id:'9e8881c6-9fd2-4113-8602-6affc18a6fdd',
           client_secret: '01c5ebc0-8242-4025-b93d-0ad5e168b845',
           scope: 'oob'
