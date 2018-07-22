@@ -4,21 +4,21 @@
   [formGroup]="passwordEmailForm" 
   method="post"
   name="passwordEmailForm" 
-  (ngSubmit)="passwordEmailForm.valid && sendEmail()">
+  (ngSubmit)="passwordEmailForm.valid">
   
   <div class="row">
     <div class="col">
       <input
-          formControlName="sendEmail" 
+          formControlName="send-email" 
           class="form-control" 
           type="email" 
-          id="sendEmail" 
-          name="sendEmail" 
+          id="send-email" 
+          name="send-email" 
           required
           mdbInputDirective
           email
       />
-      <mapfre-label [forInput]="sendEmail">Email</mapfre-label>
+      <mapfre-label forInput="send-email">Email</mapfre-label>
         
     </div>
   </div>
@@ -28,7 +28,6 @@
         <mapfre-button
         [inputType]="'button'"
         [additionalClasses]="'success full'"
-        (click)="sendEmail()"
         [disabled]="passwordEmailForm.valid"
       >  
         {{ 'SEND_EMAIL' | translate }}

@@ -27,6 +27,10 @@ $mapfre-switch-font-size:                       $font-size-base;
       float:                                    left;
       padding-right:                            5px;
     }
+
+    &.copy-default {
+      @extend .copy-left;
+    }
     
     &.copy-right {
       float:                                    right;

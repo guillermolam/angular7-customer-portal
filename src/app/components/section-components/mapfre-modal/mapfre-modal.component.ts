@@ -7,14 +7,20 @@ import { ModalOptions } from '../../../_models/modal-options';
   styleUrls: ['./mapfre-modal.component.scss']
 })
 export class MapfreModalComponent implements OnInit {
-  @Input() modalOptions:                any[];
+  @Input() modalOptions:                ModalOptions;
 
+  helpButtonPositionLeft:               string;
   midHighResolution:                    boolean;
   modalOverLay:                         boolean;
 
   @HostListener('window:resize', ['$event']) 
   onResize() {
-    this.setUpModalClass();
+    if(this.modalOptions.typeOfModal == 'header') this.setUpModalClass();
+  }
+
+  whereIsTheHelpButton(ref): void {
+    let leftPos = ref.clientX - 275;
+    this.helpButtonPositionLeft = leftPos.toString() + "px";
   }
 
   private detectWindowWidth( width: number ): string{
@@ -54,8 +60,7 @@ export class MapfreModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.setUpModalClass();
-
+    if(this.modalOptions.typeOfModal == 'header') this.setUpModalClass();
   }
 
 }

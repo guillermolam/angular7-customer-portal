@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotPasswordConfirmationComponent implements OnInit {
 
   constructor() { }
 

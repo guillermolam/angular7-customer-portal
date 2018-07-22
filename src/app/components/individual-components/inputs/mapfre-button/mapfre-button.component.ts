@@ -44,6 +44,6 @@ export class MapfreButtonComponent implements OnInit {
     }
   }
   ngOnInit() {
-    console.log(this.screenReader);
+
   }
 }

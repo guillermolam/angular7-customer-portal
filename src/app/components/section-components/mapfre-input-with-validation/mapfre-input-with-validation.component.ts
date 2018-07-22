@@ -73,6 +73,6 @@ export class MapfreIputWithValidationComponent {
   }
 
   ngOnInit(): void {
-  
+    console.log(this.input.controlType)
   }
 }

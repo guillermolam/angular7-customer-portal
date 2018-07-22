@@ -5,17 +5,6 @@ $help-modal-link-font-size:             $font-size-base;
 $help-modal-info-color:                 $lite-gray;
 $help-modal-info-font-size:             $font-size-base * 0.5;
 
-hr {
-    &.header {
-        margin-top: 0;
-        margin-bottom: 20px;
-    }
-     &.body {
-        margin-top: 32px;
-        margin-bottom: 32px;
-     }
-}
-
 .close {
     font-size: 56px;
     font-weight: 100;

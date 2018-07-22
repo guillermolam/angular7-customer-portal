@@ -6,6 +6,7 @@ export class FormBase<T> {
     key:                            string;
     icon:                           boolean;
     iconClasses:                    string;
+    inputType:                      string;
     label:                          string;
     minLength:                      number;
     maxLength:                      number;
@@ -23,6 +24,7 @@ export class FormBase<T> {
         key?:                       string,
         icon?:                      boolean,
         iconClasses?:               string,
+        inputType?:                  string,
         label?:                     string,
         minLength?:                 number,
         maxLength?:                 number,
@@ -38,6 +40,7 @@ export class FormBase<T> {
         this.key =                  options.key || '';
         this.icon =                 !!options.icon;
         this.iconClasses =          options.iconClasses || '';
+        this.inputType =            options.inputType || '';
         this.label =                options.label || '';
         this.minLength =            options.minLength === undefined ? 0 : options.minLength;
         this.maxLength =            options.maxLength === undefined ? 128 : options.maxLength;
