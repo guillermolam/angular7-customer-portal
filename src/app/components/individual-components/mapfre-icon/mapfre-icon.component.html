@@ -15,9 +15,7 @@
         [class.active]="passwordShow"
         class="label-icon" 
         *ngIf="showIconsForPassword">
-        <i class="fas" 
-            [ngClass]="{'fa-eye-slash': !passwordShow, 'fa-eye': passwordShow}">
-        </i>
+        <i class="fas fa-eye"></i>
         <span class="label-text sr-only sr-only-focusable" *ngIf="!passwordShow">{{ 'SHOW' | translate}}</span>
         <span class="label-text sr-only sr-only-focusable" *ngIf="passwordShow">{{ 'HIDE' | translate}}</span>
     </a>

@@ -9,8 +9,9 @@ export class EmailFormService {
   getInputs() {
     let inputs: FormBase<any>[] = [
       new TextBox({
-        key: 'sendEmail',
         additionalClasses: 'form-control',
+        inputType: 'email',
+        key: 'sendEmail',
         label: 'Email',
         required: true,
         type: 'email',

@@ -9,18 +9,19 @@ export class ForgotPasswordService {
   getInputs() {
     let inputs: FormBase<any>[] = [
       new TextBox({
-        key: 'createPassword',
         additionalClasses: 'form-control',
+        inputType: 'password',
+        key: 'createPassword',
         label: 'New Password',
         maxLength: 24,
         minLength: 7,
-      //  pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])$/g,
         required: true,
         type: 'password',
       }),
       new TextBox({
-        key: 'repeatPassword',
         additionalClasses: 'form-control',
+        inputType: 'password',
+        key: 'repeatPassword',
         label: 'Repeat Password',
         required: true,
         type: 'password',

@@ -9,12 +9,12 @@ export class ForgotPasswordSendEmailService {
   getInputs() {
     let inputs: FormBase<any>[] = [
       new TextBox({
-        key: 'sendEmail',
         additionalClasses: 'form-control',
+        inputType: 'email',
+        key: 'sendEmail',
         label: 'Email',
         maxLength: 24,
         minLength: 7,
-        pattern: /^[a-b]$/g,
         required: true,
         type: 'email',
       })

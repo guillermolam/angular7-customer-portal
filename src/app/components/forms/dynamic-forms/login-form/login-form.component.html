@@ -17,8 +17,7 @@
     <div class="col-xxs forgot-password">
       <mapfre-link
         [additionalClasses]="'small-link underline switch-line-up'"
-        [target]="_self"
-        [routerLink]="['/forgotpassword']"
+        [routerLink]="['/forgotdpassword']"
         >{{ 'FORGOT_PASS' | translate }}
       </mapfre-link>
      
@@ -27,7 +26,7 @@
   <div class="row group-login">
     <div class="col">
       <mapfre-button
-        [additionalClasses]="'success full full-padding'"
+        [additionalClasses]="'basic primary full full-padding'"
         [disabledValue]="loginForm.valid"
         [inputType]="'submit'"
         [translateValue]="'LOGIN' | translate"
@@ -37,12 +36,11 @@
   <hr class="hr-login" />
   <div class="row text-center group-register">
     <div class="col">
-      <mapfre-link
-        [additionalClasses]="'strong uppercase normal-link'"
+      <mapfre-button
+        [additionalClasses]="'flat link full-padding full'"
         [routerLink]="['/signup']"
-        (click)="register()"
       >  {{ 'CREATE_ACCOUNT' | translate }}
-      </mapfre-link>
+      </mapfre-button>
     </div>
   </div>
   <input name="j_url" id="j_url" type="hidden" value="account/loginView" />

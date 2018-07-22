@@ -9,6 +9,9 @@ $mapfre-icon-font-size:         $font-size-base * 1.72;
 $mapfre-icon-label-font-size:   $font-size-base;
 $mapfre-icon-alert-font-size:   $default-margin-padding * 3;
 
+$mapfre-icon-large-font-size:   $font-size-base *2;
+$mapfre-icon-small-font-size:   $font-size-base;
+
 .alert-icon {
     font-size:                  $mapfre-icon-alert-font-size;
 }
@@ -30,6 +33,10 @@ $mapfre-icon-alert-font-size:   $default-margin-padding * 3;
     }
 }
 
+.large-icons {
+    font-size:                  $mapfre-icon-large-font-size; 
+}
+
 .mapfre.icon-container {
     .active i {
         color:                  $mapfre-icon-color-active;
@@ -43,6 +50,16 @@ $mapfre-icon-alert-font-size:   $default-margin-padding * 3;
     }
 }
 
+.small-icons {
+    font-size:                  $mapfre-icon-small-font-size;
+    position:                   absolute;
+    top:                        10px;
+    left:                       10px;
+}
+
 .title-icon {
     padding-bottom:             $mapfre-icon-padding-full;
 }
+
+
+	

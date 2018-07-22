@@ -1,19 +1,19 @@
 @import "../../../../styles.scss";
 
-$mapfre-code-background:   #333;
-$mapfre-code-color:        #fff;
+$mapfre-code-background:      #333;
+$mapfre-code-color:           #fff;
 
 .mapfre.code-block {
-    background-color: $mapfre-code-background;
-    color:            $mapfre-code-color; 
-    display:          block; 
-    margin:           15px 0;
+    background-color:           $mapfre-code-background;
+    color:                      $mapfre-code-color; 
+    display:                    block; 
+    margin:                     15px 0;
 
     code {
-        color:       $mapfre-code-color;  
+        color:                  $mapfre-code-color;  
     }
     pre {
-        margin:      0;
-        padding:     0;
+        margin:                 0;
+        padding:                0;
     }
 }
