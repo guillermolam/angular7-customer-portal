@@ -11,6 +11,7 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AuthenticationService {
@@ -22,7 +23,7 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string): Observable<any> {
     const url = environment.api_gateway_url + "/auth/oauth/v2/token";
     const body = {}; 
     return this.http
@@ -55,7 +56,8 @@ export class AuthenticationService {
           // return false to indicate failed login
           return false;
         }
-      });
+      })
+     .catch((error:any) => Observable.throw('Invalid email/password combination'));
   }
 
   logout(): void {
