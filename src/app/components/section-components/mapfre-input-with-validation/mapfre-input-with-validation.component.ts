@@ -12,6 +12,8 @@ import { FormBase }                     from '../../../_models/form-base';
 export class MapfreIputWithValidationComponent {
   @Input()  input:                      FormBase<any>;
   @Input()  form:                       FormGroup;
+            emailNoSpace:               boolean = false;
+            emailShowError:             boolean = false;
             capsLock:                   boolean = false;
             notOnPageLoad:              boolean = false;
             notOnFocus:                 boolean = false;
@@ -36,13 +38,19 @@ export class MapfreIputWithValidationComponent {
   }
 
   OnBlur(ref): void {
-    if( ref.value ){
-      console.log("hit this")
-       this.notOnPageLoad = true;
-    } 
+    let noSpacePattern = /^\s*$/,
+        emailValue = ref.form.controls.loginEmail.value; 
+    this.notOnPageLoad = true;
+
+    if( !noSpacePattern.test(emailValue) ) {
+      this.emailNoSpace = true;
+    }
+    else {
+       this.emailNoSpace = false;
+    }
   }
 
-  OnFocus(): void {
+  OnFocus(ref): void {
     this.notOnFocus = true;
   }
 

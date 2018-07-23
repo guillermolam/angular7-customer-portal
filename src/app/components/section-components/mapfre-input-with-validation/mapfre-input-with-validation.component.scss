@@ -12,10 +12,10 @@ $mapfre-validation-info-font-size:          0.7rem;
 
 */
 input:focus, .form-control:focus { /* this is temporary */
-    outline: 0;
-    outline: none;
-    box-shadow: none;
-    border: none;
+    outline:                                0;
+    outline:                                none;
+    box-shadow:                             none;
+    border:                                 none;
 }
 
 .error-block {
