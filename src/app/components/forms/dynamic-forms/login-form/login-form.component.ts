@@ -1,6 +1,6 @@
 // --- Angular ---//
 import { Component, OnInit, Input }     from "@angular/core";
-import { CookieService, CookieOptions } from 'angular2-cookie/core';
+import { CookieService }                from 'ngx-cookie-service';
 import { HttpClient }                   from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute }       from "@angular/router";
@@ -26,6 +26,7 @@ export class LoginFormComponent implements OnInit {
   returnUrl:                          string;
   rememberMe:                         boolean = false;
   user:                               User;
+  expireInDays:                       number=365;
   
   constructor(
     private _cookieService:           CookieService,
@@ -75,9 +76,13 @@ export class LoginFormComponent implements OnInit {
   {
     if(this.rememberMe) 
     {
-      this._cookieService.put("username", this.user.email);
-      this._cookieService.put("password", this.user.password);
-      console.log(this._cookieService)
+
+      // Cookie valid for 1 Year
+      console.log(this.expireInDays)
+      this._cookieService.set("remember","yes",this.expireInDays)
+      this._cookieService.set("email", this.user.email,this.expireInDays);
+      this._cookieService.set("password", this.user.password,this.expireInDays);
+  
     }
   }
 
