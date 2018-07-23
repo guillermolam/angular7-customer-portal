@@ -8,13 +8,15 @@
       </div>
       <div *ngIf="input.inputType == 'email'">
         <input
-          (blur)= "OnBlur()"
+          (blur)= "OnBlur(this)"
+          (focus)= "OnFocus(this)"
           [class]= "input.additionalClasses"
           [data-error]= "input.validationMessage" 
           [formControlName]= "input.key" 
-          [type]= "input.inputType" 
           [id]= "input.key" 
-          [name]= "input.key" 
+          [mdbValidate]="false"
+          [name]= "input.key"
+          [type]= "input.inputType" 
           mdbInputDirective
           email
          />
@@ -22,14 +24,15 @@
       </div>
       <div *ngIf="input.inputType == 'password'">
         <input
-          (blur)= "OnBlur()"
-          (focus)= "OnFocus()"
+          (blur)= "OnBlur(this)"
+          (focus)= "OnFocus(this)"
           [class]= "input.additionalClasses"
           [data-error]= "input.validationMessage" 
           [formControlName]= "input.key"  
-          [type]= "showPassword ? 'text' : 'password'"
           [id]= "input.key" 
-          [name]= "input.key" 
+          [mdbValidate]="false"
+          [name]= "input.key"
+          [type]= "showPassword ? 'text' : 'password'"
           mdbInputDirective
          />
         <mapfre-icon 
@@ -43,22 +46,29 @@
       </div>
       <div *ngIf= "input.inputType != 'email' && input.inputType != 'password' ">
         <input
-          (blur)= "OnBlur()"
+          (blur)= "OnBlur(this)"
           [class]= "input.additionalClasses"
           [data-error]= "input.validationMessage" 
           [formControlName]= "input.key"  
-          [type]= "input.inputType"
           [id]= "input.key" 
+          [mdbValidate]="false"
           [name]= "input.key"
-          [(ngModel)]= "input.value"  
+          [type]= "input.inputType"
           mdbInputDirective
         />
         <mapfre-label [forInput]= "input.key">{{input.label}}</mapfre-label>
       </div>
       <div class="help-block" >
-        <span class= "error-block" *ngIf= "!isValid && notOnPageLoad">{{input.validationMessageError}}</span>
+        <span class= "error-block" *ngIf= "!isValid && notOnPageLoad && input.inputType != 'email'">
+          {{input.validationMessageError}}
+        </span>
+        <span class= "error-block" 
+          *ngIf= "!isValid && input.inputType == 'email' && emailNoSpace ">
+          {{input.validationMessageError}}
+        </span>
         <span class= "info-block" *ngIf= "input.inputType == 'password' && capsLock">
-            <mapfre-icon iconClasses="fas fa-exclamation-triangle"></mapfre-icon> Caps Lock is On</span>
+          <mapfre-icon iconClasses="fas fa-exclamation-triangle"></mapfre-icon> Caps Lock is On
+        </span>
       </div>
     </div>
   </div>

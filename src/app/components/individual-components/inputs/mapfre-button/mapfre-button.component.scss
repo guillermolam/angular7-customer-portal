@@ -54,6 +54,10 @@ $mapfre-button-font-weight:                     900;
             background:                         $mapfre-button-color-default;
             border-color:                       $mapfre-button-color-default;
         }
+
+        &:hover {
+            box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
     }
 
     &.ghost {

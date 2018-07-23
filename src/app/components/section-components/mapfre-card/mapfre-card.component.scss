@@ -25,14 +25,15 @@ $mapfre-card-padding-md:        $default-margin-padding *3;
             @include make-col(12);
         }
         @include media-breakpoint-up(s) {
-            @include make-col(11);
+            @include make-col(12);
         }
         @include media-breakpoint-up(m) {
-            @include make-col(10);
+            @include make-col(12);
         }
         @include media-breakpoint-up(l) {
-            @include make-col(8);
+            @include make-col(12);
         }
+        
     }
 
     &.single-page-card {
@@ -51,6 +52,12 @@ $mapfre-card-padding-md:        $default-margin-padding *3;
         }
         @include media-breakpoint-up(l) {
             @include make-col(6);
+        }
+        @include media-breakpoint-up(xl) {
+            @include make-col(4);
+        }
+        @include media-breakpoint-up(xxl) {
+            @include make-col(4);
         }
         
         padding: $mapfre-card-padding;

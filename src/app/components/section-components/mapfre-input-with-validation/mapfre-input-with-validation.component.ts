@@ -12,6 +12,8 @@ import { FormBase }                     from '../../../_models/form-base';
 export class MapfreIputWithValidationComponent {
   @Input()  input:                      FormBase<any>;
   @Input()  form:                       FormGroup;
+            emailNoSpace:               boolean = false;
+            emailShowError:             boolean = false;
             capsLock:                   boolean = false;
             notOnPageLoad:              boolean = false;
             notOnFocus:                 boolean = false;
@@ -35,11 +37,20 @@ export class MapfreIputWithValidationComponent {
     return formValid;
   }
 
-  OnBlur(): void {
+  OnBlur(ref): void {
+    let noSpacePattern = /^\s*$/,
+        emailValue = ref.form.controls.loginEmail.value; 
     this.notOnPageLoad = true;
+
+    if( !noSpacePattern.test(emailValue) ) {
+      this.emailNoSpace = true;
+    }
+    else {
+       this.emailNoSpace = false;
+    }
   }
 
-  OnFocus(): void {
+  OnFocus(ref): void {
     this.notOnFocus = true;
   }
 
@@ -73,6 +84,5 @@ export class MapfreIputWithValidationComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.input.controlType)
   }
 }

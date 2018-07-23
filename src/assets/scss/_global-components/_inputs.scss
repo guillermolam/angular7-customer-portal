@@ -32,7 +32,7 @@ $input-inactive-color:                      $mapfre-lite-gray;
             border-bottom-color:            $input-active-color;
         }
     }
-    
+
     label {
         color:                              $input-inactive-color;
         cursor:                             text;
@@ -74,9 +74,5 @@ $input-inactive-color:                      $mapfre-lite-gray;
         padding-top:                        $input-validation-help-top;
     }
 
-    .counter-danger { //overriding  mdn 
-        border-bottom:                      2px solid #F44336 !important;
-        box-shadow:                         none !important;
-    }
 }
 
