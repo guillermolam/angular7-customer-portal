@@ -30,7 +30,6 @@ pipeline{
 				sh "npm run build"
 			}
 		}
-
 		stage("Create Docker Image"){
 
 			steps{

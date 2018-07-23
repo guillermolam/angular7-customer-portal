@@ -1,7 +1,7 @@
 // ----- Packages ---- //
 import { BrowserModule }                      from "@angular/platform-browser";
 import { BrowserAnimationsModule }            from '@angular/platform-browser/animations';
-import { CookieService, CookieOptions } from 'angular2-cookie/core';
+import { CookieService }                      from 'ngx-cookie-service';
 import { FormsModule }                        from "@angular/forms";
 import { GooglePlaceModule }                  from "ngx-google-places-autocomplete";
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from "@angular/common/http";
@@ -140,10 +140,6 @@ import { MapfreDropdownComponent }             from './components/section-compon
       multi: true
     },
     CookieService,
-    { 
-      provide: CookieOptions, 
-      useValue: {}
-    },
     Language,
     MockBackend,
     UserService,
