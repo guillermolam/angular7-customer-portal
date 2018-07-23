@@ -9,7 +9,7 @@
             <mapfre-icon iconClasses="{{alertTypeObject.iconClass}}"></mapfre-icon>
         </div>
         <div class="col-9 copy no-gutters">
-            {{message.text.statusText}}
+            {{message.text}}
         </div>
         <div class="col-1" *ngIf="closeButton">
           <a class="close" (click)="closeAlert()">
