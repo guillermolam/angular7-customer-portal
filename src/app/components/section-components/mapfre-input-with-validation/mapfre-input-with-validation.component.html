@@ -8,7 +8,7 @@
       </div>
       <div *ngIf="input.inputType == 'email'">
         <input
-          (blur)= "OnBlur()"
+          (blur)= "OnBlur(this)"
           [class]= "input.additionalClasses"
           [data-error]= "input.validationMessage" 
           [formControlName]= "input.key" 
@@ -22,7 +22,7 @@
       </div>
       <div *ngIf="input.inputType == 'password'">
         <input
-          (blur)= "OnBlur()"
+          (blur)= "OnBlur(this)"
           (focus)= "OnFocus()"
           [class]= "input.additionalClasses"
           [data-error]= "input.validationMessage" 
@@ -43,7 +43,7 @@
       </div>
       <div *ngIf= "input.inputType != 'email' && input.inputType != 'password' ">
         <input
-          (blur)= "OnBlur()"
+          (blur)= "OnBlur(this)"
           [class]= "input.additionalClasses"
           [data-error]= "input.validationMessage" 
           [formControlName]= "input.key"  

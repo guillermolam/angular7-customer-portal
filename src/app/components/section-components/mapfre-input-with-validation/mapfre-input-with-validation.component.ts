@@ -35,8 +35,11 @@ export class MapfreIputWithValidationComponent {
     return formValid;
   }
 
-  OnBlur(): void {
-    this.notOnPageLoad = true;
+  OnBlur(ref): void {
+    if( ref.value ){
+      console.log("hit this")
+       this.notOnPageLoad = true;
+    } 
   }
 
   OnFocus(): void {
@@ -73,6 +76,5 @@ export class MapfreIputWithValidationComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.input.controlType)
   }
 }

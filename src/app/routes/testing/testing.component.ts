@@ -25,6 +25,5 @@ export class TestingComponent {
   }
   
   ngOnInit(): void {
-    console.log(this.headerHelpModalOptions)
   }
  }
