@@ -12,6 +12,7 @@ $mapfre-modal-grid-color: 								  #737373;
 
 $mapfre-modal-grid-font-size: 								1rem;
 $mapfre-modal-grid-font-weight:				 				700;
+$mapfre-modal-grid-color: $mapfre-blue;
 
 .close {
 	font-size: 												$mapfre-modal-close-font-size;
@@ -48,7 +49,7 @@ $mapfre-modal-grid-font-weight:				 				700;
 }
 
 a.grid-modal-footer {
-	color: 													$mapfre-modal-grid-color; 
+	color: 													$mapfre-blue !important;
 	font-size: 												$mapfre-modal-grid-font-size; 
 	font-weight: 											$mapfre-modal-grid-font-weight; 
 
