@@ -30,6 +30,11 @@ pipeline{
 				sh "npm run build"
 			}
 		}
+		stage('run static analysis'){
+		    steps{
+		        sh "npm run sonar-run"
+		    }
+		}
 		stage("Create Docker Image"){
 
 			steps{
