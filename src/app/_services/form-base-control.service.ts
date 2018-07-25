@@ -21,8 +21,8 @@ export class FormBaseControlService {
     inputs.forEach(input => {
       if( input.inputType == 'email' ){
         group[input.key] = input.required ? 
-          new FormControl(input.value || '',  [Validators.required, Validators.pattern(emailPattern)] ) : 
-          new FormControl(input.value || '',  Validators.pattern(emailPattern));
+          new FormControl(input.value || '', ) : 
+          new FormControl(input.value || '');
       }
       else if(input.inputType =='password' && input.key != 'createPassword'){
         group[input.key] = new FormControl
@@ -41,7 +41,7 @@ export class FormBaseControlService {
           input.value, 
           [
             Validators.required, 
-            Validators.minLength(input.minLength), 
+            , 
             Validators.maxLength(input.maxLength),
             Validators.pattern(pattern) 
           ]

@@ -24,7 +24,7 @@ export class LoginService {
         key: 'loginPassword',
         label: 'Password',
         maxLength: 24,
-        minLength: 7,
+        minLength: 1,
         required: true,
         showPasswordIcon: true,
         type: 'password'

@@ -1,8 +1,9 @@
-$global-body-bg-color:                      $lite-gray-2;
-$global-hr-color:                           $lite-gray-3;
+$global-body-bg-color:                      $lite-gray-two;
+$global-hr-color:                           $lite-gray-three;
 $global-prefix-padding-right:               $padding-vertical;
 $global-title-font-size:                    $font-size-base + 0.25;
 $global-title-font-family:                  $font-family-base;
+$global-title-line-height:                  2rem;    
 $global-red-override:                       $mapfre-red !important;
 $global-hr-header-margin-bottom:            $padding-vertical +4;
 $global-hr-body-margin-top:                 $padding-vertical *2;
@@ -20,8 +21,8 @@ hr {
 		margin-bottom:                      $global-hr-header-margin-bottom;
 	}
 	&.body {
-		margin-top:                         32px;
-		margin-bottom:                      32px;
+		margin-top:                         2rem;
+		margin-bottom:                      2rem;
 	}
 }
 
@@ -70,7 +71,7 @@ textarea:focus {
 }
 
 .mapfre-content {
-    margin-top:                             75px;
+    margin-top:                             5rem;
     @include media-breakpoint-down(xxs) {
         margin-top:                         10%;
     }
@@ -88,8 +89,9 @@ textarea:focus {
 
 .title-copy {
     font-size:                              $global-title-font-size;
-    padding:                                $global-title-font-size 0;
     font-family:                            $global-title-font-family;
+    line-height:                            $global-title-line-height;
+    padding:                                0 ;
 }
 
 .uppercase {

@@ -1,37 +1,35 @@
 @import "../../../../../styles.scss";
 
-$login-register-copy-color:     $med-gray;
-$login-register-copy-size:      $font-size-sm;
+$login-register-copy-color:                             $med-gray;
+$login-register-copy-size:                              $font-size-sm;
 
-$login-remember-me-group:       $margin-vertical;
-$login-inputs-group:            $padding-vertical *2;
-$login-login-group:             $padding-vertical;
-$login-hr-margin-top:           $padding-vertical *2;
-$login-hr-margin-bottom:        $padding-vertical *1.5;
-
-.group-inputs {
-    padding-bottom:             $login-inputs-group;
-}
+$login-remember-me-group:                               $margin-vertical/2;
+$login-login-group-padding-up:                          $padding-vertical;
+$login-login-group-padding-down:                        $padding-vertical;
+$login-login-group-button-margin:                       $padding-vertical *2;
+$login-hr-margin-top:                                   $margin-vertical *2.5;
+$login-hr-margin-bottom:                                $margin-vertical * 1.75;
 
 .group-login {
-   padding-top:                 $login-login-group;
+    padding-top:                                        $login-login-group-padding-up;
+}
+
+.group-login-button {
+    margin-top:                                         $login-login-group-button-margin;
 }
 
 .group-remember {
     .forgot-password {
-        text-align: right;
+        text-align:                                     right;
     }
 }
 
-.group-register {
-
-}
-
 .hr-login {
-    margin-top:                 $login-hr-margin-top;
-}
+    margin-top:                                         $login-hr-margin-top;
+    margin-bottom:                                      $login-hr-margin-bottom;
+}                       
 
 .register-copy {
-    color:                      $login-register-copy-color;
-    font-size:                  $login-register-copy-size;
+    color:                                              $login-register-copy-color;
+    font-size:                                          $login-register-copy-size;
 }

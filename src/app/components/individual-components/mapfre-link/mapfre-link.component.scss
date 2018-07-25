@@ -1,64 +1,63 @@
 @import "../../../../styles.scss";
 
-$mapfre-link-color:             $mapfre-blue;
-$mapfre-link-border-bottom-color: $mapfre-blue;
-$mapfre-link-color-red:         $mapfre-red;
-$mapfre-link-font-size-small:   0.75rem;
-$mapfre-link-font-size-base:    0.875rem;
-$mapfre-link-font-size-large:   1rem;
-$mapfre-link-icon-top:          -5px;
-$mapfre-link-icon-right:        $padding-horizontal/1.5;
-$mapfre-link-padding:           0 $padding-vertical;
+$mapfre-link-color:                         $active-color;
+$mapfre-link-border-bottom-color:           $active-color;
+$mapfre-link-color-red:                     $mapfre-red;
+$mapfre-link-font-size-small:               0.75rem;
+$mapfre-link-font-size-base:                0.875rem;
+$mapfre-link-font-size-large:               1rem;
+$mapfre-link-icon-top:                      -5px;
+$mapfre-link-icon-right:                    $padding-horizontal/1.5;
+$mapfre-link-padding:                       0 $padding-vertical;
 
 a { 
-    text-decoration:            none;
+    text-decoration:                        none;
     @include transition(1s);
+    &:hover {
+        font-weight:                        900
+    }
 }
 
 i {
-    float:                      left;
-    font-size:                  $link-icon-font-size;
-    font-weight:                900;
-    margin-top:                 $mapfre-link-icon-top;
-    padding-right:              $mapfre-link-icon-right;
+    float:                                  left;
+    font-size:                              $link-icon-font-size;
+    font-weight:                            900;
+    margin-top:                             $mapfre-link-icon-top;
+    padding-right:                          $mapfre-link-icon-right;
 }
 
 .mapfre {  
     span {
-        color:                  $mapfre-link-color;
+        color:                              $mapfre-link-color;
     }
     
     &.large-link {
-        font-size:              $mapfre-link-font-size-large;
+        font-size:                          $mapfre-link-font-size-large;
     }
 
     &.normal-link {
-        font-size:              $mapfre-link-font-size-base;
-        border-bottom:           thin solid transparent;
+        font-size:                          $mapfre-link-font-size-base;
+        border-bottom:                      thin solid transparent;
         &:hover {
-            border-bottom-color:  $mapfre-link-border-bottom-color;
+            border-bottom-color:            $mapfre-link-border-bottom-color;
         }
     }
 
     &.red-link {
-        color:                  $mapfre-link-color-red;
+        color:                              $mapfre-link-color-red;
     }
 
     &.small-link {
-        font-size:              $mapfre-link-font-size-small;
+        font-size:                          $mapfre-link-font-size-small;
     }
 
     &.switch-line-up {
-        position:               relative;
-        top:                    5px;
+        position:                           relative;
+        top:                                5px; //change to rem and variable
     }
 
     &.underline {
-        border-bottom:           thin solid $mapfre-link-border-bottom-color;
+        border-bottom:                      thin solid $mapfre-link-border-bottom-color;
         @include transition(1s);
-        
-        &:hover {
-            border-bottom-color:  transparent;
-        }
     }
 }

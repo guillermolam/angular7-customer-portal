@@ -1,16 +1,16 @@
 @import "../../../../../styles.scss";
 
 $mapfre-switch-font-color:                      $gray;
-$mapfre-switch-font-color-active:               $mapfre-blue;
+$mapfre-switch-font-color-active:               $active-color;
 $mapfre-switch-bg-color-inactive:               $lite-gray;
-$mapfre-switch-bg-color-active:                 $mapfre-blue;
+$mapfre-switch-bg-color-active:                 $active-color;
 $mapfre-switch-bg-color-checkmark-full:         $white;
 $mapfre-switch-bg-color-checkmark-inline-inactive:   $lite-gray;
-$mapfre-switch-bg-color-checkmark-inline-active: $mapfre-blue;
+$mapfre-switch-bg-color-checkmark-inline-active: $active-color;
 
 $mapfre-switch-bg-color-slider-fat-inactive:    #F1F1F1;
 $mapfre-switch-bg-color-checkmark-fat-inactive: #F1F1F1;
-$mapfre-switch-bg-color-checkmark-fat-active:   $mapfre-blue;
+$mapfre-switch-bg-color-checkmark-fat-active:   $active-color;
 
 $mapfre-switch-font-size:                       $font-size-base;
 

@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ['./mapfre-button.component.scss']
 })
 export class MapfreButtonComponent implements OnInit {
-  @Input() additionalClasses:                   string = 'btn-info';
+  @Input() additionalClasses:                   string = 'basic primary';
   @Input() buttonCopy:                          string;
   @Input() disabledValue:                       boolean;
   @Input() iconClasses:                         string;

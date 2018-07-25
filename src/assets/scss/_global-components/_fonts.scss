@@ -1,0 +1,8 @@
+// Font sizing, decorations, etc
+
+$global-font-base-font-size:                    $font-size-base; // 0.875ren
+$global-font-small-font:                        $font-size-base * 0.86;
+
+.font-small {
+    font-size:                                  $global-font-small-font;
+}

@@ -4,10 +4,12 @@
   (ngSubmit)="loginForm.valid && login()" 
   >
   
-  <div *ngFor="let input of inputs">
-    <mapfre-validation [input]="input" [form]="loginForm"></mapfre-validation>
+  <div class="group-login">
+    <div *ngFor="let input of inputs" class="group-inputs">
+      <mapfre-validation [input]="input" [form]="loginForm"></mapfre-validation>
+    </div>
   </div>
-   
+
   <div class="row group-remember">
     <div class="col-xxs">
       <mapfre-switch [copyRight]="true" (switchOn)="onRememberMe($event)">
@@ -20,29 +22,29 @@
         [routerLink]="['/forgotdpassword']"
         >{{ 'FORGOT_PASS' | translate }}
       </mapfre-link>
-     
     </div>
   </div>
-  <div class="row group-login">
+
+  <div class="row group-login-button">
     <div class="col">
       <mapfre-button
-        [additionalClasses]="'basic primary full full-padding'"
-        [disabledValue]="loginForm.valid"
+        [additionalClasses]="'basic primary large'"
+        [disabledValue]="loginForm.valid" 
         [inputType]="'submit'"
         [translateValue]="'LOGIN' | translate"
       ></mapfre-button>
     </div>
   </div>
+  
   <hr class="hr-login" />
   <div class="row text-center group-register">
     <div class="col">
       <mapfre-button
-        [additionalClasses]="'flat link full-padding full'"
+        [additionalClasses]="'flat link small'"
         [routerLink]="['/signup']"
       >  {{ 'CREATE_ACCOUNT' | translate }}
       </mapfre-button>
     </div>
   </div>
-  <input name="j_url" id="j_url" type="hidden" value="account/loginView" />
 </form>
       

@@ -1,20 +1,20 @@
 @import "../../../../styles.scss";
 
 .navbar {
-    @include media-breakpoint-down(xxs) {
+
+    @include media-breakpoint-down(s) {
+        height: 56px;
+
         .logo {
-            max-width: 100px;
+            max-width: 191px;
         }
     }
 
-    @include media-breakpoint-up(xxs) {
+    @include media-breakpoint-up(m) {
+        height: 64px;
+
         .logo {
-            max-width: 225px;
-        }
-    }
-    @include media-breakpoint-up(xs) {
-        .logo {
-            max-width: 225px;
+            max-width: 306px;
         }
     }
 }

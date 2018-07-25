@@ -1,3 +1,4 @@
+//comments -info
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 
@@ -7,12 +8,14 @@ export class Language {
         "identifier" : "EN",
         "name" : "English",
         "sentences":{
+
             "YOUR_EMAIL" : "Your email",
             "YOUR_PASSWORD" : "Your password",
             "REMEMBER_ME" : "Remember Me",
             "FORGOT_PASS" : "Forgot Password",
             "LOGIN" : "Login",
             "REGISTER" : "Register",
+            //
             "CONF_PASS" : "Confirm Password",
             "CANCEL" : "Cancel",
             "SIGNUPTEXT" : "We are making awesome insurance. Could we take care of you too?",
@@ -47,18 +50,24 @@ export class Language {
             "PASSES_THE_RULE": "Passes the Rule",
             "INVALID_USERNAME_PASSWORD": "Invalid Username and/or Password",
             
+            //MODAL - HEADER HELP
             "MODAL_HELP_TITLE": "Help",
             "MODAL_HELP_CUSTOMER_PORTAL": "Your MAPFRE Account allows you to access your policy documents, report claims, and make payments any time.",
             "MODAL_HELP_TROUBLE_ACCESSING": "Trouble accessing your account?",
             "MODAL_HELP_DONT_HESITATE": "Please don’t hesitate to contact our Customer Service Department.",
             "CALL_US": "Call Us",
             "EMAIL_US": "Email Us",
+
+            //FOOTER
+            "FOOTER_COPY_RIGHT" : 'MAPFRE U.S.A Corp. All rights reserved.'
+
         }
     },{
         "identifier" : "ES",
         "name" : "Spanish",
         "sentences":{
-            "YOUR_EMAIL" : "Tu correo electrónico",
+
+            "YOUR_EMAIL" : "Tu correo electrónico", 
             "YOUR_PASSWORD" : "Tu contraseña",
             "REMEMBER_ME" : "Recuérdame",
             "FORGOT_PASS" : "Recordar tu contraseña",
@@ -104,6 +113,9 @@ export class Language {
             "MODAL_HELP_DONT_HESITATE": "Please don’t hesitate to contact our Customer Service Department.",
             "CALL_US": "Call Us",
             "EMAIL_US": "Email Us",
+
+            //FOOTER
+            "FOOTER_COPY_RIGHT" : 'MAPFRE U.S.A Corp. All rights reserved.'
         }
     }];
 }

@@ -24,7 +24,6 @@ import { AuthGuard }                          from "./_guards/auth.guard";
 import { JwtInterceptor }                     from "./_helpers/jwt.interceptor";
 import { UserService }                        from "./_services/user.service"; 
 // ----- Components ----- //
-import { AlertComponent }                     from "./components/individual-components/alert/alert.component";
 import { FooterComponent }                    from './components/section-components/footer/footer.component';
 import { HeaderComponent }                    from './components/section-components/header/header.component';
 import { LoginFormComponent }                 from './components/forms/dynamic-forms/login-form/login-form.component';
@@ -63,7 +62,6 @@ import { MapfreAlertComponent }               from './components/individual-comp
 import { DesignSystemComponent }              from './routes/design-system/design-system.component';
 import { MapfreCodeComponent }                from './components/individual-components/mapfre-code/mapfre-code.component';
 import { MapfreNotificationsComponent }       from './components/individual-components/mapfre-notifications/mapfre-notifications.component';
-import { HelpComponent }                      from './components/static-modals/help/help.component';
 import { MapfreModalComponent }               from './components/section-components/mapfre-modal/mapfre-modal.component';
 
 import { ForgotPasswordConfirmationComponent } from  './components/confirmations/forgot-password/forgot-password.component';            
@@ -76,7 +74,6 @@ import { MapfreDropdownComponent }             from './components/section-compon
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent,
     AccountMainComponent,
     AccountHeaderComponent,
     DashboardComponent,
@@ -109,7 +106,6 @@ import { MapfreDropdownComponent }             from './components/section-compon
     DesignSystemComponent,
     MapfreCodeComponent,
     MapfreNotificationsComponent,
-    HelpComponent,
     MapfreModalComponent,
     ForgotPasswordConfirmationComponent,
     ForgotPasswordSetConfirmationComponent,
