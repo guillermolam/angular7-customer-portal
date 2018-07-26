@@ -3,6 +3,7 @@
 	[buttonCopy]="modalOptions?.buttonCopy"
 	[inputType]="'modal'"
 	[iconClasses]="modalOptions?.iconClasses"
+	[iconFamily]="modalOptions?.iconFamily"
 	[modalId]="modalOptions?.modalId"
 	[screenReader]="modalOptions?.screenReader"
 	[showIcons]="modalOptions?.showIcons"
@@ -18,7 +19,7 @@
 	aria-labelledby="{{modalOptions?.modalId}}" 
 	aria-hidden="true">
 	<div 
-		class="modal-dialog modal-sm" 
+		class="modal-dialog modal-small" 
 		role="document"	
 		[ngClass]="{
 			'help': modalOptions?.typeOfModal == 'header' 
@@ -27,7 +28,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title w-100" id="myModalLabel">
-						<mapfre-icons [iconsClasses]="modalOptions?.iconClasses"></mapfre-icons> 
+						<mapfre-icon [iconClasses]="modalOptions?.iconClasses" [iconFamily]="modalOptions?.iconFamily"></mapfre-icon>
 						{{ modalOptions?.modalTranslateCopy | translate }}</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
 							<span aria-hidden="true">&times;</span>

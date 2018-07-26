@@ -10,14 +10,6 @@ $mapfre-link-icon-top:                      -5px;
 $mapfre-link-icon-right:                    $padding-horizontal/1.5;
 $mapfre-link-padding:                       0 $padding-vertical;
 
-a { 
-    text-decoration:                        none;
-    @include transition(1s);
-    &:hover {
-        font-weight:                        900
-    }
-}
-
 i {
     float:                                  left;
     font-size:                              $link-icon-font-size;

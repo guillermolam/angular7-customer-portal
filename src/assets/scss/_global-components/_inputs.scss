@@ -11,7 +11,7 @@ $input-validation-help-top:                 $padding-vertical / 2.5;
 $input-padding-half:                        $defualt-margin-padding;
 //colors
 $input-success-color:                       $success-color;
-$input-error-color:                         $mapfre-red;
+$input-error-color:                         $error-color;
 $input-active-color:                        $active-color; 
 $input-inactive-color:                      $mapfre-lite-gray;
 
@@ -31,6 +31,10 @@ $input-inactive-color:                      $mapfre-lite-gray;
         &:focus {
             border-bottom-color:            $input-active-color;
         }
+
+        &:hover {
+            border-color:                   $input-active-color;
+        }
     }
 
     label {
@@ -45,6 +49,10 @@ $input-inactive-color:                      $mapfre-lite-gray;
             color:                          $input-active-color;
             font-size:                      $input-active-font-size;
         }
+
+        &.active.error {
+            color:                          $input-error-color;
+        }
         
         &.input-label {
             left:                           $input-padding-half; 
@@ -56,6 +64,7 @@ $input-inactive-color:                      $mapfre-lite-gray;
             }
         }
     }
+
     .counter-danger + label {
         color:                              $input-error-color;
     }
@@ -73,6 +82,10 @@ $input-inactive-color:                      $mapfre-lite-gray;
         font-size:                          $input-error-label-font-size;
         padding-top:                        $input-validation-help-top;
     }
-
+    
+    .error {
+        border-color:                        $input-error-color;
+        color:                               $input-error-color;
+    }
 }
 

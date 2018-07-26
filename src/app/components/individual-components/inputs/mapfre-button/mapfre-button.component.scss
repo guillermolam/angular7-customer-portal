@@ -46,12 +46,23 @@ $mapfre-button-header-margin:                   -3px;
     font-weight:                                $mapfre-button-font-weight;
     justify-content:                            center;
     line-height:                                24px;
+    pointer-events:                             auto !important;
     position:                                   relative;
     text-transform:                             uppercase;
     -webkit-align-items:                        center;
     -ms-flex-align:                             center;
     @include transition(0.5s);
     
+    &:disabled,
+    &.disabled,
+    &.disabled[disabled]{
+        cursor: not-allowed !important;
+        
+        &:hover {
+            box-shadow: none !important;
+        }
+    }
+
     &.basic {
         border:                                 $mapfre-buton-border;
         color:                                  $mapfre-button-font-color-basic;
@@ -64,7 +75,6 @@ $mapfre-button-header-margin:                   -3px;
             &:disabled {
                 background:                     lighten( desaturate( $mapfre-button-color-primary, 42 ), 32 ); //#C6DB81 
                 border-color:                   lighten( desaturate( $mapfre-button-color-primary, 42 ), 32 ); //#C6DB81
-                cursor:                         not-allowed;
             }
         }
         &.secondary {
@@ -237,9 +247,23 @@ $mapfre-button-header-margin:                   -3px;
 
     &.header-flat {
         @extend .flat;
-        padding:                                 12px 8px; //$mapfre-button-header-padding;
-        margin-top:                              $mapfre-button-header-margin;
-        margin-bottom:                           $mapfre-button-header-margin;
+
+        @include media-breakpoint-down(s) { //these need variables
+            padding-top:                        10px;
+            padding-bottom:                     7px;
+            padding-left:                       16px;
+            padding-right:                      16px;
+            margin-top:                         -1px;
+            margin-right:                       -30px;
+        }
+    
+        @include media-breakpoint-up(m) {
+            padding-top:                        16px;
+            padding-bottom:                     7px;
+            padding-left:                       16px;
+            padding-right:                      16px;
+            margin-top:                         -1px;
+        }
 
         &:hover {
             background:                          darken( desaturate( adjust-hue( $mapfre-red, -7deg ), 10 ), 3 );

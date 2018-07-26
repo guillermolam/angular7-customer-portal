@@ -11,6 +11,7 @@ export class MapfreButtonComponent implements OnInit {
   @Input() buttonCopy:                          string;
   @Input() disabledValue:                       boolean;
   @Input() iconClasses:                         string;
+  @Input() iconFamily:                          string;
   @Input() inputType:                           string;
   @Input() modalId:                             string;
   @Input() modalFunctionId:                     string;

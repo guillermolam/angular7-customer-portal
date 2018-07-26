@@ -1,5 +1,5 @@
 @import "../../../../styles.scss";
-$mapfre-validation-error-color:             $mapfre-red;
+$mapfre-validation-error-color:             $error-color;
 $mapfre-validation-info-color:              $mapfre-blue;
 $mapfre-validation-valid-color:             $mapfre-green;
 
@@ -67,3 +67,5 @@ input:focus, .form-control:focus { /* this is temporary */
         }
     }
 }
+
+

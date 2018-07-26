@@ -32,6 +32,24 @@ button {
     @include transition(1s);
 }
 
+a { 
+    text-decoration:                        none;
+    
+    &:hover {
+        font-weight:                        700
+        /* - fake font-weight for on hover effect, this needs to be tweaked untill it looks right.
+        text-shadow:
+            -1px -1px 0 $active-color,
+            1px -1px 0 $active-color,
+            -1px 1px 0 $active-color,
+            1px 1px 0  $active-color;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s; */
+    }
+}
+
 
 input[type="text"]:focus,
 textarea:focus {

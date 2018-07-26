@@ -13,6 +13,7 @@
 		class="btn mapfre waves-light {{additionalClasses}}" 
 		value="submit" 
 		[disabled]="!isFormValid()"
+		[ngStyle]="{'cursor: not-allowed;': !isFormValid() }"
 		*ngSwitchCase="'submit'"
 		mdbWavesEffect 
 	/>
@@ -27,7 +28,7 @@
 		mdbWavesEffect
 	>
 		<span *ngIf="showIcons">
-			<mapfre-icon [iconClasses]="iconClasses"></mapfre-icon> 
+			<mapfre-icon [iconClasses]="iconClasses" [iconFamily]="iconFamily"></mapfre-icon> 
 		</span>
 		<span class="button-content"
 			[ngClass]="{'sr-only sr-only-focusable': screenReader }">

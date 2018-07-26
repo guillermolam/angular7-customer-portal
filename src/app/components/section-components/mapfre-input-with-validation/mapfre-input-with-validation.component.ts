@@ -16,34 +16,29 @@ export class MapfreIputWithValidationComponent {
             emailShowError:             boolean = false;
             capsLock:                   boolean = false;
             notOnPageLoad:              boolean = false;
-            notOnFocus:                 boolean = false;
             showPassword:               boolean = false;
+            showPasswordIcon:           boolean = false;
+            validInput:                 boolean = true;
   
   @Output() inputValidationCheck:       EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @HostListener( 'window:keydown', ['$event'] ) 
-  OnKeyDown(event) {
+  OnKeyDownGlobal(event) {
     this.checkCapsLock(event);
   }
 
   @HostListener( 'window:keyup', ['$event'] ) 
-  OnKeyUp(event) {
+  OnKeyUpGlobal(event) {
     this.checkCapsLock(event);
   }
 
-  get isValid() { 
-    let formValid = this.form.controls[this.input.key].valid;
-    this.inputValidationCheck.emit(formValid);
-    return formValid;
-  }
-
   OnBlur(ref): void {
-    let noSpacePattern = /^\s*$/,
-        emailValue = ref.form.controls.loginEmail.value; 
-    this.notOnPageLoad = true;
+   let inputValue = ref.form.controls[ref.input.key].value;
+   this.notOnPageLoad = true;
 
-    if( !noSpacePattern.test(emailValue) ) {
+    if( this.checkForBlankInputField(inputValue) ) {
       this.emailNoSpace = true;
+      this.validInput = this.isValid;
     }
     else {
        this.emailNoSpace = false;
@@ -51,7 +46,19 @@ export class MapfreIputWithValidationComponent {
   }
 
   OnFocus(ref): void {
-    this.notOnFocus = true;
+    let inputValue = ref.form.controls[ref.input.key].value;
+    this.validInput = true; //Turn off the error class for the front end on focus
+  }
+
+  OnKeyDown(ref): void {
+    let inputValue = ref.form.controls[ref.input.key].value;
+    this.showPasswordIcon = this.checkForBlankInputField(inputValue) ? true : false;
+  }
+
+  get isValid() { 
+    let formValid = this.form.controls[this.input.key].valid;
+    this.inputValidationCheck.emit(formValid);
+    return formValid;
   }
 
   checkCapsLock(event: KeyboardEvent): void {
@@ -62,6 +69,12 @@ export class MapfreIputWithValidationComponent {
       else {
         this.capsLock = false;
       }
+    }
+  }
+
+  checkForBlankInputField(value: string): boolean {
+    if(value != null && value.length >= 1 ) {
+      return true;
     }
   }
 

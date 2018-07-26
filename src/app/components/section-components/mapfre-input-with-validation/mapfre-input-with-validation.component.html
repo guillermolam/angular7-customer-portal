@@ -10,53 +10,63 @@
         <input
           (blur)= "OnBlur(this)"
           (focus)= "OnFocus(this)"
+          (keydown)="OnKeyDown(this)"
           [class]= "input.additionalClasses"
           [data-error]= "input.validationMessage" 
           [formControlName]= "input.key" 
           [id]= "input.key" 
           [mdbValidate]="false"
           [name]= "input.key"
-          [type]= "input.inputType" 
+          [ngClass]="{'error': !validInput}"
+          [type]= "input.inputType"
+          #email 
           mdbInputDirective
           email
          />
-        <mapfre-label [forInput]= "input.key">{{input.label}}</mapfre-label>
+        <mapfre-label [forInput]= "input.key" [validationCSSClass]="validInput">{{input.label}}</mapfre-label>
       </div>
       <div *ngIf="input.inputType == 'password'">
         <input
           (blur)= "OnBlur(this)"
           (focus)= "OnFocus(this)"
+          (keydown)="OnKeyDown(this)"
           [class]= "input.additionalClasses"
           [data-error]= "input.validationMessage" 
           [formControlName]= "input.key"  
           [id]= "input.key" 
           [mdbValidate]="false"
           [name]= "input.key"
+          [ngClass]="{'error': !validInput}"
           [type]= "showPassword ? 'text' : 'password'"
+          #password
           mdbInputDirective
          />
         <mapfre-icon 
           password= "true"
-          [onFocusShowIcon]= "notOnFocus"
+          [onFocusShowIcon]= "showPasswordIcon"
           [showIconsForPassword]= "input.showPasswordIcon"
           (onClickShowPassword)= "showPasswordFunction($event)">
         </mapfre-icon>
-        <mapfre-label [forInput]= "input.key">{{input.label}}</mapfre-label>
+        <mapfre-label [forInput]= "input.key" [validationCSSClass]="validInput">{{input.label}}</mapfre-label>
         <div *ngIf= "input.key != 'repeatPassword'; else repeatPassword"></div>
       </div>
       <div *ngIf= "input.inputType != 'email' && input.inputType != 'password' ">
         <input
           (blur)= "OnBlur(this)"
+          (focus)="OnFocus(this)"
+          (keydown)="OnKeyDown(this)"
           [class]= "input.additionalClasses"
           [data-error]= "input.validationMessage" 
           [formControlName]= "input.key"  
           [id]= "input.key" 
           [mdbValidate]="false"
           [name]= "input.key"
+          [ngClass]="{'error': !validInput}"
           [type]= "input.inputType"
+          #textbox
           mdbInputDirective
         />
-        <mapfre-label [forInput]= "input.key">{{input.label}}</mapfre-label>
+        <mapfre-label [forInput]= "input.key" [validationCSSClass]="validInput">{{input.label}}</mapfre-label>
       </div>
       <div class="help-block" >
         <span class= "error-block" *ngIf= "!isValid && notOnPageLoad && input.inputType != 'email'">

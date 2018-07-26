@@ -6,11 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./mapfre-label.component.scss'],
 })
 export class MapfreLabelComponent implements OnInit {
-  @Input() forInput: string;
+  @Input() forInput:            string;
+  @Input() validationCSSClass:  boolean;
 
   constructor() { }
 
   ngOnInit() {
+  
   }
 
 }
