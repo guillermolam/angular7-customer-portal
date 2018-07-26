@@ -247,7 +247,9 @@ $mapfre-button-header-margin:                   -3px;
 
     &.header-flat {
         @extend .flat;
-
+        @include media-breakpoint-down(xs) {
+            margin-right:                       -15px !important;
+        }
         @include media-breakpoint-down(s) { //these need variables
             padding-top:                        10px;
             padding-bottom:                     7px;
