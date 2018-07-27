@@ -98,7 +98,8 @@ $global-modal-footer-padding:								$padding-vertical;
 	}
 
 	&:hover {
-		text-decoration: 									none;
 		background: 									  rgba(0, 0, 0, 0.1);
+		color:												$mapfre-modal-link-color;
+		text-decoration: 									none;
 	}
 }
