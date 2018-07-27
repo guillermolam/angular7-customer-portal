@@ -3,14 +3,16 @@ $mapfre-modal-link-font-size:             					$font-size-base;
 $mapfre-modal-info-color:                 					$lite-gray;
 $mapfre-modal-info-font-size:             					$font-size-base * 0.5;
 
-$mapfre-modal-close-font-size:											56px;
-$mapfre-modal-body-font-size:												1rem;
-$mapfre-modal-title-color: 													$mapfre-blue;
-$mapfre-modal-grid-color: 								  			#737373;
+$mapfre-modal-close-font-size:								56px;
+$mapfre-modal-body-font-size:								1rem;
+$mapfre-modal-title-color: 									$mapfre-blue;
+$mapfre-modal-grid-color: 								  	#737373;
 
-$mapfre-modal-grid-font-size: 											1rem;
-$mapfre-modal-grid-font-weight:				 							700;
-$mapfre-modal-grid-color: 													$mapfre-blue;
+$mapfre-modal-grid-font-size: 								1rem;
+$mapfre-modal-grid-font-weight:				 				700;
+$mapfre-modal-grid-color: 									$mapfre-blue;
+
+$global-modal-footer-padding:								$padding-vertical;
 
 .close {
 	font-size: 												$mapfre-modal-close-font-size;
@@ -20,8 +22,8 @@ $mapfre-modal-grid-color: 													$mapfre-blue;
 }
 
 .help {
-	position: absolute;
-	top: -30px;
+	position: 												absolute;
+	top: 													-30px;
 }
 
 .modal-body {
@@ -49,8 +51,8 @@ $mapfre-modal-grid-color: 													$mapfre-blue;
 }
 
 .modal-small {
-	max-width: 													344px;
-	width: 															100%;
+	max-width: 												344px;
+	width: 													100%;
 }
 
 .modal-title {
@@ -64,11 +66,23 @@ $mapfre-modal-grid-color: 													$mapfre-blue;
 	}
 }
 
-a.grid-modal-footer {
-	color: 													$mapfre-blue !important;
+
+
+.grid-modal-footer {
+	color: 													$mapfre-blue;
 	font-size: 												14px; //$mapfre-modal-grid-font-size; 
+	display:                                				grid;
+	grid-template-columns:                  				1fr 9fr 1fr;
 	font-weight: 											$mapfre-modal-grid-font-weight; 
 
+	.icon {
+		padding-right:										$global-modal-footer-padding
+	}
+
+	.title {
+		text-transform: 									uppercase;
+	}
+	
 	.fas {
 			font-size: 										24px;
 	}
@@ -78,13 +92,13 @@ a.grid-modal-footer {
 	}
 
 	.info {
-		color: 											#4c4c4c;
-		font-size: 										14px;
-		font-weight: 									400;
+		color: 											  #4c4c4c;
+		font-size: 											14px;
+		font-weight: 									    400;
 	}
 
 	&:hover {
-		text-decoration: 								none;
-		background: 									rgba(0, 0, 0, 0.1);
+		text-decoration: 									none;
+		background: 									  rgba(0, 0, 0, 0.1);
 	}
 }

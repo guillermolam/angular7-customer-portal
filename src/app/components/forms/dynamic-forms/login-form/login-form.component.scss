@@ -7,8 +7,6 @@ $login-remember-me-group:                               $margin-vertical/2;
 $login-login-group-padding-up:                          $padding-vertical;
 $login-login-group-padding-down:                        $padding-vertical;
 $login-login-group-button-margin:                       $padding-vertical *2;
-$login-hr-margin-top:                                   $margin-vertical *2.5;
-$login-hr-margin-bottom:                                $margin-vertical * 1.75;
 
 .group-login {
     padding-top:                                        $login-login-group-padding-up;
@@ -22,12 +20,7 @@ $login-hr-margin-bottom:                                $margin-vertical * 1.75;
     .forgot-password {
         text-align:                                     right;
     }
-}
-
-.hr-login {
-    margin-top:                                         $login-hr-margin-top;
-    margin-bottom:                                      $login-hr-margin-bottom;
-}                       
+}                      
 
 .register-copy {
     color:                                              $login-register-copy-color;

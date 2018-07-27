@@ -1,8 +1,7 @@
 <form 
   [formGroup]="loginForm" 
   name="loginForm"  
-  (ngSubmit)="loginForm.valid && login()" 
-  >
+  (ngSubmit)="loginForm.valid && login()">
   
   <div class="group-login">
     <div *ngFor="let input of inputs" class="group-inputs">
@@ -18,8 +17,8 @@
     </div>
     <div class="col-xxs forgot-password">
       <mapfre-link
+        (click)="prefillEmailParamater()"
         [additionalClasses]="'small-link underline switch-line-up'"
-        [routerLink]="['/forgotdpassword']"
         >{{ 'FORGOT_PASS' | translate }}
       </mapfre-link>
     </div>

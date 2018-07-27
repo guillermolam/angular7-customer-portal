@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute }           from '@angular/router';
 
-import { FormBase }                 from '../../_models/form-base';
 import { EmailFormService }         from '../../_services/forms/forgot-password/email-form/email-form.service';
 
 @Component({
@@ -12,30 +10,11 @@ import { EmailFormService }         from '../../_services/forms/forgot-password/
 })
 
 export class ForgotPasswordComponent  {
-  emailInputs:            any[];
-  sentEmail:              boolean;
-  testingParm:            boolean;
-  testingIdParm:          string;
-  successChangePassword:  boolean;
+  emailInputs:                        any[];
  
   constructor (
-    emailService: EmailFormService,
-    private activatedRoute: ActivatedRoute
+    emailService:                     EmailFormService,
   ) {
     this.emailInputs = emailService.getInputs();
-  }
-
-  showConfirmation(event): void {
-    this.successChangePassword = event;
-  }
-
-  ngOnInit(): void {
-    /*this.activatedRoute.queryParams
-      .subscribe(params => {
-        this.testingParm = params.testingParm;
-        this.testingIdParm = params.testingIdParm;
-        this.successChangePassword = params.successChangePassword;
-      }
-    );*/
   }
 }
