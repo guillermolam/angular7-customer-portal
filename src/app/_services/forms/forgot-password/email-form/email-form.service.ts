@@ -1,5 +1,4 @@
 import { Injectable }   from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 
 import { FormBase }   from '../../../../_models/form-base';
 import { TextBox }    from '../../../../_models/form-base-extends/text-box'; 
@@ -12,9 +11,10 @@ export class EmailFormService {
         additionalClasses: 'form-control',
         inputType: 'email',
         key: 'sendEmail',
-        label: 'Email',
+        label: 'EMAIL',
         required: true,
         type: 'email',
+        validationMessageError: 'VALID_EMAIL_VALIDATION_MESSAGE',
       })
     ]
     return inputs;

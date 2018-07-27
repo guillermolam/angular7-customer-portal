@@ -19,7 +19,7 @@ export class MapfreModalComponent implements OnInit {
   }
 
   whereIsTheHelpButton(ref): void {
-    let leftPos = ref.clientX - 300;
+    let leftPos = ref.clientX - 310;
     this.helpButtonPositionLeft = leftPos.toString() + "px";
   }
 

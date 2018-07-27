@@ -12,7 +12,7 @@ import { FormBase }                     from '../../../_models/form-base';
 export class MapfreIputWithValidationComponent {
   @Input()  input:                      FormBase<any>;
   @Input()  form:                       FormGroup;
-            emailNoSpace:               boolean = false;
+            validMessageShow:           boolean = false;
             emailShowError:             boolean = false;
             capsLock:                   boolean = false;
             notOnPageLoad:              boolean = false;
@@ -37,20 +37,19 @@ export class MapfreIputWithValidationComponent {
    this.notOnPageLoad = true;
 
     if( this.checkForBlankInputField(inputValue) ) {
-      this.emailNoSpace = true;
+      this.validMessageShow = true;
       this.validInput = this.isValid;
     }
     else {
-       this.emailNoSpace = false;
+       this.validMessageShow = false;
     }
   }
 
   OnFocus(ref): void {
-    let inputValue = ref.form.controls[ref.input.key].value;
     this.validInput = true; //Turn off the error class for the front end on focus
   }
 
-  OnKeyDown(ref): void {
+  OnKeyUp(ref): void {
     let inputValue = ref.form.controls[ref.input.key].value;
     this.showPasswordIcon = this.checkForBlankInputField(inputValue) ? true : false;
   }

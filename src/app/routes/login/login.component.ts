@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { FormBase } from '../../_models/form-base';
 import { LoginService } from '../../_services/forms/login/login.service';
 
 @Component({

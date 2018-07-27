@@ -8,6 +8,9 @@ $global-red-override:                       $mapfre-red !important;
 $global-hr-header-margin-bottom:            $padding-vertical +4;
 $global-hr-body-margin-top:                 $padding-vertical *2;
 $global-hr-body-margin-bottom:              $padding-vertical *2;
+$global-login-hr-margin-top:                $margin-vertical *2.5;
+$global-login-hr-margin-bottom:             $margin-vertical * 1.75;
+
 
 body {
     background-color:                       $global-body-bg-color;
@@ -23,7 +26,12 @@ hr {
 	&.body {
 		margin-top:                         2rem;
 		margin-bottom:                      2rem;
-	}
+    }
+    
+    &.hr-login {
+        margin-top:                         $global-login-hr-margin-top;
+        margin-bottom:                      $global-login-hr-margin-bottom;
+    } 
 }
 
 
@@ -76,11 +84,6 @@ textarea:focus {
 
 .center-margin {
     margin:                                 auto;
-}
-
-.grid-modal-footer {
-    display:                                grid;
-    grid-template-columns:                  2fr 9fr 1fr;
 }
 
 .logo {

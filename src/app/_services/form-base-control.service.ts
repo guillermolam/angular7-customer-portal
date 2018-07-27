@@ -19,10 +19,10 @@ export class FormBaseControlService {
         noSpacePattern:   RegExp = /^\s*$/; 
 
     inputs.forEach(input => {
-      if( input.value == 'email' ){
+      if( input.inputType == 'email' ){
         group[input.key] = input.required ? 
-          new FormControl(input.value || '',  [Validators.required, Validators.email] ) : 
-          new FormControl(input.value || '',  Validators.email);
+          new FormControl(input.value || '',  [Validators.required, Validators.pattern(emailPattern)] ) : 
+          new FormControl(input.value || '',  Validators.pattern(emailPattern));
       }
       else if(input.inputType =='password' && input.key != 'createPassword'){
         group[input.key] = new FormControl

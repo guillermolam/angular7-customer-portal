@@ -13,17 +13,17 @@ import { UserService }                from "../../../../_services/user.service";
 import { User }                       from "../../../../_models/user";
 
 @Component({
-  selector: 'app-forgot-password-form',
-  templateUrl: './forgot-password-form.component.html',
-  styleUrls: ['./forgot-password-form.component.scss'],
+  selector: 'app-create-password-form',
+  templateUrl: './create-password-form.component.html',
+  styleUrls: ['./create-password-form.component.scss'],
   providers: [ FormBaseControlService ]
 })
-export class ForgotPasswordFormComponent implements OnInit {
+export class CreatePasswordFormComponent implements OnInit {
   @Input() inputs:          FormBase<any>[] = [];
+  forgotPasswordForm:       FormGroup;
   loading: boolean =        false;
   returnUrl:                string;
   user:                     User;
-  forgotPasswordForm:       FormGroup;
   
   constructor(
     private _cookieService: CookieService,
@@ -38,15 +38,15 @@ export class ForgotPasswordFormComponent implements OnInit {
     private ipt: FormBaseControlService
   ) {}
 
+  createNewPassword(): void {
+
+  }
+
   ngOnInit() {
     this.forgotPasswordForm = this.ipt.toFormGroup(this.inputs);
     this.user = new User();
   }
-
-  createNewPassword(): void {
-
-  }
-}
+} 
 /*
 
 this.userData.$user.subscribe((user) => {
@@ -54,9 +54,9 @@ this.userData.$user.subscribe((user) => {
     });
 
     this.createForm();
-  createForm() {
-    this.forgotPasswordForm = this.fb.group({
-      email: [this.user.email, Validators.required]
+      createForm() {
+      this.forgotPasswordForm = this.fb.group({
+        email: [this.user.email, Validators.required]
     });
   }
 

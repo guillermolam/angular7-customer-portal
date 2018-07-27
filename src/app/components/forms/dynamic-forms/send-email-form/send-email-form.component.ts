@@ -14,9 +14,11 @@ import { FormBaseControlService }     from '../../../../_services/form-base-cont
 export class SendEmailFormComponent implements OnInit {
   @Input() inputs:                  FormBase<any>[] = [];
   @Input() inputValidation:         boolean;
+  emailPrefillParamater:            string;
   loading:                          boolean = false;
   returnUrl:                        string;
   passwordEmailForm:                FormGroup;
+  sub: ActivatedRoute;
   @Output() emailAddressOuput:      EventEmitter<boolean> = new EventEmitter();
 
   isValid(event): boolean{
@@ -24,18 +26,27 @@ export class SendEmailFormComponent implements OnInit {
   }
 
   sendEmail(): void{
-    let emailAddress = this.passwordEmailForm.controls['sendEmail'].value;
+    let emailAddress = this.passwordEmailForm.controls.sendEmail.value;
     //insert backend service here. No matter what still have the bottom bit go through
     this.emailAddressOuput.emit(emailAddress);
   }
   
   constructor(
+    private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private ipt: FormBaseControlService,
     private router: Router
   ) {}
 
   ngOnInit() {
-   this.passwordEmailForm = this.ipt.toFormGroup(this.inputs); 
+    this.passwordEmailForm = this.ipt.toFormGroup(this.inputs); 
+
+    this.activatedRoute.queryParams
+      .subscribe(params => {
+        this.emailPrefillParamater = params['emailPrefill'] || '';
+      }
+    );
+    this.passwordEmailForm.controls.sendEmail.setValue( this.emailPrefillParamater );
   }
+  
 }
