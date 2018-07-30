@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AppComponent } from 		'../../../app.component'
-import { TranslateService } from '@ngx-translate/core';
-import { Language } from '../../../app.language';
+import { Component, OnInit }      from '@angular/core';
+import { TranslateService }       from '@ngx-translate/core';
+
+import { AppComponent }           from 		'../../../app.component'
+import { Language }               from '../../../app.language';
+import { ModalOptions }           from '../../../_models/modal-options';
 
 @Component({
   selector: 'mapfre-footer',
@@ -9,10 +11,27 @@ import { Language } from '../../../app.language';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent extends AppComponent implements OnInit {
-  year:         number;
-  defaultLanguage: string;
-  constructor(public translate: TranslateService, public _languages:Language) {
-  	super(translate, _languages)
+  year:                             number;
+  defaultLanguage:                  string;
+  footerHelpModalOptions:           ModalOptions
+  
+  constructor(
+    public translate: TranslateService, 
+    public _languages:Language,
+    
+  ) {
+    super(translate, _languages)
+    this.footerHelpModalOptions = new ModalOptions({
+			additionalButtonClasses:        "basic, primary",  //example classes
+			buttonCopy:                     "FOOTER_DEFAULT_LANGUAGE",
+			modalId:                        "langModal",
+			iconClasses:                    "language",
+			iconFamily:						          "material-icons",
+			modalTranslateCopy:             "MODAL_USER_LANGUAGE_TITLE",
+			typeOfModal:					          "footer",
+			screenReader:                   false,
+			showIcons:                      false,
+		  });
    }
 
   ngOnInit() {
