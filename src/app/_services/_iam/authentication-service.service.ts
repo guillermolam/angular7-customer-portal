@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { HttpClientModule } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, Subject, ReplaySubject, from, of, range, BehaviorSubject } from 'rxjs';
+import { Observable, Subject, ReplaySubject, from, of, range, BehaviorSubject, identity } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
 import { environment } from "../../../environments/environment";
 import 'rxjs/add/operator/map'
@@ -24,8 +24,8 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<any> {
-    const url = environment.api_gateway_url + "/auth/oauth/v2/token";
-    const body = {}; 
+    const url = environment.api_gateway_url + "/auth/oauth/v2/token",
+          body = {}; 
     return this.http
       .post(url, body,
       {
@@ -67,25 +67,17 @@ export class AuthenticationService {
   }
 
   sendEmail(email: string): Observable<any> {
-    const url = environment.api_gateway_url + "/auth/oauth/v2/token";
-    const body = {}; 
+    const url = environment.identityAPI;
     return this.http
-      .post(url, body,
-      {
-        //THIS PART IS JUST AN EXAMPLE AND IT TAKEN FROM THE LOGIN METHOD
-        params : {
-          grant_type: 'email',
-          email: email,
-          client_id:'9e8881c6-9fd2-4113-8602-6affc18a6fdd',
-          client_secret: '01c5ebc0-8242-4025-b93d-0ad5e168b845',
-          scope: 'oob'
-        },
-        headers : {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
-      })
+      .post(url, 
+            JSON.stringify({email}), 
+            {
+              headers: {
+                "Content-Type": "application/json"
+              }
+            })
       .map(
-        (response) => {
+        (response: Response) => {
           if(response) {
             return true;
           }
