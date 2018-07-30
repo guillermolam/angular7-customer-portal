@@ -300,4 +300,14 @@ $mapfre-button-header-margin:                   -3px;
         width:                                  180px; 
     }
 
+    // ------ Custom Icon Classes -----
+    .custom-button-icon {
+        padding-right: 8px;
+
+        &.align-middle {
+            position: relative;
+            top: -1px;
+        }
+    }
+
 }

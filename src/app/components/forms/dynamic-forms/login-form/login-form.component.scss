@@ -17,6 +17,8 @@ $login-login-group-button-margin:                       $padding-vertical *2;
 }
 
 .group-remember {
+    margin-top:                                         $login-login-group-padding-up;
+
     .forgot-password {
         text-align:                                     right;
     }

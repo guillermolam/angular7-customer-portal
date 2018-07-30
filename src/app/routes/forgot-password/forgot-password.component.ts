@@ -10,11 +10,16 @@ import { EmailFormService }         from '../../_services/forms/forgot-password/
 })
 
 export class ForgotPasswordComponent  {
+  showConfirmation:                   boolean = false;
   emailInputs:                        any[];
  
   constructor (
     emailService:                     EmailFormService,
   ) {
     this.emailInputs = emailService.getInputs();
+  }
+  
+  showConfirmationAction(event): void {
+    this.showConfirmation = event;
   }
 }

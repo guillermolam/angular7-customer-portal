@@ -8,6 +8,10 @@ $forgot-login-group-padding-up:                          $padding-vertical;
 $forgot-login-group-padding-down:                        $padding-vertical;
 $forgot-login-group-button-margin:                       $padding-vertical *2;
 
+.group-inputs {
+    padding-top: 18px;
+}
+
 .group-email {
     padding-top:                                        $forgot-login-group-padding-up;
 }

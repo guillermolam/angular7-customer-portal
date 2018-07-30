@@ -3,8 +3,10 @@
 		class="btn mapfre {{additionalClasses}}"
 		[disabled]="!isFormValid()" 
 		*ngSwitchCase="'button-form'"
-		mdbWavesEffect
-	>
+		mdbWavesEffecte>
+		<span *ngIf="showIcons">
+			<mapfre-icon [iconClasses]="iconClasses" [iconFamily]="iconFamily"></mapfre-icon> 
+		</span>
 		<ng-content></ng-content>
 	</button>
 	
@@ -40,6 +42,12 @@
 		class="btn mapfre waves-light {{additionalClasses}}"  
 		*ngSwitchDefault
 		mdbWavesEffect>
+		<span *ngIf="showIcons">
+			<mapfre-icon [iconClasses]="iconClasses" [iconFamily]="iconFamily"></mapfre-icon> 
+		</span>
+		<span *ngIf="showIconsCustom">
+			<img [src]="customIcon" class="custom-button-icon {{iconClasses}}" alt="back space arrow icon" />
+		</span>
 		<ng-content></ng-content>
 	</button>
 </span>

@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mapfre-button',
@@ -9,6 +8,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class MapfreButtonComponent implements OnInit {
   @Input() additionalClasses:                   string = 'basic primary';
   @Input() buttonCopy:                          string;
+  @Input() customIcon:                          string;
   @Input() disabledValue:                       boolean;
   @Input() iconClasses:                         string;
   @Input() iconFamily:                          string;
@@ -17,33 +17,21 @@ export class MapfreButtonComponent implements OnInit {
   @Input() modalFunctionId:                     string;
   @Input() screenReader:                        boolean = false;
   @Input() showIcons:                           boolean = false;
+  @Input() showIconsCustom:                     boolean = false;
   @Input() translateValue:                      string;
 
-  constructor(
-    private activeRoute:                        ActivatedRoute,
-    private router:                             Router,
-  ) {}
+  constructor() {}
 
   public moreCSSClasses(classes: string): boolean{
     let check;
-    if(classes != undefined) {
-      check = true;
-    }
-    else {
-      check = false;
-    }
+    check = classes != undefined ? true : false;
     return check;
   } 
 
-
   isFormValid(): boolean{
-    if(this.disabledValue == undefined){
-      return true;
-    }
-    else {
-      return this.disabledValue;
-    }
+    return this.disabledValue == undefined ? true : this.disabledValue;
   }
+
   ngOnInit() {
 
   }

@@ -15,6 +15,11 @@ $input-error-color:                         $error-color;
 $input-active-color:                        $active-color; 
 $input-inactive-color:                      $mapfre-lite-gray;
 
+.group-inputs {
+    height: 66px;
+    padding-top: 18px;
+}
+
 .input-field.mapfre {
     height:                                 60px;
     position:                               relative; 

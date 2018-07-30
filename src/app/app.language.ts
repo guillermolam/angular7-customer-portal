@@ -30,8 +30,6 @@ export class Language {
             "FIRST_TIME": "First Time",
             "SIGN_IN" : "Sign In",
 
-
-
             //login
             "CUSTOMER_ACCESS" : "Customer Access",
             "REMEMBER_ME" : "Remember Me",
@@ -67,6 +65,8 @@ export class Language {
             "FORGOT_PASSWORD_PARAGRAPH": "We'll send you an email with instructions",
             "FORGOT_PASSWORD_SUBMIT_BUTTON": "Request new Password",
             "FORGOT_PASSWORD_LOGIN_LINK": "Log In",
+            "CHECK_YOUR_EMAIL_TITLE" : "Check Your Email",
+            "CHECK_YOUR_EMAIL_PARAGRAPH" : "We sent an email containing instructions on how to create a new password",
 
              //DYNAMIC FORM labels and messages
              "EMAIL" : "Email",
@@ -138,6 +138,8 @@ export class Language {
             "FORGOT_PASSWORD_PARAGRAPF": "We'll send you an email with instructions",
             "FORGOT_PASSWORD_SUBMIT_BUTTON": "Request new Password",
             "FORGOT_PASSWORD_LOGIN_LINK": "Log In",
+            "CHECK_YOUR_EMAIL_TITLE" : "Check Your Email",
+            "CHECK_YOUR_EMAIL_PARAGRAPH" : "We sent an email containing instructions on how to create a new password",
 
             //DYNAMIC FORM labels and messages
             "EMAIL" : "Correo Electrónico",

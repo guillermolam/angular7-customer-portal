@@ -101,11 +101,17 @@ textarea:focus {
     float:                                  left;
     padding-right:                          $global-title-font-size;
 }
+
 .right {
     text-align:                             right;
 }
+
 .text-center {
     text-align:                             center;
+}
+
+.subtitle-copy {
+    margin-bottom:                          0;
 }
 
 .title-copy {

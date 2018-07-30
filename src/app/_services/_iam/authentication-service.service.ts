@@ -65,4 +65,35 @@ export class AuthenticationService {
     this.token = null;
     localStorage.removeItem("currentUser");
   }
+
+  sendEmail(email: string): Observable<any> {
+    const url = environment.api_gateway_url + "/auth/oauth/v2/token";
+    const body = {}; 
+    return this.http
+      .post(url, body,
+      {
+        //THIS PART IS JUST AN EXAMPLE AND IT TAKEN FROM THE LOGIN METHOD
+        params : {
+          grant_type: 'email',
+          email: email,
+          client_id:'9e8881c6-9fd2-4113-8602-6affc18a6fdd',
+          client_secret: '01c5ebc0-8242-4025-b93d-0ad5e168b845',
+          scope: 'oob'
+        },
+        headers : {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      })
+      .map(
+        (response) => {
+          if(response) {
+            return true;
+          }
+          else {
+            return false;
+          }
+        }
+      )
+      .catch((error:any) => Observable.throw('We Could not validate your email'));
+  }
 }
