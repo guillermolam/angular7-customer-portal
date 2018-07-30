@@ -57,6 +57,9 @@ export class Language {
             "MODAL_HELP_DONT_HESITATE": "Please don’t hesitate to contact our Customer Service Department.",
             "CALL_US": "Call Us",
             "EMAIL_US": "Email Us",
+            "MODAL_USER_LANGUAGE_TITLE":"LANGUAGE",
+            "FOOTER_DEFAULT_LANGUAGE":"ENGLISH",
+            
 
             //FOOTER
             "FOOTER_COPY_RIGHT" : 'MAPFRE U.S.A Corp. All rights reserved.'
@@ -113,7 +116,9 @@ export class Language {
             "MODAL_HELP_DONT_HESITATE": "Please don’t hesitate to contact our Customer Service Department.",
             "CALL_US": "Call Us",
             "EMAIL_US": "Email Us",
-
+            "MODAL_USER_LANGUAGE_TITLE":"IDIOMA",
+            "FOOTER_DEFAULT_LANGUAGE":"ESPAÑOL",
+            
             //FOOTER
             "FOOTER_COPY_RIGHT" : 'MAPFRE U.S.A Corp. All rights reserved.'
         }
