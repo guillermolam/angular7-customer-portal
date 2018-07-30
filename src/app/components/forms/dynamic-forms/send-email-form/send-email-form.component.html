@@ -1,27 +1,36 @@
 <form 
-  action="s"
   [formGroup]="passwordEmailForm" 
-  method="post"
-  name="passwordEmailForm" 
-  (ngSubmit)="passwordEmailForm.valid && sendEmail()">
-  
-  <div *ngFor="let input of inputs">
-    <mapfre-validation [input]="input" [form]="passwordEmailForm" (inputValidationCheck)=isValid($event)></mapfre-validation>
+  name="passwordEmailForm"  
+  (ngSubmit)="passwordEmailForm.valid && sendEmail()" 
+  >
+
+  <div class="group-email">
+    <div *ngFor="let input of inputs" class="group-inputs">
+      <mapfre-validation [input]="input" [form]="passwordEmailForm"></mapfre-validation>
+    </div>
   </div>
 
-  <div class="row text-center group-submit">
+  <div class="row text-center group-sendemail-button">
     <div class="col">
         <mapfre-button
-        [additionalClasses]="'success full'"
-        [disabledValue]="inputValidation"
-        [inputType]="'button'"
-      >  {{ 'SEND_EMAIL' | translate }}
+        [additionalClasses]="'basic primary large'"
+        [disabledValue]="passwordEmailForm.valid"
+        [inputType]="'submit'"
+        [translateValue]="'FORGOT_PASSWORD_SUBMIT_BUTTON' | translate"
+      ></mapfre-button>
+    </div>
+  </div>
+
+  <hr class="hr-login" />
+  
+  <div class="row text-center group-sendemail-button">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'flat link small'"
+        [routerLink]="['/login']"
+      >  {{ 'FORGOT_PASSWORD_LOGIN_LINK' | translate }}
       </mapfre-button>
     </div>
   </div>
-  <!--<input name="j_url" id="j_url" type="hidden" value="account/forgotPassword" />-->
+
 </form>
-
-<div>
-
-</div>

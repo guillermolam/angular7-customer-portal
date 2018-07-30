@@ -8,14 +8,9 @@ export class Language {
         "identifier" : "EN",
         "name" : "English",
         "sentences":{
-
-            "YOUR_EMAIL" : "Your email",
-            "YOUR_PASSWORD" : "Your password",
-            "REMEMBER_ME" : "Remember Me",
-            "FORGOT_PASS" : "Forgot Password",
+            
             "LOGIN" : "Login",
             "REGISTER" : "Register",
-            //
             "CONF_PASS" : "Confirm Password",
             "CANCEL" : "Cancel",
             "SIGNUPTEXT" : "We are making awesome insurance. Could we take care of you too?",
@@ -32,12 +27,18 @@ export class Language {
             "PASSWORD_REQUIRED" : "Password is required.",
             "CONF_PASS_REQUIRED" : "Confirm Password is required.",
             "PASSWORDS_NOT_MATCH" : "Password and confirm password does not match.",
-            "EMAIL" : "Email",
-            "PASSWORD" : "Password",
-            "CREATE_ACCOUNT" : "Create Account",
             "FIRST_TIME": "First Time",
             "SIGN_IN" : "Sign In",
+
+
+
+            //login
             "CUSTOMER_ACCESS" : "Customer Access",
+            "REMEMBER_ME" : "Remember Me",
+            "FORGOT_PASS" : "Forgot Password",
+            "CREATE_ACCOUNT" : "Create Account",
+
+            //Passwords
             "SHOW_PASSWORD": "Show Password",
             "HIDE_PASSWORD" : "Hide Password",
             "YOUR_PASSWORD_SHOULD_BE" : "Your Password Should Be",
@@ -62,7 +63,21 @@ export class Language {
             
 
             //FOOTER
-            "FOOTER_COPY_RIGHT" : 'MAPFRE U.S.A Corp. All rights reserved.'
+            "FOOTER_COPY_RIGHT" : 'MAPFRE U.S.A Corp. All rights reserved.',
+            
+            //Forgot Password Route
+            "FORGOT_PASSWORD_TITLE": "Forgot your password",
+            "FORGOT_PASSWORD_PARAGRAPH": "We'll send you an email with instructions",
+            "FORGOT_PASSWORD_SUBMIT_BUTTON": "Request new Password",
+            "FORGOT_PASSWORD_LOGIN_LINK": "Log In",
+
+             //DYNAMIC FORM labels and messages
+             "EMAIL" : "Email",
+             "PASSWORD" : "Password",
+             "VALID_EMAIL_VALIDATION_MESSAGE" : "Please Enter A Valid Email",
+
+             //General messages
+             "CAPS_LOCK" : "Caps Lock is On",
 
         }
     },{
@@ -92,12 +107,12 @@ export class Language {
             "PASSWORD_REQUIRED" : "Contraseña obligatoria.",
             "CONF_PASS_REQUIRED" : "Confirmar contraseña es obligatorio.",
             "PASSWORDS_NOT_MATCH" : "La contraseña y la contraseña no coinciden.",
-            "EMAIL" : "Correo Electrónico",
-            "PASSWORD" : "Contraseña",
             "CREATE_ACCOUNT" : "Crear Cuenta",
             "FIRST_TIME": "Primera vez",
             "SIGN_IN" : "Iniciar sesion",
             "CUSTOMER_ACCESS" : "Acceso de clientes",
+
+            //create passwords
             "SHOW_PASSWORD": "Mostrar contraseña",
             "HIDE_PASSWORD" : "Ocultar contraseña",
             "YOUR_PASSWORD_SHOULD_BE" : "Su contraseña deberia ser",
@@ -110,6 +125,7 @@ export class Language {
             "PASSES_THE_RULE": "pasa",
             "INVALID_USERNAME_PASSWORD": "Inválido correo electrónico y/o contraseña",
             
+            //modal - Header Help
             "MODAL_HELP_TITLE": "Help",
             "MODAL_HELP_CUSTOMER_PORTAL": "Your MAPFRE Account allows you to access your policy documents, report claims, and make payments any time.",
             "MODAL_HELP_TROUBLE_ACCESSING": "Trouble accessing your account?",
@@ -120,7 +136,21 @@ export class Language {
             "FOOTER_DEFAULT_LANGUAGE":"ESPAÑOL",
             
             //FOOTER
-            "FOOTER_COPY_RIGHT" : 'MAPFRE U.S.A Corp. All rights reserved.'
+            "FOOTER_COPY_RIGHT" : 'MAPFRE U.S.A Corp. All rights reserved.',
+
+            //Forgot Password Route
+            "FORGOT_PASSWORD_TITLE": "Forgot your password",
+            "FORGOT_PASSWORD_PARAGRAPF": "We'll send you an email with instructions",
+            "FORGOT_PASSWORD_SUBMIT_BUTTON": "Request new Password",
+            "FORGOT_PASSWORD_LOGIN_LINK": "Log In",
+
+            //DYNAMIC FORM labels and messages
+            "EMAIL" : "Correo Electrónico",
+            "PASSWORD" : "Contraseña",
+            "VALID_EMAIL_VALIDATION_MESSAGE" : "Please Enter A Valid Email",
+
+            //General messages
+            "CAPS_LOCK" : "Caps Lock is On",
         }
     }];
 }

@@ -50,7 +50,7 @@ import { TestingComponent }                   from './routes/testing/testing.com
 
 
 import { DynamicFormsComponent }              from './components/forms/dynamic-forms/dynamic-form-testing/dynamic-forms.component';
-import { ForgotPasswordFormComponent }        from './components/forms/dynamic-forms/forgot-password-form/forgot-password-form.component';
+import { CreatePasswordFormComponent }        from './components/forms/dynamic-forms/create-password-form/create-password-form.component';
 import { SendEmailFormComponent }             from './components/forms/dynamic-forms/send-email-form/send-email-form.component';
 import { EmailConfirmationComponent }         from './components/confirmations/email-confirmation/email-confirmation.component';
 import { SendEmailFormNONDynamicComponent }   from './components/forms/non-dynamic-forms/send-email-form/send-email-form.component';
@@ -95,7 +95,7 @@ import { MapfreDropdownComponent }             from './components/section-compon
     MapfreCardComponent,
     MapfreIconComponent,
     DynamicFormsComponent,
-    ForgotPasswordFormComponent,
+    CreatePasswordFormComponent,
     RepeatPasswordDirectiveDirective,
     ForgotPasswordNondynamicComponent,
     SendEmailFormComponent,

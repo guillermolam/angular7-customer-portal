@@ -1,0 +1,28 @@
+@import "../../../../../styles.scss";
+
+$forgot-register-copy-color:                             $med-gray;
+$forgot-register-copy-size:                              $font-size-sm;
+
+$forgot-remember-me-group:                               $margin-vertical/2;
+$forgot-login-group-padding-up:                          $padding-vertical;
+$forgot-login-group-padding-down:                        $padding-vertical;
+$forgot-login-group-button-margin:                       $padding-vertical *2;
+
+.group-email {
+    padding-top:                                        $forgot-login-group-padding-up;
+}
+
+.group-sendemail-button {
+    margin-top:                                         $forgot-login-group-button-margin;
+}
+
+.group-remember {
+    .forgot-password {
+        text-align:                                     right;
+    }
+}                      
+
+.register-copy {
+    color:                                              $forgot-register-copy-color;
+    font-size:                                          $forgot-register-copy-size;
+}
