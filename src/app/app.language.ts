@@ -76,6 +76,11 @@ export class Language {
              //General messages
              "CAPS_LOCK" : "Caps Lock is On",
 
+             //forgot password send email confirmation
+             "FORGOT_EMAIL_CONFIMATION_SUBTITLE": "Didn't receive the email?",
+             "FORGOT_EMAIL_CONFIMATION_COPY": "Check your spam for a message from",
+             "FORGOT_EMAIL_SEND_AGAIN": "Send email again",
+
         }
     },{
         "identifier" : "ES",

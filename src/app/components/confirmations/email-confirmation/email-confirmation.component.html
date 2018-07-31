@@ -1,3 +1,15 @@
-<p>
-We sent you an email to {{emailSentTo}}
-</p>
+<div class="confirmation-content text-center">
+    <p>
+        <strong>{{ 'FORGOT_EMAIL_CONFIMATION_SUBTITLE' | translate }}</strong> <br />
+        {{ 'FORGOT_EMAIL_CONFIMATION_COPY' | translate }} <br /> 
+        <em>consumeraccount@mapfreusa.com</em>
+    </p>
+    <div class="send-email-again">
+        <mapfre-link
+        [additionalClasses]="'small-link underline switch-line-up'"
+        [icon]="true"
+        [iconClasses]="'fas fa-envelope'"
+        (click)="goBackToForm()"
+        >{{ 'FORGOT_EMAIL_SEND_AGAIN' | translate }}</mapfre-link>
+    </div>
+</div>

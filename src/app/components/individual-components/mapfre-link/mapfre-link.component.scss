@@ -11,11 +11,8 @@ $mapfre-link-icon-right:                    $padding-horizontal/1.5;
 $mapfre-link-padding:                       0 $padding-vertical;
 
 i {
-    float:                                  left;
-    font-size:                              $link-icon-font-size;
+    font-size:                              1rem;
     font-weight:                            900;
-    margin-top:                             $mapfre-link-icon-top;
-    padding-right:                          $mapfre-link-icon-right;
 }
 
 .mapfre {  
@@ -25,6 +22,13 @@ i {
     
     &.large-link {
         font-size:                          $mapfre-link-font-size-large;
+    }
+
+    .link-icon {
+        position:                           relative;
+        top:                                2px;
+        font-size:                          16px;
+        padding-right:                      8px;
     }
 
     &.normal-link {
@@ -49,7 +53,9 @@ i {
     }
 
     &.underline {
-        border-bottom:                      thin solid $mapfre-link-border-bottom-color;
-        @include transition(1s);
+        .link-content {
+            border-bottom:                      thin solid $mapfre-link-border-bottom-color;
+        }
+       @include transition(1s);
     }
 }

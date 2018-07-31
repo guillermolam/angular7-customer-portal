@@ -1,8 +1,8 @@
 <a class="mapfre {{additionalClasses}}" target="{{target}}">
-  <div *ngIf="icon">
-    <i class="fa {{iconClasses}}"></i>
-  </div>
-  <span>
+  <span class="link-icon" *ngIf="icon">
+    <i class="{{iconClasses}}"></i>
+  </span>
+  <span class="link-content">
     <ng-content></ng-content>
   </span>
 </a>

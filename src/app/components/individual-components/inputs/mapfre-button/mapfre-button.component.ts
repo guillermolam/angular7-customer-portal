@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './mapfre-button.component.html',
   styleUrls: ['./mapfre-button.component.scss']
 })
-export class MapfreButtonComponent implements OnInit {
+export class MapfreButtonComponent {
   @Input() additionalClasses:                   string = 'basic primary';
   @Input() buttonCopy:                          string;
   @Input() customIcon:                          string;
@@ -30,9 +30,5 @@ export class MapfreButtonComponent implements OnInit {
 
   isFormValid(): boolean{
     return this.disabledValue == undefined ? true : this.disabledValue;
-  }
-
-  ngOnInit() {
-
   }
 }

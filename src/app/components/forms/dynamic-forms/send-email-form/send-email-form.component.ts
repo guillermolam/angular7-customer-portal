@@ -17,7 +17,7 @@ import { User }                         from '../../../../_models/user';
 export class SendEmailFormComponent implements OnInit {
   @Input() inputs:                      FormBase<any>[] = [];
   @Input() inputValidation:             boolean;
-  emailPrefillParamater:                string;
+  @Input() emailPrefillParamater:       string;
   loading:                              boolean = false;
   returnUrl:                            string;
   passwordEmailForm:                    FormGroup;
@@ -51,25 +51,19 @@ export class SendEmailFormComponent implements OnInit {
           },
           (error) => {
             console.log(error)
-            this.alertService.error(error);
+            this.showConfirmation.emit(true);
+            //this.alertService.error(error);
           }
         )
-
+      ;
     }
   }
 
   getEmailFromParamater(): void{
     this.passwordEmailForm = this.ipt.toFormGroup(this.inputs); 
-    this.activatedRoute.queryParams
-      .subscribe(params => {
-        this.emailPrefillParamater = params['emailPrefill'] || '';
-      }
-    );
     this.passwordEmailForm.controls.sendEmail.setValue( this.emailPrefillParamater );
   }
   
-
-
   ngOnInit() {
     this.getEmailFromParamater();
   }
