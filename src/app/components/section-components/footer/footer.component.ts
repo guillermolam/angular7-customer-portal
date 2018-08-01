@@ -1,10 +1,9 @@
-import { Component, OnInit, Output }      from '@angular/core';
+import { Component, Input, OnInit, Output }      from '@angular/core';
 import { TranslateService }       from '@ngx-translate/core';
 
 import { AppComponent }           from '../../../app.component'
 import { Language }               from '../../../app.language';
 import { ModalOptions }           from '../../../_models/modal-options';
-import { EventEmitter } from 'events';
 
 @Component({
   selector: 'mapfre-footer',
@@ -12,9 +11,11 @@ import { EventEmitter } from 'events';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent extends AppComponent implements OnInit {
-  year:                             number;
   defaultLanguage:                  string;
   footerHelpModalOptions:           ModalOptions;
+  hideModal:                        boolean = false;
+  year:                             number;
+  
   
   constructor(
     public translate:               TranslateService, 
@@ -35,6 +36,14 @@ export class FooterComponent extends AppComponent implements OnInit {
 			showIcons:                      true,
 			typeOfModal:					          "footer",
 		});
+  }
+
+  hideModalAction(event): void {
+    if(event) this.hideModal = true;
+  }
+
+  resetHideModal(event): void {
+    this.hideModal = false;
   }
 
   switchUserLanguage(event): void {

@@ -1,5 +1,6 @@
-import { Component, HostListener, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, HostListener, Input, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { ModalOptions } from '../../../_models/modal-options';
+import { ModalModule } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'mapfre-modal',
@@ -8,16 +9,25 @@ import { ModalOptions } from '../../../_models/modal-options';
 })
 export class MapfreModalComponent implements OnInit {
   @Input() modalOptions:                ModalOptions;
+  @Input() hideModal:                   boolean;
   helpButtonPositionLeft:               string;
   midHighResolution:                    boolean;
   modalOverLay:                         boolean = true;
+
+  @Output() hideModalOutput:            EventEmitter<boolean> = new EventEmitter();
+  @ViewChild ('modal') public modal:    any;
 
   @HostListener('window:resize', ['$event']) 
   onResize() {
     if(this.modalOptions.typeOfModal == 'header') this.setUpModalClass();
   }
 
-  constructor() { }
+  @HostListener('click', ['$event']) 
+  OnClick(){
+    this.closeOnInternalButton(this.hideModal);
+  }
+
+  constructor( private modalService: ModalModule ) { }
 
   whereIsTheHelpButton(ref): void {
     if(this.modalOptions.typeOfModal == 'header') {
@@ -57,6 +67,13 @@ export class MapfreModalComponent implements OnInit {
         this.modalOverLay = false;
         this.midHighResolution = true;
       break;
+    }
+  }
+
+  closeOnInternalButton(hideModal): void {
+    if(hideModal) {
+      this.modal.hide();
+      this.hideModalOutput.emit(false);
     }
   }
 
