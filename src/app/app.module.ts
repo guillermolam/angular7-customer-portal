@@ -5,6 +5,7 @@ import { CookieService }                      from 'ngx-cookie-service';
 import { FormsModule }                        from "@angular/forms";
 import { GooglePlaceModule }                  from "ngx-google-places-autocomplete";
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from "@angular/common/http";
+import { JwtModule }                          from '@auth0/angular-jwt';
 import { MDBBootstrapModule }                 from "angular-bootstrap-md";
 
 import { MockBackend }                        from '@angular/http/testing';
@@ -70,6 +71,9 @@ import { MapfreLoadingComponent }              from './components/individual-com
 import { MapfreTooltipComponent }              from './components/individual-components/mapfre-tooltip/mapfre-tooltip.component';       
 import { MapfreDropdownComponent }             from './components/section-components/mapfre-dropdown/mapfre-dropdown.component'; 
 
+export function tokenGetter() {
+  return localStorage.getItem("currentUser");
+}
 
 @NgModule({
   declarations: [
@@ -119,6 +123,13 @@ import { MapfreDropdownComponent }             from './components/section-compon
     FormsModule,
     GooglePlaceModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4000'],
+        blacklistedRoutes: ['localhost:4000/api/auth']
+      }
+    }),
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     RoutingModule,

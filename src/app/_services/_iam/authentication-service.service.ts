@@ -1,8 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { HttpClientModule } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, Subject, ReplaySubject, from, of, range, BehaviorSubject, identity } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map }        from 'rxjs/operators';
 import { environment } from "../../../environments/environment";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/observable/of'; 
@@ -27,8 +26,7 @@ export class AuthenticationService {
     const url = environment.api_gateway_url + "/auth/oauth/v2/token",
           body = {}; 
     return this.http
-      .post(url, body,
-      {
+      .post(url, body,{
         params : {
           grant_type: 'password',
           username: username,
@@ -42,7 +40,6 @@ export class AuthenticationService {
         }
       })
       .map( (access_token) => {
-        console.log(access_token);
         // login successful if there's a jwt token in the response
         if (access_token) {
           // store username and jwt token in local storage to keep user logged in between page refreshes
@@ -68,22 +65,18 @@ export class AuthenticationService {
 
   forgotPasswordSendEmailId(email: string): Observable<any> {
     const url = ''  //environment.identityAPI ;
-    return this.http
-      .post(url, JSON.stringify({email}), {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .map(
-        (response: Response) => {
-          if(response) {
-            return true;
-          }
-          else {
-            return false;
-          }
-        }
-      )
-      .catch((error:any) => Observable.throw('We Could not validate your email'));
+    return this.http.post(url, {email: email})
+      .pipe(
+        map( (response: Response) => {
+            if( response.status === 200 ) {
+              return true;
+            }
+            else {
+              return false;
+            }
+        })
+      ).catch(
+        (error:any) => Observable.throw('We Could not validate your email')
+      );
   }
 }

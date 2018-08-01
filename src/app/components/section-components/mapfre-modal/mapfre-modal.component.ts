@@ -58,7 +58,6 @@ export class MapfreModalComponent implements OnInit {
         this.midHighResolution = true;
       break;
     }
-    console.log("this.modalOverLay", this.modalOverLay);
   }
 
   ngOnInit() {
