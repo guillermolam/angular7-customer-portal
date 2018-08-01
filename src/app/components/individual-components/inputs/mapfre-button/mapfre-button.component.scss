@@ -272,6 +272,19 @@ $mapfre-button-header-margin:                   -3px;
         }
     }
 
+    &.footer-flat {
+        @extend .flat;
+        color: #4C4C4C;
+        padding: 4px 8px;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 400;
+
+        &:hover {
+            background:                          darken( $mapfre-button-color-flat-hover, 10% );
+        }
+    }
+
      // ---- Colors -----
     &.blue-color {
         color:                                  $mapfre-button-color-blue;

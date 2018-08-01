@@ -66,16 +66,14 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
-  sendEmail(email: string): Observable<any> {
-    const url = environment.identityAPI;
+  forgotPasswordSendEmailId(email: string): Observable<any> {
+    const url = ''  //environment.identityAPI ;
     return this.http
-      .post(url, 
-            JSON.stringify({email}), 
-            {
-              headers: {
-                "Content-Type": "application/json"
-              }
-            })
+      .post(url, JSON.stringify({email}), {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
       .map(
         (response: Response) => {
           if(response) {

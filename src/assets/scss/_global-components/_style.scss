@@ -148,3 +148,19 @@ textarea:focus {
 .modal-backdrop { //temp solution
     z-index: 1028;
 }
+
+.no-margin-bottom {
+    margin-bottom: 0;
+}
+
+.no-margin-top {
+    margin-top: 0;
+}
+
+.no-padding-top {
+    padding-top: 0;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0;
+}

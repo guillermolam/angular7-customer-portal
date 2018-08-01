@@ -30,6 +30,7 @@ $global-modal-footer-padding:								$padding-vertical;
 	font-size: 												$mapfre-modal-body-font-size;  
 	color: 													#737373;
 	margin-bottom: 24px;
+	text-align: left;
 }
 
 .modal-body-title {
@@ -58,11 +59,12 @@ $global-modal-footer-padding:								$padding-vertical;
 .modal-title {
 	text-transform: 										uppercase;
 	font-size: 18px;
+	text-align: left;
 	
 	.material-icons {
 		position: relative;
 		top: 4px;
-    font-size: 24px;
+    	font-size: 24px;
 	}
 }
 
@@ -74,6 +76,7 @@ $global-modal-footer-padding:								$padding-vertical;
 	display:                                				grid;
 	grid-template-columns:                  				1fr 9fr 1fr;
 	font-weight: 											$mapfre-modal-grid-font-weight; 
+	margin-bottom: 0;
 
 	.icon {
 		padding-right:										$global-modal-footer-padding

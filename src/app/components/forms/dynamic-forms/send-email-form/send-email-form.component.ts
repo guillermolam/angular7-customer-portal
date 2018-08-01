@@ -37,14 +37,14 @@ export class SendEmailFormComponent implements OnInit {
     return this.inputValidation = event === undefined ? false : event;
   }
 
-  sendEmail(): void{
+  forgotPasswordSendEmailId(): void{
     let emailAddress = this.passwordEmailForm.controls.sendEmail.value;
     this.user =                       new User();
     this.user.email =                 emailAddress;
     
     if(this.user.email) {
       this.authService
-        .sendEmail(this.user.email)
+        .forgotPasswordSendEmailId(this.user.email)
         .subscribe(
           (data) => {
             this.showConfirmation.emit(true);

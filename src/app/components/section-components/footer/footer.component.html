@@ -1,66 +1,38 @@
 <footer class="font-small pt-4 mt-4">
    <div class="footer-copyright text-center py-3">
-
-        <mapfre-modal [modalOptions]="footerHelpModalOptions">
-            <div class="modal-body">
-                <p><b>English version</b> of MAPFRE portal including, our terms and conditions of Use, is the definitive and legal version.</p>
-                <p>En la versión en español del portal MAPFRE, incluidos nuestros términos y condiciones de uso, es la versión definitiva y legal.</p>
-                </div>
-                <div class="modal-footer">
-                <div class="grid">
-                    <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input"  [value]="EN" id="English" name="languageCheckbox" [checked]="defaultLanguage=='EN'" (click)="defaultLanguage='EN'">
-                        <label class="custom-control-label" for="English">ENGLISH</label>
-                    </div>
-                    <div class="custom-control custom-radio">  
-                        <input type="radio" class="custom-control-input"  [value]="ES" id="Spanish" name="languageCheckbox" [checked]="defaultLanguage=='ES'" (click)="defaultLanguage='ES'">
-                        <label class="custom-control-label" for="Spanish">ESPAÑOL</label>
-                    </div>
-                    <div class="row">
-                        <button type="button" (click)="switchUserLanguage($event);langModal.hide()" class="btn btn-primary relative waves-light" mdbWavesEffect>CONFIRM LANGUAGE</button>
-                    </div>
-                </div>
-            </div>
-        </mapfre-modal>
-
-    
-    
-    <i class="material-icons md-48">language</i>
-      <button  class="btn relative waves-light" (click)="langModal.show()" >{{ 'FOOTER_DEFAULT_LANGUAGE' | translate }}  <i class="material-icons md-48">unfold_more</i></button>		
-      <div mdbModal #langModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="langModal"
-         aria-hidden="true">
-         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <button type="button" class="close pull-right" aria-label="Close" (click)="langModal.hide()">
-                  <span aria-hidden="true">×</span>
-                  </button>
-                  <h4 class="modal-title" id="myModalLabel"><i class="material-icons md-48">language</i> {{ 'MODAL_USER_LANGUAGE_TITLE' | translate }}</h4>
-               </div>
-               <div class="modal-body">
-                  <p><b>English version</b> of MAPFRE portal including, our terms and conditions of Use, is the definitive and legal version.</p>
-                  <p>En la versión en español del portal MAPFRE, incluidos nuestros términos y condiciones de uso, es la versión definitiva y legal.</p>
-               </div>
-               <div class="modal-footer">
-                  <div class="grid">
-                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input"  [value]="EN" id="English" name="languageCheckbox" [checked]="defaultLanguage=='EN'" (click)="defaultLanguage='EN'">
-                        <label class="custom-control-label" for="English">ENGLISH</label>
-                     </div>
-                     <div class="custom-control custom-radio">  
-                        <input type="radio" class="custom-control-input"  [value]="ES" id="Spanish" name="languageCheckbox" [checked]="defaultLanguage=='ES'" (click)="defaultLanguage='ES'">
-                        <label class="custom-control-label" for="Spanish">ESPAÑOL</label>
-                     </div>
-                     <div class="row">
-                        <button type="button" (click)="switchUserLanguage($event);langModal.hide()" class="btn btn-primary relative waves-light" mdbWavesEffect>CONFIRM LANGUAGE</button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="container-fluid">
-         &copy; {{ year }} {{ 'FOOTER_COPY_RIGHT' | translate }}
-      </div>
-   </div>
+		<mapfre-modal 
+			[modalOptions]="footerHelpModalOptions"
+			[doModalInternalAction]="modalAction"
+			[setVisibility]="setVisibilityFooter">
+			<div class="modal-body no-margin-bottom">
+				<hr class="header" />
+				<p><strong>English version</strong> of MAPFRE portal including, our terms and conditions of Use, is the definitive and legal version.</p>
+				<p><strong>En la versión en español</strong> del portal MAPFRE, incluidos nuestros términos y condiciones de uso, es la versión definitiva y legal.</p>
+			</div>
+			<label class="grid-modal-footer modal-footer" for="English">
+				<div class="custom-control custom-radio">
+					<input type="radio" class="custom-control-input"  [value]="EN" id="English" name="languageCheckbox" [checked]="defaultLanguage=='EN'" (click)="defaultLanguage='EN'">
+					<span class="custom-control-label">ENGLISH</span>
+				</div>
+			</label>
+			<label class="grid-modal-footer modal-footer" for="Spanish">
+				<div class="custom-control custom-radio">  
+					<input type="radio" class="custom-control-input"  [value]="ES" id="Spanish" name="languageCheckbox" [checked]="defaultLanguage=='ES'" (click)="defaultLanguage='ES'">
+					<span class="custom-control-label" >ESPAÑOL</span>
+				</div>
+			</label>
+			<div class="modal-footer">
+				<div class="col">
+					<mapfre-button
+						[additionalClasses]="'basic primary large'"
+						(click)="switchUserLanguage($event); hideModal($event)">
+						Confirm Language
+					</mapfre-button>
+				</div>
+			</div>
+		</mapfre-modal>
+		<div class="container-fluid">
+		 &copy; {{ year }} {{ 'FOOTER_COPY_RIGHT' | translate }}
+	  </div>
+  </div>
 </footer>

@@ -22,9 +22,12 @@ export class HeaderComponent extends AppComponent implements OnInit {
 			this.defaultLang.slice(0, this.defaultLang.indexOf("-")).toUpperCase() : this.defaultLang.toUpperCase();
 		this.changeLang(this.defaultLang);
 		this.headerHelpModalOptions = new ModalOptions({
-			additionalButtonClasses:        "header-flat", 
+			additionalButtonClasses:        "header-flat",
+			animatePosition:				"right", 
 			buttonCopy:                     "MODAL_HELP_TITLE",
 			modalId:                        "helpModal",
+			headerIconClass:				"help_outline",
+			howManyIconsUsed:               1,
 			iconClasses:                    "help_outline",
 			iconFamily:						"material-icons",
 			modalTranslateCopy:             "MODAL_HELP_TITLE",

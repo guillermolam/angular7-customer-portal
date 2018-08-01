@@ -1,6 +1,7 @@
 <mapfre-button
 	[additionalClasses]="modalOptions?.additionalButtonClasses"
 	[buttonCopy]="modalOptions?.buttonCopy"
+	[howManyIconsUsed]="modalOptions?.howManyIconsUsed"
 	[inputType]="'modal'"
 	[iconClasses]="modalOptions?.iconClasses"
 	[iconFamily]="modalOptions?.iconFamily"
@@ -10,14 +11,14 @@
 	(click)="modal.show(); whereIsTheHelpButton($event)">
 </mapfre-button>
 <div mdbModal
-	#modal="mdb-modal" 
-	class="modal fade" 
-	[id]="modalOptions?.modalId" 
-	[config]="{backdrop: modalOverLay}" 
+	#modal="mdb-modal"
+	aria-labelledby="{{modalOptions?.modalId}}" 
+	aria-hidden="true" 
+	class="modal fade {{modalOptions?.animatePosition}}" 
 	tabindex="-1" 
 	role="dialog" 
-	aria-labelledby="{{modalOptions?.modalId}}" 
-	aria-hidden="true">
+	[id]="modalOptions?.modalId" 
+	[config]="{backdrop: modalOverLay}">
 	<div 
 		class="modal-dialog modal-small" 
 		role="document"	
@@ -28,13 +29,17 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title w-100" id="myModalLabel">
-						<mapfre-icon [iconClasses]="modalOptions?.iconClasses" [iconFamily]="modalOptions?.iconFamily"></mapfre-icon>
-						{{ modalOptions?.modalTranslateCopy | translate }}</h4>
+						<mapfre-icon 
+							[iconClasses]="modalOptions?.headerIconClass" 
+							[iconFamily]="modalOptions?.iconFamily">
+						</mapfre-icon>
+						{{ modalOptions?.modalTranslateCopy | translate }}
+					</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
 							<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<ng-content></ng-content>
+				<ng-content ></ng-content>
 		</div>
 	</div>
 </div>

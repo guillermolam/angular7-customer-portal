@@ -1,8 +1,11 @@
 export class ModalOptions {
 	additionalButtonClasses:        				string;
+	animatePosition:												string;
 	buttonCopy:                     				string;
+	howManyIconsUsed:												number;
 	iconClasses:                    				string;
 	iconFamily:															string;
+	headerIconClass:												string;
 	modalId:                        				string;
 	modalTranslateCopy:             				string;
 	typeOfModal:														string;
@@ -11,20 +14,25 @@ export class ModalOptions {
 	screenReader:  													boolean;
 	showIcons:                      				boolean;
 
-	constructor(options:{
+	constructor(options:{	
+		accessibilityReaderOnly?: 						boolean,
 		additionalButtonClasses?: 						string,
-		screenReader?: 												boolean,
+		animatePosition?:											string,
 		buttonCopy?: 													string,
-		modalId?: 														string,
-		modalTranslateCopy?: 									string,
+		headerIconClass?:											string,
 		iconClasses?: 												string,
 		iconFamily?:													string,
-		typeOfModal?:													string;
-		accessibilityReaderOnly?: 						boolean,
+		modalId?: 														string,
+		modalTranslateCopy?: 									string,
 		modalClickEvent?: 										boolean,
+		screenReader?: 												boolean,	
 		showIcons?: 													boolean,
+		typeOfModal?:													string,
+		howManyIconsUsed?:										number
+
 	} = {}){
 		this.additionalButtonClasses = 				options.additionalButtonClasses || '';
+		this.animatePosition = 								options.animatePosition || 'top';
 		this.screenReader = 									!!options.screenReader;
 		this.buttonCopy = 										options.buttonCopy || '';
 		this.modalId = 												options.modalId || '';
@@ -35,5 +43,7 @@ export class ModalOptions {
 		this.accessibilityReaderOnly = 				!!options.accessibilityReaderOnly;
 		this.modalClickEvent = 								!!options.modalClickEvent;
 		this.showIcons = 											!!options.showIcons;
+		this.howManyIconsUsed =								options.howManyIconsUsed || 0 ;
+		this.headerIconClass = 								options.headerIconClass || '';
 	}
 }

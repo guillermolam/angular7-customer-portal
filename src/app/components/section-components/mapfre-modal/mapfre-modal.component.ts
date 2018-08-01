@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalOptions } from '../../../_models/modal-options';
 
 @Component({
@@ -8,19 +8,22 @@ import { ModalOptions } from '../../../_models/modal-options';
 })
 export class MapfreModalComponent implements OnInit {
   @Input() modalOptions:                ModalOptions;
-
   helpButtonPositionLeft:               string;
   midHighResolution:                    boolean;
-  modalOverLay:                         boolean;
+  modalOverLay:                         boolean = true;
 
   @HostListener('window:resize', ['$event']) 
   onResize() {
     if(this.modalOptions.typeOfModal == 'header') this.setUpModalClass();
   }
 
+  constructor() { }
+
   whereIsTheHelpButton(ref): void {
-    let leftPos = ref.clientX - 310;
-    this.helpButtonPositionLeft = leftPos.toString() + "px";
+    if(this.modalOptions.typeOfModal == 'header') {
+      let leftPos = ref.clientX - 310;
+      this.helpButtonPositionLeft = leftPos.toString() + "px";
+    }
   }
 
   private detectWindowWidth( width: number ): string{
@@ -40,8 +43,8 @@ export class MapfreModalComponent implements OnInit {
   }
 
   private setUpModalClass(): void {
-    let modalType = this.detectWindowWidth(window.innerWidth);
-    switch (modalType) {
+    let modalWidth = this.detectWindowWidth(window.innerWidth);
+    switch (modalWidth) {
       case 'lowest':
         this.modalOverLay = true;
         this.midHighResolution = false;
@@ -55,12 +58,13 @@ export class MapfreModalComponent implements OnInit {
         this.midHighResolution = true;
       break;
     }
+    console.log("this.modalOverLay", this.modalOverLay);
   }
 
-  constructor() { }
-
   ngOnInit() {
-    if(this.modalOptions.typeOfModal == 'header') this.setUpModalClass();
+    if(this.modalOptions.typeOfModal == 'header') {
+      this.setUpModalClass();
+    }
   }
 
 }

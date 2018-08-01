@@ -5,11 +5,12 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './mapfre-button.component.html',
   styleUrls: ['./mapfre-button.component.scss']
 })
-export class MapfreButtonComponent {
+export class MapfreButtonComponent implements OnInit{
   @Input() additionalClasses:                   string = 'basic primary';
   @Input() buttonCopy:                          string;
   @Input() customIcon:                          string;
   @Input() disabledValue:                       boolean;
+  @Input() howManyIconsUsed:                    number;
   @Input() iconClasses:                         string;
   @Input() iconFamily:                          string;
   @Input() inputType:                           string;
@@ -19,6 +20,7 @@ export class MapfreButtonComponent {
   @Input() showIcons:                           boolean = false;
   @Input() showIconsCustom:                     boolean = false;
   @Input() translateValue:                      string;
+  iconClassesArray:                             string[] = [this.iconClasses];
 
   constructor() {}
 
@@ -30,5 +32,16 @@ export class MapfreButtonComponent {
 
   isFormValid(): boolean{
     return this.disabledValue == undefined ? true : this.disabledValue;
+  }
+
+  checkIconClasses(icons: string): void {
+    if( this.howManyIconsUsed == 2 ) {
+      this.iconClassesArray = icons.split(',');
+    }
+  }
+
+  ngOnInit(): void {
+    this.iconClassesArray[0]= this.iconClasses;
+    this.checkIconClasses(this.iconClasses);
   }
 }

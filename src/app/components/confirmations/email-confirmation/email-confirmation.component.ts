@@ -16,21 +16,19 @@ export class EmailConfirmationComponent implements OnInit {
 
   constructor( private authService: AuthenticationService ) { }
 
-  sendEmail(): void{
+  forgotPasswordSendEmailId(): void{
     this.user =                       new User();
     this.user.email =                 this.sendEmailAgain;
     
     if(this.user.email) {
       this.authService
-        .sendEmail(this.user.email)
+        .forgotPasswordSendEmailId(this.user.email)
         .subscribe(
           (data) => {
             //this.showConfirmation.emit(true);
           },
           (error) => {
             console.log(error)
-            //this.showConfirmation.emit(true);
-            //this.alertService.error(error);
           }
         )
       ;
