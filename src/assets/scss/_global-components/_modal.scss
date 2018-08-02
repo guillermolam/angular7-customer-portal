@@ -76,28 +76,33 @@ $global-modal-footer-padding:								$padding-vertical;
 	display:                                				grid;
 	grid-template-columns:                  				1fr 9fr 1fr;
 	font-weight: 											$mapfre-modal-grid-font-weight; 
-	margin-bottom: 0;
+	margin-bottom: 											0;
 
-	.icon {
-		padding-right:										$global-modal-footer-padding
-	}
-
-	.title {
-		text-transform: 									uppercase;
-	}
-	
 	.fas {
-			font-size: 										24px;
-	}
+		font-size: 										24px;
+}
 
 	.fa-chevron-right {
 			font-size: 										1rem;
+	}
+
+	.icon {
+		padding-right:										$global-modal-footer-padding
 	}
 
 	.info {
 		color: 											  #4c4c4c;
 		font-size: 											14px;
 		font-weight: 									    400;
+	}
+
+	.info,
+    .title {
+        text-align:                                            left;
+	}
+	
+	.title {
+		text-transform: 									uppercase;
 	}
 
 	&:hover {
