@@ -4,7 +4,6 @@ import { environment } from '../environments/environment';
 import * as english from "../assets/language/english/english.json";
 import * as spanish from "../assets/language/spanish/spanish.json";
 
-console.log(english)
 @Injectable()
 export class Language {
     public lang = [{

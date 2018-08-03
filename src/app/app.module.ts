@@ -25,8 +25,8 @@ import { AuthGuard }                          from "./_guards/auth.guard";
 import { JwtInterceptor }                     from "./_helpers/jwt.interceptor";
 import { UserService }                        from "./_services/user.service"; 
 // ----- Components ----- //
-import { FooterComponent }                    from './components/section-components/footer/footer.component';
-import { HeaderComponent }                    from './components/section-components/header/header.component';
+import { FooterComponent }                    from './components/global-components/footer/footer.component';
+import { HeaderComponent }                    from './components/global-components/header/header.component';
 import { LoginFormComponent }                 from './components/forms/dynamic-forms/login-form/login-form.component';
 import { MapfreButtonComponent }              from './components/individual-components/inputs/mapfre-button/mapfre-button.component';
 import { MapfreCardComponent }                from './components/section-components/mapfre-card/mapfre-card.component';
@@ -69,7 +69,8 @@ import { ForgotPasswordConfirmationComponent } from  './components/confirmations
 import { ForgotPasswordSetConfirmationComponent } from './components/confirmations/forgot-password-set/forgot-password-set.component';
 import { MapfreLoadingComponent }              from './components/individual-components/mapfre-loading/mapfre-loading.component';       
 import { MapfreTooltipComponent }              from './components/individual-components/mapfre-tooltip/mapfre-tooltip.component';       
-import { MapfreDropdownComponent }             from './components/section-components/mapfre-dropdown/mapfre-dropdown.component'; 
+import { MapfreDropdownComponent }             from './components/section-components/mapfre-dropdown/mapfre-dropdown.component';
+import { MapfreIconInformationComponent } from './components/section-components/mapfre-icon-information/mapfre-icon-information.component'; 
 
 export function tokenGetter() {
   return localStorage.getItem("currentUser");
@@ -116,6 +117,7 @@ export function tokenGetter() {
     MapfreLoadingComponent,
     MapfreTooltipComponent,
     MapfreDropdownComponent,
+    MapfreIconInformationComponent,
   ],
   imports: [
     BrowserModule,

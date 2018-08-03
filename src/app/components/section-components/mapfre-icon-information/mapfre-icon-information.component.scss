@@ -1,0 +1,38 @@
+@import "../../../../styles.scss";
+
+$mapfre-icon-information-padding:                       $padding-vertical;
+$mapfre-icon-information-info-color:                    $med-gray;
+$mapfre-icon-information-info-font-size:                $font-size-base;
+$mapfre-icon-information-title-icon-color:              $active-color;
+
+.mapfre-icon-information {
+    
+	.icon-container {
+		color: 																							$mapfre-icon-information-title-icon-color;
+		float:                                          		left;
+		padding-right:																			$mapfre-icon-information-padding;
+		padding-top:                                    		8px;
+		width:                                          		auto;
+	}
+
+	.information-container {
+		float:                                          		left;
+		width:                                          		auto;
+	}
+
+	.info {
+		color: 																							$mapfre-icon-information-info-color;
+		font-size: 																					$mapfre-icon-information-info-font-size;
+	}
+
+	.info,
+	.title {
+		text-align:                                     		left;
+	}
+
+	.title {
+		color: 																							$mapfre-icon-information-title-icon-color;
+		font-weight:                                    		700;
+		text-transform: 																		uppercase;
+	}
+}
