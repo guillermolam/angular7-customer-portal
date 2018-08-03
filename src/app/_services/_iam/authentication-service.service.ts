@@ -64,19 +64,19 @@ export class AuthenticationService {
   }
 
   forgotPasswordSendEmailId(email: string): Observable<any> {
-    const url = `${environment.api_gateway_url}/identity/users/account-recovery`;
+    const url = `${environment.identity}/identity/users/account-recovery`;
     return this.http.post(url, email)
       .pipe(
         map( (response: Response) => {
-            if( response.status === 202 ) {
-              return true;
-            }
-            else {
-              return false;
-            }
+          if( response.status === 202 ) {
+            return true;
+          }
+          else {
+            return false;
+          }
         })
       ).catch(
-        (error:any) => Observable.throw('We Could not validate your email')
+        (error: any) => Observable.throw('We Could not validate your email')
       );
   }
 }
