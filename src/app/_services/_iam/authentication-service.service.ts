@@ -74,7 +74,7 @@ export class AuthenticationService {
     } )
       .map( (response: Response) => {
         if( response.status === 202 || response.status === 200 ) {
-          return true;
+          return true; 
         }
         else {
           return false;
