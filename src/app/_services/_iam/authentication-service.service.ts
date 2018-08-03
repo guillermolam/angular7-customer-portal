@@ -67,7 +67,11 @@ export class AuthenticationService {
     const url = `${environment.identity}/identity/users/account-recovery`,
           body = {}; 
     return this.http.post(url, body , {
-      params : {email: email}} )
+      params : {email: email},
+      headers : {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    } )
       .map( (response: Response) => {
         console.log(response)
       })
