@@ -64,11 +64,11 @@ export class AuthenticationService {
   }
 
   forgotPasswordSendEmailId(email: string): Observable<any> {
-    const url = `${environment.api_gateway_url}/identity/users/account-recovery/?email=${email}`;
+    const url = `${environment.api_gateway_url}/identity/users/account-recovery?email=${email}`;
     return this.http.get(url)
       .pipe(
         map( (response: Response) => {
-            if( response.status === 200 ) {
+            if( response.status === 202 ) {
               return true;
             }
             else {
