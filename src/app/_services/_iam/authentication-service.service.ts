@@ -67,13 +67,18 @@ export class AuthenticationService {
     const url = `${environment.identity}/identity/users/account-recovery`,
           body = {}; 
     return this.http.post(url, body , {
-      params : {email: email},
+      params : { email: email },
       headers : {
         "Content-Type": "application/x-www-form-urlencoded"
       }
     } )
       .map( (response: Response) => {
-        console.log(response)
+        if( response.status === 202 || response.status === 200 ) {
+          return true;
+        }
+        else {
+          return false;
+        }
       })
       .catch(
         (error: any) => Observable.throw('We Could not validate your email')
