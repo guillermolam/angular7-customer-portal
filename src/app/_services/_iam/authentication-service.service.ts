@@ -69,7 +69,7 @@ export class AuthenticationService {
     return this.http.post(url, body , {
       params : { email: email },
       headers : {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/json"
       }
     } )
       .map( (response: Response) => {
