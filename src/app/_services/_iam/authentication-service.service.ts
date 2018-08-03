@@ -69,12 +69,7 @@ export class AuthenticationService {
     return this.http.post(url, body , {
       params : {email: email}} )
       .map( (response: Response) => {
-        if( response.status === 202 ) {
-          return true;
-        }
-        else {
-          return false;
-        }
+        console.log(response)
       })
       .catch(
         (error: any) => Observable.throw('We Could not validate your email')
