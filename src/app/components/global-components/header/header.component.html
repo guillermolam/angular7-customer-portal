@@ -20,33 +20,25 @@
             {{ 'MODAL_HELP_DONT_HESITATE' | translate }}
           </div>
         </div>
-        <a href="tel:8844993403" class="grid-modal-footer modal-footer">
-          <div class="icon">
-              <i class="material-icons">phone</i>
-          </div>
-          <div>
-            <div class="title"> 
-            {{ 'CALL_US' | translate }}
-            </div>
-            <div class="info">
-            884-499-3403
-            </div>
+        <a href="tel:8844993403" class="grid-modal-footer two-column modal-footer">
+          <div class="mapfre-information-container">
+            <mapfre-icon-information
+              data="884-499-3403"
+              iconClasses="phone"
+              titleType="CALL_US"
+            ></mapfre-icon-information>
           </div>
           <div>
             <i class="fas fa-chevron-right"></i>
           </div>
         </a> 
-        <a href="mailto:consumerportal@mapfreusa.com" class="grid-modal-footer modal-footer">
-          <div class="icon">
-            <i class="material-icons">mail</i>
-          </div>
-          <div>
-            <div class="title">
-            {{ 'EMAIL_US' | translate }}
-            </div>
-            <div class="info">
-            consumerportal@mapfreusa.com
-            </div>
+        <a href="mailto:consumerportal@mapfreusa.com" class="grid-modal-footer two-column modal-footer">
+          <div class="mapfre-information-container">
+            <mapfre-icon-information
+              data="consumerportal@mapfreusa.com"
+              iconClasses="mail"
+              titleType="EMAIL_US"
+            ></mapfre-icon-information>
           </div>
           <div>
             <i class="fas fa-chevron-right"></i>

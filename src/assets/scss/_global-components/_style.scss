@@ -145,10 +145,10 @@ textarea:focus {
     background-color:                       $global-red-override; 
 }
 
-/*.modal-backdrop { //temp solution
+.modal-backdrop { //temp solution
     z-index: 1028;
 }
-*/
+
 .no-margin-bottom {
     margin-bottom: 0;
 }

@@ -9,7 +9,7 @@ export class MapfreIconInformationComponent implements OnInit {
 	@Input() data:                     				string = '';
 	@Input() iconClasses:                     string = '';
   @Input() iconFamily:                    	string = 'material-icons';
-  @Input() title:                     			string = '';
+  @Input() titleType:                     	string = '';
 
 	constructor() { }
 
