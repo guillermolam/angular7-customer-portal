@@ -73,7 +73,8 @@ export class AuthenticationService {
       }
     } )
       .map( (response: Response) => {
-        if( response.status === 202 || response.status === 200 ) {
+        console.log(response);
+        if( response[1].status === 202  ) {
           return true; 
         }
         else {
@@ -85,3 +86,4 @@ export class AuthenticationService {
       );
   }
 }
+
