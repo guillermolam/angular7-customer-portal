@@ -71,19 +71,19 @@ export class AuthenticationService {
       headers : {
         "Content-Type": "application/json"
       }
-    } )
-      .map( (response: Response) => {
-        console.log(response);
-        if( response[1].status === 202  ) {
-          return true; 
-        }
-        else {
-          return false;
-        }
-      })
+      } )
+      .pipe(
+        map( (response: Response) => {
+          if( response.status === 202 ) {
+            return true;
+          }
+          else {
+            return false;
+          }
+        })
+      )
       .catch(
         (error: any) => Observable.throw('We Could not validate your email')
       );
   }
 }
-
