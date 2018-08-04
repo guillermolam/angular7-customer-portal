@@ -63,7 +63,7 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
-  forgotPasswordSendEmailId(email: string): Observable<any> {
+  forgotPasswordSendEmailId(email: string) {
     const url = `${environment.identity}/identity/users/account-recovery`,
           body = {}; 
     return this.http.post(url, body , {
@@ -71,9 +71,10 @@ export class AuthenticationService {
       headers : {
         "Content-Type": "application/json"
       }
-      } )
-      .pipe(
-        map( (response: Response) => {
+    });
+
+      /*
+      map( (response: Response) => {
           if( response.status === 202 ) {
             return true;
           }
@@ -85,5 +86,6 @@ export class AuthenticationService {
       .catch(
         (error: any) => Observable.throw('We Could not validate your email')
       );
+      */
   }
 }
