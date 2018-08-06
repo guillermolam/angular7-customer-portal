@@ -37,12 +37,12 @@ describe('HeaderComponent', () => {
   });
 
   // Verify all component available. */
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   /* language change unit test cases */
-  fit('Language change test case', () => {
+  it('Language change test case', () => {
     fixture.whenStable().then(() => {
       // Verify first time default language should be english.
        expect(component['defaultLang']).toEqual("English");
@@ -56,5 +56,17 @@ describe('HeaderComponent', () => {
        expect(component['defaultLang']).toEqual("Choose Language");
     });
   });
-
+  
+  /* Help model unit test cases */
+  it('Help Module test case', (done:Function) => {
+    fixture.whenStable().then(() => {
+      let matchArr = ["884-499-3403", "consumerportal@mapfreusa.com"];
+      let info = document.querySelectorAll('.info');
+      for(let i=0; i < info.length; i++){
+        // Verify number & email text
+        expect((<HTMLElement>info[i]).innerText).toEqual(matchArr[i]);
+      }
+      done();
+    });
+  });
 });

@@ -86,12 +86,12 @@ describe('LoginFormComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create', () => {   
+  it('should create', () => {   
     expect(component).toBeTruthy();
   });
 
   /** Email field unit test cases **/
-  fit('Login email test cases', () => {
+  it('Login email test cases', () => {
     fixture.whenStable().then(() => {
       let loginEmail = component.loginForm.controls['loginEmail'];
       // Verify email field required and required message.
@@ -107,7 +107,7 @@ describe('LoginFormComponent', () => {
   });
 
   /** Password field unit test cases **/
-  fit('Login password test cases', () => {
+  it('Login password test cases', () => {
     fixture.whenStable().then(() => {
       let loginPassword = component.loginForm.controls['loginPassword'];
       // Verify first blank password field should be required
@@ -126,7 +126,7 @@ describe('LoginFormComponent', () => {
   });
 
   /** Remember me unit test cases **/
-  fit('Remember me test cases',  (done: Function) => {
+  it('Remember me test cases',  (done: Function) => {
     fixture.whenStable().then(() => {
       /** Verifying Expected result of remember me for the first time.**/
       expect(component.rememberMe).toBeFalsy();
@@ -139,7 +139,7 @@ describe('LoginFormComponent', () => {
   });
 
   /** Login form unit test cases for invalid credentials. **/
-  fit('Login form test cases',  (done: Function) => {
+  it('Login form test cases',  (done: Function) => {
     fixture.whenStable().then(() => {
       /** Verifying Expected login button for the first time **/
       expect(component.loginForm.valid).toBeFalsy();
@@ -167,7 +167,7 @@ describe('LoginFormComponent', () => {
   });
 
   /** Login form unit test cases for valid credentials. **/
-  fit('Login form test cases',  (done: Function) => {
+  it('Login form test cases',  (done: Function) => {
     fixture.whenStable().then(() => {
       /** Verifying Expected login button for the first time **/
       expect(component.loginForm.valid).toBeFalsy();
