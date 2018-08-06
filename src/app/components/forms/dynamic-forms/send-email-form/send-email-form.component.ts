@@ -50,7 +50,7 @@ export class SendEmailFormComponent implements OnInit {
             this.showConfirmation.emit(true);
           },
           (error) => {
-           this.alertService.error('We Could not validate your email');
+           this.alertService.error('EMAIL_COULD_NOT_VALIDATE');
           }
         )
       ;

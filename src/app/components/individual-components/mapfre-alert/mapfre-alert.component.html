@@ -2,14 +2,14 @@
   <div *ngFor="let alertTypeObject of alertTypeObjects">
     <div 
       class="mapfre alert {{alertTypeObject.className}}" 
-      *ngIf="message.type == alertTypeObject.alertType"
+      *ngIf="message?.type == alertTypeObject?.alertType"
     >
       <div class="content row">
         <div class="col-2">
-            <mapfre-icon iconClasses="{{alertTypeObject.iconClass}}"></mapfre-icon>
+            <mapfre-icon iconClasses="{{alertTypeObject?.iconClass}}"></mapfre-icon>
         </div>
         <div class="col-9 copy no-gutters">
-            {{message.text}}
+            {{ message?.text | translate }}
         </div>
         <div class="col-1" *ngIf="closeButton">
           <a class="close" (click)="closeAlert()">

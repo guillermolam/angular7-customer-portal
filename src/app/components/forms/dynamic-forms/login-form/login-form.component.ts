@@ -65,7 +65,7 @@ export class LoginFormComponent implements OnInit {
           },
           (error) => {
             console.log(error)
-            this.alertService.error(error);
+            this.alertService.error('INVALID_EMAIL_PASSWORD');
           }
         )
       ;

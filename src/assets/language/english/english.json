@@ -53,6 +53,8 @@
         "EMAIL": "Email",
         "PASSWORD": "Password",
         "VALID_EMAIL_VALIDATION_MESSAGE": "Please Enter A Valid Email",
+        "EMAIL_COULD_NOT_VALIDATE": "We could not validate your email",
+        "INVALID_EMAIL_PASSWORD": "Invalid Email/Password",
         "CAPS_LOCK": "Caps Lock is On",
         "FORGOT_EMAIL_CONFIMATION_SUBTITLE": "Didn't receive the email?",
         "FORGOT_EMAIL_CONFIMATION_COPY": "Check your spam for a message from",
