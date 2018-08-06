@@ -68,28 +68,27 @@ $global-modal-footer-padding:								$padding-vertical;
 	}
 }
 
-a.grid-modal-footer-two-column {
-	color: 												#4c4c4c;
+.grid-modal-footer{
+	margin-bottom: 											0;
+	color: 												  #4c4c4c;
 
 	&:hover {
 		background: 									  rgba(0, 0, 0, 0.1);
+		color: 											 #4c4c4c;
 		text-decoration: 									none;
 		font-weight: 										400;
 	}
-}
 
-.grid-modal-footer{
-	margin-bottom: 											0;
-	
+
 	&.two-column {
-		display:                                				grid;
-		grid-template-columns:                  				10fr 1fr;
-		margin-bottom: 											0;
+		display:                                			grid;
+		grid-template-columns:                  			10fr 1fr;
+		margin-bottom: 										0;
 	}
 
 	&.three-column {
-		display:                                				grid;
-		grid-template-columns:                  				1fr 9fr 1fr;
+		display:                                			grid;
+		grid-template-columns:                  			1fr 9fr 1fr;
 		
 	}
 
