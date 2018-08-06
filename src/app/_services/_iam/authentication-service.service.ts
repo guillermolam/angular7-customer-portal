@@ -63,20 +63,29 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
-  forgotPasswordSendEmailId(email: string): Observable<any> {
-    const url = `${environment.api_gateway_url}/identity/users/account-recovery/?email=${email}`;
-    return this.http.get(url)
-      .pipe(
-        map( (response: Response) => {
-            if( response.status === 200 ) {
-              return true;
-            }
-            else {
-              return false;
-            }
+  forgotPasswordSendEmailId(email: string) {
+    const url = `${environment.identity}/identity/users/account-recovery`,
+          body = {}; 
+    return this.http.post(url, body , {
+      params : { email: email },
+      headers : {
+        "Content-Type": "application/json"
+      }
+    });
+
+      /*
+      map( (response: Response) => {
+          if( response.status === 202 ) {
+            return true;
+          }
+          else {
+            return false;
+          }
         })
-      ).catch(
-        (error:any) => Observable.throw('We Could not validate your email')
+      )
+      .catch(
+        (error: any) => Observable.throw('We Could not validate your email')
       );
+      */
   }
 }
