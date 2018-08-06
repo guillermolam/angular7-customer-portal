@@ -5,3 +5,9 @@ $footer-font-color:                                 $med-gray;
 footer {
     color:                                          $footer-font-color;
 }
+
+.footer-position {
+    bottom: 8px;
+    position: absolute;
+    width: 100%;
+}
