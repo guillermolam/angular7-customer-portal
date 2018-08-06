@@ -37,12 +37,12 @@ describe('HeaderComponent', () => {
   });
 
   // Verify all component available. */
-  it('should create', () => {
+  fit('should create', () => {
     expect(component).toBeTruthy();
   });
 
   /* language change unit test cases */
-  it('Language change test case', () => {
+  fit('Language change test case', () => {
     fixture.whenStable().then(() => {
       // Verify first time default language should be english.
        expect(component['defaultLang']).toEqual("English");
@@ -58,7 +58,7 @@ describe('HeaderComponent', () => {
   });
   
   /* Help model unit test cases */
-  it('Help Module test case', (done:Function) => {
+  fit('Help Module test case', (done:Function) => {
     fixture.whenStable().then(() => {
       let matchArr = ["884-499-3403", "consumerportal@mapfreusa.com"];
       let info = document.querySelectorAll('.info');
