@@ -6,7 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./mapfre-card.component.scss']
 })
 export class MapfreCardComponent implements OnInit {
-  @Input() additionalClasses;
+  @Input() additionalClasses:             string;
+  @Input() singleCard:                    boolean = true;
+
   constructor() { }
 
   ngOnInit() {

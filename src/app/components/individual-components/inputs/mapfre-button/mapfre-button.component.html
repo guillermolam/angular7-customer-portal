@@ -32,13 +32,11 @@
 		<span *ngIf="showIcons" class="first-icon">
 			<mapfre-icon [iconClasses]="iconClassesArray[0]" [iconFamily]="iconFamily"></mapfre-icon> 
 		</span>
-
-		<span class="button-content"
+    <span class="button-content"
 			[ngClass]="{'sr-only sr-only-focusable': screenReader }">
 			{{ buttonCopy | translate }}
 		</span>
-
-		<span *ngIf="iconClassesArray.length >= 2" class="second-icon">
+    <span *ngIf="iconClassesArray.length >= 2" class="second-icon">
 			<mapfre-icon [iconClasses]="iconClassesArray[1]" [iconFamily]="iconFamily"></mapfre-icon> 
 		</span>
 	</button>

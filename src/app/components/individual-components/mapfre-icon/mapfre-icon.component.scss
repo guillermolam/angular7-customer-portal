@@ -6,14 +6,30 @@ $mapfre-icon-color-inactive:    $lite-gray;
 $mapfre-icon-color-active:      $active-color;
 
 $mapfre-icon-font-size:         $font-size-base * 1.72;
-$mapfre-icon-label-font-size:   $font-size-base;
-$mapfre-icon-alert-font-size:   $default-margin-padding * 3;
+$mapfre-icon-label-font-size:   2rem;
+$mapfre-icon-alert-font-size:   $font-size-base * 2.29;
 
 $mapfre-icon-large-font-size:   $font-size-base *2;
 $mapfre-icon-small-font-size:   $font-size-base;
 
 .alert-icon {
     font-size:                  $mapfre-icon-alert-font-size;
+}
+
+.icon-error {
+  color:                        $error-color;
+}
+
+.icon-success {
+  color:                        $success-color;
+}
+
+.icon-default {
+  color:                        $information-color;
+}
+
+.icon-caution {
+  color:                        $caution-color;
 }
 
 .label-icon {
@@ -58,8 +74,5 @@ $mapfre-icon-small-font-size:   $font-size-base;
 }
 
 .title-icon {
-    padding-bottom:             $mapfre-icon-padding-full;
+  padding-bottom:             $mapfre-icon-padding-full;
 }
-
-
-	

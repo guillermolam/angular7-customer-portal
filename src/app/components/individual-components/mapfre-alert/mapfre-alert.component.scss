@@ -1,47 +1,77 @@
 @import "../../../../styles.scss";
 
-$mapfre-alert-background-default:   $dark-gray;
-$mapfre-alert-background-caution:   $mapfre-alert-background-default; //for the moment
-$mapfre-alert-background-error:     $error-color;
-$mapfre-alert-background-success:   $mapfre-alert-background-default; //for the moment
+$mapfre-alert-background-default:   lighten( desaturate( adjust-hue( $information-color, 4deg ), 17 ), 58 );
+$mapfre-alert-background-caution:   lighten( saturate( adjust-hue( $caution-color, 3deg ), 23 ), 44 ); //for the moment
+$mapfre-alert-background-error:     lighten( saturate( adjust-hue( $error-color, 3deg ), 23 ), 44 );
+$mapfre-alert-background-success:   lighten( saturate( $success-color, 44 ), 21 );
 
-$mapfre-alert-color-default:        $white;
+$mapfre-alert-border-default:       $information-color;
+$mapfre-alert-border-caution:       $caution-color; 
+$mapfre-alert-border-error:         $error-color;
+$mapfre-alert-border-success:       $success-color; 
+
+$mapfre-alert-color-default:        $med-gray;
 $mapfre-alert-color-caution:        $mapfre-alert-color-default;
 $mapfre-alert-color-error:          $mapfre-alert-color-default;
 $mapfre-alert-color-success:        $mapfre-alert-color-default;
 
-$mapfre-alert-font-size:            12px;
+$mapfre-alert-font-size:            $font-size-base;
 $mapfre-alert-copy-padding:         $default-margin-padding - 3px;
+$mapfre-alert-icon-padding:         $default-margin-padding;
+$mapfre-alert-copy-padding:         $mapfre-alert-font-size/2;
+
 
 .mapfre.alert {
-    font-size:                      $mapfre-alert-font-size;
-    font-style:                     italic;
-    font-weight:                    100;
+  font-size:                        $mapfre-alert-font-size;
+  font-style:                       italic;
+  font-weight:                      100;
+  border:                           thin solid;
+  margin-bottom:                    0;
 
-    &.caution {
-        background:                 $mapfre-alert-background-caution;
-        color:                      $mapfre-alert-color-caution;
-    }
+  &.caution {
+      background:                   $mapfre-alert-background-caution;
+      color:                        $mapfre-alert-color-caution;
+      border-color:                 $mapfre-alert-border-caution;
+  }
 
-    &.default {
-        background:                 $mapfre-alert-background-default;
-        color:                      $mapfre-alert-color-default;
-    }
+  &.default {
+      background:                   $mapfre-alert-background-default;
+      color:                        $mapfre-alert-color-default;
+      border-color:                 $mapfre-alert-border-default;
+  }
 
-    &.error {
-        background:                 $mapfre-alert-background-error;
-        color:                      $mapfre-alert-color-error;
-    }
+  &.error {
+      background:                   $mapfre-alert-background-error;
+      color:                        $mapfre-alert-color-error;
+      border-color:                 $mapfre-alert-border-error;
+  }
 
-    &.success {
-        background:                 $mapfre-alert-background-success;
-        color:                      $mapfre-alert-color-success;
-    }
+  &.success {
+      background:                   $mapfre-alert-background-success;
+      color:                        $mapfre-alert-color-success;
+      border-color:                 $mapfre-alert-border-success;
+  }
 
-    &.toast {
-        margin:                     -24px;
-        margin-bottom:              0;
-        border-radius:              0.25rem 0.25rem 0 0;
+  &.toast {
+      margin:                       -24px;
+      margin-bottom:                0;
+      border-radius:                0.25rem 0.25rem 0 0;
 
-    }
+  }
+
+  .copy {
+    padding-top:                    $mapfre-alert-copy-padding;
+  }
+
+  .icon,
+  .message {
+    float:                          left;
+  }
+
+  .icon {
+    padding-right:                  $mapfre-alert-icon-padding;
+    text-align:                     center;
+    width:                          40px;
+  }
+
 }

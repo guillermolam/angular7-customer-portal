@@ -29,8 +29,8 @@ import { FooterComponent }                    from './components/global-componen
 import { HeaderComponent }                    from './components/global-components/header/header.component';
 import { LoginFormComponent }                 from './components/forms/dynamic-forms/login-form/login-form.component';
 import { MapfreButtonComponent }              from './components/individual-components/inputs/mapfre-button/mapfre-button.component';
-import { MapfreCardComponent }                from './components/section-components/mapfre-card/mapfre-card.component';
-import { MapfreFormComponent }                from './components/section-components/mapfre-form/mapfre-form.component';
+import { MapfreCardComponent }                from './components/wrapper-components/mapfre-card/mapfre-card.component';
+import { MapfreFormComponent }                from './components/wrapper-components/mapfre-form/mapfre-form.component';
 import { MapfreIconComponent }                from './components/individual-components/mapfre-icon/mapfre-icon.component';
 import { MapfreInputComponent }               from './components/individual-components/inputs/mapfre-input/mapfre-input.component';
 import { MapfreLabelComponent }               from './components/individual-components/inputs/mapfre-label/mapfre-label.component';
@@ -61,7 +61,7 @@ import { ForgotPasswordNondynamicComponent }  from './components/forms/non-dynam
 import { RepeatPasswordDirectiveDirective }   from './_directives/forms/repeat-password/repeat-password-directive.directive';
 import { MapfreAlertComponent }               from './components/individual-components/mapfre-alert/mapfre-alert.component';
 import { DesignSystemComponent }              from './routes/design-system/design-system.component';
-import { MapfreCodeComponent }                from './components/individual-components/mapfre-code/mapfre-code.component';
+import { MapfreCodeComponent }                from './components/wrapper-components/mapfre-code/mapfre-code.component';
 import { MapfreNotificationsComponent }       from './components/individual-components/mapfre-notifications/mapfre-notifications.component';
 import { MapfreModalComponent }               from './components/section-components/mapfre-modal/mapfre-modal.component';
 

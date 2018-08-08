@@ -39,11 +39,11 @@ export class FooterComponent extends AppComponent implements OnInit {
   }
 
   hideModalAction(event): void {
-    if(event) this.hideModal = true;
+    if(event) this.hideModal = !this.hideModal;
   }
 
   resetHideModal(event): void {
-    this.hideModal = false;
+    this.hideModal = !this.hideModal;
   }
 
   switchUserLanguage(event): void {
