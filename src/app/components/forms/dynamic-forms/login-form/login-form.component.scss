@@ -9,22 +9,22 @@ $login-login-group-padding-down:                        $padding-vertical;
 $login-login-group-button-margin:                       $padding-vertical *2;
 
 .group-login {
-    padding-top:                                        $login-login-group-padding-up;
+  padding-top:                                          $login-login-group-padding-up;
 }
 
 .group-login-button {
-    margin-top:                                         $login-login-group-button-margin;
+  margin-top:                                           $login-login-group-button-margin;
 }
 
 .group-remember {
-    margin-top:                                         $login-login-group-padding-up;
+  margin-top:                                           $login-login-group-padding-up;
 
-    .forgot-password {
-        text-align:                                     right;
-    }
-}                      
+  .forgot-password {
+    text-align:                                         right;
+  }
+}
 
 .register-copy {
-    color:                                              $login-register-copy-color;
-    font-size:                                          $login-register-copy-size;
+  color:                                                $login-register-copy-color;
+   font-size:                                           $login-register-copy-size;
 }

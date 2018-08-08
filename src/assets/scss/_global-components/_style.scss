@@ -1,9 +1,12 @@
 $global-body-bg-color:                      $lite-gray-two;
 $global-hr-color:                           $lite-gray-three;
 $global-prefix-padding-right:               $padding-vertical;
+
 $global-title-font-size:                    $font-size-base + 0.25;
 $global-title-font-family:                  $font-family-base;
-$global-title-line-height:                  2rem;    
+$global-title-line-height:                  2rem;
+$global-title-margin-bottom:                $margin-vertical/2;
+
 $global-red-override:                       $mapfre-red !important;
 $global-hr-header-margin-bottom:            $padding-vertical +4;
 $global-hr-body-margin-top:                 $padding-vertical *2;
@@ -122,7 +125,8 @@ textarea:focus {
     font-size:                              $global-title-font-size;
     font-family:                            $global-title-font-family;
     line-height:                            $global-title-line-height;
-    padding:                                0 ;
+    margin-bottom:                          $global-title-margin-bottom;
+    padding:                                0;
 }
 
 .uppercase {

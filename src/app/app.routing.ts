@@ -17,7 +17,7 @@ const appRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent},
   { path: "design-system", component: DesignSystemComponent },
   { path: "forgotpassword", component: ForgotPasswordComponent },
-  { path: "createpassword/:temporaryPassword", component: CreateNewPasswordComponent },
+  { path: "createpassword", component: CreateNewPasswordComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   { path: "testing", component: TestingComponent },

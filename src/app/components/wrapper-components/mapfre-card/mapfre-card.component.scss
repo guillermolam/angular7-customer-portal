@@ -8,6 +8,12 @@ $mapfre-card-padding-xs:        $default-margin-padding;
 $mapfre-card-padding-sm:        $default-margin-padding;
 $mapfre-card-padding-md:        $default-margin-padding *3;
 
+.mapfre-card-container {
+  &.full-height {
+    height: 100%;
+  }
+}
+
 .card.mapfre {
     background-color:           $mapfre-card-bg-color;
     border:                     thin solid $mapfre-card-border-color;
@@ -61,5 +67,6 @@ $mapfre-card-padding-md:        $default-margin-padding *3;
         }
         
         padding: $mapfre-card-padding;
+
     }
 }

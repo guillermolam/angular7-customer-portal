@@ -1,0 +1,9 @@
+<section class="mapfre-card-container"
+  [ngClass]="{ 'd-flex align-items-center full-height': singleCard }">
+  <div class="card mapfre {{additionalClasses}}"
+  [ngClass]="{ 'single-page-card center-margin': singleCard }">
+    <div class="card-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</section>
