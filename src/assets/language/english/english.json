@@ -59,7 +59,16 @@
         "FORGOT_EMAIL_CONFIMATION_SUBTITLE": "Didn't receive the email?",
         "FORGOT_EMAIL_CONFIMATION_COPY": "Check your spam for a message from",
         "FORGOT_EMAIL_SEND_AGAIN": "Send email again",
+        "FORGOT_PASS_EMAIL_SUBJECT": "MAPFRE Insurance - IMPORTANT - Reset your password",
         "CREATE_PASSWORD": "Type your new password",
         "CREATE_NEW_PASSWORD": "Create New Password",
-        "VALID_PASSWORD_VALIDATION_MESSAGE": ""
+        "VALID_PASSWORD_VALIDATION_MESSAGE": "",
+        "PASSWORD_RESET_CONFIRMATION_PARGRAPH": "Your password was reset",
+        "PASSWORD_RESET_CONFIRMATION": "Confirmation",
+        "LINK_HAS_EXPIRED": "Link has expired",
+        "LINK_HAS_EXPIRED_PARAGRAPH": "For security reasons, these links expire after 48 hours.",
+        "REQUEST_NEW_LINK": "Request a new link",
+        "TOO_MANY_ATTEMPTS_TITLE": "Too many attempts",
+        "TOO_MANY_ATTEMPTS_PARAGRAPH": "You have reached the maximum attemps for that email. For security reasons we have blocked that email to continue with this action for the next",
+        "TIME": "24 hours"
     }

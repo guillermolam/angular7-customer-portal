@@ -5,7 +5,7 @@ $global-prefix-padding-right:               $padding-vertical;
 $global-title-font-size:                    $font-size-base +0.625;
 $global-title-font-family:                  $font-family-base;
 $global-title-line-height:                  2rem;
-$global-title-margin-bottom:                $margin-vertical *1.5;
+$global-title-margin-bottom:                $margin-vertical/2;
 
 $global-red-override:                       $mapfre-red !important;
 $global-hr-header-margin-bottom:            $padding-vertical +4;
@@ -83,6 +83,14 @@ textarea:focus {
 
 .center-margin {
     margin:                                 auto;
+}
+
+.group-button {
+  margin-top: 40px;
+}
+
+.group-inputs {
+  margin-top: 16px;
 }
 
 .header-icon {

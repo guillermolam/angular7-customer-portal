@@ -1,4 +1,4 @@
-<div class= "row {{input.inputType}}-input" 
+<div class= "row {{input.inputType}}-input " 
   [ngClass]= "{'mapfre-validation-rules': input.key == 'repeatPassword' }"
 >
   <div class="col">
@@ -102,7 +102,9 @@
           <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleOne')">{{ 'PASSES_THE_RULE' | translate }}</span>
         </div>
         <div class="rule">
-          {{ 'PASSWORD_RULE_ONE' | translate }}
+          <span class="align-middle">
+            {{ 'PASSWORD_RULE_ONE' | translate }}
+          </span>
         </div>
       </div>
     </div>
@@ -114,7 +116,9 @@
           <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleTwo')">{{ 'PASSES_THE_RULE' | translate }}</span>
         </div>
         <div class="rule">
+          <span class="align-middle">
             {{ 'PASSWORD_RULE_TWO' | translate }}
+          </span>
         </div>
       </div>
     </div>
@@ -126,7 +130,9 @@
           <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleThree')">{{ 'PASSES_THE_RULE' | translate }}</span>
         </div>
         <div class="rule">
+          <span class="align-middle">
             {{ 'PASSWORD_RULE_THREE' | translate }}
+          </span>
         </div>
       </div>
     </div>
@@ -138,7 +144,9 @@
           <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleFour')">{{ 'PASSES_THE_RULE' | translate }}</span>
         </div>
         <div class="rule">
+          <span class="align-middle">
             {{ 'PASSWORD_RULE_FOUR' | translate }}
+          </span>
         </div>
       </div>
     </div>
@@ -150,7 +158,9 @@
           <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleFive')">{{ 'PASSES_THE_RULE' | translate }}</span>
         </div>
         <div class="rule">
+          <span class="align-middle">
             {{ 'PASSWORD_RULE_FIVE' | translate }}
+          </span>
         </div>
       </div>
     </div>
