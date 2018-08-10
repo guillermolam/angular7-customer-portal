@@ -26,12 +26,12 @@
         "CREATE_ACCOUNT": "Create Account",
         "SHOW_PASSWORD": "Show Password",
         "HIDE_PASSWORD": "Hide Password",
-        "YOUR_PASSWORD_SHOULD_BE": "Your Password Should Be",
-        "PASSWORD_RULE_ONE": "Rule One",
-        "PASSWORD_RULE_TWO": "Rule Two",
-        "PASSWORD_RULE_THREE": "Rule Three",
-        "PASSWORD_RULE_FOUR": "Rule Four",
-        "PASSWORD_RULE_FIVE": "Rule Five",
+        "YOUR_PASSWORD_SHOULD_BE": "Your Password Should",
+        "PASSWORD_RULE_ONE": "Be a mix of lowercase & uppercase letters",
+        "PASSWORD_RULE_TWO": "Have at least 1 number",
+        "PASSWORD_RULE_THREE": "Have at least 1 special character (like @,!,$)",
+        "PASSWORD_RULE_FOUR": "Be at least 7 characters long",
+        "PASSWORD_RULE_FIVE": "At the most 24 characters long",
         "DOES_NOT_PASS": "Does Not Pass",
         "PASSES_THE_RULE": "Passes the Rule",
         "INVALID_USERNAME_PASSWORD": "Invalid Username and/or Password",
@@ -58,6 +58,8 @@
         "CAPS_LOCK": "Caps Lock is On",
         "FORGOT_EMAIL_CONFIMATION_SUBTITLE": "Didn't receive the email?",
         "FORGOT_EMAIL_CONFIMATION_COPY": "Check your spam for a message from",
-        "FORGOT_EMAIL_SEND_AGAIN": "Send email again"
-
+        "FORGOT_EMAIL_SEND_AGAIN": "Send email again",
+        "CREATE_PASSWORD": "Type your new password",
+        "CREATE_NEW_PASSWORD": "Create New Password",
+        "VALID_PASSWORD_VALIDATION_MESSAGE": ""
     }

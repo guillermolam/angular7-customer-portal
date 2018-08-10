@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { NavigationStart, Router } from "@angular/router";
 import { Observable, Subject, ReplaySubject, from, of, range, BehaviorSubject } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class AlertService {
@@ -35,6 +34,10 @@ export class AlertService {
 
   getMessage(): Observable<any> {
     return this.subject.asObservable();
+  }
+
+  testMessage(): string {
+    return "testing error";
   }
 
   clear(): void{

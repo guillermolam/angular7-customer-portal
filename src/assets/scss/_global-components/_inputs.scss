@@ -16,7 +16,6 @@ $input-active-color:                        $active-color;
 $input-inactive-color:                      $mapfre-lite-gray;
 
 .group-inputs {
-    height: 66px;
     padding-top: 18px;
 }
 
@@ -80,17 +79,6 @@ $input-inactive-color:                      $mapfre-lite-gray;
     .inputVal {
         display:                            none;
         right:                              $input-validation-label-right;
-    }
-
-    .help-block .error {
-        color:                              $input-error-color;
-        font-size:                          $input-error-label-font-size;
-        padding-top:                        $input-validation-help-top;
-    }
-    
-    .error {
-        border-color:                        $input-error-color;
-        color:                               $input-error-color;
     }
 }
 

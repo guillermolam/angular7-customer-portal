@@ -54,9 +54,7 @@ import { DynamicFormsComponent }              from './components/forms/dynamic-f
 import { CreatePasswordFormComponent }        from './components/forms/dynamic-forms/create-password-form/create-password-form.component';
 import { SendEmailFormComponent }             from './components/forms/dynamic-forms/send-email-form/send-email-form.component';
 import { EmailConfirmationComponent }         from './components/confirmations/email-confirmation/email-confirmation.component';
-import { SendEmailFormNONDynamicComponent }   from './components/forms/non-dynamic-forms/send-email-form/send-email-form.component';
 import { ForgotPasswordNondynamicComponent }  from './components/forms/non-dynamic-forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
-
 
 import { RepeatPasswordDirectiveDirective }   from './_directives/forms/repeat-password/repeat-password-directive.directive';
 import { MapfreAlertComponent }               from './components/individual-components/mapfre-alert/mapfre-alert.component';
@@ -70,7 +68,11 @@ import { ForgotPasswordSetConfirmationComponent } from './components/confirmatio
 import { MapfreLoadingComponent }              from './components/individual-components/mapfre-loading/mapfre-loading.component';       
 import { MapfreTooltipComponent }              from './components/individual-components/mapfre-tooltip/mapfre-tooltip.component';       
 import { MapfreDropdownComponent }             from './components/section-components/mapfre-dropdown/mapfre-dropdown.component';
-import { MapfreIconInformationComponent } from './components/section-components/mapfre-icon-information/mapfre-icon-information.component'; 
+import { MapfreIconInformationComponent } from './components/section-components/mapfre-icon-information/mapfre-icon-information.component';
+import { CreateNewPasswordSvgComponent } from './components/svg/create-new-password-svg/create-new-password-svg.component';
+import { CreateNewPasswordSetComponent } from './components/confirmations/create-new-password-set/create-new-password-set.component';
+import { CreateNewPasswordExpiredComponent } from './components/confirmations/create-new-password-expired/create-new-password-expired.component';
+import { CreateNewPasswordExpiredSvgComponent } from './components/svg/create-new-password-expired-svg/create-new-password-expired-svg.component'; 
 
 export function tokenGetter() {
   return localStorage.getItem("currentUser");
@@ -105,7 +107,6 @@ export function tokenGetter() {
     ForgotPasswordNondynamicComponent,
     SendEmailFormComponent,
     EmailConfirmationComponent,
-    SendEmailFormNONDynamicComponent,
     CreateNewPasswordComponent,
     MapfreAlertComponent,
     DesignSystemComponent,
@@ -118,6 +119,10 @@ export function tokenGetter() {
     MapfreTooltipComponent,
     MapfreDropdownComponent,
     MapfreIconInformationComponent,
+    CreateNewPasswordSvgComponent,
+    CreateNewPasswordSetComponent,
+    CreateNewPasswordExpiredComponent,
+    CreateNewPasswordExpiredSvgComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,10 +2,10 @@ $global-body-bg-color:                      $lite-gray-two;
 $global-hr-color:                           $lite-gray-three;
 $global-prefix-padding-right:               $padding-vertical;
 
-$global-title-font-size:                    $font-size-base + 0.25;
+$global-title-font-size:                    $font-size-base +0.625;
 $global-title-font-family:                  $font-family-base;
 $global-title-line-height:                  2rem;
-$global-title-margin-bottom:                $margin-vertical/2;
+$global-title-margin-bottom:                $margin-vertical *1.5;
 
 $global-red-override:                       $mapfre-red !important;
 $global-hr-header-margin-bottom:            $padding-vertical +4;
@@ -13,6 +13,8 @@ $global-hr-body-margin-top:                 $padding-vertical *2;
 $global-hr-body-margin-bottom:              $padding-vertical *2;
 $global-login-hr-margin-top:                $margin-vertical *2.5;
 $global-login-hr-margin-bottom:             $margin-vertical * 1.75;
+
+$global-prefix-padding-right:               1.125rem;
 
 
 body {
@@ -23,12 +25,12 @@ hr {
     border:                                 solid thin $global-hr-color;
 
 	&.header {
-		margin-top:                         0;
-		margin-bottom:                      $global-hr-header-margin-bottom;
+		margin-top:                             0;
+		margin-bottom:                          $global-hr-header-margin-bottom;
 	}
 	&.body {
-		margin-top:                         2rem;
-		margin-bottom:                      2rem;
+		margin-top:                             2rem;
+		margin-bottom:                          2rem;
     }
     
     &.hr-login {
@@ -48,16 +50,6 @@ a {
     
     &:hover {
         font-weight:                        700
-        /* - fake font-weight for on hover effect, this needs to be tweaked untill it looks right.
-        text-shadow:
-            -1px -1px 0 $active-color,
-            1px -1px 0 $active-color,
-            -1px 1px 0 $active-color,
-            1px 1px 0  $active-color;
-        -webkit-transition: all .5s;
-        -moz-transition: all .5s;
-        -o-transition: all .5s;
-        transition: all .5s; */
     }
 }
 
@@ -93,6 +85,11 @@ textarea:focus {
     margin:                                 auto;
 }
 
+.header-icon {
+  margin-top: 30px;
+  margin-bottom: 32px;
+}
+
 .logo {
     max-width:                              350px;
     width:                                  100%;
@@ -106,27 +103,27 @@ textarea:focus {
 }
 .prefix {
     float:                                  left;
-    padding-right:                          $global-title-font-size;
+    padding-right:                          $global-prefix-padding-right;
 }
 
 .right {
     text-align:                             right;
 }
 
+.subtitle-copy {
+  margin-bottom:                            0;
+}
+
 .text-center {
     text-align:                             center;
 }
 
-.subtitle-copy {
-    margin-bottom:                          0;
-}
-
 .title-copy {
-    font-size:                              $global-title-font-size;
-    font-family:                            $global-title-font-family;
-    line-height:                            $global-title-line-height;
-    margin-bottom:                          $global-title-margin-bottom;
-    padding:                                0;
+  font-family:                              $global-title-font-family;
+  font-size:                                $global-title-font-size;
+  line-height:                              $global-title-line-height;
+  margin-bottom:                            $global-title-margin-bottom;
+  padding:                                  0;
 }
 
 .uppercase {

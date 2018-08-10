@@ -21,7 +21,7 @@ import { User }                       from "../../../../_models/user";
 })
 export class ForgotPasswordNondynamicComponent implements OnInit {
   @Input() routeParamaterString: string;
-  forgotPasswordForm:       FormGroup;
+  createPasswordForm:       FormGroup;
   loading:                  boolean = false;
   returnUrl:                string;
   repeatPassword:           boolean;
@@ -46,18 +46,14 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
   }
 
   createForm() {
-    this.forgotPasswordForm = this.fb.group({
+    this.createPasswordForm = this.fb.group({
       createPassword:
-      [ '',
-        [
+      [ '', [
           Validators.required,
           Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g)
         ]
       ],
-      repeatPassword:
-      [ '',
-        Validators.required
-      ]
+      repeatPassword:[ '', Validators.required ]
     }, {
       validator: this.pwdMatchValidator 
       }
@@ -73,7 +69,7 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
       'ruleFive':   /^.{1,24}$/g,
       'all':        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g
     };
-    let inputValue = this.forgotPasswordForm.controls['createPassword'].value;
+    let inputValue = this.createPasswordForm.controls['createPassword'].value;
     if( inputValue != undefined && rules[reg].test(inputValue) ) return true;
   }
 
@@ -83,7 +79,7 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
   }
 
   setNewPassword(): void{
-    let password = this.forgotPasswordForm.controls['createPassword'].value,
+    let password = this.createPasswordForm.controls['createPassword'].value,
         temporaryParamater = this.routeParamaterString,
         user = new User();
 
@@ -100,7 +96,7 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(this.createPasswordForm)
   }
 }
 

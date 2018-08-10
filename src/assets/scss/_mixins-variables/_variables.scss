@@ -1,26 +1,16 @@
-// --- Base Colors --- //
-$black:                     #000;
-$dark-gray:                 #333;
-$med-gray:                  #4C4C4C; 
-$gray:                      #737373;
-$lite-gray:                 #ccc;
-$lite-gray-two:             #F7F7F7;
-$lite-gray-three:           #EAE9E9;
-$white:                     #fff;
-
 // --- Brand Colors --- //
-$mapfre-red:                #D81E05;     
+$mapfre-red:                $corprate-red;     
 $mapfre-blue:               #006580;    
 $mapfre-lite-gray:          #C4C4C4;
-$mapfre-green:              #8DB602;    // Brand Folder #C6DB81; 
+$mapfre-green:              #8DB602;
 $mapfre-gray:               #67686B;
 $mapfre-teal:               #006580;
 
 // --- Specific Colors --- //
-$success-color:             #C6DB81; //dark-green
-$error-color:               #BF4B49;
-$information-color:         #0074CC;
-$active-color:              #006580;
+$success-color:             $soft-green; //dark-green
+$error-color:               $red-error;
+$information-color:         #0074CC; //information alerts
+$active-color:              $dark-blue;
 $caution-color:             #fff000;
 
 // ---- Defaults ----- //
@@ -50,8 +40,13 @@ $lg:                        992px;
 $xl:                        1200px;
 $xxl:                       1440px;
 
+// --- Overrides (old variables Do not use these for new work) --- //
+$dark-gray:                 $flat-black;
+$gray:                      $dark-grey;
+$lite-gray-two:             $softer-grey;
+$lite-gray-three:           $soft-grey;
 
-// ----- OverRides ----- //
+// --- Bootstrap Overrides --- //
 $grid-breakpoints: (
     xxxs:   $xxxs,
     xxs:    $xxs,

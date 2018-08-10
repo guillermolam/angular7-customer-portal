@@ -1,12 +1,14 @@
 import { Component, EventEmitter, HostListener, Input, Output, OnInit } from '@angular/core';
-import { FormGroup }                    from '@angular/forms';  
+import { FormGroup }                    from '@angular/forms'; 
+
+import { AlertService }                 from "../../../_services/alert.service";
 import { FormBase }                     from '../../../_models/form-base';
+
  
 @Component({
   selector: 'mapfre-validation',
   templateUrl: './mapfre-input-with-validation.component.html',
   styleUrls: ['./mapfre-input-with-validation.component.scss'],
-  //host: { '(document:keypress)': 'checkCapsLock($event)' }
 })
 
 export class MapfreIputWithValidationComponent {
@@ -19,7 +21,10 @@ export class MapfreIputWithValidationComponent {
             showPassword:               boolean = false;
             showPasswordIcon:           boolean = false;
             validInput:                 boolean = true;
-  
+            message:                    any;
+
+  constructor(private alertService: AlertService) { }
+
   @Output() inputValidationCheck:       EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @HostListener( 'window:keydown', ['$event'] ) 
@@ -60,6 +65,13 @@ export class MapfreIputWithValidationComponent {
     return formValid;
   }
 
+  alertServiceMessage(): void {
+    this.alertService.getMessage().subscribe((message) => { 
+      this.message = message; 
+      console.log(message);
+    });
+  }
+
   checkCapsLock(event: KeyboardEvent): void {
     if( event.code === 'CapsLock' ) {
       if( event.getModifierState && event.getModifierState( 'CapsLock' ) ) {
@@ -96,5 +108,6 @@ export class MapfreIputWithValidationComponent {
   }
 
   ngOnInit(): void {
+    this.alertServiceMessage();
   }
 }
