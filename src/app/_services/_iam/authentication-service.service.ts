@@ -88,4 +88,12 @@ export class AuthenticationService {
       );
       */
   }
+
+  tokenVerification(token: string,email: string): Observable<any> {
+  	const url = `${environment.identity}/identity/users/`+email+`?token=`+token;	
+  	return this.http.post(url,{}).map((response:Response)=>{
+  		console.log(response)
+  	}).catch((error:any) => Observable.throw(error));
+  }
 }
+

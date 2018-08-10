@@ -1,5 +1,5 @@
 // ---- Packages | Helpers ---- //
-import { Routes, RouterModule }       from "@angular/router";
+import { Routes, RouterModule,  }       from "@angular/router";
 import { NgModule }                   from "@angular/core";
 import { AccountMainComponent }       from "./account-main/account-main.component";
 import { AuthGuard }                  from "./_guards/auth.guard";
@@ -17,7 +17,8 @@ const appRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent},
   { path: "design-system", component: DesignSystemComponent },
   { path: "forgotpassword", component: ForgotPasswordComponent },
-  { path: "createpassword/:temporaryPassword", component: CreateNewPasswordComponent },
+  { path: "createpassword/:param", component: CreateNewPasswordComponent },
+  { path: "createpassword", component: CreateNewPasswordComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   { path: "testing", component: TestingComponent },

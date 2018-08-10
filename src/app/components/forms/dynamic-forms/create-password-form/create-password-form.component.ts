@@ -1,5 +1,5 @@
 import { Component, OnInit, Input }   from "@angular/core";
-import { CookieService }              from "angular2-cookie/services/cookies.service";
+//import { CookieService }              from "angular2-cookie/services/cookies.service";
 import { HttpClient }                 from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute }     from "@angular/router";
@@ -26,7 +26,7 @@ export class CreatePasswordFormComponent implements OnInit {
   user:                     User;
   
   constructor(
-    private _cookieService: CookieService,
+    //private _cookieService: CookieService,
     private authenticationService: AuthenticationService,
     private alertService: AlertService,
     private fb: FormBuilder,

@@ -4,6 +4,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { FormBase }               from '../../_models/form-base';
 import { ForgotPasswordService }  from '../../_services/forms/forgot-password/forgot-password-form/forgot-password.service';
+import { AuthenticationService }      from '../../_services/_iam/authentication-service.service';
 
 @Component({
   selector: 'app-create-new-password',
@@ -14,6 +15,8 @@ import { ForgotPasswordService }  from '../../_services/forms/forgot-password/fo
 
 export class CreateNewPasswordComponent implements OnInit {
   expiredLink:                    boolean = false;
+  // waiting token api response  
+  waitingForResponse:			  boolean = false;	
   paramSubmission:                any;
   passwordInputs:                 any[];
   successChangePassword:  boolean;
@@ -22,6 +25,7 @@ export class CreateNewPasswordComponent implements OnInit {
   (
     private passwordService:      ForgotPasswordService,
     private activatedRoute:       ActivatedRoute,
+    private authenticationService:	AuthenticationService
   ) {
     this.passwordInputs = passwordService.getInputs();
   }
@@ -49,5 +53,37 @@ export class CreateNewPasswordComponent implements OnInit {
       ]
     );
     this.checkForExpiredPassword(this.paramSubmission) 
-  }        
-}
+    this.getTokenfromUrl()
+  } 
+
+  getTokenfromUrl():any{
+  	
+  	this.activatedRoute.queryParams.subscribe(params=>{
+  		if(params)
+  			return this.isTokenValid(params.token,params.email)
+
+  	})
+  	return false
+  }
+
+  isTokenValid(token,email):any{
+  	
+  	if(!token || !email)
+  		return false
+  	
+  	this.waitingForResponse  = true
+  	return 	this.authenticationService.tokenVerification(token,email).subscribe((data)=>{
+  		this.expiredLink = false
+  		this.waitingForResponse = false
+  	},(error)=>{
+  		this.expiredLink = true
+  		this.waitingForResponse = false
+
+  	}) 	
+  }	
+} 
+
+
+
+
+
