@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'svg-too-many-attempts-svg',
-  template: `
-  <svg width="93px" height="68px" viewBox="0 0 93 68" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  template: `<div class="svg-container">
+  <svg width="93px" height="66px" viewBox="0 0 93 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
       <desc>Created with Sketch.</desc>
       <defs></defs>
@@ -21,9 +21,9 @@ import { Component } from '@angular/core';
                       </text>
                   </g>
               </g>
-          </g>
+          </g> 
       </g>
-  </svg>`
+  </svg></div>`
 })
 export class TooManyAttemptsSvgComponent {
 }

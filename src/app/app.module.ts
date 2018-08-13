@@ -69,8 +69,6 @@ import { DesignSystemComponent }              from './routes/design-system/desig
 import { MapfreCodeComponent }                from './components/wrapper-components/mapfre-code/mapfre-code.component';
 import { MapfreNotificationsComponent }       from './components/individual-components/mapfre-notifications/mapfre-notifications.component';
 import { MapfreModalComponent }               from './components/section-components/mapfre-modal/mapfre-modal.component';
-import { ForgotPasswordConfirmationComponent } from  './components/confirmations/forgot-password/forgot-password.component';            
-import { ForgotPasswordSetConfirmationComponent } from './components/confirmations/forgot-password-set/forgot-password-set.component';
 import { MapfreLoadingComponent }              from './components/individual-components/mapfre-loading/mapfre-loading.component';       
 import { MapfreTooltipComponent }              from './components/individual-components/mapfre-tooltip/mapfre-tooltip.component';       
 import { MapfreDropdownComponent }             from './components/section-components/mapfre-dropdown/mapfre-dropdown.component';
@@ -118,8 +116,6 @@ export function tokenGetter() {
     MapfreCodeComponent,
     MapfreNotificationsComponent,
     MapfreModalComponent,
-    ForgotPasswordConfirmationComponent,
-    ForgotPasswordSetConfirmationComponent,
     MapfreLoadingComponent,
     MapfreTooltipComponent,
     MapfreDropdownComponent,

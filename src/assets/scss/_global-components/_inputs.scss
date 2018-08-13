@@ -10,10 +10,11 @@ $input-validation-label-right:              $margin-horizontal;
 $input-validation-help-top:                 $padding-vertical / 2.5;
 $input-padding-half:                        $defualt-margin-padding;
 //colors
-$input-success-color:                       $success-color;
-$input-error-color:                         $error-color;
-$input-active-color:                        $active-color; 
+$input-active-color:                        $active-color;
+$input-error-color:                         $error-color; 
 $input-inactive-color:                      $mapfre-lite-gray;
+$input-static-color:                        $fake-black;
+$input-success-color:                       $success-color;
 
 .input-field.mapfre {
     height:                                 60px;
@@ -34,6 +35,11 @@ $input-inactive-color:                      $mapfre-lite-gray;
 
         &:hover {
             border-color:                   $input-active-color;
+        }
+
+        &.error {
+          border-color:                     $input-error-color;
+          color:                            $input-static-color;
         }
     }
 
@@ -60,7 +66,7 @@ $input-inactive-color:                      $mapfre-lite-gray;
             position:                       absolute;
            
             &.active {
-                top:                        -10px;
+                top:                        -14px;
             }
         }
     }
@@ -77,4 +83,8 @@ $input-inactive-color:                      $mapfre-lite-gray;
         right:                              $input-validation-label-right;
     }
 }
+
+.group-inputs .input {
+  margin-bottom:                            8px;
+} 
 

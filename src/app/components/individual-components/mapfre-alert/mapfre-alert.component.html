@@ -1,4 +1,4 @@
-<div *ngIf="message">
+<div *ngIf="message" class="alert-container">
   <div *ngFor="let alertTypeObject of alertTypeObjects">
     <div 
       class="mapfre alert {{alertTypeObject?.className}}" 
@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div *ngIf="nonDynamic">
+<div *ngIf="nonDynamic" class="alert-container">
   <div *ngFor="let alertTypeObject of alertTypeObjects">
     <div class="mapfre alert {{alertTypeObject?.className}}">
       <div class="row">

@@ -11,19 +11,27 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
 import 'rxjs/add/operator/catch';
+import { TestingService } from "../_testing-helpers/testing.service";
 
 @Injectable()
 export class AuthenticationService {
   public token: string;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private testing: TestingService
+  ) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.token = currentUser && currentUser.token;
   }
 
-  createPassword(token: string, password: string) {
+  createPassword(email:string, token: string, password: string) {
     //this is just in the testing bit
+    const url = `${environment.identity}/identity/users/account-recovery`,
+          body = {};
+    console.log(email, token, password);
+    
     if(token == 'testing') {
       if(password == 'aA1!sss') {
         return this.http.post('https://httpstat.us/404', {}, {
@@ -40,7 +48,19 @@ export class AuthenticationService {
             "Content-Type": "application/json"
           }
         })
-      }
+      };
+    }
+    else { 
+      return this.http.post(url, body , {
+        params : { 
+          email: email,
+          token: token,
+          password: password 
+        },
+        headers : {
+          "Content-Type": "application/json"
+        }
+      });
     }
   }
 
@@ -95,4 +115,5 @@ export class AuthenticationService {
     this.token = null;
     localStorage.removeItem("currentUser");
   }
+
 }

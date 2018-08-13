@@ -59,8 +59,8 @@
           [formControlName]= "input.key"  
           [id]= "input.key" 
           [mdbValidate]="false"
-          [name]= "input.key"
-          [ngClass]="{'error': !validInput && allowValidaitonToRun }"
+          [name]= "input.key" 
+          [ngClass]="{'error': message || (!validInput && allowValidaitonToRun) }"
           [type]= "input.inputType"
           #textbox
           mdbInputDirective
@@ -68,14 +68,16 @@
         <mapfre-label [forInput]= "input.key" [validationCSSClass]="validInput">{{ input.label | translate }}</mapfre-label>
       </div>
       <div class="help-block" >
-        <span class= "error-block" *ngIf= "!isValid && notOnPageLoad && input.inputType != 'email' && !message">
+        <span class= "error-block" 
+          *ngIf= "!isValid && notOnPageLoad && input.inputType != 'email' && !message">
           {{ input.validationMessageError | translate }}
         </span>
         <span class="error-block" 
           *ngIf= "!isValid && input.inputType == 'email' && validMessageShow && !message">
           {{ input.validationMessageError | translate }}
         </span>
-        <span *ngIf="message && input.key == 'createPassword' " class="error-block">
+        <span class="error-block" 
+          *ngIf="message && input.key == 'createPassword' ">
           {{ message?.text | translate }}
         </span>
         <span class= "info-block" *ngIf= "input.inputType == 'password' && capsLock">

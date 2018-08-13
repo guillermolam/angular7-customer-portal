@@ -1,12 +1,11 @@
 // --- Angular ---//
 import { Component, Input, OnInit }     from "@angular/core";
 import { CookieService }                from 'ngx-cookie-service';
-import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
-import { Router, ActivatedRoute }       from "@angular/router";
+import { FormGroup }                    from "@angular/forms";
+import { Router }       from "@angular/router";
 // --- Components | Services | Models --- //
 import { AlertService }                 from "../../../../_services/alert.service";
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { environment }                  from "../../../../../environments/environment";
 import { FormBase }                     from '../../../../_models/form-base';
 import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
 import { UserService }                  from "../../../../_services/user.service";
@@ -32,9 +31,7 @@ export class LoginFormComponent implements OnInit {
     private _cookieService:           	CookieService,
     private authenticationService:    	AuthenticationService,
     private alertService:             	AlertService,
-    private fb:                       	FormBuilder,
     private ipt:                      	FormBaseControlService,
-    private route:                    	ActivatedRoute,
     private router:                   	Router,
     private userService:              	UserService
   ) {}

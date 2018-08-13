@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'svg-create-new-password-expired-svg',
-  template: `
+  template: `<div class="svg-container">
   <svg width="93px" height="93px" viewBox="0 0 93 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
     <desc>Created with Sketch.</desc>
@@ -23,6 +23,6 @@ import { Component, OnInit } from '@angular/core';
             </g>
         </g>
     </g>
-  </svg>`
+  </svg></div>`
 })
 export class CreateNewPasswordExpiredSvgComponent {}
