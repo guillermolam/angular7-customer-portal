@@ -5,7 +5,7 @@ import { CreateNewPasswordFormService }  from '../../_services/forms/forgot-pass
 @Component({
   selector: 'app-create-new-password',
   templateUrl: './create-new-password.component.html',
-  styleUrls: ['./create-new-password.component.scss'],
+  styleUrls: ['./create-new-password.component.scss'], 
   providers: [ CreateNewPasswordFormService ]
 })
 
