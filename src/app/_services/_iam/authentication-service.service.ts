@@ -22,6 +22,39 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
+  createPassword(token: string, password: string) {
+    //this is just in the testing bit
+    if(token == 'testing') {
+      if(password == 'aA1!sss') {
+        return this.http.post('https://httpstat.us/404', {}, {
+          params : { password: password },
+          headers : {
+            "Content-Type": "application/json"
+          }
+        })
+      }
+      else {
+        return this.http.post('https://httpstat.us/202', {}, {
+          params : { password: password },
+          headers : {
+            "Content-Type": "application/json"
+          }
+        })
+      }
+    }
+  }
+
+  forgotPasswordSendEmailId(email: string) {
+    const url = `${environment.identity}/identity/users/account-recovery`,
+          body = {}; 
+    return this.http.post(url, body , {
+      params : { email: email },
+      headers : {
+        "Content-Type": "application/json"
+      }
+    });
+  }
+
   login(username: string, password: string): Observable<any> {
     const url = environment.api_gateway_url + "/auth/oauth/v2/token",
           body = {}; 
@@ -61,31 +94,5 @@ export class AuthenticationService {
     // clear token remove user from local storage to log user out
     this.token = null;
     localStorage.removeItem("currentUser");
-  }
-
-  forgotPasswordSendEmailId(email: string) {
-    const url = `${environment.identity}/identity/users/account-recovery`,
-          body = {}; 
-    return this.http.post(url, body , {
-      params : { email: email },
-      headers : {
-        "Content-Type": "application/json"
-      }
-    });
-
-      /*
-      map( (response: Response) => {
-          if( response.status === 202 ) {
-            return true;
-          }
-          else {
-            return false;
-          }
-        })
-      )
-      .catch(
-        (error: any) => Observable.throw('We Could not validate your email')
-      );
-      */
   }
 }

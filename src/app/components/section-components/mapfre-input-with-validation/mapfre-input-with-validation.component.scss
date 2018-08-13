@@ -6,9 +6,14 @@ $mapfre-validation-valid-color:             $mapfre-green;
 $mapfre-validation-info-padding-left:       $default-margin-padding;
 $mapfre-validation-info-font-size:          0.7rem;
 $mapfre-validation-info-height:             1rem;
+
+$mapfre-input-error-color:                  $input-error-color;
+$mapfre-input-error-label-font-size:        $input-error-label-font-size;
+$mapfre-input-validation-help-top:          $input-validation-help-top;
 /* 
     ----- Information -----
-    The Input styles are in the global-component folder in assets/scss/_global-components/_inputs.scss. 
+    The Input styles are in the global-component folder in 
+    assets/scss/_global-components/_inputs.scss. 
     This is due to the use of multiple components being used for this particular section. 
 
 */
@@ -17,6 +22,11 @@ input:focus, .form-control:focus { /* this is temporary */
     outline:                                none;
     box-shadow:                             none;
     border:                                 none;
+}
+
+.error {
+  border-color:                             $input-error-color;
+  color:                                    $input-error-color;
 }
 
 .error-block {
@@ -33,6 +43,12 @@ input:focus, .form-control:focus { /* this is temporary */
     span {
         position:                           absolute;
     }
+
+    .error {
+      color:                                $mapfre-input-error-color;
+      font-size:                            $mapfre-input-error-label-font-size;
+      padding-top:                          $mapfre-input-validation-help-top;
+    }
 }
 
 .hide-validation {
@@ -42,10 +58,36 @@ input:focus, .form-control:focus { /* this is temporary */
 
 .info-block {
     color:                                  $mapfre-validation-info-color;
-}    
+}
 
-.mapfre-validation-rules {
-    height:                                 auto;
+.password-validation {
+  padding-top:                              8px;
+
+  .icon {
+    float: left;
+    width: 30px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .not-fullfilled {
+    color: $dark-grey;
+  }
+
+  .rule {
+    float: left;
+    line-height: 24px;
+    font-size: 12px;
+  }
+
+  .title {
+    color: $grey;
+    height: 24px;
+  }
+
+  i {
+    color: $soft-grey;
+  }
 }
 
 .show-validation {
@@ -58,11 +100,6 @@ input:focus, .form-control:focus { /* this is temporary */
     @include transition(1s);
 
     i {
-        &:before {
-            content:                        '\f058';
-            font-family:                    FontAwesome;
-        }
+      color:                                $mapfre-validation-valid-color;
     }
 }
-
-

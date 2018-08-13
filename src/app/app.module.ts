@@ -48,29 +48,36 @@ import { ForgotPasswordComponent }            from "./routes/forgot-password/for
 import { LoginComponent }                     from "./routes/login/login.component";
 import { SignupComponent }                    from "./routes/signup/signup.component";
 import { TestingComponent }                   from './routes/testing/testing.component';
+//SVGS//
+import { CreateNewPasswordSvgComponent }      from '../assets/svg/create-new-password-svg/create-new-password-svg.component';
+import { CreateNewPasswordExpiredSvgComponent } from '../assets/svg/create-new-password-expired-svg/create-new-password-expired-svg.component';
+import { LoginIconSvgComponent }              from '../assets/svg/login-icon-svg/login-icon-svg.component';
+import { ForgotPasswordIconSvgComponent }     from '../assets/svg/forgot-password-icon-svg/forgot-password-icon-svg.component';
+import { CheckEmailIconSvgComponent }         from '../assets/svg/check-email-icon-svg/check-email-icon-svg.component'; 
+import { TooManyAttemptsSvgComponent }         from '../assets/svg/too-many-attempts-svg/too-many-attempts-svg.component'; 
 
 
+// ----- Components ----- //
 import { DynamicFormsComponent }              from './components/forms/dynamic-forms/dynamic-form-testing/dynamic-forms.component';
 import { CreatePasswordFormComponent }        from './components/forms/dynamic-forms/create-password-form/create-password-form.component';
 import { SendEmailFormComponent }             from './components/forms/dynamic-forms/send-email-form/send-email-form.component';
 import { EmailConfirmationComponent }         from './components/confirmations/email-confirmation/email-confirmation.component';
-import { SendEmailFormNONDynamicComponent }   from './components/forms/non-dynamic-forms/send-email-form/send-email-form.component';
 import { ForgotPasswordNondynamicComponent }  from './components/forms/non-dynamic-forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
-
-
 import { RepeatPasswordDirectiveDirective }   from './_directives/forms/repeat-password/repeat-password-directive.directive';
 import { MapfreAlertComponent }               from './components/individual-components/mapfre-alert/mapfre-alert.component';
 import { DesignSystemComponent }              from './routes/design-system/design-system.component';
 import { MapfreCodeComponent }                from './components/wrapper-components/mapfre-code/mapfre-code.component';
 import { MapfreNotificationsComponent }       from './components/individual-components/mapfre-notifications/mapfre-notifications.component';
 import { MapfreModalComponent }               from './components/section-components/mapfre-modal/mapfre-modal.component';
-
 import { ForgotPasswordConfirmationComponent } from  './components/confirmations/forgot-password/forgot-password.component';            
 import { ForgotPasswordSetConfirmationComponent } from './components/confirmations/forgot-password-set/forgot-password-set.component';
 import { MapfreLoadingComponent }              from './components/individual-components/mapfre-loading/mapfre-loading.component';       
 import { MapfreTooltipComponent }              from './components/individual-components/mapfre-tooltip/mapfre-tooltip.component';       
 import { MapfreDropdownComponent }             from './components/section-components/mapfre-dropdown/mapfre-dropdown.component';
-import { MapfreIconInformationComponent } from './components/section-components/mapfre-icon-information/mapfre-icon-information.component'; 
+import { MapfreIconInformationComponent } from './components/section-components/mapfre-icon-information/mapfre-icon-information.component';
+import { CreateNewPasswordSetComponent } from './components/confirmations/create-new-password-set/create-new-password-set.component';
+import { CreateNewPasswordExpiredComponent } from './components/confirmations/create-new-password-expired/create-new-password-expired.component';
+import { ForgotPasswordTooManyComponent } from './components/confirmations/forgot-password-too-many/forgot-password-too-many.component';
 
 export function tokenGetter() {
   return localStorage.getItem("currentUser");
@@ -105,7 +112,6 @@ export function tokenGetter() {
     ForgotPasswordNondynamicComponent,
     SendEmailFormComponent,
     EmailConfirmationComponent,
-    SendEmailFormNONDynamicComponent,
     CreateNewPasswordComponent,
     MapfreAlertComponent,
     DesignSystemComponent,
@@ -118,6 +124,15 @@ export function tokenGetter() {
     MapfreTooltipComponent,
     MapfreDropdownComponent,
     MapfreIconInformationComponent,
+    CreateNewPasswordSvgComponent,
+    CreateNewPasswordSetComponent,
+    CreateNewPasswordExpiredComponent,
+    CreateNewPasswordExpiredSvgComponent,
+    LoginIconSvgComponent,
+    ForgotPasswordIconSvgComponent,
+    CheckEmailIconSvgComponent,
+    TooManyAttemptsSvgComponent,
+    ForgotPasswordTooManyComponent,
   ],
   imports: [
     BrowserModule,

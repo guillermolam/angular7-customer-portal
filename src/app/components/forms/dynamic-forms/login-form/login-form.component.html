@@ -3,8 +3,8 @@
   name="loginForm"  
   (ngSubmit)="loginForm.valid && login()">
   
-  <div class="group-login">
-    <div *ngFor="let input of inputs" class="group-inputs">
+  <div class="group-inputs">
+    <div *ngFor="let input of inputs" class="">
       <mapfre-validation [input]="input" [form]="loginForm"></mapfre-validation>
     </div>
   </div>

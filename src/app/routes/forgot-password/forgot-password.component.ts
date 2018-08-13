@@ -12,6 +12,7 @@ import { EmailFormService }         from '../../_services/forms/forgot-password/
 
 export class ForgotPasswordComponent implements OnInit  {
   showConfirmation:                   boolean = false;
+  tooManyAttempts:                    boolean = false;
   emailInputs:                        any[];
   emailPrefillParamater:              string;
  

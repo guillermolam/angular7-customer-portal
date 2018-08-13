@@ -1,31 +1,29 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 
-import { FormBase }               from '../../_models/form-base';
-import { ForgotPasswordService }  from '../../_services/forms/forgot-password/forgot-password-form/forgot-password.service';
+import { CreateNewPasswordFormService }  from '../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
 
 @Component({
   selector: 'app-create-new-password',
   templateUrl: './create-new-password.component.html',
   styleUrls: ['./create-new-password.component.scss'],
-  providers: [ ForgotPasswordService ]
+  providers: [ CreateNewPasswordFormService ]
 })
 
 export class CreateNewPasswordComponent implements OnInit {
+  createNewPassword:              any[];
   expiredLink:                    boolean = false;
   paramSubmission:                any;
-  passwordInputs:                 any[];
-  successChangePassword:  boolean;
+  successChangePassword:          boolean = false;
   
-  constructor
-  (
-    private passwordService:      ForgotPasswordService,
-    private activatedRoute:       ActivatedRoute,
-  ) {
-    this.passwordInputs = passwordService.getInputs();
+  constructor( service: CreateNewPasswordFormService ) {
+    this.createNewPassword = service.getInputs();
   }
 
+  checkForConfirmation(event): void{
+    if(event) this.successChangePassword = event;
+  }
+
+  /*
   checkForExpiredPassword(param): void 
   {
     let testingParam = 'testingforexpireparam';
@@ -49,5 +47,9 @@ export class CreateNewPasswordComponent implements OnInit {
       ]
     );
     this.checkForExpiredPassword(this.paramSubmission) 
-  }        
+  } 
+  */ 
+ ngOnInit(){
+  
+ }      
 }
