@@ -99,16 +99,3 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
     console.log(this.createPasswordForm)
   }
 }
-
-
-/*
-
-this.userData.$user.subscribe((user) => {
-      this.user.email = user.email;
-    });
-  cancel() {
-    this.userData.updateUser(this.user);
-  }
- 
-*/
-

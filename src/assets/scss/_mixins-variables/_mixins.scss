@@ -61,19 +61,6 @@
 	#{$property}: #{$rem-values};
 }
 
-/* ----- https://github.com/drublic/Sass-Mixins/blob/master/partials/_placeholder.scss ----- */
-@mixin x-placeholder {
-	/*&::-webkit-input-placeholder {
-		@content // Chrome, Safari, Opera
-	}
-	&::-moz-placeholder {
-		@content // Firefox 19+
-	}
-	&:-ms-input-placeholder {
-		@content // IE 10+
-	}*/
-}
-
 @mixin opacity ($value: 0) {
 	$value-percentage: $value * 100;
 

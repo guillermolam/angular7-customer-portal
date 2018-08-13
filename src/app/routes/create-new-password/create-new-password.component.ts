@@ -24,32 +24,6 @@ export class CreateNewPasswordComponent implements OnInit {
     if(event) this.successChangePassword = event;
   }
 
-  /*
-  checkForExpiredPassword(param): void 
-  {
-    let testingParam = 'testingforexpireparam';
-    //insert service
-    if(param == testingParam) {
-      this.expiredLink = false;
-    }
-  }
-
-  userConfirmation(event): void 
-  {
-    this.successChangePassword = event;
-  }
-
-  ngOnInit(): void 
-  {
-    this.activatedRoute.params.subscribe
-    (
-      params => [
-        this.paramSubmission = params['temporaryPassword']
-      ]
-    );
-    this.checkForExpiredPassword(this.paramSubmission) 
-  } 
-  */ 
  ngOnInit(){
   
  }      
