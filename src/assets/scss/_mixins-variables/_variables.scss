@@ -17,9 +17,11 @@ $mapfre-gray:               #67686B;
 $mapfre-teal:               #006580;
 
 // --- Specific Colors --- //
-$success-color:             #749806; //dark-green
+$success-color:             #C6DB81; //dark-green
 $error-color:               #BF4B49;
+$information-color:         #0074CC;
 $active-color:              #006580;
+$caution-color:             #fff000;
 
 // ---- Defaults ----- //
 //Fonts
@@ -62,7 +64,7 @@ $grid-breakpoints: (
 );
 
 $spacer:                    $defualt-margin-padding;
-$default-color:             $mapfre-red;
+
 $link-color:                $mapfre-red;
 $button-font-family:        $font-family-base;
 $grid-gutter-width:         $default-margin-padding *2;

@@ -10,9 +10,8 @@ import { AlertService } from "../../../_services/alert.service";
 })
 export class MapfreAlertComponent implements OnInit {
   @Input() alertType:   string = 'default';
-  @Input() closeButton: boolean = false;
   @Input() nonDynamic:  boolean = false;
-           message:     any;
+  message:              any;
 
   constructor(private alertService: AlertService) { }
 
@@ -20,22 +19,22 @@ export class MapfreAlertComponent implements OnInit {
     {
       "alertType":    "default",
       "className":    "default",
-      "iconClass":    "fas fa-info alert-icon"    
+      "iconClass":    "fas fa-info-circle alert-icon icon-default"
     },
     {
       "alertType":    "error",
       "className":    "error",
-      "iconClass":    "fas fa-times-circle alert-icon"    
+      "iconClass":    "fas fa-times-circle alert-icon icon-error"
     },
     {
       "alertType":    "caution",
       "className":    "caution",
-      "iconClass":    "fas fa-exclamation-triangle alert-icon"    
+      "iconClass":    "fas fa-exclamation-triangle alert-icon icon-caution"
     },
     {
       "alertType":    "success",
       "className":    "success",
-      "iconClass":    "fas fa-thumbs-up alert-icon"    
+      "iconClass":    "fas fa-check-circle alert-icon icon-success"
     },
   ];
 

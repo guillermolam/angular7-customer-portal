@@ -1,7 +1,6 @@
 // --- Angular ---//
-import { Component, OnInit, Input, HostListener }     from "@angular/core";
+import { Component, Input, OnInit }     from "@angular/core";
 import { CookieService }                from 'ngx-cookie-service';
-import { HttpClient }                   from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute }       from "@angular/router";
 // --- Components | Services | Models --- //
@@ -34,7 +33,6 @@ export class LoginFormComponent implements OnInit {
     private authenticationService:    	AuthenticationService,
     private alertService:             	AlertService,
     private fb:                       	FormBuilder,
-    private http:                     	HttpClient,
     private ipt:                      	FormBaseControlService,
     private route:                    	ActivatedRoute,
     private router:                   	Router,
