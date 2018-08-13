@@ -14,6 +14,7 @@ export class CreateNewPasswordComponent implements OnInit {
   expiredLink:                    boolean = false;
   paramSubmission:                any;
   successChangePassword:          boolean = false;
+  tooManyAttempts:                boolean = false;
   
   constructor( service: CreateNewPasswordFormService ) {
     this.createNewPassword = service.getInputs();

@@ -19,6 +19,7 @@ $global-prefix-padding-right:               1.125rem;
 
 body {
     background-color:                       $global-body-bg-color;
+    line-height: 24px;
 }
 
 hr {
@@ -75,6 +76,7 @@ textarea:focus {
 
 .card-title {
     padding-bottom:                         1rem;
+    margin-bottom:0;
 }
 
 .center {
@@ -93,9 +95,26 @@ textarea:focus {
   margin-top: 16px;
 }
 
+
+
 .header-icon {
-  margin-top: 30px;
-  margin-bottom: 32px;
+  margin: auto;
+  margin-top: 0px;
+
+  &.full-icon {
+    margin-bottom: 16px;
+  }
+
+  .svg-container {
+    height: 96px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin: auto;
+      display: block;
+    }
+  }
 }
 
 .logo {
@@ -173,3 +192,5 @@ textarea:focus {
 .no-padding-bottom {
     padding-bottom: 0;
 }
+
+

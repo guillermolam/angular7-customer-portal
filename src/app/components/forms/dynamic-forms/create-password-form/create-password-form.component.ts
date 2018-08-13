@@ -1,13 +1,11 @@
 import { Component, EventEmitter, OnInit, Input, Output }   from "@angular/core";
-import { CookieService }              from 'ngx-cookie-service';
 import { FormGroup }                  from "@angular/forms";
-import { Router, ActivatedRoute }     from "@angular/router";
+import { ActivatedRoute }     from "@angular/router";
 // --- Components | Services | Models --- //
 import { AlertService }               from "../../../../_services/alert.service";
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
 import { FormBase }                   from '../../../../_models/form-base';
 import { FormBaseControlService }     from '../../../../_services/form-base-control.service';
-import { UserService }                from "../../../../_services/user.service";
 import { User }                       from "../../../../_models/user";
 
 @Component({
@@ -19,24 +17,24 @@ import { User }                       from "../../../../_models/user";
 export class CreatePasswordFormComponent implements OnInit {
   @Input() inputs:                  FormBase<any>[] = [];
   createPasswordForm:               FormGroup;
+  email:                            string;
+  token:                            string;
   user:                             User;
 
   @Output() confirmationOfPasswordCreation:   EventEmitter<boolean> = new EventEmitter();
   
   constructor(
-    private cookieService:          CookieService,
     private authenticationService:  AuthenticationService,
     private alertService:           AlertService,
     private route:                  ActivatedRoute,
-    private router:                 Router,
-    private userData:               UserService,
     private ipt:                    FormBaseControlService
   ) {}
 
   createNewPassword(): void {
     this.user.password = this.createPasswordForm.value.createPassword;
+    this.user.email = this.email;
     this.authenticationService
-        .createPassword ('testing', this.user.password)
+        .createPassword (this.user.email, this.token , this.user.password)
         .subscribe (
           (data) => {
             this.confirmationOfPasswordCreation.emit( true );
@@ -44,7 +42,7 @@ export class CreatePasswordFormComponent implements OnInit {
           (error) => {
             console.log(error);
             this.confirmationOfPasswordCreation.emit( false );
-            this.alertService.error('Testing Error');
+            this.alertService.error(error.message);
           }
         )
       ;
@@ -53,5 +51,10 @@ export class CreatePasswordFormComponent implements OnInit {
   ngOnInit() {
     this.createPasswordForm = this.ipt.toFormGroup(this.inputs);
     this.user = new User();
+    this.route.queryParams.subscribe((params) => { 
+      this.email = params.email;
+      this.token = params.token;
+     });
+     
   }
 } 
