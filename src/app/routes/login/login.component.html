@@ -10,4 +10,19 @@
   </div>
   <mapfre-alert></mapfre-alert> 
   <app-login-form [inputs]="inputs"></app-login-form>
+  <mapfre-button
+    [additionalClasses]="'flat link small'"
+    [iconClasses]="'align-middle'"
+    [routerLink]="['/createpassword']"
+    [showIconsCustom]="true"
+  >  This button is for Testing Purposes only. To /createpassword
+  </mapfre-button>
+  <mapfre-button
+    [additionalClasses]="'flat link small'"
+    [iconClasses]="'align-middle'"
+    [routerLink]="['/createpassword']"
+    [queryParams]="{email: 'vandana.jagadeesh@northout.com', token: '3e89928a13b0e04b'}"
+    [showIconsCustom]="true"
+  >  This button is for Testing Purposes only. With Parms
+  </mapfre-button>
 </mapfre-card>
