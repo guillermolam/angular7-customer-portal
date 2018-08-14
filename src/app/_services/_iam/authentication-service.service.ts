@@ -11,15 +11,68 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
 import 'rxjs/add/operator/catch';
+import { TestingService } from "../_testing-helpers/testing.service";
 
 @Injectable()
 export class AuthenticationService {
   public token: string;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private testing: TestingService
+  ) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.token = currentUser && currentUser.token;
+  }
+
+  createPassword(email:string, token: string, password: string) {
+    //this is just in the testing bit
+    const url = `${environment.identity}/identity/users/account-recovery`,
+          body = {};
+    console.log(email, token, password);
+    
+    if(token == 'testing') {
+      if(password == 'aA1!sss') {
+        return this.http.post('https://httpstat.us/404', {}, {
+          params : { password: password },
+          headers : {
+            "Content-Type": "application/json"
+          }
+        })
+      }
+      else {
+        return this.http.post('https://httpstat.us/202', {}, {
+          params : { password: password },
+          headers : {
+            "Content-Type": "application/json"
+          }
+        })
+      };
+    }
+    else { 
+      return this.http.post(url, body , {
+        params : { 
+          email: email,
+          token: token,
+          password: password 
+        },
+        headers : {
+          "Content-Type": "application/json"
+        }
+      });
+    }
+  }
+
+  forgotPasswordSendEmailId(email: string) {
+    const url = `${environment.identity}/identity/users/account-recovery`,
+          body = {}; 
+    return this.http.post(url, body , {
+      params : { email: email },
+      headers : {
+        "Content-Type": "application/json"
+      }
+    });
   }
 
   login(username: string, password: string): Observable<any> {
@@ -63,37 +116,16 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
-  forgotPasswordSendEmailId(email: string) {
-    const url = `${environment.identity}/identity/users/account-recovery`,
-          body = {}; 
-    return this.http.post(url, body , {
-      params : { email: email },
-      headers : {
-        "Content-Type": "application/json"
-      }
-    });
 
-      /*
-      map( (response: Response) => {
-          if( response.status === 202 ) {
-            return true;
-          }
-          else {
-            return false;
-          }
-        })
-      )
-      .catch(
-        (error: any) => Observable.throw('We Could not validate your email')
-      );
-      */
-  }
 
   tokenVerification(token: string,email: string): Observable<any> {
   	const url = `${environment.identity}/identity/users/`+email+`?token=`+token;	
-  	return this.http.post(url,{}).map((response:Response)=>{
-  		console.log(response)
-  	}).catch((error:any) => Observable.throw(error));
+  	return this.http.post(url,{},{
+       headers : {
+        "Content-Type": "application/json"
+      }
+    })
   }
+
 }
 

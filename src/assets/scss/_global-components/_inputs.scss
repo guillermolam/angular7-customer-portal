@@ -10,15 +10,11 @@ $input-validation-label-right:              $margin-horizontal;
 $input-validation-help-top:                 $padding-vertical / 2.5;
 $input-padding-half:                        $defualt-margin-padding;
 //colors
-$input-success-color:                       $success-color;
-$input-error-color:                         $error-color;
-$input-active-color:                        $active-color; 
+$input-active-color:                        $active-color;
+$input-error-color:                         $error-color; 
 $input-inactive-color:                      $mapfre-lite-gray;
-
-.group-inputs {
-    height: 66px;
-    padding-top: 18px;
-}
+$input-static-color:                        $fake-black;
+$input-success-color:                       $success-color;
 
 .input-field.mapfre {
     height:                                 60px;
@@ -39,6 +35,11 @@ $input-inactive-color:                      $mapfre-lite-gray;
 
         &:hover {
             border-color:                   $input-active-color;
+        }
+
+        &.error {
+          border-color:                     $input-error-color;
+          color:                            $input-static-color;
         }
     }
 
@@ -65,7 +66,7 @@ $input-inactive-color:                      $mapfre-lite-gray;
             position:                       absolute;
            
             &.active {
-                top:                        -10px;
+                top:                        -14px;
             }
         }
     }
@@ -81,16 +82,9 @@ $input-inactive-color:                      $mapfre-lite-gray;
         display:                            none;
         right:                              $input-validation-label-right;
     }
-
-    .help-block .error {
-        color:                              $input-error-color;
-        font-size:                          $input-error-label-font-size;
-        padding-top:                        $input-validation-help-top;
-    }
-    
-    .error {
-        border-color:                        $input-error-color;
-        color:                               $input-error-color;
-    }
 }
+
+.group-inputs .input {
+  margin-bottom:                            8px;
+} 
 

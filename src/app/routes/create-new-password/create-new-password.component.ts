@@ -1,43 +1,39 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-
 import { FormBase }               from '../../_models/form-base';
-import { ForgotPasswordService }  from '../../_services/forms/forgot-password/forgot-password-form/forgot-password.service';
+//import { ForgotPasswordService }  from '../../_services/forms/forgot-password/forgot-password-form/forgot-password.service';
 import { AuthenticationService }      from '../../_services/_iam/authentication-service.service';
+import { CreateNewPasswordFormService }  from '../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
+import { ActivatedRoute }     from "@angular/router";
 
 @Component({
   selector: 'app-create-new-password',
   templateUrl: './create-new-password.component.html',
-  styleUrls: ['./create-new-password.component.scss'],
-  providers: [ ForgotPasswordService ]
+  styleUrls: ['./create-new-password.component.scss'], 
+  providers: [ CreateNewPasswordFormService ]
 })
 
 export class CreateNewPasswordComponent implements OnInit {
+  createNewPassword:              any[];
   expiredLink:                    boolean = false;
   // waiting token api response  
   waitingForResponse:			  boolean = false;	
   paramSubmission:                any;
-  passwordInputs:                 any[];
-  successChangePassword:  boolean;
+  successChangePassword:          boolean = false;
+  tooManyAttempts:                boolean = false;
+  	
   
-  constructor
-  (
-    private passwordService:      ForgotPasswordService,
-    private activatedRoute:       ActivatedRoute,
-    private authenticationService:	AuthenticationService
-  ) {
-    this.passwordInputs = passwordService.getInputs();
+
+  constructor( service: CreateNewPasswordFormService,
+  	private route: ActivatedRoute,
+  	private authenticationService:  AuthenticationService, ) {
+    this.createNewPassword = service.getInputs();
+    this.route = route
   }
 
-  checkForExpiredPassword(param): void 
-  {
-    let testingParam = 'testingforexpireparam';
-    //insert service
-    if(param == testingParam) {
-      this.expiredLink = false;
-    }
+  checkForConfirmation(event): void{
+    if(event) this.successChangePassword = event;
   }
+
 
   userConfirmation(event): void 
   {
@@ -46,19 +42,13 @@ export class CreateNewPasswordComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.activatedRoute.params.subscribe
-    (
-      params => [
-        this.paramSubmission = params['temporaryPassword']
-      ]
-    );
-    this.checkForExpiredPassword(this.paramSubmission) 
+  
     this.getTokenfromUrl()
   } 
 
   getTokenfromUrl():any{
   	
-  	this.activatedRoute.queryParams.subscribe(params=>{
+  	this.route.queryParams.subscribe(params=>{
   		if(params)
   			return this.isTokenValid(params.token,params.email)
 
@@ -83,7 +73,5 @@ export class CreateNewPasswordComponent implements OnInit {
   }	
 } 
 
-
-
-
+     
 
