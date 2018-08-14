@@ -1,5 +1,5 @@
 // ---- Packages | Helpers ---- //
-import { Routes, RouterModule,  }       from "@angular/router";
+import { Routes, RouterModule,  }     from "@angular/router";
 import { NgModule }                   from "@angular/core";
 import { AccountMainComponent }       from "./account-main/account-main.component";
 import { AuthGuard }                  from "./_guards/auth.guard";
@@ -15,10 +15,9 @@ import { TestingComponent }           from "./routes/testing/testing.component";
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent, canActivate: [AuthGuard] },
-  { path: "dashboard", component: DashboardComponent},
+  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
   { path: "design-system", component: DesignSystemComponent },
   { path: "forgotpassword", component: ForgotPasswordComponent },
-  { path: "createpassword/:param", component: CreateNewPasswordComponent },
   { path: "createpassword", component: CreateNewPasswordComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
@@ -32,3 +31,4 @@ const appRoutes: Routes = [
   declarations: []
 })
 export class RoutingModule {}
+

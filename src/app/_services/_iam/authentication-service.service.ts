@@ -11,7 +11,6 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
 import 'rxjs/add/operator/catch';
-import { TestingService } from "../_testing-helpers/testing.service";
 
 @Injectable()
 export class AuthenticationService {
@@ -19,7 +18,6 @@ export class AuthenticationService {
 
   constructor(
     private http: HttpClient,
-    private testing: TestingService
   ) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -27,15 +25,10 @@ export class AuthenticationService {
   }
 
   createPassword(email:string, token: string, password: string) {
-    //this is just in the testing bit
-    const url = `${environment.identity}/identity/users/account-recovery`,
-          body = {};
-    
-    return this.http.post(url, body , {
+    const url = `${environment.identity}/identity/users/password/${email}`;
+    return this.http.post(url, {} , {
       params : { 
-        email: email,
-        token: token,
-        password: password 
+        newPassword: password 
       },
       headers : {
         "Content-Type": "application/json"
@@ -44,9 +37,8 @@ export class AuthenticationService {
   }
 
   forgotPasswordSendEmailId(email: string) {
-    const url = `${environment.identity}/identity/users/account-recovery`,
-          body = {}; 
-    return this.http.post(url, body , {
+    const url = `${environment.identity}/identity/users/account-recovery`;
+    return this.http.post(url, {} , {
       params : { email: email },
       headers : {
         "Content-Type": "application/json"
@@ -55,10 +47,9 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<any> {
-    const url = environment.api_gateway_url + "/auth/oauth/v2/token",
-          body = {}; 
+    const url = environment.api_gateway_url + "/auth/oauth/v2/token";
     return this.http
-      .post(url, body,{
+      .post(url, {}, {
         params : {
           grant_type: 'password',
           username: username,
@@ -98,7 +89,7 @@ export class AuthenticationService {
 
 
   tokenVerification(token: string,email: string): Observable<any> {
-  	const url = `${environment.identity}/identity/users/`+email+`?token=`+token;	
+  	const url = `${environment.identity}/identity/users/${email}?token=${token}`;	
   	return this.http.post(url,{},{
        headers : {
         "Content-Type": "application/json"
