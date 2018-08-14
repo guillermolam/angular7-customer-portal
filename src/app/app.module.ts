@@ -76,6 +76,7 @@ import { MapfreIconInformationComponent } from './components/section-components/
 import { CreateNewPasswordSetComponent } from './components/confirmations/create-new-password-set/create-new-password-set.component';
 import { CreateNewPasswordExpiredComponent } from './components/confirmations/create-new-password-expired/create-new-password-expired.component';
 import { ForgotPasswordTooManyComponent } from './components/confirmations/forgot-password-too-many/forgot-password-too-many.component';
+import { CreateAccountFormComponent } from './components/forms/dynamic-forms/create-account-form/create-account-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem("currentUser");
@@ -129,6 +130,7 @@ export function tokenGetter() {
     CheckEmailIconSvgComponent,
     TooManyAttemptsSvgComponent,
     ForgotPasswordTooManyComponent,
+    CreateAccountFormComponent,
   ],
   imports: [
     BrowserModule,
