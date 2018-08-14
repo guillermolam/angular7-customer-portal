@@ -24,9 +24,6 @@ export class CreatePasswordFormComponent implements OnInit {
   @Output() confirmationOfPasswordCreation:   EventEmitter<boolean> = new EventEmitter();
   
   constructor(
-
-    //private _cookieService: CookieService,
-  
     private authenticationService:  AuthenticationService,
     private alertService:           AlertService,
     private route:                  ActivatedRoute,
