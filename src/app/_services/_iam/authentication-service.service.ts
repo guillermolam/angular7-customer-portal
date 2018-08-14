@@ -11,7 +11,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
 import 'rxjs/add/operator/catch';
-import { TestingService } from "../_testing-helpers/testing.service";
+import { TestingService } from "../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service";
 
 @Injectable()
 export class AuthenticationService {

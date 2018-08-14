@@ -7,16 +7,31 @@
 		constructor( private regExHelper: RegExHelper) {}
 */
 export class RegExHelper {
-	public looseEmailPattern:     RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])$/g;
-	public strictEmailPattern:    RegExp = /^^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-	public noSpacePattern:   			RegExp = /^\s*$/; 
-	public passwordRulesPattern: 	{} = {
-		'ruleOne':    /^(?=.*[a-z])(?=.*[A-Z])/g,
-		'ruleTwo':    /^(?=.*[0-9])/g,
-		'ruleThree':  /^(?=.*[!@#\$%\^&\*])/g,
-		'ruleFour':   /^(?=.{7,})/g,
-		'ruleFive':   /^.{1,24}$/g,
-		'all':        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g
-	};
+	public looseEmailPattern:     RegExp; 
+	public strictEmailPattern:    RegExp;
+	public noSpacePattern:        RegExp;  
+	public passwordRulesPattern:  {};
+  public customPattern:         RegExp;
+  
+  constructor(){
+    this.customPattern = / /;
+    this.looseEmailPattern =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])$/g;
+    this.strictEmailPattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    this.noSpacePattern =     /^\s*$/;
+    this.passwordRulesPattern = {
+      'ruleOne':    /^(?=.*[a-z])(?=.*[A-Z])/g,
+      'ruleTwo':    /^(?=.*[0-9])/g,
+      'ruleThree':  /^(?=.*[!@#\$%\^&\*])/g,
+      'ruleFour':   /^(?=.{7,})/g,
+      'ruleFive':   /^.{1,24}$/g,
+      'all':        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g
+    };
+  }
+
+  public regExPasswordStrength(rule: string, value: string): boolean {
+    if( value != undefined && this.passwordRulesPattern[rule].test(value) ) return true;
+  }
+
+
 }
 
