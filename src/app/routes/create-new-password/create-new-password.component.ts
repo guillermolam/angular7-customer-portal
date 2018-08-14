@@ -14,7 +14,7 @@ import { ActivatedRoute }     from "@angular/router";
 
 export class CreateNewPasswordComponent implements OnInit {
   createNewPassword:              any[];
-  expiredLink:                    boolean = false;
+  expiredLink:                    boolean = true;
   // waiting token api response  
   waitingForResponse:			  boolean = false;	
   paramSubmission:                any;
