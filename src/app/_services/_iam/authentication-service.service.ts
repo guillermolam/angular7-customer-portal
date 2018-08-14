@@ -95,4 +95,16 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
+
+
+  tokenVerification(token: string,email: string): Observable<any> {
+  	const url = `${environment.identity}/identity/users/`+email+`?token=`+token;	
+  	return this.http.post(url,{},{
+       headers : {
+        "Content-Type": "application/json"
+      }
+    })
+  }
+
 }
+
