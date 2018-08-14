@@ -30,38 +30,17 @@ export class AuthenticationService {
     //this is just in the testing bit
     const url = `${environment.identity}/identity/users/account-recovery`,
           body = {};
-    console.log(email, token, password);
     
-    if(token == 'testing') {
-      if(password == 'aA1!sss') {
-        return this.http.post('https://httpstat.us/404', {}, {
-          params : { password: password },
-          headers : {
-            "Content-Type": "application/json"
-          }
-        })
+    return this.http.post(url, body , {
+      params : { 
+        email: email,
+        token: token,
+        password: password 
+      },
+      headers : {
+        "Content-Type": "application/json"
       }
-      else {
-        return this.http.post('https://httpstat.us/202', {}, {
-          params : { password: password },
-          headers : {
-            "Content-Type": "application/json"
-          }
-        })
-      };
-    }
-    else { 
-      return this.http.post(url, body , {
-        params : { 
-          email: email,
-          token: token,
-          password: password 
-        },
-        headers : {
-          "Content-Type": "application/json"
-        }
-      });
-    }
+    });
   }
 
   forgotPasswordSendEmailId(email: string) {
