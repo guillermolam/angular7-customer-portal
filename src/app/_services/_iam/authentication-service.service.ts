@@ -26,7 +26,7 @@ export class AuthenticationService {
 
   createPassword(email:string, token: string, password: string) {
     const url = `${environment.identity}/identity/users/password/${email}`;
-    return this.http.post(url, {} , {
+    return this.http.put(url, {} , {
       params : { 
         newPassword: password 
       },
