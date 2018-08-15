@@ -79,12 +79,19 @@ textarea:focus {
     margin-bottom:0;
 }
 
-.center {
+.center-text {
     text-align:                             center;
 }
 
 .center-margin {
     margin:                                 auto;
+}
+
+.center-on-page {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
 }
 
 .group-button {
@@ -94,8 +101,6 @@ textarea:focus {
 .group-inputs {
   margin-top: 16px;
 }
-
-
 
 .header-icon {
   margin: auto;
