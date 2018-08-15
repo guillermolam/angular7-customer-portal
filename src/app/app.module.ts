@@ -58,7 +58,6 @@ import { TooManyAttemptsSvgComponent }         from '../assets/svg/too-many-atte
 
 
 // ----- Components ----- //
-import { DynamicFormsComponent }              from './components/forms/dynamic-forms/dynamic-form-testing/dynamic-forms.component';
 import { CreatePasswordFormComponent }        from './components/forms/dynamic-forms/create-password-form/create-password-form.component';
 import { SendEmailFormComponent }             from './components/forms/dynamic-forms/send-email-form/send-email-form.component';
 import { EmailConfirmationComponent }         from './components/confirmations/email-confirmation/email-confirmation.component';
@@ -104,7 +103,6 @@ export function tokenGetter() {
     MapfreLinkComponent,
     MapfreCardComponent,
     MapfreIconComponent,
-    DynamicFormsComponent,
     CreatePasswordFormComponent,
     RepeatPasswordDirectiveDirective,
     ForgotPasswordNondynamicComponent,

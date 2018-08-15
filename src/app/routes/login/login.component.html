@@ -10,19 +10,27 @@
   </div>
   <mapfre-alert></mapfre-alert> 
   <app-login-form [inputs]="inputs"></app-login-form>
+  <hr class="hr-login" />
+  <div class="row text-center group-register">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'flat link small'"
+        [routerLink]="['/signup']"
+      >  {{ 'CREATE_ACCOUNT' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
+
+  <h3>Testing will be removed</h3>
   <mapfre-button
     [additionalClasses]="'flat link small'"
-    [iconClasses]="'align-middle'"
     [routerLink]="['/createpassword']"
-    [showIconsCustom]="true"
   >  This button is for Testing Purposes only. To /createpassword
   </mapfre-button>
   <mapfre-button
     [additionalClasses]="'flat link small'"
-    [iconClasses]="'align-middle'"
     [routerLink]="['/createpassword']"
     [queryParams]="{email: 'vandana.jagadeesh@northout.com', token: '-209d84995ff0f56c'}"
-    [showIconsCustom]="true"
   >  This button is for Testing Purposes only. With Parms
   </mapfre-button>
 </mapfre-card>

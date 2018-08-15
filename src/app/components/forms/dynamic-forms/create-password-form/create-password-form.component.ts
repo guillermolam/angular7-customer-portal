@@ -34,18 +34,18 @@ export class CreatePasswordFormComponent implements OnInit {
     this.user.password = this.createPasswordForm.value.createPassword;
     this.user.email = this.email;
     this.authenticationService
-        .createPassword (this.user.email, this.token , this.user.password)
-        .subscribe (
-          (data) => {
-            this.confirmationOfPasswordCreation.emit( true );
-          },
-          (error) => {
-            console.log(error);
-            this.confirmationOfPasswordCreation.emit( false );
-            this.alertService.error(error.message);
-          }
-        )
-      ;
+      .createPassword (this.user.email, this.token , this.user.password)
+      .subscribe (
+        (data) => {
+          this.confirmationOfPasswordCreation.emit( true );
+        },
+        (error) => {
+          console.log(error);
+          this.confirmationOfPasswordCreation.emit( false );
+          this.alertService.error(error.message);
+        }
+      )
+    ;
   }
 
   ngOnInit() {

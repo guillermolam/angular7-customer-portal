@@ -44,7 +44,8 @@ export class CreateNewPasswordComponent implements OnInit {
   	  return false
   	
     this.waitingForResponse  = true
-    return 	this.authenticationService.tokenVerification(token,email).subscribe((data)=>{
+    return 	this.authenticationService.tokenVerification(token,email)
+    .subscribe((data)=>{
       this.expiredLink = false
       this.waitingForResponse = false
     },(error)=>{
