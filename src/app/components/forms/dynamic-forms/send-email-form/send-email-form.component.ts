@@ -15,32 +15,28 @@ import { User }                         from '../../../../_models/user';
   providers: [ FormBaseControlService ]
 })
 export class SendEmailFormComponent implements OnInit {
+  @Input() emailPrefillParamater:       string;
   @Input() inputs:                      FormBase<any>[] = [];
   @Input() inputValidation:             boolean;
-  @Input() emailPrefillParamater:       string;
-  loading:                              boolean = false;
-  returnUrl:                            string;
   passwordEmailForm:                    FormGroup;
   user:                                 User;
 
   @Output() showConfirmation:           EventEmitter<boolean> = new EventEmitter();
 
   constructor(
-    private activatedRoute:             ActivatedRoute,
     private authService:                AuthenticationService,
     private alertService:               AlertService,
     private ipt:                        FormBaseControlService,
-   
   ) {}
 
-  isValid(event): boolean{
+  isValid(event): boolean {
     return this.inputValidation = event === undefined ? false : event;
   }
 
-  forgotPasswordSendEmailId(): void{
-    let emailAddress = this.passwordEmailForm.controls.sendEmail.value;
-    this.user =                       new User();
-    this.user.email =                 emailAddress;
+  forgotPasswordSendEmailId(): void {
+    let emailAddress =                  this.passwordEmailForm.controls.sendEmail.value;
+    this.user =                         new User();
+    this.user.email =                   emailAddress;
     
     if(this.user.email) {
       this.authService
@@ -50,14 +46,14 @@ export class SendEmailFormComponent implements OnInit {
             this.showConfirmation.emit(true);
           },
           (error) => {
-           this.alertService.error('EMAIL_COULD_NOT_VALIDATE');
+            this.alertService.error('EMAIL_COULD_NOT_VALIDATE');
           }
         )
       ;
     }
   }
 
-  getEmailFromParamater(): void{
+  getEmailFromParamater(): void {
     this.passwordEmailForm = this.ipt.toFormGroup(this.inputs); 
     this.passwordEmailForm.controls.sendEmail.setValue( this.emailPrefillParamater );
   }
@@ -65,5 +61,4 @@ export class SendEmailFormComponent implements OnInit {
   ngOnInit() {
     this.getEmailFromParamater();
   }
-  
 }

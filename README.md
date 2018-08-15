@@ -29,6 +29,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Components
+
+Temporary "documentation" for all of the components [Components on Trello](https://trello.com/b/entNM8FY/component-creation). This should hopefully be fully realized in the future.
+
 ## Problem with AppModule ["ERROR in No NgModule metadata found for 'AppModule'."]
 This is typacally a result of having a different node.js or angular-cli version.
 Steps to solve this issue are as follows:

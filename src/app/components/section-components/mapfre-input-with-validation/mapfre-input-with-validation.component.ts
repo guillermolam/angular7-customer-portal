@@ -51,7 +51,7 @@ export class MapfreIputWithValidationComponent {
       this.validInput = this.isValid;
     }
     else {
-       this.validMessageShow = false;
+      this.validMessageShow = false;
     }
   }
 
@@ -71,10 +71,12 @@ export class MapfreIputWithValidationComponent {
   }
 
   alertServiceMessage(): void {
-    this.alertService.getMessage().subscribe((message) => { 
-      this.message = message; 
-      console.log(message);
-    });
+    this.alertService.getMessage()
+      .subscribe((message) => { 
+        this.message = message;
+        this.validInput = false;
+      }
+    );
   }
 
   checkCapsLock(event: KeyboardEvent): void {
