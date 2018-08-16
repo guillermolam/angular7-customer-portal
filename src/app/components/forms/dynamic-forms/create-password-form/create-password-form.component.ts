@@ -34,7 +34,7 @@ export class CreatePasswordFormComponent implements OnInit {
     this.user.password = this.createPasswordForm.value.createPassword;
     this.user.email = this.email;
     this.authenticationService
-      .createPassword (this.user.email, this.token , this.user.password)
+      .createPassword (this.user.email, this.user.password)
       .subscribe (
         (data) => {
           this.confirmationOfPasswordCreation.emit( true );

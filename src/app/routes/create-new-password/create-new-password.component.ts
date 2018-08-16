@@ -43,15 +43,17 @@ export class CreateNewPasswordComponent implements OnInit {
     if(!token || !email)
   	  return false
   	
-    this.waitingForResponse  = true
-    return 	this.authenticationService.tokenVerification(token,email)
-    .subscribe((data)=>{
-      this.expiredLink = false
-      this.waitingForResponse = false
-    },(error)=>{
-      this.expiredLink = true
-      this.waitingForResponse = false
-    });
+    this.waitingForResponse = true
+    return 	this.authenticationService
+      .tokenVerification(token, email)
+      .subscribe((data)=>{
+        this.expiredLink = false
+        this.waitingForResponse = false
+      },(error)=>{
+        this.expiredLink = true
+        this.waitingForResponse = false
+      }
+    );
   }
 
   userConfirmation(event): void {
@@ -59,6 +61,6 @@ export class CreateNewPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTokenfromUrl()
+   // this.getTokenfromUrl()
   }
 }

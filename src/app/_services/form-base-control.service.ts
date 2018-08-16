@@ -1,11 +1,14 @@
 import { Injectable }   from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { FormBase } from '../_models/form-base';
+import { FormBase }     from '../_models/form-base';
+import { RegExHelper }  from '../_helpers/regex-helper';
 
 @Injectable()
 export class FormBaseControlService {
-  constructor() { }
+  constructor(
+    private regExHelper: RegExHelper
+  ) { }
 
   matchPasswords(input: FormControl, group: FormGroup) {
     let password = input.value == group['createPassword'].value;
@@ -14,9 +17,8 @@ export class FormBaseControlService {
 
   toFormGroup(inputs: FormBase<any>[] ) {
     let group:            any = {},
-        createPasswordPattern: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g,
-        emailPattern:     RegExp = /^^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/,
-        noSpacePattern:   RegExp = /^\s*$/; 
+        createPasswordPattern = this.regExHelper.passwordRulesPattern['all'],
+        emailPattern          = this.regExHelper.strictEmailPattern;
 
     inputs.forEach(input => {
       if( input.inputType == 'email' ){

@@ -1,8 +1,9 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs';
-import { map }        from 'rxjs/operators';
-import { environment } from "../../../environments/environment";
+import { HttpClient }         from "@angular/common/http";
+import { Injectable }         from "@angular/core";
+import { Observable }         from 'rxjs';
+import { map }                from 'rxjs/operators';
+import { environment }        from "../../../environments/environment";
+import { TestingService }     from "../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service";
 import 'rxjs/add/operator/map'
 import 'rxjs/add/observable/of'; 
 import 'rxjs/add/observable/throw';
@@ -11,22 +12,25 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
 import 'rxjs/add/operator/catch';
-import { TestingService } from "../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service";
 
 @Injectable()
 export class AuthenticationService {
-  public token: string;
+  public token:     string;
 
   constructor(
     private http: HttpClient,
+    private testingService: TestingService
   ) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.token = currentUser && currentUser.token;
   }
 
-  createPassword(email:string, token: string, password: string) {
+  createPassword(email:string, password: string, testing: boolean = false ) {
     const url = `${environment.identity}/identity/users/password/${email}`;
+    if(testing) {
+      return this.testingService.testingResponses(password);
+    }
     return this.http.put(url, {} , {
       params : { 
         newPassword: password 
@@ -86,8 +90,6 @@ export class AuthenticationService {
     this.token = null;
     localStorage.removeItem("currentUser");
   }
-
-
 
   tokenVerification(token: string,email: string): Observable<any> {
   	const url = `${environment.identity}/identity/users/${email}?token=${token}`;	
