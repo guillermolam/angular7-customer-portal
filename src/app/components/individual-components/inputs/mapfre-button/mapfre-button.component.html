@@ -9,11 +9,12 @@
 		</span>
 		<ng-content></ng-content>
 	</button>
-	
+  
+  
 	<input 
 		type="submit" 
 		class="btn mapfre waves-light {{additionalClasses}}" 
-		value="submit" 
+		[value]="translateValue" 
 		[disabled]="!isFormValid()"
 		[ngStyle]="{'cursor: not-allowed;': !isFormValid() }"
 		*ngSwitchCase="'submit'"
