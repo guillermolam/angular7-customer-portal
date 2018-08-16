@@ -84,17 +84,17 @@ pipeline{
 								verbose: true,
 								credential: '',
 								extraVars: '''---
-									comma_separated_hosts: mdv-doctest
-									user: glam
-									docker_registry_username: admin
-									docker_registry_password: admin123
-									docker_registry: mdv-docdevl01:18444
-									image_name: mdv-docdevl01:18444/customer-portal-ui/master
-									tag: 100
-									container_name: customer-portal-ui
-									container_image: mdv-docdevl01:18444/customer-portal-ui/master:100
+									comma_separated_hosts: "mdv-doctest"
+									user: "glam"
+									docker_registry_username: "admin"
+									docker_registry_password: "admin123"
+									docker_registry: "mdv-docdevl01:18444"
+									image_name: "mdv-docdevl01:18444/customer-portal-ui/master"
+									tag: "100"
+									container_name: "customer-portal-ui"
+									container_image: "mdv-docdevl01:18444/customer-portal-ui/master:100"
 									ports: 
-									  - 80:80'''
+									  - "80:80"'''
         							)
     						
 				}
