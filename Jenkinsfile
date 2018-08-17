@@ -27,6 +27,14 @@ pipeline{
 		        sh "npm run sonar-run"
 		    }
 		}
+
+		stage('Run Unit Test'){
+		    steps{
+		    	//Added to run unit test case for all module.
+		        sh "npm test"
+		    }
+		}
+		
 		stage("Build & Publish Image"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
