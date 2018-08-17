@@ -8,6 +8,7 @@ import { AlertService }                 from "../../../../_services/alert.servic
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { FormBase }                     from '../../../../_models/form-base';
 import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
+import { RegExHelper }                  from '../../../../_helpers/regex-helper';
 import { UserService }                  from "../../../../_services/user.service";
 import { User }                         from "../../../../_models/user";
 
@@ -19,24 +20,25 @@ import { User }                         from "../../../../_models/user";
 })
 export class LoginFormComponent implements OnInit {
   @Input() inputs:                      FormBase<any>[] = [];
-  emailPrefillOnBlur:                  	string; 
-  expireInDays:                       	number = 365;
-  loading:                            	boolean = false;
-  loginForm:                          	FormGroup;
-  returnUrl:                          	string;
-  rememberMe:                         	boolean = false;
-  user:                               	User;
+  emailPrefillOnBlur:                   string; 
+  expireInDays:                         number = 365;
+  loading:                              boolean = false;
+  loginForm:                            FormGroup;
+  returnUrl:                            string;
+  rememberMe:                           boolean = false;
+  user:                                 User;
   
   constructor(
-    private _cookieService:           	CookieService,
-    private authenticationService:    	AuthenticationService,
-    private alertService:             	AlertService,
-    private ipt:                      	FormBaseControlService,
-    private router:                   	Router,
-    private userService:              	UserService
+    private _cookieService:             CookieService,
+    private authenticationService:      AuthenticationService,
+    private alertService:               AlertService,
+    private ipt:                        FormBaseControlService,
+    private regExHelper:                RegExHelper,
+    private router:                     Router,
+    private userService:                UserService
   ) {}
   
-  getCookie(): void{
+  getCookie(): void {
     this.user =                     		new User();
     if (this._cookieService.get("remember")) {
       this.user.email =                 this._cookieService.get("email");
@@ -44,14 +46,14 @@ export class LoginFormComponent implements OnInit {
     }
   }
 
-  login(): void{   
-    this.user =                     		new User();
-    this.user.email =               		this.loginForm.value.loginEmail;
-    this.user.password  =           		this.loginForm.value.loginPassword;
-    this.loading =                  		true;
+  login(): void {
+    this.user =                         new User();
+    this.user.email =                   this.loginForm.value.loginEmail;
+    this.user.password  =               this.loginForm.value.loginPassword;
+    this.loading =                      true;
     this.putCookie();
     
-    if(this.user){
+    if(this.user) {
       this.authenticationService
         .login (this.user.email, this.user.password)
         .subscribe (
@@ -73,7 +75,7 @@ export class LoginFormComponent implements OnInit {
 
   prefillEmailParamater(): void {
 		let email = this.loginForm.controls.loginEmail.value,
-        emailPattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        emailPattern = this.regExHelper.strictEmailPattern;
 		
 		this.emailPrefillOnBlur = emailPattern.test(email) ? email : '';
 		this.router.navigate(['/forgotpassword'],  { queryParams: { emailPrefill: this.emailPrefillOnBlur } });

@@ -25,7 +25,7 @@ export class EmailConfirmationComponent implements OnInit {
         .forgotPasswordSendEmailId(this.user.email)
         .subscribe(
           (data) => {
-            //this.showConfirmation.emit(true);
+            this.showConfirmation.emit(true);
           },
           (error) => {
             console.log(error)

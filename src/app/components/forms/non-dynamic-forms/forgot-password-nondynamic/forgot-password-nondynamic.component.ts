@@ -7,8 +7,7 @@ import { Router, ActivatedRoute }     from "@angular/router";
 import { AlertService }               from "../../../../_services/alert.service";
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
 import { environment }                from "../../../../../environments/environment";
-import { FormBase }                   from '../../../../_models/form-base';
-import { FormBaseControlService }     from '../../../../_services/form-base-control.service';
+import { RegExHelper }                from '../../../../_helpers/regex-helper';
 import { UserService }                from "../../../../_services/user.service";
 import { User }                       from "../../../../_models/user";
 
@@ -16,8 +15,6 @@ import { User }                       from "../../../../_models/user";
   selector: 'app-forgot-password-form-nondynamic',
   templateUrl: './forgot-password-nondynamic.component.html',
   styleUrls: ['./forgot-password-nondynamic.component.scss'],
-  providers: [ FormBaseControlService ]
-
 })
 export class ForgotPasswordNondynamicComponent implements OnInit {
   @Input() routeParamaterString: string;
@@ -32,15 +29,15 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
   @Output() expireLinkOutput: EventEmitter<boolean> = new EventEmitter();
   
   constructor(
-    private authenticationService: AuthenticationService,
-    private alertService: AlertService,
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private route: ActivatedRoute,
-    private router: Router,
-    private userService: UserService,
-    private userData: UserService,
-    private ipt: FormBaseControlService
+    private authenticationService:  AuthenticationService,
+    private alertService:           AlertService,
+    private fb:                     FormBuilder,
+    private http:                   HttpClient,
+    private regExHelper:            RegExHelper,
+    private route:                  ActivatedRoute,
+    private router:                 Router,
+    private userService:            UserService,
+    private userData:               UserService,
   ) {
     this.createForm()
   }
