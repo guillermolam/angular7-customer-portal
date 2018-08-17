@@ -62,10 +62,9 @@ import { ForgotPasswordNondynamicComponent }  from './components/forms/non-dynam
 import { MapfreAlertComponent }               from './components/individual-components/mapfre-alert/mapfre-alert.component';
 import { DesignSystemComponent }              from './routes/design-system/design-system.component';
 import { MapfreCodeComponent }                from './components/wrapper-components/mapfre-code/mapfre-code.component';
-import { MapfreNotificationsComponent }       from './components/individual-components/mapfre-notifications/mapfre-notifications.component';
 import { MapfreModalComponent }               from './components/section-components/mapfre-modal/mapfre-modal.component';
 import { MapfreLoadingComponent }             from './components/individual-components/mapfre-loading/mapfre-loading.component';       
-import { MapfreTooltipComponent }             from './components/individual-components/mapfre-tooltip/mapfre-tooltip.component';       
+import { MapfreTooltipComponent }             from './components/wrapper-components/mapfre-tooltip/mapfre-tooltip.component';       
 import { MapfreDropdownComponent }            from './components/section-components/mapfre-dropdown/mapfre-dropdown.component';
 import { MapfreIconInformationComponent }     from './components/section-components/mapfre-icon-information/mapfre-icon-information.component';
 import { CreateNewPasswordSetComponent }      from './components/confirmations/create-new-password-set/create-new-password-set.component';
@@ -113,7 +112,6 @@ export function tokenGetter() {
     MapfreAlertComponent,
     DesignSystemComponent,
     MapfreCodeComponent,
-    MapfreNotificationsComponent,
     MapfreModalComponent,
     MapfreLoadingComponent,
     MapfreTooltipComponent,
