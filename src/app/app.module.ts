@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { JwtModule }                          from '@auth0/angular-jwt';
 import { MDBBootstrapModule }                 from "angular-bootstrap-md";
 import { MockBackend }                        from '@angular/http/testing';
-import { NgModule, NO_ERRORS_SCHEMA }         from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA, enableProdMode }         from "@angular/core";
 import { RouterModule }                       from "@angular/router";
 import { ReactiveFormsModule }                from "@angular/forms";
 import { TranslateModule }                    from '@ngx-translate/core';
@@ -17,6 +17,7 @@ import { AppComponent }                       from "./app.component";
 import { Language }                           from "./app.language"; 
 import { RoutingModule }                      from "./app.routing";
 // ----- Helpers | Service | Guard ----- //
+import { environment }                        from "../environments/environment.dev";
 import { AuthenticationService }              from './_services/_iam/authentication-service.service';
 import { AlertService }                       from "./_services/alert.service";
 import { AuthGuard }                          from "./_guards/auth.guard";
@@ -70,6 +71,12 @@ import { MapfreIconInformationComponent }     from './components/section-compone
 import { CreateNewPasswordSetComponent }      from './components/confirmations/create-new-password-set/create-new-password-set.component';
 import { CreateNewPasswordExpiredComponent }  from './components/confirmations/create-new-password-expired/create-new-password-expired.component';
 import { ForgotPasswordTooManyComponent }     from './components/confirmations/forgot-password-too-many/forgot-password-too-many.component';
+
+
+if(environment.production) {
+  enableProdMode();
+}
+
 
 export function tokenGetter() {
   return localStorage.getItem("currentUser");

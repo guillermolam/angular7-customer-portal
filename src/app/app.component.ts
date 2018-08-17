@@ -2,7 +2,6 @@ import { Component, enableProdMode }  from "@angular/core";
 import { TranslateService }           from '@ngx-translate/core';
 import { Language }                   from './app.language';
 import { _ }                          from 'underscore';
-import { environment }                from "../environments/environment";
 
 @Component({
   selector: "mapfre-root",
@@ -33,15 +32,10 @@ export class AppComponent {
 		self.translate.use(lang);
   }
 
-  setProduction(production): void {
-    if(production) {
-      enableProdMode();
-    }
-  }
+  
   
   ngOnInit() {
     this.findLanguage();
-    this.setProduction(environment.production);
 	}
 
 }

@@ -32,7 +32,7 @@ export class CreatePasswordFormComponent implements OnInit {
 
   createNewPassword(): void {
     this.user.password = this.createPasswordForm.value.createPassword;
-    this.user.email = this.email;
+    this.user.email = this.email.toLowerCase();
     this.authenticationService
       .createPassword (this.user.email, this.user.password)
       .subscribe (
@@ -55,6 +55,5 @@ export class CreatePasswordFormComponent implements OnInit {
       this.email = params.email;
       this.token = params.token;
      });
-     
   }
-} 
+}
