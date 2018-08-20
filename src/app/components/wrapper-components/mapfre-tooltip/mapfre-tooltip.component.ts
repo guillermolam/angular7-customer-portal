@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'mapfre-tooltip',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mapfre-tooltip.component.scss']
 })
 export class MapfreTooltipComponent implements OnInit {
+  @Input() additionalClasses:     string;
+  @Input() linkCopy:              string;
+  @Input() toolTipPlacement:      string;
+  @Input() typeOfToolTip:         string;
 
   constructor() { }
 

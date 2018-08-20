@@ -1,14 +1,16 @@
 import { Component, EventEmitter, HostListener, Input, Output, OnInit } from '@angular/core';
 import { FormGroup }                    from '@angular/forms'; 
 
-import { AlertService }                 from "../../../_services/alert.service";
+import { AlertService }                 from '../../../_services/alert.service';
 import { FormBase }                     from '../../../_models/form-base';
+import { RegExHelper }                  from '../../../_helpers/regex-helper';
 
  
 @Component({
   selector: 'mapfre-validation',
   templateUrl: './mapfre-input-with-validation.component.html',
   styleUrls: ['./mapfre-input-with-validation.component.scss'],
+  providers: [ RegExHelper ]
 })
 
 export class MapfreIputWithValidationComponent {
@@ -23,7 +25,10 @@ export class MapfreIputWithValidationComponent {
             validInput:                 boolean = true;
             message:                    any;
 
-  constructor(private alertService: AlertService) { }
+  constructor(
+    private alertService: AlertService,
+    private regExHelper:  RegExHelper,
+  ) { }
 
   @Output() inputValidationCheck:       EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -46,7 +51,7 @@ export class MapfreIputWithValidationComponent {
       this.validInput = this.isValid;
     }
     else {
-       this.validMessageShow = false;
+      this.validMessageShow = false;
     }
   }
 
@@ -66,10 +71,12 @@ export class MapfreIputWithValidationComponent {
   }
 
   alertServiceMessage(): void {
-    this.alertService.getMessage().subscribe((message) => { 
-      this.message = message; 
-      console.log(message);
-    });
+    this.alertService.getMessage()
+      .subscribe((message) => { 
+        this.message = message;
+        this.validInput = false;
+      }
+    );
   }
 
   checkCapsLock(event: KeyboardEvent): void {
@@ -90,17 +97,7 @@ export class MapfreIputWithValidationComponent {
   }
 
   passwordRules(reg: string): boolean {
-    // Within the actual validation these five rules have been made into one.
-    let rules: {} = {
-      'ruleOne':    /^(?=.*[a-z])(?=.*[A-Z])/g,
-      'ruleTwo':    /^(?=.*[0-9])/g,
-      'ruleThree':  /^(?=.*[!@#\$%\^&\*])/g,
-      'ruleFour':   /^(?=.{7,})/g,
-      'ruleFive':   /^.{1,24}$/g,
-      'all':        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g
-    };
-    let inputValue = this.form.controls['createPassword'].value;
-    if( inputValue != undefined && rules[reg].test(inputValue) ) return true;
+    return this.regExHelper.regExPasswordStrength(reg, this.form.controls['createPassword'].value );
   }
   
   showPasswordFunction(event): void {

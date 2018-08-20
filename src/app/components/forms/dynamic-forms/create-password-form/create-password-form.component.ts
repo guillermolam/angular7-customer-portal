@@ -31,30 +31,29 @@ export class CreatePasswordFormComponent implements OnInit {
   ) {}
 
   createNewPassword(): void {
+    this.user = new User();
     this.user.password = this.createPasswordForm.value.createPassword;
-    this.user.email = this.email;
+    this.user.email = this.email.toLowerCase();
     this.authenticationService
-        .createPassword (this.user.email, this.token , this.user.password)
-        .subscribe (
-          (data) => {
-            this.confirmationOfPasswordCreation.emit( true );
-          },
-          (error) => {
-            console.log(error);
-            this.confirmationOfPasswordCreation.emit( false );
-            this.alertService.error(error.message);
-          }
-        )
-      ;
+      .createPassword (this.user, this.token)
+      .subscribe (
+        (data) => {
+          this.confirmationOfPasswordCreation.emit( true );
+        },
+        (error) => {
+          console.log(error);
+          this.confirmationOfPasswordCreation.emit( false );
+          this.alertService.error(error.message);
+        }
+      )
+    ;
   }
 
   ngOnInit() {
     this.createPasswordForm = this.ipt.toFormGroup(this.inputs);
-    this.user = new User();
     this.route.queryParams.subscribe((params) => { 
       this.email = params.email;
       this.token = params.token;
      });
-     
   }
-} 
+}

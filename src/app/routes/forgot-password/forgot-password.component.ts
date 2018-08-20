@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }           from '@angular/router';
 
 import { EmailFormService }         from '../../_services/forms/forgot-password/email-form/email-form.service';
@@ -11,11 +11,11 @@ import { EmailFormService }         from '../../_services/forms/forgot-password/
 })
 
 export class ForgotPasswordComponent implements OnInit  {
-  showConfirmation:                   boolean = false;
-  tooManyAttempts:                    boolean = false;
   emailInputs:                        any[];
   emailPrefillParamater:              string;
- 
+  showConfirmation:                   boolean = false;
+  tooManyAttempts:                    boolean = false;
+
   constructor (
     private activatedRoute:           ActivatedRoute,
     emailService:                     EmailFormService,

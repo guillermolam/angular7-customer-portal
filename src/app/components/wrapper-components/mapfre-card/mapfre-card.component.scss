@@ -3,70 +3,61 @@
 $mapfre-card-bg-color:          $white;
 $mapfre-card-border-color:      lighten($lite-gray, 13%);   
 
-$mapfre-card-padding:           $default-margin-padding *3;        
+$mapfre-card-padding:           $default-margin-padding *3;
 $mapfre-card-padding-xs:        $default-margin-padding;
 $mapfre-card-padding-sm:        $default-margin-padding;
 $mapfre-card-padding-md:        $default-margin-padding *3;
 
-.mapfre-card-container {
-  &.full-height {
-    height: 100%;
-  }
-}
-
 .card.mapfre {
-    background-color:           $mapfre-card-bg-color;
-    border:                     thin solid $mapfre-card-border-color;
-    box-shadow:                 none;
-    padding:                    $mapfre-card-padding;
+  background-color:           $mapfre-card-bg-color;
+  border:                     thin solid $mapfre-card-border-color;
+  box-shadow:                 none;
+  padding:                    $mapfre-card-padding;
 
-    .card-content {
-        margin: auto;
-        @include make-col-ready();
-        @include media-breakpoint-up(xxs) {
-            @include make-col(12);
-            padding:0;
-        }
-        @include media-breakpoint-up(xs) {
-            @include make-col(12);
-        }
-        @include media-breakpoint-up(s) {
-            @include make-col(12);
-        }
-        @include media-breakpoint-up(m) {
-            @include make-col(12);
-        }
-        @include media-breakpoint-up(l) {
-            @include make-col(12);
-        }
-        
+  .card-content {
+    margin: auto;
+    @include make-col-ready();
+    @include media-breakpoint-up(xxs) {
+        @include make-col(12);
+        padding:0;
     }
-
-    &.single-page-card {
-        @include make-col-ready();
-        @include media-breakpoint-up(xxs) {
-            @include make-col(12);
-        }
-        @include media-breakpoint-up(xs) {
-            @include make-col(12);
-        }
-        @include media-breakpoint-up(s) {
-            @include make-col(8);
-        }
-        @include media-breakpoint-up(m) {
-            @include make-col(6);
-        }
-        @include media-breakpoint-up(l) {
-            @include make-col(6);
-        }
-        @include media-breakpoint-up(xl) {
-            @include make-col(4);
-        }
-        @include media-breakpoint-up(xxl) {
-            @include make-col(4);
-        }
-        
-        padding: $mapfre-card-padding;
-
+    @include media-breakpoint-up(xs) {
+        @include make-col(12);
     }
+    @include media-breakpoint-up(s) {
+        @include make-col(12);
+    }
+    @include media-breakpoint-up(m) {
+        @include make-col(12);
+    }
+    @include media-breakpoint-up(l) {
+        @include make-col(12);
+    }
+  }
+
+  &.single-page-card {
+    @include make-col-ready();
+    @include media-breakpoint-up(xxs) {
+        @include make-col(12);
+    }
+    @include media-breakpoint-up(xs) {
+        @include make-col(12);
+    }
+    @include media-breakpoint-up(s) {
+        @include make-col(8);
+    }
+    @include media-breakpoint-up(m) {
+        @include make-col(6);
+    }
+    @include media-breakpoint-up(l) {
+        @include make-col(6);
+    }
+    @include media-breakpoint-up(xl) {
+        @include make-col(4);
+    }
+    @include media-breakpoint-up(xxl) {
+        @include make-col(4);
+    }
+    padding: $mapfre-card-padding;
+  }
 }
