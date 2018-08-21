@@ -16,15 +16,15 @@ src/app/components/individual-components/inputs/mapfre-input/mapfre-input.compon
 /** Importing angular default component **/
 import { async, ComponentFixture, TestBed, inject }    from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA}                             from '@angular/core';
-import { HttpClient, HttpClientModule }                from '@angular/common/http';
+import { HttpClientModule }                            from '@angular/common/http';
 import { RouterTestingModule }                         from '@angular/router/testing';
-import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule }            from '@angular/forms';
 import { CookieService }                               from 'ngx-cookie-service';
 import { TranslateModule }                             from '@ngx-translate/core';
 
 /** Import component & services **/
 import { LoginFormComponent }           from './login-form.component';
-import { FormBase }                     from '../../../../_models/form-base';
+import { RegExHelper }                  from '../../../../_helpers/regex-helper';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { AlertService }                 from "../../../../_services/alert.service";
 import { UserService }                  from "../../../../_services/user.service";
@@ -55,7 +55,7 @@ describe('LoginFormComponent', () => {
         ReactiveFormsModule
       ],
       providers: [
-        CookieService, AuthenticationService, AlertService, UserService, FormBaseControlService, LoginService
+        CookieService, AuthenticationService, AlertService, RegExHelper, UserService, FormBaseControlService, LoginService
       ],
       schemas:[NO_ERRORS_SCHEMA]
     })
@@ -91,7 +91,7 @@ describe('LoginFormComponent', () => {
   });
 
   /** Email field unit test cases **/
-  fit('Login email test cases', () => {
+  fit('Login email test cases', (done:Function) => {
     fixture.whenStable().then(() => {
       let loginEmail = component.loginForm.controls['loginEmail'];
       // Verify email field required and required message.
@@ -99,29 +99,29 @@ describe('LoginFormComponent', () => {
       expect(loginEmail.errors[emptyMessage]).toBeTruthy();
       // Verify email pattern
       loginEmail.setValue("test");
-      expect(loginEmail.errors['pattern']).toBeDefined();
+      expect(loginEmail.errors[invalidEmailPattern]).toBeDefined();
       // Verify for valid email.
       loginEmail.setValue("validEmail@gmail.com");     
       expect(loginEmail.valid).toBeTruthy();
+      done();
     });
   });
 
   /** Password field unit test cases **/
-  fit('Login password test cases', () => {
+  fit('Login password test cases', (done:Function) => {
     fixture.whenStable().then(() => {
       let loginPassword = component.loginForm.controls['loginPassword'];
       // Verify first blank password field should be required
       expect(loginPassword.valid).toBeFalsy();
       expect(loginPassword.errors[emptyMessage]).toBeTruthy();
-      // Verify the password field should not be less than 7 Character.
-      loginPassword.setValue("123456");
-      expect(loginPassword.errors['minlength']).toBeDefined();
+      
       // verify password field should not more than 24 character.
       loginPassword.setValue("1234561231456123456123456123456");
       expect(loginPassword.errors['maxlength']).toBeDefined();
       // Verify password field for valid password.
       loginPassword.setValue(validPassword);
       expect(loginPassword.valid).toBeTruthy();
+      done();
     });
   });
 
@@ -180,8 +180,7 @@ describe('LoginFormComponent', () => {
       loginEmail.setValue(validEmail);
       loginPassword.setValue(validPassword);
       authenticationService.login(component.loginForm.controls['loginEmail'].value, component.loginForm.controls['loginPassword'].value).subscribe (
-        data => {
-          console.log(data);
+        data => {         
           expect('200').toEqual(data['status']);
           done();                  
         },

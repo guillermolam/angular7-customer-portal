@@ -7,6 +7,7 @@ import { CookieService }                               from 'ngx-cookie-service'
 import { TranslateModule }                             from '@ngx-translate/core';
 
 import { CreatePasswordFormComponent }  from './create-password-form.component';
+import { RegExHelper }                  from '../../../../_helpers/regex-helper';
 import { FormBase }                     from '../../../../_models/form-base';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { AlertService }                 from "../../../../_services/alert.service";
@@ -32,7 +33,7 @@ describe('CreatePasswordFormComponent', () => {
         ReactiveFormsModule
       ],
       providers: [
-        CookieService, AuthenticationService, AlertService, UserService, FormBaseControlService, CreateNewPasswordFormService],
+        CookieService, AuthenticationService, RegExHelper,  AlertService, UserService, FormBaseControlService, CreateNewPasswordFormService],
       schemas:[NO_ERRORS_SCHEMA]
     })
     .compileComponents();
@@ -98,14 +99,6 @@ describe('CreatePasswordFormComponent', () => {
       createPassword.setValue("ABcdef123");
       expect(createPassword.errors['pattern']).toBeDefined();
 
-      // verify password should not have more than 3 same character with even number
-      createPassword.setValue("ABcdef@123aaaa");
-      expect(createPassword.errors['pattern']).toBeDefined();
-
-      // verify password should not have more than 3 same character with odd number
-      createPassword.setValue("ABcdef@123aaaaa");
-      expect(createPassword.errors['pattern']).toBeDefined();
-
       // Verify password field for valid password.
       createPassword.setValue("ABcd@12");
       expect(createPassword.valid).toBeTruthy();
@@ -131,7 +124,6 @@ describe('CreatePasswordFormComponent', () => {
           done();                  
         },
         error => {
-          console.log("Error  -  ",error)
           expect(error.error).toEqual(error.message);
           done();
         }); 
