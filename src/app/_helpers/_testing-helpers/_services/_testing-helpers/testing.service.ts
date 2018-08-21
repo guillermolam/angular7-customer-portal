@@ -9,10 +9,11 @@ export class TestingService {
 
   constructor(private http: HttpClient) { }
 
-  public testingResponses(s: string): any {
-    if(s == 'aA1!sss') {
+  public testingResponses(testData): any {
+    console.log(testData.$user.source.value);
+    if(testData.$user.source.value.signUpEmail == 'glam@mapfreusa.com') {
       return this.http.post('https://httpstat.us/404', {}, {
-        params : { password: s },
+        params : { user: testData.$user.source.value },
         headers : {
           "Content-Type": "application/json"
         }
@@ -20,7 +21,7 @@ export class TestingService {
     }
     else {
       return this.http.post('https://httpstat.us/202', {}, {
-        params : { password: s },
+        params : { paramater: testData.$user.source.value  },
         headers : {
           "Content-Type": "application/json"
         }

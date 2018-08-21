@@ -42,6 +42,22 @@ export class AuthenticationService {
     });
   }
 
+  verifyUser(user, testing: boolean = false) {
+    const url = `${environment.identity}/accounts/email`;
+    if(testing){
+      console.log("userData",user);
+      return this.testingService.testingResponses(user);
+    }
+    else {
+      return this.http.post(url, {}, {
+        params : { user: user },
+        headers : {
+          "Content-Type": "application/json"
+        }
+      });
+    }
+  }
+
   forgotPasswordSendEmailId(email: string) {
     const url = `${environment.identity}/identity/users/account-recovery`;
     return this.http.post(url, {} , {
