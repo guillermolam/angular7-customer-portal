@@ -18,7 +18,8 @@ export class FormBaseControlService {
   toFormGroup(inputs: FormBase<any>[] ) {
     let group:            any = {},
         createPasswordPattern = this.regExHelper.passwordRulesPattern['patternForDynamicForm'],
-        emailPattern          = this.regExHelper.strictEmailPattern;
+        emailPattern          = this.regExHelper.strictEmailPattern,
+        namePattern           = this.regExHelper.namePattern;
 
     inputs.forEach(input => {
       if( input.inputType == 'email' ){
@@ -36,6 +37,11 @@ export class FormBaseControlService {
             Validators.maxLength(input.maxLength)
           ]
         );
+      }
+      else if(input.inputType == 'text' && input.key.includes('_name') ) {
+        group[input.key] = input.required ? 
+          new FormControl(input.value || '', [Validators.required, Validators.pattern(namePattern) ]) :
+          new FormControl(input.value || '', Validators.pattern(namePattern) ) 
       }
       else if(input.key == 'createPassword'){
         group[input.key] = new FormControl

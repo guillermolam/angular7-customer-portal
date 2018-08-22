@@ -3,7 +3,7 @@ export class User {
   public firstName:             string;
   public middleInitial:         string;
   public lastName:              string;
-  public dateOfTemparyPassword: Date;
+  public dateOfTemporaryPassword: Date;
   public creationDate:          Date;
   public email:                 string;
   public password:              string;

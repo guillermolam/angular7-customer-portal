@@ -62,9 +62,6 @@ describe('CreatePasswordFormComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create', () => {
-    expect(component).toBeTruthy();
-  });
 
   /** Password field unit test cases **/
   fit('Create password test cases', (done: Function) => {

@@ -4,6 +4,8 @@ import { Observable }         from "rxjs";
 import { environment }        from "../../../environments/environment";
 import { TestingService }     from "../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service";
 import { User }               from "../../_models/user";
+import { of } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/observable/of'; 
 import 'rxjs/add/observable/throw';
@@ -13,13 +15,16 @@ import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
 import 'rxjs/add/operator/catch';
 
+
 @Injectable()
 export class AuthenticationService {
-  public token:     string;
+  public token:               string;
+
+  private userObservable:     Observable<any>;
 
   constructor(
-    private http: HttpClient,
-    private testingService: TestingService
+    private http:             HttpClient,
+    private testingService:   TestingService
   ) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -40,22 +45,6 @@ export class AuthenticationService {
         "Content-Type": "application/json"
       }
     });
-  }
-
-  verifyUser(user, testing: boolean = false) {
-    const url = `${environment.identity}/accounts/email`;
-    if(testing){
-      console.log("userData",user);
-      return this.testingService.testingResponses(user);
-    }
-    else {
-      return this.http.post(url, {}, {
-        params : { user: user },
-        headers : {
-          "Content-Type": "application/json"
-        }
-      });
-    }
   }
 
   forgotPasswordSendEmailId(email: string) {
@@ -123,6 +112,25 @@ export class AuthenticationService {
         "Content-Type": "application/json"
       }
     })
+  }
+
+  verifyUser(userObject): Observable<Object> {
+    const user = userObject.$user.source.value;
+    let body = {
+        firstName: user.signUpEmail,
+        middleName: user.signUpMI,
+        lastName: user.signUpLastName,
+      },
+      email = user.signUpEmail,
+      options = { headers : {
+        "Content-Type": "application/json"
+      }};
+    const url = `${environment.identity}/accounts?${email}`;
+    
+    return this.http.post<Object>(url, user, options).pipe(
+        tap((user: User) => console.log(`added ${user.id}`) ),
+        catchError( err => of(err) )
+      )
   }
 
 }

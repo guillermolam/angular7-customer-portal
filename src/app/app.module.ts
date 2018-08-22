@@ -34,6 +34,7 @@ import { DashboardComponent }                 from './routes/dashboard/dashboard
 import { ForgotPasswordComponent }            from "./routes/forgot-password/forgot-password.component";
 import { LoginComponent }                     from "./routes/login/login.component";
 import { SignupComponent }                    from "./routes/signup/signup.component";
+import { SignupProcessComponent }             from './routes/signup/signup-process/signup-process.component';
 import { TestingComponent }                   from './routes/testing/testing.component';
 // ---- SVGS ---- //
 import { CreateNewPasswordSvgComponent }      from '../assets/svg/create-new-password-svg/create-new-password-svg.component';
@@ -129,6 +130,7 @@ export function tokenGetter() {
     TooManyAttemptsSvgComponent,
     ForgotPasswordTooManyComponent,
     CreateAccountFormComponent,
+    SignupProcessComponent,
   ],
   imports: [
     BrowserModule,

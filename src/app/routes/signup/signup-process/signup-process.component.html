@@ -1,0 +1,62 @@
+<ng-container [ngSwitch]="whereInTheProcess">
+  <mapfre-card *ngSwitchCase="'addpolicy'"
+    additionalClasses="create-password">
+    <div class="row text-center">
+      <div class="col">
+        <div class="header-icon">
+          <svg-create-new-password-svg></svg-create-new-password-svg>
+        </div>
+        <h1 class="title-copy">{{ 'ADD_POLICY' | translate }}</h1> 
+      </div>
+    </div>
+  </mapfre-card>
+
+  <mapfre-card *ngSwitchCase="'reviewpolicy'"
+    additionalClasses="create-password">
+    <div class="row text-center">
+      <div class="col">
+        <div class="header-icon">
+          <svg-create-new-password-svg></svg-create-new-password-svg>
+        </div>
+        <h1 class="title-copy">{{ 'REVIEW_POLICY' | translate }}</h1> 
+      </div>
+    </div>
+  </mapfre-card>
+
+  <mapfre-card *ngSwitchCase="'final'"
+    additionalClasses="create-password">
+    <div class="row text-center">
+      <div class="col">
+        <div class="header-icon">
+          <svg-create-new-password-svg></svg-create-new-password-svg>
+        </div>
+        <h1 class="title-copy">{{ 'CONGRATS' | translate }}</h1> 
+      </div>
+    </div>
+  </mapfre-card>
+
+  <mapfre-card *ngSwitchCase="'createpassword'"
+    additionalClasses="create-password">
+    <div class="row text-center">
+      <div class="col">
+        <div class="header-icon">
+          <svg-create-new-password-svg></svg-create-new-password-svg>
+        </div>
+        <h1 class="title-copy">{{ 'CREATE_NEW_PASSWORD' | translate }}</h1> 
+      </div>
+    </div>
+    <app-create-password-form [inputs]="createNewPassword"></app-create-password-form> 
+  </mapfre-card>
+
+  <mapfre-card *ngSwitchCase="'emailinuse'"
+    additionalClasses="create-password">
+    <div class="row text-center">
+      <div class="col">
+        <div class="header-icon">
+          <svg-create-new-password-svg></svg-create-new-password-svg>
+        </div>
+        <h1 class="title-copy">{{ 'EMAIL_IN_USE' | translate }}</h1> 
+      </div>
+    </div>
+  </mapfre-card>
+</ng-container>

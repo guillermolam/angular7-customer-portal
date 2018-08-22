@@ -1,5 +1,5 @@
 import { Component, OnInit, Input }     from "@angular/core";
-import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
+import { FormGroup }                    from "@angular/forms";
 import { HttpClient }                   from "@angular/common/http";
 import { Router }                       from "@angular/router";
 
@@ -10,6 +10,8 @@ import { FormBase }                     from '../../../../_models/form-base';
 import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
 import { UserService }                  from "../../../../_services/user.service";
 import { User }                         from "../../../../_models/user";
+
+import { TestingService }               from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service';
 
 @Component({
   selector: 'app-create-account-form',
@@ -30,22 +32,46 @@ export class CreateAccountFormComponent implements OnInit {
     private http:                   HttpClient,
     private router:                 Router,
     private userData:               UserService,
+    private testingService:         TestingService
   ) {}
 
   register() {
     this.loading = true;
     this.userData.updateUser(this.signUpForm.value);
     if(this.userData) {
-      this.authService
-        .verifyUser(this.userData, true)
+      this.testingService
+        .testingJsonObject(this.userData)
         .subscribe(
-          (data) => {
-            console.log(data)
+          data => {
+            console.log(data);
+            this.router.navigate(['signup', 'createpassword'  ] )
           },
-          (error) => {
-            console.log(error)
+          err => {
+            console.log(err);
+            this.router.navigate(['signup', 'emailalreadyinuse'  ] )
+          },
+          () => {
+            console.log("completed")
           }
         );
+     /*this.authService
+        .verifyUser(this.userData)
+        .subscribe(
+          data => {
+            console.log(data)
+            this.loading = false;
+            this.router.navigate(['signup', 'createpassword'  ] );
+          },
+          err => {
+            console.log(err);
+            this.loading = false;
+            this.router.navigate(['signup', 'emailalreadyinuse'  ] );
+          },
+          {
+            console.log("completed")
+          }
+          
+        );*/
     }
   }
 
