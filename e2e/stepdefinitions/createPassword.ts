@@ -3,7 +3,7 @@ import { browser, protractor,element, by } 	from "protractor";
 import { CreatePasswordPage } 				from "../pages/createPasswordPage";
 
 //Creating page object to use there elements variable.
-const createPassPage: 				CreatePasswordPage 			= new CreatePasswordPage();
+const createPasswordPage: 				CreatePasswordPage 			= new CreatePasswordPage();
 
 //Creating variable which gonna use to develop step definition.
 const { Given, When, Then } = require("cucumber");
@@ -23,19 +23,57 @@ Given(/^I Redirect to Create password page using given link.$/, async()=>{
 //Step definition to Verify Create Account Page URL.
 Then(/^Verify the Create password page url.$/, async() => {
 	var exp_url = "createpassword?email";
-	browser.wait(expected.urlContains(exp_url));
+	await browser.wait(expected.urlContains(exp_url));
 });
 
 When(/^Enter "(.*?)" password in Create Password Field.$/,async(newPassword) =>{
-    // createPassPage.createPasswordInput.sendKeys(newPassword)
-    console.log("hi");
+	await createPasswordPage.createPasswordInput.clear();
+    await createPasswordPage.createPasswordInput.sendKeys(newPassword);
 });
 
 Then(/^Verify the "(.*?)" pattern is not TRUE.$/, async(pattern) =>{
-    // console.log("get password error message - ",createPassPage.getErrorMessage.getText())
-    console.log("hi");
-})
+	return browser.findElement(by.xpath("//div[@class='row not-fullfilled']//div[2]")).getText().then(function(result){
+		return expect(pattern.trim()).to.equal(result.trim());
+    });
+});
 
-Then(/^Verify the New Password Button should not be able to click.$/, async() => {
-    console.log("hi");
-})
+When(/^Click on Password Show icon.$/, async() =>{
+	await createPasswordPage.showPasswordSymbol.click();
+});
+
+Then(/^Verify Enter Password is in visible mode.$/, async() => {
+	var passwordType = await createPasswordPage.createPasswordInput.getAttribute('type');
+	await expect(passwordType.trim()).to.equal('text');
+});
+
+Then(/^Verify Enter Password isn't in visible mode.$/, async() => {
+	var passwordType = await createPasswordPage.createPasswordInput.getAttribute('type');
+	await expect(passwordType.trim()).to.equal('password');
+});
+
+Then(/^Verify the New Password Button should not clickable.$/, async() => {
+     var buttonProp= await browser.findElement(by.xpath("//input[@type='submit']")).getAttribute('disabled');
+     expect(buttonProp).to.equal('true');
+});
+
+When(/^Click on New Password button.$/, async() => {
+	await createPasswordPage.newPasswordButton.click();
+});
+
+Then(/^Verify the password reset success message - "(.*?)".$/, async(successMessage) => {
+	
+});
+
+Then(/^Verify the Link Expired message title after reset the password.$/, async() => {
+	return browser.findElement(by.xpath("//h1[@class='title-copy']")).getText().then(function(result){
+		return expect(result.trim()).to.equal('Link has expired');
+    });
+});
+
+When(/^Click on Request A New Link button.$/, async() => {
+	await createPasswordPage.requestNewLink.click();
+});
+
+When(/^Click on Login Link button on expired link page.$/, async() => {
+	await createPasswordPage.loginLink.click();
+});
