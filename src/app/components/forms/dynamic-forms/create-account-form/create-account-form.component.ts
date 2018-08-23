@@ -43,7 +43,6 @@ export class CreateAccountFormComponent implements OnInit {
         .testingJsonObject(this.userData)
         .subscribe(
           data => {
-            console.log(data);
             this.router.navigate(['signup', 'createpassword'  ] )
           },
           err => {

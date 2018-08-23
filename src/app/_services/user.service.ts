@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from 'rxjs';
-import { User } from "../_models/user";
+import { Injectable }         from "@angular/core";
+import { BehaviorSubject }    from 'rxjs';
+import { User }               from "../_models/user";
 
 @Injectable()
 export class UserService {

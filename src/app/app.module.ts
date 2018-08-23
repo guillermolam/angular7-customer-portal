@@ -73,6 +73,7 @@ import { CreateNewPasswordSetComponent } from './components/confirmations/create
 import { CreateNewPasswordExpiredComponent } from './components/confirmations/create-new-password-expired/create-new-password-expired.component';
 import { ForgotPasswordTooManyComponent } from './components/confirmations/forgot-password-too-many/forgot-password-too-many.component';
 import { CreateAccountFormComponent } from './components/forms/dynamic-forms/create-account-form/create-account-form.component';
+import { AddPolicyComponent } from './components/forms/dynamic-forms/add-policy/add-policy.component';
 
 
 if(environment.production) {
@@ -131,6 +132,7 @@ export function tokenGetter() {
     ForgotPasswordTooManyComponent,
     CreateAccountFormComponent,
     SignupProcessComponent,
+    AddPolicyComponent,
   ],
   imports: [
     BrowserModule,

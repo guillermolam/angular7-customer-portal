@@ -21,30 +21,36 @@ export class AuthenticationService {
   public token:               string;
 
   private userObservable:     Observable<any>;
+  private options:            Object = { headers : {"Content-Type": "application/json"}};
 
   constructor(
     private http:             HttpClient,
-    private testingService:   TestingService
   ) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.token = currentUser && currentUser.token;
   }
 
-  createPassword(user: User, token: string, testing: boolean = false ) {
-    const url = `${environment.identity}/identity/users/password/${user.email}`;
-    if(testing) {
-      return this.testingService.testingResponses(user.password);
-    }
-    return this.http.put(url, {} , {
-      params : { 
-        newPassword: user.password,
-        token: token 
-      },
-      headers : {
-        "Content-Type": "application/json"
-      }
-    });
+  verifyPolicyThenAdd(userObject): void {
+    const user = userObject.$user.source.value,
+          url = `${environment.identity}/accounts?${user.signUpEmail}?token=${userObject.token}`;
+    
+          console.log(user);
+    
+    /*return this.http.post<Object>(url, user, this.options).pipe(
+      tap((user: User) => console.log(`added ${user.id}`) ),
+      catchError( err => of(err) )
+    );*/
+  }
+
+  createPassword(userObject): Observable<Object> {
+    const user = userObject.$user.source.value,
+          url = `${environment.identity}/accounts?${user.signUpEmail}?token=${userObject.token}`;
+    
+    return this.http.post<Object>(url, user, this.options).pipe(
+      tap((user: User) => console.log(`added ${user.id}`) ),
+      catchError( err => of(err) )
+    );
   }
 
   forgotPasswordSendEmailId(email: string) {
@@ -97,21 +103,28 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
+  //this method might be removed
   registerAccount(user: User) {
     const url = `${environment.identity}/api/users`;
-    return this.http.post(url, user,{
-      headers: { "Content-Type": "application/json"}
-      }
-    );
+    return this.http.post(url, user, this.options);
   }
 
-  tokenVerification(token: string,email: string): Observable<any> {
+  tokenVerification(token: string, email: string): Observable<Object> {
   	const url = `${environment.identity}/identity/users/${email}?token=${token}`;	
-  	return this.http.post(url,{},{
-       headers : {
+  	return this.http.post(url,{}, this.options);
+  }
+
+  updatePassword(user: User, token: string, testing: boolean = false ) {
+    const url = `${environment.identity}/identity/users/password/${user.email}`;
+    return this.http.put(url, {} , {
+      params : { 
+        newPassword: user.password,
+        token: token 
+      },
+      headers : {
         "Content-Type": "application/json"
       }
-    })
+    });
   }
 
   verifyUser(userObject): Observable<Object> {
@@ -121,13 +134,11 @@ export class AuthenticationService {
         middleName: user.signUpMI,
         lastName: user.signUpLastName,
       },
-      email = user.signUpEmail,
-      options = { headers : {
-        "Content-Type": "application/json"
-      }};
+      email = user.signUpEmail;
+    
     const url = `${environment.identity}/accounts?${email}`;
     
-    return this.http.post<Object>(url, user, options).pipe(
+    return this.http.post<Object>(url, body, this.options).pipe(
         tap((user: User) => console.log(`added ${user.id}`) ),
         catchError( err => of(err) )
       )

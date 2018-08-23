@@ -7,5 +7,6 @@ export class User {
   public creationDate:          Date;
   public email:                 string;
   public password:              string;
+  public policyNumber:          string;
   public temporaryPassword:     string;
 }

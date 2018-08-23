@@ -9,6 +9,16 @@
         <h1 class="title-copy">{{ 'ADD_POLICY' | translate }}</h1> 
       </div>
     </div>
+    <app-add-policy-form [inputs]="addPolicy" [userData]="user"></app-add-policy-form>
+    <hr class="hr-login" />
+    <div class="row text-center group-button">
+      <div class="col">
+        <mapfre-modal 
+          [modalOptions]="whereToFindModalOptions">
+          This is the internal modal
+        </mapfre-modal>
+      </div>
+    </div>
   </mapfre-card>
 
   <mapfre-card *ngSwitchCase="'reviewpolicy'"
@@ -45,7 +55,7 @@
         <h1 class="title-copy">{{ 'CREATE_NEW_PASSWORD' | translate }}</h1> 
       </div>
     </div>
-    <app-create-password-form [inputs]="createNewPassword"></app-create-password-form> 
+    <app-create-password-form [inputs]="createNewPassword" [userData]="user"></app-create-password-form> 
   </mapfre-card>
 
   <mapfre-card *ngSwitchCase="'emailinuse'"
@@ -56,6 +66,18 @@
           <svg-create-new-password-svg></svg-create-new-password-svg>
         </div>
         <h1 class="title-copy">{{ 'EMAIL_IN_USE' | translate }}</h1> 
+      </div>
+    </div>
+  </mapfre-card>
+
+  <mapfre-card *ngSwitchCase="'bop'"
+    additionalClasses="create-password">
+    <div class="row text-center">
+      <div class="col">
+        <div class="header-icon">
+          <svg-create-new-password-svg></svg-create-new-password-svg>
+        </div>
+        <h1 class="title-copy">{{ 'BOP' | translate }}</h1> 
       </div>
     </div>
   </mapfre-card>

@@ -1,0 +1,27 @@
+
+<form 
+  [formGroup]="addPolicyForm" 
+  name="addPolicyForm"
+  (ngSubmit)="addPolicyForm.valid && addPolicy()">
+
+  <div class="group-inputs">
+    <div *ngFor="let input of inputs" class="input">
+      <mapfre-validation [input]="input" [form]="addPolicyForm"></mapfre-validation>
+    </div>
+  </div>
+  <div class="form-check mr-3">
+      <input class="form-check-input" type="checkbox" id="checkbox11" checked="checked">
+      <label class="form-check-label" for="checkbox11">{{ 'I_AM_THE_POLICY_HOLDER' | translate }}</label>
+  </div>
+
+  <div class="row group-button">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'basic primary large'"
+        [disabledValue]="addPolicyForm.valid" 
+        [inputType]="'submit'"
+        [translateValue]="'ADD_POLICY' | translate"
+      ></mapfre-button>
+    </div>
+  </div>
+</form>
