@@ -4,23 +4,20 @@ export class CreatePasswordPage {
     //defining varibles and declare type of variables are Element finder
     public createPasswordInput   : ElementFinder;
     public showPasswordSymbol    : ElementFinder;
-    // public getErrorMessage       : WebElement;
+    public getErrorMessage       : ElementFinder;
     public getsuccessMessage     : ElementFinder;
-    public yourPassword          : ElementFinder;
-    public yourConfirmPassword   : ElementFinder;    
-    public registerButton        : ElementFinder;    
-    public cancelLink            : ElementFinder;    
+    public newPasswordButton     : ElementFinder;
+    public requestNewLink        : ElementFinder;
+    public loginLink             : ElementFinder;
 
     constructor() {
         //Define xpath for all web element by that we can call any action for them
         this.createPasswordInput     = $("input[id='createPassword']");
-        this.showPasswordSymbol      = $("div[class='alert alert-danger']");
-        // this.getErrorMessage         = browser.findElement(by.xpath("//span[.=' Have at least 1 number ']/../../.."));
+        this.showPasswordSymbol      = $("i[class='fas fa-eye active']");
+        this.getErrorMessage         = $("div[class='row not-fullfilled']");
 	    this.getsuccessMessage       = $("span[class='inputVal text-success']");
-        this.yourPassword            = $("input[id='passwordId']");
-        this.yourConfirmPassword     = $("input[id='confirmPasswordId']");
-        this.registerButton          = $("button[type='submit']");
-        this.cancelLink              = $("a[href='/login']");
-        
+        this.newPasswordButton       = $("input[value='NEW_PASSWORD']");
+        this.requestNewLink          = $("button[class='btn mapfre waves-light basic primary large']");
+        this.loginLink               = $("button[class='btn mapfre waves-light flat link small']"); 
     }       
 }

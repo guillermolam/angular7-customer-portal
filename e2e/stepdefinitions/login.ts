@@ -1,5 +1,5 @@
 //Importing classes by that we can perfomr web element actions or create object of pericular pages..
-import { browser, protractor }     from "protractor";
+import { browser, protractor,by }     from "protractor";
 import { HeaderFooterPageObject }  from "../pages/headerFooterPage";
 import { LandingPageObject }       from "../pages/landingPage";
 
@@ -88,7 +88,6 @@ Then(/^Verify the Landing page content language in - "(.*?)".$/, async (language
 
 //Step definition to Navigate Create Account page on landing page.
 Given(/^Navigate to Create Account Page of MAPFRE.$/, async()=>{
-    browser.execute_script("return arguments[0].scrollIntoView(true);", lPage.clickCreateAccount)
     await browser.wait(expected.visibilityOf(lPage.clickCreateAccount)),timeout;
     await lPage.clickCreateAccount.click(),timeout;
 });
