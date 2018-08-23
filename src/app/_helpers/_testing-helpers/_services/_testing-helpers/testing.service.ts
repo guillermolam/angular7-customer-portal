@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { UrlHandlingStrategy } from '../../../../../../node_modules/@angular/router';
-import { Observable } from '../../../../../../node_modules/rxjs';
+import { Injectable }           from '@angular/core';
+import { HttpClient }           from "@angular/common/http";
+import { UrlHandlingStrategy }  from '@angular/router';
+import { Observable }           from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class TestingService {
   constructor(private http: HttpClient) { }
 
   public testingResponses(testData): Observable<Object> {
-    console.log(testData);
-    if(testData.signUpEmail == 'glam@mapfreusa.com') {
+    //testData.policyNumber == 800000
+    if(testData.email == 'glam@mapfreusa.com') {
       return this.http.post<Object>('https://httpstat.us/404', testData, {
         headers : {
           "Content-Type": "application/json"

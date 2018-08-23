@@ -35,24 +35,35 @@ export class CreateAccountFormComponent implements OnInit {
     private testingService:         TestingService
   ) {}
 
+  createUserObject(object): void {
+    this.user = new User({
+      firstName:      object.signUpFirst_name,
+      middleInitial:  object.signUpMI_name,
+      lastName:       object.signUpLast_name,
+      email:          object.signUpEmail
+    });
+  }
+
   register() {
     this.loading = true;
-    this.userData.updateUser(this.signUpForm.value);
+    this.createUserObject(this.signUpForm.value);
+    this.userData.updateUser(this.user);
+
     if(this.userData) {
       this.testingService
-        .testingJsonObject(this.userData)
+        .testingResponses(this.userData)
         .subscribe(
           data => {
             this.router.navigate(['signup', 'createpassword'  ] )
           },
           err => {
-            console.log(err);
-            this.router.navigate(['signup', 'emailalreadyinuse'  ] )
+            this.router.navigate(['signup', 'emailinuse'  ] )
           },
           () => {
             console.log("completed")
           }
-        );
+        )
+      ;
      /*this.authService
         .verifyUser(this.userData)
         .subscribe(

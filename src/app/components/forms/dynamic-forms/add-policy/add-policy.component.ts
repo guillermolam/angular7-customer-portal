@@ -11,6 +11,8 @@ import { FormBaseControlService }       from '../../../../_services/form-base-co
 import { UserService }                  from "../../../../_services/user.service";
 import { User }                         from "../../../../_models/user";
 
+import { TestingService }               from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service';
+
 @Component({
   selector: 'app-add-policy-form',
   templateUrl: './add-policy.component.html',
@@ -22,21 +24,49 @@ export class AddPolicyComponent implements OnInit {
   @Input() userData:                Observable<User>;
   addPolicyForm:                    FormGroup;
   loading:                          boolean = false;
-  user:                             User;
 
   constructor(
     private authService:            AuthenticationService,
     private ipt:                    FormBaseControlService,
     private router:                 Router,
-    private userService:            UserService
+    private userService:            UserService,
+    private testingService:         TestingService
   ) { }
 
   addPolicy(): void {
-    let userData = this.userData;
-    userData.policyNumber = this.addPolicyForm.value.addPolicy;
-    console.log(this.userData);
-    this.authService
+    this.addPolicyToObject(this.userData);
+    this.testingService
+      .testingResponses(this.userData)
+      .subscribe(
+        data => {
+          this.router.navigate(['signup', 'reviewpolicy']);
+        },
+        err => {
+          if(err.status == 500){
+            this.router.navigate(['signup', 'bop'])
+          }
+          else {
+            this.router.navigate(['signup', 'notfound'])
+          }
+        }
+      )
+    ;
+
+    /*this.authService
       .verifyPolicyThenAdd(this.userData)
+      .subscribe(
+        data => {
+          this.router.navigate(['signup', 'final']);
+        },
+        err => {
+          this.router.navigate(['signup', 'bop'])
+        }
+      )*/
+  }
+
+  addPolicyToObject(userObject): void {
+    userObject.policyNumber = this.addPolicyForm.value.addPolicy;
+    this.userService.updateUser(userObject);
   }
 
   ngOnInit() {

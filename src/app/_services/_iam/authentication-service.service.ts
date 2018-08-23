@@ -31,24 +31,21 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-  verifyPolicyThenAdd(userObject): void {
-    const user = userObject.$user.source.value,
-          url = `${environment.identity}/accounts?${user.signUpEmail}?token=${userObject.token}`;
+  verifyPolicyThenAdd(userObject): Observable<User> {
+    const url = `${environment.identity}/policy/${userObject.policyNumber}`;
     
-          console.log(user);
-    
-    /*return this.http.post<Object>(url, user, this.options).pipe(
-      tap((user: User) => console.log(`added ${user.id}`) ),
+    return this.http.post<Object>(url, userObject, this.options).pipe(
+      tap((user: User) => console.log(`added ${user}`) ),
       catchError( err => of(err) )
-    );*/
+    );
   }
 
-  createPassword(userObject): Observable<Object> {
+  createPassword(userObject): Observable<User> {
     const user = userObject.$user.source.value,
           url = `${environment.identity}/accounts?${user.signUpEmail}?token=${userObject.token}`;
     
     return this.http.post<Object>(url, user, this.options).pipe(
-      tap((user: User) => console.log(`added ${user.id}`) ),
+      tap((user: User) => console.log(`added ${user}`) ),
       catchError( err => of(err) )
     );
   }
@@ -63,7 +60,7 @@ export class AuthenticationService {
     });
   }
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<Object> {
     const url = environment.api_gateway_url + "/auth/oauth/v2/token";
     return this.http
       .post(url, {}, {
@@ -127,7 +124,7 @@ export class AuthenticationService {
     });
   }
 
-  verifyUser(userObject): Observable<Object> {
+  verifyUser(userObject): Observable<User> {
     const user = userObject.$user.source.value;
     let body = {
         firstName: user.signUpEmail,
@@ -139,7 +136,7 @@ export class AuthenticationService {
     const url = `${environment.identity}/accounts?${email}`;
     
     return this.http.post<Object>(url, body, this.options).pipe(
-        tap((user: User) => console.log(`added ${user.id}`) ),
+        tap((user: User) => console.log(`added ${user}`) ),
         catchError( err => of(err) )
       )
   }

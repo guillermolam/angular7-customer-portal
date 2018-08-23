@@ -7,5 +7,6 @@ export interface User {
   creationDate:          Date;
   email:                 string;
   password:              string;
+  policyNumber:          string;
   temporaryPassword:     string;
 }

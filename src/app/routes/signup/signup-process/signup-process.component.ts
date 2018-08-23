@@ -32,7 +32,7 @@ export class SignupProcessComponent implements OnInit {
     this.whereToFindModalOptions = new ModalOptions({
       additionalButtonClasses:        "flat link small", 
 			animatePosition:                "bottom", 
-			buttonCopy:                     "MODAL_WHERE_CAN_I_TITLE",
+			buttonCopy:                     "MODAL_WHERE_CAN_I_LINK",
 			modalId:                        "helpModal",
 			modalTranslateCopy:             "MODAL_WHERE_CAN_I_TITLE",
 			typeOfModal:                    "default",
