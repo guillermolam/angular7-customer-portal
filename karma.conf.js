@@ -22,6 +22,18 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
+    customLaunchers: {
+      "Chrome-headless": {
+        base: 'ChromeHeadless',
+        flags: [
+          '--headless', 
+          '--remote-debugging-port=9222',
+          '--no-sandbox', 
+          '--proxy-server=\'direct://\'',
+          '--proxy-bypass-list=*'
+        ]
+      }
+    },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
