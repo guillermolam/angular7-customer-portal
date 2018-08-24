@@ -28,12 +28,12 @@ pipeline{
 		    }
 		}
 
-		stage('Run Unit Test'){
-		    steps{
+		//stage('Run Unit Test'){
+		   // steps{
 		    	//Added to run unit test case for all module.
-		       sh "npm test"
-		    }
-		}
+		       //sh "npm test"
+		    //}
+		//}
 		
 		stage("Build & Publish Image"){
 			environment {
