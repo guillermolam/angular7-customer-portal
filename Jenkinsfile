@@ -48,6 +48,9 @@ pipeline{
 			}
 		}
 		stage("Deploy Image"){
+			environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
 			steps{
         		ansibleTower(
 								towerServer: 'Ansible Tower',
