@@ -1,4 +1,5 @@
-- remote_user: "{{user}}"
+- hosts: "{{comma_separated_hosts}}"
+  remote_user: "{{user}}"
   tasks:
   - name: Docker Login
     docker_login:
