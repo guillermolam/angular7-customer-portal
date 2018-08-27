@@ -10,6 +10,7 @@ import { ForgotPasswordComponent }    from "./routes/forgot-password/forgot-pass
 import { CreateNewPasswordComponent } from "./routes/create-new-password/create-new-password.component";
 import { LoginComponent }             from "./routes/login/login.component";
 import { SignupComponent }            from "./routes/signup/signup.component";
+import { SignupProcessComponent }     from "./routes/signup/signup-process/signup-process.component";
 import { TestingComponent }           from "./routes/testing/testing.component";
 
 const appRoutes: Routes = [
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   { path: "createpassword", component: CreateNewPasswordComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
+  { path: "signup/:parm", component: SignupProcessComponent },
   { path: "testing", component: TestingComponent },
   { path: "**", redirectTo: "" } // otherwise redirect to home
 ];

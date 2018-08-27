@@ -18,15 +18,17 @@ export class FormBaseControlService {
   toFormGroup(inputs: FormBase<any>[] ) {
     let group:            any = {},
         createPasswordPattern = this.regExHelper.passwordRulesPattern['patternForDynamicForm'],
-        emailPattern          = this.regExHelper.strictEmailPattern;
+        emailPattern          = this.regExHelper.strictEmailPattern,
+        namePattern           = this.regExHelper.namePattern,
+        policyPattern         = this.regExHelper.policyPattern;
 
     inputs.forEach(input => {
-      if( input.inputType == 'email' ){
+      if( input.inputType == 'email' ) {
         group[input.key] = input.required ? 
           new FormControl(input.value || '',  [Validators.required, Validators.pattern(emailPattern)] ) : 
           new FormControl(input.value || '',  Validators.pattern(emailPattern));
       }
-      else if(input.inputType =='password' && input.key != 'createPassword'){
+      else if(input.inputType =='password' && input.key != 'createPassword') {
         group[input.key] = new FormControl
         (
           input.value, 
@@ -37,7 +39,12 @@ export class FormBaseControlService {
           ]
         );
       }
-      else if(input.key == 'createPassword'){
+      else if(input.inputType == 'text' && input.key.includes('_name') ) {
+        group[input.key] = input.required ? 
+          new FormControl(input.value || '', [Validators.required, Validators.pattern(namePattern) ]) :
+          new FormControl(input.value || '', Validators.pattern(namePattern) ) 
+      }
+      else if(input.key == 'createPassword') {
         group[input.key] = new FormControl
         (
           input.value, 
@@ -49,7 +56,19 @@ export class FormBaseControlService {
           ]
         );
       }
-      else if(input.key == 'repeatPassword'){
+      else if(input.key == 'addPolicy') {
+        group[input.key] = new FormControl
+        (
+          input.value, 
+          [
+            Validators.required, 
+            Validators.maxLength(input.maxLength),
+            Validators.minLength(input.minLength),
+            Validators.pattern(policyPattern),
+          ]
+        );
+      }
+      else if(input.key == 'repeatPassword') {
         group[input.key] = new FormControl
         (
           input.value,

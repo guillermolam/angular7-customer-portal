@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { UrlHandlingStrategy } from '../../../../../../node_modules/@angular/router';
+import { Injectable }           from '@angular/core';
+import { HttpClient }           from "@angular/common/http";
+import { UrlHandlingStrategy }  from '@angular/router';
+import { Observable }           from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +10,17 @@ export class TestingService {
 
   constructor(private http: HttpClient) { }
 
-  public testingResponses(s: string): any {
-    if(s == 'aA1!sss') {
-      return this.http.post('https://httpstat.us/404', {}, {
-        params : { password: s },
+  public testingResponses(testData): Observable<Object> {
+    //testData.policyNumber == 800000
+    if(testData.email == 'glam@mapfreusa.com') {
+      return this.http.post<Object>('https://httpstat.us/404', testData, {
         headers : {
           "Content-Type": "application/json"
         }
       })
     }
     else {
-      return this.http.post('https://httpstat.us/202', {}, {
-        params : { password: s },
+      return this.http.post<Object>('https://httpstat.us/202', testData, {
         headers : {
           "Content-Type": "application/json"
         }
@@ -28,10 +28,10 @@ export class TestingService {
     }
   }
 
-  public testingJsonObject(type: string, amount: number): any {
-    let url = `https://jsonplaceholder.typicode.com/${type}/${amount}`;
-    return this.http.post(url, {} , {
-      params : {},
+  public testingJsonObject(testingData): Observable<Object> {
+    let url = `https://jsonplaceholder.typicode.com/posts`;
+    return this.http.post<Object>(url, testingData , {
+      params : testingData,
       headers : {
         "Content-Type": "application/json"
       }

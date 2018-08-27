@@ -1,3 +1,4 @@
+
 {
   "LOGIN": "Login",
   "REGISTER": "Register",
@@ -69,5 +70,22 @@
   "REQUEST_NEW_LINK": "Request a new link",
   "TOO_MANY_ATTEMPTS_TITLE": "Too many attempts",
   "TOO_MANY_ATTEMPTS_PARAGRAPH": "You have reached the maximum attemps for that email. For security reasons we have blocked that email to continue with this action for the next",
-  "TIME": "24 hours"
+  "TIME": "24 hours",
+
+  "FIRST_NAME": "First Name",
+  "MIDDLE_INITIAL": "Middle Inittial",
+  "LAST_NAME": "Last Name",
+  "CONTINUE": "Continue",
+  "ALL_READY_IN_USE": "is already in use",
+  "IF_YOU_DONT_REMEMBER": "if you don't remember creating an account, contact our Customer Service Department",
+  "NEW_PASSWORD": "Set New Password",
+  "ADD_POLICY_TITLE": "Let's find your policy",
+  "POLICY_NUMBER": "Enter policy number",
+  "I_AM_THE_POLICY_HOLDER": "I am the policy holder or legal guardian",
+  "ADD_POLICY": "Add Policy",
+  "MODAL_WHERE_CAN_I_LINK": "Where can I find my policy number?",
+  "MODAL_WHERE_CAN_I_TITLE": "Locate your policy number",
+  "POLICY_DOCUMENT": "Policy Document",
+  "BILLING_DOCUMENT": "Billing Invoice"
 }
+

@@ -81,8 +81,8 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
         user = new User();
 
     user.password = password;
-    user.dateOfTemparyPassword = new Date();
-    user.temparyPassword = temporaryParamater;
+    user.dateOfTemporaryPassword = new Date();
+    user.temporaryPassword = temporaryParamater;
     if(user) {
       this.userConfirmation.emit(true);
     }

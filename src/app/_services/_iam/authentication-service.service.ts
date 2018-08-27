@@ -1,9 +1,11 @@
 import { HttpClient }         from "@angular/common/http";
 import { Injectable }         from "@angular/core";
-import { Observable }         from 'rxjs';
-import { map }                from 'rxjs/operators';
+import { Observable }         from "rxjs";
 import { environment }        from "../../../environments/environment";
 import { TestingService }     from "../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service";
+import { User }               from "../../_models/user";
+import { of } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/observable/of'; 
 import 'rxjs/add/observable/throw';
@@ -13,32 +15,32 @@ import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
 import 'rxjs/add/operator/catch';
 
+
 @Injectable()
 export class AuthenticationService {
-  public token:     string;
+  public token:               string;
+
+  private userObservable:     Observable<any>;
+  private options:            Object = { headers : {"Content-Type": "application/json"}};
 
   constructor(
-    private http: HttpClient,
-    private testingService: TestingService
+    private http:             HttpClient,
   ) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.token = currentUser && currentUser.token;
   }
 
-  createPassword(email:string, password: string, testing: boolean = false ) {
-    const url = `${environment.identity}/identity/users/password/${email}`;
-    if(testing) {
-      return this.testingService.testingResponses(password);
-    }
-    return this.http.put(url, {} , {
-      params : { 
-        newPassword: password 
-      },
-      headers : {
-        "Content-Type": "application/json"
-      }
-    });
+  createPassword(userObject): Observable<User> {
+    const user = userObject.$user.source.value,
+          url = `${environment.identity}/accounts?${user.signUpEmail}?token=${userObject.token}`;
+    
+    console.log("createPassword", url, user);
+
+    return this.http.post<User>(url, user, this.options).pipe(
+      tap((user: User) => console.log(`added ${user}`) ),
+      catchError( err => of(err) )
+    );
   }
 
   forgotPasswordSendEmailId(email: string) {
@@ -51,7 +53,7 @@ export class AuthenticationService {
     });
   }
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<Object> {
     const url = environment.api_gateway_url + "/auth/oauth/v2/token";
     return this.http
       .post(url, {}, {
@@ -91,13 +93,47 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
-  tokenVerification(token: string,email: string): Observable<any> {
+  //this method might be removed
+  registerAccount(user: User) {
+    const url = `${environment.identity}/api/users`;
+    return this.http.post(url, user, this.options);
+  }
+
+  tokenVerification(token: string, email: string): Observable<Object> {
   	const url = `${environment.identity}/identity/users/${email}?token=${token}`;	
-  	return this.http.post(url,{},{
-       headers : {
+  	return this.http.post(url,{}, this.options);
+  }
+
+  updatePassword(user: User, token: string, testing: boolean = false ) {
+    const url = `${environment.identity}/identity/users/password/${user.email}`;
+    return this.http.put(url, {} , {
+      params : { 
+        newPassword: user.password,
+        token: token 
+      },
+      headers : {
         "Content-Type": "application/json"
       }
-    })
+    });
+  }
+
+  verifyPolicy(userObject): Observable<any> {
+    const url = `${environment.identity}/policy/${userObject.policyNumber}`;
+    
+    return this.http.post<Object>(url, userObject, this.options).pipe(
+      tap((user: User) => console.log(`added ${user}`) ),
+      catchError( err => of(err) )
+    );
+  }
+
+  verifyUser(userObject): Observable<any> {
+    const user = userObject.$user.source.value;
+    const url = `${environment.identity}/accounts?${user.email}`;
+    
+    return this.http.post<Object>(url, user, this.options).pipe(
+        tap((user: User) => console.log(`verify ${user}`) ),
+        catchError( err => of(err) )
+      )
   }
 
 }

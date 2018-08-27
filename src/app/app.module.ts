@@ -34,6 +34,7 @@ import { DashboardComponent }                 from './routes/dashboard/dashboard
 import { ForgotPasswordComponent }            from "./routes/forgot-password/forgot-password.component";
 import { LoginComponent }                     from "./routes/login/login.component";
 import { SignupComponent }                    from "./routes/signup/signup.component";
+import { SignupProcessComponent }             from './routes/signup/signup-process/signup-process.component';
 import { TestingComponent }                   from './routes/testing/testing.component';
 // ---- SVGS ---- //
 import { CreateNewPasswordSvgComponent }      from '../assets/svg/create-new-password-svg/create-new-password-svg.component';
@@ -42,6 +43,14 @@ import { LoginIconSvgComponent }              from '../assets/svg/login-icon-svg
 import { ForgotPasswordIconSvgComponent }     from '../assets/svg/forgot-password-icon-svg/forgot-password-icon-svg.component';
 import { CheckEmailIconSvgComponent }         from '../assets/svg/check-email-icon-svg/check-email-icon-svg.component'; 
 import { TooManyAttemptsSvgComponent }        from '../assets/svg/too-many-attempts-svg/too-many-attempts-svg.component'; 
+
+import { CongratsSvgComponent }               from '../assets/svg/congrats-svg/congrats-svg.component'; 
+import { CreateAccountSvgComponent }          from '../assets/svg/create-account-svg/create-account-svg.component'; 
+import { PolicySvgComponent }                 from '../assets/svg/policy-svg/policy-svg.component'; 
+
+
+
+
 // ----- Components ----- //
 import { FooterComponent }                    from './components/global-components/footer/footer.component';
 import { HeaderComponent }                    from './components/global-components/header/header.component';
@@ -67,9 +76,16 @@ import { MapfreLoadingComponent }             from './components/individual-comp
 import { MapfreTooltipComponent }             from './components/wrapper-components/mapfre-tooltip/mapfre-tooltip.component';       
 import { MapfreDropdownComponent }            from './components/section-components/mapfre-dropdown/mapfre-dropdown.component';
 import { MapfreIconInformationComponent }     from './components/section-components/mapfre-icon-information/mapfre-icon-information.component';
-import { CreateNewPasswordSetComponent }      from './components/confirmations/create-new-password-set/create-new-password-set.component';
-import { CreateNewPasswordExpiredComponent }  from './components/confirmations/create-new-password-expired/create-new-password-expired.component';
+import { CreateNewPasswordSetComponent }      from './components/confirmations/create-new-password/create-new-password-set/create-new-password-set.component';
+import { CreateNewPasswordExpiredComponent }  from './components/confirmations/create-new-password/create-new-password-expired/create-new-password-expired.component';
 import { ForgotPasswordTooManyComponent }     from './components/confirmations/forgot-password-too-many/forgot-password-too-many.component';
+import { CreateAccountFormComponent }         from './components/forms/dynamic-forms/create-account-form/create-account-form.component';
+import { AddPolicyComponent }                 from './components/forms/dynamic-forms/add-policy/add-policy.component';
+import { EmailUseScreenComponent }            from './components/confirmations/signup-process/email-use-screen/email-use-screen.component';
+import { FinalScreenComponent }               from './components/confirmations/signup-process/final-screen/final-screen.component';
+import { ReviewPolicyScreenComponent }        from './components/confirmations/signup-process/review-policy-screen/review-policy-screen.component';
+import { BopScreenComponent }                 from './components/confirmations/signup-process/bop-screen/bop-screen.component';
+import { MapfreCheckboxComponent } from './components/individual-components/inputs/mapfre-checkbox/mapfre-checkbox.component';
 
 
 if(environment.production) {
@@ -126,6 +142,17 @@ export function tokenGetter() {
     CheckEmailIconSvgComponent,
     TooManyAttemptsSvgComponent,
     ForgotPasswordTooManyComponent,
+    CreateAccountFormComponent,
+    SignupProcessComponent,
+    AddPolicyComponent,
+    EmailUseScreenComponent,
+    FinalScreenComponent,
+    ReviewPolicyScreenComponent,
+    BopScreenComponent,
+    CongratsSvgComponent,
+    CreateAccountSvgComponent,
+    PolicySvgComponent,
+    MapfreCheckboxComponent,
   ],
   imports: [
     BrowserModule,

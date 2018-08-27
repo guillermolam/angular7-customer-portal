@@ -1,7 +1,6 @@
-import { Injectable } from "@angular/core";
-import { Observable, Subject, ReplaySubject, from, of, range, BehaviorSubject } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
-import { User } from "../_models/user";
+import { Injectable }         from "@angular/core";
+import { BehaviorSubject }    from 'rxjs';
+import { User }               from "../_models/user";
 
 @Injectable()
 export class UserService {
