@@ -51,33 +51,22 @@ export class CreatePasswordFormComponent implements OnInit {
   createPassword(userObject): void {
     userObject.password = this.createPasswordForm.value.createPassword;
     this.userService.updateUser(userObject);
-    this.testingService.testingResponses(userObject)
-      .subscribe(
-        data => {
-          //this.router.navigate(['signup', 'final' ] )
-          this.router.navigate(['signup', 'addpolicy' ] )
-        },
-        err => {
-          this.alertService.error('Alert');
-        }
-      )
-    /*
     this.authenticationService
       .createPassword (this.userService)
       .subscribe (
-        (data) => {
-          let pNumber = data['policyNumber'].policyNumber;
-          if( pNumber !== undefined || pNumber !== null || pNumber != ''){
-            this.router.navigate(['signup', 'final' ] )
-          }
-          else{
+        data => {
+          let pNumber = this.user.policyNumber;
+          if( pNumber === undefined || pNumber === null || pNumber == ''){
             this.router.navigate(['signup', 'addpolicy' ] )
           }
+          else{
+            this.router.navigate(['signup', 'activateyouraccount' ] )
+          }
         },
-        (error) => {
+        error => {
           console.log(error);
         }
-      );*/
+      );
   }
 
   updatePassword(): void {

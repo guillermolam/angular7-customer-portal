@@ -1,6 +1,31 @@
 <mapfre-card additionalClasses="signup">
   <ng-container [ngSwitch]="whereInTheProcess">
 
+      <div *ngSwitchCase="'activateyouraccount'">
+        <div class="row text-center">
+          <div class="col">
+            <div class="header-icon">
+                <svg-check-icon-svg></svg-check-icon-svg>
+            </div>
+            <h1 class="title-copy">{{ 'ACTIVATE_YOUR_ACCOUNT' | translate }}</h1> 
+          </div>
+        </div>
+        <div class="text-center">
+          <p>{{ 'WE_SENT_AN_EMAIL_TO' | translate }}</p>
+          <strong>{{ userData?.email }}</strong>
+        </div>
+        <hr class="hr-login" />
+        <div class="text-center">
+            <strong>{{ 'FORGOT_EMAIL_CONFIMATION_SUBTITLE' | translate }}</strong>
+            <p>{{ 'FORGOT_EMAIL_CONFIMATION_COPY' | translate }}</p>
+            <strong>{{ 'ACTIVATE_EMAIL_SUBJECT_LINE' | translate }}</strong>
+            <div class="info">
+              <p>{{ 'DONT_HAVE_ACCESS' | translate }}</p>
+              <a href="#">{{ 'VERIFY_POLICY_DETAILS' | translate }}</a>
+            </div>
+        </div>
+      </div>
+
     <div *ngSwitchCase="'addpolicy'">
       <div class="row text-center">
         <div class="col">
@@ -70,7 +95,7 @@
       </div>
       <app-email-use-screen [userData]="user"></app-email-use-screen>
     </div>
-      
+
     <div *ngSwitchCase="'final'">
       <div class="row text-center">
         <div class="col">
@@ -83,17 +108,7 @@
       <app-final-screen></app-final-screen>
     </div>
 
-    <div *ngSwitchCase="'verifyaccount'">
-        <div class="row text-center">
-          <div class="col">
-            <div class="header-icon">
-              <svg-check-email-svg></svg-check-email-svg>
-            </div>
-            <h1 class="title-copy">{{ 'VERIFY_ACCOUNT' | translate }}</h1> 
-          </div>
-        </div>
-        <app-verify-account-screen></app-verify-account-screen>
-      </div>
+   
 
     <div *ngSwitchCase="'notfoud'">
         <div class="row text-center">
@@ -118,5 +133,17 @@
       </div>
       <app-review-policy-screen></app-review-policy-screen>
     </div>
+
+    <div *ngSwitchCase="'verifyaccount'">
+        <div class="row text-center">
+          <div class="col">
+            <div class="header-icon">
+                <svg-check-icon-svg></svg-check-icon-svg>
+            </div>
+            <h1 class="title-copy">{{ 'VERIFY_ACCOUNT' | translate }}</h1> 
+          </div>
+        </div>
+        <app-verify-account-screen></app-verify-account-screen>
+      </div>
   </ng-container>
 </mapfre-card>

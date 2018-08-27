@@ -38,9 +38,13 @@ export class CreateAccountFormComponent implements OnInit {
   createUserObject(object): void {
     this.user = new User({
       firstName:      object.signUpFirst_name,
-      middleInitial:  object.signUpMI_name,
+      middleName:     object.signUpMI_name,
       lastName:       object.signUpLast_name,
-      email:          object.signUpEmail
+      email:          object.signUpEmail,
+      password:       '',
+      policyNumber:   {
+        policyNumber : ''
+      }
     });
   }
 
@@ -50,42 +54,54 @@ export class CreateAccountFormComponent implements OnInit {
     this.userData.updateUser(this.user);
 
     if(this.userData) {
-      this.testingService
-        .testingResponses(this.userData)
-        .subscribe(
+      this.authService
+        .verifyUser(this.userData)
+        .flatMap(res => {
+          //If the server recives a 200 then the email was found.
+          //the object will be returned as a nonerror then is a policy number is not found 
+          //the user will be redirected to the email is already in use route
+          if(res.status == 200) {
+            console.log("res", res)
+            return res;
+          }
+          //If the server sends a responce not of 200 then the second service call will happen
+          //this one will check if there is a policy. If there the server will respond with a
+          //200. That is why we are checking for a policyNumber in the success part of subscribe
+          else {
+            console.log("res else", res)
+            return this.authService.verifyPolicy(this.userData);
+          }
+        }).subscribe(
           data => {
-            this.router.navigate(['signup', 'createpassword'  ] )
+            this.loading = false;
+            
+            //If a policy number was found then add it to the user object and then the userData Subscription
+            //After that redirect to the createpassword screen.
+            if(data['policyNumber'] != ''){
+              this.user.policyNumber = data['policyNumber'];
+              this.userData.updateUser(this.user);
+              console.log('userData',this.userData);
+              this.router.navigate(['signup', 'createpassword' ]);
+            }
+            else {
+              console.log('data Email in use',data)
+              this.router.navigate(['signup', 'emailinuse' ]);
+            }
           },
           err => {
-            this.router.navigate(['signup', 'emailinuse'  ] )
+            this.loading = false;
+            if(err.status === 404) {
+              console.log("data", err);
+              this.router.navigate(['signup', 'createpassword' ]);
+            }
           },
           () => {
-            console.log("completed")
+            console.log("Calls are completed");
           }
-        )
-      ;
-     /*this.authService
-        .verifyUser(this.userData)
-        .subscribe(
-          data => {
-            console.log(data)
-            this.loading = false;
-            this.router.navigate(['signup', 'createpassword'  ] );
-          },
-          err => {
-            console.log(err);
-            this.loading = false;
-            this.router.navigate(['signup', 'emailalreadyinuse'  ] );
-          },
-          {
-            console.log("completed")
-          }
-          
-        );*/
+        );
     }
   }
 
- 
   ngOnInit() {
     this.signUpForm = this.ipt.toFormGroup(this.inputs);
   }

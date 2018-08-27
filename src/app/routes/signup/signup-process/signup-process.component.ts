@@ -30,7 +30,7 @@ export class SignupProcessComponent implements OnInit {
     this.addPolicy = policyService.getInputs();
     this.createNewPassword = passwordService.getInputs();
     this.whereToFindModalOptions = new ModalOptions({
-      additionalButtonClasses:        "flat link small", 
+      additionalButtonClasses:        "flat link", 
 			animatePosition:                "bottom", 
 			buttonCopy:                     "MODAL_WHERE_CAN_I_LINK",
 			modalId:                        "helpModal",
@@ -48,6 +48,8 @@ export class SignupProcessComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.whereInTheProcess = params['parm'];
     });
+
+    console.log("userData " + this.whereInTheProcess, this.user);
   }
 
 }

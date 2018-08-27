@@ -85,6 +85,7 @@ import { EmailUseScreenComponent }            from './components/confirmations/s
 import { FinalScreenComponent }               from './components/confirmations/signup-process/final-screen/final-screen.component';
 import { ReviewPolicyScreenComponent }        from './components/confirmations/signup-process/review-policy-screen/review-policy-screen.component';
 import { BopScreenComponent }                 from './components/confirmations/signup-process/bop-screen/bop-screen.component';
+import { MapfreCheckboxComponent } from './components/individual-components/inputs/mapfre-checkbox/mapfre-checkbox.component';
 
 
 if(environment.production) {
@@ -151,6 +152,7 @@ export function tokenGetter() {
     CongratsSvgComponent,
     CreateAccountSvgComponent,
     PolicySvgComponent,
+    MapfreCheckboxComponent,
   ],
   imports: [
     BrowserModule,

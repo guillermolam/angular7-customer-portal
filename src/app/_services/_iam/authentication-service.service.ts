@@ -31,20 +31,13 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-  verifyPolicyThenAdd(userObject): Observable<User> {
-    const url = `${environment.identity}/policy/${userObject.policyNumber}`;
-    
-    return this.http.post<Object>(url, userObject, this.options).pipe(
-      tap((user: User) => console.log(`added ${user}`) ),
-      catchError( err => of(err) )
-    );
-  }
-
   createPassword(userObject): Observable<User> {
     const user = userObject.$user.source.value,
           url = `${environment.identity}/accounts?${user.signUpEmail}?token=${userObject.token}`;
     
-    return this.http.post<Object>(url, user, this.options).pipe(
+    console.log("createPassword", url, user);
+
+    return this.http.post<User>(url, user, this.options).pipe(
       tap((user: User) => console.log(`added ${user}`) ),
       catchError( err => of(err) )
     );
@@ -124,19 +117,21 @@ export class AuthenticationService {
     });
   }
 
-  verifyUser(userObject): Observable<User> {
+  verifyPolicy(userObject): Observable<any> {
+    const url = `${environment.identity}/policy/${userObject.policyNumber}`;
+    
+    return this.http.post<Object>(url, userObject, this.options).pipe(
+      tap((user: User) => console.log(`added ${user}`) ),
+      catchError( err => of(err) )
+    );
+  }
+
+  verifyUser(userObject): Observable<any> {
     const user = userObject.$user.source.value;
-    let body = {
-        firstName: user.signUpEmail,
-        middleName: user.signUpMI,
-        lastName: user.signUpLastName,
-      },
-      email = user.signUpEmail;
+    const url = `${environment.identity}/accounts?${user.email}`;
     
-    const url = `${environment.identity}/accounts?${email}`;
-    
-    return this.http.post<Object>(url, body, this.options).pipe(
-        tap((user: User) => console.log(`added ${user}`) ),
+    return this.http.post<Object>(url, user, this.options).pipe(
+        tap((user: User) => console.log(`verify ${user}`) ),
         catchError( err => of(err) )
       )
   }
