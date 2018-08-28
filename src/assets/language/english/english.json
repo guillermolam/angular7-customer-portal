@@ -89,6 +89,11 @@
   "BILLING_DOCUMENT": "Billing Invoice",
   "BOP": "Business policy detected",
   "SERVICE_NOT_AVAILABLE": "This service is currently unavilable.",
-  "BOP_POLICIES_CANNOT_BE_ACCESS_VIA_CUSTOMER_PORTAL": "Business plicies cannot currently be accessed via the Customer Portal."
+  "BOP_POLICIES_CANNOT_BE_ACCESS_VIA_CUSTOMER_PORTAL": "Business policies cannot currently be accessed via the Customer Portal.",
+  "VERIFY_ACCOUNT_TITLE": "Let's verify your account",
+  "VERIFY_ACCOUNT_WE_SENT_AN_EMAIL": "We sent an email with a verification link to:",
+  "VERIFY_ACCOUNT_SUBJECT_LINE": "[SUBJECT-EMAIL]",
+  "VERIFY_ACCOUNT_INFO_DIV": "Don't have access to your email or want to validate with your policy number?",
+  "VERIFY_ACCOUNT_GO_TO_ADD_POLICY": "Verify using your policy details"
 }
 

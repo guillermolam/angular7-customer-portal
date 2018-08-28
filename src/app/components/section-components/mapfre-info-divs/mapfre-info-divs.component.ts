@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MapfreInfoDivsComponent implements OnInit {
   @Input() additionalClasses: string = 'default';
   @Input() iconClasses:       string = 'fas fa-info-circle alert-icon icon-default'
+  @Input() type:              string = 'icon';
+  
   constructor() { }
 
   ngOnInit() {
