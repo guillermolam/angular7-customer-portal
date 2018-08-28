@@ -1,12 +1,12 @@
-<h2>{{ userEmail }}</h2>
-<div class="text-center">
+<div class="email-title text-center">{{ userEmail }}</div>
+<div class="text-center spacer">
   {{ 'ALL_READY_IN_USE' | translate }}
 </div>
 <div class="group-buttons text-center">
-  <mapfre-button [additionalClasses]="'basic primary large'"> {{ 'LOGIN' | translate }} </mapfre-button>
+  <mapfre-button [additionalClasses]="'basic primary large button-spacer'"> {{ 'LOGIN' | translate }} </mapfre-button>
   <mapfre-button [additionalClasses]="'ghost secondary small'"> {{ 'CREATE_ACCOUNT' | translate }} </mapfre-button>
 </div>
-<hr class="hr_login" />
+<hr class="hr-login" />
 <div class="text-center">
   {{ 'IF_YOU_DONT_REMEMBER' | translate }}
 </div>

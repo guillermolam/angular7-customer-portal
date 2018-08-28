@@ -9,13 +9,13 @@ import { User }                     from '../../../../_models/user';
   styleUrls: ['./email-use-screen.component.scss']
 })
 export class EmailUseScreenComponent implements OnInit {
-  @Input() userData:              any;
+  @Input() userData:              User;
   userEmail:                      string;
 
   constructor() { }
 
   ngOnInit() {
-    this.userEmail = this.userData.email;
-  }
+    this.userEmail = this.userData.email != undefined  ? this.userData.email : 'email@gmail.com';
+  } 
 
 }

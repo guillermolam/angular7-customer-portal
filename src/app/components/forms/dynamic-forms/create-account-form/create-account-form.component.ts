@@ -37,9 +37,9 @@ export class CreateAccountFormComponent implements OnInit {
 
   createUserObject(object): void {
     this.user = new User({
-      firstName:      object.signUpFirst_name,
-      middleName:     object.signUpMI_name,
-      lastName:       object.signUpLast_name,
+      firstName:      object.signUpFirst_name.toCapital(),
+      middleName:     object.signUpMI_name.toCapital(),
+      lastName:       object.signUpLast_name.toCapital(),
       email:          object.signUpEmail,
       password:       '',
       policyNumber:   {
@@ -68,7 +68,8 @@ export class CreateAccountFormComponent implements OnInit {
           //this one will check if there is a policy. If there the server will respond with a
           //200. That is why we are checking for a policyNumber in the success part of subscribe
           else {
-            console.log("res else", res)
+            console.log("res on error", res)
+            console.log(this.userData)
             return this.authService.verifyPolicy(this.userData);
           }
         }).subscribe(
@@ -77,10 +78,12 @@ export class CreateAccountFormComponent implements OnInit {
             
             //If a policy number was found then add it to the user object and then the userData Subscription
             //After that redirect to the createpassword screen.
-            if(data['policyNumber'] != ''){
-              this.user.policyNumber = data['policyNumber'];
+            console.log("the data on the subscribe",data);
+            if(data['policyNumber']['policyNumber'] != '' || data['policyNumber']['policyNumber'] !== undefined ){
+              this.user.policyNumber = data['policyNumber']['policyNumber'];
+              console.log(this.user);
               this.userData.updateUser(this.user);
-              console.log('userData',this.userData);
+              console.log('userData policy number found',this.userData);
               this.router.navigate(['signup', 'createpassword' ]);
             }
             else {
@@ -90,8 +93,8 @@ export class CreateAccountFormComponent implements OnInit {
           },
           err => {
             this.loading = false;
+            console.log("error", err);
             if(err.status === 404) {
-              console.log("data", err);
               this.router.navigate(['signup', 'createpassword' ]);
             }
           },
@@ -99,6 +102,41 @@ export class CreateAccountFormComponent implements OnInit {
             console.log("Calls are completed");
           }
         );
+
+        /* this is from an older version that maybe used
+         if(this.userData) {
+      this.testingService
+        .testingResponses(this.userData)
+        .subscribe(
+          data => {
+            this.router.navigate(['signup', 'createpassword'  ] )
+          },
+          err => {
+            this.router.navigate(['signup', 'emailinuse'  ] )
+          },
+          () => {
+            console.log("completed")
+          }
+        )
+      ;
+     /*this.authService
+        .verifyUser(this.userData)
+        .subscribe(
+          data => {
+            console.log(data)
+            this.loading = false;
+            this.router.navigate(['signup', 'createpassword'  ] );
+          },
+          err => {
+            console.log(err);
+            this.loading = false;
+            this.router.navigate(['signup', 'emailalreadyinuse'  ] );
+          },
+          {
+            console.log("completed")
+          }
+          
+        );*/
     }
   }
 

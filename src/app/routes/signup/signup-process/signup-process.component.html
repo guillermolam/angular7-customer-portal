@@ -29,7 +29,7 @@
     <div *ngSwitchCase="'addpolicy'">
       <div class="row text-center">
         <div class="col">
-          <div class="header-icon">
+          <div class="header-icon full-icon">
             <svg-policy-svg></svg-policy-svg>
           </div>
           <h1 class="title-copy">{{ 'ADD_POLICY_TITLE' | translate }}</h1> 
@@ -37,7 +37,7 @@
       </div>
       <app-add-policy-form [inputs]="addPolicy" [userData]="user"></app-add-policy-form>
       <hr class="hr-login" />
-      <div class="row text-center group-button">
+      <div class="row text-center">
         <div class="col">
           <mapfre-modal 
             [modalOptions]="whereToFindModalOptions">
@@ -64,8 +64,8 @@
     <div  *ngSwitchCase="'bop'">
       <div class="row text-center">
         <div class="col">
-          <div class="header-icon">
-            <svg-policy-svg></svg-policy-svg>
+          <div class="header-icon full-icon">
+            <svg-policy-error-svg></svg-policy-error-svg>
           </div>
           <h1 class="title-copy">{{ 'BOP' | translate }}</h1> 
         </div>
@@ -89,7 +89,7 @@
       <div class="row text-center">
         <div class="col">
           <div class="header-icon">
-            <svg-forgot-password-icon-svg></svg-forgot-password-icon-svg>
+            <svg-email-error-svg></svg-email-error-svg>
           </div>
         </div>
       </div>
@@ -137,13 +137,13 @@
     <div *ngSwitchCase="'verifyaccount'">
         <div class="row text-center">
           <div class="col">
-            <div class="header-icon">
+            <div class="header-icon full-icon">
                 <svg-check-icon-svg></svg-check-icon-svg>
             </div>
-            <h1 class="title-copy">{{ 'VERIFY_ACCOUNT' | translate }}</h1> 
+            <h1 class="title-copy">{{ 'VERIFY_ACCOUNT_TITLE' | translate }}</h1> 
           </div>
         </div>
-        <app-verify-account-screen></app-verify-account-screen>
+        <app-verify-account-screen [userData]="user"></app-verify-account-screen>
       </div>
   </ng-container>
 </mapfre-card>

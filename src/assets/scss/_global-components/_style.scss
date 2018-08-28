@@ -23,7 +23,7 @@ body {
 }
 
 hr {
-    border:                                 solid thin $global-hr-color;
+  border:                                   solid thin $global-hr-color;
 
 	&.header {
 		margin-top:                             0;
@@ -34,10 +34,10 @@ hr {
 		margin-bottom:                          2rem;
     }
     
-    &.hr-login {
-        margin-top:                         $global-login-hr-margin-top;
-        margin-bottom:                      $global-login-hr-margin-bottom;
-    } 
+  &.hr-login {
+    margin-top:                             $global-login-hr-margin-top;
+    margin-bottom:                          $global-login-hr-margin-bottom;
+  } 
 }
 
 
@@ -164,6 +164,14 @@ textarea:focus {
     span {
         text-transform:                     uppercase;
     }
+}
+
+.no-border {
+  border: none !important;
+} 
+
+.border-radius {
+  @include border-radius(5px);
 }
 
 // ---- class overrides ----

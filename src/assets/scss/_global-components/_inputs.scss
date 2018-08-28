@@ -86,48 +86,51 @@ $input-success-color:                       $success-color;
 
 .group-inputs .input {
   margin-bottom:                            8px;
-} 
+}
 
 .form-check-input {
-  position: relative;
-  top: 0px;
-  margin: 0 1.2rem 0 0 ;
-  cursor: pointer;
-
-  &:before { 
-    @include transition(0.5s);
-    content: "";
-    position: absolute;
-		left: 0;
-		z-index: 1;
-		width: 1rem;
-    height: 1rem;
-    top: -2px;
-    border: 2px solid $dark-gray; 
+  &:before {
+    @include border-radius(5px);
+    @include transition(1s);
+    width: 1.5rem;
+    height: 1.5rem;
+    content: '';
+    border: 2px solid $dark-gray;
+    display: block;
+    z-index: 10;
+    margin-left: -3px;
+    margin-top: -5px;
   }
 
-  &:checked {
+  &:checked{
     &:before {
-      @include transform(rotate(-45deg));
-      border-color: $success-color;
+      @include transform(rotate(45deg));
+      height: 1.5rem; 
+      border-color: $input-success-color;
       border-top-style: none;
-      border-right-style: none;
-      width: 1.5rem;
-      height: 10px;
+      border-left-style: none;
+      margin-top: -10px;
+      width: 0.5rem;
+      margin-left: 7px;
     }
   }
 
   &:after {
-    content: "";
-    position: absolute;
-    top: rem(-2);
-    left: 0;
-    width: 1.5rem;
-    height: 1.5rem;
     background: $white;
-    cursor: pointer;
+    width: 1.1rem;
+    height: 1.2rem;
+    content: '';
+    display: block;
+    margin-left: 0px;
+    margin-top: -21px;
   }
-
 }
 
+.form-check-label {
+  margin-left: 10px;
+}
+
+.button-spacer {
+  margin-bottom: 24px;
+}
 

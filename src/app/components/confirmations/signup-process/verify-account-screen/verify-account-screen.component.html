@@ -1,0 +1,26 @@
+<div class="verify-account">
+  <div class="text-center">
+    {{ 'VERIFY_ACCOUNT_WE_SENT_AN_EMAIL' | translate }}
+  </div>
+  <div class="text-center">
+    <strong>[ {{ userEmail }} ]</strong>
+  </div>
+  <hr class="spacer" />
+  <div class="text-center">
+    <strong>{{ 'FORGOT_EMAIL_CONFIMATION_SUBTITLE' | translate }}</strong> <br />
+    {{ 'FORGOT_EMAIL_CONFIMATION_COPY' | translate }} <br /> 
+    <strong>{{ 'VERIFY_ACCOUNT_SUBJECT_LINE' | translate }}</strong>
+  </div>
+  <mapfre-info-divs
+    additionalClasses="text-center caution no-border border-radius"
+    type="no-icon"
+  >
+    <div>
+      {{ 'VERIFY_ACCOUNT_INFO_DIV' | translate }}
+    </div>
+    <mapfre-link
+      [additionalClasses]="'small-link underline'"
+      [routerLink]="['/addpolicy']"
+    >{{ 'VERIFY_ACCOUNT_GO_TO_ADD_POLICY' | translate }}</mapfre-link>
+  </mapfre-info-divs>
+</div>
