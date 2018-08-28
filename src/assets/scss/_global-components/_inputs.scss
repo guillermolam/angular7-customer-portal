@@ -86,5 +86,50 @@ $input-success-color:                       $success-color;
 
 .group-inputs .input {
   margin-bottom:                            8px;
-} 
+}
 
+.form-check-input {
+  &:before {
+    @include border-radius(5px);
+    @include transition(1s);
+    width: 1.5rem;
+    height: 1.5rem;
+    content: '';
+    border: 2px solid $dark-gray;
+    display: block;
+    z-index: 10;
+    margin-left: -3px;
+    margin-top: -5px;
+  }
+
+  &:checked{
+    &:before {
+      @include transform(rotate(45deg));
+      height: 1.5rem; 
+      border-color: $input-success-color;
+      border-top-style: none;
+      border-left-style: none;
+      margin-top: -10px;
+      width: 0.5rem;
+      margin-left: 7px;
+    }
+  }
+
+  &:after {
+    background: $white;
+    width: 1.1rem;
+    height: 1.2rem;
+    content: '';
+    display: block;
+    margin-left: 0px;
+    margin-top: -21px;
+  }
+}
+
+.form-check-label {
+  margin-left: 10px;
+}
+
+.button-spacer {
+  margin-bottom: 24px;
+}

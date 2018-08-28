@@ -1,3 +1,19 @@
-<p>
-  bop-screen works!
-</p>
+<div class="text-center">
+  {{ 'SERVICE_NOT_AVAILABLE' | translate }}
+</div>
+<div class="row">
+  <mapfre-info-divs> 
+      {{ 'BOP_POLICIES_CANNOT_BE_ACCESS_VIA_CUSTOMER_PORTAL' | translate }}
+  </mapfre-info-divs>
+</div>
+<hr class="hr-login">
+<div class="text-center">
+  <mapfre-button
+    [additionalClasses]="'flat link small'"
+    [customIcon]="'../../../../../assets/img/icons/keyboard_backspace.svg'"
+    [iconClasses]="'align-middle'"
+    [routerLink]="['/addpolicy']"
+    [showIconsCustom]="true">  
+    {{ 'BACK' | translate }}
+  </mapfre-button>
+</div>

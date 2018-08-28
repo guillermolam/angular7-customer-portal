@@ -86,6 +86,9 @@
   "MODAL_WHERE_CAN_I_LINK": "Where can I find my policy number?",
   "MODAL_WHERE_CAN_I_TITLE": "Locate your policy number",
   "POLICY_DOCUMENT": "Policy Document",
-  "BILLING_DOCUMENT": "Billing Invoice"
+  "BILLING_DOCUMENT": "Billing Invoice",
+  "BOP": "Business policy detected",
+  "SERVICE_NOT_AVAILABLE": "This service is currently unavilable.",
+  "BOP_POLICIES_CANNOT_BE_ACCESS_VIA_CUSTOMER_PORTAL": "Business plicies cannot currently be accessed via the Customer Portal."
 }
 

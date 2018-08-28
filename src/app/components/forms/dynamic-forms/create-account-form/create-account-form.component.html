@@ -5,7 +5,7 @@
   (ngSubmit)="signUpForm.valid && register()">
 
   <div class="group-inputs">
-    <div *ngFor="let input of inputs" class="input">
+    <div *ngFor="let input of inputs; let index = index" class="input" [class.first-input]="index == 0">
       <mapfre-validation [input]="input" [form]="signUpForm"></mapfre-validation>
     </div>
   </div>

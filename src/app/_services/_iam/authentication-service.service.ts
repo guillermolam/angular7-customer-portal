@@ -118,22 +118,30 @@ export class AuthenticationService {
   }
 
   verifyPolicy(userObject): Observable<any> {
-    const url = `${environment.identity}/policy/${userObject.policyNumber}`;
+    console.log("verifyPolicy userObject",userObject);
+    const user = userObject.$user.source._value;
+    console.log("verifyPolicy user",user)
+    const url = `${environment.identity}/policy/${user.policyNumber}`;
+    if(user.policyNumber == undefined) {
+      return user;
+    }
+    else {
+      return this.http.post<any>(url, userObject, this.options);
+    }
     
-    return this.http.post<Object>(url, userObject, this.options).pipe(
-      tap((user: User) => console.log(`added ${user}`) ),
-      catchError( err => of(err) )
-    );
   }
 
   verifyUser(userObject): Observable<any> {
-    const user = userObject.$user.source.value;
+    console.log("verifyUser userObject",userObject);
+    const user = userObject.$user.source._value;
+    console.log("verifyUser user",user)
     const url = `${environment.identity}/accounts?${user.email}`;
     
-    return this.http.post<Object>(url, user, this.options).pipe(
+    return this.http.post<any>(url, user, this.options)
+      /*.pipe(
         tap((user: User) => console.log(`verify ${user}`) ),
         catchError( err => of(err) )
-      )
+      )*/
   }
 
 }

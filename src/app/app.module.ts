@@ -43,10 +43,11 @@ import { LoginIconSvgComponent }              from '../assets/svg/login-icon-svg
 import { ForgotPasswordIconSvgComponent }     from '../assets/svg/forgot-password-icon-svg/forgot-password-icon-svg.component';
 import { CheckEmailIconSvgComponent }         from '../assets/svg/check-email-icon-svg/check-email-icon-svg.component'; 
 import { TooManyAttemptsSvgComponent }        from '../assets/svg/too-many-attempts-svg/too-many-attempts-svg.component'; 
-
 import { CongratsSvgComponent }               from '../assets/svg/congrats-svg/congrats-svg.component'; 
 import { CreateAccountSvgComponent }          from '../assets/svg/create-account-svg/create-account-svg.component'; 
 import { PolicySvgComponent }                 from '../assets/svg/policy-svg/policy-svg.component'; 
+import { PolicyErrorSvgComponent }            from '../assets/svg/policy-error-svg/policy-error-svg.component'; 
+import { EmailErrorSvgComponent }             from '../assets/svg/email-error-svg/email-error-svg.component'; 
 
 
 
@@ -86,6 +87,8 @@ import { FinalScreenComponent }               from './components/confirmations/s
 import { ReviewPolicyScreenComponent }        from './components/confirmations/signup-process/review-policy-screen/review-policy-screen.component';
 import { BopScreenComponent }                 from './components/confirmations/signup-process/bop-screen/bop-screen.component';
 import { MapfreCheckboxComponent } from './components/individual-components/inputs/mapfre-checkbox/mapfre-checkbox.component';
+import { MapfreInfoDivsComponent } from './components/section-components/mapfre-info-divs/mapfre-info-divs.component';
+import { VerifyAccountScreenComponent } from './components/confirmations/signup-process/verify-account-screen/verify-account-screen.component';
 
 
 if(environment.production) {
@@ -153,6 +156,10 @@ export function tokenGetter() {
     CreateAccountSvgComponent,
     PolicySvgComponent,
     MapfreCheckboxComponent,
+    PolicyErrorSvgComponent,
+    EmailErrorSvgComponent,
+    MapfreInfoDivsComponent,
+    VerifyAccountScreenComponent
   ],
   imports: [
     BrowserModule,

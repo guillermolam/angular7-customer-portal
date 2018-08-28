@@ -15,7 +15,7 @@ export class EmailUseScreenComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.userEmail = this.userData.email;
+    this.userEmail = this.userData.email ? this.userData.email : 'amanda.iaria@gmail.com';
   }
 
 }
