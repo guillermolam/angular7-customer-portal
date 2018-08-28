@@ -102,6 +102,41 @@ export class CreateAccountFormComponent implements OnInit {
             console.log("Calls are completed");
           }
         );
+
+        /* this is from an older version that maybe used
+         if(this.userData) {
+      this.testingService
+        .testingResponses(this.userData)
+        .subscribe(
+          data => {
+            this.router.navigate(['signup', 'createpassword'  ] )
+          },
+          err => {
+            this.router.navigate(['signup', 'emailinuse'  ] )
+          },
+          () => {
+            console.log("completed")
+          }
+        )
+      ;
+     /*this.authService
+        .verifyUser(this.userData)
+        .subscribe(
+          data => {
+            console.log(data)
+            this.loading = false;
+            this.router.navigate(['signup', 'createpassword'  ] );
+          },
+          err => {
+            console.log(err);
+            this.loading = false;
+            this.router.navigate(['signup', 'emailalreadyinuse'  ] );
+          },
+          {
+            console.log("completed")
+          }
+          
+        );*/
     }
   }
 
