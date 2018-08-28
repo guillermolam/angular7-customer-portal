@@ -37,9 +37,9 @@ export class CreateAccountFormComponent implements OnInit {
 
   createUserObject(object): void {
     this.user = new User({
-      firstName:      object.signUpFirst_name.toCapital(),
-      middleName:     object.signUpMI_name.toCapital(),
-      lastName:       object.signUpLast_name.toCapital(),
+      firstName:      object.signUpFirst_name,
+      middleName:     object.signUpMI_name,
+      lastName:       object.signUpLast_name,
       email:          object.signUpEmail,
       password:       '',
       policyNumber:   {
@@ -56,7 +56,7 @@ export class CreateAccountFormComponent implements OnInit {
     if(this.userData) {
       this.authService
         .verifyUser(this.userData)
-        .flatMap(res => {
+        /*.flatMap(res => {
           //If the server recives a 200 then the email was found.
           //the object will be returned as a nonerror then is a policy number is not found 
           //the user will be redirected to the email is already in use route
@@ -101,25 +101,11 @@ export class CreateAccountFormComponent implements OnInit {
           () => {
             console.log("Calls are completed");
           }
-        );
+        );*/
 
-        /* this is from an older version that maybe used
+        /* this is from an older version that maybe used*/
          if(this.userData) {
-      this.testingService
-        .testingResponses(this.userData)
-        .subscribe(
-          data => {
-            this.router.navigate(['signup', 'createpassword'  ] )
-          },
-          err => {
-            this.router.navigate(['signup', 'emailinuse'  ] )
-          },
-          () => {
-            console.log("completed")
-          }
-        )
-      ;
-     /*this.authService
+     this.authService
         .verifyUser(this.userData)
         .subscribe(
           data => {
@@ -132,13 +118,13 @@ export class CreateAccountFormComponent implements OnInit {
             this.loading = false;
             this.router.navigate(['signup', 'emailalreadyinuse'  ] );
           },
-          {
+          () =>{
             console.log("completed")
           }
           
-        );*/
+        );
     }
-  }
+  }}
 
   ngOnInit() {
     this.signUpForm = this.ipt.toFormGroup(this.inputs);
