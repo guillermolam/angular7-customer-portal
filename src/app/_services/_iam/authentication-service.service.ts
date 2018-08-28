@@ -117,7 +117,7 @@ export class AuthenticationService {
     });
   }
 
-  verifyPolicy(userObject): Observable<any> {
+  verifyPolicy(userObject) {
     console.log("verifyPolicy userObject",userObject);
     const user = userObject.$user.source._value;
     console.log("verifyPolicy user",user)
@@ -126,7 +126,7 @@ export class AuthenticationService {
       return user;
     }
     else {
-      return this.http.post<any>(url, userObject, this.options);
+      return this.http.get(url, this.options);
     }
     
   }
@@ -137,7 +137,10 @@ export class AuthenticationService {
     console.log("verifyUser user",user);
     const url = `${environment.account}/accounts/${user.email}`;
     
-    return this.http.post(url, user, this.options)
+    return this.http.post(url, user,{ 
+      headers : {
+      "Content-Type": "application/json"
+    }})
       /*.pipe(
         tap((user: User) => console.log(`verify ${user}`) ),
         catchError( err => of(err) )

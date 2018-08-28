@@ -116,7 +116,7 @@ export class CreateAccountFormComponent implements OnInit {
           err => {
             console.log(err);
             this.loading = false;
-            this.router.navigate(['signup', 'emailalreadyinuse'  ] );
+            this.router.navigate(['signup', 'emailinuse'  ] );
           },
           () =>{
             console.log("completed")

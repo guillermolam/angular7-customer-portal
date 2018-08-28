@@ -30,6 +30,7 @@ export class AddPolicyComponent implements OnInit {
   ) { }
 
   addPolicy(): void {
+    console.log("verify police")
     this.addPolicyToObject(this.userData);
     this.authService
       .verifyPolicy(this.userService)
