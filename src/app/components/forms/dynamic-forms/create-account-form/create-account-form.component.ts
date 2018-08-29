@@ -35,123 +35,47 @@ export class CreateAccountFormComponent implements OnInit {
     private testingService:         TestingService
   ) {}
 
-  createUserObject(object): void {
-    this.user = new User({
-      firstName:      object.signUpFirst_name,
-      middleName:     object.signUpMI_name,
-      lastName:       object.signUpLast_name,
-      email:          object.signUpEmail,
-      password:       '',
-      policyNumber:   {
-        policyNumber : ''
-      }
-    });
+  createUserObject(object, policyNumber): void {
+    if(policyNumber === null){
+      this.user = new User({
+        firstName:      object.signUpFirst_name,
+        middleName:     object.signUpMI_name,
+        lastName:       object.signUpLast_name,
+        email:          object.signUpEmail,
+      });
+    }
+    else {
+     this.user.policyNumber['policyNumber'] = policyNumber;
+    }
+    this.userData.updateUser(this.user);
   }
-
-  createUserObjectTwo(object, policyNumber): void {
-
-   
-    this.user = new User({
-      firstName:      object.firstName,
-      middleName:     object.middleName,
-      lastName:       object.lastName,
-      email:          object.email,
-      password:       '',
-      policyNumber:   {
-        policyNumber : policyNumber
-      }
-    });
-   
-  }
-
 
   register() {
     this.loading = true;
-    this.createUserObject(this.signUpForm.value);
-    this.userData.updateUser(this.user);
-
+    this.createUserObject(this.signUpForm.value, null);
     if(this.userData) {
-      /*this.authService
-        .verifyUser(this.userData)
-        /*.flatMap(res => {
-          //If the server recives a 200 then the email was found.
-          //the object will be returned as a nonerror then is a policy number is not found 
-          //the user will be redirected to the email is already in use route
-          if(res.status == 200) {
-            console.log("res", res)
-            return res;
-          }
-          //If the server sends a responce not of 200 then the second service call will happen
-          //this one will check if there is a policy. If there the server will respond with a
-          //200. That is why we are checking for a policyNumber in the success part of subscribe
-          else {
-            console.log("res on error", res)
-            console.log(this.userData)
-            return this.authService.verifyPolicy(this.userData);
-          }
-        }).subscribe(
-          data => {
-            this.loading = false;
-            
-            //If a policy number was found then add it to the user object and then the userData Subscription
-            //After that redirect to the createpassword screen.
-            console.log("the data on the subscribe",data);
-            if(data['policyNumber']['policyNumber'] != '' || data['policyNumber']['policyNumber'] !== undefined ){
-              this.user.policyNumber = data['policyNumber']['policyNumber'];
-              console.log(this.user);
-              this.userData.updateUser(this.user);
-              console.log('userData policy number found',this.userData);
-              this.router.navigate(['signup', 'createpassword' ]);
-            }
-            else {
-              console.log('data Email in use',data)
-              this.router.navigate(['signup', 'emailinuse' ]);
-            }
-          },
-          err => {
-            this.loading = false;
-            console.log("error", err);
-            if(err.status === 404) {
-              this.router.navigate(['signup', 'createpassword' ]);
-            }
-          },
-          () => {
-            console.log("Calls are completed");
-          }
-        );*/
-
-        /* this is from an older version that maybe used*/
-         if(this.userData) {
-
-   this.authService
-
+      this.authService
         .verifyUser(this.userData)
         .subscribe(
           data => {
-          
             this.loading = false;
-            this.createUserObjectTwo(this.user, data[0].policynumber);
-            this.userData.updateUser(this.user);
-           
-            this.router.navigate(['signup', 'createpassword'  ] );
+            this.createUserObject(this.user, data[0].policynumber);
+            this.router.navigate([ 'signup', 'createpassword' ]);
           },
           err => {
             console.log(err);
             this.loading = false;
             if(err == "Error: 204") {
-              this.router.navigate(['signup', 'addpolicy'  ] );
+              this.router.navigate([ 'signup', 'addpolicy' ]);
             }
             else {
-              this.router.navigate(['signup', 'emailinuse'  ] );
+              this.router.navigate([ 'signup', 'emailinuse' ]);
             }
-          },
-
-        () => {
-          console.log("completed") }
-          
-        );
+          }
+        )
+      ;
     }
-  }}
+  }
 
   ngOnInit() {
     this.signUpForm = this.ipt.toFormGroup(this.inputs);

@@ -32,30 +32,23 @@ export class AuthenticationService {
   }
 
   createPassword(userObject): Observable<any> {
-
-    const user = userObject.$user.source.value,
-          url = `${environment.account}/accounts/${user.mail}`;
-
-          let userSendObject = {
-            firstName: user.firstName,
-            middleName: user.middleName,
-            lastName: user.lastName,
-            password: user.password,
-            email: user.email,
-            policynumbers: [
-              {
-                policynumber: user.policyNumber.policyNumber
-              }
-            ]
+    const user = userObject.$user.source.value;
+    let 
+      url = `${environment.account}/accounts/${user.mail}`,
+      userSendObject = {
+        firstName: user.firstName,
+        middleName: user.middleName,
+        lastName: user.lastName,
+        password: user.password,
+        email: user.email,
+        policynumbers: [
+          {
+            policynumber: user.policyNumber.policyNumber
           }
-    
-    console.log("createPassword", url, user);
-
+        ]
+      }
+    ;
     return this.http.put<any>(url, userSendObject, this.options)
-    //.pipe(
-     // tap((user: User) => console.log(`added ${user}`) ),
-      //catchError( err => of(err) )
-    //);
   }
 
   forgotPasswordSendEmailId(email: string) {
@@ -69,7 +62,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<Object> {
-    const url = environment.api_gateway_url + "/auth/oauth/v2/token";
+    const url = `${environment.api_gateway_url}/auth/oauth/v2/token`;
     return this.http
       .post(url, {}, {
         params : {
@@ -115,12 +108,12 @@ export class AuthenticationService {
   }
 
   tokenVerification(token: string, email: string): Observable<Object> {
-  	const url = `${environment.identity}/identity/users/${email}?token=${token}`;	
+  	let url = `${environment.identity}/identity/users/${email}?token=${token}`;	
   	return this.http.post(url,{}, this.options);
   }
 
   updatePassword(user: User, token: string, testing: boolean = false ) {
-    const url = `${environment.identity}/identity/users/password/${user.email}`;
+    let url = `${environment.identity}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : { 
         newPassword: user.password,
@@ -132,34 +125,33 @@ export class AuthenticationService {
     });
   }
 
-  verifyPolicy(userObject){
+  verifyPolicy(userObject): Observable<any> {
     const user = userObject.$user.source._value;
-
-    let userSendObject = {
-      firstName: user.firstName,
-      middleName: user.middleName,
-      lastName: user.lastName
-    }
-
-   
-   const url = `${environment.personalpolicy}/policy/${user.policyNumber}`;
-   return this.http.put(url,userSendObject,this.options);
+    let 
+      userSendObject = {
+        firstName: user.firstName,
+        middleName: user.middleName,
+        lastName: user.lastName
+      },
+      url = `${environment.personalpolicy}/policy/${user.policyNumber}`
+    ;
+    return this.http.put(url,userSendObject,this.options);
     
   }
 
   verifyUser(userObject): Observable<any> {
-    
     const user = userObject.$user.source._value;
-    
-    const url = `${environment.account}/accounts/${user.email}`;
-
-    let userObjectSender = {
-      firstName: user.firstName,
-      middleName: user.middleName,
-      lastName: user.lastName,
-      email: user.email
-    }
-   return this.http.post<any>(url, userObjectSender, this.options)
+    let 
+      url = `${environment.account}/accounts/${user.email}`,
+      userObjectSender = {
+        firstName: user.firstName,
+        middleName: user.middleName,
+        lastName: user.lastName,
+        email: user.email
+      }
+    ;
+   return this.http
+    .post<any>(url, userObjectSender, this.options)
     .map(res => {
       if(res === null){
         throw new Error("204");
@@ -168,10 +160,6 @@ export class AuthenticationService {
         return res.json;
       }
     })
-      /*.pipe(
-        tap((user: User) => console.log(`verify ${user}`) ),
-        catchError( err => of(err) )
-      )*/
   }
 
 }

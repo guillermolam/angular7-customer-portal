@@ -96,20 +96,6 @@
       <app-email-use-screen [userData]="user"></app-email-use-screen>
     </div>
 
-    <div *ngSwitchCase="'final'">
-      <div class="row text-center">
-        <div class="col">
-          <div class="header-icon">
-            <svg-congrats-svg></svg-congrats-svg>
-          </div>
-          <h1 class="title-copy">{{ 'CONGRATS' | translate }}</h1> 
-        </div>
-      </div>
-      <app-final-screen></app-final-screen>
-    </div>
-
-   
-
     <div *ngSwitchCase="'notfoud'">
         <div class="row text-center">
           <div class="col">
