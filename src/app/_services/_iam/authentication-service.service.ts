@@ -31,10 +31,11 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-  createPassword(userObject) {
+  createPassword(userObject): Observable<any> {
 
-    const user = userObject.$user.source.value;
-    let url = `${environment.account}/accounts/${user.email}`;
+    const user = userObject.$user.source.value,
+          url = `${environment.account}/accounts/${user.email}`;
+
           let userSendObject = {
             firstName: user.firstName,
             middleName: user.middleName,
@@ -48,10 +49,13 @@ export class AuthenticationService {
             ]
           }
     
-    console.log("createPassword", url, userSendObject);
-         
-    return this.http.put<any>(url, user, this.options);
+    console.log("createPassword", url, user);
 
+    return this.http.put<any>(url, userSendObject, this.options)
+    //.pipe(
+     // tap((user: User) => console.log(`added ${user}`) ),
+      //catchError( err => of(err) )
+    //);
   }
 
   forgotPasswordSendEmailId(email: string) {

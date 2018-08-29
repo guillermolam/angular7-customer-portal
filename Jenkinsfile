@@ -28,10 +28,10 @@ pipeline{
 		    }
 		}
 
-	//	stage('Run Unit Test'){
-		//    steps{
+		//stage('Run Unit Test'){
+		  //  steps{
 		    	//Added to run unit test case for all module.
-		  //     sh "npm test_on_ciserver"
+		       //sh "npm test_on_ciserver"
 		    //}
 		//}
 		
@@ -57,7 +57,7 @@ pipeline{
 								templateType: 'job',
 								jobTemplate: 'deploy_customer_portal_ui',
 								importTowerLogs: true,
-								inventory: 'dev_boxes',
+								inventory: 'aws_dev_boxes',
 								jobTags: '',
 								skipJobTags: '',
 								limit: '',
@@ -74,7 +74,8 @@ tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
 ports: 
- - "80:80"'''
+ - "80:80"
+ - "443:443"'''
             )			
 				}
 		}

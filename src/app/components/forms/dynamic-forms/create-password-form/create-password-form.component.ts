@@ -49,19 +49,13 @@ export class CreatePasswordFormComponent implements OnInit {
   }
 
   createPassword(userObject): void {
-    userObject.password = this.createPasswordForm.value.createPassword;
+     userObject.password = this.createPasswordForm.value.createPassword;
     this.userService.updateUser(userObject);
     this.authenticationService
       .createPassword (this.userService)
       .subscribe (
         data => {
-          let pNumber = this.user.policyNumber;
-          if( pNumber === undefined || pNumber === null || pNumber == ''){
-            this.router.navigate(['signup', 'addpolicy' ] )
-          }
-          else{
-            this.router.navigate(['signup', 'activateyouraccount' ] )
-          }
+         this.router.navigate(['signup', 'activateyouraccount' ] );
         },
         error => {
           console.log(error);
