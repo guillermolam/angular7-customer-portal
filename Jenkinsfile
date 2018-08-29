@@ -65,7 +65,7 @@ pipeline{
 								verbose: true,
 								credential: '',
 								extraVars: '''---
-user: "glam-aws"
+user: "glam"
 docker_registry_username: "$DOCKER_NEXUS_CREDS_USR"
 docker_registry_password: "$DOCKER_NEXUS_CREDS_PSW"
 docker_registry: "${NEXUS_REPO_URL}"
