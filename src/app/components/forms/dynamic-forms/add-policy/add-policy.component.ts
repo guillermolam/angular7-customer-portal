@@ -30,7 +30,6 @@ export class AddPolicyComponent implements OnInit {
   ) { }
 
   addPolicy(): void {
-    console.log("verify police")
     this.addPolicyToObject(this.userData);
     this.authService
       .verifyPolicy(this.userService)
@@ -39,15 +38,30 @@ export class AddPolicyComponent implements OnInit {
           this.router.navigate(['signup', 'reviewpolicy']);
         },
         err => {
-          this.router.navigate(['signup', 'bop'])
+          if(err.status === 404){
+              //not found - 404
+            console.log("not found")
+          }
+          else if(err.status === 400) {
+            //bad requrest - 400
+            this.router.navigate(['signup', 'bop'])
+          }
+          else {
+             //conflict - 409
+             console.log("409")
+          }
+        
+          
+         
         }
       )
   }
 
   addPolicyToObject(userObject): void {
-    userObject.firstName = "CONRAD";
-    userObject.middleName = "";
-    userObject.lastName = "GAGNE";
+    console.log("addPolicyToObject",userObject);
+    userObject.firstName = userObject.firstName, //"CONRAD";
+    userObject.middleName = userObject.middleName, //"";
+    userObject.lastName =  userObject.lastName, //"GAGNE";
     userObject.policyNumber = this.addPolicyForm.value.addPolicy;
     
     this.userService.updateUser(userObject);

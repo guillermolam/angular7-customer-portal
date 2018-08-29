@@ -34,7 +34,7 @@ export class AuthenticationService {
   createPassword(userObject): Observable<any> {
 
     const user = userObject.$user.source.value,
-          url = `${environment.account}/accounts/${user.email}`;
+          url = `${environment.account}/accounts/${user.mail}`;
 
           let userSendObject = {
             firstName: user.firstName,
@@ -132,32 +132,21 @@ export class AuthenticationService {
     });
   }
 
-<<<<<<< HEAD
   verifyPolicy(userObject){
-    console.log("verifyPolicy userObject",userObject);
     const user = userObject.$user.source._value;
-    console.log("verifyPolicy user",user)
-    const url = `${environment.personalpolicy}/policy/${user.policyNumber}`;
-=======
-  verifyPolicy(userObject) {
-    const user = userObject.$user.source._value,
-          url = `${environment.personalpolicy}/policy/${user.policyNumber}`;
-    console.log("verifyPolicy user object",user)
->>>>>>> c5901f7c3b020e612116c908a2b5bfb868a4516d
-    if(user.policyNumber == undefined) {
-      return user;
+
+    let userSendObject = {
+      firstName: user.firstName,
+      middleName: user.middleName,
+      lastName: user.lastName
     }
-    else {
-<<<<<<< HEAD
-      return this.http.put(url,user,this.options);
-=======
-      return this.http.put(url, user, this.options);
->>>>>>> c5901f7c3b020e612116c908a2b5bfb868a4516d
-    }
+
+   
+   const url = `${environment.personalpolicy}/policy/${user.policyNumber}`;
+   return this.http.put(url,userSendObject,this.options);
     
   }
 
-<<<<<<< HEAD
   verifyUser(userObject): Observable<any> {
     
     const user = userObject.$user.source._value;
@@ -170,20 +159,15 @@ export class AuthenticationService {
       lastName: user.lastName,
       email: user.email
     }
-    console.log("newUserObject", userObjectSender);
-    return this.http.post<any>(url, userObjectSender, this.options)
-=======
-  verifyUser(userObject) {
-    console.log("verifyUser userObject",userObject);
-    const user = userObject.$user.source._value;
-    console.log("verifyUser user",user);
-    const url = `${environment.account}/accounts/${user.email}`;
-    
-    return this.http.post(url, user,{ 
-      headers : {
-      "Content-Type": "application/json"
-    }})
->>>>>>> c5901f7c3b020e612116c908a2b5bfb868a4516d
+   return this.http.post<any>(url, userObjectSender, this.options)
+    .map(res => {
+      if(res === null){
+        throw new Error("204");
+      }
+      else {
+        return res.json;
+      }
+    })
       /*.pipe(
         tap((user: User) => console.log(`verify ${user}`) ),
         catchError( err => of(err) )

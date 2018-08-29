@@ -122,11 +122,9 @@ export class CreateAccountFormComponent implements OnInit {
 
         /* this is from an older version that maybe used*/
          if(this.userData) {
-<<<<<<< HEAD
+
    this.authService
-=======
-     this.authService
->>>>>>> c5901f7c3b020e612116c908a2b5bfb868a4516d
+
         .verifyUser(this.userData)
         .subscribe(
           data => {
@@ -140,7 +138,12 @@ export class CreateAccountFormComponent implements OnInit {
           err => {
             console.log(err);
             this.loading = false;
-            this.router.navigate(['signup', 'emailinuse'  ] );
+            if(err == "Error: 204") {
+              this.router.navigate(['signup', 'addpolicy'  ] );
+            }
+            else {
+              this.router.navigate(['signup', 'emailinuse'  ] );
+            }
           },
 
         () => {
