@@ -118,15 +118,14 @@ export class AuthenticationService {
   }
 
   verifyPolicy(userObject) {
-    console.log("verifyPolicy userObject",userObject);
-    const user = userObject.$user.source._value;
-    console.log("verifyPolicy user",user)
-    const url = `${environment.personalpolicy}/policy/${user.policyNumber}`;
+    const user = userObject.$user.source._value,
+          url = `${environment.personalpolicy}/policy/${user.policyNumber}`;
+    console.log("verifyPolicy user object",user)
     if(user.policyNumber == undefined) {
       return user;
     }
     else {
-      return this.http.get(url, this.options);
+      return this.http.put(url, user, this.options);
     }
     
   }
