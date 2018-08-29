@@ -31,16 +31,27 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-  createPassword(userObject): Observable<User> {
-    const user = userObject.$user.source.value,
-          url = `${environment.identity}/accounts?${user.signUpEmail}?token=${userObject.token}`;
-    
-    console.log("createPassword", url, user);
+  createPassword(userObject) {
 
-    return this.http.post<User>(url, user, this.options).pipe(
-      tap((user: User) => console.log(`added ${user}`) ),
-      catchError( err => of(err) )
-    );
+    const user = userObject.$user.source.value;
+    let url = `${environment.account}/accounts/${user.email}`;
+          let userSendObject = {
+            firstName: user.firstName,
+            middleName: user.middleName,
+            lastName: user.lastName,
+            password: user.password,
+            email: user.email,
+            policynumbers: [
+              {
+                policynumber: user.policyNumber.policyNumber
+              }
+            ]
+          }
+    
+    console.log("createPassword", url, userSendObject);
+         
+    return this.http.put<any>(url, user, this.options);
+
   }
 
   forgotPasswordSendEmailId(email: string) {
@@ -117,27 +128,34 @@ export class AuthenticationService {
     });
   }
 
-  verifyPolicy(userObject): Observable<any> {
+  verifyPolicy(userObject){
     console.log("verifyPolicy userObject",userObject);
     const user = userObject.$user.source._value;
     console.log("verifyPolicy user",user)
-    const url = `${environment.identity}/policy/${user.policyNumber}`;
+    const url = `${environment.personalpolicy}/policy/${user.policyNumber}`;
     if(user.policyNumber == undefined) {
       return user;
     }
     else {
-      return this.http.post<any>(url, userObject, this.options);
+      return this.http.put(url,user,this.options);
     }
     
   }
 
   verifyUser(userObject): Observable<any> {
-    console.log("verifyUser userObject",userObject);
-    const user = userObject.$user.source._value;
-    console.log("verifyUser user",user)
-    const url = `${environment.identity}/accounts?${user.email}`;
     
-    return this.http.post<any>(url, user, this.options)
+    const user = userObject.$user.source._value;
+    
+    const url = `${environment.account}/accounts/${user.email}`;
+
+    let userObjectSender = {
+      firstName: user.firstName,
+      middleName: user.middleName,
+      lastName: user.lastName,
+      email: user.email
+    }
+    console.log("newUserObject", userObjectSender);
+    return this.http.post<any>(url, userObjectSender, this.options)
       /*.pipe(
         tap((user: User) => console.log(`verify ${user}`) ),
         catchError( err => of(err) )

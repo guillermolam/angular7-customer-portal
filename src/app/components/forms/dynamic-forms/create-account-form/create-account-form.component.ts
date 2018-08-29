@@ -37,9 +37,9 @@ export class CreateAccountFormComponent implements OnInit {
 
   createUserObject(object): void {
     this.user = new User({
-      firstName:      object.signUpFirst_name.toCapital(),
-      middleName:     object.signUpMI_name.toCapital(),
-      lastName:       object.signUpLast_name.toCapital(),
+      firstName:      object.signUpFirst_name,
+      middleName:     object.signUpMI_name,
+      lastName:       object.signUpLast_name,
       email:          object.signUpEmail,
       password:       '',
       policyNumber:   {
@@ -48,13 +48,30 @@ export class CreateAccountFormComponent implements OnInit {
     });
   }
 
+  createUserObjectTwo(object, policyNumber): void {
+
+   
+    this.user = new User({
+      firstName:      object.firstName,
+      middleName:     object.middleName,
+      lastName:       object.lastName,
+      email:          object.email,
+      password:       '',
+      policyNumber:   {
+        policyNumber : policyNumber
+      }
+    });
+   
+  }
+
+
   register() {
     this.loading = true;
     this.createUserObject(this.signUpForm.value);
     this.userData.updateUser(this.user);
 
     if(this.userData) {
-      this.authService
+      /*this.authService
         .verifyUser(this.userData)
         .flatMap(res => {
           //If the server recives a 200 then the email was found.
@@ -101,7 +118,7 @@ export class CreateAccountFormComponent implements OnInit {
           () => {
             console.log("Calls are completed");
           }
-        );
+        );*/
 
         /* this is from an older version that maybe used
          if(this.userData) {
@@ -118,25 +135,28 @@ export class CreateAccountFormComponent implements OnInit {
             console.log("completed")
           }
         )
-      ;
-     /*this.authService
+      ;*/
+     this.authService
         .verifyUser(this.userData)
         .subscribe(
           data => {
-            console.log(data)
+          
             this.loading = false;
+            this.createUserObjectTwo(this.user, data[0].policynumber);
+            this.userData.updateUser(this.user);
+           
             this.router.navigate(['signup', 'createpassword'  ] );
           },
           err => {
             console.log(err);
             this.loading = false;
-            this.router.navigate(['signup', 'emailalreadyinuse'  ] );
+            this.router.navigate(['signup', 'emailinuse'  ] );
           },
-          {
+          () => {
             console.log("completed")
           }
           
-        );*/
+        );
     }
   }
 

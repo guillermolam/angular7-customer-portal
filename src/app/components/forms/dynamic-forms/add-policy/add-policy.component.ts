@@ -44,7 +44,11 @@ export class AddPolicyComponent implements OnInit {
   }
 
   addPolicyToObject(userObject): void {
+    userObject.firstName = "CONRAD";
+    userObject.middleName = "";
+    userObject.lastName = "GAGNE";
     userObject.policyNumber = this.addPolicyForm.value.addPolicy;
+    
     this.userService.updateUser(userObject);
   }
 
