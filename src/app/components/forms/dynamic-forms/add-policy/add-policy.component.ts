@@ -38,7 +38,15 @@ export class AddPolicyComponent implements OnInit {
           this.router.navigate(['signup', 'reviewpolicy']);
         },
         err => {
-          this.router.navigate(['signup', 'bop'])
+          if(err.status == 400) {
+            this.router.navigate(['signup', 'bop']);
+          }
+          else if(err.status == 409){
+            this.router.navigate(['signup', 'conflict']);
+          }
+          else {
+            this.router.navigate(['signup', 'notfound']);
+          }
         }
       )
   }

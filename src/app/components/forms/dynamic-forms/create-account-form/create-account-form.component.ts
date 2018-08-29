@@ -37,9 +37,9 @@ export class CreateAccountFormComponent implements OnInit {
 
   createUserObject(object): void {
     this.user = new User({
-      firstName:      object.signUpFirst_name.toCapital(),
-      middleName:     object.signUpMI_name.toCapital(),
-      lastName:       object.signUpLast_name.toCapital(),
+      firstName:      object.signUpFirst_name,
+      middleName:     object.signUpMI_name,
+      lastName:       object.signUpLast_name,
       email:          object.signUpEmail,
       password:       '',
       policyNumber:   {
