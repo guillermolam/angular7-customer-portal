@@ -57,6 +57,7 @@ pipeline{
 								templateType: 'job',
 								jobTemplate: 'deploy_customer_portal_ui',
 								importTowerLogs: true,
+								inventory: 'aws_dev_boxes',
 								jobTags: '',
 								skipJobTags: '',
 								limit: '',
