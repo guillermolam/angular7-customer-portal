@@ -12,7 +12,7 @@
     "e2e": "ng e2e",
     "cibuild": "ng test --code-coverage && ng build --prod --no-progress",
     "sonar-run": "sonar-scanner -Dsonar.host.url=http://mdv-docdevl01:9000",
-    "proxy": "ng serve --proxy-config proxy.config.json",
+    "proxy": "ng serve --proxy-config proxy.config.json"
   },
   "private": true,
   "dependencies": {
