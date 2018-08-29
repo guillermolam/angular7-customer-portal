@@ -74,7 +74,8 @@ tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
 ports: 
- - "80:80"'''
+ - "80:80"
+ - "443:443"'''
             )			
 				}
 		}
