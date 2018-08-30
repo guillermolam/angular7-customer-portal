@@ -57,10 +57,10 @@ export class CreateAccountFormComponent implements OnInit {
     this.loading = true;
     this.createUserObject(this.signUpForm.value, null);
     if(this.userData) {
-      forkJoin(
+     /* forkJoin(
         this.authService.verifyUser(this.userData).map( (res: Response) => res.json() ),
         this.authService.verifyPolicy(this.userData).map( (res: Response) => res.json() )
-      )
+      )*/
       /*this.authService
         .verifyUser(this.userData)
         .map(res: Response => {
@@ -81,12 +81,19 @@ export class CreateAccountFormComponent implements OnInit {
         })*/
         
         
-        
+        this.authService.verifyUser(this.userData)
         .subscribe(
           data => {
             this.loading = false;
-            console.log("data 1", data[0])
-            console.log("data 2", data[1])
+            console.log("data", data);
+            this.authService.verifyPolicy(this.userData)
+            .subscribe(data => {
+              console.log(data)
+            },
+            err => {
+              console.log(err)
+            }
+            )
             //If a policy number was found then add it to the user object and then the userData Subscription
             //After that redirect to the createpassword screen.
             /*if(data['policyNumber']['policyNumber'] != '' || data['policyNumber']['policyNumber'] !== undefined ){
@@ -102,6 +109,7 @@ export class CreateAccountFormComponent implements OnInit {
           },
           err => {
             console.log("error", err);
+            this.router.navigate(['signup', 'createpassword' ]);
             /*this.loading = false;
             console.log("this is an error error", err);
             console.log("the userdata subscription ovservable",this.userData)
