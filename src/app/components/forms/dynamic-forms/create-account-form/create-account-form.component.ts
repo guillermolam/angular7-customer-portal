@@ -13,6 +13,7 @@ import { UserService }                  from "../../../../_services/user.service
 import { User }                         from "../../../../_models/user";
 
 import { TestingService }               from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service';
+import { mergeMap } from "../../../../../../node_modules/rxjs/operators";
 
 @Component({
   selector: 'app-create-account-form',
@@ -57,70 +58,15 @@ export class CreateAccountFormComponent implements OnInit {
     this.loading = true;
     this.createUserObject(this.signUpForm.value, null);
     if(this.userData) {
-     /* forkJoin(
-        this.authService.verifyUser(this.userData).map( (res: Response) => res.json() ),
-        this.authService.verifyPolicy(this.userData).map( (res: Response) => res.json() )
-      )*/
-      /*this.authService
-        .verifyUser(this.userData)
-        .map(res: Response => {
-          //If the server recives a 200 then the email was found.
-          console.log("res", res)
-          if(res.status !== 400) {
-            
-            return res;
-          }
-          //If the server sends a responce not of 200 then the second service call will happen
-          //this one will check if there is a policy. If there the server will respond with a
-          //200. That is why we are checking for a policyNumber in the success part of subscribe
-          else {
-            console.log("res on error", res)
-            console.log(this.userData)
-            return this.authService.verifyPolicy(this.userData);
-          }
-        })*/
-        
-        
-        this.authService.verifyUser(this.userData)
-        .subscribe(
-          data => {
-            this.loading = false;
-            console.log("data", data);
-            this.authService.verifyPolicy(this.userData)
-            .subscribe(data => {
-              console.log(data)
-            },
-            err => {
-              console.log(err)
-            }
-            )
-            //If a policy number was found then add it to the user object and then the userData Subscription
-            //After that redirect to the createpassword screen.
-            /*if(data['policyNumber']['policyNumber'] != '' || data['policyNumber']['policyNumber'] !== undefined ){
-              this.user.policyNumber = data['policyNumber']['policyNumber'];
-              this.userData.updateUser(this.user);
-              this.router.navigate(['signup', 'createpassword' ]);
-            }
-            else {
-              console.log('data Email in use',data)
-              this.router.navigate(['signup', 'emailinuse' ]);
-            }*/
-
-          },
-          err => {
-            console.log("error", err);
-            this.router.navigate(['signup', 'createpassword' ]);
-            /*this.loading = false;
-            console.log("this is an error error", err);
-            console.log("the userdata subscription ovservable",this.userData)
-            this.router.navigate(['signup', 'createpassword' ]);
-            */
-          },
-          () => {
-            console.log("Calls are completed");
-          }
-        );
-      ;
+      forkJoin( 
+        [
+          this.authService.verifyUser(this.userData),
+          this.authService.verifyPolicy(this.userData)
+        ]
+      ).subscribe(results => {
+        console.log(results[0])
+        console.log(results[1])
+      })
     }
   }
 
