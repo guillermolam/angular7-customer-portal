@@ -58,7 +58,8 @@ export class AuthenticationService {
       userSendObject = {
         firstName: user.firstName,
         middleName: user.middleName,
-        lastName: user.lastName
+        lastName: user.lastName,
+        email: user.email
       }
     ;
     return this.http.post(url, userSendObject, this.options);

@@ -85,11 +85,11 @@ export class CreateAccountFormComponent implements OnInit {
             this.authService.findPolicy(this.userData)
             .subscribe(
               result => {
-                console.log("200",result);
-                if(result.policynumbers.policynumber != '' || result.policynumbers.policynumber != undefined || result.policynumbers.policynumber != null){
-                  this.createUserObject(this.userData, result);
-                  console.log(this.userData);
-                }
+                this.createUserObject(this.userData, result);
+                console.log(this.userData);
+                this.router.navigate(['signup', 'createpassword' ]);
+              },
+              err => {
                 this.router.navigate(['signup', 'createpassword' ]);
               }
             )
