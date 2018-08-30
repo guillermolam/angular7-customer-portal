@@ -81,12 +81,17 @@ export class CreateAccountFormComponent implements OnInit {
          console.log("hit the data")
         },
         err =>{
-          this.authService.findPolicy(this.userData)
-          .subscribe(
-            result => {
-              console.log(result);
-            }
-          )
+          if(err.status === 200 ){
+            this.authService.findPolicy(this.userData)
+            .subscribe(
+              result => {
+                console.log("200",result);
+              }
+            )
+          }
+          else if(err.status === 400){
+            console.log("400", err);
+          }
         }
       )
     }
