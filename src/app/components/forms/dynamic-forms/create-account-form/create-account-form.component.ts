@@ -2,6 +2,7 @@ import { Component, OnInit, Input }     from "@angular/core";
 import { FormGroup }                    from "@angular/forms";
 import { HttpClient }                   from "@angular/common/http";
 import { Router }                       from "@angular/router";
+import {forkJoin} from 'rxjs';
 
 // --- Components | Services | Models --- //
 import { AlertService }                 from "../../../../_services/alert.service";
@@ -56,9 +57,13 @@ export class CreateAccountFormComponent implements OnInit {
     this.loading = true;
     this.createUserObject(this.signUpForm.value, null);
     if(this.userData) {
-      this.authService
+      forkJoin(
+        this.authService.verifyUser(this.userData).map( (res: Response) => res.json() ),
+        this.authService.verifyPolicy(this.userData).map( (res: Response) => res.json() )
+      )
+      /*this.authService
         .verifyUser(this.userData)
-        .map(res => {
+        .map(res: Response => {
           //If the server recives a 200 then the email was found.
           console.log("res", res)
           if(res.status !== 400) {
@@ -73,12 +78,18 @@ export class CreateAccountFormComponent implements OnInit {
             console.log(this.userData)
             return this.authService.verifyPolicy(this.userData);
           }
-        }).subscribe(
+        })*/
+        
+        
+        
+        .subscribe(
           data => {
             this.loading = false;
+            console.log("data 1", data[0])
+            console.log("data 2", data[1])
             //If a policy number was found then add it to the user object and then the userData Subscription
             //After that redirect to the createpassword screen.
-            if(data['policyNumber']['policyNumber'] != '' || data['policyNumber']['policyNumber'] !== undefined ){
+            /*if(data['policyNumber']['policyNumber'] != '' || data['policyNumber']['policyNumber'] !== undefined ){
               this.user.policyNumber = data['policyNumber']['policyNumber'];
               this.userData.updateUser(this.user);
               this.router.navigate(['signup', 'createpassword' ]);
@@ -86,14 +97,16 @@ export class CreateAccountFormComponent implements OnInit {
             else {
               console.log('data Email in use',data)
               this.router.navigate(['signup', 'emailinuse' ]);
-            }
+            }*/
+
           },
           err => {
-            this.loading = false;
+            console.log("error", err);
+            /*this.loading = false;
             console.log("this is an error error", err);
             console.log("the userdata subscription ovservable",this.userData)
             this.router.navigate(['signup', 'createpassword' ]);
-            
+            */
           },
           () => {
             console.log("Calls are completed");
