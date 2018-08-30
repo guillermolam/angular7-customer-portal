@@ -78,15 +78,15 @@ export class CreateAccountFormComponent implements OnInit {
       });*/
       .subscribe(
         data => {
+         console.log("hit the data")
+        },
+        err =>{
           this.authService.findPolicy(this.userData)
           .subscribe(
             result => {
               console.log(result);
             }
           )
-        },
-        err =>{
-          console.log(err)
         }
       )
     }
