@@ -86,11 +86,17 @@ export class CreateAccountFormComponent implements OnInit {
             .subscribe(
               result => {
                 console.log("200",result);
+                if(result.policynumbers.policynumber != '' || result.policynumbers.policynumber != undefined || result.policynumbers.policynumber != null){
+                  this.createUserObject(this.userData, result);
+                  console.log(this.userData);
+                }
+                this.router.navigate(['signup', 'createpassword' ]);
               }
             )
           }
           else if(err.status === 400){
             console.log("400", err);
+            this.router.navigate(['signup', 'emailinuse' ]);
           }
         }
       )
