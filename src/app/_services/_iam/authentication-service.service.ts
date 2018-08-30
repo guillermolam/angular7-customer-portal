@@ -128,39 +128,37 @@ export class AuthenticationService {
   verifyPolicy(userObject): Observable<any> {
     const user = userObject.$user.source._value;
     let 
+      url = `${environment.personalpolicy}/accounts/policies/${user.policyNumber}`,
       userSendObject = {
         firstName: user.firstName,
         middleName: user.middleName,
         lastName: user.lastName
-      },
-      url = `${environment.personalpolicy}/policy/${user.policyNumber}`
+      }
     ;
-    return this.http.put(url,userSendObject,this.options);
-    
+    return this.http.put(url, userSendObject, this.options);
   }
 
   verifyUser(userObject): Observable<any> {
     const user = userObject.$user.source._value;
     let 
-      url = `${environment.account}/accounts/${user.email}`,
-      userObjectSender = {
+      url = `${environment.identity}/accounts/users/${user.email}`,
+      userSendObject = {
         firstName: user.firstName,
         middleName: user.middleName,
         lastName: user.lastName,
         email: user.email
       }
     ;
-   return this.http
-    .post<any>(url, userObjectSender, this.options)
-    .map(res => {
-      if(res === null){
-        throw new Error("204");
-      }
-      else {
-        return res.json;
-      }
-    })
+    return this.http
+      .post<any>(url, userSendObject, this.options)
+      .map(res => {
+        if(res === null){
+          throw new Error("204");
+        }
+        else {
+          return res.json;
+        }
+      })
+    ;
   }
-
 }
-

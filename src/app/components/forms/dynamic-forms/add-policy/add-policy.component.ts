@@ -42,21 +42,21 @@ export class AddPolicyComponent implements OnInit {
           },
           err => {
             if(err.status === 404){
+              //Policy is not found
               this.router.navigate(['signup', 'notfound']);
             }
             else if(err.status === 400) {
-              //bad requrest - 400
+              //bad requrest - 400 - Biz Policy
               this.router.navigate(['signup', 'bop']);
             }
             else if(err.status === 409){
-              //conflict - 409
+              //conflict - 409 - if the policy belongs to another
               this.router.navigate(['signup', 'policybelongstoanother']);
             }
           }
         )
       ;
     }
-
   }
 
   addPolicyToObject(userObject): void {
