@@ -58,7 +58,7 @@ export class CreateAccountFormComponent implements OnInit {
     this.loading = true;
     this.createUserObject(this.signUpForm.value, null);
     if(this.userData) {
-      forkJoin( 
+     /* forkJoin( 
         [
           this.authService.verifyUser(this.userData),
           this.authService.verifyPolicy(this.userData)
@@ -66,7 +66,16 @@ export class CreateAccountFormComponent implements OnInit {
       ).subscribe(results => {
         console.log(results[0])
         console.log(results[1])
-      })
+      })*/
+      this.authService.verifyUser(this.userData)
+      .pipe(
+        mergeMap(data => 
+          this.authService.findPolicy(this.userData)
+        )
+      )
+      .subscribe(data => {
+        console.log(data);
+      });
     }
   }
 

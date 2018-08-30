@@ -51,6 +51,19 @@ export class AuthenticationService {
     return this.http.put<any>(url, userSendObject, this.options)
   }
 
+  findPolicy(userObject): Observable<any> {
+    const user = userObject.$user.source._value;
+    let 
+      url = `${environment.account}/accounts/policies/${user.email}`,
+      userSendObject = {
+        firstName: user.firstName,
+        middleName: user.middleName,
+        lastName: user.lastName
+      }
+    ;
+    return this.http.post(url, userSendObject, this.options);
+  }
+
   forgotPasswordSendEmailId(email: string) {
     const url = `${environment.identity}/identity/users/account-recovery`;
     return this.http.post(url, {} , {
