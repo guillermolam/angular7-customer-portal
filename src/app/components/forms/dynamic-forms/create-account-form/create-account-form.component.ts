@@ -58,7 +58,7 @@ export class CreateAccountFormComponent implements OnInit {
     if(this.userData) {
       this.authService
         .verifyUser(this.userData)
-        .flatMap(res => {
+        .map(res => {
           //If the server recives a 200 then the email was found.
           console.log("res", res)
           if(res.status !== 400) {
