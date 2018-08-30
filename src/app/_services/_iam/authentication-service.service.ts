@@ -151,14 +151,14 @@ export class AuthenticationService {
     ;
     return this.http
       .post<any>(url, userSendObject, this.options)
-      .map(res => {
+      /*.map(res => {
         if(res === null){
           throw new Error("204");
         }
         else {
           return res.json;
         }
-      })
+      })*/
     ;
   }
 }

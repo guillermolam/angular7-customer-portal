@@ -58,23 +58,46 @@ export class CreateAccountFormComponent implements OnInit {
     if(this.userData) {
       this.authService
         .verifyUser(this.userData)
-        .subscribe(
+        .flatMap(res => {
+          //If the server recives a 200 then the email was found.
+          if(res.status != 404) {
+            console.log("res", res)
+            return res;
+          }
+          //If the server sends a responce not of 200 then the second service call will happen
+          //this one will check if there is a policy. If there the server will respond with a
+          //200. That is why we are checking for a policyNumber in the success part of subscribe
+          else {
+            console.log("res on error", res)
+            console.log(this.userData)
+            return this.authService.verifyPolicy(this.userData);
+          }
+        }).subscribe(
           data => {
             this.loading = false;
-            this.createUserObject(this.user, data[0].policynumber);
-            this.router.navigate([ 'signup', 'createpassword' ]);
-          },
-          err => {
-            console.log(err);
-            this.loading = false;
-            if(err == "Error: 204") {
-              this.router.navigate([ 'signup', 'addpolicy' ]);
+            //If a policy number was found then add it to the user object and then the userData Subscription
+            //After that redirect to the createpassword screen.
+            if(data['policyNumber']['policyNumber'] != '' || data['policyNumber']['policyNumber'] !== undefined ){
+              this.user.policyNumber = data['policyNumber']['policyNumber'];
+              this.userData.updateUser(this.user);
+              this.router.navigate(['signup', 'createpassword' ]);
             }
             else {
-              this.router.navigate([ 'signup', 'emailinuse' ]);
+              console.log('data Email in use',data)
+              this.router.navigate(['signup', 'emailinuse' ]);
             }
+          },
+          err => {
+            this.loading = false;
+            console.log("error", err);
+            if(err.status === 404) {
+              this.router.navigate(['signup', 'createpassword' ]);
+            }
+          },
+          () => {
+            console.log("Calls are completed");
           }
-        )
+        );
       ;
     }
   }
