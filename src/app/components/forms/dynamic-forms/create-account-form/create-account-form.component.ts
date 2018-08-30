@@ -60,7 +60,7 @@ export class CreateAccountFormComponent implements OnInit {
         .verifyUser(this.userData)
         .flatMap(res => {
           //If the server recives a 200 then the email was found.
-          if(res.status != 404) {
+          if(res.status !== 400) {
             console.log("res", res)
             return res;
           }
@@ -89,10 +89,10 @@ export class CreateAccountFormComponent implements OnInit {
           },
           err => {
             this.loading = false;
-            console.log("error", err);
-            if(err.status === 404) {
-              this.router.navigate(['signup', 'createpassword' ]);
-            }
+            console.log("this is an error error", err);
+            console.log("the userdata subscription ovservable",this.userData)
+            this.router.navigate(['signup', 'createpassword' ]);
+            
           },
           () => {
             console.log("Calls are completed");
