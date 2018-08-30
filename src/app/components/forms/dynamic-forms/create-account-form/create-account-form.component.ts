@@ -13,7 +13,7 @@ import { UserService }                  from "../../../../_services/user.service
 import { User }                         from "../../../../_models/user";
 
 import { TestingService }               from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service';
-import { mergeMap } from "../../../../../../node_modules/rxjs/operators";
+import { mergeMap } from "rxjs/operators";
 
 @Component({
   selector: 'app-create-account-form',
@@ -68,14 +68,27 @@ export class CreateAccountFormComponent implements OnInit {
         console.log(results[1])
       })*/
       this.authService.verifyUser(this.userData)
-      .pipe(
+     /* .pipe(
         mergeMap(data => 
           this.authService.findPolicy(this.userData)
         )
       )
       .subscribe(data => {
         console.log(data);
-      });
+      });*/
+      .subscribe(
+        data => {
+          this.authService.findPolicy(this.userData)
+          .subscribe(
+            result => {
+              console.log(result);
+            }
+          )
+        },
+        err =>{
+          console.log(err)
+        }
+      )
     }
   }
 
