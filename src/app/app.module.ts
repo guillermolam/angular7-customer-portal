@@ -89,6 +89,7 @@ import { BopScreenComponent }                 from './components/confirmations/s
 import { MapfreCheckboxComponent } from './components/individual-components/inputs/mapfre-checkbox/mapfre-checkbox.component';
 import { MapfreInfoDivsComponent } from './components/section-components/mapfre-info-divs/mapfre-info-divs.component';
 import { VerifyAccountScreenComponent } from './components/confirmations/signup-process/verify-account-screen/verify-account-screen.component';
+import { WelcomeComponent } from './routes/welcome/welcome.component';
 
 
 if(environment.production) {
@@ -159,7 +160,8 @@ export function tokenGetter() {
     PolicyErrorSvgComponent,
     EmailErrorSvgComponent,
     MapfreInfoDivsComponent,
-    VerifyAccountScreenComponent
+    VerifyAccountScreenComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

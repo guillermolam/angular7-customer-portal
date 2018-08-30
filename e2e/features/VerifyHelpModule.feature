@@ -1,5 +1,5 @@
 Feature: Verifying the functionality of Help Module all contents
-	@CucumberScenario
+	
 	Scenario: Verify the Call Us link and Email Us on help module.
 		Given Navigate to Landing Page of MAPFRE.
 		Then Verify The Login Page.
@@ -15,7 +15,6 @@ Feature: Verifying the functionality of Help Module all contents
 		When Click on "english" radio button.
 		Then Click on Confirm Language Button.
 
-	
 	Scenario: Verify the login module text after switch the language.
 		When Get the set value from the footer language module.
 		Then Verify the Customer Access text according to selected language.
@@ -27,7 +26,6 @@ Feature: Verifying the functionality of Help Module all contents
 		Then Verify the Create account text according to selected language.
 		Then Verify the Footer Copy Right text according to selected language.
 	
-
 	Scenario: Verify the login module text after switch the language.
 		When Click On Help Menu On Header.
 		Then Verify the Help Title text according to selected language.

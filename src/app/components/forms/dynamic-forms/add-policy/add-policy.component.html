@@ -10,15 +10,15 @@
     </div>
   </div>
   <div class="form-check mr-3">
-      <input class="form-check-input" type="checkbox" id="checkbox11" checked="checked">
-      <label class="form-check-label" for="checkbox11">{{ 'I_AM_THE_POLICY_HOLDER' | translate }}</label>
+      <input class="form-check-input" type="checkbox" id="legal-checkbox" required (change)="getLegalCheckBoxValue($event)">
+      <label class="form-check-label" for="legal-checkbox">{{ 'I_AM_THE_POLICY_HOLDER' | translate }}</label>
   </div>
 
   <div class="row group-button">
     <div class="col">
       <mapfre-button
         [additionalClasses]="'basic primary large'"
-        [disabledValue]="addPolicyForm.valid" 
+        [disabledValue]="addPolicyForm.valid && legalCheckbox" 
         [inputType]="'submit'"
         [translateValue]="'ADD_POLICY' | translate"
       ></mapfre-button>

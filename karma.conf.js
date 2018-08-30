@@ -22,12 +22,23 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
+    browsers: ['Chromium_no_sandbox','Chrome'],
+    customLaunchers: {
+       "Chromium_no_sandbox": {
+         base: 'Chromium',
+         flags: [
+           '--no-sandbox',
+           '--headless',
+           '--disable-gpu',
+           '--remote-debugging-port=9222'
+         ]
+       }
+     }, 
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
     singleRun: false
   });
 };

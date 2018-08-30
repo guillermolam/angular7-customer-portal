@@ -28,12 +28,12 @@ pipeline{
 		    }
 		}
 
-		/*stage('Run Unit Test'){
-		    steps{
+		//stage('Run Unit Test'){
+		  //  steps{
 		    	//Added to run unit test case for all module.
-		        sh "npm test"
-		    }
-		}*/
+		       //sh "npm test_on_ciserver"
+		    //}
+		//}
 		
 		stage("Build & Publish Image"){
 			environment {
@@ -48,13 +48,16 @@ pipeline{
 			}
 		}
 		stage("Deploy Image"){
+			environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
 			steps{
-        					ansibleTower(
+        		ansibleTower(
 								towerServer: 'Ansible Tower',
 								templateType: 'job',
 								jobTemplate: 'deploy_customer_portal_ui',
 								importTowerLogs: true,
-								inventory: 'dev_boxes',
+								inventory: 'aws_dev_boxes',
 								jobTags: '',
 								skipJobTags: '',
 								limit: '',
@@ -62,17 +65,18 @@ pipeline{
 								verbose: true,
 								credential: '',
 								extraVars: '''---
-comma_separated_hosts: "mdv-doctest"
 user: "glam"
-docker_registry_username: "admin"
-docker_registry_password: "admin123"
-docker_registry: "mdv-docdevl01:18444"
-image_name: "mdv-docdevl01:18444/customer-portal-ui/master"
-tag: "100"
-container_name: "customer-portal-ui"
-container_image: "mdv-docdevl01:18444/customer-portal-ui/master:100"
+docker_registry_username: "$DOCKER_NEXUS_CREDS_USR"
+docker_registry_password: "$DOCKER_NEXUS_CREDS_PSW"
+docker_registry: "${NEXUS_REPO_URL}"
+image_name: "${NEXUS_REPO_URL}/${JOB_NAME}"
+tag: "${BUILD_NUMBER}"
+container_name: "${CUSTOMER_PORTAL_APP_NAME}"
+container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
 ports: 
-  - "80:80"''')			
+ - "80:80"
+ - "443:443"'''
+            )			
 				}
 		}
 	}

@@ -1,6 +1,8 @@
 /*Configuration file to configure the required packages  */
 
 import * as path from "path";
+import * as fs from "fs";
+import * as efs from "fs-extra";
 import { browser, Config } from "protractor";
 import { Reporter } from "../support/reporter";
 
@@ -13,13 +15,18 @@ export const config: Config = {
 
     SELENIUM_PROMISE_MANAGER: false,
     //Our project url.
-    baseUrl: "http://localhost:4200",
+    url:{
+        'dev': "http://localhost:4200",
+    },
 
     //Multiple browser execution setup to execute current test.
     multiCapabilities: [{
       'browserName': 'firefox'
     }, {
-      'browserName': 'chrome'
+      'browserName': 'chrome',
+      'chromeOptions': {
+            'args': ['disable-infobars']
+        }
     }],
 
     framework: "custom",
@@ -32,6 +39,9 @@ export const config: Config = {
 
     //Pre-steps to maximize the window.
     onPrepare: () => {
+        if(fs.existsSync("failed_screenshot")){
+            efs.remove("failed_screenshot");
+         };
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
         Reporter.createDirectory(jsonReports);
@@ -40,8 +50,8 @@ export const config: Config = {
     //Cucumber option to report/require files and run according to tag.
     cucumberOpts: {
         compiler: "ts:ts-node/register",
-        // format: "json:.tmp/results.json",
-        format: "json:./reports/json/cucumber_report.json",
+        format: "json:.tmp/results.json",
+        // format: "json:./reports/json/cucumber_report.json",
         require: ["../../typeScript/stepdefinitions/*.js", "../../typeScript/support/*.js"],
         strict: true,
 

@@ -1,14 +1,13 @@
 import { async, ComponentFixture, TestBed, inject }    from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA}                             from '@angular/core';
-import { HttpClient, HttpClientModule }                from '@angular/common/http';
+import { HttpClientModule }                            from '@angular/common/http';
 import { RouterTestingModule }                         from '@angular/router/testing';
-import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule }            from '@angular/forms';
 import { CookieService }                               from 'ngx-cookie-service';
 import { TranslateModule }                             from '@ngx-translate/core';
 
 import { SendEmailFormComponent }       from './send-email-form.component';
-import { LoginFormComponent }           from '../login-form/login-form.component';
-import { FormBase }                     from '../../../../_models/form-base';
+import { RegExHelper }                  from '../../../../_helpers/regex-helper';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { AlertService }                 from "../../../../_services/alert.service";
 import { UserService }                  from "../../../../_services/user.service";
@@ -36,7 +35,7 @@ describe('SendEmailFormComponent', () => {
         ReactiveFormsModule
       ],
       providers: [
-        CookieService, AuthenticationService, AlertService, UserService, FormBaseControlService, EmailFormService
+        CookieService, AuthenticationService, RegExHelper, AlertService, UserService, FormBaseControlService, EmailFormService
       ],
       schemas:[NO_ERRORS_SCHEMA]
     })
@@ -107,8 +106,6 @@ describe('SendEmailFormComponent', () => {
           done();                  
         },
         error => {
-          console.log("Error ",error.error);
-          
           expect(error.error).toEqual(sendEmailErrorResponse);
           done();
         }); 
@@ -132,7 +129,6 @@ describe('SendEmailFormComponent', () => {
           done();                  
         },
         error => {
-          
           expect(error.error).toEqual(sendEmailErrorResponse);
           done();
         }); 

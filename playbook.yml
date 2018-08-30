@@ -1,4 +1,4 @@
-- hosts: "{{comma_separated_hosts}}"
+- hosts: "all"
   remote_user: "{{user}}"
   tasks:
   - name: Docker Login
@@ -18,3 +18,4 @@
      state: started
      ports:
       - "80:80"
+      - "443:443"

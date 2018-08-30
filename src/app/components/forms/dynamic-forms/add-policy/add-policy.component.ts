@@ -20,6 +20,7 @@ export class AddPolicyComponent implements OnInit {
   @Input() inputs:                  FormBase<any>[] = [];
   @Input() userData:                Observable<User>;
   addPolicyForm:                    FormGroup;
+  legalCheckbox:                    boolean = false;
   loading:                          boolean = false;
 
   constructor(
@@ -31,29 +32,40 @@ export class AddPolicyComponent implements OnInit {
 
   addPolicy(): void {
     this.addPolicyToObject(this.userData);
-    this.authService
-      .verifyPolicy(this.userService)
-      .subscribe(
-        data => {
-          this.router.navigate(['signup', 'reviewpolicy']);
-        },
-        err => {
-          if(err.status == 400) {
-            this.router.navigate(['signup', 'bop']);
+
+    if(this.legalCheckbox){
+      this.authService
+        .verifyPolicy(this.userService)
+        .subscribe(
+          data => {
+            this.router.navigate(['signup', 'reviewpolicy']);
+          },
+          err => {
+            if(err.status === 404){
+              this.router.navigate(['signup', 'notfound']);
+            }
+            else if(err.status === 400) {
+              //bad requrest - 400
+              this.router.navigate(['signup', 'bop']);
+            }
+            else if(err.status === 409){
+              //conflict - 409
+              this.router.navigate(['signup', 'policybelongstoanother']);
+            }
           }
-          else if(err.status == 409){
-            this.router.navigate(['signup', 'conflict']);
-          }
-          else {
-            this.router.navigate(['signup', 'notfound']);
-          }
-        }
-      )
+        )
+      ;
+    }
+
   }
 
   addPolicyToObject(userObject): void {
     userObject.policyNumber = this.addPolicyForm.value.addPolicy;
     this.userService.updateUser(userObject);
+  }
+
+  getLegalCheckBoxValue(e): void {
+    this.legalCheckbox = e.target.checked ? true : false;
   }
 
   ngOnInit() {

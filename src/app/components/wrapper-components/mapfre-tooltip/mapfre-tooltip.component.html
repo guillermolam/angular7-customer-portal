@@ -1,4 +1,4 @@
-<ng-container *ngIf="typeOfToolTip == button">
+<ng-container *ngIf="typeOfToolTip == 'button'">
   <button class="mapfre tooltip waves-light {{additionalClasses}}"
     [mdbTooltip]="toolTipPlacement"  
     mdbWavesEffect>
@@ -6,7 +6,7 @@
   </button>
 </ng-container>
 
-<ng-container *ngIf="typeOfToolTip == text">
+<ng-container *ngIf="typeOfToolTip == 'text'">
   <span [mdbTooltip]="toolTipPlacement"
     class="{{additionalClasses}}"
     triggers="" #example="mdb-tooltip">

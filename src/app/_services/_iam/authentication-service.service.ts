@@ -31,16 +31,24 @@ export class AuthenticationService {
     this.token = currentUser && currentUser.token;
   }
 
-  createPassword(userObject): Observable<User> {
-    const user = userObject.$user.source.value,
-          url = `${environment.identity}/accounts?${user.signUpEmail}?token=${userObject.token}`;
-    
-    console.log("createPassword", url, user);
-
-    return this.http.post<User>(url, user, this.options).pipe(
-      tap((user: User) => console.log(`added ${user}`) ),
-      catchError( err => of(err) )
-    );
+  createPassword(userObject): Observable<any> {
+    const user = userObject.$user.source.value;
+    let 
+      url = `${environment.account}/accounts/${user.mail}`,
+      userSendObject = {
+        firstName: user.firstName,
+        middleName: user.middleName,
+        lastName: user.lastName,
+        password: user.password,
+        email: user.email,
+        policynumbers: [
+          {
+            policynumber: user.policyNumber.policyNumber
+          }
+        ]
+      }
+    ;
+    return this.http.put<any>(url, userSendObject, this.options)
   }
 
   forgotPasswordSendEmailId(email: string) {
@@ -54,7 +62,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<Object> {
-    const url = environment.api_gateway_url + "/auth/oauth/v2/token";
+    const url = `${environment.api_gateway_url}/auth/oauth/v2/token`;
     return this.http
       .post(url, {}, {
         params : {
@@ -100,12 +108,12 @@ export class AuthenticationService {
   }
 
   tokenVerification(token: string, email: string): Observable<Object> {
-  	const url = `${environment.identity}/identity/users/${email}?token=${token}`;	
+  	let url = `${environment.identity}/identity/users/${email}?token=${token}`;	
   	return this.http.post(url,{}, this.options);
   }
 
   updatePassword(user: User, token: string, testing: boolean = false ) {
-    const url = `${environment.identity}/identity/users/password/${user.email}`;
+    let url = `${environment.identity}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : { 
         newPassword: user.password,
@@ -118,30 +126,40 @@ export class AuthenticationService {
   }
 
   verifyPolicy(userObject): Observable<any> {
-    console.log("verifyPolicy userObject",userObject);
     const user = userObject.$user.source._value;
-    console.log("verifyPolicy user",user)
-    const url = `${environment.identity}/policy/${user.policyNumber}`;
-    if(user.policyNumber == undefined) {
-      return user;
-    }
-    else {
-      return this.http.post<any>(url, userObject, this.options);
-    }
+    let 
+      userSendObject = {
+        firstName: user.firstName,
+        middleName: user.middleName,
+        lastName: user.lastName
+      },
+      url = `${environment.personalpolicy}/policy/${user.policyNumber}`
+    ;
+    return this.http.put(url,userSendObject,this.options);
     
   }
 
   verifyUser(userObject): Observable<any> {
-    console.log("verifyUser userObject",userObject);
     const user = userObject.$user.source._value;
-    console.log("verifyUser user",user)
-    const url = `${environment.identity}/accounts?${user.email}`;
-    
-    return this.http.post<any>(url, user, this.options)
-      /*.pipe(
-        tap((user: User) => console.log(`verify ${user}`) ),
-        catchError( err => of(err) )
-      )*/
+    let 
+      url = `${environment.account}/accounts/${user.email}`,
+      userObjectSender = {
+        firstName: user.firstName,
+        middleName: user.middleName,
+        lastName: user.lastName,
+        email: user.email
+      }
+    ;
+   return this.http
+    .post<any>(url, userObjectSender, this.options)
+    .map(res => {
+      if(res === null){
+        throw new Error("204");
+      }
+      else {
+        return res.json;
+      }
+    })
   }
 
 }
