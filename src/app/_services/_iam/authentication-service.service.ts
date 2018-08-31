@@ -19,8 +19,7 @@ export class AuthenticationService {
 
   private userObservable:     Observable<any>;
   private options:            Object = { headers : 
-    {"Content-Type": "application/json",
-    "Access-Control-Allow-Origin":  "*" }
+    {"Content-Type": "application/json" }
   };
 
   constructor(
@@ -41,11 +40,7 @@ export class AuthenticationService {
         lastName: user.lastName,
         password: user.password,
         email: user.email,
-        policynumbers: [
-          {
-            policynumber: user.policyNumber.policyNumber
-          }
-        ]
+        policynumbers: user.policynumbers
       }
     ;
     return this.http.put<any>(url, userSendObject, this.options)
