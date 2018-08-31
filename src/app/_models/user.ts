@@ -6,7 +6,7 @@ export class User {
   public creationDate:            Date;
   public email:                   string;
   public password:                string;
-  public policynumbers:           Policynumbers;
+  public policynumbers:           any[];
   public temporaryPassword:       string;
 
   constructor(options: {
@@ -17,7 +17,7 @@ export class User {
     creationDate?:                Date,
     email?:                       string,
     password?:                    string,
-    policynumbers?:               Policynumbers,
+    policynumbers?:               any[],
     temporaryPassword?:           string,
   } = {}){
     this.firstName =              options.firstName;

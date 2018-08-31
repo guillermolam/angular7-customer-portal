@@ -46,24 +46,16 @@ export class CreateAccountFormComponent implements OnInit {
       this.userData.updateUser(this.user);
     }
     else {
-      this.user = new User({
-        firstName:                  object.signUpFirst_name,
-        middleName:                 object.signUpMI_name,
-        lastName:                   object.signUpLast_name,
-        email:                      object.signUpEmail,
-      });
-      numbers.forEach(number => {
-        self.user.policynumbers = new Policynumbers(number);
-      });
+      this.user.policynumbers = numbers;
       console.log(this.user);
-     //this.userData.updateUser(this.user);
+      this.userData.updateUser(this.user);
     }
   }
 
   register() {
     this.loading = true;
-    this.createUserObject(this.signUpForm.value, ['123456', '789011' ]);
-    /*if(this.userData) {
+    this.createUserObject(this.signUpForm.value, null);
+    if(this.userData) {
       this.authService.verifyUser(this.userData)
       .subscribe(
         data => {},
@@ -88,7 +80,7 @@ export class CreateAccountFormComponent implements OnInit {
           }
         }
       )
-    }*/
+    }
   }
 
   ngOnInit() {
