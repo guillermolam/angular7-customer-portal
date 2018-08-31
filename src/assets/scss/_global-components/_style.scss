@@ -90,7 +90,7 @@ textarea:focus {
 .center-on-page {
   align-items: center;
   display: flex;
-  height: 80vh;
+  min-height: 80vh;
   justify-content: center;
 }
 
@@ -129,7 +129,7 @@ textarea:focus {
 
 .mapfre-content {
     margin-top:                             5rem;
-    height: 700px; //temp
+   
     @include media-breakpoint-down(xxs) {
         margin-top:                         10%;
     }
