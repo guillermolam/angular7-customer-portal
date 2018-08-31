@@ -2,10 +2,7 @@ import { HttpClient }         from "@angular/common/http";
 import { Injectable }         from "@angular/core";
 import { Observable }         from "rxjs";
 import { environment }        from "../../../environments/environment";
-import { TestingService }     from "../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service";
 import { User }               from "../../_models/user";
-import { of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/observable/of'; 
 import 'rxjs/add/observable/throw';
@@ -54,20 +51,20 @@ export class AuthenticationService {
   findPolicy(userObject): Observable<any> {
     const user = userObject.$user.source._value;
     let 
-      url = `${environment.account}/accounts/policies/${user.email}`,
-      userSendObject = {
-        firstName: user.firstName,
-        middleName: user.middleName,
-        lastName: user.lastName,
-        email: user.email
+      url: string = `${environment.account}/accounts/policies/${user.email}`,
+      userSendObject: Object = {
+        firstName:      user.firstName,
+        middleName:     user.middleName,
+        lastName:       user.lastName,
+        email:          user.email
       }
     ;
-    return this.http.post(url, userSendObject, this.options);
+    return this.http.post<any>(url, userSendObject, this.options);
   }
 
-  forgotPasswordSendEmailId(email: string) {
+  forgotPasswordSendEmailId(email: string): Observable<any> {
     const url = `${environment.identity}/identity/users/account-recovery`;
-    return this.http.post(url, {} , {
+    return this.http.post<any>(url, {} , {
       params : { email: email },
       headers : {
         "Content-Type": "application/json"
@@ -78,7 +75,7 @@ export class AuthenticationService {
   login(username: string, password: string): Observable<Object> {
     const url = `${environment.api_gateway_url}/auth/oauth/v2/token`;
     return this.http
-      .post(url, {}, {
+      .post<any>(url, {}, {
         params : {
           grant_type: 'password',
           username: username,
