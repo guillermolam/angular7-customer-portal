@@ -70,7 +70,7 @@ export class CreateAccountFormComponent implements OnInit {
               },
               err => {
                 console.log("err find policy", err)
-                this.router.navigate(['signup', 'createpassword' ]);
+                this.router.navigate(['signup', 'addpolicy' ]);
               }
             )
           }
