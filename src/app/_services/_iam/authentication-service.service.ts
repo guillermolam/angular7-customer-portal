@@ -33,7 +33,7 @@ export class AuthenticationService {
   createPassword(userObject): Observable<any> {
     const user = userObject.$user.source.value;
     let 
-      url = `${environment.account}/accounts/${user.mail}`,
+      url = `${environment.account}/accounts/${user.email}`,
       userSendObject = {
         firstName: user.firstName,
         middleName: user.middleName,
