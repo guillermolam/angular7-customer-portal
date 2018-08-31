@@ -10,10 +10,7 @@ import { AuthenticationService }        from '../../../../_services/_iam/authent
 import { FormBase }                     from '../../../../_models/form-base';
 import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
 import { UserService }                  from "../../../../_services/user.service";
-import { User }                         from "../../../../_models/user";
-
-import { TestingService }               from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service';
-import { mergeMap } from "rxjs/operators";
+import { User, Policynumbers }          from "../../../../_models/user";
 
 @Component({
   selector: 'app-create-account-form',
@@ -22,7 +19,7 @@ import { mergeMap } from "rxjs/operators";
   providers: [ FormBaseControlService ]
 })
 export class CreateAccountFormComponent implements OnInit {
-  @Input() inputs:                  FormBase<any>[] = [];;
+  @Input() inputs:                  FormBase<any>[] = [];
   signUpForm:                       FormGroup;
   loading:                          boolean = false;
   user:                             User;
@@ -33,63 +30,54 @@ export class CreateAccountFormComponent implements OnInit {
     private ipt:                    FormBaseControlService,
     private http:                   HttpClient,
     private router:                 Router,
-    private userData:               UserService,
-    private testingService:         TestingService
+    private userData:               UserService
   ) {}
 
 
-  createUserObject(object, policyNumber): void {
-    if(policyNumber === null){
+  createUserObject(object, numbers): void {
+    let self = this;
+    if(numbers === null){
       this.user = new User({
-        firstName:      object.signUpFirst_name,
-        middleName:     object.signUpMI_name,
-        lastName:       object.signUpLast_name,
-        email:          object.signUpEmail,
+        firstName:                  object.signUpFirst_name,
+        middleName:                 object.signUpMI_name,
+        lastName:                   object.signUpLast_name,
+        email:                      object.signUpEmail,
       });
       this.userData.updateUser(this.user);
     }
     else {
-     this.user.policyNumber['policyNumber'] = policyNumber;
-     this.userData.updateUser(this.user);
+      this.user = new User({
+        firstName:                  object.signUpFirst_name,
+        middleName:                 object.signUpMI_name,
+        lastName:                   object.signUpLast_name,
+        email:                      object.signUpEmail,
+      });
+      numbers.forEach(number => {
+        self.user.policynumbers = new Policynumbers(number);
+      });
+      console.log(this.user);
+     //this.userData.updateUser(this.user);
     }
   }
 
   register() {
     this.loading = true;
-    this.createUserObject(this.signUpForm.value, null);
-    if(this.userData) {
-     /* forkJoin( 
-        [
-          this.authService.verifyUser(this.userData),
-          this.authService.verifyPolicy(this.userData)
-        ]
-      ).subscribe(results => {
-        console.log(results[0])
-        console.log(results[1])
-      })*/
+    this.createUserObject(this.signUpForm.value, ['123456', '789011' ]);
+    /*if(this.userData) {
       this.authService.verifyUser(this.userData)
-     /* .pipe(
-        mergeMap(data => 
-          this.authService.findPolicy(this.userData)
-        )
-      )
-      .subscribe(data => {
-        console.log(data);
-      });*/
       .subscribe(
-        data => {
-         console.log("hit the data")
-        },
+        data => {},
         err =>{
           if(err.status === 200 ){
             this.authService.findPolicy(this.userData)
             .subscribe(
               result => {
+                console.log("result find policy", result)
                 this.createUserObject(this.userData, result);
-                console.log(this.userData);
                 this.router.navigate(['signup', 'createpassword' ]);
               },
               err => {
+                console.log("err find policy", err)
                 this.router.navigate(['signup', 'createpassword' ]);
               }
             )
@@ -100,7 +88,7 @@ export class CreateAccountFormComponent implements OnInit {
           }
         }
       )
-    }
+    }*/
   }
 
   ngOnInit() {

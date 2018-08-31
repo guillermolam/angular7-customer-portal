@@ -124,7 +124,7 @@ export class AuthenticationService {
   }
 
   updatePassword(user: User, token: string, testing: boolean = false ) {
-    let url = `${environment.identity}/identity/users/password/${user.email}`;
+    let url =         `${environment.identity}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : { 
         newPassword: user.password,
@@ -137,39 +137,29 @@ export class AuthenticationService {
   }
 
   verifyPolicy(userObject): Observable<any> {
-    const user = userObject.$user.source._value;
+    const user =        userObject.$user.source._value;
     let 
-      url = `${environment.personalpolicy}/accounts/policies/${user.policyNumber}`,
-      userSendObject = {
-        firstName: user.firstName,
-        middleName: user.middleName,
-        lastName: user.lastName
+      url: string =     `${environment.personalpolicy}/accounts/policies/${user.policyNumber}`,
+      userSendObject: Object = {
+        firstName:      user.firstName,
+        middleName:     user.middleName,
+        lastName:       user.lastName
       }
     ;
     return this.http.put(url, userSendObject, this.options);
   }
 
   verifyUser(userObject): Observable<any> {
-    const user = userObject.$user.source._value;
+    const user =        userObject.$user.source._value;
     let 
-      url = `${environment.account}/accounts/users/${user.email}`,
-      userSendObject = {
-        firstName: user.firstName,
-        middleName: user.middleName,
-        lastName: user.lastName,
-        email: user.email
+      url: string =     `${environment.account}/accounts/users/${user.email}`,
+      userSendObject: Object = {
+        firstName:      user.firstName,
+        middleName:     user.middleName,
+        lastName:       user.lastName,
+        email:          user.email
       }
     ;
-    return this.http
-      .post<any>(url, userSendObject, this.options)
-      /*.map(res => {
-        if(res === null){
-          throw new Error("204");
-        }
-        else {
-          return res.json;
-        }
-      })*/
-    ;
+    return this.http.post<any>(url, userSendObject, this.options);
   }
 }

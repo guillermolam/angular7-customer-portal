@@ -6,7 +6,7 @@ export class User {
   public creationDate:            Date;
   public email:                   string;
   public password:                string;
-  public policyNumber:            Object;
+  public policynumbers:           Policynumbers;
   public temporaryPassword:       string;
 
   constructor(options: {
@@ -17,7 +17,7 @@ export class User {
     creationDate?:                Date,
     email?:                       string,
     password?:                    string,
-    policyNumber?:                Object,
+    policynumbers?:               Policynumbers,
     temporaryPassword?:           string,
   } = {}){
     this.firstName =              options.firstName;
@@ -27,8 +27,13 @@ export class User {
     this.creationDate =           options.creationDate || new Date();
     this.email =                  options.email;
     this.password =               options.password;
-    this.policyNumber =           options.policyNumber;
+    this.policynumbers =          options.policynumbers;
     this.temporaryPassword =      options.temporaryPassword;
   }
+}
 
+export class Policynumbers {
+  constructor(
+    public policynumber:        string
+  ){ }
 }

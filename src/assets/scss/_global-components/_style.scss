@@ -129,7 +129,7 @@ textarea:focus {
 
 .mapfre-content {
     margin-top:                             5rem;
-    min-height:                             83vh;
+    height: 700px; //temp
     @include media-breakpoint-down(xxs) {
         margin-top:                         10%;
     }
