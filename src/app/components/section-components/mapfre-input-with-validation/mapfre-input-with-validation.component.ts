@@ -97,7 +97,14 @@ export class MapfreIputWithValidationComponent {
   }
 
   passwordRules(reg: string): boolean {
-    return this.regExHelper.regExPasswordStrength(reg, this.form.controls['createPassword'].value );
+    if(this.form.controls['createPassword'].value != null || this.form.controls['createPassword'].value != undefined){
+      if( reg == 'ruleFive' && this.form.controls['createPassword'].value.length <= 24 ) {
+        return true;
+      }
+      else{
+        return this.regExHelper.regExPasswordStrength(reg, this.form.controls['createPassword'].value);
+      }
+    }
   }
   
   showPasswordFunction(event): void {

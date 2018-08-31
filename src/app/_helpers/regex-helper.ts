@@ -27,15 +27,17 @@ export class RegExHelper {
       'ruleTwo':    /^(?=.*[0-9])/g,
       'ruleThree':  /^(?=.*[!@#\$%\^&\*])/g,
       'ruleFour':   /^(?=.{7,})/g,
-      'ruleFive':   /^.{1,24}$/g,
+      'ruleFive':   /^.{,24}$/g,
       'all':        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{7,24}$)/g,
       'patternForDynamicForm': /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/g
     };
   }
 
   public regExPasswordStrength(rule: string, value: string): any {
-    if( (value != undefined && value != null && value != '' && value !== undefined && value !== null) 
-      && this.passwordRulesPattern[rule].test(value) ) return true;
+    if( 
+      (value != undefined || value != null || value != '' || value !== undefined || value !== null) 
+      && this.passwordRulesPattern[rule].test(value) 
+    ) return true;
   }
 
 }

@@ -95,7 +95,8 @@ input:focus, .form-control:focus { /* this is temporary */
     @include transition(5s);
 }
 
-.valid {
+.valid,
+.valid.not-fullfilled {
     color:                                  $mapfre-validation-valid-color;
     @include transition(1s);
 
