@@ -142,7 +142,7 @@ export class AuthenticationService {
   verifyPolicy(userObject): Observable<any> {
     const user =        userObject.$user.source._value;
     let 
-      url: string =     `${environment.personalpolicy}/accounts/policies/${user.policyNumber}`,
+      url: string =     `${environment.personalpolicy}/policy/${user.policyNumber}`,
       userSendObject: Object = {
         firstName:      user.firstName,
         middleName:     user.middleName,
