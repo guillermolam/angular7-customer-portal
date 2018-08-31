@@ -18,7 +18,10 @@ export class AuthenticationService {
   public token:               string;
 
   private userObservable:     Observable<any>;
-  private options:            Object = { headers : {"Content-Type": "application/json"}};
+  private options:            Object = { headers : 
+    {"Content-Type": "application/json",
+    "Access-Control-Allow-Origin":  "*" }
+  };
 
   constructor(
     private http:             HttpClient,
