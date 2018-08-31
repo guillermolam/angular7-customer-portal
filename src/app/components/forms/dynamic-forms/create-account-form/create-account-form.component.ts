@@ -35,7 +35,6 @@ export class CreateAccountFormComponent implements OnInit {
 
 
   createUserObject(object, numbers): void {
-    let self = this;
     if(numbers === null){
       this.user = new User({
         firstName:                  object.signUpFirst_name,
