@@ -57,25 +57,18 @@ export class CreateAccountFormComponent implements OnInit {
     if(this.userData) {
       this.authService.verifyUser(this.userData)
       .subscribe(
-        data => {},
+        result => {
+          this.createUserObject(this.userData, result);
+          this.router.navigate(['signup', 'createpassword' ]);
+        },
         err =>{
-          if(err.status === 200 ){
-            this.authService.findPolicy(this.userData)
-            .subscribe(
-              result => {
-                console.log("result find policy", result)
-                this.createUserObject(this.userData, result);
-                this.router.navigate(['signup', 'createpassword' ]);
-              },
-              err => {
-                console.log("err find policy", err)
-                this.router.navigate(['signup', 'addpolicy' ]);
-              }
-            )
-          }
-          else if(err.status === 400){
+          if(err.status === 400){
             console.log("400", err);
             this.router.navigate(['signup', 'emailinuse' ]);
+          }
+          else if(err.status === 404){
+            console.log("404", err);
+            this.router.navigate(['signup', 'addpolicy' ]);
           }
         }
       )
