@@ -78,8 +78,8 @@ export class AuthenticationService {
           grant_type: 'password',
           username: username,
           password: password,
-          client_id:'9e8881c6-9fd2-4113-8602-6affc18a6fdd',
-          client_secret: '01c5ebc0-8242-4025-b93d-0ad5e168b845',
+          client_id:'7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
+          client_secret: 'aeb8f080-98b7-488d-bd10-8d26fedeef2d',
           scope: 'oob'
         },
         headers : {
