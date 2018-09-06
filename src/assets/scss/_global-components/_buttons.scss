@@ -1,24 +1,25 @@
+$global-one-rem:                    1rem;
+$global-button-icon-font-size:      $global-one-rem *2;
+$global-button-footer-icon:         $global-one-rem;
+$global-button-footer-second-icon:  0.75rem;
+
 
 .btn-icon {
     i {
-        font-size: 32px;
+        font-size:                  $global-button-icon-font-size;
     }
 }
 
 .footer-flat {
     .first-icon i {
-        font-size: 1rem;
-        position: relative;
-        top: 3px;
-    }
-
-    .button-content {
-      
+        font-size:                  $global-button-footer-icon;
+        position:                   relative;
+        top:                        3px;
     }
 
     .second-icon i {
-        font-size: 12px;
-        position: relative;
-    top: 1px;
+        font-size:                  $global-button-footer-second-icon;
+        position:                   relative;
+        top:                        1px;
     }
 }

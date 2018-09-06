@@ -1,37 +1,42 @@
+$global-zero:                               0;
+$global-one-rem:                            1rem;
 $global-body-bg-color:                      $lite-gray-two;
+$global-card-title-padding:                 $global-one-rem;
+$global-center-on-page-min-height:          80vh;
+$global-group-inputs-margin-top:            $global-one-rem;
+$global-group-button-margin-top:            $global-one-rem *2.5;
+$global-header-icon-full:                   $global-one-rem;
+$global-hr-body-margin-top:                 $padding-vertical *2;
+$global-hr-body-margin-bottom:              $padding-vertical *2;
+$global-hr-body-margin-top:                 $global-one-rem *2;
+$global-hr-body-margin-bottom:              $global-one-rem *2;
 $global-hr-color:                           $lite-gray-three;
-$global-prefix-padding-right:               $padding-vertical;
-
+$global-hr-header-margin-bottom:            $padding-vertical +4;
+$global-login-hr-margin-top:                $margin-vertical *2.5;
+$global-login-hr-margin-bottom:             $margin-vertical * 1.75;
+$global-mapfre-content-margin:              $global-one-rem * 5;
+$global-prefix-padding-right:               1.125rem;
+$global-red-override:                       $mapfre-red !important;
 $global-title-font-size:                    $font-size-base +0.625;
 $global-title-font-family:                  $font-family-base;
 $global-title-line-height:                  2rem;
 $global-title-margin-bottom:                $margin-vertical/2;
 
-$global-red-override:                       $mapfre-red !important;
-$global-hr-header-margin-bottom:            $padding-vertical +4;
-$global-hr-body-margin-top:                 $padding-vertical *2;
-$global-hr-body-margin-bottom:              $padding-vertical *2;
-$global-login-hr-margin-top:                $margin-vertical *2.5;
-$global-login-hr-margin-bottom:             $margin-vertical * 1.75;
-
-$global-prefix-padding-right:               1.125rem;
-
-
 body {
     background-color:                       $global-body-bg-color;
-    line-height: 24px;
+    line-height:                            24px;
 }
 
 hr {
   border:                                   solid thin $global-hr-color;
 
 	&.header {
-		margin-top:                             0;
+		margin-top:                             $global-zero;
 		margin-bottom:                          $global-hr-header-margin-bottom;
 	}
 	&.body {
-		margin-top:                             2rem;
-		margin-bottom:                          2rem;
+		margin-top:                             $global-hr-body-margin-top;
+		margin-bottom:                          $global-hr-body-margin-bottom;
     }
     
   &.hr-login {
@@ -57,7 +62,7 @@ a {
 
 input[type="text"]:focus,
 textarea:focus {
-    outline:                               0;
+    outline:                               $global-zero;
     box-shadow:                            none;
 }
 
@@ -65,7 +70,7 @@ textarea:focus {
 .form-control:focus:not(input[type="text"]),
 input[type="submit"]:focus, input:focus,
 textarea:focus {
-    outline:                               0;
+    outline:                               $global-zero;
     box-shadow:                            none;
 }
 
@@ -75,8 +80,8 @@ textarea:focus {
 }
 
 .card-title {
-    padding-bottom:                         1rem;
-    margin-bottom:0;
+    padding-bottom:                         $global-card-title-padding; 
+    margin-bottom:                          $global-zero;
 }
 
 .center-text {
@@ -88,36 +93,36 @@ textarea:focus {
 }
 
 .center-on-page {
-  align-items: center;
-  display: flex;
-  min-height: 80vh;
-  justify-content: center;
+  align-items:                              center;
+  display:                                  flex;
+  min-height:                               $global-center-on-page-min-height; 
+  justify-content:                          center;
 }
 
 .group-button {
-  margin-top: 40px;
+  margin-top:                               $global-group-button-margin-top; 
 }
 
 .group-inputs {
-  margin-top: 16px;
+  margin-top:                               $global-group-inputs-margin-top; 
 }
 
 .header-icon {
-  margin: auto;
-  margin-top: 0px;
+  margin:                                   auto;
+  margin-top:                               $global-zero;
 
   &.full-icon {
-    margin-bottom: 16px;
+    margin-bottom:                          $global-header-icon-full; 
   }
 
   .svg-container {
-    height: 96px;
-    display: flex;
-    align-items: center;
+    height:                                 96px;
+    display:                                flex;
+    align-items:                            center;
 
     svg {
-      margin: auto;
-      display: block;
+      margin:                               auto;
+      display:                              block;
     }
   }
 }
@@ -128,7 +133,7 @@ textarea:focus {
 }
 
 .mapfre-content {
-    margin-top:                             5rem;
+    margin-top:                             $global-mapfre-content-margin; 
    
     @include media-breakpoint-down(xxs) {
         margin-top:                         10%;
@@ -144,7 +149,7 @@ textarea:focus {
 }
 
 .subtitle-copy {
-  margin-bottom:                            0;
+  margin-bottom:                            $global-zero;
 }
 
 .text-center {
@@ -156,7 +161,7 @@ textarea:focus {
   font-size:                                $global-title-font-size;
   line-height:                              $global-title-line-height;
   margin-bottom:                            $global-title-margin-bottom;
-  padding:                                  0;
+  padding:                                  $global-zero;
 }
 
 .uppercase {
@@ -167,7 +172,7 @@ textarea:focus {
 }
 
 .no-border {
-  border: none !important;
+  border:                                   none !important;
 } 
 
 .border-radius {
@@ -177,7 +182,7 @@ textarea:focus {
 // ---- class overrides ----
 .container {
     @include media-breakpoint-down(xxs) {
-        padding:                            0;
+        padding:                            $global-zero;
     }
 }
 .navbar {
@@ -188,23 +193,23 @@ textarea:focus {
 }
 
 .modal-backdrop { 
-    z-index: 1028;
+    z-index:                                1028;
 }
 
 .no-margin-bottom {
-    margin-bottom: 0;
+    margin-bottom:                          $global-zero;
 }
 
 .no-margin-top {
-    margin-top: 0;
+    margin-top:                             $global-zero;
 }
 
 .no-padding-top {
-    padding-top: 0;
+    padding-top:                            $global-zero;
 }
 
 .no-padding-bottom {
-    padding-bottom: 0;
+    padding-bottom:                         $global-zero;
 }
 
 

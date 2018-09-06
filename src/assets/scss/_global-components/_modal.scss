@@ -3,32 +3,32 @@ $mapfre-modal-link-font-size:             					$font-size-base;
 $mapfre-modal-info-color:                 					$lite-gray;
 $mapfre-modal-info-font-size:             					$font-size-base * 0.5;
 
-$mapfre-modal-close-font-size:								56px;
-$mapfre-modal-body-font-size:								1rem;
-$mapfre-modal-title-color: 									$mapfre-blue;
-$mapfre-modal-grid-color: 								  	#737373; 
+$mapfre-modal-close-font-size:								      56px;
+$mapfre-modal-body-font-size:								        1rem;
+$mapfre-modal-title-color: 									        $mapfre-blue;
+$mapfre-modal-grid-color: 								  	    #737373; 
 
-$mapfre-modal-grid-font-size: 								1rem;
-$mapfre-modal-grid-font-weight:				 				700;
-$mapfre-modal-grid-color: 									$mapfre-blue;
+$mapfre-modal-grid-font-size: 								      1rem;
+$mapfre-modal-grid-font-weight:				 				      700;
+$mapfre-modal-grid-color: 									        $mapfre-blue;
 
-$global-modal-footer-padding:								$padding-vertical;
+$global-modal-footer-padding:								        $padding-vertical;
 
 .close {
-	font-size: 												$mapfre-modal-close-font-size;
-	font-weight: 											100;
-	margin-top: 											-31px !important;
-	text-shadow: 											none !important;
+	font-size: 												                $mapfre-modal-close-font-size;
+	font-weight: 											                100;
+	margin-top: 											                -31px !important;
+	text-shadow: 											                none !important;
 }
 
 .help {
-	position: 												absolute;
-	top: 													-30px;
+	position: 												                absolute;
+	top: 													                    -30px;
 }
 
 .modal-body {
-	font-size: 												$mapfre-modal-body-font-size;  
-	color: 													#737373;
+	font-size: 												                $mapfre-modal-body-font-size;  
+	color: 													                #737373;
 	margin-bottom: 24px;
 	text-align: left;
 }

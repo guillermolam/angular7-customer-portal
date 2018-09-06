@@ -70,7 +70,6 @@ import { SendEmailFormComponent }             from './components/forms/dynamic-f
 import { EmailConfirmationComponent }         from './components/confirmations/email-confirmation/email-confirmation.component';
 import { ForgotPasswordNondynamicComponent }  from './components/forms/non-dynamic-forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
 import { MapfreAlertComponent }               from './components/individual-components/mapfre-alert/mapfre-alert.component';
-import { DesignSystemComponent }              from './routes/design-system/design-system.component';
 import { MapfreCodeComponent }                from './components/wrapper-components/mapfre-code/mapfre-code.component';
 import { MapfreModalComponent }               from './components/section-components/mapfre-modal/mapfre-modal.component';
 import { MapfreLoadingComponent }             from './components/individual-components/mapfre-loading/mapfre-loading.component';       
@@ -130,7 +129,6 @@ export function tokenGetter() {
     EmailConfirmationComponent,
     CreateNewPasswordComponent,
     MapfreAlertComponent,
-    DesignSystemComponent,
     MapfreCodeComponent,
     MapfreModalComponent,
     MapfreLoadingComponent,
