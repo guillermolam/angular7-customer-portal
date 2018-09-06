@@ -150,7 +150,7 @@ export class AuthenticationService {
   verifyUser(userObject): Observable<any> {
     const user =        userObject.$user.source._value;
     let 
-      url: string =     `${environment.account}/accounts/users/${user.email}`,
+      url: string =     `${environment.account}/accounts/${user.email}`,
       userSendObject: Object = {
         firstName:      user.firstName,
         middleName:     user.middleName,
