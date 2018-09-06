@@ -5,7 +5,6 @@ import { AuthGuard }                  from "./_guards/auth.guard";
 
 // ----- Routes ----- //
 import { DashboardComponent }         from './routes/dashboard/dashboard.component';
-import { DesignSystemComponent }      from './routes/design-system/design-system.component';
 import { ForgotPasswordComponent }    from "./routes/forgot-password/forgot-password.component";
 import { CreateNewPasswordComponent } from "./routes/create-new-password/create-new-password.component";
 import { LoginComponent }             from "./routes/login/login.component";
@@ -17,7 +16,6 @@ import { WelcomeComponent }           from "./routes/welcome/welcome.component";
 const appRoutes: Routes = [
   { path: "", component: LoginComponent, canActivate: [AuthGuard] },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: "design-system", component: DesignSystemComponent },
   { path: "forgotpassword", component: ForgotPasswordComponent },
   { path: "createpassword", component: CreateNewPasswordComponent },
   { path: "login", component: LoginComponent },
