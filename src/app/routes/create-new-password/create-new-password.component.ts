@@ -1,4 +1,4 @@
-import { Component, OnInit, Input }       from '@angular/core';
+import { Component, OnInit }       from '@angular/core';
 import { ActivatedRoute }                 from '@angular/router';
 import { AuthenticationService }          from '../../_services/_iam/authentication-service.service';
 import { CreateNewPasswordFormService }   from '../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
@@ -63,7 +63,7 @@ export class CreateNewPasswordComponent implements OnInit {
     this.successChangePassword = event;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getTokenfromUrl()
   }
 }
