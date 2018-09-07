@@ -49,14 +49,16 @@ export class CreateNewPasswordComponent implements OnInit {
 
     return 	this.authenticationService
       .tokenVerification(token, email)
-      .subscribe((data)=>{
-        this.expiredLink = false
-        this.waitingForResponse = false
-      },(error)=>{
-        this.expiredLink = true
-        this.waitingForResponse = false
-      }
-    );
+      .subscribe(
+        data => {
+          this.expiredLink = false;
+          this.waitingForResponse = false;
+        }, error => {
+          this.expiredLink = true;
+          this.waitingForResponse = false;
+        }
+      )
+    ;
   }
 
   userConfirmation(event): void {
