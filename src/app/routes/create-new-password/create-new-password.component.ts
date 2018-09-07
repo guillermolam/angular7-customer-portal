@@ -36,14 +36,13 @@ export class CreateNewPasswordComponent implements OnInit {
       if(params) 
         return this.isTokenValid(params.token,params.email)
     });
-  	return false
+  	return false;
   }
 
   isTokenValid(token,email): any{
-    if(!token || !email)
-  	  return false
+    if(!token || !email) return false;
   	
-    this.waitingForResponse = true
+    this.waitingForResponse = true;
     return 	this.authenticationService
       .tokenVerification(token, email)
       .subscribe((data)=>{
@@ -61,6 +60,6 @@ export class CreateNewPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // this.getTokenfromUrl()
+    this.getTokenfromUrl()
   }
 }
