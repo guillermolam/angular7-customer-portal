@@ -66,6 +66,11 @@ export class CreateNewPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTokenfromUrl()
+    this.route.queryParams.subscribe(params => {
+      if(params) {
+        return this.isTokenValid(params.token, params.email);
+      }
+    });
+   // this.getTokenfromUrl()
   }
 }
