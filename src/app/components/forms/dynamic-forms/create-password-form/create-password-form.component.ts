@@ -91,8 +91,8 @@ export class CreatePasswordFormComponent implements OnInit {
      });
     
     //route paramaters for example /signup/:parm
-    this.activeRoute.params.subscribe((params: Params) => {
+   /* this.activeRoute.params.subscribe((params: Params) => {
       this.whereInTheProcess = params['parm'];
-    });
+    });*/
   }
 }
