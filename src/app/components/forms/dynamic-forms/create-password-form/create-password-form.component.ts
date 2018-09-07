@@ -40,12 +40,14 @@ export class CreatePasswordFormComponent implements OnInit {
   ) {}
 
   createNewPassword(): void {
-    if (this.whereInTheProcess == "createpassword") {
+    /*if (this.whereInTheProcess == "createpassword") {
       this.createPassword(this.userData);
     }
     else {
       this.updatePassword();
-    }
+    }*/
+
+    this.updatePassword();
   }
 
   createPassword(userObject): void {
@@ -91,8 +93,8 @@ export class CreatePasswordFormComponent implements OnInit {
      });
     
     //route paramaters for example /signup/:parm
-    this.activeRoute.params.subscribe((params: Params) => {
+    /*this.activeRoute.params.subscribe((params: Params) => {
       this.whereInTheProcess = params['parm'];
-    });
+    });*/
   }
 }
