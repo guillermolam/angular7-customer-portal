@@ -74,7 +74,7 @@ export class AuthenticationService {
     const client_id ='7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
     let urlpartone = `${environment.api_gateway_url}/auth/oauth/v2/token`,
-        urlparttwo = `grant_type='password'&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope='oob'`;
+        urlparttwo = `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
     let url = urlpartone + '?' + urlparttwo;
     
     return this.http.post<any>(url, {}, {
