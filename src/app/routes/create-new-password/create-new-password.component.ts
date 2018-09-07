@@ -31,18 +31,22 @@ export class CreateNewPasswordComponent implements OnInit {
     if(event) this.successChangePassword = event;
   }
 
-  getTokenfromUrl(): boolean{
+  getTokenfromUrl() {
+    console.log("get token")
   	this.route.queryParams.subscribe(params => {
-      if(params) 
-        return this.isTokenValid(params.token,params.email)
+      if(params) {
+        return this.isTokenValid(params.token, params.email);
+      }
     });
-  	return false;
+  	//return false;
   }
 
-  isTokenValid(token,email): any{
+  isTokenValid(token,email) {
+    console.log("is token valid")
     if(!token || !email) return false;
   	
     this.waitingForResponse = true;
+
     return 	this.authenticationService
       .tokenVerification(token, email)
       .subscribe((data)=>{

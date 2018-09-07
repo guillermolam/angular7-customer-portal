@@ -133,7 +133,7 @@ export class AuthenticationService {
   }
 
   updatePassword(user: User, token: string, testing: boolean = false ) {
-    let url =         `${environment.identity}/identity/users/password/${user.email}`;
+    let url = `${environment.identity}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : { 
         newPassword: user.password,
