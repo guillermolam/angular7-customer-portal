@@ -89,6 +89,10 @@ import { MapfreCheckboxComponent } from './components/individual-components/inpu
 import { MapfreInfoDivsComponent } from './components/section-components/mapfre-info-divs/mapfre-info-divs.component';
 import { VerifyAccountScreenComponent } from './components/confirmations/signup-process/verify-account-screen/verify-account-screen.component';
 import { WelcomeComponent } from './routes/welcome/welcome.component';
+import { PolicyNotFoundScreenComponent } from './components/confirmations/signup-process/policy-not-found-screen/policy-not-found-screen.component';
+import { EditPolicyScreenComponent } from './components/confirmations/signup-process/edit-policy-screen/edit-policy-screen.component';
+import { EditPolicyComponent } from './components/forms/dynamic-forms/edit-policy/edit-policy.component';
+import { PolicyBelongToAnotherScreenComponent } from './components/confirmations/signup-process/policy-belong-to-another-screen/policy-belong-to-another-screen.component';
 
 
 if(environment.production) {
@@ -159,7 +163,11 @@ export function tokenGetter() {
     EmailErrorSvgComponent,
     MapfreInfoDivsComponent,
     VerifyAccountScreenComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    PolicyNotFoundScreenComponent,
+    EditPolicyScreenComponent,
+    EditPolicyComponent,
+    PolicyBelongToAnotherScreenComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { switchMap }                      from 'rxjs/operators';
 
 import { AddPolicyService }               from '../../../_services/forms/create-account/add-policy.service';
 import { CreateNewPasswordFormService }   from '../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
+import { EditPolicyService }              from '../../../_services/forms/create-account/edit-policy.service';
 import { ModalOptions }                   from '../../../_models/modal-options';
 import { User }                           from '../../../_models/user';
 import { UserService }                    from '../../../_services/user.service';
@@ -17,18 +18,21 @@ import { UserService }                    from '../../../_services/user.service'
 export class SignupProcessComponent implements OnInit {
   addPolicy:                           any[];
   createNewPassword:                   any[];
-  user:                                User;
+  editPolicyInfo:                      any[];
+  user:                                any; //need to use the user model
   whereInTheProcess:                   string;
   whereToFindModalOptions:             ModalOptions;
 
   constructor( 
     private activatedRoute:            ActivatedRoute,
-    private userData:                  UserService,
+    private userService:               UserService,
+    editPolicyService:                 EditPolicyService,
     passwordService:                   CreateNewPasswordFormService,
     policyService:                     AddPolicyService,
   ) {
     this.addPolicy = policyService.getInputs();
     this.createNewPassword = passwordService.getInputs();
+    this.editPolicyInfo = editPolicyService.getInputs();
     this.whereToFindModalOptions = new ModalOptions({
       additionalButtonClasses:        "flat link", 
 			animatePosition:                "bottom", 
@@ -39,10 +43,28 @@ export class SignupProcessComponent implements OnInit {
 		});
   }
 
+  testingData(): void{
+    this.user = {
+      addPolicyToAccountAttempts:  1,
+      firstName:                  'TestFirstName',
+      middleName:                 'TestMiddleName',
+      lastName:                   'TestLastName',
+      email:                      'test@email.com',
+      policynumbers:              123456
+    };
+    this.userService.updateUser(this.user);
+  } 
+
   ngOnInit() {
     this.user = new User();
-    this.userData.$user.subscribe((user) => {
-      this.user = user;
+
+    this.userService.$user.subscribe((user) => {
+      if(user.firstName == undefined){
+        this.testingData();
+      }
+      else {
+        this.user = user;
+      }
     });
 
     this.activatedRoute.params.subscribe((params: Params) => {

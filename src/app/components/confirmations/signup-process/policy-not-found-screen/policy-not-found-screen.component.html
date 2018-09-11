@@ -1,0 +1,61 @@
+<div class="text-center">
+  {{ 'NOTFOUND_POLICY_NOT_FOUND' | translate }}
+</div>
+<div class="row">
+  <div class="col">
+    <div class="policy-info-card">
+      <div class="policy-info-title text-center">
+        {{ 'POLICY_INFO_TITLE' | translate }}
+      </div>
+      <hr>
+      <div class="policy-info-content">
+        <ul>
+          <li>{{ 'POLICY_INFO_HOLDER_NAME' | translate }}:&nbsp;<strong>{{ policyHolderName }}</strong></li>
+          <li>{{ 'POLICY_INFO_NUMBER' | translate }}:&nbsp;<strong>#{{ policyNumber }}</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="amountOfTries <= 2">
+  <div class="text-center margin-bottom mb24 margin-top mt8">
+    <mapfre-link
+        [additionalClasses]="'small-link underline horizontal-space'"
+        [routerLink]="['/signup','editpolicy']"
+      >
+        {{ 'EDIT_POLICY_INFO' | translate }}
+    </mapfre-link>
+  </div>
+  <div class="text-center">
+    <mapfre-button 
+      [additionalClasses]="'basic primary large'"
+      [routerLink]="['/signup','addpolicy']"
+    >
+      {{ 'TRY_AGAIN' | translate }}
+    </mapfre-button>
+  </div>
+</div>
+
+<div *ngIf="amountOfTries >= 3">
+  <div class="margin-bottom mb24">
+    <mapfre-info-divs> 
+        {{ 'NOTFOUND_IF_YOU_PURCHASE' | translate }}
+    </mapfre-info-divs>
+  </div>
+  <div class="text-center">
+    <mapfre-button 
+      [additionalClasses]="'basic primary large'"
+      [routerLink]="['/signup','addpolicy']"
+    >
+      {{ 'TRY_AGAIN_WITH_A_DIFFERENT' | translate }}
+    </mapfre-button>
+  </div>
+</div>
+
+<hr class="hr-login">
+<div class="row">
+  <div class="col text-center">
+    {{ 'NOTFOUND_NEED_ASSISTANCE' | translate }}
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col">
+    <div class="policy-info-card">
+      <div class="policy-info-title text-center">
+        {{ 'POLICYBELONGS_INFO_TITLE' | translate }}
+      </div>
+      <hr>
+      <div class="policy-info-content">
+        <div class="row">
+          <div class="icon col-3">
+            <img src="http://placehold.it/50x50" />
+          </div>
+          <div class="col-9">
+            <ul>
+              <li>{{ typeOfAccount | translate }} {{ typeOfPolicy | translate }}:&nbsp;<strong>{{ policyNumber }}</strong></li>
+              <li>{{ 'POLICYBELONGS_EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyNumber }}</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <p class="legal">
+      {{ 'POLICYBELONGS_LEGAL' | translate }}
+    </p>
+  </div>
+</div>
+<div class="row group-button">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'basic primary large'"
+        (click)="confirmPolicy()"
+      >{{ 'POLICYBELONGS_AUTHORIZED' | translate }}</mapfre-button> 
+    </div>
+  </div>
+  <div class="row group-button text-center">
+      <div class="col">
+        <mapfre-button
+          [additionalClasses]="'secondary ghost small'"
+          [routerLink]="['/signup', 'addpolicy']"
+        >{{ 'CANCEL' | translate }}</mapfre-button>
+      </div>
+    </div>

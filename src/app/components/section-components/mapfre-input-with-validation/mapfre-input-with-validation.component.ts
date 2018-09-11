@@ -4,6 +4,7 @@ import { FormGroup }                    from '@angular/forms';
 import { AlertService }                 from '../../../_services/alert.service';
 import { FormBase }                     from '../../../_models/form-base';
 import { RegExHelper }                  from '../../../_helpers/regex-helper';
+import { User }                         from '../../../_models/user';
 
  
 @Component({
@@ -16,18 +17,19 @@ import { RegExHelper }                  from '../../../_helpers/regex-helper';
 export class MapfreIputWithValidationComponent {
   @Input()  input:                      FormBase<any>;
   @Input()  form:                       FormGroup;
-            validMessageShow:           boolean = false;
+  @Input()  prefillData:                User;
             emailShowError:             boolean = false;
             capsLock:                   boolean = false;
             notOnPageLoad:              boolean = false;
             showPassword:               boolean = false;
             showPasswordIcon:           boolean = false;
             validInput:                 boolean = true;
+            validMessageShow:           boolean = false;
             message:                    any;
 
   constructor(
-    private alertService: AlertService,
-    private regExHelper:  RegExHelper,
+    private alertService:               AlertService,
+    private regExHelper:                RegExHelper,
   ) { }
 
   @Output() inputValidationCheck:       EventEmitter<boolean> = new EventEmitter<boolean>();

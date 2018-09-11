@@ -23,8 +23,8 @@ $global-title-line-height:                  2rem;
 $global-title-margin-bottom:                $margin-vertical/2;
 
 body {
-    background-color:                       $global-body-bg-color;
-    line-height:                            24px;
+  background-color:                       $global-body-bg-color;
+  line-height:                            24px;
 }
 
 hr {
@@ -192,24 +192,82 @@ textarea:focus {
     background-color:                       $global-red-override; 
 }
 
+.margin-bottom { //PX need to be REM and variables
+  &.mb8 {
+    margin-bottom:                          8px !important;
+  }
+  &.mb16 {
+    margin-bottom:                          16px !important;
+  }
+  &.mb24 {
+    margin-bottom:                          24px !important;
+  }
+}
+
+.margin-top {
+  &.mt8 {
+    margin-top:                             8px !important;
+  }
+  &.mt16 {
+    margin-top:                             16px !important;
+  }
+  &.mt24 {
+    margin-top:                             24px !important;
+  }
+}
+
+.margin-vertical {
+  &.mv8 {
+    margin-bottom:                          8px !important;
+    margin-top:                             8px !important;
+  }
+  &.mv16 {
+    margin-bottom:                          16px !important;
+    margin-top:                             16px !important;
+  }
+  &.mv24 {
+    margin-bottom:                          24px !important;
+    margin-top:                             24px !important;
+  }
+}
+
 .modal-backdrop { 
-    z-index:                                1028;
+  z-index:                                1028;
 }
 
 .no-margin-bottom {
-    margin-bottom:                          $global-zero;
+  margin-bottom:                          $global-zero;
 }
 
 .no-margin-top {
-    margin-top:                             $global-zero;
+  margin-top:                             $global-zero;
 }
 
 .no-padding-top {
-    padding-top:                            $global-zero;
+  padding-top:                            $global-zero;
 }
 
 .no-padding-bottom {
-    padding-bottom:                         $global-zero;
+  padding-bottom:                         $global-zero;
 }
 
 
+//need to figure out where to put this
+.policy-info-card {
+  background: #f7f7f7;
+  border: thin solid #EAE9E9;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  @include border-radius(6px);
+
+  hr {
+    margin-bottom: 16px;
+  }
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}

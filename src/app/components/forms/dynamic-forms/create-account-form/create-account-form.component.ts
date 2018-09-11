@@ -2,7 +2,6 @@ import { Component, OnInit, Input }     from "@angular/core";
 import { FormGroup }                    from "@angular/forms";
 import { HttpClient }                   from "@angular/common/http";
 import { Router }                       from "@angular/router";
-import {forkJoin} from 'rxjs';
 
 // --- Components | Services | Models --- //
 import { AlertService }                 from "../../../../_services/alert.service";
