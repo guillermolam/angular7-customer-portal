@@ -13,8 +13,6 @@ import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
 import 'rxjs/add/operator/catch';
 
-
-
 @Injectable()
 export class AuthenticationService {
   public token:               string;
@@ -28,21 +26,21 @@ export class AuthenticationService {
     private http:             HttpClient,
   ) {
     // set token if saved in local storage
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    this.token = currentUser && currentUser.token;
+    const currentUser =       JSON.parse(localStorage.getItem("currentUser"));
+    this.token =              currentUser && currentUser.token;
   }
 
   confirmPolicyAndAccount(userObject): Observable<any> {
-    const user = userObject.$user.source.value;
+    const user =              userObject.$user.source.value;
     let 
-      url = `${environment.account}/accounts/${user.email}`,
+      url =                   `${environment.account}/accounts/${user.email}`,
       userSendObject = {
-        firstName: user.firstName,
-        middleName: user.middleName,
-        lastName: user.lastName,
-        password: user.password,
-        email: user.email,
-        policynumbers: user.policynumbers
+        firstName:            user.firstName,
+        middleName:           user.middleName,
+        lastName:             user.lastName,
+        password:             user.password,
+        email:                user.email,
+        policynumbers:        user.policynumbers
       }
     ;
     return this.http.put<any>(url, userSendObject, this.options)
@@ -52,27 +50,43 @@ export class AuthenticationService {
       );
   }
 
-  createPassword(userObject): Observable<any> {
-    const user = userObject.$user.source.value;
+  confirmPaperLessPolicy(userObject): Observable<any> {
+    const user =            userObject.$user.source.value;
     let 
       url = `${environment.account}/accounts/${user.email}`,
       userSendObject = {
-        firstName: user.firstName,
-        middleName: user.middleName,
-        lastName: user.lastName,
-        password: user.password,
-        email: user.email,
-        policynumbers: user.policynumbers
+        firstName:          user.firstName,
+        middleName:         user.middleName,
+        lastName:           user.lastName,
+        password:           user.password,
+        email:              user.email,
+        policynumbers:      user.policynumbers
+      }
+    ;
+    return this.http.put<any>(url, userSendObject, this.options);
+  }
+
+  createPassword(userObject): Observable<any> {
+    const user =          userObject.$user.source.value;
+    let 
+      url =               `${environment.account}/accounts/${user.email}`,
+      userSendObject:     Object = {
+        firstName:        user.firstName,
+        middleName:       user.middleName,
+        lastName:         user.lastName,
+        password:         user.password,
+        email:            user.email,
+        policynumbers:    user.policynumbers
       }
     ;
     return this.http.put<any>(url, userSendObject, this.options)
   }
 
   findPolicy(userObject): Observable<any> {
-    const user = userObject.$user.source._value;
+    const user =        userObject.$user.source._value;
     let 
-      url: string = `${environment.account}/accounts/policies/${user.email}`,
-      userSendObject: Object = {
+      url: string =     `${environment.account}/accounts/policies/${user.email}`,
+      userSendObject:   Object = {
         firstName:      user.firstName,
         middleName:     user.middleName,
         lastName:       user.lastName,
@@ -83,9 +97,9 @@ export class AuthenticationService {
   }
 
   forgotPasswordSendEmailId(email: string): Observable<any> {
-    const url = `${environment.identity}/identity/users/account-recovery`;
+    const url =       `${environment.identity}/identity/users/account-recovery`;
     return this.http.post<any>(url, {} , {
-      params : { email: email },
+      params : {      email: email },
       headers : {
         "Content-Type": "application/json"
       }
@@ -93,10 +107,10 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    const client_id ='7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
+    const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone = `${environment.api_gateway_url}/auth/oauth/v2/token`,
-        urlparttwo = `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
+    let urlpartone =      `${environment.api_gateway_url}/auth/oauth/v2/token`,
+        urlparttwo =      `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
     let url = urlpartone + '?' + urlparttwo;
     
     return this.http.post<any>(url, {}, {
@@ -120,7 +134,7 @@ export class AuthenticationService {
         }
       })
      .catch((error:any) => Observable.throw('Invalid email/password combination'));
-     /*oringal params
+     /*oringal params -- do not get rid of for the moment
      .post<any>(url, {}, {
         params : {
           grant_type: 'password',
@@ -139,27 +153,27 @@ export class AuthenticationService {
 
   logout(): void {
     // clear token remove user from local storage to log user out
-    this.token = null;
+    this.token =        null;
     localStorage.removeItem("currentUser");
   }
 
   //this method might be removed
   registerAccount(user: User) {
-    const url = `${environment.identity}/api/users`;
+    const url =         `${environment.identity}/api/users`;
     return this.http.post(url, user, this.options);
   }
 
   tokenVerification(token: string, email: string): Observable<Object> {
-  	let url = `${environment.identity}/identity/users/${email}?token=${token}`;	
+  	let url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
   	return this.http.post(url,{}, this.options);
   }
 
   updatePassword(user: User, token: string, testing: boolean = false ) {
-    let url = `${environment.identity}/identity/users/password/${user.email}`;
+    let url =           `${environment.identity}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : { 
-        newPassword: user.password,
-        token: token 
+        newPassword:    user.password,
+        token:          token 
       },
       headers : {
         "Content-Type": "application/json"

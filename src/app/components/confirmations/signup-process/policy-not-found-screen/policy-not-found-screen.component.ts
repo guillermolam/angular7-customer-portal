@@ -3,6 +3,7 @@ import { Router  }                  from '@angular/router';
 
 import { AuthenticationService }    from '../../../../_services/_iam/authentication-service.service';
 import { UserService }              from '../../../../_services/user.service';
+import { User }                     from '../../../../_models/user';
 
 @Component({
   selector: 'app-policy-not-found-screen',
@@ -10,7 +11,7 @@ import { UserService }              from '../../../../_services/user.service';
   styleUrls: ['./policy-not-found-screen.component.scss']
 })
 export class PolicyNotFoundScreenComponent implements OnInit {
-  @Input()  userData:               string;
+  @Input()  userData:               User;
             amountOfTries:          number;
             policyHolderName:       string;
             policyNumber:           string;
@@ -32,7 +33,12 @@ export class PolicyNotFoundScreenComponent implements OnInit {
       .verifyPolicy(this.userService)
       .subscribe(
         data => {
-          this.router.navigate(['signup', 'reviewpolicy']);
+          let email = this.userData.email,
+              password = this.userData.password;
+
+          this.authService.login(email, password).subscribe(
+            data => { this.router.navigate(['/dashboard']); }
+          )
         },
         err => {
           if(err.status === 404){
@@ -53,7 +59,7 @@ export class PolicyNotFoundScreenComponent implements OnInit {
   }
 
   updateObservable(userData): void {
-    userData.addPolicyToAccountAttempts = userData.addPolicyToAccountAttempts+1;
+    userData.addPolicyAttempts = userData.addPolicyAttempts+1;
     this.userService.updateUser(userData);
   }
 

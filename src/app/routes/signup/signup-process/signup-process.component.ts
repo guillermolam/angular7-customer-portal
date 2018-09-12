@@ -19,7 +19,7 @@ export class SignupProcessComponent implements OnInit {
   addPolicy:                           any[];
   createNewPassword:                   any[];
   editPolicyInfo:                      any[];
-  user:                                any; //need to use the user model
+  user:                                User;
   whereInTheProcess:                   string;
   whereToFindModalOptions:             ModalOptions;
 
@@ -43,43 +43,43 @@ export class SignupProcessComponent implements OnInit {
 		});
   }
 
-  testingData(): void{
-    this.user = {
-      addPolicyToAccountAttempts:  1,
+  testingData(): User {
+    let object = {
+      addPolicyAttempts:          1,
       firstName:                  'TestFirstName',
       middleName:                 'TestMiddleName',
       lastName:                   'TestLastName',
       email:                      'test@email.com',
-      policynumbers:              123456,
-      policyDetails:              [{
-        policyNumber: 123456,
-        policy: {
-          effectiveDate: '12/12/2018',
-          type: 'home',
-        }
+      password:                   'abcd12D!',
+      policynumbers:              [123456,789012],
+      policyDetails: [{
+        effectiveDate:            '12/12/2018',
+        policyNumber:             123456,
+        policyType:               'home',
+        typeOfAccount:            'personal',
       },
       {
-        policyNumber: 123456,
-        policy: {
-          effectiveDate: '12/12/2018',
-          type: 'home',
-        }
+        effectiveDate:            '12/12/2018',
+        policyNumber:             789012,
+        policyType:               'auto',
+        typeOfAccount:            'personal'
       }]
     };
-    this.userService.updateUser(this.user);
-  } 
+    return object;
+  }
 
   ngOnInit() {
-    this.user = new User();
-
-    this.userService.$user.subscribe((user) => {
-      if(user.firstName == undefined){
-        this.testingData();
+    this.userService.$user.subscribe(
+      user => {
+        if(user == undefined){
+          this.user = this.testingData();
+          this.userService.updateUser(this.user);
+        }
+        else {
+          this.user = user;
+        }
       }
-      else {
-        this.user = user;
-      }
-    });
+    );
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.whereInTheProcess = params['parm'];

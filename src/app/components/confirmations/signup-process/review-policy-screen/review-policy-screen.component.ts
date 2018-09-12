@@ -1,5 +1,6 @@
 import { Component, Input, OnInit }    from '@angular/core';
 
+import { AuthenticationService }       from '../../../../_services/_iam/authentication-service.service';
 import { User }                        from '../../../../_models/user';
 
 @Component({
@@ -10,71 +11,28 @@ import { User }                        from '../../../../_models/user';
 export class ReviewPolicyScreenComponent implements OnInit {
   @Input()  policyObject:              Object;
   @Input()  userData:                  User;
-            typeOfAccount:             string;
-            typeOfPolicy:              string;
-            policyDate:                string;
-            policyNumber:              string;
-            policy:                    Object;
             user:                      User;
 
-  constructor() { }
+  constructor(
+    private authService:               AuthenticationService
+  ) { }
 
   downLoadWalletCard(): void {
     console.log("you just downloaded a walletcard");
   }
 
-  getUserData(userObject): void {
-    if(!userObject){
-      this.policy = this.testObject();
-    }
-    else {
-      this.policy = userObject;
-    }
-    this.policyDetails(this.policy);
-  }
-
-  policyDetails(userObject): void {
-    switch(userObject.policynumbers.type) {
-      case "Personal":
-        this.typeOfAccount =        'POLICYBELONGS_TYPE_NUMBER_PERSONAL';
-      break;
-      case "Business":
-        this.typeOfAccount =        'POLICYBELONGS_TYPE_NUMBER_BIZ';
-      break;
-      default:
-      this.typeOfAccount =          'PERSONAL';
-      break;
-    }
-    switch(userObject.policynumbers.policy) {
-      case "Auto":
-        this.typeOfPolicy =         'POLICYBELONGS_TYPE_NUMBER_AUTO';
-      break;
-      case "Home":
-        this.typeOfPolicy =         'POLICYBELONGS_TYPE_NUMBER_HOME';
-      break;
-      default:
-      this.typeOfPolicy =           'AUTO';
-      break;
-    }
-    this.policyDate =               userObject.policynumbers.policyDate? new Date(userObject.policynumbers.policyDate).toLocaleDateString("en-US") : new Date('11/01/2018').toLocaleDateString("en-US");
-    this.policyNumber =             userObject.policynumbers.policynumber? userObject.policynumbers.policynumber : '123456';
-  }
-
-  testObject(): Object {
-    return [{
-      policyNumber: 123456,
-      policy: {
-        effectiveDate: '12/12/2018',
-        type: 'home',
-      }
-    },
-    {
-      policyNumber: 123456,
-      policy: {
-        effectiveDate: '12/12/2018',
-        type: 'home',
-      },
-    }];
+  confirmIfPaperLessEligible(): void {
+    this.authService
+      .confirmPaperLessPolicy(this.userData)
+      .subscribe(
+        data => {
+          //go to paperless
+        },
+        err => {
+          //go to dashboard
+        }
+      )
+    ;
   }
 
   get userAgentTest() {
@@ -82,7 +40,7 @@ export class ReviewPolicyScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserData(this.userData);
+    console.log(this.userData);
   }
 
 }

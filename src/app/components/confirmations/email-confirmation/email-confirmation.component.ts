@@ -17,7 +17,6 @@ export class EmailConfirmationComponent implements OnInit {
   constructor( private authService: AuthenticationService ) { }
 
   forgotPasswordSendEmailId(): void{
-    this.user =                       new User();
     this.user.email =                 this.sendEmailAgain;
     
     if(this.user.email) {

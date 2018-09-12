@@ -77,13 +77,12 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
 
   setNewPassword(): void{
     let password = this.createPasswordForm.controls['createPassword'].value,
-        temporaryParamater = this.routeParamaterString,
-        user = new User();
+        temporaryParamater = this.routeParamaterString;
 
-    user.password = password;
-    user.dateOfTemporaryPassword = new Date();
-    user.temporaryPassword = temporaryParamater;
-    if(user) {
+    this.user.password = password;
+    this.user.dateOfTemporaryPassword = new Date();
+    this.user.temporaryPassword = temporaryParamater;
+    if(this.user) {
       this.userConfirmation.emit(true);
     }
   }

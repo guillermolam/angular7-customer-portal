@@ -39,15 +39,15 @@ export class LoginFormComponent implements OnInit {
   ) {}
   
   getCookie(): void {
-    this.user =                     		new User();
-    if (this._cookieService.get("remember")) {
-      this.user.email =                 this._cookieService.get("email");
-      this.user.password =              this._cookieService.get("password");
+    if ( this._cookieService.get("remember") ) {
+      this.loginForm.setValue({
+        loginEmail:                   this._cookieService.get("email"),
+        loginPassword:                this._cookieService.get("password"),
+      })
     }
   }
 
   login(): void {
-    this.user =                         new User();
     this.user.email =                   this.loginForm.value.loginEmail;
     this.user.password  =               this.loginForm.value.loginPassword;
     this.loading =                      true;
@@ -57,11 +57,11 @@ export class LoginFormComponent implements OnInit {
       this.authenticationService
         .login (this.user.email, this.user.password)
         .subscribe (
-          (data) => {
+          data => {
             this.router.navigate(['/dashboard']);
           },
-          (error) => {
-            console.log(error)
+          err => {
+            console.log(err)
             this.alertService.error('INVALID_EMAIL_PASSWORD');
           }
         )
@@ -91,7 +91,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.$user.subscribe((user) => { });
+    this.userService.$user.subscribe(user => { });
     this.loginForm = this.ipt.toFormGroup(this.inputs);
 
     // Recover cookie if exists

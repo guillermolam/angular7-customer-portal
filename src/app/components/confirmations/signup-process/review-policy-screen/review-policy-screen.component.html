@@ -1,3 +1,4 @@
+We are not using this at the moment. However we felt that some of this componenet maybe leveraged or used in the future.
 <div class="row">
   <div class="col">
     <div class="policy-info-card">
@@ -6,15 +7,19 @@
       </div>
       <hr>
       <div class="policy-info-content">
-        
-        <div class="row">
+        <div class="row" *ngFor="let policyDetail of userData.policyDetails">
           <div class="icon col-3">
-            <img src="http://placehold.it/50x50" />
+            <div class="svg-container" *ngIf="policyDetail.policyType == 'auto'">
+              <div class="svg"><svg-car-icon-svg></svg-car-icon-svg></div>
+            </div>
+            <div class="svg-container" *ngIf="policyDetail.policyType == 'home'">
+                <div class="svg"><svg-home-icon-svg></svg-home-icon-svg></div>
+            </div>
           </div>
           <div class="col-9">
             <ul>
-              <li>{{ typeOfAccount | translate }} {{ typeOfPolicy | translate }}:&nbsp;<strong>{{ policyNumber }}</strong></li>
-              <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyDate }}</strong></li>
+              <li>{{ policyDetail.typeOfAccount | translate }} {{ policyDetail.policyType | translate }}:&nbsp;<strong>{{ policyDetail.policyNumber }}</strong></li>
+              <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyDetail.effectiveDate }}</strong></li>
             </ul>
           </div>
         </div>
@@ -26,7 +31,7 @@
   <div class="col">
     <mapfre-button
       [additionalClasses]="'basic primary large'"
-      (click)="confirmPolicy()"
+      (click)="confirmIfPaperLessEligible()"
     >{{ 'CONTINUE' | translate }}</mapfre-button> 
   </div>
 </div>

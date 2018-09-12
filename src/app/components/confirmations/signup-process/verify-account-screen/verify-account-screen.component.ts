@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User }                     from '../../../../_models/user-interface';
+import { User }                     from '../../../../_models/user';
 
 @Component({
   selector: 'app-verify-account-screen',
@@ -7,14 +7,13 @@ import { User }                     from '../../../../_models/user-interface';
   styleUrls: ['./verify-account-screen.component.scss']
 })
 export class VerifyAccountScreenComponent implements OnInit {
-  @Input() userData:              User;
-  userEmail:                      string;
+  @Input()  userData:              User;
+            userEmail:             string;
 
   constructor() { }
 
   ngOnInit() {
     this.userEmail = this.userData.email != undefined ? this.userData.email : 'email@gmail.com';
-    console.log(this.userEmail);
   }
 
 }

@@ -79,6 +79,10 @@ textarea:focus {
     font-weight:                            900;
 }
 
+.border-radius {
+  @include border-radius(5px);
+}
+
 .card-title {
     padding-bottom:                         $global-card-title-padding; 
     margin-bottom:                          $global-zero;
@@ -139,6 +143,11 @@ textarea:focus {
         margin-top:                         10%;
     }
 }
+
+.no-border {
+  border:                                   none !important;
+} 
+
 .prefix {
     float:                                  left;
     padding-right:                          $global-prefix-padding-right;
@@ -169,14 +178,6 @@ textarea:focus {
     span {
         text-transform:                     uppercase;
     }
-}
-
-.no-border {
-  border:                                   none !important;
-} 
-
-.border-radius {
-  @include border-radius(5px);
 }
 
 // ---- class overrides ----
@@ -270,4 +271,18 @@ textarea:focus {
     margin-left: 0;
     padding-left: 0;
   }
+}
+
+.icon .svg-container {
+  .svg {
+    height: 37px;
+    width: 27px;
+    padding-top: 6px;
+  }
+  height: 48px;
+  width: 48px;
+  background: #fff;
+  padding: 6px 11px;
+  @include border-radius(3px);
+  border: thin solid #EAE9E9;
 }

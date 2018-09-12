@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div *ngIf="userData.addPolicyToAccountAttempts <= 2">
+<div *ngIf="userData.addPolicyAttempts <= 2">
   <div class="text-center margin-bottom mb24 margin-top mt8">
     <mapfre-link
         [additionalClasses]="'small-link underline horizontal-space'"
@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<div *ngIf="userData.addPolicyToAccountAttempts >= 3">
+<div *ngIf="userData.addPolicyAttempts >= 3">
   <div class="margin-bottom mb24">
     <mapfre-info-divs> 
         {{ 'NOTFOUND_IF_YOU_PURCHASE' | translate }}

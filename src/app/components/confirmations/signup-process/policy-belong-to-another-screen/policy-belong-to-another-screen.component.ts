@@ -28,13 +28,13 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
   ) { }
 
   createUserObject(object): void {
-    this.user = new User({
+    this.user = {
       firstName:                  object.editFirst_name,
       middleName:                 object.editMI_name,
       lastName:                   object.editLast_name,
       email:                      object.editEmail,
       policynumbers:              object.editPolicyNumber
-    });
+    };
     this.userService.updateUser(this.user);
   }
 

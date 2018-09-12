@@ -35,7 +35,6 @@ export class SendEmailFormComponent implements OnInit {
 
   forgotPasswordSendEmailId(): void {
     let emailAddress =                  this.passwordEmailForm.controls.sendEmail.value;
-    this.user =                         new User();
     this.user.email =                   emailAddress.toLowerCase();
 
     if(this.user.email) {

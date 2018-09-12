@@ -48,6 +48,8 @@ import { CreateAccountSvgComponent }          from '../assets/svg/create-account
 import { PolicySvgComponent }                 from '../assets/svg/policy-svg/policy-svg.component'; 
 import { PolicyErrorSvgComponent }            from '../assets/svg/policy-error-svg/policy-error-svg.component'; 
 import { EmailErrorSvgComponent }             from '../assets/svg/email-error-svg/email-error-svg.component'; 
+import { CarIconSvgComponent }                from '../assets/svg/car-icon-svg/car-icon-svg.component'; 
+import { HomeIconSvgComponent }               from '../assets/svg/home-icon-svg/home-icon-svg.component'; 
 
 
 
@@ -82,16 +84,13 @@ import { ForgotPasswordTooManyComponent }     from './components/confirmations/f
 import { CreateAccountFormComponent }         from './components/forms/dynamic-forms/create-account-form/create-account-form.component';
 import { AddPolicyComponent }                 from './components/forms/dynamic-forms/add-policy/add-policy.component';
 import { EmailUseScreenComponent }            from './components/confirmations/signup-process/email-use-screen/email-use-screen.component';
-import { FinalScreenComponent }               from './components/confirmations/signup-process/final-screen/final-screen.component';
 import { ReviewPolicyScreenComponent }        from './components/confirmations/signup-process/review-policy-screen/review-policy-screen.component';
 import { BopScreenComponent }                 from './components/confirmations/signup-process/bop-screen/bop-screen.component';
-import { MapfreCheckboxComponent } from './components/individual-components/inputs/mapfre-checkbox/mapfre-checkbox.component';
-import { MapfreInfoDivsComponent } from './components/section-components/mapfre-info-divs/mapfre-info-divs.component';
-import { VerifyAccountScreenComponent } from './components/confirmations/signup-process/verify-account-screen/verify-account-screen.component';
-import { WelcomeComponent } from './routes/welcome/welcome.component';
-import { PolicyNotFoundScreenComponent } from './components/confirmations/signup-process/policy-not-found-screen/policy-not-found-screen.component';
-import { EditPolicyScreenComponent } from './components/confirmations/signup-process/edit-policy-screen/edit-policy-screen.component';
-import { EditPolicyComponent } from './components/forms/dynamic-forms/edit-policy/edit-policy.component';
+import { MapfreCheckboxComponent }            from './components/individual-components/inputs/mapfre-checkbox/mapfre-checkbox.component';
+import { MapfreInfoDivsComponent }            from './components/section-components/mapfre-info-divs/mapfre-info-divs.component';
+import { VerifyAccountScreenComponent }       from './components/confirmations/signup-process/verify-account-screen/verify-account-screen.component';
+import { WelcomeComponent }                   from './routes/welcome/welcome.component';
+import { PolicyNotFoundScreenComponent }      from './components/confirmations/signup-process/policy-not-found-screen/policy-not-found-screen.component';
 import { PolicyBelongToAnotherScreenComponent } from './components/confirmations/signup-process/policy-belong-to-another-screen/policy-belong-to-another-screen.component';
 
 
@@ -152,7 +151,6 @@ export function tokenGetter() {
     SignupProcessComponent,
     AddPolicyComponent,
     EmailUseScreenComponent,
-    FinalScreenComponent,
     ReviewPolicyScreenComponent,
     BopScreenComponent,
     CongratsSvgComponent,
@@ -165,9 +163,9 @@ export function tokenGetter() {
     VerifyAccountScreenComponent,
     WelcomeComponent,
     PolicyNotFoundScreenComponent,
-    EditPolicyScreenComponent,
-    EditPolicyComponent,
-    PolicyBelongToAnotherScreenComponent
+    PolicyBelongToAnotherScreenComponent,
+    CarIconSvgComponent,
+    HomeIconSvgComponent
   ],
   imports: [
     BrowserModule,

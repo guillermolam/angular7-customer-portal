@@ -114,8 +114,12 @@
   "POLICYBELONGS_TYPE_NUMBER_BIZ": "Business",
   "POLICYBELONGS_TYPE_NUMBER_AUTO": "Auto",
   "POLICYBELONGS_TYPE_NUMBER_HOME": "Home",
-  "POLICYBELONGS_EFFECTIVE_DATE": "Effective Date",
+  "EFFECTIVE_DATE": "Effective Date",
   "POLICYBELONGS_LEGAL": "By clicking continue, you are confirming that you own the policy specified above or have been authorized by the policyholder to acr on his or her behalf with respect to such policy.",
-  "POLICYBELONGS_AUTHORIZED": "I'm Authorized"
+  "POLICYBELONGS_AUTHORIZED": "I'm Authorized",
+  "REVIEW_POLICY_TITLE": "Welcome to your MAPFRE account",
+  "REVIEWPOLICY_INFO_TITLE": "Here is your policy information",
+  "REVIEWPOLICY_WALLETCARD": "Add your Mapfre card to your phone"
+
 }
 
