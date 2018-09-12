@@ -8,6 +8,7 @@ export class User {
   public lastName:                string;
   public password:                string;
   public policynumbers:           any[];
+  public policyDetails:           PolicyDetails;
   public temporaryPassword:       string;
 
   constructor(options: {
@@ -35,9 +36,10 @@ export class User {
   }
 }
 
-export class Policynumbers {
-  constructor(
-    public policynumber:        number,
-    public policytype:          string
-  ){ }
+export interface PolicyDetails {
+  effectiveDate:       Date;
+  policynumber:        number;
+  policytype:          string;
 }
+
+

@@ -146,7 +146,7 @@
           <h1 class="title-copy">{{ 'REVIEW_POLICY_TITLE' | translate }}</h1> 
         </div>
       </div>
-      <app-review-policy-screen></app-review-policy-screen>
+      <app-review-policy-screen [userData]="user"></app-review-policy-screen>
     </div>
 
     <div *ngSwitchCase="'verifyaccount'">

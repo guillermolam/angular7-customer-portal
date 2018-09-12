@@ -50,7 +50,21 @@ export class SignupProcessComponent implements OnInit {
       middleName:                 'TestMiddleName',
       lastName:                   'TestLastName',
       email:                      'test@email.com',
-      policynumbers:              123456
+      policynumbers:              123456,
+      policyDetails:              [{
+        policyNumber: 123456,
+        policy: {
+          effectiveDate: '12/12/2018',
+          type: 'home',
+        }
+      },
+      {
+        policyNumber: 123456,
+        policy: {
+          effectiveDate: '12/12/2018',
+          type: 'home',
+        }
+      }]
     };
     this.userService.updateUser(this.user);
   } 

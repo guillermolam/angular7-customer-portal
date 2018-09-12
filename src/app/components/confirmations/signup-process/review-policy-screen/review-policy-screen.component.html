@@ -1,3 +1,45 @@
-<p>
-  review-policy-screen works!
-</p>
+<div class="row">
+  <div class="col">
+    <div class="policy-info-card">
+      <div class="policy-info-title text-center">
+        {{ 'REVIEWPOLICY_INFO_TITLE' | translate }}
+      </div>
+      <hr>
+      <div class="policy-info-content">
+        
+        <div class="row">
+          <div class="icon col-3">
+            <img src="http://placehold.it/50x50" />
+          </div>
+          <div class="col-9">
+            <ul>
+              <li>{{ typeOfAccount | translate }} {{ typeOfPolicy | translate }}:&nbsp;<strong>{{ policyNumber }}</strong></li>
+              <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyDate }}</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <mapfre-button
+      [additionalClasses]="'basic primary large'"
+      (click)="confirmPolicy()"
+    >{{ 'CONTINUE' | translate }}</mapfre-button> 
+  </div>
+</div>
+<hr class="hr-login" />
+<div class="row text-center">
+  <div class="col">
+    <p>
+      {{ 'REVIEWPOLICY_WALLETCARD' | translate }}
+    </p>
+    <p>
+      <a (click)="downLoadWalletCard()">
+        <img src="https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iOS/add-to-apple-wallet-logo.png" width="167" />
+      </a>
+    </p>
+  </div>
+</div>

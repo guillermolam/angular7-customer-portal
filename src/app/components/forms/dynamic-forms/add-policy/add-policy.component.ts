@@ -17,11 +17,11 @@ import { User }                         from "../../../../_models/user";
   providers: [ FormBaseControlService ]
 })
 export class AddPolicyComponent implements OnInit {
-  @Input() inputs:                  FormBase<any>[] = [];
-  @Input() userData:                Observable<User>;
-  addPolicyForm:                    FormGroup;
-  legalCheckbox:                    boolean = false;
-  loading:                          boolean = false;
+  @Input()  inputs:                  FormBase<any>[] = [];
+  @Input()  userData:                Observable<User>;
+            addPolicyForm:           FormGroup;
+            legalCheckbox:           boolean = false;
+            loading:                 boolean = false;
 
   constructor(
     private authService:            AuthenticationService,

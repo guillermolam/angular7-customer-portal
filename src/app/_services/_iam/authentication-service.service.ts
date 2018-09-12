@@ -1,6 +1,7 @@
 import { HttpClient }         from "@angular/common/http";
 import { Injectable }         from "@angular/core";
-import { Observable }         from "rxjs";
+import { Observable, of }     from "rxjs";
+import { catchError, map }    from "rxjs/operators";
 import { environment }        from "../../../environments/environment";
 import { User }               from "../../_models/user";
 import 'rxjs/add/operator/map'
@@ -11,6 +12,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize'; 
 import 'rxjs/add/operator/catch';
+
 
 
 @Injectable()
@@ -28,6 +30,26 @@ export class AuthenticationService {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.token = currentUser && currentUser.token;
+  }
+
+  confirmPolicyAndAccount(userObject): Observable<any> {
+    const user = userObject.$user.source.value;
+    let 
+      url = `${environment.account}/accounts/${user.email}`,
+      userSendObject = {
+        firstName: user.firstName,
+        middleName: user.middleName,
+        lastName: user.lastName,
+        password: user.password,
+        email: user.email,
+        policynumbers: user.policynumbers
+      }
+    ;
+    return this.http.put<any>(url, userSendObject, this.options)
+      .pipe(
+        map(response => response ),
+        catchError(err => of(err))
+      );
   }
 
   createPassword(userObject): Observable<any> {
