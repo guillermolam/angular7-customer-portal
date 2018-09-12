@@ -36,7 +36,6 @@ export class CreatePasswordFormComponent implements OnInit {
     private ipt:                    FormBaseControlService,
     private router:                 Router,
     private userService:            UserService,
-    private testingService: TestingService
   ) {}
 
   createNewPassword(): void {
