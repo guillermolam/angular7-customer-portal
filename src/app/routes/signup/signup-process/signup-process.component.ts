@@ -44,6 +44,7 @@ export class SignupProcessComponent implements OnInit {
   }
 
   testingData(): User {
+    //This object is for development use. And will be taken out
     let object = {
       addPolicyAttempts:          1,
       firstName:                  'TestFirstName',

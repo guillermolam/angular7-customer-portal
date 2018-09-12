@@ -16,7 +16,7 @@ export class AlertService {
           this.keepAfterNavigationChange = false;
         } else {
           // clear alert
-          this.clear;
+          this.clear();
         }
       }
     });
