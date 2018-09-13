@@ -19,20 +19,20 @@ import { TestingService }             from '../../../../_helpers/_testing-helper
   providers: [ FormBaseControlService ]
 })
 export class CreatePasswordFormComponent implements OnInit {
-  @Input() inputs:                  FormBase<any>[] = [];
-  @Input() userData:                Observable<User>;
-  createPasswordForm:               FormGroup;
-  email:                            string;
-  token:                            string;
-  user:                             User;
-  whereInTheProcess:                string;
+  @Input()  inputs:                 FormBase<any>[] = [];
+  @Input()  userData:               Observable<User>;
+            createPasswordForm:     FormGroup;
+            email:                  string;
+            token:                  string;
+            user:                   User;
+            whereInTheProcess:      string;
 
   @Output() confirmationOfPasswordCreation:   EventEmitter<boolean> = new EventEmitter();
   
   constructor(
     private activeRoute:            ActivatedRoute,
-    private authenticationService:  AuthenticationService,
     private alertService:           AlertService,
+    private authenticationService:  AuthenticationService,
     private ipt:                    FormBaseControlService,
     private router:                 Router,
     private userService:            UserService,
@@ -83,14 +83,14 @@ export class CreatePasswordFormComponent implements OnInit {
     this.createPasswordForm = this.ipt.toFormGroup(this.inputs);
     
     //url paramaters for example ?token=token
-    this.activeRoute.queryParams.subscribe((params) => { 
+    this.activeRoute.queryParams.subscribe( params => { 
       this.email = params.email;
       this.token = params.token;
      });
     
     //route paramaters for example /signup/:parm
-    /*this.activeRoute.params.subscribe((params: Params) => {
+    this.activeRoute.params.subscribe((params: Params) => {
       this.whereInTheProcess = params['parm'];
-    });*/
+    });
   }
 }
