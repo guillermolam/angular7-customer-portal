@@ -32,7 +32,6 @@ export class AddPolicyComponent implements OnInit {
 
   addPolicy(): void {
     this.addPolicyToObject(this.userData);
-
     if(this.legalCheckbox){
       this.authService
         .verifyPolicy(this.userService)
@@ -60,7 +59,10 @@ export class AddPolicyComponent implements OnInit {
   }
 
   addPolicyToObject(userObject): void {
-    userObject.policyDetails[0].policynumber.policynumber = this.addPolicyForm.value.addPolicy;
+    let policyDetail = [{
+      policynumber : { policynumber: this.addPolicyForm.value.addPolicy }
+    }];
+    userObject.policyDetails = policyDetail;
     this.userService.updateUser(userObject);
   }
 

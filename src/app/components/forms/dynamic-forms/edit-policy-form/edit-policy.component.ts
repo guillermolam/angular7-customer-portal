@@ -48,7 +48,7 @@ export class EditPolicyComponent implements OnInit {
   editPolicy(): void {
     this.createUserObject(this.editPolicyForm.value);
     console.log("new user object", this.userService)
-    this.authService
+    /*this.authService
       .verifyPolicy(this.userService)
       .subscribe(
         data => {
@@ -69,7 +69,7 @@ export class EditPolicyComponent implements OnInit {
           }
         }
       )
-    ;
+    ;*/
   }
 
   ngOnInit() {
