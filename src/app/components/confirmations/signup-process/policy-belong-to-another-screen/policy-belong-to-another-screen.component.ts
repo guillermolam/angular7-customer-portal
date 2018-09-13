@@ -53,7 +53,7 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
   }
   
   policyDetails(userData): void {
-    switch(userData.policynumbers.type) {
+    switch(userData.accountType) {
       case "Personal":
         this.typeOfAccount =        'POLICYBELONGS_TYPE_NUMBER_PERSONAL';
       break;
@@ -61,22 +61,22 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
         this.typeOfAccount =        'POLICYBELONGS_TYPE_NUMBER_BIZ';
       break;
       default:
-      this.typeOfAccount =          'PERSONAL';
+        this.typeOfAccount =         'PERSONAL';
       break;
     }
-    switch(userData.policynumbers.policy) {
-      case "Auto":
+    switch(userData.policyDetails.policyType) {
+      case "AUTO":
         this.typeOfPolicy =         'POLICYBELONGS_TYPE_NUMBER_AUTO';
       break;
-      case "Home":
+      case "HOME":
         this.typeOfPolicy =         'POLICYBELONGS_TYPE_NUMBER_HOME';
       break;
       default:
       this.typeOfPolicy =           'AUTO';
       break;
     }
-    this.policyDate =               userData.policynumbers.policyDate? new Date(userData.policynumbers.policyDate).toLocaleDateString("en-US") : new Date('11/01/2018').toLocaleDateString("en-US");
-    this.policyNumber =             userData.policynumbers.policynumber? userData.policynumbers.policynumber : '123456';
+    this.policyDate =               userData.policyDetails[0].effDate;
+    this.policyNumber =             userData.policyDetails[0].policynumber.policynumber;
   }
 
   ngOnInit() {

@@ -1,15 +1,15 @@
 import { PolicyDetails }        from './policy-details';
 
 export interface User {
+  accountType?:                 string;
   addPolicyAttempts?:           number;
-  dateOfTemporaryPassword?:     Date;
   creationDate?:                Date;
-  email?:                       string;
-  firstName?:                   string;
+  email:                        string;
+  firstName:                    string;
   middleName?:                  string;
-  lastName?:                    string;
+  lastName:                     string;
   password?:                    string;
-  policynumbers?:               any;
+  policynumbers?:               string;
   policyDetails?:               PolicyDetails[];
   temporaryPassword?:           string;
 }

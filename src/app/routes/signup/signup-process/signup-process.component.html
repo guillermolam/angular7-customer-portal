@@ -136,18 +136,6 @@
         <app-policy-belong-to-another-screen [userData]="user"></app-policy-belong-to-another-screen>
       </div>
     </div>
-    
-    <div *ngSwitchCase="'reviewpolicy'">
-      <div class="row text-center">
-        <div class="col">
-          <div class="header-icon">
-              <svg-congrats-svg></svg-congrats-svg>
-          </div>
-          <h1 class="title-copy">{{ 'REVIEW_POLICY_TITLE' | translate }}</h1> 
-        </div>
-      </div>
-      <app-review-policy-screen [userData]="user"></app-review-policy-screen>
-    </div>
 
     <div *ngSwitchCase="'verifyaccount'">
         <div class="row text-center">

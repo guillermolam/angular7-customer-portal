@@ -1,6 +1,9 @@
 export interface PolicyDetails {
-  effectiveDate?:              string;
-  policyNumber?:               number;
-  policyType?:                 string; 
-  typeOfAccount?:              string,
+  InsName1?:              any;
+  effDate?:               string;
+  expDate?:               string;
+  policynumber?:          any;
+  policyStatus?:          string;
+  policyType?:            string;
+  status?:                any;
 }

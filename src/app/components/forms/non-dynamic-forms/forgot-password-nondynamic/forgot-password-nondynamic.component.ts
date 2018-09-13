@@ -80,7 +80,6 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
         temporaryParamater = this.routeParamaterString;
 
     this.user.password = password;
-    this.user.dateOfTemporaryPassword = new Date();
     this.user.temporaryPassword = temporaryParamater;
     if(this.user) {
       this.userConfirmation.emit(true);

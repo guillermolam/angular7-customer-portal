@@ -50,20 +50,25 @@ export class SignupProcessComponent implements OnInit {
       firstName:                  'TestFirstName',
       middleName:                 'TestMiddleName',
       lastName:                   'TestLastName',
-      email:                      'test@email.com',
+      email:                      'testUpdate@email.com',
       password:                   'abcd12D!',
-      policynumbers:              [123456,789012],
       policyDetails: [{
-        effectiveDate:            '12/12/2018',
-        policyNumber:             123456,
+        InsName1:                 null,
+        effDate:                  '12/12/2018',
+        expDate:                  '12/12/2018',
+        policynumber:             { policynumber: 'BB0490' },
+        policyStatus:             'cancelled',
         policyType:               'home',
-        typeOfAccount:            'personal',
+        status:                   null,
       },
       {
-        effectiveDate:            '12/12/2018',
-        policyNumber:             789012,
+        InsName1:                 null,
+        effDate:                  '12/12/2018',
+        expDate:                  '12/12/2018',
+        policynumber:             { policynumber: '120490' },
+        policyStatus:             'cancelled',
         policyType:               'auto',
-        typeOfAccount:            'personal'
+        status:                   null,
       }]
     };
     return object;
