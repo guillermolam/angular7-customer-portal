@@ -11,7 +11,6 @@ import { FormBaseControlService }     from '../../../../_services/form-base-cont
 import { User }                       from '../../../../_models/user';
 import { UserService }                from '../../../../_services/user.service';
 
-import { TestingService }             from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service'
 @Component({
   selector: 'app-create-password-form',
   templateUrl: './create-password-form.component.html',
@@ -48,7 +47,7 @@ export class CreatePasswordFormComponent implements OnInit {
   }
 
   createPassword(userObject): void {
-    userObject.password = this.createPasswordForm.value.createPassword;
+    userObject.password =           this.createPasswordForm.value.createPassword;
     this.userService.updateUser(userObject);
     this.authenticationService
       .createPassword(this.userService)
@@ -63,8 +62,8 @@ export class CreatePasswordFormComponent implements OnInit {
   }
 
   updatePassword(): void {
-    this.user.password = this.createPasswordForm.value.createPassword;
-    this.user.email = this.email.toLowerCase();
+    this.user.password =              this.createPasswordForm.value.createPassword;
+    this.user.email =                 this.email.toLowerCase();
     this.authenticationService
       .updatePassword (this.user, this.token)
       .subscribe (
@@ -80,17 +79,17 @@ export class CreatePasswordFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createPasswordForm = this.ipt.toFormGroup(this.inputs);
+    this.createPasswordForm =         this.ipt.toFormGroup(this.inputs);
     
     //url paramaters for example ?token=token
     this.activeRoute.queryParams.subscribe( params => { 
-      this.email = params.email;
-      this.token = params.token;
+      this.email =                    params.email;
+      this.token =                    params.token;
      });
     
     //route paramaters for example /signup/:parm
     this.activeRoute.params.subscribe((params: Params) => {
-      this.whereInTheProcess = params['parm'];
+      this.whereInTheProcess =        params['parm'];
     });
   }
 }
