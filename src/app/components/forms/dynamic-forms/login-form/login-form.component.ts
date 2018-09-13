@@ -19,14 +19,14 @@ import { User }                         from "../../../../_models/user";
   providers: [ FormBaseControlService ]
 })
 export class LoginFormComponent implements OnInit {
-  @Input() inputs:                      FormBase<any>[] = [];
-  emailPrefillOnBlur:                   string; 
-  expireInDays:                         number = 365;
-  loading:                              boolean = false;
-  loginForm:                            FormGroup;
-  returnUrl:                            string;
-  rememberMe:                           boolean = false;
-  user:                                 User;
+  @Input()  inputs:                     FormBase<any>[] = [];
+            emailPrefillOnBlur:         string; 
+            expireInDays:               number = 365;
+            loading:                    boolean = false;
+            loginForm:                  FormGroup;
+            returnUrl:                  string;
+            rememberMe:                 boolean = false;
+            user:                       User;
   
   constructor(
     private _cookieService:             CookieService,

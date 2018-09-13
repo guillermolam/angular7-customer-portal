@@ -49,7 +49,7 @@ export class EditPolicyService {
         maxLength: 6,
         minLength: 5,
         validationMessageError: 'VALID_POLICY_VALIDATION_MESSAGE',
-        userSubscription: 'policynumbers'
+        userSubscription: 'policyDetails[0].policynumber.policynumber'
       }),
     ]
     return inputs;

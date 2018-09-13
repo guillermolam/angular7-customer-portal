@@ -38,7 +38,7 @@ export class AddPolicyComponent implements OnInit {
         .verifyPolicy(this.userService)
         .subscribe(
           data => {
-            this.router.navigate(['signup', 'reviewpolicy']);
+            this.router.navigate(['signup', 'createpassword']);
           },
           err => {
             if(err.status === 404){
@@ -60,7 +60,7 @@ export class AddPolicyComponent implements OnInit {
   }
 
   addPolicyToObject(userObject): void {
-    userObject.policyNumber = this.addPolicyForm.value.addPolicy;
+    userObject.policyDetails[0].policynumber.policynumber = this.addPolicyForm.value.addPolicy;
     this.userService.updateUser(userObject);
   }
 

@@ -119,7 +119,9 @@
   "POLICYBELONGS_AUTHORIZED": "I'm Authorized",
   "REVIEW_POLICY_TITLE": "Welcome to your MAPFRE account",
   "REVIEWPOLICY_INFO_TITLE": "Here is your policy information",
-  "REVIEWPOLICY_WALLETCARD": "Add your Mapfre card to your phone"
+  "REVIEWPOLICY_WALLETCARD": "Add your Mapfre card to your phone",
+  "VALID_NAME_VALIDATION_MESSAGE": "Please use a valid name",
+  "VALID_POLICY_VALIDATION_MESSAGE": "Please use a valid policy"
 
 }
 

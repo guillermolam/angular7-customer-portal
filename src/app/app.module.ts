@@ -92,7 +92,7 @@ import { VerifyAccountScreenComponent }       from './components/confirmations/s
 import { WelcomeComponent }                   from './routes/welcome/welcome.component';
 import { PolicyNotFoundScreenComponent }      from './components/confirmations/signup-process/policy-not-found-screen/policy-not-found-screen.component';
 import { PolicyBelongToAnotherScreenComponent } from './components/confirmations/signup-process/policy-belong-to-another-screen/policy-belong-to-another-screen.component';
-
+import { EditPolicyComponent }                from './components/forms/dynamic-forms/edit-policy-form/edit-policy.component';
 
 if(environment.production) {
   enableProdMode();
@@ -165,7 +165,8 @@ export function tokenGetter() {
     PolicyNotFoundScreenComponent,
     PolicyBelongToAnotherScreenComponent,
     CarIconSvgComponent,
-    HomeIconSvgComponent
+    HomeIconSvgComponent,
+    EditPolicyComponent
   ],
   imports: [
     BrowserModule,

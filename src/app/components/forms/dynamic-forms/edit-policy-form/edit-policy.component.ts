@@ -18,16 +18,15 @@ import { User }                         from '../../../../_models/user';
 })
 
 export class EditPolicyComponent implements OnInit {
-  @Input() inputs:                      FormBase<any>[] = [];
-  @Input() userData:                    User;
-  editPolicyForm:                       FormGroup;
-  loading:                              boolean = false;
-  user:                                 User;
+  @Input()  inputs:                     FormBase<any>[] = [];
+  @Input()  userData:                   User;
+            editPolicyForm:             FormGroup;
+            loading:                    boolean = false;
+            user:                       User;
 
   constructor(
     private authService:                AuthenticationService,
     private ipt:                        FormBaseControlService,
-    private http:                       HttpClient,
     private router:                     Router,
     private userService:                UserService
   ) { }
@@ -39,7 +38,9 @@ export class EditPolicyComponent implements OnInit {
       middleName:                       object.editMI_name,
       lastName:                         object.editLast_name,
       email:                            object.editEmail,
-      policynumbers:                    object.editPolicyNumber
+      policyDetails:                    [{
+        policynumber:                   { policynumber: object.editPolicyNumber }
+      }]
     };
     this.userService.updateUser(this.user);
   }
@@ -51,7 +52,7 @@ export class EditPolicyComponent implements OnInit {
       .verifyPolicy(this.userService)
       .subscribe(
         data => {
-          this.router.navigate(['signup', 'reviewpolicy']);
+          this.router.navigate(['signup', 'createpassword']);
         },
         err => {
           if(err.status === 404){
