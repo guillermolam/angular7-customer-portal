@@ -22,9 +22,13 @@ $global-title-font-family:                  $font-family-base;
 $global-title-line-height:                  2rem;
 $global-title-margin-bottom:                $margin-vertical/2;
 
+$global-margin-padding-helper-8:            $defualt-margin-padding/2;
+$global-margin-padding-helper-16:           $defualt-margin-padding;
+$global-margin-padding-helper-24:           $defualt-margin-padding * 3;
+
 body {
-  background-color:                       $global-body-bg-color;
-  line-height:                            24px;
+  background-color:                         $global-body-bg-color;
+  line-height:                              1.5rem;
 }
 
 hr {
@@ -120,7 +124,7 @@ textarea:focus {
   }
 
   .svg-container {
-    height:                                 96px;
+    height:                                 6rem;
     display:                                flex;
     align-items:                            center;
 
@@ -132,7 +136,7 @@ textarea:focus {
 }
 
 .logo {
-    max-width:                              350px;
+    max-width:                              21.875rem;
     width:                                  100%;
 }
 
@@ -193,112 +197,62 @@ textarea:focus {
     background-color:                       $global-red-override; 
 }
 
-.margin-bottom { //PX need to be REM and variables
+// ------- Margin and Padding helpers ----------
+.margin-bottom { 
   &.mb8 {
-    margin-bottom:                          8px !important;
+    margin-bottom:                          $global-margin-padding-helper-8 !important;
   }
   &.mb16 {
-    margin-bottom:                          16px !important;
+    margin-bottom:                          $global-margin-padding-helper-16 !important;
   }
   &.mb24 {
-    margin-bottom:                          24px !important;
+    margin-bottom:                          $global-margin-padding-helper-24 !important;
   }
 }
 
 .margin-top {
   &.mt8 {
-    margin-top:                             8px !important;
+    margin-top:                             $global-margin-padding-helper-8 !important;
   }
   &.mt16 {
-    margin-top:                             16px !important;
+    margin-top:                             $global-margin-padding-helper-16 !important;
   }
   &.mt24 {
-    margin-top:                             24px !important;
+    margin-top:                             $global-margin-padding-helper-24 !important;
   }
 }
 
 .margin-vertical {
   &.mv8 {
-    margin-bottom:                          8px !important;
-    margin-top:                             8px !important;
+    margin-bottom:                          $global-margin-padding-helper-8 !important;
+    margin-top:                             $global-margin-padding-helper-8 !important;
   }
   &.mv16 {
-    margin-bottom:                          16px !important;
-    margin-top:                             16px !important;
+    margin-bottom:                          $global-margin-padding-helper-16 !important;
+    margin-top:                             $global-margin-padding-helper-16 !important;
   }
   &.mv24 {
-    margin-bottom:                          24px !important;
-    margin-top:                             24px !important;
+    margin-bottom:                          $global-margin-padding-helper-24 !important;
+    margin-top:                             $global-margin-padding-helper-24 !important;
   }
 }
 
 .modal-backdrop { 
-  z-index:                                1028;
+  z-index:                                  1028;
 }
 
 .no-margin-bottom {
-  margin-bottom:                          $global-zero;
+  margin-bottom:                            $global-zero;
 }
 
 .no-margin-top {
-  margin-top:                             $global-zero;
+  margin-top:                               $global-zero;
 }
 
 .no-padding-top {
-  padding-top:                            $global-zero;
+  padding-top:                              $global-zero;
 }
 
 .no-padding-bottom {
-  padding-bottom:                         $global-zero;
-}
-
-
-//need to figure out where to put this
-.policy-info-card {
-  background: #f7f7f7;
-  border: thin solid #EAE9E9;
-  padding: 8px 16px;
-  padding-bottom: 0;
-  @include border-radius(6px);
-
-  hr {
-    margin-bottom: 8px;
-  }
-
-  ul {
-    list-style: none;
-    margin-left: 0;
-    padding-left: 0;
-    margin-bottom: 8px;
-  }
-
-  .icon-container,
-  .info-container {
-    float: left;
-  }
-
-  .info-container {
-    width: 78%;
-    margin-left: 16px;
-  }
-}
-
-p.legal {
-  color: #adaaaa;
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.icon .svg-container {
-  .svg {
-    height: 37px;
-    width: 27px;
-    padding-top: 6px;
-  }
-  height: 48px;
-  width: 48px;
-  background: #fff;
-  padding: 6px 11px;
-  @include border-radius(3px);
-  border: thin solid #EAE9E9;
+  padding-bottom:                           $global-zero;
 }

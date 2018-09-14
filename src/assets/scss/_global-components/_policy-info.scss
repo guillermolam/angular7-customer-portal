@@ -1,0 +1,70 @@
+// This may turn into a component, since it is not planned to use this very often;
+// however since it's used at least twivce it has been taken out of their screen/component style
+
+$global-policy-info-zero:                       0;
+$global-default-margin-padding:                 $defualt-margin-padding; //8px 0.5rem
+$global-policy-info-background-color:           $softer-grey;
+$global-policy-info-border:                     thin solid $soft-grey;
+$global-policy-info-padding:                    $global-default-margin-padding $global-default-margin-padding*2;
+$global-policy-info-info-container-width:       78%;
+$global-policy-info-info-container-margin:      $global-default-margin-padding*2;
+$global-policy-info-p-legal-line-height:        1rem;
+$global-policy-info-svg-bg-color:               $white;
+$global-policy-info-p-legal-color:              $grey;
+$global-policy-info-p-legal-font-size:          $font-size-base - 0.125rem;
+
+$global-policy-info-svg-container-height-width: 3rem;
+$global-policy-info-svg-container-padding:      0.375rem 0.6875rem;
+$global-policy-info-svg-height:                 2.3125rem;
+$global-policy-info-svg-padding-top:            0.375rem;
+$global-policy-info-svg-width:                  1.6875rem;
+
+.policy-info-card {
+  background:                                   $global-policy-info-background-color;
+  border:                                       $global-policy-info-border;
+  padding:                                      $global-policy-info-padding;
+  padding-bottom:                               $global-policy-info-zero;
+  @include border-radius(0.375rem);
+
+  hr {
+    margin-bottom:                              $global-default-margin-padding;
+  }
+
+  ul {
+    list-style:                                 none;
+    margin-left:                                $global-policy-info-zero;
+    padding-left:                               $global-policy-info-zero;
+    margin-bottom:                              $global-default-margin-padding;
+  }
+
+  .icon-container,
+  .info-container {
+    float:                                      left;
+  }
+
+  .info-container {
+    width:                                      $global-policy-info-info-container-width;
+    margin-left:                                $global-policy-info-info-container-margin;
+  }
+}
+
+p.legal {
+  color:                                        $global-policy-info-p-legal-color;
+  font-size:                                    $global-policy-info-p-legal-font-size;
+  line-height:                                  $global-policy-info-p-legal-line-height;
+}
+
+.icon .svg-container {
+  background:                                   $global-policy-info-svg-bg-color;
+  border:                                       $global-policy-info-border;
+  height:                                       $global-policy-info-svg-container-height-width;
+  padding:                                      $global-policy-info-svg-container-padding;
+  width:                                        $global-policy-info-svg-container-height-width;
+  @include border-radius(0.1875rem);
+
+  .svg {
+    height:                                     $global-policy-info-svg-height;
+    padding-top:                                $global-policy-info-svg-padding-top;
+    width:                                      $global-policy-info-svg-width;
+  }
+}
