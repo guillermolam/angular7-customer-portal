@@ -69,7 +69,14 @@ $mapfre-info-div-title-icon-color:          $active-color;
 
 	.information-container {
     margin-left:                            8px;
-		width:                                  85%;
+
+    &.full-width {
+      width:                                100%;
+    }
+
+    &.with-icon {
+      width:                                85%;
+    }
 	}
 
 }

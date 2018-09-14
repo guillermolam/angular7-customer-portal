@@ -92,7 +92,7 @@
   "BOP_POLICIES_CANNOT_BE_ACCESS_VIA_CUSTOMER_PORTAL": "Business policies cannot currently be accessed via the Customer Portal.",
   "VERIFY_ACCOUNT_TITLE": "Let's verify your account",
   "VERIFY_ACCOUNT_WE_SENT_AN_EMAIL": "We sent an email with a verification link to:",
-  "VERIFY_ACCOUNT_SUBJECT_LINE": "[SUBJECT-EMAIL]",
+  "VERIFY_ACCOUNT_SUBJECT_LINE": "Mapfre Insurance - IMPORTANT - Verify Your Account",
   "VERIFY_ACCOUNT_INFO_DIV": "Don't have access to your email or want to validate with your policy number?",
   "VERIFY_ACCOUNT_GO_TO_ADD_POLICY": "Verify using your policy details",
   "NOT_FOUND": "Policy not found",

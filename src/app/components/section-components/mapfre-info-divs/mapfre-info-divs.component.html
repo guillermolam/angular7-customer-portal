@@ -6,7 +6,7 @@
         ></mapfre-icon>
       </div>
     </div>
-    <div class="information-container">
+    <div class="information-container" [ngClass]="{ 'with-icon': type == 'icon', 'full-width': type != 'icon'  } ">
       <ng-content></ng-content>
     </div>
   </div>

@@ -136,5 +136,17 @@
         <app-policy-belong-to-another-screen [userData]="user"></app-policy-belong-to-another-screen>
       </div>
     </div>
+
+    <div *ngSwitchCase="'verifyaccount'">
+      <div class="row text-center">
+        <div class="col">
+          <div class="header-icon full-icon">
+              <svg-check-icon-svg></svg-check-icon-svg>
+          </div>
+          <h1 class="title-copy">{{ 'VERIFY_ACCOUNT_TITLE' | translate }}</h1> 
+        </div>
+      </div>
+      <app-verify-account-screen [userData]="user"></app-verify-account-screen>
+    </div>
   </ng-container>
 </mapfre-card>
