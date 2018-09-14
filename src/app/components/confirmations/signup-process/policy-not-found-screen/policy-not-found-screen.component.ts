@@ -33,18 +33,20 @@ export class PolicyNotFoundScreenComponent implements OnInit {
       .verifyPolicy(this.userService)
       .subscribe(
         data => {
-          let checkPassword = this.userService.$user.source.value.password,
+          this.userService.$user.subscribe(userService => {
+            let checkPassword = userService.password,
               email = this.userData.email,
               password = this.userData.password;
               
-          if( checkPassword != "" || checkPassword != undefined || checkPassword != null ) {
-            this.authService.login(email, password).subscribe(
-              data => { this.router.navigate(['/dashboard']); }
-            )
-          }
-          else {
-            this.router.navigate(['/verifyaccount']);
-          }
+            if( checkPassword != "" || checkPassword != undefined || checkPassword != null ) {
+              this.authService.login(email, password).subscribe(
+                data => { this.router.navigate(['/dashboard']); }
+              )
+            }
+            else {
+              this.router.navigate(['/verifyaccount']);
+            }
+          })
         },
         err => {
           if(err.status === 404){
