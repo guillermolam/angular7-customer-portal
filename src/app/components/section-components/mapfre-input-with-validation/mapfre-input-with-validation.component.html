@@ -19,7 +19,6 @@
           [name]="input.key"
           [ngClass]="{'error': !validInput}"
           [type]= "input.inputType"
-          value="{{ prefillData?.email }}"
           #email 
           mdbInputDirective
           email
@@ -63,7 +62,6 @@
           [name]= "input.key" 
           [ngClass]="{'error': !validInput && allowValidaitonToRun }"
           [type]= "input.inputType"
-          value="{{ prefillData?prefillData[input.userSubscription]:'' }}"
           #textbox
           mdbInputDirective
         />

@@ -47,8 +47,7 @@ export class EditPolicyComponent implements OnInit {
 
   editPolicy(): void {
     this.createUserObject(this.editPolicyForm.value);
-    console.log("new user object", this.userService)
-    /*this.authService
+    this.authService
       .verifyPolicy(this.userService)
       .subscribe(
         data => {
@@ -69,11 +68,19 @@ export class EditPolicyComponent implements OnInit {
           }
         }
       )
-    ;*/
+    ;
+  }
+
+  prefillData(prefillData): void {
+    this.editPolicyForm.get("editFirst_name").setValue(prefillData.firstName);
+    this.editPolicyForm.get("editMI_name").setValue(prefillData.middleName);
+    this.editPolicyForm.get("editLast_name").setValue(prefillData.lastName);
+    this.editPolicyForm.get("editPolicyNumber").setValue(prefillData.policyDetails[0].policynumber.policynumber);
   }
 
   ngOnInit() {
     this.editPolicyForm = this.ipt.toFormGroup(this.inputs);
+    this.prefillData(this.userData);
   }
 
 }

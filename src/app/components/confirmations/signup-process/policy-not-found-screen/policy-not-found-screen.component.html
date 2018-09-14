@@ -19,7 +19,7 @@
 </div>
 
 <div *ngIf="userData.addPolicyAttempts <= 2">
-  <div class="text-center margin-bottom mb24 margin-top mt8">
+  <div class="text-center margin-bottom mb24">
     <mapfre-link
         [additionalClasses]="'small-link underline horizontal-space'"
         [routerLink]="['/signup','editpolicy']"
@@ -38,12 +38,12 @@
 </div>
 
 <div *ngIf="userData.addPolicyAttempts >= 3">
-  <div class="margin-bottom mb24">
-    <mapfre-info-divs> 
-        {{ 'NOTFOUND_IF_YOU_PURCHASE' | translate }}
+  <div>
+    <mapfre-info-divs>
+        <em>{{ 'NOTFOUND_IF_YOU_PURCHASE' | translate }}</em> 
     </mapfre-info-divs>
   </div>
-  <div class="text-center">
+  <div class="text-center margin-top mt24 ">
     <mapfre-button 
       [additionalClasses]="'basic primary large'"
       [routerLink]="['/signup','addpolicy']"
@@ -53,7 +53,7 @@
   </div>
 </div>
 
-<hr class="hr-login">
+<hr class="margin-bottom mb24 margin-top mt24">
 <div class="row">
   <div class="col text-center">
     {{ 'NOTFOUND_NEED_ASSISTANCE' | translate }}

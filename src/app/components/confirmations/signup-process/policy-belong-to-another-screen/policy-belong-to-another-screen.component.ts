@@ -1,11 +1,12 @@
-import { Component, OnInit, Input }     from "@angular/core";
-import { Router }                       from "@angular/router";
+import { Component, OnInit, Input }     from '@angular/core';
+import { Router }                       from '@angular/router';
 
 // --- Components | Services | Models --- //
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { AlertService }                 from "../../../../_services/alert.service";
-import { UserService }                  from "../../../../_services/user.service";
-import { User }                         from "../../../../_models/user";
+import { AlertService }                 from '../../../../_services/alert.service';
+import { PolicyDetails }                from '../../../../_models/policy-details';
+import { UserService }                  from '../../../../_services/user.service';
+import { User }                         from '../../../../_models/user';
 
 @Component({
   selector: 'app-policy-belong-to-another-screen',
@@ -15,6 +16,7 @@ import { User }                         from "../../../../_models/user";
 export class PolicyBelongToAnotherScreenComponent implements OnInit {
   @Input()  userData:               any[];
             policyDate:             string;
+            policyDetail:           PolicyDetails[];
             policyNumber:           string;
             typeOfAccount:          string;
             typeOfPolicy:           string;
@@ -27,13 +29,14 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
     private userService:            UserService
   ) { }
 
-  createUserObject(object): void {
+  createUserObject(formValue): void {
+    this.policyDetail =          [{ policynumber:{ policynumber: formValue.editPolicyNumber } }];
     this.user = {
-      firstName:                  object.editFirst_name,
-      middleName:                 object.editMI_name,
-      lastName:                   object.editLast_name,
-      email:                      object.editEmail,
-      policynumbers:              object.editPolicyNumber
+      firstName:                    formValue.editFirst_name,
+      middleName:                   formValue.editMI_name,
+      lastName:                     formValue.editLast_name,
+      email:                        formValue.editEmail,
+      policyDetails:                this.policyDetail
     };
     this.userService.updateUser(this.user);
   }

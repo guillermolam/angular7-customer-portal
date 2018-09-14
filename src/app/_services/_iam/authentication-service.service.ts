@@ -40,7 +40,7 @@ export class AuthenticationService {
         lastName:             user.lastName,
         password:             user.password,
         email:                user.email,
-        policynumbers:        user.policynumbers
+        policynumbers:        user.policyDetails[0].policynumber.policynumber
       }
     ;
     return this.http.put<any>(url, userSendObject, this.options)
@@ -60,7 +60,7 @@ export class AuthenticationService {
         lastName:           user.lastName,
         password:           user.password,
         email:              user.email,
-        policynumbers:      user.policynumbers
+        policynumbers:      user.policyDetails[0].policynumber.policynumber
       }
     ;
     return this.http.put<any>(url, userSendObject, this.options);
@@ -76,7 +76,7 @@ export class AuthenticationService {
         lastName:         user.lastName,
         password:         user.password,
         email:            user.email,
-        policynumbers:    user.policynumbers
+        policynumbers:    user.policyDetails[0].policynumber.policynumber
       }
     ;
     return this.http.put<any>(url, userSendObject, this.options)

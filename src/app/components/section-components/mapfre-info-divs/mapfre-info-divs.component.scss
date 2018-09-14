@@ -27,7 +27,7 @@ $mapfre-info-div-title-icon-color:          $active-color;
 .mapfre.info-div {
   border:                                   thin solid;
   font-size:                                $mapfre-info-div-font-size;
-  margin:                                   16px 0 0 0;
+  margin:                                   0;
   padding:                                  8px;
 
   &.caution {
@@ -57,43 +57,19 @@ $mapfre-info-div-title-icon-color:          $active-color;
   .copy {
     padding-top:                            $mapfre-info-div-copy-padding;
   }
-
-  .icon,
-  .message {
-    float:                          l      left;
-  }
-
-  .icon {
-    padding-right:                          $mapfre-info-div-icon-padding;
-    text-align:                             center;
-    width:                                  40px;
-  }
   
+  .icon-container,
+  .information-container {
+    float:                                  left;
+  }
+
   .icon-container {
-		float:                                  left;
-		padding-right:                          $mapfre-info-div-padding;
-		padding-top:                            8px;
-		width:                                  auto;
+		width:                                  32px;
 	}
 
 	.information-container {
-		float:                                  left;
-		width:                                  auto;
+    margin-left:                            8px;
+		width:                                  85%;
 	}
 
-	.info {
-		color:                                  $mapfre-info-div-info-color;
-		font-size:                              $mapfre-info-div-info-font-size;
-	}
-
-	.info,
-	.title {
-		text-align:                             left;
-	}
-
-	.title {
-		color: 													        $mapfre-info-div-title-icon-color;
-		font-weight:                            700;
-		text-transform: 								        uppercase;
-	}
 }

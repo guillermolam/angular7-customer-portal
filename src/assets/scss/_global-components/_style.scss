@@ -5,7 +5,7 @@ $global-card-title-padding:                 $global-one-rem;
 $global-center-on-page-min-height:          80vh;
 $global-group-inputs-margin-top:            $global-one-rem;
 $global-group-button-margin-top:            $global-one-rem *2.5;
-$global-header-icon-full:                   $global-one-rem;
+$global-header-icon-full:                   0.5rem;
 $global-hr-body-margin-top:                 $padding-vertical *2;
 $global-hr-body-margin-bottom:              $padding-vertical *2;
 $global-hr-body-margin-top:                 $global-one-rem *2;
@@ -17,7 +17,7 @@ $global-login-hr-margin-bottom:             $margin-vertical * 1.75;
 $global-mapfre-content-margin:              $global-one-rem * 5;
 $global-prefix-padding-right:               1.125rem;
 $global-red-override:                       $mapfre-red !important;
-$global-title-font-size:                    $font-size-base +0.625;
+$global-title-font-size:                    $font-size-base +0.25;
 $global-title-font-family:                  $font-family-base;
 $global-title-line-height:                  2rem;
 $global-title-margin-bottom:                $margin-vertical/2;
@@ -257,20 +257,36 @@ textarea:focus {
 .policy-info-card {
   background: #f7f7f7;
   border: thin solid #EAE9E9;
-  margin-top: 16px;
-  margin-bottom: 16px;
   padding: 8px 16px;
+  padding-bottom: 0;
   @include border-radius(6px);
 
   hr {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
 
   ul {
     list-style: none;
     margin-left: 0;
     padding-left: 0;
+    margin-bottom: 8px;
   }
+
+  .icon-container,
+  .info-container {
+    float: left;
+  }
+
+  .info-container {
+    width: 78%;
+    margin-left: 16px;
+  }
+}
+
+p.legal {
+  color: #adaaaa;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .icon .svg-container {

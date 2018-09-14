@@ -53,7 +53,7 @@ export class CreatePasswordFormComponent implements OnInit {
       .createPassword(this.userService)
       .subscribe (
         data => {
-         this.router.navigate(['signup', 'activateyouraccount' ] );
+          this.router.navigate(['/verifyaccount' ] );
         },
         error => {
           console.log(error);

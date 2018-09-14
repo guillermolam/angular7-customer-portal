@@ -10,6 +10,20 @@ export class UserService {
 
   constructor() {}
 
+  /*createUserObject(object): void {
+    this.user = {
+      addPolicyAttempts:                this.userData.addPolicyAttempts +1,
+      firstName:                        object.editFirst_name,
+      middleName:                       object.editMI_name,
+      lastName:                         object.editLast_name,
+      email:                            object.editEmail,
+      policyDetails:                    [{
+        policynumber:                   { policynumber: object.editPolicyNumber }
+      }]
+    };
+    this.updateUser(this.user);
+  }*/
+
   updateUser(user: User) {
     this.messageSource.next(user);
   }

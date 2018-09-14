@@ -12,7 +12,7 @@
       </div>
       <app-add-policy-form [inputs]="addPolicy" [userData]="user"></app-add-policy-form>
       <hr class="hr-login" />
-      <div class="row text-center">
+      <div class="row text-center">\
         <div class="col">
           <mapfre-modal 
             [modalOptions]="whereToFindModalOptions">
@@ -69,13 +69,13 @@
             <h1 class="title-copy">{{ 'EDIT_POLICY' | translate }}</h1> 
           </div>
         </div>
-        <div class="row text-center">
+        <div class="row text-center margin-bottom-edit-policy">
           <div class="col">
             {{ 'EDITPOLICY_REVIEW_POLICY' | translate }}
           </div>
         </div>
         <app-edit-policy-form [inputs]="editPolicyInfo" [userData]="user"></app-edit-policy-form>
-        <hr class="hr-login" />
+        <hr class="margin-vertical mv24" />
         <div class="row text-center">
           <div class="col">
             <mapfre-modal 
@@ -103,7 +103,7 @@
     <div *ngSwitchCase="'emailinuse'">
       <div class="row text-center">
         <div class="col">
-          <div class="header-icon">
+          <div class="header-icon full-icon">
             <svg-email-error-svg></svg-email-error-svg>
           </div>
         </div>
@@ -114,7 +114,7 @@
     <div *ngSwitchCase="'notfound'">
       <div class="row text-center">
         <div class="col">
-          <div class="header-icon">
+          <div class="header-icon full-icon">
             <svg-policy-error-svg></svg-policy-error-svg>
           </div>
           <h1 class="title-copy">{{ 'NOT_FOUND' | translate }}</h1> 
@@ -126,7 +126,7 @@
     <div *ngSwitchCase="'policybelongstoanother'">
       <div class="row text-center">
         <div class="col">
-          <div class="header-icon">
+          <div class="header-icon full-icon">
             <svg-policy-error-svg></svg-policy-error-svg>
           </div>
           <h1 class="title-copy">{{ 'POLICYBELONGS_TO_ANOTHER' | translate }}</h1> 
@@ -136,17 +136,5 @@
         <app-policy-belong-to-another-screen [userData]="user"></app-policy-belong-to-another-screen>
       </div>
     </div>
-
-    <div *ngSwitchCase="'verifyaccount'">
-        <div class="row text-center">
-          <div class="col">
-            <div class="header-icon full-icon">
-                <svg-check-icon-svg></svg-check-icon-svg>
-            </div>
-            <h1 class="title-copy">{{ 'VERIFY_ACCOUNT_TITLE' | translate }}</h1> 
-          </div>
-        </div>
-        <app-verify-account-screen [userData]="user"></app-verify-account-screen>
-      </div>
   </ng-container>
 </mapfre-card>

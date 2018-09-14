@@ -12,6 +12,7 @@ import { SignupComponent }            from "./routes/signup/signup.component";
 import { SignupProcessComponent }     from "./routes/signup/signup-process/signup-process.component";
 import { TestingComponent }           from "./routes/testing/testing.component";
 import { WelcomeComponent }           from "./routes/welcome/welcome.component";
+import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent, canActivate: [AuthGuard] },
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   { path: "signup", component: SignupComponent },
   { path: "signup/:parm", component: SignupProcessComponent },
   { path: "testing", component: TestingComponent },
+  { path: "verifyaccount", component: VerifyAccountComponent },
   { path: "welcome", component: WelcomeComponent },
   { path: "**", redirectTo: "" } // otherwise redirect to home
 ];

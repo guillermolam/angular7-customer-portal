@@ -4,8 +4,6 @@ import { FormGroup }                    from '@angular/forms';
 import { AlertService }                 from '../../../_services/alert.service';
 import { FormBase }                     from '../../../_models/form-base';
 import { RegExHelper }                  from '../../../_helpers/regex-helper';
-import { User }                         from '../../../_models/user';
-
  
 @Component({
   selector: 'mapfre-validation',
@@ -17,7 +15,6 @@ import { User }                         from '../../../_models/user';
 export class MapfreIputWithValidationComponent {
   @Input()  input:                      FormBase<any>;
   @Input()  form:                       FormGroup;
-  @Input()  prefillData:                User;
             emailShowError:             boolean = false;
             capsLock:                   boolean = false;
             notOnPageLoad:              boolean = false;

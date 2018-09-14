@@ -93,6 +93,7 @@ import { WelcomeComponent }                   from './routes/welcome/welcome.com
 import { PolicyNotFoundScreenComponent }      from './components/confirmations/signup-process/policy-not-found-screen/policy-not-found-screen.component';
 import { PolicyBelongToAnotherScreenComponent } from './components/confirmations/signup-process/policy-belong-to-another-screen/policy-belong-to-another-screen.component';
 import { EditPolicyComponent }                from './components/forms/dynamic-forms/edit-policy-form/edit-policy.component';
+import { VerifyAccountComponent } from './routes/verify-account/verify-account.component';
 
 if(environment.production) {
   enableProdMode();
@@ -166,7 +167,8 @@ export function tokenGetter() {
     PolicyBelongToAnotherScreenComponent,
     CarIconSvgComponent,
     HomeIconSvgComponent,
-    EditPolicyComponent
+    EditPolicyComponent,
+    VerifyAccountComponent
   ],
   imports: [
     BrowserModule,

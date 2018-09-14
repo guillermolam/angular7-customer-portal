@@ -1,15 +1,16 @@
-<form 
+<form
+  class="margin-top mt24"
   [formGroup]="editPolicyForm" 
   name="editPolicyForm"
   (ngSubmit)="editPolicyForm.valid && editPolicy()">
 
   <div class="group-inputs">
-    <div *ngFor="let input of inputs" class="input">
-      <mapfre-validation [input]="input" [form]="editPolicyForm" [prefillData]="userData"></mapfre-validation>
+      <div *ngFor="let input of inputs; let index = index" class="input" [class.first-input]="index == 0">
+      <mapfre-validation [input]="input" [form]="editPolicyForm"></mapfre-validation>
     </div>
   </div>
 
-  <div class="row group-button">
+  <div class="row">
     <div class="col">
       <mapfre-button
         [additionalClasses]="'basic primary large'"
@@ -19,7 +20,7 @@
       ></mapfre-button>
     </div>
   </div>
-  <div class="row group-button text-center">
+  <div class="row text-center margin-top mt24">
       <div class="col">
         <mapfre-button
           [additionalClasses]="'secondary ghost small'"
