@@ -14,7 +14,7 @@ import { User }                         from '../../../../_models/user';
   styleUrls: ['./policy-belong-to-another-screen.component.scss']
 })
 export class PolicyBelongToAnotherScreenComponent implements OnInit {
-  @Input()  userData:               any[];
+  @Input()  userData:               User;
             policyDate:             string;
             policyDetail:           PolicyDetails[];
             policyNumber:           string;
@@ -29,18 +29,6 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
     private userService:            UserService
   ) { }
 
-  createUserObject(formValue): void {
-    this.policyDetail =          [{ policynumber:{ policynumber: formValue.editPolicyNumber } }];
-    this.user = {
-      firstName:                    formValue.editFirst_name,
-      middleName:                   formValue.editMI_name,
-      lastName:                     formValue.editLast_name,
-      email:                        formValue.editEmail,
-      policyDetails:                this.policyDetail
-    };
-    this.userService.updateUser(this.user);
-  }
-
   confirmPolicy(): void {
     this.authService
       .confirmPolicyAndAccount(this.user)
@@ -53,6 +41,18 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
           this.alertService.error('There was an issue');
         }
       );
+  }
+
+  createUserObject(formValue): void {
+    this.policyDetail =          [{ policynumber:{ policynumber: formValue.editPolicyNumber } }];
+    this.user = {
+      firstName:                    formValue.editFirst_name,
+      middleName:                   formValue.editMI_name,
+      lastName:                     formValue.editLast_name,
+      email:                        formValue.editEmail,
+      policyDetails:                this.policyDetail
+    };
+    this.userService.updateUser(this.user);
   }
   
   policyDetails(userData): void {

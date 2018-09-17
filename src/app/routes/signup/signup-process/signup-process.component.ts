@@ -56,7 +56,7 @@ export class SignupProcessComponent implements OnInit {
         InsName1:                 null,
         effDate:                  '12/12/2018',
         expDate:                  '12/12/2018',
-        policynumber:             { policynumber: 'BB0490' },
+        policynumbers:             { policynumber: 'BB0490' },
         policyStatus:             'cancelled',
         policyType:               'home',
         status:                   null,

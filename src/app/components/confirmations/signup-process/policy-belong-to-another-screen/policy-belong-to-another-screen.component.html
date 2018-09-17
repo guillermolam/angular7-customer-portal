@@ -6,13 +6,13 @@
       </div>
       <hr>
       <div class="policy-info-content">
-        <div class="row" *ngFor="let policyDetail of userData.policyDetails">
+        <div class="row" *ngFor="let pol of userData.policyDetails">
           <div class="col">
             <div class="icon icon-container">
-              <div class="svg-container" *ngIf="policyDetail.policyType == 'auto'">
+              <div class="svg-container" *ngIf="pol.policyType == 'auto'">
                 <div class="svg"><svg-car-icon-svg></svg-car-icon-svg></div>
               </div>
-              <div class="svg-container" *ngIf="policyDetail.policyType == 'home'">
+              <div class="svg-container" *ngIf="pol.policyType == 'home'">
                   <div class="svg"><svg-home-icon-svg></svg-home-icon-svg></div>
               </div>
             </div>

@@ -22,10 +22,6 @@ $global-title-font-family:                  $font-family-base;
 $global-title-line-height:                  2rem;
 $global-title-margin-bottom:                $margin-vertical/2;
 
-$global-margin-padding-helper-8:            $defualt-margin-padding/2;
-$global-margin-padding-helper-16:           $defualt-margin-padding;
-$global-margin-padding-helper-24:           $defualt-margin-padding * 3;
-
 body {
   background-color:                         $global-body-bg-color;
   line-height:                              1.5rem;
@@ -197,62 +193,6 @@ textarea:focus {
     background-color:                       $global-red-override; 
 }
 
-// ------- Margin and Padding helpers ----------
-.margin-bottom { 
-  &.mb8 {
-    margin-bottom:                          $global-margin-padding-helper-8 !important;
-  }
-  &.mb16 {
-    margin-bottom:                          $global-margin-padding-helper-16 !important;
-  }
-  &.mb24 {
-    margin-bottom:                          $global-margin-padding-helper-24 !important;
-  }
-}
-
-.margin-top {
-  &.mt8 {
-    margin-top:                             $global-margin-padding-helper-8 !important;
-  }
-  &.mt16 {
-    margin-top:                             $global-margin-padding-helper-16 !important;
-  }
-  &.mt24 {
-    margin-top:                             $global-margin-padding-helper-24 !important;
-  }
-}
-
-.margin-vertical {
-  &.mv8 {
-    margin-bottom:                          $global-margin-padding-helper-8 !important;
-    margin-top:                             $global-margin-padding-helper-8 !important;
-  }
-  &.mv16 {
-    margin-bottom:                          $global-margin-padding-helper-16 !important;
-    margin-top:                             $global-margin-padding-helper-16 !important;
-  }
-  &.mv24 {
-    margin-bottom:                          $global-margin-padding-helper-24 !important;
-    margin-top:                             $global-margin-padding-helper-24 !important;
-  }
-}
-
 .modal-backdrop { 
   z-index:                                  1028;
-}
-
-.no-margin-bottom {
-  margin-bottom:                            $global-zero;
-}
-
-.no-margin-top {
-  margin-top:                               $global-zero;
-}
-
-.no-padding-top {
-  padding-top:                              $global-zero;
-}
-
-.no-padding-bottom {
-  padding-bottom:                           $global-zero;
 }
