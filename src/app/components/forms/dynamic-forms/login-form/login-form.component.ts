@@ -26,7 +26,7 @@ export class LoginFormComponent implements OnInit {
             loginForm:                  FormGroup;
             returnUrl:                  string;
             rememberMe:                 boolean = false;
-            user:                       User={};
+            user:                       User = {};
   
   constructor(
     private _cookieService:             CookieService,
