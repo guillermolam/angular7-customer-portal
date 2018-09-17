@@ -15,11 +15,11 @@ import { User }                         from '../../../../_models/user';
   providers: [ FormBaseControlService ]
 })
 export class SendEmailFormComponent implements OnInit {
-  @Input() emailPrefillParamater:       string;
-  @Input() inputs:                      FormBase<any>[] = [];
-  @Input() inputValidation:             boolean;
-  passwordEmailForm:                    FormGroup;
-  user:                                 User;
+  @Input()  emailPrefillParamater:      string;
+  @Input()  inputs:                     FormBase<any>[] = [];
+  @Input()  inputValidation:            boolean;
+            passwordEmailForm:          FormGroup;
+            user:                       User = {};
 
   @Output() showConfirmation:           EventEmitter<boolean> = new EventEmitter();
 

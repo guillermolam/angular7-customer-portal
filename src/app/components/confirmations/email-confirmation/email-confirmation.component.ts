@@ -10,7 +10,7 @@ import { AuthenticationService }        from '../../../_services/_iam/authentica
 })
 export class EmailConfirmationComponent implements OnInit {
   @Input() sendEmailAgain:       string;
-  user:                          User;
+  user:                          User  = {};
 
   @Output() showConfirmation:    EventEmitter<boolean> = new EventEmitter();
 

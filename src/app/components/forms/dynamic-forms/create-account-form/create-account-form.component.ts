@@ -19,10 +19,10 @@ import { User }                         from '../../../../_models/user';
   providers: [ FormBaseControlService ]
 })
 export class CreateAccountFormComponent implements OnInit {
-  @Input() inputs:                  FormBase<any>[] = [];
-  signUpForm:                       FormGroup;
-  loading:                          boolean = false;
-  user:                             User;
+  @Input()  inputs:                 FormBase<any>[] = [];
+            signUpForm:             FormGroup;
+            loading:                boolean = false;
+            user:                   User = {};
 
   constructor(
     private alertService:           AlertService,

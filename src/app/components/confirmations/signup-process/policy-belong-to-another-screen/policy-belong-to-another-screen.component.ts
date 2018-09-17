@@ -20,7 +20,7 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
             policyNumber:           string;
             typeOfAccount:          string;
             typeOfPolicy:           string;
-            user:                   User;
+            user:                   User = {};
 
   constructor(
     private alertService:           AlertService,

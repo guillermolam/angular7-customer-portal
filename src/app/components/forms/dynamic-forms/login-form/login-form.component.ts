@@ -2,7 +2,7 @@
 import { Component, Input, OnInit }     from "@angular/core";
 import { CookieService }                from 'ngx-cookie-service';
 import { FormGroup }                    from "@angular/forms";
-import { Router }       from "@angular/router";
+import { Router }                       from "@angular/router";
 // --- Components | Services | Models --- //
 import { AlertService }                 from "../../../../_services/alert.service";
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
@@ -26,7 +26,7 @@ export class LoginFormComponent implements OnInit {
             loginForm:                  FormGroup;
             returnUrl:                  string;
             rememberMe:                 boolean = false;
-            user:                       User;
+            user:                       User={};
   
   constructor(
     private _cookieService:             CookieService,
@@ -48,11 +48,13 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(): void {
-    this.user.email =                   this.loginForm.value.loginEmail;
-    this.user.password  =               this.loginForm.value.loginPassword;
+    console.log(this.loginForm);
+  
+    this.user.email =                   this.loginForm.controls.loginEmail.value;
+    this.user.password  =               this.loginForm.controls.loginPassword.value;
     this.loading =                      true;
     this.putCookie();
-    
+    console.log(this.loginForm.controls.loginEmail.value);
     if(this.user) {
       this.authenticationService
         .login (this.user.email, this.user.password)

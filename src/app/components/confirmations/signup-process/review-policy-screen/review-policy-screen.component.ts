@@ -11,7 +11,7 @@ import { User }                        from '../../../../_models/user';
 export class ReviewPolicyScreenComponent implements OnInit {
   @Input()  policyObject:              Object;
   @Input()  userData:                  User;
-            user:                      User;
+            user:                      User = {};
 
   constructor(
     private authService:               AuthenticationService

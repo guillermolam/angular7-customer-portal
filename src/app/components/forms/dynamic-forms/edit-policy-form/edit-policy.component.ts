@@ -22,7 +22,7 @@ export class EditPolicyComponent implements OnInit {
   @Input()  userData:                   User;
             editPolicyForm:             FormGroup;
             loading:                    boolean = false;
-            user:                       User;
+            user:                       User  = {};
 
   constructor(
     private authService:                AuthenticationService,

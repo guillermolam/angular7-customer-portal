@@ -19,7 +19,7 @@ export class SignupProcessComponent implements OnInit {
   addPolicy:                           any[];
   createNewPassword:                   any[];
   editPolicyInfo:                      any[];
-  user:                                User;
+  user:                                User  = {};
   whereInTheProcess:                   string;
   whereToFindModalOptions:             ModalOptions;
 

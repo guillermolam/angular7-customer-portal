@@ -23,7 +23,7 @@ export class CreatePasswordFormComponent implements OnInit {
             createPasswordForm:     FormGroup;
             email:                  string;
             token:                  string;
-            user:                   User;
+            user:                   User = {};
             whereInTheProcess:      string;
 
   @Output() confirmationOfPasswordCreation:   EventEmitter<boolean> = new EventEmitter();

@@ -23,7 +23,7 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
   returnUrl:                string;
   repeatPassword:           boolean;
   showPassword:             boolean;
-  user:                     User;
+  user:                     User  = {};
   
   @Output() userConfirmation: EventEmitter<boolean> = new EventEmitter();
   @Output() expireLinkOutput: EventEmitter<boolean> = new EventEmitter();
