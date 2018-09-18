@@ -25,9 +25,9 @@ import { RegExHelper }                        from './_helpers/regex-helper';
 import { JwtInterceptor }                     from "./_helpers/jwt.interceptor";
 import { UserService }                        from "./_services/user.service"; 
 // ----- Account ----- //
-import { AccountMainComponent }               from "./account-main/account-main.component";
-import { AccountHeaderComponent }             from "./account-main/account-header/account-header.component";
-import { SidenavComponent }                   from "./account-main/sidenav/sidenav.component";
+import { AccountMainComponent }               from "./components/dashboard/account-main.component";
+import { AccountHeaderComponent }             from "./components/dashboard/account-header/account-header.component";
+import { SidenavComponent }                   from "./components/dashboard/sidenav/sidenav.component";
 // ----- Routes ----- //
 import { CreateNewPasswordComponent }         from './routes/create-new-password/create-new-password.component';
 import { DashboardComponent }                 from './routes/dashboard/dashboard.component';

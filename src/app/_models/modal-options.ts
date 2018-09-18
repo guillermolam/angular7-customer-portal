@@ -10,7 +10,8 @@ export class ModalOptions {
 	modalTranslateCopy:             				string;
 	typeOfModal:														string;
 	accessibilityReaderOnly:        				boolean;
-	modalClickEvent:                				boolean;
+  modalClickEvent:                				boolean;
+  onLoad:                                 boolean;
 	screenReader:  													boolean;
 	showIcons:                      				boolean;
 
@@ -24,8 +25,9 @@ export class ModalOptions {
 		iconFamily?:													string,
 		modalId?: 														string,
 		modalTranslateCopy?: 									string,
-		modalClickEvent?: 										boolean,
-		screenReader?: 												boolean,	
+    modalClickEvent?: 										boolean,
+    onLoad?:                              boolean,
+		screenReader?: 												boolean,
 		showIcons?: 													boolean,
 		typeOfModal?:													string,
 		howManyIconsUsed?:										number
@@ -44,6 +46,7 @@ export class ModalOptions {
 		this.modalClickEvent = 								!!options.modalClickEvent;
 		this.showIcons = 											!!options.showIcons;
 		this.howManyIconsUsed =								options.howManyIconsUsed || 0 ;
-		this.headerIconClass = 								options.headerIconClass || '';
+    this.headerIconClass = 								options.headerIconClass || '';
+    this.onLoad =                         !!options.onLoad;
 	}
 }

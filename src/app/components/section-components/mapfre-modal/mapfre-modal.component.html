@@ -1,15 +1,19 @@
-<mapfre-button
-	[additionalClasses]="modalOptions?.additionalButtonClasses"
-	[buttonCopy]="modalOptions?.buttonCopy"
-	[howManyIconsUsed]="modalOptions?.howManyIconsUsed"
-	[inputType]="'modal'"
-	[iconClasses]="modalOptions?.iconClasses"
-	[iconFamily]="modalOptions?.iconFamily"
-	[modalId]="modalOptions?.modalId"
-	[screenReader]="modalOptions?.screenReader"
-	[showIcons]="modalOptions?.showIcons"
-	(click)="modal.show(); whereIsTheHelpButton($event)">
-</mapfre-button>
+
+<ng-container *ngIf="onLoad == true">
+  <mapfre-button
+    [additionalClasses]="modalOptions?.additionalButtonClasses"
+    [buttonCopy]="modalOptions?.buttonCopy"
+    [howManyIconsUsed]="modalOptions?.howManyIconsUsed"
+    [inputType]="'modal'"
+    [iconClasses]="modalOptions?.iconClasses"
+    [iconFamily]="modalOptions?.iconFamily"
+    [modalId]="modalOptions?.modalId"
+    [screenReader]="modalOptions?.screenReader"
+    [showIcons]="modalOptions?.showIcons"
+    (click)="modal.show(); whereIsTheHelpButton($event)">
+  </mapfre-button>
+</ng-container>
+
 <div mdbModal
 	#modal="mdb-modal"
 	aria-labelledby="{{modalOptions?.modalId}}" 

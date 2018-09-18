@@ -18,7 +18,7 @@ export class RegExHelper {
   constructor(){
     this.customPattern =        / /;
     this.looseEmailPattern =    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])$/g;
-    this.strictEmailPattern =   /^([A-Za-z0-9]+[\_\.]{0,1}?[A-Za-z0-9]+){1,63}@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]{3,63}\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    this.strictEmailPattern =   /^([A-Za-z0-9]+[\_\.]{0,1}?[A-Za-z0-9]+){1,63}@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]{1,63}\.)+))([a-zA-Z]{2,6}|[0-9]{1,3})(\]?)$/;
     this.noSpacePattern =       /^\s*$/;
     this.namePattern =          /^((?!\_)[A-z]+((-)*[A-z])*)$/;
     this.policyPattern =        /^[A-z0-9]+$/;
