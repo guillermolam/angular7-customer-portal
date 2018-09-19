@@ -47,7 +47,7 @@ pipeline{
 					sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
-		stage("Deploy Image"){
+		stage("Deploy Image to test"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
@@ -56,6 +56,38 @@ pipeline{
 								towerServer: 'Ansible Tower',
 								templateType: 'job',
 								jobTemplate: 'deploy_customer_portal_ui',
+								importTowerLogs: true,
+								inventory: 'dev_boxes',
+								jobTags: '',
+								skipJobTags: '',
+								limit: '',
+								removeColor: false,
+								verbose: true,
+								credential: '',
+								extraVars: '''---
+user: "glam"
+docker_registry_username: "$DOCKER_NEXUS_CREDS_USR"
+docker_registry_password: "$DOCKER_NEXUS_CREDS_PSW"
+docker_registry: "${NEXUS_REPO_URL}"
+image_name: "${NEXUS_REPO_URL}/${JOB_NAME}"
+tag: "${BUILD_NUMBER}"
+container_name: "${CUSTOMER_PORTAL_APP_NAME}"
+container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
+ports: 
+ - "80:80"
+ - "443:443"'''
+            )			
+				}
+		}
+		stage("Deploy Image to Prod"){
+			environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
+			steps{
+        		ansibleTower(
+								towerServer: 'Ansible Tower',
+								templateType: 'job',
+								jobTemplate: 'deploy_customer_portal_ui_to_aws',
 								importTowerLogs: true,
 								inventory: 'aws_dev_boxes',
 								jobTags: '',
