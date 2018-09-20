@@ -1,15 +1,25 @@
-import { TestBed, inject } from '@angular/core/testing';
+// import { TestBed, inject } from '@angular/core/testing';
 
-import { FormBaseControlService } from './form-base-control.service';
+// import { FormBaseControlService } from './form-base-control.service';
 
-describe('FormBaseControlService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [FormBaseControlService]
-    });
-  });
+// import { FormControl, FormGroup, Validators } from '@angular/forms';
+// import { FormBase }     from '../_models/form-base';
+// import { RegExHelper }  from '../_helpers/regex-helper';
 
-  it('should be created', inject([FormBaseControlService], (service: FormBaseControlService) => {
-    expect(service).toBeTruthy();
-  }));
-});
+// describe('FormBaseControlService', () => {
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+//       providers: [FormBaseControlService]
+//     });
+//   });
+
+//   it('should be created', inject([FormBaseControlService], (service: FormBaseControlService) => {
+//     expect(service).toBeTruthy();
+//   }));
+
+//   // it('should return true if password matches', )
+
+
+
+
+// });
