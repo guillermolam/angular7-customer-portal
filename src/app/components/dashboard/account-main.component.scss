@@ -1,0 +1,37 @@
+//This will be moving
+.wallet-back-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  a {
+    padding: 10px;
+   
+  }
+}
+
+.wallet-skip-button {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  margin-left: -50px;
+}
+
+.wallet-list {
+  list-style: none;
+}
+
+.wallet-android-passes {
+  margin: auto;
+  width: 208px;
+  color: #737373;
+  font-size: 12px;
+  font-family: NotoSans;
+  text-align: center;
+  line-height: 16px;
+}
+
+.wallet-content.back {
+  top: 50%;
+    position: relative;
+    margin-top: -140px;
+}

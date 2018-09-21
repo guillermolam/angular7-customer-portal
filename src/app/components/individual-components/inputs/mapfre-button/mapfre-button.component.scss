@@ -182,11 +182,14 @@ $mapfre-button-header-margin:                   -3px;
             }
         }
         &.white {
-            background:                         transparent;
+            background:                         transparent !important; //the important is temporary
             border-color:                       $mapfre-button-color-white;
             color:                              $mapfre-button-color-white; //will need to be a variable
 
-
+            &:hover {
+              background:                     $white !important; //change to a variable
+              color:                          $mapfre-red; //change to a variable
+            }
             &:disabled {
                 border-color:                   darken( $mapfre-button-color-white, 10%);
                 color:                          darken( $mapfre-button-color-white, 10%);
@@ -238,8 +241,7 @@ $mapfre-button-header-margin:                   -3px;
         &.white {
             color:                              $mapfre-button-color-white; //will need to be a variable
 
-
-            &:disabled {
+          &:disabled {
                 color:                          darken( $mapfre-button-color-white, 10%);
             }
         }

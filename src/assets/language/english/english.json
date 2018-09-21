@@ -121,7 +121,17 @@
   "REVIEWPOLICY_INFO_TITLE": "Here is your policy information",
   "REVIEWPOLICY_WALLETCARD": "Add your Mapfre card to your phone",
   "VALID_NAME_VALIDATION_MESSAGE": "Please use a valid name",
-  "VALID_POLICY_VALIDATION_MESSAGE": "Please use a valid policy"
-
+  "VALID_POLICY_VALIDATION_MESSAGE": "Please use a valid policy",
+  "WALLET_TITLE_ONE": "Get your",
+  "WALLET_TITLE_TWO": "You'll never lose your policy details",
+  "WALLET_TITLE_THREE": "Take advantage of your card",
+  "WALLET_CONTENT_ONE": "Learn the benefits of keeping your policy information in a digital wallet card.",
+  "WALLET_CONTENT_TWO": "With a digital wallet card, your information is always at your fingertips!",
+  "WALLET_CONTENT_THREE": "You can file a claim, contact your agent, access to your policy details any time",
+  "WALLET_GET_MY_CARD": "Get my card",
+  "WALLET_SKIP": "Skip for now",
+  "WALLETBACK_TITLE":"Download Now!",
+  "WALLETBACK_ANDROID": "As for now Android users will require the WalletPasses app to save it.",
+  "WALLETBACK_WALLETPASS": "Dowload WalletPasses"
 }
 

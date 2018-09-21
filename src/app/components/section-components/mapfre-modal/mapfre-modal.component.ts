@@ -2,7 +2,6 @@ import {  Component, HostListener, Input,
           OnInit, ViewChild, EventEmitter, 
           Output }                      from '@angular/core';
 import { ModalModule, ModalDirective }  from 'angular-bootstrap-md';
-
 import { ModalOptions }                 from '../../../_models/modal-options';
 
 @Component({ 
@@ -66,8 +65,18 @@ export class MapfreModalComponent implements OnInit {
     }
   }
 
-  closeOnInternalButton( hideModal ): void {
-    if( hideModal ) {
+  checkIfModalAutoLoads( check ): void {
+    if( check ) {
+      this.modalOverLay = true;
+      setTimeout(() => {
+        this.modal.show();
+      }, 500);
+    
+    }
+  }
+
+  closeOnInternalButton( hideModalEvent ): void {
+    if( hideModalEvent ) {
       this.modal.hide();
       this.hideModalOutput.emit(false);
     }
@@ -84,6 +93,7 @@ export class MapfreModalComponent implements OnInit {
     if( this.modalOptions.typeOfModal == 'header' ) {
       this.setUpModalClass();
     }
+    this.checkIfModalAutoLoads( this.modalOptions.onLoad );
   }
 
 }

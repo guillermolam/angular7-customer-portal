@@ -1,5 +1,5 @@
 
-<ng-container *ngIf="onLoad == true">
+<ng-container *ngIf="!modalOptions?.onLoad">
   <mapfre-button
     [additionalClasses]="modalOptions?.additionalButtonClasses"
     [buttonCopy]="modalOptions?.buttonCopy"
@@ -22,29 +22,42 @@
 	tabindex="-1" 
 	role="dialog" 
 	[id]="modalOptions?.modalId" 
-	[config]="{backdrop: modalOverLay}"
-	>
-	<div 
-		class="modal-dialog modal-small" 
-		role="document"	
-		[ngClass]="{
-			'help': modalOptions?.typeOfModal == 'header' 
-		}"   
-		[style.left]="helpButtonPositionLeft">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title w-100" id="myModalLabel">
-						<mapfre-icon 
-							[iconClasses]="modalOptions?.headerIconClass" 
-							[iconFamily]="modalOptions?.iconFamily">
-						</mapfre-icon>
-						{{ modalOptions?.modalTranslateCopy | translate }}
-					</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
-							<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<ng-content ></ng-content>
-		</div>
-	</div>
+	[config]="{ backdrop: modalOverLay }"
+  >
+<!-- Wallet Version -->  
+  <div 
+    class="modal-dialog wallet-popup modal-medium" 
+    role="document"
+    *ngIf="modalOptions?.typeOfModal == 'wallet'">
+      <div class="modal-content no-margin-bottom">
+        <ng-content></ng-content>
+      </div>
+  </div>
+
+<!-- Regular Version -->  
+  <div 
+    class="modal-dialog modal-small" 
+    role="document"	
+    [ngClass]="{
+      'help': modalOptions?.typeOfModal == 'header'
+    }"   
+    [style.left]="helpButtonPositionLeft"
+    *ngIf="modalOptions?.typeOfModal != 'wallet'">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title w-100" id="myModalLabel">
+            <mapfre-icon 
+              [iconClasses]="modalOptions?.headerIconClass" 
+              [iconFamily]="modalOptions?.iconFamily">
+            </mapfre-icon>
+            {{ modalOptions?.modalTranslateCopy | translate }}
+          </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        stuff
+    </div>
+  </div>
+
 </div>

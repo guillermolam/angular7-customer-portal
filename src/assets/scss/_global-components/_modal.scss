@@ -123,3 +123,144 @@ label.grid-modal-footer {
 	}
 }
 
+.wallet-front {
+  
+  .carousel-content {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 42px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+
+  .carousel-indicators {
+    bottom: 45px !important; //overriding mdbootstrap
+  }
+
+  .first-slide-title {
+    color: $white;
+    text-align: center;
+    height: 104px;
+
+    p {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    img {
+      margin-bottom: 24px;
+    }
+  }
+
+  .image {
+    height: 240px;
+  }
+
+  .title {
+    font-size:            32px;
+    line-height:          48px;
+    margin-bottom:        24px;
+    height: 104px;
+  }
+
+  .wallet-footer {
+    ul {
+      text-align:   center;
+      list-style: none;
+      margin-left: 0;
+      padding: 0;
+    }
+  }
+
+  .carousel-content, 
+  .title {
+    color:        $white;
+    text-align:   center;
+  }
+}
+
+.wallet-popup {
+  perspective: 800; //use mixin
+  .modal-content {
+    background: transparent;
+    box-shadow: none !important;
+  }
+  
+}
+
+.wallet-card {
+  position: relative;
+  transform-style: preserve-3d; //use mixin
+  transition: 0.5s; //use mixin
+
+  .carousel-indicators {
+    z-index: 1 !important;
+  }
+
+  &.flipped {
+    transform: rotatey(180deg); //use mixin
+    
+    .wallet-front {
+      animation-name: displayNone;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+    }
+  
+  }
+
+  .wallet {
+    backface-visibility: hidden; //use mixin
+    top: 0;
+    left: 0;
+    
+    font-weight:    100;
+    padding:        40px;
+    text-align:     center;
+    height:         658px;
+    width:          100%
+  }
+
+  .wallet-content {
+    width:          328px;
+    margin:         auto;
+  }
+
+  .wallet-back {
+    background:     $white;
+    z-index:        1;
+    transform:      rotatey(180deg); //use mixin
+    position:       absolute;
+  }
+  
+  .wallet-front {
+    animation-name: showFront;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    background:   $mapfre-red;
+   z-index:      2;
+  }
+}
+
+
+@keyframes displayNone {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+@keyframes showFront {
+  0% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+
+

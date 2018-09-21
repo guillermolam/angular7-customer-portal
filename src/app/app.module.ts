@@ -94,6 +94,9 @@ import { PolicyNotFoundScreenComponent }      from './components/confirmations/s
 import { PolicyBelongToAnotherScreenComponent } from './components/confirmations/signup-process/policy-belong-to-another-screen/policy-belong-to-another-screen.component';
 import { EditPolicyComponent }                from './components/forms/dynamic-forms/edit-policy-form/edit-policy.component';
 import { VerifyAccountComponent } from './routes/verify-account/verify-account.component';
+import { OnboardingWalletFrontComponent } from './components/confirmations/wallet-passes/onboarding-wallet-front/onboarding-wallet-front.component';
+import { OnboardingWalletBackComponent } from './components/confirmations/wallet-passes/onboarding-wallet-back/onboarding-wallet-back.component';
+import { OnboardingWalletBackListComponent } from './components/confirmations/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 
 if(environment.production) {
   enableProdMode();
@@ -168,7 +171,10 @@ export function tokenGetter() {
     CarIconSvgComponent,
     HomeIconSvgComponent,
     EditPolicyComponent,
-    VerifyAccountComponent
+    VerifyAccountComponent,
+    OnboardingWalletFrontComponent,
+    OnboardingWalletBackComponent,
+    OnboardingWalletBackListComponent
   ],
   imports: [
     BrowserModule,

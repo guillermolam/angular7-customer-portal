@@ -1,0 +1,36 @@
+<div class="wallet wallet-back">
+  <div>
+    <a (click)="goToWalletPassModal($event)">
+      <img src="assets/img/icons/back-arrow.png" />
+    </a>
+  </div>
+  <div>
+    <div class="first-slide-title">
+        <p>{{ 'WALLETBACK_TITLE' | translate }}</p>
+        <img src="assets/img/images/mapfre-card-logo-color.png" style="margin-left:-30px" />
+      </div>
+      <div class="button-link">
+        <a (click)="alert('apple')">
+          <img src="assets/img/images/apple-wallet.png" />
+        </a>
+      </div>
+      <div class="button-link">
+        <img src="assets/img/images/android-pass.png" />
+        <p>
+            {{ 'WALLETBACK_ANDROID' | translate }}
+        </p>
+        <mapfre-link
+          additionalClasses="blue-link"
+          href="https://play.google.com/store/apps/details?id=io.walletpasses.android&hl=en_US">
+          {{ 'WALLETBACK_WALLETPASS' | translate }}
+        </mapfre-link>
+      </div>
+      <div>
+        <mapfre-link
+          additionalClasses="blue-link"
+          (click)="hideModalAction($event)">
+          {{ 'WALLET_SKIP' | translate }}
+        </mapfre-link>
+      </div>
+    </div>
+</div>

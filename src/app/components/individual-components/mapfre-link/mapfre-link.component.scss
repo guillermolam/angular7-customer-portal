@@ -15,9 +15,14 @@ i {
     font-weight:                            900;
 }
 
-.mapfre {  
+.mapfre {
+  &.white-link { 
     span {
-        color:                              $mapfre-link-color;
+      color: $white;
+    }
+  }
+    span {
+      color:                              $mapfre-link-color;
     }
     
     &.large-link {
@@ -54,8 +59,9 @@ i {
 
     &.underline {
         .link-content {
-            border-bottom:                      thin solid $mapfre-link-border-bottom-color;
+            border-bottom:                  thin solid $mapfre-link-border-bottom-color;
         }
        @include transition(1s);
     }
+
 }
