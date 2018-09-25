@@ -1,25 +1,21 @@
 @import "../../../../styles.scss";
 
-$mapfre-alert-background-default:   lighten( desaturate( adjust-hue( $information-color, 4deg ), 17 ), 58 );
-$mapfre-alert-background-caution:   lighten( saturate( adjust-hue( $caution-color, 3deg ), 23 ), 44 ); //for the moment
-$mapfre-alert-background-error:     lighten( saturate( adjust-hue( $error-color, 3deg ), 23 ), 44 );
-$mapfre-alert-background-success:   lighten( saturate( $success-color, 44 ), 21 );
-
+$mapfre-alert-background-default:   $information-background-color;
+$mapfre-alert-background-caution:   $caution-background-color;
+$mapfre-alert-background-error:     $error-background-color;
+$mapfre-alert-background-success:   $success-background-color;
 $mapfre-alert-border-default:       $information-color;
 $mapfre-alert-border-caution:       $caution-color; 
 $mapfre-alert-border-error:         $error-color;
 $mapfre-alert-border-success:       $success-color; 
-
 $mapfre-alert-color-default:        $med-gray;
 $mapfre-alert-color-caution:        $mapfre-alert-color-default;
 $mapfre-alert-color-error:          $mapfre-alert-color-default;
 $mapfre-alert-color-success:        $mapfre-alert-color-default;
-
 $mapfre-alert-font-size:            $font-size-base;
 $mapfre-alert-copy-padding:         $default-margin-padding - 0.1875rem;
 $mapfre-alert-icon-padding:         $default-margin-padding;
 $mapfre-alert-copy-padding:         $mapfre-alert-font-size/2;
-
 
 .mapfre.alert {
   font-size:                        $mapfre-alert-font-size;
@@ -74,9 +70,4 @@ $mapfre-alert-copy-padding:         $mapfre-alert-font-size/2;
     width:                          40px;
   }
 
-}
-
-.alert-container {
-  padding-bottom:  16px;
-  padding-top: 8px;
 }

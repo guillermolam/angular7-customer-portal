@@ -3,13 +3,13 @@
   name="loginForm"  
   (ngSubmit)="loginForm.valid && login()">
   
-  <div class="group-inputs">
+  <div class="">
     <div *ngFor="let input of inputs" class="input">
       <mapfre-validation [input]="input" [form]="loginForm"></mapfre-validation>
     </div>
   </div>
 
-  <div class="row group-remember">
+  <div class="row margin-top mt16 margin-bottom mb32">
     <div class="col-xxs">
       <mapfre-switch [copyRight]="true" (switchOn)="onRememberMe($event)">
           {{'REMEMBER_ME' | translate}}
@@ -18,13 +18,13 @@
     <div class="col-xxs forgot-password">
       <mapfre-link
         (click)="prefillEmailParamater()"
-        [additionalClasses]="'small-link underline switch-line-up'"
+        [additionalClasses]="'switch-line-up'"
         >{{ 'FORGOT_PASS' | translate }}
       </mapfre-link>
     </div>
   </div>
 
-  <div class="row group-login-button">
+  <div class="row">
     <div class="col">
       <mapfre-button
         [additionalClasses]="'basic primary large'"

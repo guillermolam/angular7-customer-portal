@@ -11,13 +11,12 @@
         </div>
       </div>
       <app-add-policy-form [inputs]="addPolicy" [userData]="user"></app-add-policy-form>
-      <hr class="hr-login" />
-      <div class="row text-center">
+      <div class="row text-center margin-top mt24">
         <div class="col">
           <mapfre-modal 
             [modalOptions]="whereToFindModalOptions">
               <div class="modal-body no-margin-bottom">
-                <hr class="header" />
+                  <hr class="margin-bottom mb24" />
                 <div>
                   {{ 'POLICY_DOCUMENT' | translate}}
                 </div>
@@ -81,7 +80,7 @@
             <mapfre-modal 
               [modalOptions]="whereToFindModalOptions">
                 <div class="modal-body no-margin-bottom">
-                  <hr class="header" />
+                    <hr class="margin-bottom mb24" />
                   <div>
                     {{ 'POLICY_DOCUMENT' | translate}}
                   </div>

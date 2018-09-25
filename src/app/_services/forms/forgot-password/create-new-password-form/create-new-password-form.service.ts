@@ -14,7 +14,6 @@ export class CreateNewPasswordFormService {
         inputType:          'password',
         key:                'createPassword',
         label:              'CREATE_PASSWORD',
-        maxLength:          24,
         minLength:          7,
         required:           true,
         showPasswordIcon:   true,

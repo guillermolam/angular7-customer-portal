@@ -42,8 +42,8 @@ export class MapfreIputWithValidationComponent {
   }
 
   OnBlur(ref): void {
-   let inputValue = ref.form.controls[ref.input.key].value;
-   this.notOnPageLoad = true;
+    let inputValue = ref.form.controls[ref.input.key].value;
+    this.notOnPageLoad = true;
 
     if( this.checkForBlankInputField(inputValue) ) {
       this.validMessageShow = true;
@@ -97,12 +97,7 @@ export class MapfreIputWithValidationComponent {
 
   passwordRules(reg: string): boolean {
     if(this.form.controls['createPassword'].value != null || this.form.controls['createPassword'].value != undefined){
-      if( reg == 'ruleFive' && this.form.controls['createPassword'].value.length <= 24 ) {
-        return true;
-      }
-      else{
-        return this.regExHelper.regExPasswordStrength(reg, this.form.controls['createPassword'].value);
-      }
+      return this.regExHelper.regExPasswordStrength(reg, this.form.controls['createPassword'].value);
     }
   }
   

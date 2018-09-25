@@ -4,7 +4,7 @@
   name="editPolicyForm"
   (ngSubmit)="editPolicyForm.valid && editPolicy()">
 
-  <div class="group-inputs">
+  <div class="">
       <div *ngFor="let input of inputs; let index = index" class="input" [class.first-input]="index == 0">
       <mapfre-validation [input]="input" [form]="editPolicyForm"></mapfre-validation>
     </div>

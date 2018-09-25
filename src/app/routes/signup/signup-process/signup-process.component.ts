@@ -34,7 +34,7 @@ export class SignupProcessComponent implements OnInit {
     this.createNewPassword = passwordService.getInputs();
     this.editPolicyInfo = editPolicyService.getInputs();
     this.whereToFindModalOptions = new ModalOptions({
-      additionalButtonClasses:        "flat link", 
+      additionalButtonClasses:        "flat normal-link", 
 			animatePosition:                "bottom", 
 			buttonCopy:                     "MODAL_WHERE_CAN_I_LINK",
 			modalId:                        "helpModal",
@@ -46,7 +46,7 @@ export class SignupProcessComponent implements OnInit {
   testingData(): User {
     //This object is for development use. And will be taken out
     let object = {
-      addPolicyAttempts:          3,
+      addPolicyAttempts:          1,
       firstName:                  'TestFirstName',
       middleName:                 'TM',
       lastName:                   'TestLastName',

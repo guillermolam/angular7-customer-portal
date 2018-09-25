@@ -73,7 +73,7 @@
   "TIME": "24 hours",
 
   "FIRST_NAME": "First Name",
-  "MIDDLE_INITIAL": "Middle Inittial",
+  "MIDDLE_INITIAL": "MI",
   "LAST_NAME": "Last Name",
   "CONTINUE": "Continue",
   "ALL_READY_IN_USE": "is already in use",

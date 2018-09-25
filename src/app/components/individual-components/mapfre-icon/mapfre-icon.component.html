@@ -29,7 +29,11 @@
 	<span class="sr-only sr-only-focusable"><ng-content></ng-content></span>
 </span>
 
-<span *ngIf="!title && !password && iconFamily == 'material-icons' ">
+<span *ngIf="!title && !password && iconFamily == 'material-icons' && !header">
 	<i class="material-icons">{{iconClasses}}</i>
 	<span class="sr-only sr-only-focusable"><ng-content></ng-content></span>
 </span>
+<div *ngIf="header" class="header-icon">
+  <i class="material-icons">{{iconClasses}}</i>
+	<span class="sr-only sr-only-focusable"><ng-content></ng-content></span>
+</div>

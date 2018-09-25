@@ -30,7 +30,7 @@ $mapfre-button-large-padding:                   $padding-vertical/1.14;
 $mapfre-button-small-height:                    32px;
 $mapfre-button-small-padding:                   $padding-vertical/2;
 //Defaults
-$mapfre-buton-border:                           2px solid;
+$mapfre-buton-border:                           none;
 $mapfre-button-font-family:                     $button-font-family;
 $mapfre-button-font-weight:                     bold;
 //Header Buttons
@@ -46,6 +46,7 @@ $mapfre-button-header-margin:                   -3px;
     font-weight:                                $mapfre-button-font-weight;
     justify-content:                            center;
     line-height:                                24px;
+    padding:                                    0 1.5rem;
     pointer-events:                             auto !important;
     position:                                   relative;
     text-transform:                             uppercase;
@@ -56,11 +57,11 @@ $mapfre-button-header-margin:                   -3px;
     &:disabled,
     &.disabled,
     &.disabled[disabled]{
-        cursor: not-allowed !important;
-        
-        &:hover {
-            box-shadow: none !important;
-        }
+      cursor: not-allowed !important;
+      
+      &:hover {
+        box-shadow: none !important;
+      }
     }
 
     &.basic {
@@ -245,81 +246,71 @@ $mapfre-button-header-margin:                   -3px;
         }
     }
 
+    &.normal-link {
+      color:                              $mapfre-button-color-link;
+      text-transform:                     capitalize;
+      font-weight: 400;
+    }
+
     &.header-flat {
         @extend .flat;
+        padding-top: 16px;
+        padding-bottom: 16px;
         @include media-breakpoint-down(xs) {
             margin-right:                       -15px !important;
         }
-        @include media-breakpoint-down(s) { //these need variables
-            padding-top:                        10px;
-            padding-bottom:                     7px;
-            padding-left:                       16px;
-            padding-right:                      16px;
-            margin-top:                         -1px;
-            margin-right:                       -30px;
-        }
-    
-        @include media-breakpoint-up(m) {
-            padding-top:                        16px;
-            padding-bottom:                     7px;
-            padding-left:                       16px;
-            padding-right:                      16px;
-            margin-top:                         -1px;
-        }
-
         &:hover {
-            background:                          darken( desaturate( adjust-hue( $mapfre-red, -7deg ), 10 ), 3 );
+          background:                          darken( desaturate( adjust-hue( $mapfre-red, -7deg ), 10 ), 3 );
         }
     }
 
     &.footer-flat {
-        @extend .flat;
-        color: #4C4C4C;
-        padding: 4px 8px;
-        font-size: 12px;
-        text-transform: uppercase;
-        font-weight: 400;
+      @extend .flat;
+      color:                                    #4C4C4C;
+      padding:                                  4px 8px;
+      font-size:                                12px;
+      text-transform:                           uppercase;
+      font-weight:                              400;
 
-        &:hover {
-            background:                          darken( $mapfre-button-color-flat-hover, 10% );
-        }
+      &:hover {
+        background:                            darken( $mapfre-button-color-flat-hover, 10% );
+      }
     }
 
      // ---- Colors -----
     &.blue-color {
-        color:                                  $mapfre-button-color-blue;
+      color:                                  $mapfre-button-color-blue;
     }
     &.blue-background {
-        background-color:                       $mapfre-button-color-blue;
+      background-color:                       $mapfre-button-color-blue;
     }
     
     // ----- Sizing -------
     &.large {
-        display:                                -webkit-flex;
-        display:                                -ms-flexbox;
-        display:                                flex;
-        font-size:                              $mapfre-button-font-full-size;
-        padding:                                $mapfre-button-large-padding 0;
-        width:                                  100%;                             
+      display:                                -webkit-flex;
+      display:                                -ms-flexbox;
+      display:                                flex;
+      font-size:                              $mapfre-button-font-full-size;
+      width:                                  100%;
+      height:                                 48px;
     }
 
     &.medium {
-        width:                                  75%;
+        width:                                75%;
     }
     
     &.small {
-        font-size:                              $mapfre-button-font-small-size;
-        padding:                                $mapfre-button-small-padding;
-        width:                                  180px; 
+      font-size:                              $mapfre-button-font-small-size;
+      height:                                 32px;
     }
 
     // ------ Custom Icon Classes -----
     .custom-button-icon {
-        padding-right: 8px;
+        padding-right:                        8px;
 
         &.align-middle {
-            position: relative;
-            top: -1px;
+            position:                         relative;
+            top:                              -1px;
         }
     }
 

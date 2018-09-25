@@ -1,9 +1,9 @@
 @import "../../../../styles.scss";
 
-$mapfre-info-div-background-default:        lighten( desaturate( adjust-hue( $information-color, 4deg ), 17 ), 58 );
-$mapfre-info-div-background-caution:        lighten( adjust-hue( $caution-color, -12deg ), 31 );
-$mapfre-info-div-background-error:          lighten( saturate( adjust-hue( $error-color, 3deg ), 23 ), 44 );
-$mapfre-info-div-background-success:        lighten( saturate( $success-color, 44 ), 21 );
+$mapfre-info-div-background-default:        $information-background-color;
+$mapfre-info-div-background-caution:        $caution-background-color;
+$mapfre-info-div-background-error:          $error-background-color;
+$mapfre-info-div-background-success:        $success-background-color;
 
 $mapfre-info-div-border-default:            $information-color; 
 $mapfre-info-div-border-caution:            $caution-color; 

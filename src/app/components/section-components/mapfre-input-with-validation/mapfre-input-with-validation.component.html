@@ -1,7 +1,7 @@
-<div class= "row {{input.inputType}}-input " 
-  [ngClass]= "{'mapfre-validation-rules': input.key == 'repeatPassword' }"
+<div class="row {{input.inputType}}-input mapfre-input margin-bottom mb8" 
+  [ngClass]="{'mapfre-validation-rules': input.key == 'repeatPassword' }"
 >
-  <div class="col">
+  <div class="col input-content">
     <div [formGroup]= "form" class= "input-field mapfre">
       <div [ngSwitch]= "input.icon" class= "prefix">
         <i [class]= "input.iconClasses" *ngSwitchCase= "true"></i>
@@ -31,9 +31,9 @@
           (focus)= "OnFocus(this)"
           (keyup)="OnKeyUp(this)"
           [class]= "input.additionalClasses"
-          [data-error]= "input.validationMessage" 
-          [formControlName]= "input.key"  
-          [id]= "input.key" 
+          [data-error]= "input.validationMessage"
+          [formControlName]= "input.key"
+          [id]= "input.key"
           [mdbValidate]="false"
           [name]= "input.key"
           [ngClass]="{'error': !validInput}"
@@ -52,14 +52,14 @@
       <div *ngIf= "input.inputType != 'email' && input.inputType != 'password' ">
         <input
           (blur)= "OnBlur(this)"
-          (focus)="OnFocus(this)"
+          (focus)= "OnFocus(this)"
           (keyup)="OnKeyUp(this)"
           [class]= "input.additionalClasses"
-          [data-error]= "input.validationMessage" 
-          [formControlName]= "input.key"  
+          [data-error]= "input.validationMessage"
+          [formControlName]= "input.key"
           [id]= "input.key" 
           [mdbValidate]="false"
-          [name]= "input.key" 
+          [name]= "input.key"
           [ngClass]="{'error': !validInput && allowValidaitonToRun }"
           [type]= "input.inputType"
           #textbox
@@ -67,24 +67,21 @@
         />
         <mapfre-label [forInput]= "input.key" [validationCSSClass]="validInput">{{ input.label | translate }}</mapfre-label>
       </div>
-      <div class="help-block" >
-        <span class= "error-block" 
-          *ngIf= "!isValid && notOnPageLoad && input.inputType != 'email' && !message">
-          {{ input.validationMessageError | translate }}
-        </span>
-        <span class="error-block" 
-          *ngIf= "!isValid && input.inputType == 'email' && validMessageShow && !message">
-          {{ input.validationMessageError | translate }}
-        </span>
-        <span class="error-block" 
-          *ngIf="message && input.key == 'createPassword' ">
-          {{ message?.text | translate }}
-        </span>
-        <span class="error-block" 
-          *ngIf="message && input.key != 'createPassword' ">
-          {{ 'FORGOT_EMAIL_REVIEW_ME' | translate }}
-        </span>
-        <span class= "info-block" *ngIf= "input.inputType == 'password' && capsLock">
+      <div class="help-block error-block">
+        
+          <ng-container *ngIf= "!isValid && validMessageShow && !message">
+            {{ input.validationMessageError | translate }}
+          </ng-container>
+          <ng-container *ngIf="message && input.key == 'createPassword' ">
+            {{ message?.text | translate }}
+          </ng-container>
+          <ng-container *ngIf="message && input.key != 'createPassword' ">
+            {{ 'FORGOT_EMAIL_REVIEW_ME' | translate }}
+          </ng-container>
+        
+      </div>
+      <div class="help-block info-block" *ngIf="input.inputType == 'password' && capsLock">
+        <span>
           <mapfre-icon iconClasses="fas fa-exclamation-triangle"></mapfre-icon> {{ 'CAPS_LOCK' | translate }}
         </span>
       </div>
@@ -152,20 +149,6 @@
         <div class="rule">
           <span class="align-middle">
             {{ 'PASSWORD_RULE_FOUR' | translate }}
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="row" [ngClass]="{'valid': passwordRules('ruleFive'), 'not-fullfilled': !passwordRules('ruleFive')}">
-      <div class="col">  
-        <div class="icon">
-            <i class="fas fa-check-circle"></i>
-          <span class="sr-only sr-only-focusable" *ngIf="!passwordRules('ruleFive')">{{ 'DOES_NOT_PASS' | translate }}</span>
-          <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleFive')">{{ 'PASSES_THE_RULE' | translate }}</span>
-        </div>
-        <div class="rule">
-          <span class="align-middle">
-            {{ 'PASSWORD_RULE_FIVE' | translate }}
           </span>
         </div>
       </div>

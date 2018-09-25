@@ -17,7 +17,8 @@ $mapfre-switch-font-size:                       $font-size-base;
 .mapfre.switch-container {
   clear:                                        both;
   position:                                     relative;
-  top:                                          3px;
+  //top:                                          3px;
+  margin-bottom: 0;
 
   .copy {
     color:                                      $mapfre-switch-font-color; 

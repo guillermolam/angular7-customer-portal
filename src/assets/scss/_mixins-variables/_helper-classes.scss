@@ -3,6 +3,11 @@ $global-one-rem:                            1rem;
 $global-margin-padding-helper-8:            $defualt-margin-padding/2;
 $global-margin-padding-helper-16:           $defualt-margin-padding;
 $global-margin-padding-helper-24:           $defualt-margin-padding * 3;
+$global-margin-padding-helper-32:           $defualt-margin-padding * 4;
+
+.div-check {
+  background-color: #fff000;
+}
 
 .margin-bottom { 
   &.mb8 {
@@ -13,6 +18,9 @@ $global-margin-padding-helper-24:           $defualt-margin-padding * 3;
   }
   &.mb24 {
     margin-bottom:                          $global-margin-padding-helper-24 !important;
+  }
+  &.mb32 {
+    margin-bottom:                          $global-margin-padding-helper-32 !important;
   }
 }
 
@@ -25,6 +33,10 @@ $global-margin-padding-helper-24:           $defualt-margin-padding * 3;
   }
   &.mt24 {
     margin-top:                             $global-margin-padding-helper-24 !important;
+  }
+  &.mt32 {
+    margin-top:                             $global-margin-padding-helper-32 !important;
+
   }
 }
 
@@ -40,6 +52,10 @@ $global-margin-padding-helper-24:           $defualt-margin-padding * 3;
   &.mv24 {
     margin-bottom:                          $global-margin-padding-helper-24 !important;
     margin-top:                             $global-margin-padding-helper-24 !important;
+  }
+  &.mv32 {
+    margin-bottom:                          $global-margin-padding-helper-32 !important;
+    margin-top:                             $global-margin-padding-helper-32 !important;
   }
 }
 

@@ -4,7 +4,7 @@
   name="addPolicyForm"
   (ngSubmit)="addPolicyForm.valid && addPolicy()">
 
-  <div class="group-inputs">
+  <div class="">
     <div *ngFor="let input of inputs" class="input">
       <mapfre-validation [input]="input" [form]="addPolicyForm"></mapfre-validation>
     </div>

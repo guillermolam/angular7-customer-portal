@@ -8,21 +8,10 @@ $login-login-group-padding-up:                          $padding-vertical;
 $login-login-group-padding-down:                        $padding-vertical;
 $login-login-group-button-margin:                       $padding-vertical *2;
 
-
-
-.group-login-button {
-  margin-top:                                           $login-login-group-button-margin;
-}
-
-.group-remember {
-  margin-top:                                           $login-login-group-padding-up;
-
+.group-remember-password {
+  height: 24px;
   .forgot-password {
     text-align:                                         right;
   }
 }
 
-.register-copy {
-  color:                                                $login-register-copy-color;
-   font-size:                                           $login-register-copy-size;
-}

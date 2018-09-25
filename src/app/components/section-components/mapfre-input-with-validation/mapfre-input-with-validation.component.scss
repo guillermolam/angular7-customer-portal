@@ -3,7 +3,7 @@ $mapfre-validation-error-color:             $error-color;
 $mapfre-validation-info-color:              $mapfre-blue;
 $mapfre-validation-valid-color:             $mapfre-green;
 
-$mapfre-validation-info-padding-left:       $default-margin-padding;
+$mapfre-validation-info-padding-left:       8px;
 $mapfre-validation-info-font-size:          0.7rem;
 $mapfre-validation-info-height:             1rem;
 
@@ -30,25 +30,24 @@ input:focus, .form-control:focus { /* this is temporary */
 }
 
 .error-block {
-    color:                                  $mapfre-validation-error-color;
+  color:                                    $mapfre-validation-error-color;
 }
 
 .help-block {
-    font-size:                              $mapfre-validation-info-font-size;
-    height:                                 $mapfre-validation-info-height;
-    padding-left:                           $mapfre-validation-info-padding-left;
-    padding-top:                            $mapfre-validation-info-padding-left/2;
-    position:                               relative;
-    
-    span {
-        position:                           absolute;
-    }
+  font-size:                                $mapfre-validation-info-font-size;
+  height:                                   $mapfre-validation-info-height;
+  padding-left:                             $mapfre-validation-info-padding-left;
+  position:                                 relative;
+  
+  span {
+      position:                             absolute;
+  }
 
-    .error {
-      color:                                $mapfre-input-error-color;
-      font-size:                            $mapfre-input-error-label-font-size;
-      padding-top:                          $mapfre-input-validation-help-top;
-    }
+  .error {
+    color:                                  $mapfre-input-error-color;
+    font-size:                              $mapfre-input-error-label-font-size;
+    padding-top:                            $mapfre-input-validation-help-top;
+  }
 }
 
 .hide-validation {
@@ -58,6 +57,20 @@ input:focus, .form-control:focus { /* this is temporary */
 
 .info-block {
     color:                                  $mapfre-validation-info-color;
+}
+
+.mapfre-input {
+  height: 66px;
+  line-height: normal;
+  position: relative;
+
+  .input-content {
+    bottom: 0px;
+    position: absolute;
+  }
+  .help-block {
+    height: 16px;
+  }
 }
 
 .password-validation {
