@@ -82,20 +82,6 @@ export class AuthenticationService {
     return this.http.put<any>(url, userSendObject, this.options)
   }
 
-  findPolicy(userObject): Observable<any> {
-    const user =        userObject.$user.source._value;
-    let 
-      url: string =     `${environment.account}/accounts/policies/${user.email}`,
-      userSendObject:   Object = {
-        firstName:      user.firstName,
-        middleName:     user.middleName,
-        lastName:       user.lastName,
-        email:          user.email
-      }
-    ;
-    return this.http.post<any>(url, userSendObject, this.options);
-  }
-
   forgotPasswordSendEmailId(email: string): Observable<any> {
     const url =       `${environment.identity}/identity/users/account-recovery`;
     return this.http.post<any>(url, {} , {
@@ -157,18 +143,13 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
-  //this method might be removed
-  registerAccount(user: User) {
-    const url =         `${environment.identity}/api/users`;
-    return this.http.post(url, user, this.options);
-  }
 
   tokenVerification(token: string, email: string): Observable<Object> {
   	let url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
   	return this.http.post(url,{}, this.options);
   }
 
-  updatePassword(user: User, token: string, testing: boolean = false ) {
+  updatePassword(user: User, token: string) {
     let url =           `${environment.identity}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : { 
