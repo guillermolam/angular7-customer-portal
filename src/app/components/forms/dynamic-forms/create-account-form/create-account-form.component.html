@@ -3,21 +3,30 @@
   [formGroup]="signUpForm" 
   name="signUpForm"
   (ngSubmit)="signUpForm.valid && register()">
-
+  <mapfre-alert
+    [alertType]="'caution'" 
+    [nonDynamic]="true">
+    At this moment of time emails can not longer than 20 characters.
+  </mapfre-alert>
   <div class="">
     <div *ngFor="let input of inputs; let index = index" class="input" [class.first-input]="index == 0">
       <mapfre-validation [input]="input" [form]="signUpForm"></mapfre-validation>
     </div>
   </div>
-  
-    <div class="row group-button">
-      <div class="col">
-        <mapfre-button
-          [additionalClasses]="'basic primary large'"
-          [disabledValue]="signUpForm.valid" 
-          [inputType]="'submit'"
-          [translateValue]="'CONTINUE' | translate"
-        ></mapfre-button>
-      </div>
+  <div class="legal margin-vertical mv24">
+    {{ 'CREATE_ACCOUNT_LEGAL_ONE' | translate }}
+    <a href="https://www.mapfreinsurance.com/en/terms-conditions/" target="_blank">{{ 'CREATE_ACCOUNT_LEGAL_TWO' | translate }}</a>
+    {{ 'CREATE_ACCOUNT_LEGAL_THREE' | translate }}
+    <a href="https://www.mapfreinsurance.com/en/privacy-policy/" target="_blank">{{ 'CREATE_ACCOUNT_LEGAL_FOUR' | translate }}</a>
+  </div>
+  <div class="row group-button">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'basic primary large'"
+        [disabledValue]="signUpForm.valid" 
+        [inputType]="'submit'"
+        [translateValue]="'CONTINUE' | translate"
+      ></mapfre-button>
     </div>
+  </div>
 </form>

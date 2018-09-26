@@ -21,10 +21,11 @@
 	[config]="{backdrop: modalOverLay}"
 	>
 	<div 
-		class="modal-dialog modal-dialog-centered modal-small" 
+		class="modal-dialog modal-small" 
 		role="document"	
 		[ngClass]="{
-			'help': modalOptions?.typeOfModal == 'header' 
+      'help': modalOptions?.typeOfModal == 'header',
+      'modal-dialog-centered': modalOptions?.typeOfModal != 'header'
 		}"   
 		[style.left]="helpButtonPositionLeft">
 			<div class="modal-content">

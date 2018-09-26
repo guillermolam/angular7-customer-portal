@@ -4,12 +4,7 @@
       [modalOptions]="footerHelpModalOptions"
       [hideModal]="hideModal"
       (hideModalOutput)="resetHideModal($event)">
-      <div class="modal-body no-margin-bottom">
-          <hr class="margin-bottom mb24" />
-        <p><strong>English version</strong> of MAPFRE portal including, our terms and conditions of Use, is the definitive and legal version.</p>
-        <p><strong>En la versión en español</strong> del portal MAPFRE, incluidos nuestros términos y condiciones de uso, es la versión definitiva y legal.</p>
-      </div>
-      <label class="grid-modal-footer modal-footer" for="English" [ngClass]="{'active': defaultLanguage === 'EN' }">
+      <label class="grid-modal-footer modal-footer margin-top mt16" for="English" [ngClass]="{'active': defaultLanguage === 'EN' }">
         <div class="modal-content-footer">
           <div class="modal-radio">
               <input type="radio" class=""  
@@ -17,7 +12,7 @@
               [checked]="defaultLanguage=='EN'" (click)="defaultLanguage='EN'">
           </div> 
           <div class="modal-footer-copy">
-            English
+            ENGLISH
           </div>
         </div>
       </label>
@@ -29,7 +24,7 @@
             [checked]="defaultLanguage=='ES'" (click)="defaultLanguage='ES'">
           </div> 
           <div class="modal-footer-copy">
-            EspaÑol
+              ESPAÑOL
           </div>
         </div>
       </label>
@@ -41,6 +36,10 @@
             Confirm Language
           </mapfre-button>
         </div>
+      </div>
+      <div class="modal-body no-margin-bottom no-padding-bottom no-padding-top">
+        <div class="margin-bottom mb16"><strong>English version:</strong> Translations of any website and customer portal content into languages other than English are intended solely as a convenience to the non-English-reading public and are not legally binding. The English version of all content, including our Terms & Conditions and Privacy Policy, is the definitive, legal version and will control in the event of any dispute, complaint or litigation.</div>
+        <div class="margin-bottom mb24"><strong>En la versión en español: </strong> Del portal de MAPFRE,  hemos traducido la informacion mas importante para ayudarte en la navegacion y uso de servicios, no obstante algunos servicios o documentos apareceran en ingles. La version ingles de MAPFRE Portal asi como los Terminos y Condiciones de uso, es la versión legal y definitiva.</div>
       </div>
     </mapfre-modal>
     <div class="container-fluid">

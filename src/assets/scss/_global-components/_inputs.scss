@@ -16,6 +16,11 @@ $input-inactive-color:                   $dark-grey;
 $input-static-color:                     $fake-black;
 $input-success-color:                    $success-color;
 
+.input.first-input {
+  float:                                left;
+  width:                                60%;
+}
+
 .input-field.mapfre {
   input {
     border:                             none;

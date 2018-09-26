@@ -17,102 +17,154 @@ $input-inactive-color:                      $dark-grey;
 $input-static-color:                        $fake-black;
 $input-success-color:                       $success-color;
 
+// --- One Checkbox on the page ---
 .form-check-input {
   &:before {
+    border:                                 2px solid $dark-gray;
+    content:                                '';
+    display:                                block;
+    height:                                 1.5rem;
+    margin-left:                            -3px;
+    margin-top:                             -5px;
+    width:                                  1.5rem;
+    z-index:                                10;
     @include border-radius(1px);
     @include transition(0.5s);
-    width: 1.5rem;
-    height: 1.5rem;
-    content: '';
-    border: 2px solid $dark-gray;
-    display: block;
-    z-index: 10;
-    margin-left: -3px;
-    margin-top: -5px;
   }
 
   &:checked{
     &:before {
+      border-color:                         $input-success-color;
+      border-top-style:                     none;
+      border-left-style:                    none;
+      margin-top:                           -10px;
+      margin-left:                          7px;
+      height:                               1.5rem;
+      width:                                0.5rem;
       @include transform(rotate(45deg));
-      height: 1.5rem; 
-      border-color: $input-success-color;
-      border-top-style: none;
-      border-left-style: none;
-      margin-top: -10px;
-      width: 0.5rem;
-      margin-left: 7px;
     }
     &:after{
-      margin-top: -19px;
+      margin-top:                           -19px;
     }
   }
 
   &:after {
-    background: $white;
-    width: 18px;
-    height: 18px;
-    content: '';
-    display: block;
-    margin-left: 0px;
-    margin-top: -21px;
+    background:                             $white;
+    width:                                  18px;
+    height:                                 18px;
+    content:                                '';
+    display:                                block;
+    margin-left:                            0px;
+    margin-top:                             -21px;
   }
 }
 
 .form-check-label {
-  margin-left: 10px;
+  margin-left:                              10px;
 }
 
 .button-spacer {
-  margin-bottom: 24px;
+  margin-bottom:                            24px;
 }
 
-//Normal Checkbox
-
-//Normal Radio Button
-input[type="radio"] {
-  visibility: hidden;
-  position: relative;
-  @include transition(1s);
-
+// --- Normal Checkbox ---
+input[type="checkbox"]:not(.form-check-input){
+  position:                                 relative;
+  visibility:                               hidden;
+  
   &:before {
-    font-family: 'Material Icons';
-    content: '\e836';
-    height: 25px;
-    width: 25px;
-    font-size: 24px;
-    color: $dark-grey;
-    visibility: visible;
-    top: -5px;
-    left: -4px;
-    position: absolute;
-    @include transition(1s);
-
+    color:                                  transparent;
+    content:                                '\e834';
+    font-family:                            'Material Icons';
+    font-size:                              24px;
+     top:                                   -7px;
+    left:                                   -5px;
+    position:                               absolute;
+    visibility:                             visible;
+    z-index:                                3;
+    @include transition(0.5s);
+  }
+  &:after {
+    background:                             $white;
+    border:                                 2px solid $dark-grey;
+    color:                                  transparent;
+    content:                                '\e837';
+    font-family:                            'Material Icons';
+    font-size:                              18px;
+    height:                                 14px;
+    left:                                   -2px;
+    position:                               absolute;
+    top: 	                                  -4px;
+    width:                                  14px;
+    visibility:                             visible;
+    z-index:                                1;
+    @include transition(0.5s);
+    @include border-radius(2px);
   }
   
   &:checked {
+    &:after {
+      border-color:                         transparent;
+    }
     &:before {
-      font-family: 'Material Icons';
-      content: '\e837';
-      height: 25px;
-      width: 25px;
-      font-size: 24px;
-      color: $active-color;
-      visibility: visible;
-      top: -5px;
-      left: -4px;
-      position: absolute;
+      color:                                $active-color;
     }
   }
 }
 
+// --- Normal Radio Button ---
+input[type="radio"] {
+  visibility:                               hidden;
+  position:                                 relative;
+ 
+ &:before {
+    color:                                  transparent;
+    content:                                '\e837';
+    font-family:                            'Material Icons';
+    font-size:                              24px;
+    top:                                    -6px;
+    left:                                   -5px;
+    position:                               absolute;
+    visibility:                             visible;
+    z-index:                                3;
+    @include transition(0.5s);
+ }
+ &:after {
+    background:                             $white;
+    border:                                 2px solid $dark-grey;
+    color:                                  transparent;
+    content:                                '\e837';
+    font-family:                            'Material Icons';
+    font-size:                              18px;
+    height:                                 20px;
+    left:                                    -3px;
+    position:                               absolute;
+    transition:                              0.5s ease-in;
+    top:                                    -4px;
+    width:                                  20px;
+    visibility:                             visible;
+    z-index:                                1;
+    @include border-radius(50%);
+    @include transition(0.5s);
+ }
+ &:checked {
+   &:after {
+     border-color:                          transparent;
+   }
+   &:before {
+     color:                                 $active-color;
+   }
+ }
+}
+
 .modal-content-footer {
   .modal-footer-copy {
-    float: left;
-    margin-left:  16px;
+    float:                                  left;
+    margin-left:                            16px;
   }
 
   .modal-radio {
-    float: left;
-    width: 24px;
+    float:                                  left;
+    width:                                  24px;
   }
 }

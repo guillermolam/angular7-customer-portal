@@ -31,6 +31,7 @@ $mapfre-button-small-height:                    32px;
 $mapfre-button-small-padding:                   $padding-vertical/2;
 //Defaults
 $mapfre-buton-border:                           none;
+$mapfre-buton-border-ghost:                     2px solid;
 $mapfre-button-font-family:                     $button-font-family;
 $mapfre-button-font-weight:                     bold;
 //Header Buttons
@@ -123,7 +124,7 @@ $mapfre-button-header-margin:                   -3px;
 
     &.ghost {
         background:                             $mapfre-button-bg-color-flat;
-        border:                                 $mapfre-buton-border;
+        border:                                 $mapfre-buton-border-ghost;
         @include border-radius(100px);
 
         &.primary {

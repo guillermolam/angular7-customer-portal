@@ -53,21 +53,26 @@ hr {
 
 a,
 button {
-    @include transition(0.5s);
+  @include transition(0.5s);
 }
 
-a { 
-  text-decoration:                        none;
+a {
+  text-decoration:                        none !important;
   border-bottom:                          thin solid transparent;
+  
   &:hover {
-    border-bottom-color:                $global-link-border-bottom-color;
+    border-bottom-color:                  $global-link-border-bottom-color;
+  }
+
+  &:visited {
+    border-bottom-color:                  $global-link-border-bottom-color;
   }
 }
 
 input[type="text"]:focus,
 textarea:focus {
-  outline:                               $global-zero;
-  box-shadow:                            none;
+  outline:                                $global-zero;
+  box-shadow:                             none;
 }
 
 *:focus,

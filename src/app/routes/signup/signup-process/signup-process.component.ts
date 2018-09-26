@@ -46,7 +46,7 @@ export class SignupProcessComponent implements OnInit {
   testingData(): User {
     //This object is for development use. And will be taken out
     let object = {
-      addPolicyAttempts:          1,
+      addPolicyAttempts:          3,
       firstName:                  'TestFirstName',
       middleName:                 'TM',
       lastName:                   'TestLastName',
@@ -65,7 +65,7 @@ export class SignupProcessComponent implements OnInit {
         InsName1:                 null,
         effDate:                  '12/12/2018',
         expDate:                  '12/12/2018',
-        policynumber:             { policynumber: '120490' },
+        policynumbers:             { policynumber: '120490' },
         policyStatus:             'cancelled',
         policyType:               'auto',
         status:                   null, 

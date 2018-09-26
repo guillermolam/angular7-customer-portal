@@ -17,14 +17,13 @@
     </div>
   </div>
 </div>
-
 <div *ngIf="userData.addPolicyAttempts <= 2">
   <div class="text-center margin-bottom mb24">
     <mapfre-link
-        [additionalClasses]="'small-link horizontal-space'"
-        [routerLink]="['/signup','editpolicy']"
-      >
-        {{ 'EDIT_POLICY_INFO' | translate }}
+      [additionalClasses]="'small-link horizontal-space'"
+      [routerLink]="['/signup','editpolicy']"
+    >
+      {{ 'EDIT_POLICY_INFO' | translate }}
     </mapfre-link>
   </div>
   <div class="text-center">
@@ -36,7 +35,6 @@
     </mapfre-button>
   </div>
 </div>
-
 <div *ngIf="userData.addPolicyAttempts >= 3">
   <div>
     <mapfre-info-divs>
@@ -52,7 +50,6 @@
     </mapfre-button>
   </div>
 </div>
-
 <hr class="margin-bottom mb24 margin-top mt24">
 <div class="row">
   <div class="col text-center">

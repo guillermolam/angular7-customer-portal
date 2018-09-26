@@ -6,7 +6,7 @@ $global-default-margin-padding:                 $defualt-margin-padding; //8px 0
 $global-policy-info-background-color:           $softer-grey;
 $global-policy-info-border:                     thin solid $soft-grey;
 $global-policy-info-padding:                    $global-default-margin-padding $global-default-margin-padding*2;
-$global-policy-info-info-container-width:       78%;
+$global-policy-info-info-container-width:       75%;
 $global-policy-info-info-container-margin:      $global-default-margin-padding*2;
 $global-policy-info-p-legal-line-height:        1rem;
 $global-policy-info-svg-bg-color:               $white;
@@ -48,7 +48,7 @@ $global-policy-info-svg-width:                  1.6875rem;
   }
 }
 
-p.legal {
+.legal {
   color:                                        $global-policy-info-p-legal-color;
   font-size:                                    $global-policy-info-p-legal-font-size;
   line-height:                                  $global-policy-info-p-legal-line-height;

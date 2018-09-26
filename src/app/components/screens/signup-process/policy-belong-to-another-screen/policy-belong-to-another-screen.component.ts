@@ -18,8 +18,6 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
             policyDate:             string;
             policyDetail:           PolicyDetails[];
             policyNumber:           string;
-            typeOfAccount:          string;
-            typeOfPolicy:           string;
             user:                   User = {};
 
   constructor(
@@ -54,36 +52,9 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
     };
     this.userService.updateUser(this.user);
   }
-  
-  policyDetails(userData): void {
-    switch(userData.accountType) {
-      case "Personal":
-        this.typeOfAccount =        'POLICYBELONGS_TYPE_NUMBER_PERSONAL';
-      break;
-      case "Business":
-        this.typeOfAccount =        'POLICYBELONGS_TYPE_NUMBER_BIZ';
-      break;
-      default:
-        this.typeOfAccount =         'PERSONAL';
-      break;
-    }
-    switch(userData.policyDetails.policyType) {
-      case "AUTO":
-        this.typeOfPolicy =         'POLICYBELONGS_TYPE_NUMBER_AUTO';
-      break;
-      case "HOME":
-        this.typeOfPolicy =         'POLICYBELONGS_TYPE_NUMBER_HOME';
-      break;
-      default:
-      this.typeOfPolicy =           'AUTO';
-      break;
-    }
-    this.policyDate =               userData.policyDetails[0].effDate;
-    this.policyNumber =             userData.policyDetails[0].policynumber.policynumber;
-  }
 
   ngOnInit() {
-    this.policyDetails(this.userData);
+    
   }
 
 }

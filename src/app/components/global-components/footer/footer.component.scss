@@ -10,3 +10,9 @@ footer {
 .footer-copyright {
   height:                               $footer-height;
 }
+
+.modal-body {
+  p {
+    margin-bottom: 0;
+  }
+}

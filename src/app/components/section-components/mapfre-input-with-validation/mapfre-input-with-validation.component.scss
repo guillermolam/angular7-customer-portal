@@ -18,10 +18,10 @@ $mapfre-input-validation-help-top:          $input-validation-help-top;
 
 */
 input:focus, .form-control:focus { /* this is temporary */
-    outline:                                0;
-    outline:                                none;
-    box-shadow:                             none;
-    border:                                 none;
+  outline:                                  0;
+  outline:                                  none;
+  box-shadow:                               none;
+  border:                                   none;
 }
 
 .error {
@@ -40,7 +40,7 @@ input:focus, .form-control:focus { /* this is temporary */
   position:                                 relative;
   
   span {
-      position:                             absolute;
+    position:                               absolute;
   }
 
   .error {
@@ -51,69 +51,71 @@ input:focus, .form-control:focus { /* this is temporary */
 }
 
 .hide-validation {
-    display:                                none;
-    @include transition(5s);
+  display:                                  none;
+  @include transition(5s);
 }
 
 .info-block {
-    color:                                  $mapfre-validation-info-color;
+  color:                                    $mapfre-validation-info-color;
 }
 
 .mapfre-input {
-  height: 66px;
-  line-height: normal;
-  position: relative;
+  height:                                   66px;
+  line-height:                              normal;
+  position:                                 relative;
 
   .input-content {
-    bottom: 0px;
-    position: absolute;
+    bottom:                                 0px;
+    position:                               absolute;
   }
+  
   .help-block {
-    height: 16px;
+    height:                                 16px;
   }
 }
 
 .password-validation {
-  padding-top:                              8px;
 
   .icon {
-    float: left;
-    width: 30px;
-    padding-left: 8px;
-    padding-right: 8px;
+    float:                                  left;
+    width:                                  30px;
+    padding-left:                           8px;
+    padding-right:                          8px;
   }
 
   .not-fullfilled {
-    color: $dark-grey;
+    color:                                  $dark-grey;
   }
 
   .rule {
-    float: left;
-    line-height: 24px;
-    font-size: 12px;
+    float:                                  left;
+    line-height:                            24px;
+    font-size:                              12px;
+    margin-top:                             -2px;
   }
 
   .title {
-    color: $grey;
-    height: 24px;
+    color:                                  $grey;
+    font-size:                              12px;
+    height:                                 24px;
   }
 
   i {
-    color: $soft-grey;
+    color:                                  $soft-grey;
   }
 }
 
 .show-validation {
-    display:                                block;
-    @include transition(5s);
+  display:                                  block;
+  @include transition(5s);
 }
 
 .valid,
 .valid.not-fullfilled {
-    color:                                  $mapfre-validation-valid-color;
-    @include transition(1s);
+  color:                                    $mapfre-validation-valid-color;
+  @include transition(1s);
 
-    i {
-      color:                                $mapfre-validation-valid-color;
-    }
+  i {
+    color:                                  $mapfre-validation-valid-color;
+  }
 }
