@@ -24,6 +24,7 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
+    reporters: ['progress', 'junit','coverage-istanbul'],
     browsers: ['Chromium_no_sandbox','Chrome'],
     customLaunchers: {
        "Chromium_no_sandbox": {
@@ -36,7 +37,6 @@ module.exports = function (config) {
          ]
        }
      }, 
-    reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
