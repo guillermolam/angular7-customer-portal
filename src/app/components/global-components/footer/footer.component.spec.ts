@@ -60,12 +60,12 @@ describe('FooterComponent', () => {
      fixture.detectChanges();
   });
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   /* unit test cases Footer copyright year and copy rights title */
-  fit('Landing page Year on footer-copyright unit test', (done:Function) => {
+  it('Landing page Year on footer-copyright unit test', (done:Function) => {
     fixture.whenStable().then(() => {
         // Verified copy write year on footer.
         expect(component.year).toEqual(copyRightYear);
