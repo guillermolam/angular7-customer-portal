@@ -51,6 +51,7 @@ $caution-color:                  #fff000;
 
 // --- Background Colors --- //
 $caution-background-color:        #FFE6A0;
+$caution-background-color-alert:  lighten( saturate( adjust-hue( $caution-color, 3deg ), 23 ), 44 ); 
 $error-background-color:          #FFEFEF;
 $information-background-color:    lighten( desaturate( adjust-hue( $information-color, 4deg ), 17 ), 58 );
 $success-background-color:        lighten( saturate( $success-color, 44 ), 21 );

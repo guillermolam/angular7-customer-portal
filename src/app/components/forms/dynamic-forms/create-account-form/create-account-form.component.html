@@ -6,7 +6,7 @@
   <mapfre-alert
     [alertType]="'caution'" 
     [nonDynamic]="true">
-    At this moment of time emails can not longer than 20 characters.
+    {{ 'CAUTION_CREATE_ACCOUNT' | translate }}   
   </mapfre-alert>
   <div class="">
     <div *ngFor="let input of inputs; let index = index" class="input" [class.first-input]="index == 0">

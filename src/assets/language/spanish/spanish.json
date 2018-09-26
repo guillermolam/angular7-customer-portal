@@ -124,6 +124,7 @@
   "CREATE_ACCOUNT_LEGAL_ONE": "Al hacer clic en CONTINUAR, confirma que ha leído y acepta nuestros ",
   "CREATE_ACCOUNT_LEGAL_TWO": "Términos y Condiciones",
   "CREATE_ACCOUNT_LEGAL_THREE": "y nuestra",
-  "CREATE_ACCOUNT_LEGAL_FOUR": "Política de Privacidad."
+  "CREATE_ACCOUNT_LEGAL_FOUR": "Política de Privacidad.",
+  "CAUTION_CREATE_ACCOUNT": "En este momento, un correo electrónico no puede tener 20 caracteres."
 
 }

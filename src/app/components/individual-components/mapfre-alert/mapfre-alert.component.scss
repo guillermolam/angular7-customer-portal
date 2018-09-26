@@ -1,7 +1,7 @@
 @import "../../../../styles.scss";
 
 $mapfre-alert-background-default:   $information-background-color;
-$mapfre-alert-background-caution:   $caution-background-color;
+$mapfre-alert-background-caution:   $caution-background-color-alert;
 $mapfre-alert-background-error:     $error-background-color;
 $mapfre-alert-background-success:   $success-background-color;
 $mapfre-alert-border-default:       $information-color;
@@ -56,7 +56,9 @@ $mapfre-alert-copy-padding:         $mapfre-alert-font-size/2;
   }
 
   .copy {
-    padding-top:                    $mapfre-alert-copy-padding;
+    //padding-top:                    $mapfre-alert-copy-padding;
+    margin-top: -2px;
+    line-height: normal;
   }
 
   .icon,
@@ -67,7 +69,11 @@ $mapfre-alert-copy-padding:         $mapfre-alert-font-size/2;
   .icon {
     padding-right:                  $mapfre-alert-icon-padding;
     text-align:                     center;
-    width:                          40px;
+    width:                          50px;
+  }
+
+  .message {
+    width: 220px;
   }
 
 }
