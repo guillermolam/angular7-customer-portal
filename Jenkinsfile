@@ -18,16 +18,17 @@ pipeline{
 			steps{
               	// removing .spec.ts from linting
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
-				sh "npm run cibuild"
+				sh "npm run cibuild_test"
 			}
 		}
-
-		stage('Run Unit Test'){
-		    steps{
-		    	//Added to run unit test case for all module.
-		       sh "npm run test_on_ciserver"
-		    }
-		}
+		
+		//Running unit test before build
+		// stage('Run Unit Test'){
+		//     steps{
+		//     	//Added to run unit test case for all module.
+		//        sh "npm run test_on_ciserver"
+		//     }
+		// }
 
 		stage('Static analysis'){
 		    steps{
