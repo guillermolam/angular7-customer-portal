@@ -18,7 +18,7 @@ pipeline{
 			steps{
               	// removing .spec.ts from linting
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
-				sh "npm run build"
+				sh "npm run cibuild"
 			}
 		}
 
