@@ -21,12 +21,6 @@ pipeline{
 				sh "npm run build"
 			}
 		}
-		
-		stage('Static analysis'){
-		    steps{
-		        sh "npm run sonar-run"
-		    }
-		}
 
 		stage('Run Unit Test'){
 		    steps{
@@ -34,7 +28,13 @@ pipeline{
 		       sh "npm run test_on_ciserver"
 		    }
 		}
-		
+
+		stage('Static analysis'){
+		    steps{
+		        sh "npm run sonar-run"
+		    }
+		}
+
 		stage("Build & Publish Image"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
