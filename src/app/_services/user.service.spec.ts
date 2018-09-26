@@ -1,4 +1,4 @@
-import { TestBed, inject } from "@angular/core/testing";
+import { TestBed, inject, async } from "@angular/core/testing";
 
 import { UserService } from "./user.service";
 import { User } from "../_models/user";
@@ -8,6 +8,7 @@ describe("UserService", () => {
 
   let user:                        User;
   let policyDetails:               PolicyDetails[];
+  let userService: UserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -28,6 +29,8 @@ describe("UserService", () => {
       temporaryPassword:           'temp'
     }
 
+    userService = TestBed.get(UserService);
+
   });
 
   afterEach(() => {
@@ -36,15 +39,9 @@ describe("UserService", () => {
   });
 
 
-  it("should be created",
-    inject([UserService], (service: UserService) => {
-      expect(service).toBeTruthy();
-    })
-  );
-
-
   it("should update the user", 
-    inject([UserService], (userService: UserService) => {
+    async(() => {
+    userService.updateUser(user);
     userService.$user.subscribe((user)=>{
         expect(user.addPolicyAttempts).toBe(1);
         expect(user.firstName).toBe('first');
@@ -52,7 +49,6 @@ describe("UserService", () => {
         expect(user.lastName).toBe('last');
         expect(user.password).toBe('passwd');
     });
-    userService.updateUser(user);
     })
   );
 });
