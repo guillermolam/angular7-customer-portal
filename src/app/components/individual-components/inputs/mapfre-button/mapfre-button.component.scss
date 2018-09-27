@@ -1,41 +1,33 @@
 @import "../../../../../styles.scss";
 
-//colors 
-// ---      Primary
+// --- Colors 
 $mapfre-button-color-primary:                   $mapfre-green;
-// ---      Secondary
 $mapfre-button-color-secondary:                 $gray;
-// ---      Default
 $mapfre-button-color-default:                   $mapfre-red;
-// ---      Tertiary
 $mapfre-button-color-blue:                      $mapfre-blue;
-// ---      Link
 $mapfre-button-color-link:                      $active-color;
-// ---      White
 $mapfre-button-color-white:                     $white;
-
-//styles 
-// ---      Basic
 $mapfre-button-font-color-basic:                $white;
-// ---      Ghost
 $mapfre-button-bg-color-ghost:                  transparent;
-// ---      Flat
 $mapfre-button-bg-color-flat:                   transparent;
 $mapfre-button-color-flat-hover:                $lite-gray-two;
-
-//Sizing
-$mapfre-button-font-small-size:                 0.875rem;
+// --- Font
+$mapfre-button-font-small-size:                 $font-size-base;
 $mapfre-button-font-full-size:                  $font-size-base + 0.125; //1rem which equals to 16px
-$mapfre-button-large-padding:                   $padding-vertical/1.14;
-$mapfre-button-small-height:                    32px;
-$mapfre-button-small-padding:                   $padding-vertical/2;
-//Defaults
-$mapfre-buton-border:                           2px solid;
 $mapfre-button-font-family:                     $button-font-family;
 $mapfre-button-font-weight:                     bold;
-//Header Buttons
+$mapfre-button-line-hieght:                     $global-one-rem * 1.5;
+// --- Padding|Margin
 $mapfre-button-header-padding:                  $padding-vertical $padding-vertical/2;
-$mapfre-button-header-margin:                   -3px;
+$mapfre-button-header-margin:                   -($default-margin-padding * 0.2142857143);//-3px;
+$mapfre-button-large-padding:                   $padding-vertical / 1.14;
+$mapfre-button-small-padding:                   $padding-vertical / 2;
+$mapfre-button-padding:                         $global-zero ($global-one-rem * 1.5);
+
+// --- ETC
+$mapfre-buton-border:                           none;
+$mapfre-buton-border-ghost:                     ($global-one-rem * 0.125) solid;
+$mapfre-button-small-height:                    $global-one-rem * 2; //32px;
 
 
 .btn.mapfre {
@@ -45,7 +37,8 @@ $mapfre-button-header-margin:                   -3px;
     font-family:                                $mapfre-button-font-family;
     font-weight:                                $mapfre-button-font-weight;
     justify-content:                            center;
-    line-height:                                24px;
+    line-height:                                $mapfre-button-line-hieght;
+    padding:                                    $mapfre-button-padding;
     pointer-events:                             auto !important;
     position:                                   relative;
     text-transform:                             uppercase;
@@ -56,11 +49,11 @@ $mapfre-button-header-margin:                   -3px;
     &:disabled,
     &.disabled,
     &.disabled[disabled]{
-        cursor: not-allowed !important;
-        
-        &:hover {
-            box-shadow: none !important;
-        }
+      cursor:                                   not-allowed !important;
+      
+      &:hover {
+        box-shadow:                             none !important;
+      }
     }
 
     &.basic {
@@ -122,7 +115,7 @@ $mapfre-button-header-margin:                   -3px;
 
     &.ghost {
         background:                             $mapfre-button-bg-color-flat;
-        border:                                 $mapfre-buton-border;
+        border:                                 $mapfre-buton-border-ghost;
         @include border-radius(100px);
 
         &.primary {
@@ -245,81 +238,71 @@ $mapfre-button-header-margin:                   -3px;
         }
     }
 
+    &.normal-link {
+      color:                              $mapfre-button-color-link;
+      text-transform:                     capitalize;
+      font-weight: 400;
+    }
+
     &.header-flat {
         @extend .flat;
+        padding-top: 16px;
+        padding-bottom: 16px;
         @include media-breakpoint-down(xs) {
             margin-right:                       -15px !important;
         }
-        @include media-breakpoint-down(s) { //these need variables
-            padding-top:                        10px;
-            padding-bottom:                     7px;
-            padding-left:                       16px;
-            padding-right:                      16px;
-            margin-top:                         -1px;
-            margin-right:                       -30px;
-        }
-    
-        @include media-breakpoint-up(m) {
-            padding-top:                        16px;
-            padding-bottom:                     7px;
-            padding-left:                       16px;
-            padding-right:                      16px;
-            margin-top:                         -1px;
-        }
-
         &:hover {
-            background:                          darken( desaturate( adjust-hue( $mapfre-red, -7deg ), 10 ), 3 );
+          background:                          darken( desaturate( adjust-hue( $mapfre-red, -7deg ), 10 ), 3 );
         }
     }
 
     &.footer-flat {
-        @extend .flat;
-        color: #4C4C4C;
-        padding: 4px 8px;
-        font-size: 12px;
-        text-transform: uppercase;
-        font-weight: 400;
+      @extend .flat;
+      color:                                    #4C4C4C;
+      padding:                                  4px 8px;
+      font-size:                                12px;
+      text-transform:                           uppercase;
+      font-weight:                              400;
 
-        &:hover {
-            background:                          darken( $mapfre-button-color-flat-hover, 10% );
-        }
+      &:hover {
+        background:                            darken( $mapfre-button-color-flat-hover, 10% );
+      }
     }
 
      // ---- Colors -----
     &.blue-color {
-        color:                                  $mapfre-button-color-blue;
+      color:                                  $mapfre-button-color-blue;
     }
     &.blue-background {
-        background-color:                       $mapfre-button-color-blue;
+      background-color:                       $mapfre-button-color-blue;
     }
     
     // ----- Sizing -------
     &.large {
-        display:                                -webkit-flex;
-        display:                                -ms-flexbox;
-        display:                                flex;
-        font-size:                              $mapfre-button-font-full-size;
-        padding:                                $mapfre-button-large-padding 0;
-        width:                                  100%;                             
+      display:                                -webkit-flex;
+      display:                                -ms-flexbox;
+      display:                                flex;
+      font-size:                              $mapfre-button-font-full-size;
+      width:                                  100%;
+      height:                                 48px;
     }
 
     &.medium {
-        width:                                  75%;
+        width:                                75%;
     }
     
     &.small {
-        font-size:                              $mapfre-button-font-small-size;
-        padding:                                $mapfre-button-small-padding;
-        width:                                  180px; 
+      font-size:                              $mapfre-button-font-small-size;
+      height:                                 32px;
     }
 
     // ------ Custom Icon Classes -----
     .custom-button-icon {
-        padding-right: 8px;
+        padding-right:                        8px;
 
         &.align-middle {
-            position: relative;
-            top: -1px;
+            position:                         relative;
+            top:                              -1px;
         }
     }
 

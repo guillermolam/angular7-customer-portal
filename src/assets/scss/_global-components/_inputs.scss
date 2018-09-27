@@ -1,139 +1,114 @@
-//size
-$input-label-font-size:                     $font-size-base;
-$input-error-label-font-size:               $input-label-font-size / 1.25;
-$input-active-font-size:                    $font-size-base - 0.125;
-//positioning
-$input-label-left-position:                 $margin-horizontal / 1.25;
-$input-label-padding-bottom:                $padding-vertical * 2.5;
-$input-padding:                             $padding-vertical;
-$input-validation-label-right:              $margin-horizontal;
-$input-validation-help-top:                 $padding-vertical / 2.5;
-$input-padding-half:                        $defualt-margin-padding;
-//colors
-$input-active-color:                        $active-color;
-$input-error-color:                         $error-color; 
-$input-inactive-color:                      $mapfre-lite-gray;
-$input-static-color:                        $fake-black;
-$input-success-color:                       $success-color;
+// --- colors
+$global-input-active-color:                    $active-color;
+$global-input-error-color:                     $error-color; 
+$global-input-inactive-color:                  $dark-grey;
+$global-input-static-color:                    $fake-black;
+$global-input-success-color:                   $success-color;
+// --- font-size
+$global-input-label-font-size:                 $font-size-base; //14px
+$global-input-error-label-font-size:           $global-input-label-font-size / 1.25;
+$global-input-active-font-size:                $font-size-base - 0.125;
+// --- positioning
+$global-input-first-input-width:               60%;
+$global-input-label-left-position:             $margin-horizontal / 1.25;
+$global-input-label-padding-bottom:            $padding-vertical * 2.5;
+$global-input-padding:                         $padding-vertical;
+$global-input-padding-half:                    $defualt-margin-padding;
+$global-input-validation-label-right:          $margin-horizontal;
+$global-input-validation-help-top:             $padding-vertical / 2.5;
+// --- input-general
+$global-input-border-bottom:                  0.125rem solid $global-input-inactive-color;
+$global-input-height:                         $global-one-rem * 1.5;
+$global-input-padding-left:                   $global-one-rem / 2; //8px
+// --- label-general
+$global-input-label-line-height:              $global-one-rem * 1.5;
+$global-input-label-top:                      -( $global-one-rem / 4 );
+$global-input-label-active-top:               -$global-one-rem;
+$global-input-label-active-line-height:       $global-one-rem;
+$global-input-label-active-margin-bottom:     $global-one-rem / 4;
+// --- password icon
+$global-input-password-icon-bottom:           $global-one-rem * 2.125;
+$global-input-password-icon-padding-right:    $global-one-rem;
+
+.input.first-input {
+  float:                                      left;
+  width:                                      $global-input-first-input-width;
+}
 
 .input-field.mapfre {
-    height:                                 60px;
-    position:                               relative; 
-    padding-bottom:                         $input-label-padding-bottom;
-
-    input {
-        border:                             none;
-        border-bottom:                      2px solid $input-inactive-color;
-        font-size:                          $input-label-font-size;
-        padding:                            $input-padding-half/2 $input-padding-half;
-        @include border-radius(0);
-        @include transition(0.2s);
-        
-        &:focus {
-            border-bottom-color:            $input-active-color;
-        }
-
-        &:hover {
-            border-color:                   $input-active-color;
-        }
-
-        &.error {
-          border-color:                     $input-error-color;
-          color:                            $input-static-color;
-        }
+  input {
+    border:                                   none;
+    border-bottom:                            $global-input-border-bottom;
+    font-size:                                $global-input-label-font-size;
+    height:                                   $global-input-height;
+    padding-left:                             $global-input-padding-left;
+    @include border-radius(0);
+    @include transition(0.2s);
+    
+    &:focus {
+      border-bottom-color:                    $global-input-active-color;
     }
 
-    label {
-        color:                              $input-inactive-color;
-        cursor:                             text;
-        font-size:                          $input-label-font-size;
-        text-transform:                     capitalize;
-        top:                                3px; 
-        @include transition(0.2s);
-        
-        &.active {
-            color:                          $input-active-color;
-            font-size:                      $input-active-font-size;
-        }
-
-        &.active.error {
-            color:                          $input-error-color;
-        }
-        
-        &.input-label {
-            left:                           $input-padding-half; 
-            margin-bottom:                  0;
-            position:                       absolute;
-           
-            &.active {
-                top:                        -14px;
-            }
-        }
+    &:hover {
+      border-color:                           $global-input-active-color;
     }
 
-    .counter-danger + label {
-        color:                              $input-error-color;
-    }
-
-    .counter-success + label {
-        color:                              $input-success-color;
-    }
-    .inputVal {
-        display:                            none;
-        right:                              $input-validation-label-right;
-    }
-}
-
-.group-inputs .input {
-  margin-bottom:                            8px;
-}
-
-.form-check-input {
-  &:before {
-    @include border-radius(1px);
-    @include transition(0.5s);
-    width: 1.5rem;
-    height: 1.5rem;
-    content: '';
-    border: 2px solid $dark-gray;
-    display: block;
-    z-index: 10;
-    margin-left: -3px;
-    margin-top: -5px;
-  }
-
-  &:checked{
-    &:before {
-      @include transform(rotate(45deg));
-      height: 1.5rem; 
-      border-color: $input-success-color;
-      border-top-style: none;
-      border-left-style: none;
-      margin-top: -10px;
-      width: 0.5rem;
-      margin-left: 7px;
-    }
-    &:after{
-      margin-top: -19px;
+    &.error {
+      border-color:                           $global-input-error-color;
+      color:                                  $global-input-static-color;
     }
   }
 
-  &:after {
-    background: $white;
-    width: 18px;
-    height: 18px;
-    content: '';
-    display: block;
-    margin-left: 0px;
-    margin-top: -21px;
+  label {
+    color:                                    $global-input-inactive-color;
+    cursor:                                   text;
+    font-size:                                $global-input-label-font-size;
+    line-height:                              $global-input-label-line-height;
+    padding-left:                             $global-input-padding-left;
+    text-transform:                           capitalize;
+    top:                                      $global-input-label-top;
+    @include transition(0.2s);
+    
+    &.active {
+      color:                                  $global-input-active-color;
+      font-size:                              $global-input-active-font-size;
+    }
+
+    &.active.error {
+      color:                                  $global-input-error-color;
+    }
+    
+    &.input-label {
+      left:                                   $global-input-padding-half; 
+      margin-bottom:                          $global-zero;
+      position:                               absolute;
+      
+      &.active {
+        top:                                  $global-input-label-active-top;
+        line-height:                          $global-input-label-active-line-height;
+        margin-bottom:                        $global-input-label-active-margin-bottom;
+      }
+    }
+  }
+
+  .counter-danger + label {
+    color:                                    $global-input-error-color;
+  }
+
+  .counter-success + label {
+    color:                                    $global-input-success-color;
+  }
+  .inputVal {
+    display:                                  none;
+    right:                                    $global-input-validation-label-right;
   }
 }
 
-.form-check-label {
-  margin-left: 10px;
+.mapfre.icon-container.show-password.password {
+  position:                                   relative;
+  bottom:                                     $global-input-password-icon-bottom;
+  padding-right:                              $global-input-password-icon-padding-right;
+  a:hover {
+    border:                                   none;
+  }
 }
-
-.button-spacer {
-  margin-bottom: 24px;
-}
-

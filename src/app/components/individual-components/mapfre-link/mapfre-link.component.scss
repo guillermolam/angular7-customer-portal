@@ -1,61 +1,76 @@
 @import "../../../../styles.scss";
-
-$mapfre-link-color:                         $active-color;
-$mapfre-link-border-bottom-color:           $active-color;
-$mapfre-link-color-red:                     $mapfre-red;
-$mapfre-link-font-size-small:               0.75rem;
-$mapfre-link-font-size-base:                0.875rem;
-$mapfre-link-font-size-large:               1rem;
-$mapfre-link-icon-top:                      -5px;
-$mapfre-link-icon-right:                    $padding-horizontal/1.5;
-$mapfre-link-padding:                       0 $padding-vertical;
+// --- Color
+$mapfre-link-color:                       $active-color;
+$mapfre-link-border-bottom-color:         $active-color;
+$mapfre-link-color-red:                   $mapfre-red;
+// --- Font Size
+$mapfre-link-font-size-small:             $font-size-sm; //12
+$mapfre-link-font-size-base:              $font-size-base; //14
+$mapfre-link-font-size-large:             $font-size-med; //16
+$mapfre-link-icon-font-size:              $font-size-med;
+$mapfre-link-icon-font-weight:            900;
+$mapfre-link-icon-class-font-size:        $font-size-med;
+// --- Positions
+$mapfre-link-icon-top:                    -($global-one-rem * 0.3125); //-5px;
+$mapfre-link-icon-right:                  $padding-horizontal/1.5;
+$mapfre-link-icon-class-top:              $global-one-rem * 0.125;
+$mapfre-link-switch-top:                  $global-one-rem * 0.0625;
+// --- Padding/Margin
+$mapfre-link-padding:                     $global-zero $padding-vertical;
+$mapfre-link-icon-class-padding-right:    $defualt-margin-padding;
+// --- ETC
+$mapfre-link-border:                      thin solid transparent;
+$mapfre-link-underline-border:            thin solid $mapfre-link-border-bottom-color;
 
 i {
-    font-size:                              1rem;
-    font-weight:                            900;
+  font-size:                              $mapfre-link-icon-font-size;
+  font-weight:                            $mapfre-link-icon-font-weight;
 }
 
-.mapfre {  
-    span {
-        color:                              $mapfre-link-color;
+.mapfre {
+
+  span {
+    color:                                $mapfre-link-color;
+  }
+  
+  &.large-link {
+    font-size:                            $mapfre-link-font-size-large;
+  }
+
+  .link-icon {
+    font-size:                          $mapfre-link-icon-font-size;
+    padding-right:                      $mapfre-link-icon-class-padding-right;
+    position:                           relative;
+    top:                                $mapfre-link-icon-class-top;
+  }
+
+  &.normal-link {
+    border-bottom:                      $mapfre-link-border;
+    font-size:                          $mapfre-link-font-size-base;
+
+    &:hover {
+      border-bottom-color:            $mapfre-link-border-bottom-color;
     }
+  }
+
+  &.red-link {
+    color:                              $mapfre-link-color-red;
+  }
+
+  &.small-link {
+    font-size:                          $mapfre-link-font-size-small;
+  }
+
+  &.switch-line-up {
+    position:                           relative;
+    top:                                $mapfre-link-switch-top; //change to rem and variable
+  }
+  
+  &.underline {
+    @include transition(1s);
     
-    &.large-link {
-        font-size:                          $mapfre-link-font-size-large;
+    .link-content {
+      border-bottom:                    $mapfre-link-underline-border
     }
-
-    .link-icon {
-        position:                           relative;
-        top:                                2px;
-        font-size:                          16px;
-        padding-right:                      8px;
-    }
-
-    &.normal-link {
-        font-size:                          $mapfre-link-font-size-base;
-        border-bottom:                      thin solid transparent;
-        &:hover {
-            border-bottom-color:            $mapfre-link-border-bottom-color;
-        }
-    }
-
-    &.red-link {
-        color:                              $mapfre-link-color-red;
-    }
-
-    &.small-link {
-        font-size:                          $mapfre-link-font-size-small;
-    }
-
-    &.switch-line-up {
-        position:                           relative;
-        top:                                5px; //change to rem and variable
-    }
-
-    &.underline {
-        .link-content {
-            border-bottom:                      thin solid $mapfre-link-border-bottom-color;
-        }
-       @include transition(1s);
-    }
+  }
 }

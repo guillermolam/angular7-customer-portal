@@ -1,66 +1,64 @@
 @import "../../../../styles.scss";
-
-$mapfre-alert-background-default:   lighten( desaturate( adjust-hue( $information-color, 4deg ), 17 ), 58 );
-$mapfre-alert-background-caution:   lighten( saturate( adjust-hue( $caution-color, 3deg ), 23 ), 44 ); //for the moment
-$mapfre-alert-background-error:     lighten( saturate( adjust-hue( $error-color, 3deg ), 23 ), 44 );
-$mapfre-alert-background-success:   lighten( saturate( $success-color, 44 ), 21 );
-
+// --- Color
+$mapfre-alert-background-default:   $information-background-color;
+$mapfre-alert-background-caution:   $caution-background-color-alert;
+$mapfre-alert-background-error:     $error-background-color;
+$mapfre-alert-background-success:   $success-background-color;
 $mapfre-alert-border-default:       $information-color;
 $mapfre-alert-border-caution:       $caution-color; 
 $mapfre-alert-border-error:         $error-color;
 $mapfre-alert-border-success:       $success-color; 
-
 $mapfre-alert-color-default:        $med-gray;
 $mapfre-alert-color-caution:        $mapfre-alert-color-default;
 $mapfre-alert-color-error:          $mapfre-alert-color-default;
 $mapfre-alert-color-success:        $mapfre-alert-color-default;
-
+// --- Font size
 $mapfre-alert-font-size:            $font-size-base;
+$mapfre-alert-font-weight:          100;
+// --- Margin/Padding
+$mapfre-alert-class-margin-bottom:  $global-zero;
+$mapfre-alert-copy-margin-top:      -($default-margin-padding * 0.5 );//-2px
 $mapfre-alert-copy-padding:         $default-margin-padding - 0.1875rem;
 $mapfre-alert-icon-padding:         $default-margin-padding;
-$mapfre-alert-copy-padding:         $mapfre-alert-font-size/2;
-
+// --- ETC
+$mapfre-alert-class-border:         thin solid;
+$mapfre-alert-icon-width:           $global-one-rem * 3.125; //50px;
+$mapfre-alert-message-width:        $global-one-rem * 13.75; //220px;
 
 .mapfre.alert {
+  border:                           $mapfre-alert-class-border;
   font-size:                        $mapfre-alert-font-size;
   font-style:                       italic;
-  font-weight:                      100;
-  border:                           thin solid;
-  margin-bottom:                    0;
+  font-weight:                      $mapfre-alert-font-weight;
+  margin-bottom:                    $mapfre-alert-class-margin-bottom;
 
   &.caution {
-      background:                   $mapfre-alert-background-caution;
-      color:                        $mapfre-alert-color-caution;
-      border-color:                 $mapfre-alert-border-caution;
+    background:                     $mapfre-alert-background-caution;
+    border-color:                   $mapfre-alert-border-caution;
+    color:                          $mapfre-alert-color-caution;
   }
 
   &.default {
-      background:                   $mapfre-alert-background-default;
-      color:                        $mapfre-alert-color-default;
-      border-color:                 $mapfre-alert-border-default;
+    background:                     $mapfre-alert-background-default;
+    border-color:                   $mapfre-alert-border-default;
+    color:                          $mapfre-alert-color-default;
   }
 
   &.error {
-      background:                   $mapfre-alert-background-error;
-      color:                        $mapfre-alert-color-error;
-      border-color:                 $mapfre-alert-border-error;
+    background:                     $mapfre-alert-background-error;
+    border-color:                   $mapfre-alert-border-error;
+    color:                          $mapfre-alert-color-error;
   }
 
   &.success {
-      background:                   $mapfre-alert-background-success;
-      color:                        $mapfre-alert-color-success;
-      border-color:                 $mapfre-alert-border-success;
-  }
-
-  &.toast {
-      margin:                       -24px;
-      margin-bottom:                0;
-      border-radius:                0.25rem 0.25rem 0 0;
-
+    background:                     $mapfre-alert-background-success;
+    border-color:                   $mapfre-alert-border-success;
+    color:                          $mapfre-alert-color-success;
   }
 
   .copy {
-    padding-top:                    $mapfre-alert-copy-padding;
+    line-height:                    normal;
+    margin-top:                     $mapfre-alert-copy-margin-top;
   }
 
   .icon,
@@ -71,12 +69,10 @@ $mapfre-alert-copy-padding:         $mapfre-alert-font-size/2;
   .icon {
     padding-right:                  $mapfre-alert-icon-padding;
     text-align:                     center;
-    width:                          40px;
+    width:                          $mapfre-alert-icon-width;
   }
 
-}
-
-.alert-container {
-  padding-bottom:  16px;
-  padding-top: 8px;
+  .message {
+    width:                          $mapfre-alert-message-width;
+  }
 }

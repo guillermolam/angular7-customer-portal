@@ -1,4 +1,4 @@
-import { Component, OnInit }       from '@angular/core';
+import { Component, OnInit }              from '@angular/core';
 import { ActivatedRoute }                 from '@angular/router';
 import { AuthenticationService }          from '../../_services/_iam/authentication-service.service';
 import { CreateNewPasswordFormService }   from '../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
@@ -11,17 +11,17 @@ import { CreateNewPasswordFormService }   from '../../_services/forms/forgot-pas
 })
 
 export class CreateNewPasswordComponent implements OnInit {
-  createNewPassword:              any[];
-  expiredLink:                    boolean = true;
-  paramSubmission:                any;
-  successChangePassword:          boolean = false;
-  tooManyAttempts:                boolean = false;
-  waitingForResponse:             boolean = false;  // waiting token api response
+  createNewPassword:                      any[];
+  expiredLink:                            boolean = true;
+  paramSubmission:                        any;
+  successChangePassword:                  boolean = false;
+  tooManyAttempts:                        boolean = false;
+  waitingForResponse:                     boolean = false;  // waiting token api response
   
   constructor( 
-    service: CreateNewPasswordFormService,
-  	private route: ActivatedRoute,
-    private authenticationService:  AuthenticationService 
+    service:                              CreateNewPasswordFormService,
+  	private route:                        ActivatedRoute,
+    private authenticationService:        AuthenticationService 
   ) {
       this.createNewPassword = service.getInputs();
       this.route = route
@@ -33,23 +33,24 @@ export class CreateNewPasswordComponent implements OnInit {
 
   isTokenValid(token,email) {
     if(!token || !email) return false;
-  	this.waitingForResponse = true;
+  	this.waitingForResponse =           true;
     return this.authenticationService
-      .tokenVerification(token, email)
+      .tokenVerification(token, email, 'forgotPassword')
       .subscribe(
         data => {
-          this.expiredLink = false;
-          this.waitingForResponse = false;
-        }, error => {
-          this.expiredLink = true;
-          this.waitingForResponse = false;
+          this.expiredLink =            false;
+          this.waitingForResponse =     false;
+        }, 
+        error => {
+          this.expiredLink =            true;
+          this.waitingForResponse =     false;
         }
       )
     ;
   }
 
   userConfirmation(event): void {
-    this.successChangePassword = event;
+    this.successChangePassword =        event;
   }
 
   ngOnInit() {

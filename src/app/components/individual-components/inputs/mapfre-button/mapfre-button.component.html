@@ -30,16 +30,22 @@
 		[ngClass]="{'btn-icon': screenReader, 'default': !moreCSSClasses(additionalClasses) }"
 		mdbWavesEffect>
 
-		<span *ngIf="showIcons" class="first-icon">
-			<mapfre-icon [iconClasses]="iconClassesArray[0]" [iconFamily]="iconFamily"></mapfre-icon> 
-		</span>
-    <span class="button-content"
-			[ngClass]="{'sr-only sr-only-focusable': screenReader }">
-			{{ buttonCopy | translate }}
-		</span>
-    <span *ngIf="iconClassesArray.length >= 2" class="second-icon">
-			<mapfre-icon [iconClasses]="iconClassesArray[1]" [iconFamily]="iconFamily"></mapfre-icon> 
-		</span>
+    <ng-container *ngIf="additionalClasses.includes('header-flat')">
+      <mapfre-icon [iconClasses]="iconClassesArray[0]" [iconFamily]="iconFamily" [header]="true"></mapfre-icon> 
+    </ng-container>
+
+    <ng-container *ngIf="!additionalClasses.includes('header-flat')">
+      <span *ngIf="showIcons" class="first-icon">
+        <mapfre-icon [iconClasses]="iconClassesArray[0]" [iconFamily]="iconFamily"></mapfre-icon> 
+      </span>
+      <span class="button-content"
+        [ngClass]="{'sr-only sr-only-focusable': screenReader }">
+        {{ buttonCopy | translate }}
+      </span>
+      <span *ngIf="iconClassesArray.length >= 2" class="second-icon">
+        <mapfre-icon [iconClasses]="iconClassesArray[1]" [iconFamily]="iconFamily"></mapfre-icon> 
+      </span>
+    </ng-container>
 	</button>
 
 	<button 

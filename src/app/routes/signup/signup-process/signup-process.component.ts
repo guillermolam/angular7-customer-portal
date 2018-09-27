@@ -1,8 +1,5 @@
 import { Component, OnInit }              from '@angular/core';
 import { ActivatedRoute, Params }         from '@angular/router';
-import { Observable }                     from 'rxjs';
-import { switchMap }                      from 'rxjs/operators';
-
 import { AddPolicyService }               from '../../../_services/forms/create-account/add-policy.service';
 import { CreateNewPasswordFormService }   from '../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
 import { EditPolicyService }              from '../../../_services/forms/create-account/edit-policy.service';
@@ -34,7 +31,7 @@ export class SignupProcessComponent implements OnInit {
     this.createNewPassword = passwordService.getInputs();
     this.editPolicyInfo = editPolicyService.getInputs();
     this.whereToFindModalOptions = new ModalOptions({
-      additionalButtonClasses:        "flat link", 
+      additionalButtonClasses:        "flat normal-link", 
 			animatePosition:                "bottom", 
 			buttonCopy:                     "MODAL_WHERE_CAN_I_LINK",
 			modalId:                        "helpModal",
@@ -43,55 +40,16 @@ export class SignupProcessComponent implements OnInit {
 		});
   }
 
-  testingData(): User {
-    //This object is for development use. And will be taken out
-    let object = {
-      addPolicyAttempts:          3,
-      firstName:                  'TestFirstName',
-      middleName:                 'TM',
-      lastName:                   'TestLastName',
-      email:                      'testUpdate@email.com',
-      password:                   'abcd12D!',
-      policyDetails: [{
-        InsName1:                 null,
-        effDate:                  '12/12/2018',
-        expDate:                  '12/12/2018',
-        policynumbers:             { policynumber: 'BB0490' },
-        policyStatus:             'cancelled',
-        policyType:               'home',
-        status:                   null,
-      },
-      {
-        InsName1:                 null,
-        effDate:                  '12/12/2018',
-        expDate:                  '12/12/2018',
-        policynumber:             { policynumber: '120490' },
-        policyStatus:             'cancelled',
-        policyType:               'auto',
-        status:                   null, 
-      }]
-    };
-    return object;
-  }
-
   ngOnInit() {
     this.userService.$user.subscribe(
       user => {
-        if(user == undefined){
-          this.user = this.testingData();
-          this.userService.updateUser(this.user);
-        }
-        else {
-          this.user = user;
-        }
+        this.user = user;
       }
     );
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.whereInTheProcess = params['parm'];
     });
-
-    console.log("userData " + this.whereInTheProcess, this.user);
   }
 
 }

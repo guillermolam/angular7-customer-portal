@@ -1,38 +1,47 @@
 @import "../../../../styles.scss";
 
-$mapfre-icon-information-padding:                       		$padding-vertical;
-$mapfre-icon-information-info-color:                    		$med-gray;
-$mapfre-icon-information-info-font-size:                		$font-size-base;
-$mapfre-icon-information-title-icon-color:              		$active-color;
+$mapfre-icon-information-padding-right:           $padding-horizontal; //16px
+$mapfre-icon-information-padding-top:             $defualt-margin-padding; //8px
+$mapfre-icon-information-info-color:              $med-gray;
+$mapfre-icon-information-info-font-size:          $font-size-base;
+$mapfre-icon-information-title-icon-color:        $active-color;
+$mapfre-icon-information-title-font-weight:       700;
+
+/*
+    --- Information ---
+    This is for the gray background that show the users name, 
+    policy number, and account type. This is set up to be used 
+    with a ngFor loop
+*/
 
 .mapfre-icon-information {
-    
-	.icon-container {
-		color: 																									$mapfre-icon-information-title-icon-color;
-		float:                                          				left;
-		padding-right:																					$mapfre-icon-information-padding;
-		padding-top:                                    				8px;
-		width:                                          				auto;
-	}
 
-	.information-container {
-		float:                                          				left;
-		width:                                          				auto;
-	}
+  .icon-container {
+    color:                                         $mapfre-icon-information-title-icon-color;
+    float:                                         left;
+    padding-right:                                 $mapfre-icon-information-padding-right;
+    padding-top:                                   $mapfre-icon-information-padding-top;
+    width:                                         auto;
+  }
 
-	.info {
-		color: 																									$mapfre-icon-information-info-color;
-		font-size: 																							$mapfre-icon-information-info-font-size;
-	}
+  .information-container {
+    float:                                         left;
+    width:                                         auto;
+  }
 
-	.info,
-	.title {
-		text-align:                                     				left;
-	}
+  .info {
+    color:                                         $mapfre-icon-information-info-color;
+    font-size:                                     $mapfre-icon-information-info-font-size;
+  }
 
-	.title {
-		color: 																									$mapfre-icon-information-title-icon-color;
-		font-weight:                                    				700;
-		text-transform: 																				uppercase;
-	}
+  .info,
+  .title {
+    text-align:                                     left;
+  }
+
+  .title {
+    color:                                          $mapfre-icon-information-title-icon-color;
+    font-weight:                                    $mapfre-icon-information-title-font-weight;
+    text-transform:                                 uppercase;
+  }
 }

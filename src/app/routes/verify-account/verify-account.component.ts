@@ -1,7 +1,9 @@
-import { Component, OnInit }              from '@angular/core';
-import { User }                           from '../../_models/user';
-import { UserService }                    from '../../_services/user.service';
-
+import { Component, OnInit }        from '@angular/core';
+import { ActivatedRoute, Router }   from '@angular/router';
+import { AlertService }             from '../../_services/alert.service';
+import { AuthenticationService }    from '../../_services/_iam/authentication-service.service';
+import { User }                     from '../../_models/user';
+import { UserService }              from '../../_services/user.service';
 
 @Component({
   selector: 'app-verify-account',
@@ -9,54 +11,38 @@ import { UserService }                    from '../../_services/user.service';
   styleUrls: ['./verify-account.component.scss']
 })
 export class VerifyAccountComponent implements OnInit {
-  user:                               User;
+  user:                             User;
+  
   constructor(
-    private userService:              UserService,
+    private activatedRoute:         ActivatedRoute,
+    private alertService:           AlertService,
+    private authService:            AuthenticationService,
+    private router:                 Router,
+    private userService:            UserService,
   ) { }
 
-  testingData(): User {
-    //This object is for development use. And will be taken out
-    let object = {
-      addPolicyAttempts:          3,
-      firstName:                  'TestFirstName',
-      middleName:                 'TM',
-      lastName:                   'TestLastName',
-      email:                      'testUpdate@email.com',
-      password:                   'abcd12D!',
-      policyDetails: [{
-        InsName1:                 null,
-        effDate:                  '12/12/2018',
-        expDate:                  '12/12/2018',
-        policynumber:             { policynumber: 'BB0490' },
-        policyStatus:             'cancelled',
-        policyType:               'home',
-        status:                   null,
-      },
-      {
-        InsName1:                 null,
-        effDate:                  '12/12/2018',
-        expDate:                  '12/12/2018',
-        policynumber:             { policynumber: '120490' },
-        policyStatus:             'cancelled',
-        policyType:               'auto',
-        status:                   null, 
-      }]
-    };
-    return object;
+  validateToken(email: string, token: string) {
+    if(!email || !token) return null;
+
+    return this.authService.tokenVerification(token, email, 'verifyAccount')
+      .subscribe(
+        data => {
+          this.alertService.success;
+          this.router.navigate(['login']);
+        }
+      )
   }
 
   ngOnInit() {
     this.userService.$user.subscribe(
       user => {
-        if(user == undefined){
-          this.user = this.testingData();
-          this.userService.updateUser(this.user);
-        }
-        else {
-          this.user = user;
-        }
+        this.user = user;
       }
     );
+    this.activatedRoute.queryParams.subscribe(params => {
+      if(params) {
+        return this.validateToken(params.token, params.email);
+      }
+    });
   }
-
 }

@@ -1,57 +1,62 @@
 @import "../../../../styles.scss";
-
-$mapfre-info-div-background-default:        lighten( desaturate( adjust-hue( $information-color, 4deg ), 17 ), 58 );
-$mapfre-info-div-background-caution:        lighten( adjust-hue( $caution-color, -12deg ), 31 );
-$mapfre-info-div-background-error:          lighten( saturate( adjust-hue( $error-color, 3deg ), 23 ), 44 );
-$mapfre-info-div-background-success:        lighten( saturate( $success-color, 44 ), 21 );
-
+// --- Background
+$mapfre-info-div-background-default:        $information-background-color;
+$mapfre-info-div-background-caution:        $caution-background-color;
+$mapfre-info-div-background-error:          $error-background-color;
+$mapfre-info-div-background-success:        $success-background-color;
+// --- Color
 $mapfre-info-div-border-default:            $information-color; 
 $mapfre-info-div-border-caution:            $caution-color; 
 $mapfre-info-div-border-error:              $error-color;
 $mapfre-info-div-border-success:            $success-color; 
-
 $mapfre-info-div-color-default:             $med-gray;
 $mapfre-info-div-color-caution:             $mapfre-info-div-color-default;
 $mapfre-info-div-color-error:               $mapfre-info-div-color-default;
 $mapfre-info-div-color-success:             $mapfre-info-div-color-default;
-
+// --- information-container
+$mapfre-info-information-cont-margin-left:  $defualt-margin-padding;
+$mapfre-info-information-cont-width:        $global-one-rem * 2;
+$mapfre-info-information-full-width:        100%;
+$mapfre-info-information-icon-width:        85%;
+// --- ETC
 $mapfre-info-div-font-size:                 $font-size-base;
 $mapfre-info-div-copy-padding:              $default-margin-padding - 0.1875rem;
 $mapfre-info-div-icon-padding:              $default-margin-padding;
 $mapfre-info-div-copy-padding:              $mapfre-info-div-font-size/2;
-$mapfre-info-div-padding:                   $padding-vertical;
 $mapfre-info-div-info-color:                $med-gray;
 $mapfre-info-div-info-font-size:            $font-size-base;
 $mapfre-info-div-title-icon-color:          $active-color;
+$mapfre-info-div-margin:                    $global-zero;
+$mapfre-info-div-padding:                   $defualt-margin-padding;
 
 .mapfre.info-div {
   border:                                   thin solid;
   font-size:                                $mapfre-info-div-font-size;
-  margin:                                   0;
-  padding:                                  0.5rem;
+  margin:                                   $mapfre-info-div-margin;
+  padding:                                  $mapfre-info-div-padding;
 
   &.caution {
-      background:                           $mapfre-info-div-background-caution;
-      color:                                $mapfre-info-div-color-caution;
-      border-color:                         $mapfre-info-div-border-caution;
+    background:                             $mapfre-info-div-background-caution;
+    color:                                  $mapfre-info-div-color-caution;
+    border-color:                           $mapfre-info-div-border-caution;
   }
 
   &.default {
-      background:                           $mapfre-info-div-background-default;
-      color:                                $mapfre-info-div-color-default;
-      border-color:                         $mapfre-info-div-border-default;
+    background:                             $mapfre-info-div-background-default;
+    color:                                  $mapfre-info-div-color-default;
+    border-color:                           $mapfre-info-div-border-default;
   }
 
   &.error {
-      background:                           $mapfre-info-div-background-error;
-      color:                                $mapfre-info-div-color-error;
-      border-color:                         $mapfre-info-div-border-error;
+    background:                             $mapfre-info-div-background-error;
+    color:                                  $mapfre-info-div-color-error;
+    border-color:                           $mapfre-info-div-border-error;
   }
 
   &.success {
-      background:                           $mapfre-info-div-background-success;
-      color:                                $mapfre-info-div-color-success;
-      border-color:                         $mapfre-info-div-border-success;
+    background:                             $mapfre-info-div-background-success;
+    color:                                  $mapfre-info-div-color-success;
+    border-color:                           $mapfre-info-div-border-success;
   }
 
   .copy {
@@ -64,19 +69,18 @@ $mapfre-info-div-title-icon-color:          $active-color;
   }
 
   .icon-container {
-		width:                                  32px;
-	}
-
-	.information-container {
-    margin-left:                            8px;
-
+    width:                                  $mapfre-info-information-cont-width;
+  }
+  
+  .information-container {
+    margin-left:                            $mapfre-info-information-cont-margin-left;
+  
     &.full-width {
-      width:                                100%;
+      width:                                $mapfre-info-information-full-width;
     }
-
+  
     &.with-icon {
-      width:                                85%;
+      width:                                $mapfre-info-information-icon-width;
     }
-	}
-
+  }
 }

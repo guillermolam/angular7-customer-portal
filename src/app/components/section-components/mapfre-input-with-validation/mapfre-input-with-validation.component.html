@@ -1,7 +1,7 @@
-<div class= "row {{input.inputType}}-input " 
-  [ngClass]= "{'mapfre-validation-rules': input.key == 'repeatPassword' }"
+<div class="row {{input.inputType}}-input mapfre-input margin-bottom mb8" 
+  [ngClass]="{'mapfre-validation-rules': input.key == 'repeatPassword' }"
 >
-  <div class="col">
+  <div class="col input-content">
     <div [formGroup]= "form" class= "input-field mapfre">
       <div [ngSwitch]= "input.icon" class= "prefix">
         <i [class]= "input.iconClasses" *ngSwitchCase= "true"></i>
@@ -31,9 +31,9 @@
           (focus)= "OnFocus(this)"
           (keyup)="OnKeyUp(this)"
           [class]= "input.additionalClasses"
-          [data-error]= "input.validationMessage" 
-          [formControlName]= "input.key"  
-          [id]= "input.key" 
+          [data-error]= "input.validationMessage"
+          [formControlName]= "input.key"
+          [id]= "input.key"
           [mdbValidate]="false"
           [name]= "input.key"
           [ngClass]="{'error': !validInput}"
@@ -52,14 +52,14 @@
       <div *ngIf= "input.inputType != 'email' && input.inputType != 'password' ">
         <input
           (blur)= "OnBlur(this)"
-          (focus)="OnFocus(this)"
+          (focus)= "OnFocus(this)"
           (keyup)="OnKeyUp(this)"
           [class]= "input.additionalClasses"
-          [data-error]= "input.validationMessage" 
-          [formControlName]= "input.key"  
+          [data-error]= "input.validationMessage"
+          [formControlName]= "input.key"
           [id]= "input.key" 
           [mdbValidate]="false"
-          [name]= "input.key" 
+          [name]= "input.key"
           [ngClass]="{'error': !validInput && allowValidaitonToRun }"
           [type]= "input.inputType"
           #textbox
@@ -67,108 +67,79 @@
         />
         <mapfre-label [forInput]= "input.key" [validationCSSClass]="validInput">{{ input.label | translate }}</mapfre-label>
       </div>
-      <div class="help-block" >
-        <span class= "error-block" 
-          *ngIf= "!isValid && notOnPageLoad && input.inputType != 'email' && !message">
+      <div class="help-block error-block">
+        <ng-container *ngIf= "!isValid && validMessageShow && !message">
           {{ input.validationMessageError | translate }}
-        </span>
-        <span class="error-block" 
-          *ngIf= "!isValid && input.inputType == 'email' && validMessageShow && !message">
-          {{ input.validationMessageError | translate }}
-        </span>
-        <span class="error-block" 
-          *ngIf="message && input.key == 'createPassword' ">
+        </ng-container>
+        <ng-container *ngIf="message && input.key == 'createPassword' ">
           {{ message?.text | translate }}
-        </span>
-        <span class="error-block" 
-          *ngIf="message && input.key != 'createPassword' ">
+        </ng-container>
+        <ng-container *ngIf="message && input.key != 'createPassword' ">
           {{ 'FORGOT_EMAIL_REVIEW_ME' | translate }}
-        </span>
-        <span class= "info-block" *ngIf= "input.inputType == 'password' && capsLock">
+        </ng-container>
+      </div>
+      <div class="help-block info-block" *ngIf="input.inputType == 'password' && capsLock">
+        <span>
           <mapfre-icon iconClasses="fas fa-exclamation-triangle"></mapfre-icon> {{ 'CAPS_LOCK' | translate }}
         </span>
       </div>
-      <div *ngIf= "input.key != 'createPassword'; else createPassword"></div>
     </div>
   </div>
 </div>
-
-<ng-template #createPassword>
-  <div class="password-validation">
+<ng-container *ngIf= "input.key == 'createPassword' ">
+  <div class="password-validation margin-top mt8 margin-bottom mb24">
     <div class="row">
       <div class="col title">
         {{ 'YOUR_PASSWORD_SHOULD_BE' | translate }}
       </div>
     </div>
-    <div class="row" [ngClass]="{'valid': passwordRules('ruleOne'), 'not-fullfilled': !passwordRules('ruleOne')}">
+    <div class="row margin-bottom mb4" [ngClass]="{'valid': passwordRules('ruleOne'), 'not-fullfilled': !passwordRules('ruleOne')}">
       <div class="col">
         <div class="icon">
-            <i class="fas fa-check-circle"></i>
+          <i class="fas fa-check-circle"></i>
           <span class="sr-only sr-only-focusable" *ngIf="!passwordRules('ruleOne')">{{ 'DOES_NOT_PASS' | translate }}</span>
           <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleOne')">{{ 'PASSES_THE_RULE' | translate }}</span>
         </div>
-        <div class="rule">
-          <span class="align-middle">
-            {{ 'PASSWORD_RULE_ONE' | translate }}
-          </span>
+        <div class="rule align-middle">
+          {{ 'PASSWORD_RULE_ONE' | translate }}
         </div>
       </div>
     </div>
-    <div class="row" [ngClass]="{'valid': passwordRules('ruleTwo'), 'not-fullfilled': !passwordRules('ruleTwo')}">
+    <div class="row margin-bottom mb4" [ngClass]="{'valid': passwordRules('ruleTwo'), 'not-fullfilled': !passwordRules('ruleTwo')}">
       <div class="col">  
         <div class="icon">
           <i class="fas fa-check-circle"></i>
           <span class="sr-only sr-only-focusable" *ngIf="!passwordRules('ruleTwo')">{{ 'DOES_NOT_PASS' | translate }}</span>
           <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleTwo')">{{ 'PASSES_THE_RULE' | translate }}</span>
         </div>
-        <div class="rule">
-          <span class="align-middle">
+        <div class="rule align-middle">
             {{ 'PASSWORD_RULE_TWO' | translate }}
-          </span>
-        </div>
+          </div>
       </div>
     </div>
-    <div class="row" [ngClass]="{'valid': passwordRules('ruleThree'), 'not-fullfilled': !passwordRules('ruleThree')}">
+    <div class="row margin-bottom mb4" [ngClass]="{'valid': passwordRules('ruleThree'), 'not-fullfilled': !passwordRules('ruleThree')}">
       <div class="col">
         <div class="icon">
             <i class="fas fa-check-circle"></i>
           <span class="sr-only sr-only-focusable" *ngIf="!passwordRules('ruleThree')">{{ 'DOES_NOT_PASS' | translate }}</span>
           <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleThree')">{{ 'PASSES_THE_RULE' | translate }}</span>
         </div>
-        <div class="rule">
-          <span class="align-middle">
+        <div class="rule align-middle">
             {{ 'PASSWORD_RULE_THREE' | translate }}
-          </span>
-        </div>
+          </div>
       </div>
     </div>
-    <div class="row" [ngClass]="{'valid': passwordRules('ruleFour'), 'not-fullfilled': !passwordRules('ruleFour')}">
+    <div class="row margin-bottom mb4" [ngClass]="{'valid': passwordRules('ruleFour'), 'not-fullfilled': !passwordRules('ruleFour')}">
       <div class="col">  
         <div class="icon">
             <i class="fas fa-check-circle"></i>
           <span class="sr-only sr-only-focusable" *ngIf="!passwordRules('ruleFour')">{{ 'DOES_NOT_PASS' | translate }}</span>
           <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleFour')">{{ 'PASSES_THE_RULE' | translate }}</span>
         </div>
-        <div class="rule">
-          <span class="align-middle">
+        <div class="rule align-middle">
             {{ 'PASSWORD_RULE_FOUR' | translate }}
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="row" [ngClass]="{'valid': passwordRules('ruleFive'), 'not-fullfilled': !passwordRules('ruleFive')}">
-      <div class="col">  
-        <div class="icon">
-            <i class="fas fa-check-circle"></i>
-          <span class="sr-only sr-only-focusable" *ngIf="!passwordRules('ruleFive')">{{ 'DOES_NOT_PASS' | translate }}</span>
-          <span class="sr-only sr-only-focusable" *ngIf="passwordRules('ruleFive')">{{ 'PASSES_THE_RULE' | translate }}</span>
-        </div>
-        <div class="rule">
-          <span class="align-middle">
-            {{ 'PASSWORD_RULE_FIVE' | translate }}
-          </span>
-        </div>
+          </div>
       </div>
     </div>
   </div>
-</ng-template>
+</ng-container>

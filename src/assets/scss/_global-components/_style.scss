@@ -1,42 +1,55 @@
-$global-zero:                               0;
-$global-one-rem:                            1rem;
-$global-body-bg-color:                      $lite-gray-two;
+// --- Sizing
 $global-card-title-padding:                 $global-one-rem;
-$global-center-on-page-min-height:          80vh;
+$global-center-on-page-min-height:          calc(100vh - 190px);
+$global-header-icon-full:                   0.5rem;
+// --- Margins and Paddings 
 $global-group-inputs-margin-top:            $global-one-rem;
 $global-group-button-margin-top:            $global-one-rem *2.5;
-$global-header-icon-full:                   0.5rem;
 $global-hr-body-margin-top:                 $padding-vertical *2;
 $global-hr-body-margin-bottom:              $padding-vertical *2;
 $global-hr-body-margin-top:                 $global-one-rem *2;
 $global-hr-body-margin-bottom:              $global-one-rem *2;
-$global-hr-color:                           $lite-gray-three;
 $global-hr-header-margin-bottom:            $padding-vertical +4;
 $global-login-hr-margin-top:                $margin-vertical *2.5;
 $global-login-hr-margin-bottom:             $margin-vertical * 1.75;
 $global-mapfre-content-margin:              $global-one-rem * 5;
 $global-prefix-padding-right:               1.125rem;
+$global-title-margin-bottom:                $margin-vertical/2;
+// --- Color
+$global-body-bg-color:                      $lite-gray-two;
+$global-hr-color:                           $lite-gray-three;
 $global-red-override:                       $mapfre-red !important;
+$global-link-border-bottom-color:           $active-color;
+$global-subtitle-color:                     $dark-grey;
+// --- Font
 $global-title-font-size:                    $font-size-base +0.25;
 $global-title-font-family:                  $font-family-base;
 $global-title-line-height:                  2rem;
-$global-title-margin-bottom:                $margin-vertical/2;
+// --- ETC
+$global-body-line-height:                   $global-one-rem * 1.5;
+$global-bold-font-weight:                   900;
+$global-header-svg-container-height:        $global-one-rem * 5;
+$global-header-svg-height:                  $global-one-rem * 5;
+$global-header-svg-weight:                  $global-one-rem * 5;
+$global-logo-max-width:                     $global-one-rem * 21.875;
+$global-logo-width:                         100%;
+$global-mapfre-content-margin-top:          10%;
 
 body {
   background-color:                         $global-body-bg-color;
-  line-height:                              1.5rem;
+  line-height:                              $global-body-line-height;
 }
 
 hr {
   border:                                   solid thin $global-hr-color;
 
-	&.header {
-		margin-top:                             $global-zero;
-		margin-bottom:                          $global-hr-header-margin-bottom;
-	}
-	&.body {
-		margin-top:                             $global-hr-body-margin-top;
-		margin-bottom:                          $global-hr-body-margin-bottom;
+  &.header {
+    margin-top:                             $global-zero;
+    margin-bottom:                          $global-hr-header-margin-bottom;
+  }
+  &.body {
+    margin-top:                             $global-hr-body-margin-top;
+    margin-bottom:                          $global-hr-body-margin-bottom;
     }
     
   &.hr-login {
@@ -45,55 +58,49 @@ hr {
   } 
 }
 
-
 a,
 button {
-    @include transition(1s);
+  @include transition(0.5s);
 }
 
-a { 
-    text-decoration:                        none;
-    
-    &:hover {
-        font-weight:                        700
-    }
-}
+a {
+  text-decoration:                          none !important;
+  border-bottom:                            thin solid transparent;
+  
+  &:hover {
+    border-bottom-color:                    $global-link-border-bottom-color;
+  }
 
+  &:visited {
+    border-bottom-color:                    $global-link-border-bottom-color;
+  }
+}
 
 input[type="text"]:focus,
 textarea:focus {
-    outline:                               $global-zero;
-    box-shadow:                            none;
+  outline:                                  $global-zero;
+  box-shadow:                               none;
 }
 
 *:focus,
 .form-control:focus:not(input[type="text"]),
 input[type="submit"]:focus, input:focus,
 textarea:focus {
-    outline:                               $global-zero;
-    box-shadow:                            none;
+  outline:                                  $global-zero;
+  box-shadow:                               none;
 }
 
 .bold,
 .strong {
-    font-weight:                            900;
+  font-weight:                              $global-bold-font-weight;
 }
 
 .border-radius {
   @include border-radius(5px);
 }
 
-.card-title {
-    padding-bottom:                         $global-card-title-padding; 
-    margin-bottom:                          $global-zero;
-}
-
-.center-text {
-    text-align:                             center;
-}
-
 .center-margin {
-    margin:                                 auto;
+  margin:                                   auto;
 }
 
 .center-on-page {
@@ -101,14 +108,6 @@ textarea:focus {
   display:                                  flex;
   min-height:                               $global-center-on-page-min-height; 
   justify-content:                          center;
-}
-
-.group-button {
-  margin-top:                               $global-group-button-margin-top; 
-}
-
-.group-inputs {
-  margin-top:                               $global-group-inputs-margin-top; 
 }
 
 .header-icon {
@@ -120,28 +119,30 @@ textarea:focus {
   }
 
   .svg-container {
-    height:                                 6rem;
+    height:                                 $global-header-svg-container-height;
     display:                                flex;
     align-items:                            center;
 
     svg {
       margin:                               auto;
       display:                              block;
+      height:                               $global-header-svg-height;
+      width:                                $global-header-svg-weight;
     }
   }
 }
 
 .logo {
-    max-width:                              21.875rem;
-    width:                                  100%;
+  max-width:                                $global-logo-max-width;
+  width:                                    $global-logo-width;
 }
 
 .mapfre-content {
-    margin-top:                             $global-mapfre-content-margin; 
-   
-    @include media-breakpoint-down(xxs) {
-        margin-top:                         10%;
-    }
+  margin-top:                               $global-mapfre-content-margin; 
+  
+  @include media-breakpoint-down(xxs) {
+    margin-top:                             $global-mapfre-content-margin-top;
+  }
 }
 
 .no-border {
@@ -149,20 +150,20 @@ textarea:focus {
 } 
 
 .prefix {
-    float:                                  left;
-    padding-right:                          $global-prefix-padding-right;
+  float:                                    left;
+  padding-right:                            $global-prefix-padding-right;
 }
 
 .right {
-    text-align:                             right;
+  text-align:                               right;
 }
 
-.subtitle-copy {
-  margin-bottom:                            $global-zero;
+.sub-title-copy {
+  color:                                    $global-subtitle-color; //variable
 }
 
 .text-center {
-    text-align:                             center;
+  text-align:                               center;
 }
 
 .title-copy {
@@ -174,23 +175,23 @@ textarea:focus {
 }
 
 .uppercase {
+  text-transform:                           uppercase;
+  span {
     text-transform:                         uppercase;
-    span {
-        text-transform:                     uppercase;
-    }
+  }
 }
 
 // ---- class overrides ----
 .container {
-    @include media-breakpoint-down(xxs) {
-        padding:                            $global-zero;
-    }
+  @include media-breakpoint-down(xxs) {
+    padding:                                $global-zero;
+  }
 }
 .navbar {
-    box-shadow:                             none;
+  box-shadow:                               none;
 }
 .red-background, .red {
-    background-color:                       $global-red-override; 
+  background-color:                         $global-red-override; 
 }
 
 .modal-backdrop { 

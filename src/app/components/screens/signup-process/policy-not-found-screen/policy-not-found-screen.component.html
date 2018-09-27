@@ -1,7 +1,7 @@
-<div class="text-center">
+<div class="sub-title-copy text-center margin-bottom mb16">
   {{ 'NOTFOUND_POLICY_NOT_FOUND' | translate }}
 </div>
-<div class="row">
+<div class="row margin-bottom mb24">
   <div class="col">
     <div class="policy-info-card">
       <div class="policy-info-title text-center">
@@ -17,14 +17,13 @@
     </div>
   </div>
 </div>
-
 <div *ngIf="userData.addPolicyAttempts <= 2">
   <div class="text-center margin-bottom mb24">
     <mapfre-link
-        [additionalClasses]="'small-link underline horizontal-space'"
-        [routerLink]="['/signup','editpolicy']"
-      >
-        {{ 'EDIT_POLICY_INFO' | translate }}
+      [additionalClasses]="'small-link horizontal-space'"
+      [routerLink]="['/signup','editpolicy']"
+    >
+      {{ 'EDIT_POLICY_INFO' | translate }}
     </mapfre-link>
   </div>
   <div class="text-center">
@@ -36,7 +35,6 @@
     </mapfre-button>
   </div>
 </div>
-
 <div *ngIf="userData.addPolicyAttempts >= 3">
   <div>
     <mapfre-info-divs>
@@ -52,7 +50,6 @@
     </mapfre-button>
   </div>
 </div>
-
 <hr class="margin-bottom mb24 margin-top mt24">
 <div class="row">
   <div class="col text-center">

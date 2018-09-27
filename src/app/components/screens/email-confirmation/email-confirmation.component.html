@@ -1,0 +1,33 @@
+<hr class="margin-top mt24" />
+<div class="text-center margin-vertical mv24">
+  <div>
+    <strong>{{ 'FORGOT_EMAIL_CONFIMATION_SUBTITLE' | translate }}</strong>
+  </div>
+  <div>
+    {{ 'FORGOT_EMAIL_CONFIMATION_COPY' | translate }} 
+  </div>
+  <div>
+    <strong>{{ 'FORGOT_EMAIL_SUBJECT_LINE' | translate }}</strong>
+  </div>
+  <div class="">
+    <mapfre-link
+      [additionalClasses]="'small-link switch-line-up'"
+      [icon]="true"
+      [iconClasses]="'fas fa-envelope'"
+      (click)="goBackToForm()"
+    >{{ 'FORGOT_EMAIL_SEND_AGAIN' | translate }}</mapfre-link>
+  </div>
+</div>
+<hr class="margin-bottom mb24" />
+<div class="row text-center">
+  <div class="col">
+    <mapfre-button
+      [additionalClasses]="'flat link small'"
+      [customIcon]="'assets/img/icons/back-arrow.png'"
+      [iconClasses]="'align-middle'"
+      [routerLink]="['/login']"
+      [showIconsCustom]="true"
+    >  {{ 'LOGIN' | translate }}
+    </mapfre-button>
+  </div>
+</div>

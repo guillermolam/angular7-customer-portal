@@ -1,4 +1,5 @@
 <mapfre-card additionalClasses="signup">
+  <mapfre-alert></mapfre-alert>
   <ng-container [ngSwitch]="whereInTheProcess">
 
     <div *ngSwitchCase="'addpolicy'">
@@ -11,32 +12,32 @@
         </div>
       </div>
       <app-add-policy-form [inputs]="addPolicy" [userData]="user"></app-add-policy-form>
-      <hr class="hr-login" />
+      <hr class="margin-vertical mv24" />
       <div class="row text-center">
         <div class="col">
-          <mapfre-modal 
+            <mapfre-modal 
             [modalOptions]="whereToFindModalOptions">
-              <div class="modal-body no-margin-bottom">
-                <hr class="header" />
-                <div>
-                  {{ 'POLICY_DOCUMENT' | translate}}
-                </div>
-                <div>
-                  <img src="./assets/img/images/policy-example.png">
-                </div>
-                <div style="margin-top: 16px">
-                  {{ 'BILLING_DOCUMENT' | translate }}
-                </div>
-                <div>
-                  <img src="./assets/img/images/billing-example.png">
-                </div>
+            <div class="modal-body no-margin-bottom">
+              <hr class="margin-bottom mb24" />
+              <div class="margin-bottom mb8">
+                {{ 'POLICY_DOCUMENT' | translate}}
               </div>
+              <div class="margin-bottom mb24">
+                <img src="./assets/img/images/policy-example.png">
+              </div>
+              <div class="margin-bottom mb8">
+                {{ 'BILLING_DOCUMENT' | translate }}
+              </div>
+              <div>
+                <img src="./assets/img/images/billing-example.png">
+              </div>
+            </div>
           </mapfre-modal>
         </div>
       </div>
     </div>
 
-    <div  *ngSwitchCase="'bop'">
+    <div *ngSwitchCase="'bop'">
       <div class="row text-center">
         <div class="col">
           <div class="header-icon full-icon">
@@ -57,48 +58,60 @@
           <h1 class="title-copy">{{ 'CREATE_NEW_PASSWORD' | translate }}</h1> 
         </div>
       </div>
-      <app-create-password-form [inputs]="createNewPassword" [userData]="user"></app-create-password-form> 
+      <app-create-password-form [inputs]="createNewPassword" [userData]="user"></app-create-password-form>
+      <div class="row margin-top mt24 text-center">
+        <div class="col">
+          <mapfre-button
+            [additionalClasses]="'flat link small'"
+            [customIcon]="'assets/img/icons/back-arrow.png'"
+            [iconClasses]="'align-middle'"
+            [routerLink]="['/login']"
+            [showIconsCustom]="true"
+          >  {{ 'BACK' | translate }}
+          </mapfre-button>
+        </div>
+      </div>
     </div>
 
     <div *ngSwitchCase="'editpolicy'">
-        <div class="row text-center">
-          <div class="col">
-            <div class="header-icon full-icon">
-              <svg-policy-error-svg></svg-policy-error-svg>
-            </div>
-            <h1 class="title-copy">{{ 'EDIT_POLICY' | translate }}</h1> 
+      <div class="row text-center">
+        <div class="col">
+          <div class="header-icon full-icon">
+            <svg-policy-error-svg></svg-policy-error-svg>
           </div>
-        </div>
-        <div class="row text-center margin-bottom-edit-policy">
-          <div class="col">
-            {{ 'EDITPOLICY_REVIEW_POLICY' | translate }}
-          </div>
-        </div>
-        <app-edit-policy-form [inputs]="editPolicyInfo" [userData]="user"></app-edit-policy-form>
-        <hr class="margin-vertical mv24" />
-        <div class="row text-center">
-          <div class="col">
-            <mapfre-modal 
-              [modalOptions]="whereToFindModalOptions">
-                <div class="modal-body no-margin-bottom">
-                  <hr class="header" />
-                  <div>
-                    {{ 'POLICY_DOCUMENT' | translate}}
-                  </div>
-                  <div>
-                    <img src="./assets/img/images/policy-example.png">
-                  </div>
-                  <div style="margin-top: 16px">
-                    {{ 'BILLING_DOCUMENT' | translate }}
-                  </div>
-                  <div>
-                    <img src="./assets/img/images/billing-example.png">
-                  </div>
-                </div>
-            </mapfre-modal>
-          </div>
+          <h1 class="title-copy">{{ 'EDIT_POLICY' | translate }}</h1> 
         </div>
       </div>
+      <div class="row text-center margin-bottom mb16 sub-title-copy">
+        <div class="col">
+          {{ 'EDITPOLICY_REVIEW_POLICY' | translate }}
+        </div>
+      </div>
+      <app-edit-policy-form [inputs]="editPolicyInfo" [userData]="user"></app-edit-policy-form>
+      <hr class="margin-vertical mv24" />
+      <div class="row text-center">
+        <div class="col">
+          <mapfre-modal 
+            [modalOptions]="whereToFindModalOptions">
+            <div class="modal-body no-margin-bottom">
+              <hr class="margin-bottom mb24" />
+              <div class="margin-bottom mb8">
+                {{ 'POLICY_DOCUMENT' | translate}}
+              </div>
+              <div class="margin-bottom mb24">
+                <img src="./assets/img/images/policy-example.png">
+              </div>
+              <div class="margin-bottom mb8">
+                {{ 'BILLING_DOCUMENT' | translate }}
+              </div>
+              <div>
+                <img src="./assets/img/images/billing-example.png">
+              </div>
+            </div>
+          </mapfre-modal>
+        </div>
+      </div>
+    </div>
 
     <div *ngSwitchCase="'emailinuse'">
       <div class="row text-center">

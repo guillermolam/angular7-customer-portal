@@ -1,11 +1,11 @@
 <div class="verify-account">
-  <div class="text-center">
+  <div class="sub-title-copy text-center margin-bottom mb16">
     {{ 'VERIFY_ACCOUNT_WE_SENT_AN_EMAIL' | translate }}
   </div>
   <div class="text-center">
     <strong>[ {{ userEmail }} ]</strong>
   </div>
-  <hr class="spacer" />
+  <hr class="margin-vertical mv24" />
   <div class="text-center">
     <strong>{{ 'FORGOT_EMAIL_CONFIMATION_SUBTITLE' | translate }}</strong> <br />
     {{ 'FORGOT_EMAIL_CONFIMATION_COPY' | translate }} <br /> 
@@ -19,7 +19,7 @@
       {{ 'VERIFY_ACCOUNT_INFO_DIV' | translate }}
     </div>
     <mapfre-link
-      [additionalClasses]="'small-link underline'"
+      [additionalClasses]="'small-link'"
       [routerLink]="['/signup','addpolicy']"
     >{{ 'VERIFY_ACCOUNT_GO_TO_ADD_POLICY' | translate }}</mapfre-link>
   </mapfre-info-divs>

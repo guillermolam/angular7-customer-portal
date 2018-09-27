@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'svg-car-icon-svg',
   template: `
-
+  <div class="svg-container">
 <svg width="27px" height="23px" viewBox="0 0 27 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
 <desc>Created with Sketch.</desc>
@@ -15,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
         </text>
     </g>
 </g>
-</svg>
+</svg></div>
           `,
 })
 export class CarIconSvgComponent {}

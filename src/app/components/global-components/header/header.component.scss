@@ -1,20 +1,11 @@
 @import "../../../../styles.scss";
 
+$header-height:               $global-one-rem * 3.5;
+$header-logo-max-width:       $global-one-rem * 11.9375;
+
 .navbar {
-
-    @include media-breakpoint-down(s) {
-        height: 56px;
-
-        .logo {
-            max-width: 191px;
-        }
-    }
-
-    @include media-breakpoint-up(m) {
-        height: 64px;
-
-        .logo {
-            max-width: 306px;
-        }
-    }
+  height:                     $header-height;
+  .logo {
+    max-width:                $header-logo-max-width;
+  }
 }

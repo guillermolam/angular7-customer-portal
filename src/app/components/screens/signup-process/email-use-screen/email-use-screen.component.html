@@ -1,10 +1,10 @@
-<div class="email-title text-center">{{ userEmail }}</div>
-<div class="text-center spacer">
+<div class="email-title text-center lh24">{{ userEmail }}</div>
+<div class="text-center margin-top mt8 margin-bottom mb24 lh24">
   {{ 'ALL_READY_IN_USE' | translate }}
 </div>
-<div class="group-buttons text-center">
+<div class="text-center">
   <mapfre-button 
-    [additionalClasses]="'basic primary large button-spacer'"
+    [additionalClasses]="'basic primary large margin-bottom mb24'"
     [routerLink]="['/login']"> 
     {{ 'LOGIN' | translate }} 
   </mapfre-button>
@@ -14,7 +14,7 @@
     {{ 'CREATE_ACCOUNT' | translate }} 
   </mapfre-button>
 </div>
-<hr class="hr-login" />
+<hr class="margin-vertical mv24" />
 <div class="text-center">
   {{ 'IF_YOU_DONT_REMEMBER' | translate }}
 </div>

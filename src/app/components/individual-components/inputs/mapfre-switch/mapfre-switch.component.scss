@@ -1,23 +1,51 @@
 @import "../../../../../styles.scss";
-
-$mapfre-switch-font-color:                      $gray;
-$mapfre-switch-font-color-active:               $active-color;
-$mapfre-switch-bg-color-inactive:               $lite-gray;
+// --- Color
 $mapfre-switch-bg-color-active:                 $active-color;
+$mapfre-switch-bg-color-checkmark-fat-inactive: $dark-white;
+$mapfre-switch-bg-color-checkmark-fat-active:   $active-color;
 $mapfre-switch-bg-color-checkmark-full:         $white;
 $mapfre-switch-bg-color-checkmark-inline-inactive:   $lite-gray;
 $mapfre-switch-bg-color-checkmark-inline-active: $active-color;
-
-$mapfre-switch-bg-color-slider-fat-inactive:    #F1F1F1;
-$mapfre-switch-bg-color-checkmark-fat-inactive: #F1F1F1;
-$mapfre-switch-bg-color-checkmark-fat-active:   $active-color;
-
+$mapfre-switch-bg-color-inactive:               $lite-gray;
+$mapfre-switch-bg-color-slider-fat-inactive:    $dark-white;
+$mapfre-switch-font-color:                      $gray;
+$mapfre-switch-font-color-active:               $active-color;
+// --- Font size
 $mapfre-switch-font-size:                       $font-size-base;
+// --- Margin|Padding
+$mapfre-switch-copy-left-padding-right:         $default-margin-padding * 0.625; //5px
+$mapfre-switch-copy-right-padding-left:         $default-margin-padding * 5.25; //42px
+$mapfre-switch-margin-bottom:                   $global-zero;
+// --- Height|Width
+$mapfre-switch-checkbox-height:                 $global-one-rem * 0.9375; //15px
+$mapfre-switch-checkbox-width:                  $mapfre-switch-checkbox-height; //15px
+$mapfre-switch-fat-checkbox-height:             $global-one-rem * 1.25;// 20px
+$mapfre-switch-fat-checkbox-width:              $mapfre-switch-fat-checkbox-height;// 20px
+$mapfre-switch-fat-slider-height:               $global-one-rem * 0.875; //14px
+$mapfre-switch-fat-slider-width:                $global-one-rem * 2.125; //34px
+$mapfre-switch-full-slider-height:              $global-one-rem * 1.25;// 20px
+$mapfre-switch-inline-slider-height:            $global-one-rem * 0.3125; //5px
+$mapfre-switch-slider-width:                    $global-one-rem * 3.125; // 50px
+// --- Positioning
+$mapfre-switch-checkbox-top:                    $global-one-rem * 0.3125; //5px
+$mapfre-switch-checkbox-checked-left:           $global-one-rem * 1.875; //30px
+$mapfre-switch-fat-top:                         $global-one-rem * 0.375; //6px
+$mapfre-switch-fat-slider-left:                 $global-one-rem * 0.1875; //3px
+$mapfre-switch-fat-checkbox-left:               $global-zero;
+$mapfre-switch-fat-checkbox-top:                -($global-one-rem * 0.25);// -4px
+$mapfre-switch-fat-checkbox-checked-left:       $global-one-rem;
+$mapfre-switch-fat-checkbox-checked-top:        -($global-one-rem * 0.25);// -4px
+$mapfre-switch-full-checkbox-top:               $global-one-rem * 0.125; // 2px
+$mapfre-switch-full-checkbox-checked-top:       $mapfre-switch-full-checkbox-top; // 2px
+$mapfre-switch-inline-checkbox-top:             -($global-one-rem * 0.25);// -4px
+$mapfre-switch-inline-checkbox-checked-top:     $mapfre-switch-inline-checkbox-top; // -4px
+$mapfre-switch-inline-top:                      $global-one-rem / 2; //8px
+
 
 .mapfre.switch-container {
   clear:                                        both;
+  margin-bottom:                                $mapfre-switch-margin-bottom;
   position:                                     relative;
-  top:                                          3px;
 
   .copy {
     color:                                      $mapfre-switch-font-color; 
@@ -25,7 +53,7 @@ $mapfre-switch-font-size:                       $font-size-base;
       
     &.copy-left {
       float:                                    left;
-      padding-right:                            5px;
+      padding-right:                            $mapfre-switch-copy-left-padding-right;
     }
 
     &.copy-default {
@@ -34,7 +62,7 @@ $mapfre-switch-font-size:                       $font-size-base;
     
     &.copy-right {
       float:                                    right;
-      padding-left:                             42px;
+      padding-left:                             $mapfre-switch-copy-right-padding-left;
     }
   }
 
@@ -54,39 +82,41 @@ $mapfre-switch-font-size:                       $font-size-base;
 
     input {
       display:                                  none;
+
       &:checked + .slider {
         background-color:                       $mapfre-switch-bg-color-active;
       }
     }
     
     [type="checkbox"] + .slider:before {
-      content:                                  "";
-      height:                                   15px;
-      width:                                    15px;
-      left:                                     5px;
+      content:                                  '';
+      height:                                   $mapfre-switch-checkbox-height;
+      left:                                     $mapfre-switch-checkbox-top;
       position:                                 absolute;
+      width:                                    $mapfre-switch-checkbox-width;
       @include transition(.4s);
       @include border-radius(50%);
     }
+
     [type="checkbox"]:checked + .slider:before {
-      left:                                     30px;
+      left:                                     $mapfre-switch-checkbox-checked-left;
     }
 
     .slider {
       cursor:                                   pointer;
-      width:                                    50px;
       position:                                 absolute;
+      width:                                    $mapfre-switch-slider-width;
       @include transition(.4s);
     }
 
     &.fat {
-      top:                                      6px;
+      top:                                      $mapfre-switch-fat-top;
       
       .slider {
         background-color:                       $mapfre-switch-bg-color-slider-fat-inactive;
-        height:                                 14px;
-        left:                                   3px;
-        width:                                  34px;
+        height:                                 $mapfre-switch-fat-slider-height;
+        left:                                   $mapfre-switch-fat-slider-left;
+        width:                                  $mapfre-switch-fat-slider-width;
       }
 
       [type="checkbox"]:checked + .slider {
@@ -96,62 +126,62 @@ $mapfre-switch-font-size:                       $font-size-base;
       [type="checkbox"] + .slider:before {
         background-color:                       $mapfre-switch-bg-color-checkmark-fat-inactive;
         border-color:                           $mapfre-switch-bg-color-checkmark-fat-inactive;
-        height:                                 20px;
-        left:                                   0;
-        top:                                    -4px;
-        width:                                  20px;
         box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);//@include box-shadow();
+        height:                                 $mapfre-switch-fat-checkbox-height;
+        left:                                   $mapfre-switch-fat-checkbox-left;
+        top:                                    $mapfre-switch-fat-checkbox-top;
+        width:                                  $mapfre-switch-fat-checkbox-width;
       }
 
       [type="checkbox"]:checked + .slider:before {
         background-color:                       $mapfre-switch-bg-color-checkmark-fat-active;
         border-color:                           $mapfre-switch-bg-color-checkmark-fat-active;
-        left:                                   16px;
-        top:                                    -4px;
+        left:                                   $mapfre-switch-fat-checkbox-checked-left;
+        top:                                    $mapfre-switch-fat-checkbox-checked-top;
       }
     }
 
     &.full {
+      
       .slider {
         background-color:                       $mapfre-switch-bg-color-inactive;
-        height:                                 20px;
+        height:                                 $mapfre-switch-full-slider-height;
       }
 
       [type="checkbox"] + .slider:before {
         background-color:                       $mapfre-switch-bg-color-checkmark-full;
         border-color:                           $mapfre-switch-bg-color-checkmark-full;
-        top: 2px;
+        top:                                    $mapfre-switch-full-checkbox-top;
       }
-
+      
       [type="checkbox"]:checked + .slider:before {
-        top:                                    2px;
+        top:                                    $mapfre-switch-full-checkbox-checked-top;
       }
     }
-
+      
     &.inline {
-      top:                                      8px;
+      top:                                      $mapfre-switch-inline-top;
       
       .slider {
         background-color:                       $mapfre-switch-bg-color-inactive;
-        height:                                 5px;
+        height:                                 $mapfre-switch-inline-slider-height;
       }
       
       [type="checkbox"] + .slider:before {
         background-color:                       $mapfre-switch-bg-color-checkmark-inline-inactive;
         border-color:                           $mapfre-switch-bg-color-checkmark-inline-inactive;
-        top:                                    -4px;
+        top:                                    $mapfre-switch-inline-checkbox-top;
         @include box-shadow();
       }
-
+      
       [type="checkbox"]:checked + .slider:before {
         background-color:                       $mapfre-switch-bg-color-checkmark-inline-active;
         border-color:                           $mapfre-switch-bg-color-checkmark-inline-active;
-        top:                                     -4px;
+        top:                                    $mapfre-switch-inline-checkbox-checked-top;
       }
     }
   }
 }
-
 
 .round {
   @include border-radius(34px);

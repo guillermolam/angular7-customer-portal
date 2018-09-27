@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class MapfreIconComponent implements OnInit {
   @Input() iconClasses:                       string;
   @Input() iconFamily:                        string;
+  @Input() header:                            boolean = false;
   @Input() title:                             boolean = false;
   @Input() password:                          boolean;
   @Input() passwordShow:                      boolean = false;

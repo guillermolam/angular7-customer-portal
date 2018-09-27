@@ -13,6 +13,4 @@ export class SignupComponent {
   constructor(service: CreateAccountService) {
     this.inputs = service.getInputs();
   }
-
-  
 }
