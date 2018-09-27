@@ -1,94 +1,42 @@
 <?xml version="1.0"?>
-<testsuite name="Chrome 69.0.3497 (Windows 10.0.0)" package="" timestamp="2018-09-27T19:17:04" id="0" hostname="LAPTOP-2MJRKRGJ" tests="88" errors="0" failures="0" time="6.868">
+<testsuite name="Chrome 69.0.3497 (Windows 10.0.0)" package="" timestamp="2018-09-27T19:51:14" id="0" hostname="LAPTOP-2MJRKRGJ" tests="89" errors="0" failures="0" time="8.004">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"/>
   </properties>
-  <testcase name="LoginFormComponent should get the email and password login form " time="1.276" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="LoginFormComponent it should login and navigate to dashboard" time="1.157" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should set rememberMe field of component" time="1.802" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should redirect to /forgotpassword if email pattern does not match" time="1.401" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should set the expiry of the cookie" time="1.232" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="AuthGuard should be able to route when user is logged in" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthGuard">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthGuard should not route when user is not logged in" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthGuard">
-    <skipped/>
-  </testcase>
+  <testcase name="AuthGuard should be able to route when user is logged in" time="0.119" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthGuard"/>
+  <testcase name="AuthGuard should not route when user is not logged in" time="0.037" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthGuard"/>
   <testcase name="estingService should be created" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).estingService">
     <skipped/>
   </testcase>
-  <testcase name="AuthenticationService should be created" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should confirm policy and account" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should confirm paperless policy" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should create a password" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should send email on forgot password" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should login successfully" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should not login successfully" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should logout the user" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should verify the token" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should update the password" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should not update the password" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should verify the policy" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should verify the user" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
+  <testcase name="AuthenticationService should be created" time="0.043" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should confirm policy and account" time="0.044" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should confirm paperless policy" time="0.025" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should create a password" time="0.026" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should send email on forgot password" time="0.028" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should login successfully" time="0.028" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should not login successfully" time="0.025" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should logout the user" time="0.022" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the token for forgotpassword" time="0.031" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the token for forgotpassword" time="0.024" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should update the password" time="0.038" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should not update the password" time="0.021" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the policy" time="0.029" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the user" time="0.027" classname="Chrome_69_0_3497_(Windows_10_0_0).AuthenticationService"/>
   <testcase name="AlertService should be created" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AlertService">
     <skipped/>
   </testcase>
-  <testcase name="FormBaseControlService should return true if repeat password matches" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).FormBaseControlService">
-    <skipped/>
-  </testcase>
-  <testcase name="FormBaseControlService should return null if repeat password does not match" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).FormBaseControlService">
-    <skipped/>
-  </testcase>
-  <testcase name="AddPolicyService should return Formbase to add policy" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AddPolicyService">
-    <skipped/>
-  </testcase>
-  <testcase name="CreateAccountService should return formbase to create account service" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreateAccountService">
-    <skipped/>
-  </testcase>
-  <testcase name="EditPolicyService should return formbase to edit policy service" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).EditPolicyService">
-    <skipped/>
-  </testcase>
+  <testcase name="FormBaseControlService should return true if repeat password matches" time="0.021" classname="Chrome_69_0_3497_(Windows_10_0_0).FormBaseControlService"/>
+  <testcase name="FormBaseControlService should return null if repeat password does not match" time="0.023" classname="Chrome_69_0_3497_(Windows_10_0_0).FormBaseControlService"/>
+  <testcase name="AddPolicyService should return Formbase to add policy" time="0.024" classname="Chrome_69_0_3497_(Windows_10_0_0).AddPolicyService"/>
+  <testcase name="CreateAccountService should return formbase to create account service" time="0.023" classname="Chrome_69_0_3497_(Windows_10_0_0).CreateAccountService"/>
+  <testcase name="EditPolicyService should return formbase to edit policy service" time="0.02" classname="Chrome_69_0_3497_(Windows_10_0_0).EditPolicyService"/>
   <testcase name="CreateNewPasswordFormService should create new password form" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreateNewPasswordFormService">
     <skipped/>
   </testcase>
-  <testcase name="EmailFormService should return the formbase for email" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).EmailFormService">
-    <skipped/>
-  </testcase>
-  <testcase name="LoginService should return formbase for creating login form" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginService">
-    <skipped/>
-  </testcase>
-  <testcase name="ModalOptionsService should be created" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).ModalOptionsService">
-    <skipped/>
-  </testcase>
-  <testcase name="UserService should update the user" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).UserService">
-    <skipped/>
-  </testcase>
+  <testcase name="EmailFormService should return the formbase for email" time="0.016" classname="Chrome_69_0_3497_(Windows_10_0_0).EmailFormService"/>
+  <testcase name="LoginService should return formbase for creating login form" time="0.018" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginService"/>
+  <testcase name="ModalOptionsService should be created" time="0.019" classname="Chrome_69_0_3497_(Windows_10_0_0).ModalOptionsService"/>
+  <testcase name="UserService should update the user" time="0.028" classname="Chrome_69_0_3497_(Windows_10_0_0).UserService"/>
   <testcase name="AccountHeaderComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AccountHeaderComponent">
     <skipped/>
   </testcase>
@@ -107,16 +55,57 @@
   <testcase name="AppComponent should render title in a h1 tag" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AppComponent">
     <skipped/>
   </testcase>
+  <testcase name="AddPolicyComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreatePasswordFormComponent should call createPassword method" time="0.229" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should call updatePassword method" time="0.089" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should redirect user to verify account" time="0.102" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should update the password and emmit true" time="0.086" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should initializes parameters oninitialization" time="0.083" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent"/>
+  <testcase name="EditPolicyComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginFormComponent should get the email and password login form " time="0.849" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent it should login and navigate to dashboard" time="0.976" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should set rememberMe field of component" time="0.848" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should redirect to /forgotpassword if email pattern does not match" time="0.668" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should set the expiry of the cookie" time="1.113" classname="Chrome_69_0_3497_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="ForgotPasswordNondynamicComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).ForgotPasswordNondynamicComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="FooterComponent should create" time="0.551" classname="Chrome_69_0_3497_(Windows_10_0_0).FooterComponent"/>
+  <testcase name="FooterComponent Landing page Year on footer-copyright unit test" time="0.55" classname="Chrome_69_0_3497_(Windows_10_0_0).FooterComponent"/>
+  <testcase name="HeaderComponent should create" time="0.165" classname="Chrome_69_0_3497_(Windows_10_0_0).HeaderComponent"/>
+  <testcase name="HeaderComponent Language change test case" time="0.145" classname="Chrome_69_0_3497_(Windows_10_0_0).HeaderComponent"/>
+  <testcase name="HeaderComponent Help Module test case" time="0.198" classname="Chrome_69_0_3497_(Windows_10_0_0).HeaderComponent"/>
+  <testcase name="MapfreButtonComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreButtonComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="MapfreCheckboxComponent should create" time="0.016" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreCheckboxComponent"/>
+  <testcase name="MapfreLabelComponent should create" time="0.02" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreLabelComponent"/>
+  <testcase name="MapfreSwitchComponent should create" time="0.115" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreSwitchComponent"/>
+  <testcase name="MapfreAlertComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreAlertComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="MapfreIconComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreIconComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="MapfreLinkComponent should create" time="0.117" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreLinkComponent"/>
+  <testcase name="MapfreLoadingComponent should create" time="0.032" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreLoadingComponent"/>
   <testcase name="CreateNewPasswordExpiredComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreateNewPasswordExpiredComponent">
     <skipped/>
   </testcase>
   <testcase name="CreateNewPasswordSetComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreateNewPasswordSetComponent">
     <skipped/>
   </testcase>
-  <testcase name="EmailConfirmationComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).EmailConfirmationComponent">
+  <testcase name="ForgotPasswordTooManyComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).ForgotPasswordTooManyComponent">
     <skipped/>
   </testcase>
-  <testcase name="ForgotPasswordTooManyComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).ForgotPasswordTooManyComponent">
+  <testcase name="EmailConfirmationComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).EmailConfirmationComponent">
     <skipped/>
   </testcase>
   <testcase name="BopScreenComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).BopScreenComponent">
@@ -137,75 +126,7 @@
   <testcase name="VerifyAccountScreenComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).VerifyAccountScreenComponent">
     <skipped/>
   </testcase>
-  <testcase name="AddPolicyComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).AddPolicyComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreateAccountFormComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreateAccountFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreatePasswordFormComponent should call createPassword method" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreatePasswordFormComponent should call updatePassword method" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreatePasswordFormComponent should redirect user to verify account" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreatePasswordFormComponent should update the password and emmit true" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreatePasswordFormComponent should initializes parameters oninitialization" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).CreatePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="EditPolicyComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).EditPolicyComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ForgotPasswordNondynamicComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).ForgotPasswordNondynamicComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="FooterComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).FooterComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="FooterComponent Landing page Year on footer-copyright unit test" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).FooterComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="HeaderComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).HeaderComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="HeaderComponent Language change test case" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).HeaderComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="HeaderComponent Help Module test case" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).HeaderComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreButtonComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreButtonComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreCheckboxComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreCheckboxComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreLabelComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreLabelComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreSwitchComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreSwitchComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreAlertComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreAlertComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreIconComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreIconComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreLinkComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreLinkComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreLoadingComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreLoadingComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreDropdownComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreDropdownComponent">
-    <skipped/>
-  </testcase>
+  <testcase name="MapfreDropdownComponent should create" time="0.015" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreDropdownComponent"/>
   <testcase name="MapfreIconInformationComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreIconInformationComponent">
     <skipped/>
   </testcase>
@@ -218,12 +139,8 @@
   <testcase name="MapfreModalComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreModalComponent">
     <skipped/>
   </testcase>
-  <testcase name="MapfreCardComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreCardComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MapfreCodeComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreCodeComponent">
-    <skipped/>
-  </testcase>
+  <testcase name="MapfreCardComponent should create" time="0.129" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreCardComponent"/>
+  <testcase name="MapfreCodeComponent should create" time="0.149" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreCodeComponent"/>
   <testcase name="MapfreFormComponent should create" time="0" classname="Chrome_69_0_3497_(Windows_10_0_0).MapfreFormComponent">
     <skipped/>
   </testcase>
@@ -258,7 +175,13 @@
     <skipped/>
   </testcase>
   <system-out>
-    <![CDATA[
+    <![CDATA[HeadlessChrome 69.0.3497 (Windows 10.0.0) LOG: 'English'
+,HeadlessChrome 69.0.3497 (Windows 10.0.0) LOG: 'English'
+,HeadlessChrome 69.0.3497 (Windows 10.0.0) LOG: 'English'
+,Chrome 69.0.3497 (Windows 10.0.0) LOG: 'English'
+,Chrome 69.0.3497 (Windows 10.0.0) LOG: 'English'
+,Chrome 69.0.3497 (Windows 10.0.0) LOG: 'English'
+
 ]]>
   </system-out>
   <system-err/>

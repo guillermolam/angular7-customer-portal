@@ -119,7 +119,7 @@ describe('LoginFormComponent', () => {
   });
 
 
-  fit('should get the email and password login form ', ()=>{
+  it('should get the email and password login form ', ()=>{
         cookieService.set("remember","true");
         cookieService.set("email","test@xyz.com");
         cookieService.set("password","password");
@@ -129,7 +129,7 @@ describe('LoginFormComponent', () => {
         expect(component.loginForm.get('loginPassword').value).toBe(cookieService.get('password'));
   });
 
-  fit('it should login and navigate to dashboard', fakeAsync(()=>{
+  it('it should login and navigate to dashboard', fakeAsync(()=>{
         spyOn(component,'putCookie');
         fixture.detectChanges();
         component.login();
@@ -141,13 +141,13 @@ describe('LoginFormComponent', () => {
         expect(location.path()).toBe('/dashboard');
   }));
 
-  fit('should set rememberMe field of component',()=>{
+  it('should set rememberMe field of component',()=>{
       component.onRememberMe(true);
       fixture.detectChanges();
       expect(component.rememberMe).toBeTruthy();
   })
 
-  fit('should redirect to /forgotpassword if email pattern does not match', fakeAsync(()=>{
+  it('should redirect to /forgotpassword if email pattern does not match', fakeAsync(()=>{
     let email = component.loginForm.get('loginEmail').value;
     // let emailPattern = fixture.debugElement.injector.get(RegExHelper).strictEmailPattern;
     component.prefillEmailParamater();
@@ -157,7 +157,7 @@ describe('LoginFormComponent', () => {
     expect(location.path()).toBe('/forgotpassword?emailPrefill=test@xyz.com');
   }));
 
-  fit('should set the expiry of the cookie', fakeAsync(()=>{
+  it('should set the expiry of the cookie', fakeAsync(()=>{
     component.rememberMe = true;
     component.user.email = 'test@xyz.com';
     component.user.password = 'password';
