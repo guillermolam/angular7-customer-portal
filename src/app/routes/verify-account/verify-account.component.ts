@@ -41,7 +41,7 @@ export class VerifyAccountComponent implements OnInit {
     );
     this.activatedRoute.queryParams.subscribe(params => {
       if(params) {
-        return this.validateToken(params.token, params.email);
+        return this.validateToken( params.email, params.token);
       }
     });
   }
