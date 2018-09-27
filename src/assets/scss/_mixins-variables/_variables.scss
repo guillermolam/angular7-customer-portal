@@ -1,18 +1,20 @@
 // ---- Defaults ----- //
+$global-one-rem:            1rem;
+$global-zero:               0;
+
 //Fonts
 $font-family-base:          'Noto Sans';
-$defualt-margin-padding:    0.5rem;
+$defualt-margin-padding:    0.5rem; //8px
 $default-margin-padding:    $defualt-margin-padding;
-
 
 //Sizing
 $font-size-base:            0.875rem;  //14px
 $font-size-sm:              $font-size-base/1.5;
 $link-icon-font-size:       $font-size-base/2;
 $link-font-size:            $font-size-base; 
-$margin-vertical:           $defualt-margin-padding * 2;
+$margin-vertical:           $defualt-margin-padding * 2; //16px
 $margin-horizontal:         $defualt-margin-padding * 2;
-$padding-horizontal:        $defualt-margin-padding * 2;
+$padding-horizontal:        $defualt-margin-padding * 2; 
 $padding-vertical:          $defualt-margin-padding * 2;
 
 // --- The Custom Grid --- //
@@ -33,19 +35,19 @@ $lite-gray-three:           $soft-grey;
 
 // --- Bootstrap Overrides --- //
 $grid-breakpoints: (
-    xxxs:   $xxxs,
-    xxs:    $xxs,
-    xs:     $xs, 
-    s:      $sm, 
-    m:      $md, 
-    l:      $lg, 
-    xl:     $xl,
-    xxl:    $xxl 
+    xxxs:                   $xxxs,
+    xxs:                    $xxs,
+    xs:                     $xs, 
+    s:                      $sm, 
+    m:                      $md, 
+    l:                      $lg, 
+    xl:                     $xl,
+    xxl:                    $xxl 
 );
 
 $spacer:                    $defualt-margin-padding;
 
 $link-color:                $mapfre-red;
 $button-font-family:        $font-family-base;
-$grid-gutter-width:         $default-margin-padding *2;
+$grid-gutter-width:         $default-margin-padding * 2;
 $zindex-dropdown-backdrop:  1028;

@@ -11,8 +11,10 @@ $fake-black:                    #4C4C4C;
 $overlay-black:                 rgba(76,76,76,0.9);
 $flat-black:                    #333;
 $black:                         #000;
+$ten-opacity-black:             rgba(0, 0, 0, 0.1);
 
 // --- Base Colors Red --- //
+$lite-red:                      #dbb3b3;
 $soft-red:                      #f3bbb4;
 $corprate-red:                  #d81e05;
 $red-darker:                    #be0f0f;
@@ -35,7 +37,7 @@ $blue:                          #0099ff;
 $dark-blue:                     #006580;
 
 // --- Brand Colors --- //
-$mapfre-red:                      $corprate-red;     
+$mapfre-red:                     $corprate-red;     
 $mapfre-blue:                   #006580;    
 $mapfre-lite-gray:              #C4C4C4;
 $mapfre-green:                  #8DB602;
@@ -51,7 +53,14 @@ $caution-color:                  #fff000;
 
 // --- Background Colors --- //
 $caution-background-color:        #FFE6A0;
-$caution-background-color-alert:  lighten( saturate( adjust-hue( $caution-color, 3deg ), 23 ), 44 ); 
+$caution-background-color-alert:    lighten( saturate( adjust-hue( $caution-color, 3deg ), 23 ), 44 ); 
 $error-background-color:          #FFEFEF;
-$information-background-color:    lighten( desaturate( adjust-hue( $information-color, 4deg ), 17 ), 58 );
-$success-background-color:        lighten( saturate( $success-color, 44 ), 21 );
+$information-background-color:      lighten( desaturate( adjust-hue( $information-color, 4deg ), 17 ), 58 );
+$success-background-color:          lighten( saturate( $success-color, 44 ), 21 );
+
+// --- Bootstrap Colors --- //
+$input-active-color:                $active-color;
+$input-error-color:                 $error-color; 
+$input-inactive-color:              $dark-grey;
+$input-static-color:                $fake-black;
+$input-success-color:               $success-color;

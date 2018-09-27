@@ -2,14 +2,13 @@
 $mapfre-validation-error-color:             $error-color;
 $mapfre-validation-info-color:              $mapfre-blue;
 $mapfre-validation-valid-color:             $mapfre-green;
+$mapfre-validation-info-padding-left:       $global-one-rem * 0.5;
+$mapfre-validation-info-font-size:          $global-one-rem * 0.7;
+$mapfre-validation-info-height:             $global-one-rem;
+$mapfre-input-error-color:                  $error-color;
+$mapfre-input-error-label-font-size:        $font-size-base / 1.25;
+$mapfre-input-validation-help-top:          $padding-vertical / 2.5;
 
-$mapfre-validation-info-padding-left:       8px;
-$mapfre-validation-info-font-size:          0.7rem;
-$mapfre-validation-info-height:             1rem;
-
-$mapfre-input-error-color:                  $input-error-color;
-$mapfre-input-error-label-font-size:        $input-error-label-font-size;
-$mapfre-input-validation-help-top:          $input-validation-help-top;
 /* 
     ----- Information -----
     The Input styles are in the global-component folder in 

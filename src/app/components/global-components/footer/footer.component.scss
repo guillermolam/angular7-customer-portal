@@ -1,18 +1,19 @@
 @import "../../../../styles.scss";
 
-$footer-font-color:                      $med-gray;
-$footer-height:                          5rem;
+$footer-font-color:         $med-gray;
+$footer-height:             5rem;
+$footer-margin-bottom:      $global-zero;
 
 footer {
-    color:                              $footer-font-color;
+    color:                  $footer-font-color;
 }
 
 .footer-copyright {
-  height:                               $footer-height;
+  height:                   $footer-height;
 }
 
 .modal-body {
   p {
-    margin-bottom: 0;
+    margin-bottom:          $footer-margin-bottom;
   }
 }

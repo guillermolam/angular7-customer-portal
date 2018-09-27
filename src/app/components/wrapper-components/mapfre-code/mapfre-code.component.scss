@@ -1,19 +1,22 @@
 @import "../../../../styles.scss";
 
-$mapfre-code-background:      #333;
-$mapfre-code-color:           #fff;
+$mapfre-code-background:      $flat-black;
+$mapfre-code-color:           $white;
+$mapfre-code-margin:          ($global-one-rem * 0.9375) $global-zero; 
+$mapfre-code-pre-margin:      $global-zero;
+$mapfre-code-pre-padding:     $global-zero;
 
 .mapfre.code-block {
-    background-color:           $mapfre-code-background;
-    color:                      $mapfre-code-color; 
-    display:                    block; 
-    margin:                     15px 0;
+  background-color:           $mapfre-code-background;
+  color:                      $mapfre-code-color; 
+  display:                    block; 
+  margin:                     $mapfre-code-margin;
 
-    code {
-        color:                  $mapfre-code-color;  
-    }
-    pre {
-        margin:                 0;
-        padding:                0;
-    }
+  code {
+    color:                    $mapfre-code-color;  
+  }
+  pre {
+    margin:                   $mapfre-code-pre-margin;
+    padding:                  $mapfre-code-pre-padding;
+  }
 }

@@ -1,7 +1,7 @@
 @import "../../../../styles.scss";
 
-$header-height:               3.5rem;
-$header-logo-max-width:       11.9375rem;
+$header-height:               $global-one-rem * 3.5;
+$header-logo-max-width:       $global-one-rem * 11.9375;
 
 .navbar {
   height:                     $header-height;
