@@ -1,59 +1,161 @@
-// import { async, ComponentFixture, TestBed, inject, fakeAsync, tick }    from '@angular/core/testing';
-// import { NO_ERRORS_SCHEMA}                             from '@angular/core';
-// import { HttpClient, HttpClientModule }                from '@angular/common/http';
-// import { RouterTestingModule }                         from '@angular/router/testing';
-// import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
-// import { CookieService }                               from 'ngx-cookie-service';
-// import { TranslateModule }                             from '@ngx-translate/core';
+import { async, ComponentFixture, TestBed, inject, fakeAsync, tick }    from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA}                             from '@angular/core';
+import { HttpClient, HttpClientModule }                from '@angular/common/http';
+import { RouterTestingModule }                         from '@angular/router/testing';
+import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CookieService }                               from 'ngx-cookie-service';
+import { TranslateModule }                             from '@ngx-translate/core';
 
-// import { CreatePasswordFormComponent }  from './create-password-form.component';
-// import { RegExHelper }                  from '../../../../_helpers/regex-helper';
-// import { FormBase }                     from '../../../../_models/form-base';
-// import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-// import { AlertService }                 from "../../../../_services/alert.service";
-// import { UserService }                  from "../../../../_services/user.service";
-// import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
-// import { CreateNewPasswordFormService } from "../../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service";
-
-// describe('CreatePasswordFormComponent', () => {
-//   let component: CreatePasswordFormComponent;
-//   let fixture: ComponentFixture<CreatePasswordFormComponent>;
-//   let formBaseControlService :         any;
-//   let createNewPasswordformService :   any;
-//   let authenticationService :          any;
-
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ CreatePasswordFormComponent ],
-//    imports: [
-//         TranslateModule.forRoot(),
-//         HttpClientModule,
-//         RouterTestingModule,
-//         FormsModule,
-//         ReactiveFormsModule
-//       ],
-//       providers: [
-//         CookieService, AuthenticationService, RegExHelper,  AlertService, UserService, FormBaseControlService, CreateNewPasswordFormService],
-//       schemas:[NO_ERRORS_SCHEMA]
-//     })
-
-//   formBaseControlService=         TestBed.get(FormBaseControlService);
-//   createNewPasswordformService=   TestBed.get(CreateNewPasswordFormService);
-//   authenticationService =         TestBed.get(AuthenticationService);
-
-//   }));
-
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(CreatePasswordFormComponent);
-//     component = fixture.componentInstance;
-//     let inputs = createNewPasswordformService.getInputs();
-//     component.inputs = inputs;
-//     component.createPasswordForm = formBaseControlService.toFormGroup(component.inputs);
-//     fixture.detectChanges();
-//   });
+import { CreatePasswordFormComponent }  from './create-password-form.component';
+import { RegExHelper }                  from '../../../../_helpers/regex-helper';
+import { FormBase }                     from '../../../../_models/form-base';
+import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
+import { AlertService }                 from "../../../../_services/alert.service";
+import { UserService }                  from "../../../../_services/user.service";
+import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
+import { CreateNewPasswordFormService } from "../../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service";
+import { Observable, Observer } from 'rxjs';
+import { User } from '../../../../_models/user';
+import { FakeAccountResponse } from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { VerifyAccountComponent } from '../../../../routes/verify-account/verify-account.component';
+import { TextBox } from '../../../../_models/form-base-extends/text-box';
 
 
-//   /** Password field unit test cases **/
+class MockAuthService extends AuthenticationService{
+  createPassword(): Observable<any>{
+    let obs = Observable.create((observer: Observer<string>)=>{
+      observer.next('verifyaccount');
+    });
+    return obs;
+  }
+
+  updatePassword(user,token): Observable<any>{
+    let obs = Observable.create((observer: Observer<boolean>)=>{
+      observer.next(true);
+    });
+    return obs;
+  }
+}
+
+
+describe('CreatePasswordFormComponent', () => {
+  let component: CreatePasswordFormComponent;
+  let fixture: ComponentFixture<CreatePasswordFormComponent>;
+  let formBaseControlService :         any;
+  let createNewPasswordformService :   any;
+  let user: User;
+  let router: Router;
+  let location: Location;
+  let authenticationService :          any;
+  let userService: UserService;
+  let createPasswordForm: FormGroup;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ CreatePasswordFormComponent,VerifyAccountComponent ],
+   imports: [
+        TranslateModule.forRoot(),
+        HttpClientModule,
+        RouterTestingModule.withRoutes(
+          [{ path: "verifyaccount", component: VerifyAccountComponent }]
+        ),
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      providers: [
+      AuthenticationService, RegExHelper,  AlertService, UserService,
+      FormBaseControlService, CreateNewPasswordFormService,
+      {provide: ActivatedRoute,
+      useValue: {
+        queryParams: Observable.of({email: 'test@xyz.com',token: 'abcdef'}),
+        params: Observable.of({parm: 'whereintheprocess'})
+      }}],
+      schemas:[NO_ERRORS_SCHEMA]
+    })
+
+    TestBed.overrideComponent(
+      CreatePasswordFormComponent,
+      {set: {providers: [{provide: AuthenticationService, useClass: MockAuthService}]}}
+    )
+
+    formBaseControlService=         TestBed.get(FormBaseControlService);
+    createNewPasswordformService=   TestBed.get(CreateNewPasswordFormService);
+    authenticationService =         TestBed.get(AuthenticationService);
+    user = FakeAccountResponse.getUserData();
+    userService = TestBed.get(UserService);
+    userService.updateUser(user);
+    location = TestBed.get(Location);
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(CreatePasswordFormComponent);
+    component = fixture.componentInstance;
+    let inputs = createNewPasswordformService.getInputs();
+    component.inputs = inputs;
+    component.createPasswordForm = formBaseControlService.toFormGroup(component.inputs);
+    fixture.detectChanges();
+  });
+
+
+  fit('should call createPassword method', fakeAsync(()=>{
+    component.whereInTheProcess = 'createpassword';
+    fixture.detectChanges();
+    spyOn(component,'createPassword');
+    component.createNewPassword();
+    expect(component.createPassword).toHaveBeenCalled();
+  }));
+
+  fit('should call updatePassword method', fakeAsync(()=>{
+    component.whereInTheProcess = 'null';
+    fixture.detectChanges();
+    spyOn(component,'updatePassword');
+    component.createNewPassword();
+    expect(component.updatePassword).toHaveBeenCalled();
+  }));
+
+
+  fit('should redirect user to verify account',fakeAsync(()=>{
+    component.createPasswordForm.setValue({createPassword: 'password'});
+    component.user.password = component.createPasswordForm.get('createPassword').value;
+    fixture.detectChanges();
+    component.createPassword(user);
+    tick();
+    expect(location.path()).toBe('/verifyaccount');
+    
+  }));
+
+  fit('should update the password and emmit true',fakeAsync(()=>{
+    component.email = 'test@xyz.com';
+    component.createPasswordForm.setValue({createPassword: 'password'});
+    component.user.password = component.createPasswordForm.get('createPassword').value;
+    component.user.email = component.email;
+    spyOn(component.confirmationOfPasswordCreation, 'emit');
+    fixture.detectChanges();
+    component.updatePassword();
+    tick();
+    expect(component.confirmationOfPasswordCreation.emit).toBeTruthy();
+
+  }));
+
+
+  fit('should initializes parameters oninitialization', fakeAsync(()=>{
+      let formBase: FormBase<any>[] = [
+        new TextBox({
+          form: 'formbase'
+        })];
+      let formGroup = fixture.debugElement.injector.get(FormBaseControlService).toFormGroup(formBase);
+      fixture.detectChanges();
+      component.ngOnInit();
+      expect(component.email).toBe('test@xyz.com');
+      expect(component.token).toBe('abcdef');
+      expect(component.whereInTheProcess).toBe('whereintheprocess');
+      // expect(component.createPasswordForm).toEqual(formGroup);
+  }));
+
+
+  /** Password field unit test cases **/
 //   fit('Create password test cases', fakeAsync(() => {
 //       let createPassword = component.createPasswordForm.controls['createPassword'];
 //       // Verify first blank password field should be required
@@ -109,4 +211,4 @@
 //           expect(error.error).toEqual(error.message);
 //         }); 
 //     }));
-// });
+});
