@@ -147,12 +147,13 @@ export class AuthenticationService {
   tokenVerification(token: string, email: string, location: string): Observable<Object> {
     let url;
     if(location == 'verifyAccount') {
-      url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
+      url =           `${environment.account}/accounts?token=${token}&email=${email}`;	
+      return this.http.put(url,{}, this.options);
     }
     else if(location == 'forgotPassword'){
       url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
+      return this.http.post(url,{}, this.options);
     }
-  	return this.http.post(url,{}, this.options);
   }
 
   updatePassword(user: User, token: string) {
