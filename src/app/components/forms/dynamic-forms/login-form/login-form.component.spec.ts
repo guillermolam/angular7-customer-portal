@@ -34,13 +34,22 @@ import { Observable, Observer } from 'rxjs';
 import { DashboardComponent } from '../../../../routes/dashboard/dashboard.component';
 import { Location } from '@angular/common';
 import { ForgotPasswordComponent } from '../../../../routes/forgot-password/forgot-password.component';
+import { FormBase } from '../../../../_models/form-base';
+import { TextBox } from '../../../../_models/form-base-extends/text-box';
 
 class MockAuthService extends AuthenticationService{
+
+    public  token: string = "token";
     login(): Observable<any>{
       let obs = Observable.create((observer: Observer<string>)=>{
         observer.next('verifyaccount');
       });
       return obs;
+    }
+
+    logout(){
+      this.token =        null;
+      localStorage.removeItem("currentUser");
     }
   }
 
@@ -170,14 +179,20 @@ describe('LoginFormComponent', () => {
     expect(cookie.get('password')).toBeTruthy();
   }));
 
-//   fit('should test Initialization of a component', fakeAsync(()=>{
+  it('should test Initialization of a component', fakeAsync(()=>{
     
-//     component.ngOnInit();
-//     spyOn(formBaseControlService, 'toFormGroup');
-//     spyOn(userService, '' );
-
-//     expect()
-//   }));
+    localStorage.setItem('currentUser', 'user');
+    let formBase: FormBase<any>[] = [new TextBox({
+      field1: '1'
+    })];
+    component.inputs = formBase;
+    spyOn(component, 'getCookie');
+    component.ngOnInit();
+    fixture.detectChanges();
+    expect(component.getCookie).toHaveBeenCalled();
+    expect(authenticationService.token).toBeNull();
+    expect(localStorage.getItem('currentUser')).toBeNull();
+  }));
 
 
 //   fit('should create', () => {   

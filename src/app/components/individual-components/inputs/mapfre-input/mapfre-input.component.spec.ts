@@ -1,25 +1,27 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync,tick } from '@angular/core/testing';
 
-// import { MapfreTextInputComponent } from './mapfre-text-input.component';
+import { MapfreInputComponent } from './mapfre-input.component';
 
-// describe('MapfreTextInputComponent', () => {
-//   let component: MapfreTextInputComponent;
-//   let fixture: ComponentFixture<MapfreTextInputComponent>;
+describe('MapfreInputComponent', () => {
+  let component: MapfreInputComponent;
+  let fixture: ComponentFixture<MapfreInputComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ MapfreTextInputComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ MapfreInputComponent ]
+    })
+    .compileComponents();
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(MapfreTextInputComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    fixture = TestBed.createComponent(MapfreInputComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  xit('should emit value', fakeAsync(()=>{
+    spyOn(component.inputValue, 'emit');
+    spyOn(component,'onInputOfValue');
+    tick();
+    fixture.detectChanges();
+    expect(component.inputValue.emit).toBeTruthy();
+  }));
+});

@@ -1,76 +1,127 @@
-// import { async, ComponentFixture, TestBed, inject }    from '@angular/core/testing';
-// import { NO_ERRORS_SCHEMA}                             from '@angular/core';
-// import { HttpClientModule }                            from '@angular/common/http';
-// import { RouterTestingModule }                         from '@angular/router/testing';
-// import { ReactiveFormsModule, FormsModule }            from '@angular/forms';
-// import { CookieService }                               from 'ngx-cookie-service';
-// import { TranslateModule }                             from '@ngx-translate/core';
+import { async, ComponentFixture, TestBed, inject, fakeAsync, tick }    from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA}                             from '@angular/core';
+import { HttpClientModule }                            from '@angular/common/http';
+import { RouterTestingModule }                         from '@angular/router/testing';
+import { ReactiveFormsModule, FormsModule }            from '@angular/forms';
+import { CookieService }                               from 'ngx-cookie-service';
+import { TranslateModule }                             from '@ngx-translate/core';
 
-// import { SendEmailFormComponent }       from './send-email-form.component';
-// import { RegExHelper }                  from '../../../../_helpers/regex-helper';
-// import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-// import { AlertService }                 from "../../../../_services/alert.service";
-// import { UserService }                  from "../../../../_services/user.service";
-// import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
-// import { EmailFormService }             from '../../../../_services/forms/forgot-password/email-form/email-form.service';
+import { SendEmailFormComponent }       from './send-email-form.component';
+import { RegExHelper }                  from '../../../../_helpers/regex-helper';
+import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
+import { AlertService }                 from "../../../../_services/alert.service";
+import { UserService }                  from "../../../../_services/user.service";
+import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
+import { EmailFormService }             from '../../../../_services/forms/forgot-password/email-form/email-form.service';
+import { shouldCallLifecycleInitHook } from '@angular/core/src/view';
+import { Observable, Observer } from 'rxjs';
+import { FormBase } from '../../../../_models/form-base';
+import { TextBox } from '../../../../_models/form-base-extends/text-box';
 
-// describe('SendEmailFormComponent', () => {
-//   let component: SendEmailFormComponent;
-//   let fixture: ComponentFixture<SendEmailFormComponent>;
-//   let formBaseControlService :     any;
-//   let authenticationService :      any;
-//   let sendEmailService :           any;
-//   let sendEmailErrorResponse:      string = "Email Not found";
-//   let existingUser:                string = "Admin@mapfre.com";
-//   let nonExistingUser:             string = "Abcde@gmail.com";
+class MockAuthService extends AuthenticationService{
+    forgotPasswordSendEmailId(email): Observable<any>{
+      let obs = Observable.create((observer: Observer<string>)=>{
+        observer.next('verifyaccount');
+      });
+      return obs;
+    }
+}
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ SendEmailFormComponent],
-//       imports: [
-//         TranslateModule.forRoot(),
-//         HttpClientModule,
-//         RouterTestingModule,
-//         FormsModule,
-//         ReactiveFormsModule
-//       ],
-//       providers: [
-//         CookieService, AuthenticationService, RegExHelper, AlertService, UserService, FormBaseControlService, EmailFormService
-//       ],
-//       schemas:[NO_ERRORS_SCHEMA]
-//     })
-//     .compileComponents();
-//   }));
+describe('SendEmailFormComponent', () => {
+  let component: SendEmailFormComponent;
+  let fixture: ComponentFixture<SendEmailFormComponent>;
+  let formBaseControlService :     any;
+  let authenticationService :      any;
+  let sendEmailService :           any;
+  let sendEmailErrorResponse:      string = "Email Not found";
+  let existingUser:                string = "Admin@mapfre.com";
+  let nonExistingUser:             string = "Abcde@gmail.com";
 
-//    // Inject FormBaseControlService
-//   beforeEach(inject([FormBaseControlService], (_formBaseControlService: FormBaseControlService) => {
-//     formBaseControlService = _formBaseControlService;
-//   }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ SendEmailFormComponent],
+      imports: [
+        TranslateModule.forRoot(),
+        HttpClientModule,
+        RouterTestingModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      providers: [
+        CookieService, AuthenticationService, RegExHelper,
+         AlertService, UserService, FormBaseControlService, EmailFormService
+      ],
+      schemas:[NO_ERRORS_SCHEMA]
+    })
 
-//   // Inject AuthenticationService
-//   beforeEach(inject([AuthenticationService], (_authenticationService: AuthenticationService) => {
-//     authenticationService = _authenticationService;
-//   }));
+    TestBed.overrideComponent(
+        SendEmailFormComponent,
+        {set: {providers: [{provide: AuthenticationService, useClass: MockAuthService}]}}
+      )
 
-//   // Inject EmailFormService
-//   beforeEach(inject([EmailFormService], (_sendEmailService: EmailFormService) => {
-//     sendEmailService = _sendEmailService;
-//   }));
+      authenticationService = TestBed.get(AuthenticationService);
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(SendEmailFormComponent);
-//     component = fixture.componentInstance;
-//     let inputs = sendEmailService.getInputs();
-//     component.inputs = inputs;
-//     component.passwordEmailForm = formBaseControlService.toFormGroup(component.inputs);
-//     fixture.detectChanges();
-//   });
+  }));
 
-//   fit('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+   // Inject FormBaseControlService
+  beforeEach(inject([FormBaseControlService], (_formBaseControlService: FormBaseControlService) => {
+    formBaseControlService = _formBaseControlService;
+  }));
 
-//   /** Email field unit test cases on forgot password **/
+  // Inject EmailFormService
+  beforeEach(inject([EmailFormService], (_sendEmailService: EmailFormService) => {
+    sendEmailService = _sendEmailService;
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(SendEmailFormComponent);
+    component = fixture.componentInstance;
+    let inputs = sendEmailService.getInputs();
+    component.inputs = inputs;
+    component.passwordEmailForm = formBaseControlService.toFormGroup(component.inputs);
+    fixture.detectChanges();
+  });
+
+  it('should check is valid method', ()=>{
+    component.isValid(true);
+    fixture.detectChanges();
+    expect(component.inputValidation).toBeTruthy();
+
+  });
+
+
+  it('should send email id to authservice when forgot password', fakeAsync(()=>{
+    component.passwordEmailForm.setValue({sendEmail: 'test@xyz.com'});
+    component.forgotPasswordSendEmailId();
+    spyOn(component.showConfirmation,'emit');
+    tick();
+    fixture.detectChanges();
+    expect(component.showConfirmation.emit).toBeTruthy();
+    expect(component.user.email).toBe(component.passwordEmailForm.get('sendEmail').value);
+  }));
+
+  it('should get email from existing parameters', ()=>{
+    let formBase: FormBase<any>[] = [
+        new TextBox({
+          sendEmail: 'test@xyz.com'
+        })];
+      let formGroup = fixture.debugElement.injector.get(FormBaseControlService).toFormGroup(formBase);
+      component.emailPrefillParamater = 'test@xyz.com';
+      fixture.detectChanges();
+      component.getEmailFromParamater();
+      fixture.detectChanges();
+      expect(component.passwordEmailForm.get('sendEmail').value).toBe('test@xyz.com');
+  });
+
+  it('should run getEmailParameter on initialization', ()=>{
+        spyOn(component,'getEmailFromParamater');
+        component.ngOnInit();
+        fixture.detectChanges();
+        expect(component.getEmailFromParamater).toHaveBeenCalled();
+  });
+
+
+  /** Email field unit test cases on forgot password **/
 //   fit('Send email on forgot password test cases', (done:Function) => {
 //     fixture.whenStable().then(() => {
 //       let sendEmail = component.passwordEmailForm.controls['sendEmail'];
@@ -134,4 +185,4 @@
 //         }); 
 //     });
 //   });  
-// });
+});
