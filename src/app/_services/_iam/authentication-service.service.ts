@@ -144,8 +144,14 @@ export class AuthenticationService {
   }
 
 
-  tokenVerification(token: string, email: string): Observable<Object> {
-  	let url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
+  tokenVerification(token: string, email: string, location: string): Observable<Object> {
+    let url;
+    if(location == 'verifyAccount') {
+      url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
+    }
+    else if(location == 'forgotPassword'){
+      url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
+    }
   	return this.http.post(url,{}, this.options);
   }
 

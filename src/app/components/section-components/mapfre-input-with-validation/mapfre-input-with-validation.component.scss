@@ -1,13 +1,31 @@
 @import "../../../../styles.scss";
+// --- Color
+$mapfre-input-error-color:                  $error-color;
+$mapfre-input-password-icon-color:          $soft-grey;
+$mapfre-input-password-notfull-color:       $dark-grey;
+$mapfre-input-password-title-color:         $grey;
 $mapfre-validation-error-color:             $error-color;
 $mapfre-validation-info-color:              $mapfre-blue;
 $mapfre-validation-valid-color:             $mapfre-green;
+// --- .mafpre-input class
+$mapfre-input-class-height:                 $global-one-rem * 4.125;//66px
+$mapfre-input-class-help-height:            $global-one-rem;
+$mapfre-input-class-content-bottom:         $global-zero;
+// --- Password Icon
+$mapfre-input-password-icon-width:          $global-one-rem * 1.875;
+$mapfre-input-password-icon-padding-vert:   $default-margin-padding;
+$mapfre-input-password-rule-line-height:    $global-one-rem * 1.5 ;
+$mapfre-input-password-rule-font-size:      $font-size-base * 0.8571428571;
+$mapfre-input-password-rule-margin-top:     -($default-margin-padding * 0.1428571429);
+$mapfre-input-password-title-font-size:     $mapfre-input-password-rule-font-size;
+$mapfre-input-password-title-height:        $global-one-rem * 1.5;
+// --- ETC
+$mapfre-input-error-label-font-size:        $font-size-base / 1.25;
+$mapfre-input-focus-outline:                $global-zero;
+$mapfre-input-validation-help-top:          $padding-vertical / 2.5;
 $mapfre-validation-info-padding-left:       $global-one-rem * 0.5;
 $mapfre-validation-info-font-size:          $global-one-rem * 0.7;
 $mapfre-validation-info-height:             $global-one-rem;
-$mapfre-input-error-color:                  $error-color;
-$mapfre-input-error-label-font-size:        $font-size-base / 1.25;
-$mapfre-input-validation-help-top:          $padding-vertical / 2.5;
 
 /* 
     ----- Information -----
@@ -17,10 +35,10 @@ $mapfre-input-validation-help-top:          $padding-vertical / 2.5;
 
 */
 input:focus, .form-control:focus { /* this is temporary */
-  outline:                                  0;
-  outline:                                  none;
   box-shadow:                               none;
   border:                                   none;
+  outline:                                  $mapfre-input-focus-outline;
+  outline:                                  none;
 }
 
 .error {
@@ -59,17 +77,17 @@ input:focus, .form-control:focus { /* this is temporary */
 }
 
 .mapfre-input {
-  height:                                   66px;
+  height:                                   $mapfre-input-class-height;
   line-height:                              normal;
   position:                                 relative;
 
   .input-content {
-    bottom:                                 0px;
+    bottom:                                 $mapfre-input-class-content-bottom;
     position:                               absolute;
   }
   
   .help-block {
-    height:                                 16px;
+    height:                                 $mapfre-input-class-help-height;
   }
 }
 
@@ -77,30 +95,30 @@ input:focus, .form-control:focus { /* this is temporary */
 
   .icon {
     float:                                  left;
-    width:                                  30px;
-    padding-left:                           8px;
-    padding-right:                          8px;
+    width:                                  $mapfre-input-password-icon-width;
+    padding-left:                           $mapfre-input-password-icon-padding-vert;
+    padding-right:                          $mapfre-input-password-icon-padding-vert;
   }
 
   .not-fullfilled {
-    color:                                  $dark-grey;
+    color:                                  $mapfre-input-password-notfull-color;
   }
 
   .rule {
     float:                                  left;
-    line-height:                            24px;
-    font-size:                              12px;
-    margin-top:                             -2px;
+    line-height:                            $mapfre-input-password-rule-line-height;
+    font-size:                              $mapfre-input-password-rule-font-size;
+    margin-top:                             $mapfre-input-password-rule-margin-top;
   }
 
   .title {
-    color:                                  $grey;
-    font-size:                              12px;
-    height:                                 24px;
+    color:                                  $mapfre-input-password-title-color;
+    font-size:                              $mapfre-input-password-title-font-size;
+    height:                                 $mapfre-input-password-title-height;
   }
 
   i {
-    color:                                  $soft-grey;
+    color:                                  $mapfre-input-password-icon-color;
   }
 }
 

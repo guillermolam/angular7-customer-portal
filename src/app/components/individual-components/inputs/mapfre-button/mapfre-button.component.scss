@@ -1,42 +1,33 @@
 @import "../../../../../styles.scss";
 
-//colors 
-// ---      Primary
+// --- Colors 
 $mapfre-button-color-primary:                   $mapfre-green;
-// ---      Secondary
 $mapfre-button-color-secondary:                 $gray;
-// ---      Default
 $mapfre-button-color-default:                   $mapfre-red;
-// ---      Tertiary
 $mapfre-button-color-blue:                      $mapfre-blue;
-// ---      Link
 $mapfre-button-color-link:                      $active-color;
-// ---      White
 $mapfre-button-color-white:                     $white;
-
-//styles 
-// ---      Basic
 $mapfre-button-font-color-basic:                $white;
-// ---      Ghost
 $mapfre-button-bg-color-ghost:                  transparent;
-// ---      Flat
 $mapfre-button-bg-color-flat:                   transparent;
 $mapfre-button-color-flat-hover:                $lite-gray-two;
-
-//Sizing
-$mapfre-button-font-small-size:                 0.875rem;
+// --- Font
+$mapfre-button-font-small-size:                 $font-size-base;
 $mapfre-button-font-full-size:                  $font-size-base + 0.125; //1rem which equals to 16px
-$mapfre-button-large-padding:                   $padding-vertical/1.14;
-$mapfre-button-small-height:                    32px;
-$mapfre-button-small-padding:                   $padding-vertical/2;
-//Defaults
-$mapfre-buton-border:                           none;
-$mapfre-buton-border-ghost:                     2px solid;
 $mapfre-button-font-family:                     $button-font-family;
 $mapfre-button-font-weight:                     bold;
-//Header Buttons
+$mapfre-button-line-hieght:                     $global-one-rem * 1.5;
+// --- Padding|Margin
 $mapfre-button-header-padding:                  $padding-vertical $padding-vertical/2;
-$mapfre-button-header-margin:                   -3px;
+$mapfre-button-header-margin:                   -($default-margin-padding * 0.2142857143);//-3px;
+$mapfre-button-large-padding:                   $padding-vertical / 1.14;
+$mapfre-button-small-padding:                   $padding-vertical / 2;
+$mapfre-button-padding:                         $global-zero ($global-one-rem * 1.5);
+
+// --- ETC
+$mapfre-buton-border:                           none;
+$mapfre-buton-border-ghost:                     ($global-one-rem * 0.125) solid;
+$mapfre-button-small-height:                    $global-one-rem * 2; //32px;
 
 
 .btn.mapfre {
@@ -46,8 +37,8 @@ $mapfre-button-header-margin:                   -3px;
     font-family:                                $mapfre-button-font-family;
     font-weight:                                $mapfre-button-font-weight;
     justify-content:                            center;
-    line-height:                                24px;
-    padding:                                    0 1.5rem;
+    line-height:                                $mapfre-button-line-hieght;
+    padding:                                    $mapfre-button-padding;
     pointer-events:                             auto !important;
     position:                                   relative;
     text-transform:                             uppercase;
@@ -58,10 +49,10 @@ $mapfre-button-header-margin:                   -3px;
     &:disabled,
     &.disabled,
     &.disabled[disabled]{
-      cursor: not-allowed !important;
+      cursor:                                   not-allowed !important;
       
       &:hover {
-        box-shadow: none !important;
+        box-shadow:                             none !important;
       }
     }
 

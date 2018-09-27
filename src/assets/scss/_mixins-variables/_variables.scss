@@ -9,7 +9,8 @@ $default-margin-padding:    $defualt-margin-padding;
 
 //Sizing
 $font-size-base:            0.875rem;  //14px
-$font-size-sm:              $font-size-base/1.5;
+$font-size-sm:              $font-size-base * 0.8571428571; //12px
+$font-size-med:             $font-size-base * 1.1428571429; //16px
 $link-icon-font-size:       $font-size-base/2;
 $link-font-size:            $font-size-base; 
 $margin-vertical:           $defualt-margin-padding * 2; //16px

@@ -13,7 +13,6 @@ export class VerifyAccountScreenComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.userEmail = this.userData.email != undefined ? this.userData.email : 'email@gmail.com';
   }
 
 }

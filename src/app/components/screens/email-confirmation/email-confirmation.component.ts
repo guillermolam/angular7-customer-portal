@@ -9,8 +9,8 @@ import { AuthenticationService }        from '../../../_services/_iam/authentica
   styleUrls: ['./email-confirmation.component.scss']
 })
 export class EmailConfirmationComponent implements OnInit {
-  @Input() sendEmailAgain:       string;
-  user:                          User  = {};
+  @Input()  sendEmailAgain:       string;
+            user:                 User  = {};
 
   @Output() showConfirmation:    EventEmitter<boolean> = new EventEmitter();
 

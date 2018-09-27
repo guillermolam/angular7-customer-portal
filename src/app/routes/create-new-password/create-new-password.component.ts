@@ -35,7 +35,7 @@ export class CreateNewPasswordComponent implements OnInit {
     if(!token || !email) return false;
   	this.waitingForResponse =           true;
     return this.authenticationService
-      .tokenVerification(token, email)
+      .tokenVerification(token, email, 'forgotPassword')
       .subscribe(
         data => {
           this.expiredLink =            false;
