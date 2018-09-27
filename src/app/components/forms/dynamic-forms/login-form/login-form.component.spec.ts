@@ -1,90 +1,184 @@
-// /***** In this file I have changed scripts path for test specifications *****/
-// /*angular.json
+/***** In this file I have changed scripts path for test specifications *****/
+/*angular.json
 
-// /*** Replace all "\@angular\cli" with "@angular-devkit/build-angular" in "\customer-portal\karma.conf.js" file. ***/
+/*** Replace all "\@angular\cli" with "@angular-devkit/build-angular" in "\customer-portal\karma.conf.js" file. ***/
 
-// /**** Some files were throwing errors whenever I run cammand `ng test`, So I have commented it. Will revert commented code once we will write test cases for those modules ****/
-// /**** src/app/_directives/forms/repeat-password/repeat-password-directive.directive.spec.ts
-// src/app/components/confirmations/forgot-password-set/forgot-password-set.component.spec.ts
-// src/app/components/confirmations/forgot-password/forgot-password.component.spec.ts
-// src/app/components/forms/non-dynamic-forms/send-email-form/send-email-form.component.spec.ts
-// src/app/components/individual-components/inputs/mapfre-input/mapfre-input.component.spec.ts
+/**** Some files were throwing errors whenever I run cammand `ng test`, So I have commented it. Will revert commented code once we will write test cases for those modules ****/
+/**** src/app/_directives/forms/repeat-password/repeat-password-directive.directive.spec.ts
+src/app/components/confirmations/forgot-password-set/forgot-password-set.component.spec.ts
+src/app/components/confirmations/forgot-password/forgot-password.component.spec.ts
+src/app/components/forms/non-dynamic-forms/send-email-form/send-email-form.component.spec.ts
+src/app/components/individual-components/inputs/mapfre-input/mapfre-input.component.spec.ts
 
-// /****** Added "polyfills.ts" in include property, because it throws error polyfills.ts file missing *****/
-// /*src/tsconfig.spec.json*/
+/****** Added "polyfills.ts" in include property, because it throws error polyfills.ts file missing *****/
+/*src/tsconfig.spec.json*/
 
-// /** Importing angular default component **/
-// import { async, ComponentFixture, TestBed, inject }    from '@angular/core/testing';
-// import { NO_ERRORS_SCHEMA}                             from '@angular/core';
-// import { HttpClientModule }                            from '@angular/common/http';
-// import { RouterTestingModule }                         from '@angular/router/testing';
-// import { ReactiveFormsModule, FormsModule }            from '@angular/forms';
-// import { CookieService }                               from 'ngx-cookie-service';
-// import { TranslateModule }                             from '@ngx-translate/core';
+/** Importing angular default component **/
+import { async, ComponentFixture, TestBed, inject, fakeAsync, tick }    from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA}                             from '@angular/core';
+import { HttpClientModule }                            from '@angular/common/http';
+import { RouterTestingModule }                         from '@angular/router/testing';
+import { ReactiveFormsModule, FormsModule }            from '@angular/forms';
+import { CookieService }                               from 'ngx-cookie-service';
+import { TranslateModule }                             from '@ngx-translate/core';
 
-// /** Import component & services **/
-// import { LoginFormComponent }           from './login-form.component';
-// import { RegExHelper }                  from '../../../../_helpers/regex-helper';
-// import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-// import { AlertService }                 from "../../../../_services/alert.service";
-// import { UserService }                  from "../../../../_services/user.service";
-// import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
-// import { LoginService }                 from '../../../../_services/forms/login/login.service';
+/** Import component & services **/
+import { LoginFormComponent }           from './login-form.component';
+import { RegExHelper }                  from '../../../../_helpers/regex-helper';
+import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
+import { AlertService }                 from "../../../../_services/alert.service";
+import { UserService }                  from "../../../../_services/user.service";
+import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
+import { LoginService }                 from '../../../../_services/forms/login/login.service';
+import { Observable, Observer } from 'rxjs';
+import { DashboardComponent } from '../../../../routes/dashboard/dashboard.component';
+import { Location } from '@angular/common';
+import { ForgotPasswordComponent } from '../../../../routes/forgot-password/forgot-password.component';
 
-// /** Declaration of login component and services **/
-// describe('LoginFormComponent', () => {
-//   let component:                   LoginFormComponent;
-//   let fixture:                     ComponentFixture<LoginFormComponent>;
-//   let formBaseControlService :     any;
-//   let loginService :               any;
-//   let authenticationService :      any;
-//   let validEmail :                 String         =     "testoauth";
-//   let validPassword :              String         =     'Abcd!234';
-//   let emptyMessage :               any            =     'required';
-//   let invalidEmailPattern :        any            =     'pattern';
-//   let invalidCredentialMessage :   any            =     'Invalid email/password combination';
+class MockAuthService extends AuthenticationService{
+    login(): Observable<any>{
+      let obs = Observable.create((observer: Observer<string>)=>{
+        observer.next('verifyaccount');
+      });
+      return obs;
+    }
+  }
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ LoginFormComponent ],
-//       imports: [
-//         TranslateModule.forRoot(),
-//         HttpClientModule,
-//         RouterTestingModule,
-//         FormsModule,
-//         ReactiveFormsModule
-//       ],
-//       providers: [
-//         CookieService, AuthenticationService, AlertService, RegExHelper, UserService, FormBaseControlService, LoginService
-//       ],
-//       schemas:[NO_ERRORS_SCHEMA]
-//     })
-//     .compileComponents();
+
+/** Declaration of login component and services **/
+describe('LoginFormComponent', () => {
+  let component:                   LoginFormComponent;
+  let fixture:                     ComponentFixture<LoginFormComponent>;
+  let formBaseControlService :     any;
+  let loginService :               any;
+  let cookieService : CookieService;
+  let location: Location;
+  let userService: UserService;
+  let authenticationService :      any;
+  let validEmail :                 String         =     "testoauth";
+  let validPassword :              String         =     'Abcd!234';
+  let emptyMessage :               any            =     'required';
+  let invalidEmailPattern :        any            =     'pattern';
+  let invalidCredentialMessage :   any            =     'Invalid email/password combination';
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ LoginFormComponent,DashboardComponent, ForgotPasswordComponent ],
+      imports: [
+        TranslateModule.forRoot(),
+        HttpClientModule,
+        RouterTestingModule.withRoutes(
+            [
+            { path: "dashboard", component: DashboardComponent },
+            { path: "forgotpassword", component: ForgotPasswordComponent }
+        ]
+        ),
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      providers: [
+        CookieService, AuthenticationService, AlertService, RegExHelper, UserService, FormBaseControlService, LoginService
+      ],
+      schemas:[NO_ERRORS_SCHEMA]
+    })
+    .compileComponents();
+
+    TestBed.overrideComponent(
+        LoginFormComponent,
+        {set: {providers: [{provide: AuthenticationService, useClass: MockAuthService}]}}
+      )
+
+    fixture = TestBed.createComponent(LoginFormComponent);
+    component = fixture.componentInstance;
+    cookieService = fixture.debugElement.injector.get(CookieService);
+    location = TestBed.get(Location);
+    userService = fixture.debugElement.injector.get(UserService);
+  }));
+
+  // Inject FormBaseControlService
+  beforeEach(inject([FormBaseControlService], (_formBaseControlService: FormBaseControlService) => {
+    formBaseControlService = _formBaseControlService;
+  }));
+
+  // Inject LoginService
+  beforeEach(inject([LoginService], (_loginService: LoginService) => {
+    loginService = _loginService;
+  }));
+
+  // Inject AuthenticationService
+  beforeEach(inject([AuthenticationService], (_authenticationService: AuthenticationService) => {
+    authenticationService = _authenticationService;
+  }));
+
+  beforeEach(() => {
+    let inputs = loginService.getInputs();
+    component.inputs = inputs;
+    component.loginForm = formBaseControlService.toFormGroup(component.inputs);
+    component.loginForm.setValue({loginEmail: 'test@xyz.com', loginPassword: 'password'});
+    fixture.detectChanges();
+  });
+
+
+  fit('should get the email and password login form ', ()=>{
+        cookieService.set("remember","true");
+        cookieService.set("email","test@xyz.com");
+        cookieService.set("password","password");
+        fixture.detectChanges();
+        component.getCookie();
+        expect(component.loginForm.get('loginEmail').value).toBe(cookieService.get('email'));
+        expect(component.loginForm.get('loginPassword').value).toBe(cookieService.get('password'));
+  });
+
+  fit('it should login and navigate to dashboard', fakeAsync(()=>{
+        spyOn(component,'putCookie');
+        fixture.detectChanges();
+        component.login();
+        tick();
+        fixture.detectChanges();
+        expect(component.user.email).toBe(component.loginForm.get('loginEmail').value)
+        expect(component.user.password).toBe(component.loginForm.get('loginPassword').value)
+        expect(component.putCookie).toHaveBeenCalled();
+        expect(location.path()).toBe('/dashboard');
+  }));
+
+  fit('should set rememberMe field of component',()=>{
+      component.onRememberMe(true);
+      fixture.detectChanges();
+      expect(component.rememberMe).toBeTruthy();
+  })
+
+  fit('should redirect to /forgotpassword if email pattern does not match', fakeAsync(()=>{
+    let email = component.loginForm.get('loginEmail').value;
+    // let emailPattern = fixture.debugElement.injector.get(RegExHelper).strictEmailPattern;
+    component.prefillEmailParamater();
+    fixture.detectChanges();
+    tick();
+    expect(component.emailPrefillOnBlur).toBe(email);
+    expect(location.path()).toBe('/forgotpassword?emailPrefill=test@xyz.com');
+  }));
+
+  fit('should set the expiry of the cookie', fakeAsync(()=>{
+    component.rememberMe = true;
+    component.user.email = 'test@xyz.com';
+    component.user.password = 'password';
+    component.putCookie();
+    fixture.detectChanges();
+    let cookie = fixture.debugElement.injector.get(CookieService);
+    fixture.detectChanges();
+    expect(cookie.get('remember')).toBeTruthy();
+    expect(cookie.get('email')).toBeTruthy();
+    expect(cookie.get('password')).toBeTruthy();
+  }));
+
+//   fit('should test Initialization of a component', fakeAsync(()=>{
+    
+//     component.ngOnInit();
+//     spyOn(formBaseControlService, 'toFormGroup');
+//     spyOn(userService, '' );
+
+//     expect()
 //   }));
 
-//   // Inject FormBaseControlService
-//   beforeEach(inject([FormBaseControlService], (_formBaseControlService: FormBaseControlService) => {
-//     formBaseControlService = _formBaseControlService;
-//   }));
-
-//   // Inject LoginService
-//   beforeEach(inject([LoginService], (_loginService: LoginService) => {
-//     loginService = _loginService;
-//   }));
-
-//   // Inject AuthenticationService
-//   beforeEach(inject([AuthenticationService], (_authenticationService: AuthenticationService) => {
-//     authenticationService = _authenticationService;
-//   }));
-
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(LoginFormComponent);
-//     component = fixture.componentInstance;
-//     let inputs = loginService.getInputs();
-//     component.inputs = inputs;
-//     component.loginForm = formBaseControlService.toFormGroup(component.inputs);
-//     fixture.detectChanges();
-//   });
 
 //   fit('should create', () => {   
 //     expect(component).toBeTruthy();
@@ -192,4 +286,4 @@
 //       ); 
 //     });
 //   });
-// });
+});

@@ -3,7 +3,6 @@ import { NO_ERRORS_SCHEMA}                             from '@angular/core';
 import { HttpClient, HttpClientModule }                from '@angular/common/http';
 import { RouterTestingModule }                         from '@angular/router/testing';
 import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CookieService }                               from 'ngx-cookie-service';
 import { TranslateModule }                             from '@ngx-translate/core';
 
 import { CreatePasswordFormComponent }  from './create-password-form.component';

@@ -48,13 +48,12 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(): void {
-    console.log(this.loginForm);
-  
+
     this.user.email =                   this.loginForm.controls.loginEmail.value;
     this.user.password  =               this.loginForm.controls.loginPassword.value;
     this.loading =                      true;
     this.putCookie();
-    console.log(this.loginForm.controls.loginEmail.value);
+    
     if(this.user) {
       this.authenticationService
         .login (this.user.email, this.user.password)
