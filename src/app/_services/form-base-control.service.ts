@@ -11,8 +11,8 @@ export class FormBaseControlService {
   ) { }
 
   matchPasswords(input: FormControl, group: FormGroup) {
-    let password = input.value == group['createPassword'].value;
-    return password ? null : { matchPasswords: true }
+    let password = input.value == group.get('createPassword').value;
+    return password ? { matchPasswords: true } : null;
   }
 
   toFormGroup(inputs: FormBase<any>[] ) {

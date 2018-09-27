@@ -8,6 +8,7 @@
     "build": "ng build",
     "test": "ng test --watch=false --browsers Chrome",
     "test_on_ciserver": "ng test --watch=false --browsers Chromium_no_sandbox",
+    "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox && ng build",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cibuild": "ng test --code-coverage && ng build --prod --no-progress",
@@ -65,7 +66,8 @@
     "karma-coverage-istanbul-reporter": "^1.4.3",
     "karma-jasmine": "^1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "^5.1.2",
+    "karma-junit-reporter": "^1.2.0",
+    "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "2.7.2"

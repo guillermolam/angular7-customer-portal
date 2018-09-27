@@ -18,23 +18,25 @@ pipeline{
 			steps{
               	// removing .spec.ts from linting
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
-				sh "npm run build"
+				sh "npm run cibuild_test"
+				// sh "npm run build"
 			}
 		}
 		
+		//Running unit test before build
+		// stage('Run Unit Test'){
+		//     steps{
+		//     	//Added to run unit test case for all module.
+		//        sh "npm run test_on_ciserver"
+		//     }
+		// }
+
 		stage('Static analysis'){
 		    steps{
 		        sh "npm run sonar-run"
 		    }
 		}
 
-		stage('Run Unit Test'){
-		    steps{
-		    	//Added to run unit test case for all module.
-		       sh "npm run test_on_ciserver"
-		    }
-		}
-		
 		stage("Build & Publish Image"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
