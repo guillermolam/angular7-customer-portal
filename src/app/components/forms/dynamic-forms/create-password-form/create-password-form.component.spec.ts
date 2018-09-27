@@ -99,7 +99,7 @@ describe('CreatePasswordFormComponent', () => {
   });
 
 
-  fit('should call createPassword method', fakeAsync(()=>{
+  it('should call createPassword method', fakeAsync(()=>{
     component.whereInTheProcess = 'createpassword';
     fixture.detectChanges();
     spyOn(component,'createPassword');
@@ -107,7 +107,7 @@ describe('CreatePasswordFormComponent', () => {
     expect(component.createPassword).toHaveBeenCalled();
   }));
 
-  fit('should call updatePassword method', fakeAsync(()=>{
+  it('should call updatePassword method', fakeAsync(()=>{
     component.whereInTheProcess = 'null';
     fixture.detectChanges();
     spyOn(component,'updatePassword');
@@ -116,7 +116,7 @@ describe('CreatePasswordFormComponent', () => {
   }));
 
 
-  fit('should redirect user to verify account',fakeAsync(()=>{
+  it('should redirect user to verify account',fakeAsync(()=>{
     component.createPasswordForm.setValue({createPassword: 'password'});
     component.user.password = component.createPasswordForm.get('createPassword').value;
     fixture.detectChanges();
@@ -126,7 +126,7 @@ describe('CreatePasswordFormComponent', () => {
     
   }));
 
-  fit('should update the password and emmit true',fakeAsync(()=>{
+  it('should update the password and emmit true',fakeAsync(()=>{
     component.email = 'test@xyz.com';
     component.createPasswordForm.setValue({createPassword: 'password'});
     component.user.password = component.createPasswordForm.get('createPassword').value;
@@ -140,7 +140,7 @@ describe('CreatePasswordFormComponent', () => {
   }));
 
 
-  fit('should initializes parameters oninitialization', fakeAsync(()=>{
+  it('should initializes parameters oninitialization', fakeAsync(()=>{
       let formBase: FormBase<any>[] = [
         new TextBox({
           form: 'formbase'
