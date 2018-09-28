@@ -22,16 +22,15 @@ export class VerifyAccountComponent implements OnInit {
   ) { }
 
   validateToken(email: string, token: string) {
-    //if(!email || !token) return null;
-    this.alertService.success('Thank You for validating you account!', true);
-    this.router.navigate(['login']);
-    /*return this.authService.verifyAccountTokenVerification(token, email)
+    if(!email || !token) return null;
+    
+    this.authService.verifyAccountTokenVerification(token, email)
       .subscribe(
         data => {
-          this.alertService.success('Thank You for validating you account!');
+          this.alertService.success('Thank You for validating you account!', true);
           this.router.navigate(['login']);
         }
-      )*/
+      )
   }
 
   ngOnInit() {
