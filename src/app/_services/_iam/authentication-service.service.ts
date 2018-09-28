@@ -79,14 +79,14 @@ export class AuthenticationService {
           firstName:        user.firstName,
           middleName:       user.middleName,
           lastName:         user.lastName,
-          email:            user.email,
+          email:            user.email
         },
-        policynumbers: {
+        policynumbers: [{
             policynumber: user.policyDetails[0].policynumber.policynumber
-        },
+        }],
         credentials: {
           email:            user.email,
-          password:         user.password,
+          password:         user.password
         }
       }
     ;
