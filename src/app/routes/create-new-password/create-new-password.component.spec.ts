@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 class MockAuthService extends AuthenticationService{
 
-  tokenVerification(token,email,forgotpassword): Observable<any>{
+  tokenVerification(token,email): Observable<any>{
     let obs = Observable.create((observer: Observer<string>)=>{
       observer.next('forgotpassword');
     });
