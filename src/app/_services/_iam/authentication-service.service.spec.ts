@@ -114,6 +114,8 @@ describe('AuthenticationService', () => {
 
     authService.login(username,password).subscribe((response)=>{
       expect(response).toBeTruthy();
+    }, (err)=>{
+      expect(err).toBe('Invalid email/password combination');
     });
     
     const req = httpMock.expectOne(url);
