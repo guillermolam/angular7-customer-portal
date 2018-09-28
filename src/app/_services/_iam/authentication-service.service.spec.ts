@@ -173,33 +173,30 @@ describe('AuthenticationService', () => {
     expect(localStorage.getItem('currentUser')).toBeNull();
     expect(authService.token).toBeNull();
   }));
-  
-  it('should verify the token for forgotpassword', async(()=>{
-    
-    let token = 'asdfghjkl';
-    let email = 'test@xyz.com';
-    let location = 'forgotPassword'
-    authService.tokenVerification(token,email,location).subscribe((response: HttpResponse<Number>)=>{
-        expect(response.status).toBe(200);
-    });
-
-    const req = httpMock.expectOne(`${environment.identity}/identity/users/${email}?token=${token}`);
-    expect(req.request.method).toBe('POST');
-    req.flush(new HttpResponse<Number>({status: 200}));
-  }));
-
 
   it('should verify the token for verifyaccount', async(()=>{
     
     let token = 'asdfghjkl';
     let email = 'test@xyz.com';
-    let location = 'verifyAccount'
-    authService.tokenVerification(token,email,location).subscribe((response: HttpResponse<Number>)=>{
+    authService.verifyAccountTokenVerification(token,email).subscribe((response: HttpResponse<Number>)=>{
         expect(response.status).toBe(200);
     });
 
     const req = httpMock.expectOne(`${environment.account}/accounts?token=${token}&email=${email}`);
     expect(req.request.method).toBe('PUT');
+    req.flush(new HttpResponse<Number>({status: 200}));
+  }));
+  
+  it('should verify the token for forgotpassword', async(()=>{
+    
+    let token = 'asdfghjkl';
+    let email = 'test@xyz.com';
+    authService.tokenVerification(token,email).subscribe((response: HttpResponse<Number>)=>{
+        expect(response.status).toBe(200);
+    });
+
+    const req = httpMock.expectOne(`${environment.identity}/identity/users/${email}?token=${token}`);
+    expect(req.request.method).toBe('POST');
     req.flush(new HttpResponse<Number>({status: 200}));
   }));
 

@@ -1,4 +1,6 @@
-<div *ngIf="message" class="alert-container">
+<div *ngIf="message" 
+  class="alert-container"
+  [ngClass]="{'outside-container': outsideContainer}">
   <ng-container *ngFor="let alertTypeObject of alertTypeObjects">
     <div 
       class="mapfre alert {{alertTypeObject?.className}} margin-bottom mb16" 
@@ -23,20 +25,20 @@
 <div *ngIf="nonDynamic" class="alert-container">
   <ng-container *ngFor="let alertTypeObject of alertTypeObjects">
     <ng-container *ngIf="alertType == alertTypeObject?.alertType">
-    <div class="mapfre alert {{alertTypeObject?.className}} margin-bottom mb16">
-      <div class="row">
-        <div class="content">
-          <div class="icon">
-            <mapfre-icon iconClasses="{{alertTypeObject?.iconClass}}"></mapfre-icon>
-          </div>
-          <div class="message">
-            <div class="copy">
-              <ng-content></ng-content>
+      <div class="mapfre alert {{alertTypeObject?.className}} margin-bottom mb16">
+        <div class="row">
+          <div class="content">
+            <div class="icon">
+              <mapfre-icon iconClasses="{{alertTypeObject?.iconClass}}"></mapfre-icon>
+            </div>
+            <div class="message">
+              <div class="copy">
+                <ng-content></ng-content>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </ng-container>
   </ng-container> 
 </div>

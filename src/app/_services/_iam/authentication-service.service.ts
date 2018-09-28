@@ -66,17 +66,28 @@ export class AuthenticationService {
     return this.http.put<any>(url, userSendObject, this.options);
   }
 
+
+ 
+
   createPassword(userObject): Observable<any> {
     const user =          userObject.$user.source.value;
     let 
       url =               `${environment.account}/accounts/${user.email}`,
-      userSendObject:     Object = {
-        firstName:        user.firstName,
-        middleName:       user.middleName,
-        lastName:         user.lastName,
-        password:         user.password,
-        email:            user.email,
-        policynumbers:    user.policyDetails[0].policynumber.policynumber
+      userSendObject:     Object = 
+      {
+        customer: {
+          firstName:        user.firstName,
+          middleName:       user.middleName,
+          lastName:         user.lastName,
+          email:            user.email
+        },
+        policynumbers: [{
+            policynumber: user.policyDetails[0].policynumber.policynumber
+        }],
+        credentials: {
+          email:            user.email,
+          password:         user.password
+        }
       }
     ;
     return this.http.put<any>(url, userSendObject, this.options)
@@ -143,17 +154,14 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
+  verifyAccountTokenVerification(token: string, email: string): Observable<Object> {
+    let url =           `${environment.account}/accounts?token=${token}&email=${email}`;	
+    return this.http.put(url,{}, this.options);
+  }
 
-  tokenVerification(token: string, email: string, location: string): Observable<Object> {
-    let url;
-    if(location == 'verifyAccount') {
-      url =           `${environment.account}/accounts?token=${token}&email=${email}`;	
-      return this.http.put(url,{}, this.options);
-    }
-    else if(location == 'forgotPassword'){
-      url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
-      return this.http.post(url,{}, this.options);
-    }
+  tokenVerification(token: string, email: string): Observable<Object> {
+    let url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
+    return this.http.post(url,{}, this.options);
   }
 
   updatePassword(user: User, token: string) {

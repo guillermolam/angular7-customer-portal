@@ -23,11 +23,10 @@ export class VerifyAccountComponent implements OnInit {
 
   validateToken(email: string, token: string) {
     if(!email || !token) return null;
-
-    return this.authService.tokenVerification(token, email, 'verifyAccount')
+    return this.authService.verifyAccountTokenVerification(token, email)
       .subscribe(
         data => {
-          this.alertService.success;
+          this.alertService.success('Thank You for validating you account!');
           this.router.navigate(['login']);
         }
       )

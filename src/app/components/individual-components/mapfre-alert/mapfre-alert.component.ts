@@ -9,9 +9,10 @@ import { AlertService } from "../../../_services/alert.service";
   styleUrls: ['./mapfre-alert.component.scss']
 })
 export class MapfreAlertComponent implements OnInit {
-  @Input() alertType:   string = 'default';
-  @Input() nonDynamic:  boolean = false;
-  message:              any;
+  @Input()  alertType:            string = 'default';
+  @Input()  nonDynamic:           boolean = false;
+  @Input()  outsideContainer:     boolean = false
+            message:              any;
 
   constructor(private alertService: AlertService) { }
 

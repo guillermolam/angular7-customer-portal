@@ -1,309 +1,342 @@
 @import "../../../../../styles.scss";
 
-// --- Colors 
-$mapfre-button-color-primary:                   $mapfre-green;
-$mapfre-button-color-secondary:                 $gray;
-$mapfre-button-color-default:                   $mapfre-red;
-$mapfre-button-color-blue:                      $mapfre-blue;
-$mapfre-button-color-link:                      $active-color;
-$mapfre-button-color-white:                     $white;
-$mapfre-button-font-color-basic:                $white;
-$mapfre-button-bg-color-ghost:                  transparent;
-$mapfre-button-bg-color-flat:                   transparent;
-$mapfre-button-color-flat-hover:                $lite-gray-two;
+// --- Colors
+$mapfre-button-bg-color-ghost:            transparent;
+$mapfre-button-bg-color-flat:             transparent;
+$mapfre-button-color-primary:             $mapfre-green;
+$mapfre-button-color-secondary:           $gray;
+$mapfre-button-color-default:             $mapfre-red;
+$mapfre-button-color-blue:                $mapfre-blue;
+$mapfre-button-color-link:                $active-color;
+$mapfre-button-color-white:               $white;
+$mapfre-button-color-flat-hover:          $lite-gray-two;
+$mapfre-button-color-primary-disabled:    lighten( desaturate( $mapfre-button-color-primary, 42 ), 32 ); // #C6DB81 
+$mapfre-button-color-secondary-disbaled:  lighten( $mapfre-button-color-secondary, 32 ); // #C4C4C4
+$mapfre-button-color-blue-disabled:       lighten( adjust-hue(  $mapfre-button-color-blue, 4deg ), 31 ); // #A0D2FF
+$mapfre-button-color-default-disabled:    lighten( saturate( adjust-hue( $mapfre-button-color-default, -7deg ), 5 ), 46 ); // #FFC9C9
+$mapfre-button-color-white-disabled:      darken( $mapfre-button-color-white, 10%);
+$mapfre-button-color-white-color:         $med-gray;
+$mapfre-button-color-white-background:    transparent;
+$mapfre-button-header-hover-color:        darken( desaturate( adjust-hue( $mapfre-red, -7deg ), 10 ), 3 );
+$mapfre-button-font-color-basic:          $white;
+$mapfre-button-footer-color:              $med-gray;
+$mapfre-button-footer-background-hover:   darken( $mapfre-button-color-flat-hover, 10% );
 // --- Font
-$mapfre-button-font-small-size:                 $font-size-base;
-$mapfre-button-font-full-size:                  $font-size-base + 0.125; //1rem which equals to 16px
-$mapfre-button-font-family:                     $button-font-family;
-$mapfre-button-font-weight:                     bold;
-$mapfre-button-line-hieght:                     $global-one-rem * 1.5;
+$mapfre-button-font-small-size:           $font-size-base;
+$mapfre-button-font-full-size:            $font-size-base + 0.125; // 16px
+$mapfre-button-font-family:               $button-font-family;
+$mapfre-button-font-weight:               bold;
+$mapfre-button-footer-font-size:          $font-size-sm; //12px;
+$mapfre-button-footer-font-weight:        400;
+$mapfre-button-line-hieght:               $global-one-rem * 1.5;
+$mapfre-button-normal-link-font-weight:   400;
 // --- Padding|Margin
-$mapfre-button-header-padding:                  $padding-vertical $padding-vertical/2;
-$mapfre-button-header-margin:                   -($default-margin-padding * 0.2142857143);//-3px;
-$mapfre-button-large-padding:                   $padding-vertical / 1.14;
-$mapfre-button-small-padding:                   $padding-vertical / 2;
-$mapfre-button-padding:                         $global-zero ($global-one-rem * 1.5);
-
+$mapfre-button-custom-padding-right:      $default-margin-padding; //8px;
+$mapfre-button-footer-padding:            ($default-margin-padding / 2 ) $default-margin-padding; //4px 8px;
+$mapfre-button-header-margin:             -($default-margin-padding * 0.2142857143); // -3px;
+$mapfre-button-header-margin-right:       -($default-margin-padding * 1.0714285714) !important;  //-15px !important;
+$mapfre-button-header-padding:            $padding-vertical $padding-vertical/2;
+$mapfre-button-header-padding-top:        $padding-vertical; //16px;
+$mapfre-button-header-padding-bottom:     $padding-vertical; //16px;
+$mapfre-button-large-padding:             $padding-vertical / 1.14;
+$mapfre-button-padding:                   $global-zero ($global-one-rem * 1.5);
+$mapfre-button-small-padding:             $padding-vertical / 2;
 // --- ETC
-$mapfre-buton-border:                           none;
-$mapfre-buton-border-ghost:                     ($global-one-rem * 0.125) solid;
-$mapfre-button-small-height:                    $global-one-rem * 2; //32px;
-
+$mapfre-buton-border:                     none;
+$mapfre-buton-border-ghost:               ($global-one-rem * 0.125) solid;
+$mapfre-button-custom-middle-top:         $global-one-rem * 0.0625; //-1px;
+$mapfre-button-large-width:               100%;
+$mapfre-button-large-height:              $global-one-rem * 3; //48px;
+$mapfre-button-medium-width:              75%;
+$mapfre-button-small-height:              $global-one-rem * 2; //32px;
 
 .btn.mapfre {
-    align-items:                                center;
-    box-shadow:                                 none;
-    cursor:                                     pointer;
-    font-family:                                $mapfre-button-font-family;
-    font-weight:                                $mapfre-button-font-weight;
-    justify-content:                            center;
-    line-height:                                $mapfre-button-line-hieght;
-    padding:                                    $mapfre-button-padding;
-    pointer-events:                             auto !important;
-    position:                                   relative;
-    text-transform:                             uppercase;
-    -webkit-align-items:                        center;
-    -ms-flex-align:                             center;
-    @include transition(0.5s);
+  align-items:                            center;
+  box-shadow:                             none;
+  cursor:                                 pointer;
+  font-family:                            $mapfre-button-font-family;
+  font-weight:                            $mapfre-button-font-weight;
+  justify-content:                        center;
+  line-height:                            $mapfre-button-line-hieght;
+  padding:                                $mapfre-button-padding;
+  pointer-events:                         auto !important;
+  position:                               relative;
+  text-transform:                         uppercase;
+  -webkit-align-items:                    center;
+  -ms-flex-align:                         center;
+  @include transition(0.5s);
+  
+  &:disabled,
+  &.disabled,
+  &.disabled[disabled] {
+    cursor:                               not-allowed !important;
     
-    &:disabled,
-    &.disabled,
-    &.disabled[disabled]{
-      cursor:                                   not-allowed !important;
-      
-      &:hover {
-        box-shadow:                             none !important;
+    &:hover {
+      box-shadow:                         none !important;
+    }
+  }
+
+  &.basic {
+    border:                               $mapfre-buton-border;
+    color:                                $mapfre-button-font-color-basic;
+    @include border-radius(100px);
+
+    &.default {
+      background:                         $mapfre-button-color-default;
+      border-color:                       $mapfre-button-color-default;
+    
+      &:disabled {
+        background:                       $mapfre-button-color-default-disabled;
+        border-color:                     $mapfre-button-color-default-disabled;
       }
     }
 
-    &.basic {
-        border:                                 $mapfre-buton-border;
-        color:                                  $mapfre-button-font-color-basic;
-        @include border-radius(100px);
-
-        &.primary {
-            background:                         $mapfre-button-color-primary;
-            border-color:                       $mapfre-button-color-primary;
-
-            &:disabled {
-                background:                     lighten( desaturate( $mapfre-button-color-primary, 42 ), 32 ); //#C6DB81 
-                border-color:                   lighten( desaturate( $mapfre-button-color-primary, 42 ), 32 ); //#C6DB81
-            }
-        }
-        &.secondary {
-            background:                         $mapfre-button-color-secondary;
-            border-color:                       $mapfre-button-color-secondary;
-
-            &:disabled {
-                background:                     lighten( $mapfre-button-color-secondary, 32 );//#C4C4C4
-                border-color:                   lighten( $mapfre-button-color-secondary, 32 );//#C4C4C4
-            }
-        }
-        &.tertiary {
-            background:                         $mapfre-button-color-blue;
-            border-color:                       $mapfre-button-color-blue;
-
-            &:disabled {
-                background:                     lighten( adjust-hue(  $mapfre-button-color-blue, 4deg ), 31 ); // #A0D2FF
-                border-color:                   lighten( adjust-hue(  $mapfre-button-color-blue, 4deg ), 31 ); // #A0D2FF
-            }
-        }
-        &.default {
-            background:                         $mapfre-button-color-default;
-            border-color:                       $mapfre-button-color-default;
-
-            &:disabled {
-                background:                     lighten( saturate( adjust-hue( $mapfre-button-color-default, -7deg ), 5 ), 46 ); // #FFC9C9
-                border-color:                   lighten( saturate( adjust-hue( $mapfre-button-color-default, -7deg ), 5 ), 46 ); // #FFC9C9
-            }
-        }
-        &.white {
-            background:                         $mapfre-button-color-white;
-            border-color:                       $mapfre-button-color-white;
-            color:                              #4C4C4C; //will need to be a variable
-
-
-            &:disabled {
-                background:                     darken( $mapfre-button-color-white, 10%);
-                border-color:                   darken( $mapfre-button-color-white, 10%);
-            }
-        }
-        &:hover {
-            box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-        }
+    &.primary {
+      background:                         $mapfre-button-color-primary;
+      border-color:                       $mapfre-button-color-primary;
+    
+      &:disabled {
+        background:                       $mapfre-button-color-primary-disabled;
+        border-color:                     $mapfre-button-color-primary-disabled;
+      }
     }
 
-    &.ghost {
-        background:                             $mapfre-button-bg-color-flat;
-        border:                                 $mapfre-buton-border-ghost;
-        @include border-radius(100px);
-
-        &.primary {
-            color:                              $mapfre-button-color-primary;
-            border-color:                       $mapfre-button-color-primary;
-
-            &:disabled {
-                color:                          lighten( desaturate( $mapfre-button-color-primary, 42 ), 32 ); //#C6DB81 
-                border-color:                   lighten( desaturate( $mapfre-button-color-primary, 42 ), 32 ); //#C6DB81
-            }
-
-            &:hover {
-                background:                     $mapfre-button-color-primary;
-                color:                          $mapfre-button-font-color-basic;
-            }
-        }
-        &.secondary {
-            color:                              $mapfre-button-color-secondary;
-            border-color:                       $mapfre-button-color-secondary;
-
-            &:disabled {
-                color:                          lighten( $mapfre-button-color-secondary, 32 );//#C4C4C4
-                border-color:                   lighten( $mapfre-button-color-secondary, 32 );//#C4C4C4
-            }
-
-            &:hover {
-                background:                     $mapfre-button-color-secondary;
-                color:                          $mapfre-button-font-color-basic;
-            }
-        }
-        &.tertiary {
-            color:                              $mapfre-button-color-blue;
-            border-color:                       $mapfre-button-color-blue;
-
-            &:disabled {
-                color:                          lighten( adjust-hue(  $mapfre-button-color-blue, 4deg ), 31 ); // #A0D2FF
-                border-color:                   lighten( adjust-hue(  $mapfre-button-color-blue, 4deg ), 31 ); // #A0D2FF
-            }
-
-            &:hover {
-                background:                     $mapfre-button-color-blue;
-                color:                          $mapfre-button-font-color-basic;
-            }
-        }
-        &.default {
-            color:                              $mapfre-button-color-default;
-            border-color:                       $mapfre-button-color-default;
-
-            &:disabled {
-                color:                          lighten( saturate( adjust-hue( $mapfre-button-color-default, -7deg ), 5 ), 46 ); // #FFC9C9
-                border-color:                   lighten( saturate( adjust-hue( $mapfre-button-color-default, -7deg ), 5 ), 46 ); // #FFC9C9
-            }
-
-            &:hover {
-                background:                     $mapfre-button-color-default;
-                color:                          $mapfre-button-font-color-basic;
-            }
-        }
-        &.white {
-            background:                         transparent;
-            border-color:                       $mapfre-button-color-white;
-            color:                              $mapfre-button-color-white; //will need to be a variable
-
-
-            &:disabled {
-                border-color:                   darken( $mapfre-button-color-white, 10%);
-                color:                          darken( $mapfre-button-color-white, 10%);
-            }
-        }
+    &.secondary {
+      background:                         $mapfre-button-color-secondary;
+      border-color:                       $mapfre-button-color-secondary;
+    
+      &:disabled {
+        background:                       $mapfre-button-color-secondary-disbaled;
+        border-color:                     $mapfre-button-color-secondary-disbaled;
+      }
     }
 
-    &.flat {
-        background:                             $mapfre-button-bg-color-flat;
-        border:                                 none;
-        box-shadow:                             none;
-        @include border-radius(0);
-
-        &:hover {
-            background:                         $mapfre-button-color-flat-hover;
-        }
-
-        &.primary {
-            color:                              $mapfre-button-color-primary;
-
-            &:disabled {
-                color:                          lighten( desaturate( $mapfre-button-color-primary, 42 ), 32 ); //#C6DB81 
-            }
-        }
-        &.secondary {
-            color:                              $mapfre-button-color-secondary;
-
-            &:disabled {
-                color:                          lighten( $mapfre-button-color-secondary, 32 );//#C4C4C4
-            }
-        }
-        &.tertiary {
-            color:                              $mapfre-button-color-blue;
-
-            &:disabled {
-                color:                          lighten( adjust-hue(  $mapfre-button-color-blue, 4deg ), 31 ); // #A0D2FF
-            }
-        }
-        &.default {
-            color:                              $mapfre-button-color-default;
-
-            &:disabled {
-                color:                          lighten( saturate( adjust-hue( $mapfre-button-color-default, -7deg ), 5 ), 46 ); // #FFC9C9
-            }
-        }
-        &.link {
-            color:                              $mapfre-button-color-link;
-        }
-        &.white {
-            color:                              $mapfre-button-color-white; //will need to be a variable
-
-
-            &:disabled {
-                color:                          darken( $mapfre-button-color-white, 10%);
-            }
-        }
+    &.tertiary {
+      background:                         $mapfre-button-color-blue;
+      border-color:                       $mapfre-button-color-blue;
+    
+      &:disabled {
+        background:                       $mapfre-button-color-blue-disabled;
+        border-color:                     $mapfre-button-color-blue-disabled;
+      }
     }
 
-    &.normal-link {
+    &.white {
+      background:                         $mapfre-button-color-white;
+      border-color:                       $mapfre-button-color-white;
+      color:                              $mapfre-button-color-white-color;
+    
+      &:disabled {
+        background:                       $mapfre-button-color-white-disabled;
+        border-color:                     $mapfre-button-color-white-disabled;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+  }
+
+  &.flat {
+    background:                           $mapfre-button-bg-color-flat;
+    border:                               none;
+    box-shadow:                           none;
+    @include border-radius(0);
+
+    &:hover {
+      background:                         $mapfre-button-color-flat-hover;
+    }
+
+    &.primary {
+      color:                              $mapfre-button-color-primary;
+
+      &:disabled {
+        color:                            $mapfre-button-color-primary-disabled;
+      }
+    }
+
+    &.secondary {
+      color:                              $mapfre-button-color-secondary;
+
+      &:disabled {
+        color:                            $mapfre-button-color-secondary-disbaled;
+      }
+    }
+
+    &.tertiary {
+      color:                              $mapfre-button-color-blue;
+
+      &:disabled {
+        color:                            $mapfre-button-color-blue-disabled;
+      }
+    }
+
+    &.default {
+      color:                              $mapfre-button-color-default;
+
+      &:disabled {
+        color:                            $mapfre-button-color-default-disabled;
+      }
+    }
+
+    &.link {
       color:                              $mapfre-button-color-link;
-      text-transform:                     capitalize;
-      font-weight: 400;
     }
 
-    &.header-flat {
-        @extend .flat;
-        padding-top: 16px;
-        padding-bottom: 16px;
-        @include media-breakpoint-down(xs) {
-            margin-right:                       -15px !important;
-        }
-        &:hover {
-          background:                          darken( desaturate( adjust-hue( $mapfre-red, -7deg ), 10 ), 3 );
-        }
-    }
+    &.white {
+      color:                              $mapfre-button-color-white;
 
-    &.footer-flat {
-      @extend .flat;
-      color:                                    #4C4C4C;
-      padding:                                  4px 8px;
-      font-size:                                12px;
-      text-transform:                           uppercase;
-      font-weight:                              400;
+      &:disabled {
+        color:                            $mapfre-button-color-white-disabled;
+      }
+    }
+  }
+
+  &.ghost {
+    background:                           $mapfre-button-bg-color-flat;
+    border:                               $mapfre-buton-border-ghost;
+    @include border-radius(100px);
+
+    &.default {
+      color:                              $mapfre-button-color-default;
+      border-color:                       $mapfre-button-color-default;
+
+      &:disabled {
+        color:                            $mapfre-button-color-default-disabled;
+        border-color:                     $mapfre-button-color-default-disabled;
+      }
 
       &:hover {
-        background:                            darken( $mapfre-button-color-flat-hover, 10% );
+        background:                       $mapfre-button-color-default;
+        color:                            $mapfre-button-font-color-basic;
       }
     }
 
-     // ---- Colors -----
-    &.blue-color {
-      color:                                  $mapfre-button-color-blue;
+    &.primary {
+      border-color:                       $mapfre-button-color-primary;
+      color:                              $mapfre-button-color-primary;
+
+      &:disabled {
+        border-color:                     $mapfre-button-color-primary-disabled;
+        color:                            $mapfre-button-color-primary-disabled;
+      }
+  
+      &:hover {
+        background:                       $mapfre-button-color-primary;
+        color:                            $mapfre-button-font-color-basic;
+      }
     }
-    &.blue-background {
-      background-color:                       $mapfre-button-color-blue;
+
+    &.secondary {
+      border-color:                       $mapfre-button-color-secondary;
+      color:                              $mapfre-button-color-secondary;
+
+      &:disabled {
+        border-color:                     $mapfre-button-color-secondary-disbaled;
+        color:                            $mapfre-button-color-secondary-disbaled;
+      }
+
+      &:hover {
+        background:                       $mapfre-button-color-secondary;
+        color:                            $mapfre-button-font-color-basic;
+      }
+    }
+
+    &.tertiary {
+      border-color:                       $mapfre-button-color-blue;
+      color:                              $mapfre-button-color-blue;
+
+      &:disabled {
+        border-color:                     $mapfre-button-color-blue-disabled;
+        color:                            $mapfre-button-color-blue-disabled;
+      }
+
+      &:hover {
+        background:                       $mapfre-button-color-blue;
+        color:                            $mapfre-button-font-color-basic;
+      }
+    }
+
+    &.white {
+      background:                         $mapfre-button-color-white-background;
+      border-color:                       $mapfre-button-color-white;
+      color:                              $mapfre-button-color-white;
+
+      &:disabled {
+        border-color:                     $mapfre-button-color-white-disabled;
+        color:                            $mapfre-button-color-white-disabled;
+      }
+    }
+  }
+
+  &.normal-link {
+    color:                                $mapfre-button-color-link;
+    font-weight:                          $mapfre-button-normal-link-font-weight;
+    text-transform:                       capitalize;
+  }
+
+  // ---- Header and Footer Buttons
+  &.footer-flat {
+    @extend .flat;
+    color:                                $mapfre-button-footer-color;
+    font-size:                            $mapfre-button-footer-font-size;
+    font-weight:                          $mapfre-button-footer-font-weight;
+    padding:                              $mapfre-button-footer-padding;
+    text-transform:                       uppercase;
+  
+    &:hover {
+      background:                         $mapfre-button-footer-background-hover
+    }
+  }
+
+  &.header-flat {
+    @extend .flat;
+    padding-bottom:                       $mapfre-button-header-padding-bottom;
+    padding-top:                          $mapfre-button-header-padding-top;
+    @include media-breakpoint-down(xs) {
+      margin-right:                       $mapfre-button-header-margin-right;
     }
     
-    // ----- Sizing -------
-    &.large {
-      display:                                -webkit-flex;
-      display:                                -ms-flexbox;
-      display:                                flex;
-      font-size:                              $mapfre-button-font-full-size;
-      width:                                  100%;
-      height:                                 48px;
+    &:hover {
+      background:                         $mapfre-button-header-hover-color;
     }
+  }
 
-    &.medium {
-        width:                                75%;
+  // ---- Colors -----
+  &.blue-color {
+    color:                                $mapfre-button-color-blue;
+  }
+
+  &.blue-background {
+    background-color:                     $mapfre-button-color-blue;
+  }
+
+  // ----- Sizing -------
+  &.large {
+    display:                              -webkit-flex;
+    display:                              -ms-flexbox;
+    display:                              flex;
+    font-size:                            $mapfre-button-font-full-size;
+    height:                               $mapfre-button-large-height;
+    width:                                $mapfre-button-large-width;
+  }
+
+  &.medium {
+    width:                              $mapfre-button-medium-width;
+  }
+  
+  &.small {
+    font-size:                          $mapfre-button-font-small-size;
+    height:                             $mapfre-button-small-height;
+  }
+
+  // ------ Custom Icon Classes -----
+  .custom-button-icon {
+    padding-right:                        $mapfre-button-custom-padding-right;
+
+    &.align-middle {
+      position:                           relative;
+      top:                                $mapfre-button-custom-middle-top;
     }
-    
-    &.small {
-      font-size:                              $mapfre-button-font-small-size;
-      height:                                 32px;
-    }
-
-    // ------ Custom Icon Classes -----
-    .custom-button-icon {
-        padding-right:                        8px;
-
-        &.align-middle {
-            position:                         relative;
-            top:                              -1px;
-        }
-    }
-
+  }
 }

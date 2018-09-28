@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { NavigationStart, Router } from "@angular/router";
-import { Observable, Subject, ReplaySubject, from, of, range, BehaviorSubject } from 'rxjs';
+import { Injectable }               from "@angular/core";
+import { NavigationStart, Router }  from "@angular/router";
+import { Observable, Subject }      from 'rxjs';
 
 @Injectable()
 export class AlertService {
@@ -40,7 +40,7 @@ export class AlertService {
     return "testing error";
   }
 
-  clear(): void{
+  clear(): void {
     this.subject.next();
   }
 }
