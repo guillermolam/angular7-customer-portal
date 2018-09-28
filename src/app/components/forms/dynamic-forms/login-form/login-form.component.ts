@@ -93,17 +93,6 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit() {
     this.userService.$user.subscribe(user => { });
-    this.alertService.getMessage().subscribe(
-      message => {
-        if(message.type == 'error'){
-          this.alertService.error(message.text);
-        }
-        else {
-          this.alertService.success(message.text);
-        }
-      },
-      error => console.log("subscribe error",error)
-    );
     this.loginForm = this.ipt.toFormGroup(this.inputs);
 
     // Recover cookie if exists
