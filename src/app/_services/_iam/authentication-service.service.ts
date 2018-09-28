@@ -66,9 +66,6 @@ export class AuthenticationService {
     return this.http.put<any>(url, userSendObject, this.options);
   }
 
-
- 
-
   createPassword(userObject): Observable<any> {
     const user =          userObject.$user.source.value;
     let 
@@ -154,11 +151,6 @@ export class AuthenticationService {
     localStorage.removeItem("currentUser");
   }
 
-  verifyAccountTokenVerification(token: string, email: string): Observable<Object> {
-    let url =           `${environment.account}/accounts?token=${token}&email=${email}`;	
-    return this.http.put(url,{}, this.options);
-  }
-
   tokenVerification(token: string, email: string): Observable<Object> {
     let url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
     return this.http.post(url,{}, this.options);
@@ -177,11 +169,16 @@ export class AuthenticationService {
     });
   }
 
+  verifyAccountTokenVerification(token: string, email: string): Observable<Object> {
+    let url =           `${environment.account}/accounts?token=${token}&email=${email}`;	
+    return this.http.put(url,{}, this.options);
+  }
+
   verifyPolicy(userObject): Observable<any> {
     const user =        userObject.$user.source._value;
     let policyNumber =  user.policyDetails[0].policynumber.policynumber;
     let 
-      url: string =     `${environment.personalpolicy}/policy/${policyNumber}`,
+      url: string =     `${environment.personalpolicy}/policies/${policyNumber}`,
       userSendObject: Object = {
         firstName:      user.firstName,
         middleName:     user.middleName,

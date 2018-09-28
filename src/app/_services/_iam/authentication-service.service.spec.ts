@@ -235,7 +235,7 @@ describe('AuthenticationService', () => {
       expect(response).toEqual(policyResponse);
     })
 
-    const req = httpMock.expectOne(`${environment.personalpolicy}/policy/${policyNumber}`);
+    const req = httpMock.expectOne(`${environment.personalpolicy}/policies/${policyNumber}`);
     expect(req.request.method).toBe('PUT');
     req.flush(policyResponse);
   }));

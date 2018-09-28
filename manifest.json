@@ -37,6 +37,9 @@
     "background_color": "#C4C4C4",
     "display": "standalone",
     "scope": "/login/",
-    "theme_color": "#C4C4C4"
+    "theme_color": "#C4C4C4",
+    "permissions": [
+      "https://mdv-doctest:*"
+    ]
 }
 

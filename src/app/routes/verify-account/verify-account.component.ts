@@ -23,7 +23,7 @@ export class VerifyAccountComponent implements OnInit {
 
   validateToken(email: string, token: string) {
     if(!email || !token) return null;
-    return this.authService.verifyAccountTokenVerification(token, email)
+   return this.authService.verifyAccountTokenVerification(token, email)
       .subscribe(
         data => {
           this.alertService.success('Thank You for validating you account!');
@@ -40,7 +40,7 @@ export class VerifyAccountComponent implements OnInit {
     );
     this.activatedRoute.queryParams.subscribe(params => {
       if(params) {
-        return this.validateToken( params.email, params.token);
+        return this.validateToken( params.email, params.token );
       }
     });
   }
