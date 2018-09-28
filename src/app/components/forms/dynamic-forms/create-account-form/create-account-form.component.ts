@@ -63,11 +63,11 @@ export class CreateAccountFormComponent implements OnInit {
         },
         err =>{
           if(err.status === 400){
-            console.log("400", err);
+            // --- Email is already in use
             this.router.navigate(['signup', 'emailinuse' ]);
           }
-          else if(err.status === 404){
-            console.log("404", err);
+          else if(err.status === 403){
+            // --- If the user does not have any policies
             this.router.navigate(['signup', 'addpolicy' ]);
           }
         }
