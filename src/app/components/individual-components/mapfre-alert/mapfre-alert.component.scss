@@ -24,6 +24,7 @@ $mapfre-alert-icon-padding:         $default-margin-padding;
 $mapfre-alert-class-border:         thin solid;
 $mapfre-alert-icon-width:           $global-one-rem * 3.125; //50px;
 $mapfre-alert-message-width:        $global-one-rem * 13.75; //220px;
+$mapfre-alert-outside-width:        $global-one-rem * 18.5; //296px;
 
 .mapfre.alert {
   border:                           $mapfre-alert-class-border;
@@ -75,4 +76,9 @@ $mapfre-alert-message-width:        $global-one-rem * 13.75; //220px;
   .message {
     width:                          $mapfre-alert-message-width;
   }
+}
+
+.outside-container {
+  margin:                           auto;
+  width:                            $mapfre-alert-outside-width;
 }

@@ -144,8 +144,7 @@ describe('AuthenticationService', () => {
     
     let token = 'asdfghjkl';
     let email = 'test@xyz.com';
-    let location = 'forgotPassword'
-    authService.tokenVerification(token,email,location).subscribe((response: HttpResponse<Number>)=>{
+    authService.tokenVerification(token,email).subscribe((response: HttpResponse<Number>)=>{
         expect(response.status).toBe(200);
     });
 
@@ -155,12 +154,11 @@ describe('AuthenticationService', () => {
   }));
 
 
-  it('should verify the token for forgotpassword', async(()=>{
+  it('should verify the token for verifyaccount', async(()=>{
     
     let token = 'asdfghjkl';
     let email = 'test@xyz.com';
-    let location = 'verifyAccount'
-    authService.tokenVerification(token,email,location).subscribe((response: HttpResponse<Number>)=>{
+    authService.verifyAccountTokenVerification(token,email).subscribe((response: HttpResponse<Number>)=>{
         expect(response.status).toBe(200);
     });
 
