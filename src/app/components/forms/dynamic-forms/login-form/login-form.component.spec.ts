@@ -18,7 +18,7 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync, tick }    from '@a
 import { NO_ERRORS_SCHEMA}                             from '@angular/core';
 import { HttpClientModule }                            from '@angular/common/http';
 import { RouterTestingModule }                         from '@angular/router/testing';
-import { ReactiveFormsModule, FormsModule }            from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormGroup, FormControl }            from '@angular/forms';
 import { CookieService }                               from 'ngx-cookie-service';
 import { TranslateModule }                             from '@ngx-translate/core';
 
@@ -63,6 +63,7 @@ describe('LoginFormComponent', () => {
   let cookieService : CookieService;
   let location: Location;
   let userService: UserService;
+  let alertService: AlertService;
   let authenticationService :      any;
   let validEmail :                 String         =     "testoauth";
   let validPassword :              String         =     'Abcd!234';
@@ -98,6 +99,7 @@ describe('LoginFormComponent', () => {
       )
 
     fixture = TestBed.createComponent(LoginFormComponent);
+    alertService =  fixture.debugElement.injector.get(AlertService);
     component = fixture.componentInstance;
     cookieService = fixture.debugElement.injector.get(CookieService);
     location = TestBed.get(Location);
@@ -149,6 +151,41 @@ describe('LoginFormComponent', () => {
         expect(component.putCookie).toHaveBeenCalled();
         expect(location.path()).toBe('/dashboard');
   }));
+
+  it('should do nothing if user property is false', fakeAsync(()=>{
+    component.user = {};
+    component.loginForm = new FormGroup({loginEmail: new FormControl(''),
+     loginPassword: new FormControl('')});
+    spyOn(component,'putCookie');
+    fixture.detectChanges();
+    component.login();
+    tick();
+    fixture.detectChanges();
+    expect(component.user.email).toBeFalsy()
+    expect(component.user.password).toBeFalsy()
+    expect(component.putCookie).toHaveBeenCalled();
+}));
+
+
+
+it('should throw error if invalid email/password', fakeAsync(()=>{
+  spyOn(component,'putCookie');
+  spyOn(fixture.debugElement.injector.get(AuthenticationService),'login').and.callFake(()=>{
+    let obs =   Observable.create((observer: Observer<string>)=>{
+      throw observer.error('error');
+    });
+    return obs;
+  });
+  spyOn(alertService,'error');
+  fixture.detectChanges();
+  component.login();
+  tick();
+  expect(component.putCookie).toHaveBeenCalled();
+  expect(alertService.error).toHaveBeenCalled();
+}));
+
+
+
 
   it('should set rememberMe field of component',()=>{
       component.onRememberMe(true);

@@ -62,7 +62,7 @@ export class LoginFormComponent implements OnInit {
             this.router.navigate(['/dashboard']);
           },
           err => {
-            console.log(err)
+            // console.log(err)
             this.alertService.error('INVALID_EMAIL_PASSWORD');
           }
         )
