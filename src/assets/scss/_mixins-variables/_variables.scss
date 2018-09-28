@@ -2,12 +2,12 @@
 $global-one-rem:            1rem;
 $global-zero:               0;
 
-//Fonts
+// --- Fonts
 $font-family-base:          'Noto Sans';
 $defualt-margin-padding:    0.5rem; //8px
 $default-margin-padding:    $defualt-margin-padding;
 
-//Sizing
+// --- Sizing
 $font-size-base:            0.875rem;  //14px
 $font-size-sm:              $font-size-base * 0.8571428571; //12px
 $font-size-med:             $font-size-base * 1.1428571429; //16px
@@ -19,6 +19,7 @@ $padding-horizontal:        $defualt-margin-padding * 2;
 $padding-vertical:          $defualt-margin-padding * 2;
 
 // --- The Custom Grid --- //
+// -- Information -- Keeping the grid in px
 $xxxs:                      0;
 $xxs:                       320px;
 $xs:                        375px;
@@ -47,7 +48,6 @@ $grid-breakpoints: (
 );
 
 $spacer:                    $defualt-margin-padding;
-
 $link-color:                $mapfre-red;
 $button-font-family:        $font-family-base;
 $grid-gutter-width:         $default-margin-padding * 2;
