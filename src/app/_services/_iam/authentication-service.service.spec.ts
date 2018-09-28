@@ -7,6 +7,7 @@ import { User } from '../../_models/user';
 import { FakeAccountResponse } from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
 import { FakePolicyResponse } from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-policy-response.model';
 import { HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 describe('AuthenticationService', () => {
@@ -56,6 +57,15 @@ describe('AuthenticationService', () => {
     const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
     expect(req.request.method).toBe('PUT');
     req.flush(user);
+  }));
+
+  it('should throw error for confirm policy and account', async(()=>{
+
+    spyOn(authService,'confirmPolicyAndAccount').and.returnValue(Observable.throwError({status: 404}));
+    authService.confirmPolicyAndAccount(userService).subscribe((resUser)=>{
+    }, (err)=>{
+      expect(err).toEqual({status: 404});
+    });
   }));
 
 
@@ -111,6 +121,14 @@ describe('AuthenticationService', () => {
     req.flush({token: 'asdfghjkl'});
   }));
 
+  it('should throw error while login', async(()=>{
+      spyOn(authService,'login').and.returnValue(Observable.throwError('Invalid email/password combination'));
+      authService.login('username','password').subscribe((resUser)=>{
+      }, (err)=>{
+        expect(err).toBe('Invalid email/password combination');
+      });
+  }));
+
 
   it('should not login successfully',async(()=>{
     let username = 'test@xyz.com';
@@ -155,7 +173,7 @@ describe('AuthenticationService', () => {
   }));
 
 
-  it('should verify the token for forgotpassword', async(()=>{
+  it('should verify the token for verifyaccount', async(()=>{
     
     let token = 'asdfghjkl';
     let email = 'test@xyz.com';
