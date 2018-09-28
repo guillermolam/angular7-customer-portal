@@ -66,17 +66,28 @@ export class AuthenticationService {
     return this.http.put<any>(url, userSendObject, this.options);
   }
 
+
+ 
+
   createPassword(userObject): Observable<any> {
     const user =          userObject.$user.source.value;
     let 
       url =               `${environment.account}/accounts/${user.email}`,
-      userSendObject:     Object = {
-        firstName:        user.firstName,
-        middleName:       user.middleName,
-        lastName:         user.lastName,
-        password:         user.password,
-        email:            user.email,
-        policynumbers:    user.policyDetails[0].policynumber.policynumber
+      userSendObject:     Object = 
+      {
+        customer: {
+          firstName:        user.firstName,
+          middleName:       user.middleName,
+          lastName:         user.lastName,
+          email:            user.email,
+        },
+        policynumbers: {
+            policynumber: user.policyDetails[0].policynumber.policynumber
+        },
+        credentials: {
+          email:            user.email,
+          password:         user.password,
+        }
       }
     ;
     return this.http.put<any>(url, userSendObject, this.options)
