@@ -6,7 +6,8 @@ import { UserService } from '../user.service';
 import { User } from '../../_models/user';
 import { FakeAccountResponse } from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
 import { FakePolicyResponse } from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-policy-response.model';
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 describe('AuthenticationService', () => {
@@ -58,6 +59,17 @@ describe('AuthenticationService', () => {
     req.flush(user);
   }));
 
+  it('should throw error for confirm policy and account', async(()=>{
+
+    authService.confirmPolicyAndAccount(userService).subscribe((resUser)=>{   
+    }, (err)=>{
+      expect(err).toBe('error');
+    });
+
+    const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
+    req.error(new ErrorEvent('error'));
+  }));
+
 
   it('should confirm paperless policy', async(()=>{
     authService.confirmPaperLessPolicy(userService).subscribe((resUser)=>{
@@ -104,11 +116,33 @@ describe('AuthenticationService', () => {
 
     authService.login(username,password).subscribe((response)=>{
       expect(response).toBeTruthy();
+    }, (err)=>{
+      expect(err).toBe('Invalid email/password combination');
     });
     
     const req = httpMock.expectOne(url);
     expect(req.request.method).toBe('POST');
     req.flush({token: 'asdfghjkl'});
+  }));
+
+  it('should throw error while login', async(()=>{
+    let username = 'test@xyz.com';
+    let password = 'password';
+    const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
+          client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
+    let urlpartone =      `${environment.api_gateway_url}/auth/oauth/v2/token`,
+        urlparttwo =      `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
+    let url = urlpartone + '?' + urlparttwo;
+
+    authService.login(username,password).subscribe((response)=>{
+  
+    }, (err)=>{
+      expect(err).toBe('Invalid email/password combination');
+    });
+    
+    const req = httpMock.expectOne(url);
+    expect(req.request.method).toBe('POST');
+    req.error(new ErrorEvent('Invalid email/password combination'));
   }));
 
 
