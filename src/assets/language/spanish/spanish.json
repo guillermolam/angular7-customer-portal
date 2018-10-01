@@ -26,11 +26,7 @@
   "SHOW_PASSWORD": "Mostrar contraseña",
   "HIDE_PASSWORD": "Ocultar contraseña",   
   "YOUR_PASSWORD_SHOULD_BE": "Su contraseña deberia ser",
-  "PASSWORD_RULE_ONE": "Primera regla",
-  "PASSWORD_RULE_TWO": "Segunda regla",
-  "PASSWORD_RULE_THREE": "Tercera regla",
-  "PASSWORD_RULE_FOUR": "Cuarta regla",
-  "PASSWORD_RULE_FIVE": "Quinta regla",
+  
   "DOES_NOT_PASS": "no pasa",
   "PASSES_THE_RULE": "pasa",
   "INVALID_USERNAME_PASSWORD": "Inválido correo electrónico y/o contraseña",
@@ -125,6 +121,14 @@
   "CREATE_ACCOUNT_LEGAL_TWO": "Términos y Condiciones",
   "CREATE_ACCOUNT_LEGAL_THREE": "y nuestra",
   "CREATE_ACCOUNT_LEGAL_FOUR": "Política de Privacidad.",
-  "CAUTION_CREATE_ACCOUNT": "En este momento, un correo electrónico no puede tener 20 caracteres."
+  "CAUTION_CREATE_ACCOUNT": "En este momento, un correo electrónico no puede tener 20 caracteres.",
+  "SUCCESS_FORGOT_PASSWORD": "Has cambiado satisfactoriamente tu contraseña.",
+  "BACK":"espalda",
+
+  "PASSWORD_RULE_ONE": "Ser una mezcla de letras minúsculas y mayúsculas",
+  "PASSWORD_RULE_TWO": "Tener al menos 1 número",
+  "PASSWORD_RULE_THREE": "Tener al menos 1 personaje especial (como @,!, $)",
+  "PASSWORD_RULE_FOUR": "Tener al menos 7 caracteres de largo",
+  "PASSWORD_RULE_FIVE": "A lo sumo 24 caracteres de largo"
 
 }

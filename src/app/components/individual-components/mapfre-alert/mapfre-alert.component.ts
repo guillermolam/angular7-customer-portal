@@ -11,7 +11,6 @@ import { AlertService } from "../../../_services/alert.service";
 export class MapfreAlertComponent implements OnInit {
   @Input()  alertType:            string = 'default';
   @Input()  nonDynamic:           boolean = false;
-  @Input()  outsideContainer:     boolean = false
             message:              any;
 
   constructor(private alertService: AlertService) { }
@@ -46,7 +45,6 @@ export class MapfreAlertComponent implements OnInit {
   ngOnInit() {
     this.alertService.getMessage().subscribe((message) => { 
       this.message = message; 
-      console.log(message);
     });
   }
 

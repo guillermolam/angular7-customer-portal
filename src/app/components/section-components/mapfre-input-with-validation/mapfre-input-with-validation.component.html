@@ -71,10 +71,10 @@
         <ng-container *ngIf= "!isValid && validMessageShow && !message">
           {{ input.validationMessageError | translate }}
         </ng-container>
-        <ng-container *ngIf="message && input.key == 'createPassword' ">
+        <ng-container *ngIf="message?.type == 'error' && input.key == 'createPassword' ">
           {{ message?.text | translate }}
         </ng-container>
-        <ng-container *ngIf="message && input.key != 'createPassword' ">
+        <ng-container *ngIf="message?.type == 'error' && input.key != 'createPassword' ">
           {{ 'FORGOT_EMAIL_REVIEW_ME' | translate }}
         </ng-container>
       </div>

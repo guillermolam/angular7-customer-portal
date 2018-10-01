@@ -40,13 +40,16 @@ export class SignupProcessComponent implements OnInit {
 		});
   }
 
+
+
   ngOnInit() {
+    
     this.userService.$user.subscribe(
       user => {
         this.user = user;
       }
     );
-
+    
     this.activatedRoute.params.subscribe((params: Params) => {
       this.whereInTheProcess = params['parm'];
     });

@@ -7,12 +7,12 @@ import { User }                     from '../../../../_models/user';
   styleUrls: ['./verify-account-screen.component.scss']
 })
 export class VerifyAccountScreenComponent implements OnInit {
-  @Input()  userData:              User;
-            userEmail:             string;
+  @Input() userEmail:             string;
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

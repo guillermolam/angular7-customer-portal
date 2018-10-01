@@ -26,6 +26,7 @@ $mapfre-input-validation-help-top:          $padding-vertical / 2.5;
 $mapfre-validation-info-padding-left:       $global-one-rem * 0.5;
 $mapfre-validation-info-font-size:          $global-one-rem * 0.7;
 $mapfre-validation-info-height:             $global-one-rem;
+$mapfre-input-password-rule-width:          89%;
 
 /* 
     ----- Information -----
@@ -109,6 +110,7 @@ input:focus, .form-control:focus { /* this is temporary */
     line-height:                            $mapfre-input-password-rule-line-height;
     font-size:                              $mapfre-input-password-rule-font-size;
     margin-top:                             $mapfre-input-password-rule-margin-top;
+    width:                                  $mapfre-input-password-rule-width;
   }
 
   .title {
