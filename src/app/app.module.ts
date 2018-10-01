@@ -92,6 +92,7 @@ import { PolicyBelongToAnotherScreenComponent } from './components/screens/signu
 import { EditPolicyComponent }                from './components/forms/dynamic-forms/edit-policy-form/edit-policy.component';
 import { VerifyAccountComponent } from './routes/verify-account/verify-account.component';
 import { WalletCardComponent } from './routes/wallet-card/wallet-card.component';
+import { WalletCardService } from "./_services/_iam/wallet-card.service";
 
 if(environment.production) {
   enableProdMode();
@@ -203,6 +204,7 @@ export function tokenGetter() {
     MockBackend,
     RegExHelper,
     UserService,
+    WalletCardService  //provider for wallet card service
     // providers used to create fake backend
     //fakeBackendProvider,
 
