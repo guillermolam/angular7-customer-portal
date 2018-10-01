@@ -31,7 +31,7 @@ describe('WalletCardService', () => {
 
   });
 
-  it('should return the Policy details', fakeAsync(()=>{
+  xit('should return the Policy details', fakeAsync(()=>{
     let email = 'testmc@gmail.com';
     let array = new Uint8Array();
     
