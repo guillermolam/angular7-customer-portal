@@ -40,10 +40,11 @@ class MockAuthService extends AuthenticationService{
 
 
 describe('CreatePasswordFormComponent', () => {
-  let component: CreatePasswordFormComponent;
-  let fixture: ComponentFixture<CreatePasswordFormComponent>;
-  let formBaseControlService :         any;
-  let createNewPasswordformService :   any;
+  let alertService:                     AlertService;
+  let component:                        CreatePasswordFormComponent;
+  let fixture:                          ComponentFixture<CreatePasswordFormComponent>;
+  let formBaseControlService :          any;
+  let createNewPasswordformService :    any;
   let user: User;
   let router: Router;
   let location: Location;
@@ -125,7 +126,17 @@ describe('CreatePasswordFormComponent', () => {
     
   }));
 
-  it('should update the password and emmit true',fakeAsync(()=>{
+  it('should redirect user to login account',fakeAsync(()=>{
+    component.email = 'test@xyz.com';
+    component.createPasswordForm.setValue({createPassword: 'password'});
+    component.user.password = component.createPasswordForm.get('createPassword').value;
+    component.user.email = component.email;
+    fixture.detectChanges();
+    component.updatePassword();
+    tick();
+    expect(alertService.success).toHaveBeenCalled();
+    expect(location.path()).toBe('/login');
+    /*
     component.email = 'test@xyz.com';
     component.createPasswordForm.setValue({createPassword: 'password'});
     component.user.password = component.createPasswordForm.get('createPassword').value;
@@ -135,7 +146,7 @@ describe('CreatePasswordFormComponent', () => {
     component.updatePassword();
     tick();
     expect(component.confirmationOfPasswordCreation.emit).toBeTruthy();
-
+    */
   }));
 
 

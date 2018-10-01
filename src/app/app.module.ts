@@ -51,9 +51,6 @@ import { EmailErrorSvgComponent }             from '../assets/svg/email-error-sv
 import { CarIconSvgComponent }                from '../assets/svg/car-icon-svg/car-icon-svg.component'; 
 import { HomeIconSvgComponent }               from '../assets/svg/home-icon-svg/home-icon-svg.component'; 
 
-
-
-
 // ----- Components ----- //
 import { FooterComponent }                    from './components/global-components/footer/footer.component';
 import { HeaderComponent }                    from './components/global-components/header/header.component';

@@ -73,7 +73,9 @@ export class MapfreIputWithValidationComponent {
     this.alertService.getMessage()
       .subscribe((message) => { 
         this.message = message;
-        this.validInput = false;
+        if(message.type == 'error'){
+          this.validInput = false;
+        }
       }
     );
   }

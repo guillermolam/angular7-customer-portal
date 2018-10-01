@@ -2,7 +2,6 @@ import { TestBed, async, inject } from '@angular/core/testing';
 
 import { AuthGuard } from './auth.guard';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, RouterState } from '@angular/router';
-import { TreeNode } from '@angular/router/src/utils/tree';
 
 describe('AuthGuard', () => {
 

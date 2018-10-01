@@ -26,7 +26,7 @@ export class VerifyAccountComponent implements OnInit {
    return this.authService.verifyAccountTokenVerification(token, email)
       .subscribe(
         data => {
-          this.alertService.success('Thank You for validating you account!');
+          this.alertService.success('Thank You for validating you account!', true);
           this.router.navigate(['login']);
         }
       )
@@ -38,10 +38,14 @@ export class VerifyAccountComponent implements OnInit {
         this.user = user;
       }
     );
-    this.activatedRoute.queryParams.subscribe(params => {
-      if(params) {
-        return this.validateToken( params.email, params.token );
+    console.log(typeof this.user)
+    this.activatedRoute.queryParams
+      .subscribe( params => {
+        if( params ) {
+          if( this.user == undefined ) this.user = params;
+          return this.validateToken( params.email, params.token );
+        }
       }
-    });
+    );
   }
 }

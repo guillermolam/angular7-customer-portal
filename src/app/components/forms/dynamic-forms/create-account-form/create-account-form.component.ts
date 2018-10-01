@@ -46,7 +46,6 @@ export class CreateAccountFormComponent implements OnInit {
     }
     else {
       this.user.policyDetails = numbers;
-      console.log(this.user);
       this.userData.updateUser(this.user);
     }
   }

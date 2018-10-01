@@ -91,6 +91,5 @@ export class ForgotPasswordNondynamicComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.createPasswordForm)
   }
 }

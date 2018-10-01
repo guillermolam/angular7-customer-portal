@@ -68,10 +68,10 @@ export class CreatePasswordFormComponent implements OnInit {
       .updatePassword (this.user, this.token)
       .subscribe (
         (data) => {
-          this.confirmationOfPasswordCreation.emit( true );
+          this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
+          this.router.navigate(['login']);
         },
         (error) => {
-          console.log(error);
           this.confirmationOfPasswordCreation.emit( false );
           this.alertService.error(error.message);
         }

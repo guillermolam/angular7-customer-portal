@@ -44,7 +44,7 @@ $mapfre-button-small-padding:             $padding-vertical / 2;
 // --- ETC
 $mapfre-buton-border:                     none;
 $mapfre-buton-border-ghost:               ($global-one-rem * 0.125) solid;
-$mapfre-button-custom-middle-top:         $global-one-rem * 0.0625; //-1px;
+$mapfre-button-custom-middle-top:         -$global-one-rem * 0.0625; //-1px;
 $mapfre-button-large-width:               100%;
 $mapfre-button-large-height:              $global-one-rem * 3; //48px;
 $mapfre-button-medium-width:              75%;
@@ -328,6 +328,10 @@ $mapfre-button-small-height:              $global-one-rem * 2; //32px;
   &.small {
     font-size:                          $mapfre-button-font-small-size;
     height:                             $mapfre-button-small-height;
+  }
+
+  span {
+    white-space:                        normal;
   }
 
   // ------ Custom Icon Classes -----

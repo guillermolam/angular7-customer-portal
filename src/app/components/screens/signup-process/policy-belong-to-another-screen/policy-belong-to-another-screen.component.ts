@@ -32,7 +32,6 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
       .confirmPolicyAndAccount(this.user)
       .subscribe(
         data => {
-          console.log("success")
           this.router.navigate(['/signup', 'createpassword']);
         },
         err => {

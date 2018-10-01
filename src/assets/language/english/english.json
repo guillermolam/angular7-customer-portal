@@ -27,11 +27,6 @@
   "SHOW_PASSWORD": "Show Password",
   "HIDE_PASSWORD": "Hide Password",
   "YOUR_PASSWORD_SHOULD_BE": "Your Password Should",
-  "PASSWORD_RULE_ONE": "Be a mix of lowercase & uppercase letters",
-  "PASSWORD_RULE_TWO": "Have at least 1 number",
-  "PASSWORD_RULE_THREE": "Have at least 1 special character (like @,!,$)",
-  "PASSWORD_RULE_FOUR": "Be at least 7 characters long",
-  "PASSWORD_RULE_FIVE": "At the most 24 characters long",
   "DOES_NOT_PASS": "Does Not Pass",
   "PASSES_THE_RULE": "Passes the Rule",
   "INVALID_USERNAME_PASSWORD": "Invalid Username and/or Password",
@@ -71,7 +66,6 @@
   "TOO_MANY_ATTEMPTS_TITLE": "Too many attempts",
   "TOO_MANY_ATTEMPTS_PARAGRAPH": "You have reached the maximum attemps for that email. For security reasons we have blocked that email to continue with this action for the next",
   "TIME": "24 hours",
-
   "FIRST_NAME": "First Name",
   "MIDDLE_INITIAL": "MI",
   "LAST_NAME": "Last Name",
@@ -126,6 +120,16 @@
   "CREATE_ACCOUNT_LEGAL_TWO": "Terms & Conditions",
   "CREATE_ACCOUNT_LEGAL_THREE": "and",
   "CREATE_ACCOUNT_LEGAL_FOUR": "Privacy Policy",
-  "CAUTION_CREATE_ACCOUNT": "At this moment of time, an email cannot be 20 characters long."
+  "CAUTION_CREATE_ACCOUNT": "At this moment of time, an email cannot be 20 characters long.",
+
+  "SUCCESS_FORGOT_PASSWORD": "You have successfully changed your password.",
+  "BACK":"BACK",
+
+  "PASSWORD_RULE_ONE": "Be a mix of lowercase & uppercase letters",
+  "PASSWORD_RULE_TWO": "Have at least 1 number",
+  "PASSWORD_RULE_THREE": "Have at least 1 special character (like @,!,$)",
+  "PASSWORD_RULE_FOUR": "Be at least 7 characters long",
+  "PASSWORD_RULE_FIVE": "At the most 24 characters long"
+ 
 }
 
