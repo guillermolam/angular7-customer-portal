@@ -71,11 +71,10 @@ export class MapfreIputWithValidationComponent {
 
   alertServiceMessage(): void {
     this.alertService.getMessage()
-      .subscribe((message) => { 
+      .subscribe( message => { 
+        if(message == null) return false; 
         this.message = message;
-        if(message.type == 'error'){
-          this.validInput = false;
-        }
+        if(message.type == 'error') this.validInput = false;
       }
     );
   }
@@ -92,9 +91,7 @@ export class MapfreIputWithValidationComponent {
   }
 
   checkForBlankInputField(value: string): boolean {
-    if(value != null && value.length >= 1 ) {
-      return true;
-    }
+    if(value != null && value.length >= 1 ) return true;
   }
 
   passwordRules(reg: string): boolean {
