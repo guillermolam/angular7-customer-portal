@@ -14,6 +14,7 @@ import { SignupProcessComponent }     from "./routes/signup/signup-process/signu
 import { TestingComponent }           from "./routes/testing/testing.component";
 import { WelcomeComponent }           from "./routes/welcome/welcome.component";
 import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
+import { WalletCardComponent } from "./routes/wallet-card/wallet-card.component";
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent, canActivate: [AuthGuard] },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   { path: "testing", component: TestingComponent },
   { path: "verifyaccount", component: VerifyAccountComponent },
   { path: "welcome", component: WelcomeComponent },
+  { path: "walletcard", component: WalletCardComponent},
   { path: "**", redirectTo: "" } // otherwise redirect to home
 ];
 
