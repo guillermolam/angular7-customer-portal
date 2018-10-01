@@ -63,7 +63,7 @@ export class CreatePasswordFormComponent implements OnInit {
 
   updatePassword(): void {
     this.user.password =              this.createPasswordForm.value.createPassword;
-    this.user.email =                 this.email.toLowerCase();
+    this.user.email =                 this.email;
     this.authenticationService
       .updatePassword (this.user, this.token)
       .subscribe (
