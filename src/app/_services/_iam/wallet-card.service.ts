@@ -5,6 +5,7 @@ import { catchError, map }    from "rxjs/operators";
 import { environment }        from "../../../environments/environment";
 import { User }               from "../../_models/user";
 import { ActivatedRoute } from "@angular/router";
+import { ResponseContentType } from "@angular/http";
 
 @Injectable()
 export class WalletCardService {
@@ -17,11 +18,11 @@ export class WalletCardService {
   }
 
 
-  generatePkPass(email): Observable<HttpRequest<any>>{
-
+  generatePkPass(email): Observable<any>{
     let url: string =     `${environment.account}/accounts/wallet/${email}`;
-    return this.http.get<any>(url);
-    
+    return this.http.get<any>(url)
+    .map(response=> new ArrayBuffer(response))
+    ;
   }
 
 
