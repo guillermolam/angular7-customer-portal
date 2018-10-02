@@ -33,16 +33,17 @@ describe('WalletCardService', () => {
 
   it('should return the Policy details', fakeAsync(()=>{
     let email = 'testmc@gmail.com';
+    let arrayBuffer = new ArrayBuffer(1);
     
     walletService.generatePkPass(email).subscribe((response)=>{
-        expect(typeof response).toBe(typeof 'bytearray');
+        expect(response).toEqual(arrayBuffer);
     });
 
     const req = httpMock.expectOne(`${environment.account}/accounts/wallet/${email}`);
     expect(req.request.method).toBe('GET');
     expect(req.request.body).toBeFalsy();
-    expect(req.request.responseType).toBe('text');
-    req.flush('bytearray');
+    expect(req.request.responseType).toBe('arraybuffer');
+    req.flush(new ArrayBuffer(1));
 
     }));
 

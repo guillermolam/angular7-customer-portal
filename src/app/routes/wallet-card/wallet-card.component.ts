@@ -18,7 +18,7 @@ export class WalletCardComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe((params)=>{
       this.walletCardService.generatePkPass(params.email).subscribe((byteArray)=>{
-        let blob = new Blob([byteArray], {type: 'arrayBuffer'});
+        let blob = new Blob([byteArray]);
         saveAs(blob,'policy.pkpass');
       });
     })
