@@ -20,17 +20,10 @@ export class WalletCardService {
 
   generatePkPass(email): Observable<any>{
     const options = {
-        responseType: 'arrayBuffer' as 'json'
+        responseType: 'text' as 'json'
     }
     let url: string =     `${environment.account}/accounts/wallet/${email}`;
-    return this.http.get<any>(url, options)
-    .map(response=> new ArrayBuffer(response))
-    ;
+    return this.http.get<any>(url, options);
   }
-
-
-//   createPkPass(policyNumber){
-
-//   }
 
 }

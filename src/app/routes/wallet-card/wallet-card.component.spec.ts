@@ -38,14 +38,14 @@ describe('WalletCardComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should call the wallet card service to generate the pk pass', fakeAsync(()=>{
+  it('should call the wallet card service to generate the pk pass', fakeAsync(()=>{
     spyOn(walletCardService,'generatePkPass').and.callFake(()=>{
       return Observable.create((observer: Observer<string>)=>{
         observer.next('bytearray');
       });
     });
     component.ngOnInit();
-    tick(15000);
+    tick(150000);
     fixture.detectChanges();
     expect(walletCardService.generatePkPass).toHaveBeenCalled();
   }));
