@@ -4,11 +4,11 @@ import { HttpClient }                   from "@angular/common/http";
 import { Router }                       from "@angular/router";
 
 // --- Components | Services | Models --- //
-import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { FormBase }                     from '../../../../_models/form-base';
-import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
-import { UserService }                  from '../../../../_services/user.service';
-import { User }                         from '../../../../_models/user';
+import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
+import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
+import { User }                       from '../../../../_models/user';
+import { UserService }                from '../../../../_services/user.service';
 
 @Component({
   selector: 'app-edit-policy-form',

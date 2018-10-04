@@ -4,10 +4,10 @@ import { HttpClient }                   from "@angular/common/http";
 import { Router }                       from "@angular/router";
 
 // --- Components | Services | Models --- //
-import { AlertService }                 from "../../../../_services/alert.service";
+import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { FormBase }                     from '../../../../_models/form-base';
-import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
+import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
 import { PolicyDetails }                from '../../../../_models/policy-details';
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';

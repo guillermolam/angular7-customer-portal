@@ -4,12 +4,11 @@ import { HttpClient }                 from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute }     from "@angular/router";
 // --- Components | Services | Models --- //
-import { AlertService }               from "../../../../_services/alert.service";
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
-import { environment }                from "../../../../../environments/environment";
 import { RegExHelper }                from '../../../../_helpers/regex-helper';
 import { UserService }                from "../../../../_services/user.service";
 import { User }                       from "../../../../_models/user";
+import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
 
 @Component({
   selector: 'app-forgot-password-form-nondynamic',

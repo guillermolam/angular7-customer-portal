@@ -1,16 +1,18 @@
 // --- Angular ---//
-import { Component, Input, OnInit }     from "@angular/core";
+import { Component, Input, OnInit }     from '@angular/core';
 import { CookieService }                from 'ngx-cookie-service';
-import { FormGroup }                    from "@angular/forms";
-import { Router }                       from "@angular/router";
+import { FormGroup }                    from '@angular/forms';
+import { Router }                       from '@angular/router';
 // --- Components | Services | Models --- //
-import { AlertService }                 from "../../../../_services/alert.service";
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { FormBase }                     from '../../../../_models/form-base';
-import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
-import { RegExHelper }                  from '../../../../_helpers/regex-helper';
-import { UserService }                  from "../../../../_services/user.service";
-import { User }                         from "../../../../_models/user";
+
+import { UserService }                  from '../../../../_services/user.service';
+import { User }                         from '../../../../_models/user';
+
+import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
+import { RegExHelper }                  from 'mapfre-design-library/lib/_helpers/regex-helper';
+import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
 
 @Component({
   selector: 'app-login-form',
@@ -39,10 +41,10 @@ export class LoginFormComponent implements OnInit {
   ) {}
   
   getCookie(): void {
-    if ( this._cookieService.get("remember") ) {
+    if ( this._cookieService.get('remember') ) {
       this.loginForm.setValue({
-        loginEmail:                   this._cookieService.get("email"),
-        loginPassword:                this._cookieService.get("password"),
+        loginEmail:                   this._cookieService.get('email'),
+        loginPassword:                this._cookieService.get('password'),
       })
     }
   }
@@ -85,9 +87,9 @@ export class LoginFormComponent implements OnInit {
   putCookie(): void {
     if(this.rememberMe) {
 			// Cookie valid for 1 Year
-      this._cookieService.set("remember", "yes", this.expireInDays)
-      this._cookieService.set("email", this.user.email, this.expireInDays);
-      this._cookieService.set("password", this.user.password, this.expireInDays);
+      this._cookieService.set('remember', 'yes', this.expireInDays)
+      this._cookieService.set('email', this.user.email, this.expireInDays);
+      this._cookieService.set('password', this.user.password, this.expireInDays);
     }
   }
 

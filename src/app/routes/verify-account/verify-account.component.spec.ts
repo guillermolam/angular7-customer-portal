@@ -10,7 +10,7 @@ import { Observable, Observer, observable, ErrorObserver, BehaviorSubject } from
 import { LoginComponent } from '../login/login.component';
 import { UserService } from '../../_services/user.service';
 import { Location } from '@angular/common';
-import { AlertService } from '../../_services/alert.service';
+import { AlertService } from 'mapfre-design-library/lib/_services/alert.service';
 import { ActivatedRoute } from '@angular/router';
 
 describe('VerifyAccountComponent', () => {

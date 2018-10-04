@@ -1,9 +1,10 @@
 import { Component, OnInit, Input }     from '@angular/core';
 import { Router }                       from '@angular/router';
+import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
+
 
 // --- Components | Services | Models --- //
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { AlertService }                 from '../../../../_services/alert.service';
 import { PolicyDetails }                from '../../../../_models/policy-details';
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';

@@ -21,9 +21,10 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "node_modules/font-awesome/scss/font-awesome.scss",
-              "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
-              "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+             // "node_modules/font-awesome/scss/font-awesome.scss",
+             // "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
+             // "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+             // "node_modules/design-library/scss/style.scss",
               "src/styles.scss"
             ],
             "scripts": [
@@ -118,9 +119,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "styles": [
-              "../node_modules/font-awesome/scss/font-awesome.scss",
-              "../node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
-              "../node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+             // "../node_modules/font-awesome/scss/font-awesome.scss",
+              //"../node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
+             // "../node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+              //"../node_modules/design-library/scss/style.scss",
               "./styles.scss"
             ],
             "scripts": [

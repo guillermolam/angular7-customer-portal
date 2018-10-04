@@ -1,9 +1,6 @@
 import { Injectable }   from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-import { FormBase }   from '../../../_models/form-base';
-import { TextBox }    from '../../../_models/form-base-extends/text-box'; 
-
+import { FormBase }   from 'mapfre-design-library/lib/_models/form-base';
+import { TextBox }    from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
 
 @Injectable()
 export class LoginService {

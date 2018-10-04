@@ -1,7 +1,7 @@
 /***** In this file I have changed scripts path for test specifications *****/
 /*angular.json
 
-/*** Replace all "\@angular\cli" with "@angular-devkit/build-angular" in "\customer-portal\karma.conf.js" file. ***/
+/*** Replace all '\@angular\cli' with '@angular-devkit/build-angular' in '\customer-portal\karma.conf.js' file. ***/
 
 /**** Some files were throwing errors whenever I run cammand `ng test`, So I have commented it. Will revert commented code once we will write test cases for those modules ****/
 /**** src/app/_directives/forms/repeat-password/repeat-password-directive.directive.spec.ts
@@ -10,7 +10,7 @@ src/app/components/confirmations/forgot-password/forgot-password.component.spec.
 src/app/components/forms/non-dynamic-forms/send-email-form/send-email-form.component.spec.ts
 src/app/components/individual-components/inputs/mapfre-input/mapfre-input.component.spec.ts
 
-/****** Added "polyfills.ts" in include property, because it throws error polyfills.ts file missing *****/
+/****** Added 'polyfills.ts' in include property, because it throws error polyfills.ts file missing *****/
 /*src/tsconfig.spec.json*/
 
 /** Importing angular default component **/
@@ -26,20 +26,20 @@ import { TranslateModule }                             from '@ngx-translate/core
 import { LoginFormComponent }           from './login-form.component';
 import { RegExHelper }                  from '../../../../_helpers/regex-helper';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { AlertService }                 from "../../../../_services/alert.service";
-import { UserService }                  from "../../../../_services/user.service";
-import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
+import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
+import { UserService }                  from '../../../../_services/user.service';
+import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
 import { LoginService }                 from '../../../../_services/forms/login/login.service';
-import { Observable, Observer } from 'rxjs';
-import { DashboardComponent } from '../../../../routes/dashboard/dashboard.component';
-import { Location } from '@angular/common';
-import { ForgotPasswordComponent } from '../../../../routes/forgot-password/forgot-password.component';
-import { FormBase } from '../../../../_models/form-base';
-import { TextBox } from '../../../../_models/form-base-extends/text-box';
+import { Observable, Observer }         from 'rxjs';
+import { DashboardComponent }           from '../../../../routes/dashboard/dashboard.component';
+import { Location }                     from '@angular/common';
+import { ForgotPasswordComponent }      from '../../../../routes/forgot-password/forgot-password.component';
+import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
 
 class MockAuthService extends AuthenticationService{
 
-    public  token: string = "token";
+    public  token: string = 'token';
     login(): Observable<any>{
       let obs = Observable.create((observer: Observer<string>)=>{
         observer.next('verifyaccount');
@@ -49,7 +49,7 @@ class MockAuthService extends AuthenticationService{
 
     logout(){
       this.token =        null;
-      localStorage.removeItem("currentUser");
+      localStorage.removeItem('currentUser');
     }
   }
 
@@ -65,7 +65,7 @@ describe('LoginFormComponent', () => {
   let userService: UserService;
   let alertService: AlertService;
   let authenticationService :      any;
-  let validEmail :                 String         =     "testoauth";
+  let validEmail :                 String         =     'testoauth';
   let validPassword :              String         =     'Abcd!234';
   let emptyMessage :               any            =     'required';
   let invalidEmailPattern :        any            =     'pattern';
@@ -79,8 +79,8 @@ describe('LoginFormComponent', () => {
         HttpClientModule,
         RouterTestingModule.withRoutes(
             [
-            { path: "dashboard", component: DashboardComponent },
-            { path: "forgotpassword", component: ForgotPasswordComponent }
+            { path: 'dashboard', component: DashboardComponent },
+            { path: 'forgotpassword', component: ForgotPasswordComponent }
         ]
         ),
         FormsModule,
@@ -131,9 +131,9 @@ describe('LoginFormComponent', () => {
 
 
   it('should get the email and password login form ', ()=>{
-        cookieService.set("remember","true");
-        cookieService.set("email","test@xyz.com");
-        cookieService.set("password","password");
+        cookieService.set('remember','true');
+        cookieService.set('email','test@xyz.com');
+        cookieService.set('password','password');
         fixture.detectChanges();
         component.getCookie();
         expect(component.loginForm.get('loginEmail').value).toBe(cookieService.get('email'));
@@ -244,10 +244,10 @@ it('should throw error if invalid email/password', fakeAsync(()=>{
 //       expect(loginEmail.valid).toBeFalsy();
 //       expect(loginEmail.errors[emptyMessage]).toBeTruthy();
 //       // Verify email pattern
-//       loginEmail.setValue("test");
+//       loginEmail.setValue('test');
 //       expect(loginEmail.errors[invalidEmailPattern]).toBeDefined();
 //       // Verify for valid email.
-//       loginEmail.setValue("validEmail@gmail.com");     
+//       loginEmail.setValue('validEmail@gmail.com');     
 //       expect(loginEmail.valid).toBeTruthy();
 //       done();
 //     });
@@ -262,7 +262,7 @@ it('should throw error if invalid email/password', fakeAsync(()=>{
 //       expect(loginPassword.errors[emptyMessage]).toBeTruthy();
       
 //       // verify password field should not more than 24 character.
-//       loginPassword.setValue("1234561231456123456123456123456");
+//       loginPassword.setValue('1234561231456123456123456123456');
 //       expect(loginPassword.errors['maxlength']).toBeDefined();
 //       // Verify password field for valid password.
 //       loginPassword.setValue(validPassword);
@@ -295,7 +295,7 @@ it('should throw error if invalid email/password', fakeAsync(()=>{
 //       let loginPassword = component.loginForm.controls['loginPassword'];
 
 //       /** Verify the invalid credential message. **/
-//       loginEmail.setValue("inValidEmail@mapfre.com");
+//       loginEmail.setValue('inValidEmail@mapfre.com');
 //       loginPassword.setValue(validPassword);
 //       expect(component.loginForm.valid).toBeTruthy();
 //       authenticationService.login(component.loginForm.controls['loginEmail'].value, component.loginForm.controls['loginPassword'].value).subscribe (

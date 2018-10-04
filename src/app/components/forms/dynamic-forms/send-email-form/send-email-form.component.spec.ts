@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed, inject, fakeAsync, tick }    from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA}                             from '@angular/core';
-import { HttpClientModule }                            from '@angular/common/http';
-import { RouterTestingModule }                         from '@angular/router/testing';
-import { ReactiveFormsModule, FormsModule }            from '@angular/forms';
-import { CookieService }                               from 'ngx-cookie-service';
-import { TranslateModule }                             from '@ngx-translate/core';
+import { NO_ERRORS_SCHEMA}                            from '@angular/core';
+import { HttpClientModule }                           from '@angular/common/http';
+import { RouterTestingModule }                        from '@angular/router/testing';
+import { ReactiveFormsModule, FormsModule }           from '@angular/forms';
+import { CookieService }                              from 'ngx-cookie-service';
+import { TranslateModule }                            from '@ngx-translate/core';
+import { AlertService }                               from 'mapfre-design-library/lib/_services/alert.service';
+import { FormBase }                                   from 'mapfre-design-library/lib/_models/form-base';
+import { TextBox }                                    from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
+import { FormBaseControlService }                     from 'mapfre-design-library/lib/_services/form-base-control.service';
 
-import { SendEmailFormComponent }       from './send-email-form.component';
-import { RegExHelper }                  from '../../../../_helpers/regex-helper';
-import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { AlertService }                 from "../../../../_services/alert.service";
-import { UserService }                  from "../../../../_services/user.service";
-import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
-import { EmailFormService }             from '../../../../_services/forms/forgot-password/email-form/email-form.service';
-import { shouldCallLifecycleInitHook } from '@angular/core/src/view';
-import { Observable, Observer } from 'rxjs';
-import { FormBase } from '../../../../_models/form-base';
-import { TextBox } from '../../../../_models/form-base-extends/text-box';
+import { SendEmailFormComponent }                     from './send-email-form.component';
+import { RegExHelper }                                from '../../../../_helpers/regex-helper';
+import { AuthenticationService }                      from '../../../../_services/_iam/authentication-service.service';
+import { UserService }                                from '../../../../_services/user.service';
+import { EmailFormService }                           from '../../../../_services/forms/forgot-password/email-form/email-form.service';
+import { shouldCallLifecycleInitHook }                from '@angular/core/src/view';
+import { Observable, Observer }                       from 'rxjs';
 
 class MockAuthService extends AuthenticationService{
     forgotPasswordSendEmailId(email): Observable<any>{
@@ -33,9 +33,9 @@ describe('SendEmailFormComponent', () => {
   let formBaseControlService :     any;
   let authenticationService :      any;
   let sendEmailService :           any;
-  let sendEmailErrorResponse:      string = "Email Not found";
-  let existingUser:                string = "Admin@mapfre.com";
-  let nonExistingUser:             string = "Abcde@gmail.com";
+  let sendEmailErrorResponse:      string = 'Email Not found';
+  let existingUser:                string = 'Admin@mapfre.com';
+  let nonExistingUser:             string = 'Abcde@gmail.com';
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -129,10 +129,10 @@ describe('SendEmailFormComponent', () => {
 //       expect(sendEmail.valid).toBeFalsy();
 //       expect(sendEmail.errors['required']).toBeTruthy();
 //       // Verify email pattern
-//       sendEmail.setValue("test");
+//       sendEmail.setValue('test');
 //       expect(sendEmail.errors['pattern']).toBeDefined();
 //       // Verify for valid email.
-//       sendEmail.setValue("validEmail@gmail.com");     
+//       sendEmail.setValue('validEmail@gmail.com');     
 //       expect(sendEmail.valid).toBeTruthy();
 //       done();
 //     });

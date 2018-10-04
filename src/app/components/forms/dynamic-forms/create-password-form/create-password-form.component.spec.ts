@@ -1,26 +1,24 @@
 import { async, ComponentFixture, TestBed, inject, fakeAsync, tick }    from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA}                             from '@angular/core';
-import { HttpClient, HttpClientModule }                from '@angular/common/http';
-import { RouterTestingModule }                         from '@angular/router/testing';
-import { FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { TranslateModule }                             from '@ngx-translate/core';
-
-import { CreatePasswordFormComponent }  from './create-password-form.component';
-import { RegExHelper }                  from '../../../../_helpers/regex-helper';
-import { FormBase }                     from '../../../../_models/form-base';
-import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { AlertService }                 from "../../../../_services/alert.service";
-import { UserService }                  from "../../../../_services/user.service";
-import { FormBaseControlService }       from '../../../../_services/form-base-control.service';
-import { CreateNewPasswordFormService } from "../../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service";
-import { Observable, Observer } from 'rxjs';
-import { User } from '../../../../_models/user';
-import { FakeAccountResponse } from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { VerifyAccountComponent } from '../../../../routes/verify-account/verify-account.component';
-import { TextBox } from '../../../../_models/form-base-extends/text-box';
-
+import { NO_ERRORS_SCHEMA}                              from '@angular/core';
+import { HttpClient, HttpClientModule }                 from '@angular/common/http';
+import { RouterTestingModule }                          from '@angular/router/testing';
+import { FormGroup, ReactiveFormsModule, FormsModule }  from '@angular/forms';
+import { TranslateModule }                              from '@ngx-translate/core';
+import { FormBase }                                     from 'mapfre-design-library/lib/_models/form-base';
+import { TextBox }                                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
+import { CreatePasswordFormComponent }                  from './create-password-form.component';
+import { RegExHelper }                                  from '../../../../_helpers/regex-helper';
+import { AuthenticationService }                        from '../../../../_services/_iam/authentication-service.service';
+import { AlertService }                                 from 'mapfre-design-library/lib/_services/alert.service';
+import { UserService }                                  from '../../../../_services/user.service';
+import { FormBaseControlService }                       from 'mapfre-design-library/lib/_services/form-base-control.service';
+import { CreateNewPasswordFormService }                 from '../../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
+import { Observable, Observer }                         from 'rxjs';
+import { User }                                         from '../../../../_models/user';
+import { FakeAccountResponse }                          from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
+import { Router, ActivatedRoute }                       from '@angular/router';
+import { Location }                                     from '@angular/common';
+import { VerifyAccountComponent }                       from '../../../../routes/verify-account/verify-account.component';
 
 class MockAuthService extends AuthenticationService{
   createPassword(): Observable<any>{
@@ -59,7 +57,7 @@ describe('CreatePasswordFormComponent', () => {
         TranslateModule.forRoot(),
         HttpClientModule,
         RouterTestingModule.withRoutes(
-          [{ path: "verifyaccount", component: VerifyAccountComponent }]
+          [{ path: 'verifyaccount', component: VerifyAccountComponent }]
         ),
         FormsModule,
         ReactiveFormsModule
@@ -171,31 +169,31 @@ describe('CreatePasswordFormComponent', () => {
 //       expect(createPassword.errors['required']).toBeTruthy();
 
 //       // Verify the password field should not be less than 7 Character.
-//       createPassword.setValue("123456");
+//       createPassword.setValue('123456');
 //       expect(createPassword.errors['minlength']).toBeDefined();
 
 //       // verify password field should not more than 24 character.
-//       createPassword.setValue("1234561231456123456123456123456");
+//       createPassword.setValue('1234561231456123456123456123456');
 //       expect(createPassword.errors['maxlength']).toBeDefined();
 
 //       // verify password should have atleast one capital letter
-//       createPassword.setValue("abcdef123@");
+//       createPassword.setValue('abcdef123@');
 //       expect(createPassword.errors['pattern']).toBeDefined();
 
 //       // verify password should have atleast one small letter
-//       createPassword.setValue("ABCD@123");
+//       createPassword.setValue('ABCD@123');
 //       expect(createPassword.errors['pattern']).toBeDefined();
 
 //       // verify password should have atleast one number letter
-//       createPassword.setValue("ABCDedf@");
+//       createPassword.setValue('ABCDedf@');
 //       expect(createPassword.errors['pattern']).toBeDefined();
 
 //       // verify password should have atleast one special character
-//       createPassword.setValue("ABcdef123");
+//       createPassword.setValue('ABcdef123');
 //       expect(createPassword.errors['pattern']).toBeDefined();
 
 //       // Verify password field for valid password.
-//       createPassword.setValue("ABcd@12");
+//       createPassword.setValue('ABcd@12');
 //       expect(createPassword.valid).toBeTruthy();
 //   }));
   
@@ -206,11 +204,11 @@ describe('CreatePasswordFormComponent', () => {
 //       /** Creating form object to set create password**/
 //       let sendEmail = component.createPasswordForm.controls['createPassword'];
 //       /** set valid password and validate the create password button active. **/
-//       sendEmail.setValue("ABcd@12");
+//       sendEmail.setValue('ABcd@12');
 //       expect(component.createPasswordForm.valid).toBeTruthy();
 //       tick(100);
 //       /** Verify the success message for password reset successfully. **/
-//       authenticationService.createPassword("abcd@gmail.com", "ABcd@123").subscribe (
+//       authenticationService.createPassword('abcd@gmail.com', 'ABcd@123').subscribe (
 //         data => {
 //           console.log(data);
 //           // expect('200').toEqual(data['status']);             
