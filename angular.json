@@ -17,14 +17,16 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
+              "src/favicon.ico",
               "src/assets",
-              "src/favicon.ico"
+              {
+                "glob": "**/*",
+                "input": "./node_modules/mapfre-design-library/lib/assets/",
+                "output": "./assets/"
+              }
             ],
             "styles": [
-             // "node_modules/font-awesome/scss/font-awesome.scss",
-             // "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
-             // "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
-             // "node_modules/design-library/scss/style.scss",
+              "node_modules/font-awesome/scss/font-awesome.scss",
               "src/styles.scss"
             ],
             "scripts": [
@@ -119,10 +121,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "styles": [
-             // "../node_modules/font-awesome/scss/font-awesome.scss",
-              //"../node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
-             // "../node_modules/angular-bootstrap-md/scss/mdb-free.scss",
-              //"../node_modules/design-library/scss/style.scss",
+              "../node_modules/font-awesome/scss/font-awesome.scss",
               "./styles.scss"
             ],
             "scripts": [
@@ -132,8 +131,13 @@
               "./node_modules/underscore/underscore-min.js"
             ],
             "assets": [
+              "src/favicon.ico",
               "src/assets",
-              "src/favicon.ico"
+              {
+                "glob": "**/*",
+                "input": "../node_modules/mapfre-design-library/lib/assets/",
+                "output": "./assets/"
+              }
             ]
           }
         },

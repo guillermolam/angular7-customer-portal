@@ -31,7 +31,7 @@ export class SignupProcessComponent implements OnInit {
     this.createNewPassword = passwordService.getInputs();
     this.editPolicyInfo = editPolicyService.getInputs();
     this.whereToFindModalOptions = new ModalOptions({
-      additionalButtonClasses:        "flat normal-link", 
+      additionalButtonClasses:        "flat normal-link small", 
 			animatePosition:                "bottom", 
 			buttonCopy:                     "MODAL_WHERE_CAN_I_LINK",
 			modalId:                        "helpModal",

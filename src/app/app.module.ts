@@ -60,6 +60,45 @@ import { PolicyBelongToAnotherScreenComponent } from './components/screens/signu
 import { EditPolicyComponent }                  from './components/forms/dynamic-forms/edit-policy-form/edit-policy.component';
 
 
+import {
+  MapfreIputWithValidationComponent,
+  RegExHelper,
+  FormBaseControlService,
+  AlertService, 
+  HeaderComponent,
+  FooterComponent,
+  MapfreButtonComponent,
+  MapfreCardComponent,
+  MapfreSwitchComponent,
+  MapfreModalComponent,
+  CreateNewPasswordSvgComponent,
+  CreateNewPasswordExpiredSvgComponent,
+  LoginIconSvgComponent,
+  ForgotPasswordIconSvgComponent,
+  CheckEmailIconSvgComponent,
+  TooManyAttemptsSvgComponent,
+  CongratsSvgComponent,
+  CreateAccountSvgComponent,
+  PolicySvgComponent ,
+  PolicyErrorSvgComponent,
+  EmailErrorSvgComponent,
+  CarIconSvgComponent,
+  HomeIconSvgComponent,
+  MapfreFormComponent,
+  MapfreIconComponent,
+  MapfreInputComponent,
+  MapfreLabelComponent,
+  MapfreLinkComponent,
+  MapfreAlertComponent,
+  MapfreCodeComponent,
+  MapfreLoadingComponent,
+  MapfreTooltipComponent,
+  MapfreDropdownComponent,
+  MapfreIconInformationComponent,
+  MapfreCheckboxComponent,
+  MapfreInfoDivsComponent,
+} from 'mapfre-design-library/lib/design-library';
+
 if(environment.production) {
   enableProdMode();
 }
@@ -70,6 +109,39 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
+    CreateNewPasswordSvgComponent,
+    CreateNewPasswordExpiredSvgComponent,
+    LoginIconSvgComponent,
+    ForgotPasswordIconSvgComponent,
+    CheckEmailIconSvgComponent,
+    TooManyAttemptsSvgComponent,
+    CongratsSvgComponent,
+    CreateAccountSvgComponent,
+    PolicySvgComponent ,
+    PolicyErrorSvgComponent,
+    EmailErrorSvgComponent,
+    CarIconSvgComponent,
+    HomeIconSvgComponent,
+    MapfreFormComponent,
+    MapfreIconComponent,
+    MapfreInputComponent,
+    MapfreLabelComponent,
+    MapfreLinkComponent,
+    MapfreAlertComponent,
+    MapfreCodeComponent,
+    MapfreLoadingComponent,
+    MapfreTooltipComponent,
+    MapfreDropdownComponent,
+    MapfreIconInformationComponent,
+    MapfreCheckboxComponent,
+    MapfreInfoDivsComponent,
+    MapfreSwitchComponent,
+    MapfreModalComponent,
+    MapfreIputWithValidationComponent,
+    HeaderComponent,
+    FooterComponent,
+    MapfreButtonComponent,
+    MapfreCardComponent,
     AppComponent,
     AccountMainComponent,
     AccountHeaderComponent,
@@ -116,6 +188,7 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:4000/api/auth']
       }
     }),
+   
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     RoutingModule,
@@ -136,6 +209,9 @@ export function tokenGetter() {
     MockBackend,
     UserService,
     WalletCardService,  //provider for wallet card service
+    FormBaseControlService,
+    AlertService,
+    RegExHelper,
   ],
   bootstrap: [AppComponent]
 })

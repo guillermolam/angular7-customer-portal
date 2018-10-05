@@ -10,12 +10,12 @@
   </div>
 
   <div class="row margin-top mt16 margin-bottom mb32">
-    <div class="col-xxs">
+    <div class="col">
       <mapfre-switch [copyRight]="true" (switchOn)="onRememberMe($event)">
           {{'REMEMBER_ME' | translate}}
       </mapfre-switch>
     </div>
-    <div class="col-xxs forgot-password">
+    <div class="col forgot-password">
       <mapfre-link
         (click)="prefillEmailParamater()"
         [additionalClasses]="'switch-line-up'"
