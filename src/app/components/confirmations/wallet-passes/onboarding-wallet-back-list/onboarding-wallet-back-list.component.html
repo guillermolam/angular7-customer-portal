@@ -1,3 +1,7 @@
-<p>
-  onboarding-wallet-back-list works!
-</p>
+<ul>
+    <li *ngFor="let detail of user.policyDetails">
+      policy type: {{ detail?.policyType }} 
+        | Polcy Number: {{ detail?.policynumbers.policynumber }} 
+        | <a href="#">Download</a>
+    </li>
+  </ul>

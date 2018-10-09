@@ -208,4 +208,18 @@ export class AuthenticationService {
     ;
     return this.http.post<any>(url, userSendObject, this.options);
   }
+
+  walletCardDownload(userObject): any {
+    const user =        userObject.$user.source._value;
+    let 
+      url: string =     `${environment.account}/accounts/${user.email}`,
+      userSendObject: Object = {
+        firstName:      user.firstName,
+        middleName:     user.middleName,
+        lastName:       user.lastName,
+        email:          user.email
+      }
+    ;
+    return this.http.post<any>(url, userSendObject, this.options);
+    }
 }

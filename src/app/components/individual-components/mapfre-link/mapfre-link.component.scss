@@ -21,47 +21,51 @@ i {
       color: $white;
     }
   }
-    span {
-      color:                              $mapfre-link-color;
-    }
-    
-    &.large-link {
-        font-size:                          $mapfre-link-font-size-large;
-    }
 
-    .link-icon {
-        position:                           relative;
-        top:                                2px;
-        font-size:                          16px;
-        padding-right:                      8px;
-    }
+  &:hover {
+    cursor: pointer;
+  }
 
-    &.normal-link {
-        font-size:                          $mapfre-link-font-size-base;
-        border-bottom:                      thin solid transparent;
-        &:hover {
-            border-bottom-color:            $mapfre-link-border-bottom-color;
-        }
-    }
+  span {
+    color:                              $mapfre-link-color;
+  }
+  
+  &.large-link {
+      font-size:                          $mapfre-link-font-size-large;
+  }
 
-    &.red-link {
-        color:                              $mapfre-link-color-red;
-    }
+  .link-icon {
+      position:                           relative;
+      top:                                2px;
+      font-size:                          16px;
+      padding-right:                      8px;
+  }
 
-    &.small-link {
-        font-size:                          $mapfre-link-font-size-small;
-    }
+  &.normal-link {
+      font-size:                          $mapfre-link-font-size-base;
+      border-bottom:                      thin solid transparent;
+      &:hover {
+          border-bottom-color:            $mapfre-link-border-bottom-color;
+      }
+  }
 
-    &.switch-line-up {
-        position:                           relative;
-        top:                                5px; //change to rem and variable
-    }
+  &.red-link {
+      color:                              $mapfre-link-color-red;
+  }
 
-    &.underline {
-        .link-content {
-            border-bottom:                  thin solid $mapfre-link-border-bottom-color;
-        }
-       @include transition(1s);
-    }
+  &.small-link {
+      font-size:                          $mapfre-link-font-size-small;
+  }
 
+  &.switch-line-up {
+      position:                           relative;
+      top:                                5px; //change to rem and variable
+  }
+
+  &.underline {
+      .link-content {
+          border-bottom:                  thin solid $mapfre-link-border-bottom-color;
+      }
+      @include transition(1s);
+  }
 }

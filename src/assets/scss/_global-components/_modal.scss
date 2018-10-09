@@ -123,8 +123,9 @@ label.grid-modal-footer {
 	}
 }
 
+
+
 .wallet-front {
-  
   .carousel-content {
     font-size: 16px;
     line-height: 24px;
@@ -186,6 +187,7 @@ label.grid-modal-footer {
   .modal-content {
     background: transparent;
     box-shadow: none !important;
+    border: none;
   }
   
 }
@@ -194,6 +196,9 @@ label.grid-modal-footer {
   position: relative;
   transform-style: preserve-3d; //use mixin
   transition: 0.5s; //use mixin
+  height:         667px;
+  width:          500px;
+  box-shadow:  1px -1px 10px 0px rgba(0,0,0,0.75); //use mixin
 
   .carousel-indicators {
     z-index: 1 !important;
@@ -214,12 +219,12 @@ label.grid-modal-footer {
     backface-visibility: hidden; //use mixin
     top: 0;
     left: 0;
-    
     font-weight:    100;
     padding:        40px;
     text-align:     center;
-    height:         658px;
-    width:          100%
+    height:         667px;
+    width:          500px;
+    position: absolute
   }
 
   .wallet-content {

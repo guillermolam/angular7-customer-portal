@@ -1,19 +1,19 @@
 export class ModalOptions {
-	additionalButtonClasses:        				string;
-	animatePosition:												string;
-	buttonCopy:                     				string;
-	howManyIconsUsed:												number;
-	iconClasses:                    				string;
-	iconFamily:															string;
-	headerIconClass:												string;
-	modalId:                        				string;
-	modalTranslateCopy:             				string;
-	typeOfModal:														string;
-	accessibilityReaderOnly:        				boolean;
-  modalClickEvent:                				boolean;
-  onLoad:                                 boolean;
-	screenReader:  													boolean;
-	showIcons:                      				boolean;
+	additionalButtonClasses?:        				string;
+	animatePosition?:												string;
+	buttonCopy?:                     				string;
+	howManyIconsUsed?:												number;
+	iconClasses?:                    				string;
+	iconFamily?:															string;
+	headerIconClass?:												string;
+	modalId?:                        				string;
+	modalTranslateCopy?:             				string;
+	typeOfModal?:														string;
+	accessibilityReaderOnly?:        				boolean;
+  modalClickEvent?:                				boolean;
+  onLoad?:                                 boolean;
+	screenReader?:  													boolean;
+	showIcons?:                      				boolean;
 
 	constructor(options:{	
 		accessibilityReaderOnly?: 						boolean,

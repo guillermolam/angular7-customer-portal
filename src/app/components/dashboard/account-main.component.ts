@@ -1,7 +1,8 @@
-import { Component, OnInit }              from "@angular/core";
+import { Component, OnInit }              from '@angular/core';
 import { ModalOptions }                   from '../../_models/modal-options';
 import { User }                           from '../../_models/user';
 import { UserService }                    from '../../_services/user.service';
+import { AuthenticationService }          from '../../_services/_iam/authentication-service.service';
 
 @Component({
   selector: "app-account-main",
@@ -15,6 +16,7 @@ export class AccountMainComponent implements OnInit {
   user:                               User;
 
   constructor(
+    private authService:              AuthenticationService,
     private userService:              UserService
   ) { 
     this.walletDownloadModalOptions = new ModalOptions({
@@ -24,6 +26,18 @@ export class AccountMainComponent implements OnInit {
       typeOfModal:                    "wallet",
       onLoad:                         true
 		});
+  }
+
+  downloadCard(): void {
+    this.authService.walletCardDownload(this.user)
+      .subscribe(
+        success => {
+          console.log("Successfully Download of Card");
+        },
+        err => {
+          console.log("ERR Download of Card");
+        }
+      )
   }
 
   goToWalletPassModal(event): void {
