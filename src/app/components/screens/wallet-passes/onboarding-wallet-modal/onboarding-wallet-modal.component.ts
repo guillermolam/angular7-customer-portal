@@ -34,6 +34,9 @@ export class OnboardingWalletModalComponent implements OnInit {
     if ( this._cookieService.get('walletcard') == 'skipped' ||  this._cookieService.get('walletcard') == 'downloaded') {
       this.walletDownloadModalOptions.onLoad = false;
     }
+    else {
+      this.walletDownloadModalOptions.onLoad = true;
+    }
   }
 
   goToWalletPassModal(event): void {
