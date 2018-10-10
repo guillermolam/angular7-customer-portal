@@ -1,37 +1,181 @@
-//This will be moving
+.wallet-android-passes {
+  margin:                       auto;
+  width:                        208px;
+  color:                      #737373;
+  font-size:                    12px;
+  font-family:                  NotoSans;
+  text-align:                   center;
+  line-height:                  16px;
+}
+
+.wallet-back {
+  background:                   $white;
+  z-index:                      1;
+  transform:                    rotatey(180deg); //use mixin
+  position:                     absolute;
+
+  a:hover {
+    border:                     none;
+  }
+}
+
 .wallet-back-button {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position:                     absolute;
+  top:                          0;
+  left:                         0;
+  
   a {
-    padding: 10px;
-   
+    padding:                    10px;
+  }
+}
+
+.wallet-card {
+  position:                     relative;
+  transform-style:              preserve-3d; //use mixin
+  transition:                   0.5s; //use mixin
+  height:                       667px;
+  width:                        500px;
+  box-shadow:                   1px -1px 10px 0px rgba(0,0,0,0.75); //use mixin
+
+  &.flipped {
+    transform:                  rotatey(180deg); //use mixin
+    
+    .wallet-front {
+      animation-name:           displayNone;
+      animation-duration:       0.5s;
+      animation-fill-mode:      forwards;
+    }
+  }
+
+  .wallet {
+    backface-visibility:        hidden; //use mixin
+    top:                        0;
+    left:                       0;
+    font-weight:                100;
+    padding:                    40px;
+    text-align:                 center;
+    height:                     667px;
+    width:                      500px;
+    position:                   absolute
+  }
+
+  .wallet-content {
+    width:                      328px;
+    margin:                     auto;
+    
+    &.back {
+      top:                      50%;
+      position:                 relative;
+      margin-top:               -140px;
+    }
+  }
+}
+
+.wallet-front {
+  animation-name:               showFront;
+  animation-duration:           0.5s;
+  animation-fill-mode:          forwards;
+  background:                   $mapfre-red;
+  z-index:                      2;
+
+  .carousel-content {
+    font-size:                  16px;
+    line-height:                24px;
+    margin-top:                 42px;
+  }
+
+  .carousel-content, 
+  .title {
+    color:                      $white;
+    text-align:                 center;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    display:                    none;
+  }
+
+  .carousel-indicators {
+    bottom:                     45px !important; //overriding mdbootstrap
+    z-index:                    1 !important;
+  }
+
+  .first-slide-title {
+    color:                      $white;
+    text-align:                 center;
+    height:                     104px;
+
+    p {
+      font-size:                18px;
+      margin-bottom:            8px;
+    }
+    img {
+      margin-bottom:            24px;
+    }
+  }
+
+  .image {
+    height:                     240px;
+  }
+
+  .title {
+    font-size:                  32px;
+    line-height:                48px;
+    margin-bottom:              24px;
+    height:                     104px;
+  }
+
+  .wallet-footer {
+    ul {
+      text-align:               center;
+      list-style:               none;
+      margin-left:              0;
+      padding:                  0;
+    }
+  }
+}
+
+.wallet-list {
+  list-style:                   none;
+}
+
+.wallet-popup {
+  perspective:                  800; //use mixin
+
+  .modal-content {
+    background:                 transparent;
+    box-shadow:                 none !important;
+    border:                     none;
   }
 }
 
 .wallet-skip-button {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  margin-left: -50px;
+  position:                    absolute;
+  bottom:                      16px;
+  left:                        50%;
+  margin-left:                 -50px;
 }
 
-.wallet-list {
-  list-style: none;
+// --- Animation
+@keyframes displayNone {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
 }
 
-.wallet-android-passes {
-  margin: auto;
-  width: 208px;
-  color: #737373;
-  font-size: 12px;
-  font-family: NotoSans;
-  text-align: center;
-  line-height: 16px;
+@keyframes showFront {
+  0% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
 }
 
-.wallet-content.back {
-  top: 50%;
-    position: relative;
-    margin-top: -140px;
-}
+
+
+
+
