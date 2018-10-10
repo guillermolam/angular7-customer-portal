@@ -28,25 +28,7 @@ export class AccountMainComponent implements OnInit {
 		});
   }
 
-  downloadCard(): void {
-    this.authService.walletCardDownload(this.user)
-      .subscribe(
-        success => {
-          console.log("Successfully Download of Card");
-        },
-        err => {
-          console.log("ERR Download of Card");
-        }
-      )
-  }
 
-  goToWalletPassModal(event): void {
-    if(event) this.onClickEventWalletPass = !this.onClickEventWalletPass;
-  }
-
-  hideModalAction(event): void {
-    if(event) this.hideModal = !this.hideModal;
-  }
 
   testingData(): User {
     //This object is for development use. And will be taken out

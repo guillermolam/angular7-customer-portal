@@ -1,36 +1,34 @@
-<!--Carousel Wrapper-->
-  <mdb-carousel 
-    [isControls]="true" 
-    [animation]="'slide'">
-      <mdb-carousel-item>
-        <div class="first-slide-title">
-          <p>{{ 'WALLET_TITLE_ONE' | translate }}</p>
-          <img src="assets/img/images/mapfre-card-logo.png" style="margin-left:-30px" />
-        </div>
-        <div class="image text-center">
-          <img src="assets/img/images/wallet-card-slide-one.png" height="240" alt="First slide">
-        </div>
-        <div class="carousel-content ">
-            {{ 'WALLET_CONTENT_ONE' | translate }}
-        </div>
-      </mdb-carousel-item>
-      <mdb-carousel-item>
-        <h1 class="title">{{ 'WALLET_TITLE_TWO' | translate }}</h1>
-        <div class="image text-center">
-          <img src="assets/img/images/wallet-card-slide-two.png"  height="240" alt="Second slide">
-        </div>
-        <div class="carousel-content ">
-          {{ 'WALLET_CONTENT_TWO' | translate }}                
-        </div>
-      </mdb-carousel-item>
-      <mdb-carousel-item>
-        <h1 class="title">{{ 'WALLET_TITLE_THREE' | translate }}</h1>
-        <div class="image text-center">
-          <img src="assets/img/images/wallet-card-slide-three.png" height="240" alt="Third slide">
-        </div>
-        <div class="carousel-content ">
-          {{ 'WALLET_CONTENT_THREE' | translate }}
+<mdb-carousel 
+  [isControls]="true" 
+  [animation]="'slide'">
+    <mdb-carousel-item>
+      <div class="first-slide-title">
+        <p>{{ 'WALLET_TITLE_ONE' | translate }}</p>
+        <img src="assets/img/images/mapfre-card-logo.png" style="margin-left:-30px" />
       </div>
-      </mdb-carousel-item>
-  </mdb-carousel>
-  <!--/.Carousel Wrapper-->
+      <div class="image text-center">
+        <img src="assets/img/images/wallet-card-slide-one.png" height="240" alt="First slide">
+      </div>
+      <div class="carousel-content ">
+          {{ 'WALLET_CONTENT_ONE' | translate }}
+      </div>
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <h1 class="title">{{ 'WALLET_TITLE_TWO' | translate }}</h1>
+      <div class="image text-center">
+        <img src="assets/img/images/wallet-card-slide-two.png"  height="240" alt="Second slide">
+      </div>
+      <div class="carousel-content ">
+        {{ 'WALLET_CONTENT_TWO' | translate }}                
+      </div>
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <h1 class="title">{{ 'WALLET_TITLE_THREE' | translate }}</h1>
+      <div class="image text-center">
+        <img src="assets/img/images/wallet-card-slide-three.png" height="240" alt="Third slide">
+      </div>
+      <div class="carousel-content ">
+        {{ 'WALLET_CONTENT_THREE' | translate }}
+      </div>
+    </mdb-carousel-item>
+</mdb-carousel>

@@ -97,6 +97,7 @@ import { VerifyAccountComponent } from './routes/verify-account/verify-account.c
 import { OnboardingWalletFrontComponent } from './components/confirmations/wallet-passes/onboarding-wallet-front/onboarding-wallet-front.component';
 import { OnboardingWalletBackComponent } from './components/confirmations/wallet-passes/onboarding-wallet-back/onboarding-wallet-back.component';
 import { OnboardingWalletBackListComponent } from './components/confirmations/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
+import { OnboardingWalletModalComponent } from './components/confirmations/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
 
 if(environment.production) {
   enableProdMode();
@@ -174,7 +175,8 @@ export function tokenGetter() {
     VerifyAccountComponent,
     OnboardingWalletFrontComponent,
     OnboardingWalletBackComponent,
-    OnboardingWalletBackListComponent
+    OnboardingWalletBackListComponent,
+    OnboardingWalletModalComponent
   ],
   imports: [
     BrowserModule,
