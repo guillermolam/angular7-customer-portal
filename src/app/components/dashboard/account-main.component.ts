@@ -1,5 +1,5 @@
 import { Component, OnInit }              from '@angular/core';
-import { ModalOptions }                   from '../../_models/modal-options';
+import { ModalOptions }                   from 'mapfre-design-library/lib/_models/modal-options';
 import { User }                           from '../../_models/user';
 import { UserService }                    from '../../_services/user.service';
 import { AuthenticationService }          from '../../_services/_iam/authentication-service.service';

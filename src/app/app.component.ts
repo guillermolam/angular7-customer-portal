@@ -1,6 +1,6 @@
 import { Component, enableProdMode }  from "@angular/core";
 import { TranslateService }           from '@ngx-translate/core';
-import { Language }                   from './app.language';
+import { Language }                   from 'mapfre-design-library/lib/_helpers/_language';
 import { _ }                          from 'underscore';
 
 @Component({

@@ -67,6 +67,7 @@ import { OnboardingWalletModalComponent }       from './components/screens/walle
 
 
 import {
+  Language,
   MapfreIputWithValidationComponent,
   RegExHelper,
   FormBaseControlService,
@@ -216,6 +217,7 @@ export function tokenGetter() {
       useClass: JwtInterceptor,
       multi: true
     },
+    Language,
     MockBackend,
     UserService,
     WalletCardService,  //provider for wallet card service
