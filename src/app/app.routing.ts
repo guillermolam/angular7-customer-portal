@@ -18,7 +18,7 @@ import { WalletCardComponent } from "./routes/wallet-card/wallet-card.component"
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent, canActivate: [AuthGuard] },
-  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: "dashboard", component: DashboardComponent, /*canActivate: [AuthGuard]*/ },
   { path: "forgotpassword", component: ForgotPasswordComponent },
   { path: "createpassword", component: CreateNewPasswordComponent },
   { path: "login", component: LoginComponent },

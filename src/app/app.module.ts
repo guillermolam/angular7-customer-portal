@@ -16,7 +16,6 @@ import { ReactiveFormsModule }                  from '@angular/forms';
 import { TranslateModule }                      from '@ngx-translate/core';
 // ----- App ----- //
 import { AppComponent }                         from './app.component';
-import { Language }                             from './app.language'; 
 import { RoutingModule }                        from './app.routing';
 // ----- Helpers | Service | Guard ----- //
 import { environment }                          from '../environments/environment.dev';
@@ -26,9 +25,11 @@ import { JwtInterceptor }                       from './_helpers/jwt.interceptor
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
 // ----- Account ----- //
-import { AccountMainComponent }                 from './account-main/account-main.component';
-import { AccountHeaderComponent }               from './account-main/account-header/account-header.component';
-import { SidenavComponent }                     from './account-main/sidenav/sidenav.component';
+
+import { AccountMainComponent }               from "./components/dashboard/account-main.component";
+import { AccountHeaderComponent }             from "./components/dashboard/account-header/account-header.component";
+import { SidenavComponent }                   from "./components/dashboard/sidenav/sidenav.component";
+
 // ----- Routes ----- //
 import { CreateNewPasswordComponent }           from './routes/create-new-password/create-new-password.component';
 import { DashboardComponent }                   from './routes/dashboard/dashboard.component';
@@ -58,6 +59,11 @@ import { VerifyAccountScreenComponent }         from './components/screens/signu
 import { PolicyNotFoundScreenComponent }        from './components/screens/signup-process/policy-not-found-screen/policy-not-found-screen.component';
 import { PolicyBelongToAnotherScreenComponent } from './components/screens/signup-process/policy-belong-to-another-screen/policy-belong-to-another-screen.component';
 import { EditPolicyComponent }                  from './components/forms/dynamic-forms/edit-policy-form/edit-policy.component';
+import { OnboardingWalletFrontComponent }       from './components/screens/wallet-passes/onboarding-wallet-front/onboarding-wallet-front.component';
+import { OnboardingWalletBackComponent }        from './components/screens/wallet-passes/onboarding-wallet-back/onboarding-wallet-back.component';
+import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
+import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
+
 
 
 import {
@@ -98,6 +104,7 @@ import {
   MapfreCheckboxComponent,
   MapfreInfoDivsComponent,
 } from 'mapfre-design-library/lib/design-library';
+
 
 if(environment.production) {
   enableProdMode();
@@ -173,7 +180,11 @@ export function tokenGetter() {
     EditPolicyComponent,
     VerifyAccountComponent,
     WalletCardComponent,
-    
+    OnboardingWalletFrontComponent,
+    OnboardingWalletBackComponent,
+    OnboardingWalletBackListComponent,
+    OnboardingWalletModalComponent
+
   ],
   imports: [
     BrowserModule,
@@ -205,7 +216,6 @@ export function tokenGetter() {
       useClass: JwtInterceptor,
       multi: true
     },
-    Language,
     MockBackend,
     UserService,
     WalletCardService,  //provider for wallet card service
