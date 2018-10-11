@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User }                     from '../../../../_models/user';
 import { AuthenticationService }    from '../../../../_services/_iam/authentication-service.service';
+import { CookieService } from 'ngx-cookie-service';
+import { WalletCardService } from '../../../../_services/_iam/wallet-card.service';
 
 @Component({
   selector: 'app-onboarding-wallet-back',
@@ -8,15 +10,24 @@ import { AuthenticationService }    from '../../../../_services/_iam/authenticat
   styleUrls: ['./onboarding-wallet-back.component.scss']
 })
 export class OnboardingWalletBackComponent implements OnInit {
-  @Input() userData:                        User;
+  @Input() userData:                   User;
 
-  constructor(private authService:          AuthenticationService) { }
+  constructor(  
+    private walletCardService:        WalletCardService,
+    private cookieService:            CookieService
+    ) { }
+
+  createCookie(time, type): void {
+    this.cookieService.set('walletcard', type, time);
+  }
 
   downloadCard(user): void {
-    this.authService.walletCardDownload(user)
+    this.walletCardService
+      .generatePkPass(user.email)
       .subscribe(
         success => {
           console.log("Successfully Download of Card");
+          this.createCookie(365, 'download');
           //close the modal
           //
         },
@@ -25,7 +36,6 @@ export class OnboardingWalletBackComponent implements OnInit {
         }
       )
   }
-
   ngOnInit() {
   }
 

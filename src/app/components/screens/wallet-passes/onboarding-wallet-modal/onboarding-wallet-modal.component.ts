@@ -26,6 +26,10 @@ export class OnboardingWalletModalComponent implements OnInit {
     });
   }
 
+  createCookie(time, type): void {
+    this._cookieService.set('walletcard', type, time);
+  }
+
   firstTimeLogInCheck(): void {
     this.getCookie();
   }
@@ -47,8 +51,12 @@ export class OnboardingWalletModalComponent implements OnInit {
     if(event) this.hideModal = !this.hideModal;
   }
 
+  skipOnClick(): void {
+    this.createCookie( 24, 'skipped' );
+    this.hideModal = true;
+  }
+
   ngOnInit() {
-   // console.log('userData',this.userData);
    this.firstTimeLogInCheck();
   }
 

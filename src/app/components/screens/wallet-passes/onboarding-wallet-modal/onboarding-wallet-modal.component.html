@@ -22,7 +22,7 @@
           <div class="wallet-skip-button">
             <mapfre-link
               additionalClasses="white-link"
-              (click)="hideModalAction($event)">
+              (click)="skipOnClick()">
               {{ 'WALLET_SKIP' | translate }}
             </mapfre-link>
           </div>
@@ -50,7 +50,7 @@
         <div class="wallet-skip-button">
           <mapfre-link
             additionalClasses="blue-link"
-            (click)="hideModalAction($event)">
+            (click)="skipOnClick()">
             {{ 'WALLET_SKIP' | translate }}
           </mapfre-link>
         </div>
