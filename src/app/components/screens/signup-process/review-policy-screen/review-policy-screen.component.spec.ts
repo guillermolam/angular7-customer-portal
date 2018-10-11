@@ -1,4 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { ReviewPolicyScreenComponent } from './review-policy-screen.component';
 
@@ -8,7 +12,12 @@ describe('ReviewPolicyScreenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReviewPolicyScreenComponent ]
+      declarations: [ ReviewPolicyScreenComponent ],
+      imports: [TranslateModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule,
+      ],
+      schemas:[NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

@@ -125,7 +125,6 @@ describe('AddPolicyComponent', () => {
     })
     component.addPolicyToObject(user);
     tick();
-    fixture.detectChanges();
     expect(userService.updateUser).toHaveBeenCalled();
   }));
 

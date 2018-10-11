@@ -1,4 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ForgotPasswordTooManyComponent } from './forgot-password-too-many.component';
 
@@ -8,7 +13,12 @@ describe('ForgotPasswordTooManyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForgotPasswordTooManyComponent ]
+      declarations: [ ForgotPasswordTooManyComponent ],
+      imports: [TranslateModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
+      schemas:[NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -19,7 +29,7 @@ describe('ForgotPasswordTooManyComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
