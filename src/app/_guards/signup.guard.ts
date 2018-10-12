@@ -1,6 +1,7 @@
 import { Injectable }           from '@angular/core';
 import { CanActivate, Router }  from '@angular/router';
 import { map }                  from 'rxjs/operators';
+
 import { UserService }          from '../_services/user.service';
 
 @Injectable()
@@ -27,6 +28,6 @@ export class SignUpGuard implements CanActivate {
           }
         )
       )
-    ;
+    ; 
   }
 }

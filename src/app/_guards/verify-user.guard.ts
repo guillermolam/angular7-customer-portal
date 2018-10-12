@@ -15,6 +15,7 @@ export class VerifyUserGuard implements CanActivate {
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     //If the user goes to the page with out an email paramater or an observable
     //then redirect the user to the login screen
+
     return this.userService.$user
       .pipe(
         map(

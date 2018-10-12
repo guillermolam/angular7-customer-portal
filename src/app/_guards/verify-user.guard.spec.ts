@@ -1,7 +1,10 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+
+import { UserService } from './../_services/user.service';
+import { Observable } from 'rxjs';
+import { TestBed, async, inject,fakeAsync,tick } from '@angular/core/testing';
 
 import { VerifyUserGuard } from './verify-user.guard';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, RouterState } from '@angular/router';
+import { ActivatedRouteSnapshot,ActivatedRoute, RouterStateSnapshot, Router, RouterState } from '@angular/router';
 
 describe('AuthGuard', () => {
 
@@ -9,24 +12,56 @@ describe('AuthGuard', () => {
   let route:              ActivatedRouteSnapshot;
   let state:              RouterStateSnapshot;
   let router = {
-    navigate: jasmine.createSpy('navigate')
-  };
 
-  beforeEach(async() => {
+    navigate: jasmine.createSpy('navigate',(login)=>{
+        if(login=='/login') return true;
+        else return false;
+    })
+  };
+  let userService: UserService;
+
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
-        verifyUserGuard,
-        {provide: Router, useValue: router}
+        VerifyUserGuard,
+        UserService,
+        {provide: Router, useValue: router},
+        {provide: ActivatedRoute,
+          useValue: {
+            queryParams: Observable.of({email: 'test@xyz.com'})
+          }
+        }
+
       ]
     });
 
     verifyUserGuard = TestBed.get(VerifyUserGuard);
-  });
+
+    userService = TestBed.get(UserService);
+    route = TestBed.get(ActivatedRoute);
+  }));
 
   afterEach(()=>{
     
   })
 
 
+  it('should be able to route when user has an observable',fakeAsync(()=>{
+
+    userService.updateUser({email: "test@xyz.com"});
+    verifyUserGuard.canActivate(route,state).subscribe((res)=>{
+      expect(res).toBeTruthy();
+    });
+  }));
+
+  it('should not route when user has no observable',fakeAsync(()=>{
+
+    userService.updateUser(null);
+
+    verifyUserGuard.canActivate(route,state).subscribe((res)=>{
+      expect(res).toBeFalsy();
+    });
+    tick();
+  }));
 
 });
