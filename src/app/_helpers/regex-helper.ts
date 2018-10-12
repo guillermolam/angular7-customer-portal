@@ -23,12 +23,12 @@ export class RegExHelper {
     this.namePattern =          /^((?!\_)[A-z]+((-)*[A-z])*)$/;
     this.policyPattern =        /^[A-z0-9]+$/;
     this.passwordRulesPattern = {
-      'ruleOne':    /^(?=.*[a-z])(?=.*[A-Z])/g,
-      'ruleTwo':    /^(?=.*[0-9])/g,
-      'ruleThree':  /^(?=.*[!@#\$%\^&\*])/g,
-      'ruleFour':   /^(?=.{7,})/g,
-      'all':        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/g,
-      'patternForDynamicForm': /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/g
+      'ruleOne':                /^(?=.*[a-z])(?=.*[A-Z])/g,
+      'ruleTwo':                /^(?=.*[0-9])/g,
+      'ruleThree':              /^(?=.*[!@#\$%\^&\*])/g,
+      'ruleFour':               /^(?=.{7,})/g,
+      'all':                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/g,
+      'patternForDynamicForm':  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/g
     };
   }
 
@@ -38,6 +38,5 @@ export class RegExHelper {
       && this.passwordRulesPattern[rule].test(value) 
     ) return true;
   }
-
 }
 
