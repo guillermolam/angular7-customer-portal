@@ -1,14 +1,18 @@
-import { FormBase } from './../../_models/form-base';
 import { Observable } from 'rxjs/Observable';
-import { EmailFormService } from './../../_services/forms/forgot-password/email-form/email-form.service';
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
-import { ForgotPasswordComponent } from './forgot-password.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
+import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
+import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
+
+import { EmailFormService } from './../../_services/forms/forgot-password/email-form/email-form.service';
+
+import { ForgotPasswordComponent } from './forgot-password.component';
 
 
 class MockEmailFormService extends EmailFormService{

@@ -1,26 +1,29 @@
-import { FormBase } from './../../../../_models/form-base';
-import { FormControl } from '@angular/forms';
-import { AddPolicyComponent } from './add-policy.component';
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
-import { TranslateModule } from '@ngx-translate/core';
-import { AuthenticationService } from '../../../../_services/_iam/authentication-service.service';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Observable, Observer, observable, ErrorObserver, BehaviorSubject } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../../_services/user.service';
-import { User } from '../../../../_models/user';
-import { FakeAccountResponse } from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
-import { DashboardComponent } from '../../../../routes/dashboard/dashboard.component';
-import { VerifyAccountComponent } from '../../../../routes/verify-account/verify-account.component';
-import { SignupProcessComponent } from '../../../../routes/signup/signup-process/signup-process.component';
-import { Location } from '@angular/common';
-import { AlertService } from '../../../../_services/alert.service';
-import { FormBaseControlService } from '../../../../_services/form-base-control.service';
-import { RegExHelper } from '../../../../_helpers/regex-helper';
-import { FormGroup } from '@angular/forms';
-import { TextBox } from '../../../../_models/form-base-extends/text-box';
+import { FormControl, FormGroup }       from '@angular/forms';
+import { async, ComponentFixture, 
+  TestBed, tick, fakeAsync }            from '@angular/core/testing';
+import { TranslateModule }              from '@ngx-translate/core';
+import { NO_ERRORS_SCHEMA }             from '@angular/core';
+import { RouterTestingModule }          from '@angular/router/testing';
+import { HttpClientTestingModule }      from '@angular/common/http/testing';
+import { ActivatedRoute, Router }       from '@angular/router';
+import { Location }                     from '@angular/common';
+import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
+import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
+import { AlertService }                 from 'mapfre-design-library/lib/_services//alert.service';
+import { Observable, Observer, 
+  observable, ErrorObserver, 
+  BehaviorSubject }                     from 'rxjs';
+
+import { AddPolicyComponent }           from './add-policy.component';
+import { UserService }                  from '../../../../_services/user.service';
+import { User }                         from '../../../../_models/user';
+import { FakeAccountResponse }          from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
+import { DashboardComponent }           from '../../../../routes/dashboard/dashboard.component';
+import { VerifyAccountComponent }       from '../../../../routes/verify-account/verify-account.component';
+import { SignupProcessComponent }       from '../../../../routes/signup/signup-process/signup-process.component';
+import { RegExHelper }                  from '../../../../_helpers/regex-helper';
+import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 
 describe('AddPolicyComponent', () => {
   let component: AddPolicyComponent;

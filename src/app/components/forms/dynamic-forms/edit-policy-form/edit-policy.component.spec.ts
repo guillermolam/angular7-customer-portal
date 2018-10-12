@@ -1,6 +1,10 @@
-import { FormBaseControlService } from './../../../../_services/form-base-control.service';
+
+import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
+import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
+import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
+
 import { EditPolicyComponent } from './edit-policy.component';
-import { FormBase } from './../../../../_models/form-base';
 import { FormControl } from '@angular/forms';
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
@@ -17,10 +21,9 @@ import { DashboardComponent } from '../../../../routes/dashboard/dashboard.compo
 import { VerifyAccountComponent } from '../../../../routes/verify-account/verify-account.component';
 import { SignupProcessComponent } from '../../../../routes/signup/signup-process/signup-process.component';
 import { Location } from '@angular/common';
-import { AlertService } from '../../../../_services/alert.service';
+
 import { RegExHelper } from '../../../../_helpers/regex-helper';
 import { FormGroup } from '@angular/forms';
-import { TextBox } from '../../../../_models/form-base-extends/text-box';
 
 class MockFormBasetService extends FormBaseControlService{
   toFormGroup() {

@@ -1,5 +1,7 @@
-import { TextBox } from './../../_models/form-base-extends/text-box';
-import { FormBase } from './../../_models/form-base';
+
+import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
+import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignupComponent } from './signup.component';

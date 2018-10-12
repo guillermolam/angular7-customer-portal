@@ -6,7 +6,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { FormBase } from '../../_models/form-base';
+import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
+import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
 
 
 class MockLoginService extends LoginService{
