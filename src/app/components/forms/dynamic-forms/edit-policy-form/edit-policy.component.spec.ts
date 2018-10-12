@@ -22,6 +22,14 @@ import { RegExHelper } from '../../../../_helpers/regex-helper';
 import { FormGroup } from '@angular/forms';
 import { TextBox } from '../../../../_models/form-base-extends/text-box';
 
+class MockFormBasetService extends FormBaseControlService{
+  toFormGroup() {
+    let res = new FormGroup({
+      value: new FormControl('formbase')
+    });
+      return res;
+  }
+}
 
 describe('EditPolicyComponent', () => {
   let component: EditPolicyComponent;
@@ -47,21 +55,32 @@ describe('EditPolicyComponent', () => {
     })
     .compileComponents();
 
-   
+    TestBed.overrideComponent(
+      EditPolicyComponent,
+      {set: {providers: [{provide: FormBaseControlService, useClass: MockFormBasetService}]}}
+    )
+
+
     fixture = TestBed.createComponent(EditPolicyComponent);
-    fbControlService = fixture.debugElement.injector.get(FormBaseControlService);
+    fbControlService = TestBed.get(FormBaseControlService);
     userService = fixture.debugElement.injector.get(UserService);
     authService = fixture.debugElement.injector.get(AuthenticationService);
     location = TestBed.get(Location);    
-    
+    user = {
+      editFirst_name: "first",
+      editMI_name : "middle",
+      editLast_name: "last",
+      editEmail: 'test@xyz.com',
+      editPolicyNumber: 12345
+    }
   }));
 
   beforeEach(() => {
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    component.editPolicyForm = new FormGroup({});
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     let input: FormBase<any>[] = [
       new TextBox({
         editFirst_name: "first",
@@ -72,4 +91,136 @@ describe('EditPolicyComponent', () => {
     ];
     expect(component).toBeTruthy();
   });
+
+
+
+  it('should create user object', fakeAsync(()=>{
+    let fakeUser = {
+        addPolicyAttempts:                 3,
+        firstName:                        "first",
+        middleName:                       "middle",
+        lastName:                         "last",
+        email:                            'test@xyz.com',
+        policyDetails:                    [{
+          policynumber:                   { policynumber: 12345 }
+        }]
+      }
+    component.userData = {};
+    component.userData.addPolicyAttempts = 2;
+    spyOn(userService,'updateUser');
+    spyOn(component,'prefillData');
+    component.createUserObject(user);
+    tick();
+    fixture.detectChanges();
+    expect(userService.updateUser).toHaveBeenCalled();
+    expect(component.user).toEqual(fakeUser);
+  }));
+
+  it('should edit the policy', fakeAsync(()=>{
+    spyOn(component,'createUserObject');
+    spyOn(component,'prefillData');
+    spyOn(authService,'verifyPolicy').and.callFake(()=>{
+      return Observable.create((observer: Observer<string>)=>{
+        observer.next('verifyPolicy');
+      });
+    });
+    component.editPolicy();
+    tick();
+    fixture.detectChanges();
+    expect(component.createUserObject).toHaveBeenCalled();
+    expect(authService.verifyPolicy).toHaveBeenCalled();
+    expect(location.path()).toBe('/signup/createpassword');
+    // expect(component.user).toEqual();
+  }));
+
+
+
+  it('should throw error and redirect to signup/notfound', fakeAsync(()=>{
+    spyOn(component,'createUserObject');
+    spyOn(component,'prefillData');
+    spyOn(authService,'verifyPolicy').and.callFake(()=>{
+      let obs =   Observable.create((observer: Observer<string>)=>{
+        throw observer.error({status: 404 });
+      });
+      return obs;
+    });
+    component.editPolicy();
+    tick();
+    fixture.detectChanges();
+    expect(component.createUserObject).toHaveBeenCalled();
+    expect(authService.verifyPolicy).toHaveBeenCalled();
+    expect(location.path()).toBe('/signup/notfound');
+  }));
+
+
+  it('should throw error and redirect to signup/bop', fakeAsync(()=>{
+    spyOn(component,'createUserObject');
+    spyOn(component,'prefillData');
+    spyOn(authService,'verifyPolicy').and.callFake(()=>{
+      let obs =   Observable.create((observer: Observer<string>)=>{
+        throw observer.error({status: 400 });
+      });
+      return obs;
+    });
+    component.editPolicy();
+    tick();
+    fixture.detectChanges();
+    expect(component.createUserObject).toHaveBeenCalled();
+    expect(authService.verifyPolicy).toHaveBeenCalled();
+    expect(location.path()).toBe('/signup/bop');
+  }));
+
+
+  it('should throw error and redirect to signup/policybelongstoanother', fakeAsync(()=>{
+    spyOn(component,'createUserObject');
+    spyOn(component,'prefillData');
+    spyOn(authService,'verifyPolicy').and.callFake(()=>{
+      let obs =   Observable.create((observer: Observer<string>)=>{
+        throw observer.error({status: 409 });
+      });
+      return obs;
+    });
+    component.editPolicy();
+    tick();
+    fixture.detectChanges();
+    expect(component.createUserObject).toHaveBeenCalled();
+    expect(authService.verifyPolicy).toHaveBeenCalled();
+    expect(location.path()).toBe('/signup/policybelongstoanother');
+  }));
+
+
+  it('should get the prefill data', fakeAsync(()=>{
+    let fakePrefill = {
+      firstName:                        "first",
+      middleName:                       "middle",
+      lastName:                         "last",
+      policyDetails:                    [{
+        policynumber:                   { policynumber: 12345 }
+      }]
+    }
+    component.editPolicyForm = new FormGroup({
+          editFirst_name: new FormControl(),
+          editMI_name : new FormControl(),
+          editLast_name: new FormControl(),
+          editPolicyNumber: new FormControl()
+    });
+    spyOn(component,'ngOnInit');
+    component.prefillData(fakePrefill);
+    tick();
+    fixture.detectChanges();
+    expect(component.editPolicyForm.get("editFirst_name").value).toBe(fakePrefill.firstName);
+    expect(component.editPolicyForm.get("editMI_name").value).toBe(fakePrefill.middleName);
+    expect(component.editPolicyForm.get("editLast_name").value).toBe(fakePrefill.lastName);
+    expect(component.editPolicyForm.get("editPolicyNumber").value).toBe(fakePrefill.policyDetails[0].policynumber.policynumber);
+  }));
+
+  it('should Initialize', fakeAsync(()=>{
+    spyOn(component,'prefillData');
+    component.ngOnInit();
+    tick();
+    fixture.detectChanges();
+    expect(component.editPolicyForm.get('value').value).toBe('formbase');
+    expect(component.prefillData).toHaveBeenCalled();
+  }));
+
 });
