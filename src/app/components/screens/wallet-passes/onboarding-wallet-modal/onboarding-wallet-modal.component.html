@@ -1,7 +1,8 @@
 <mapfre-modal 
   [modalOptions]="walletDownloadModalOptions"
   [hideModal]="hideModal"
-  (hideModalOutput)="resetHideModal($event)">
+  (hideModalOutput)="resetHideModal($event)"
+  [ngClass]="{'hide': !userData }">
     <div 
       class="modal-body no-margin-bottom wallet-card"
       [ngClass]="{ 'flipped': onClickEventWalletPass }"

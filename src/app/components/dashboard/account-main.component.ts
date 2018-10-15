@@ -1,5 +1,4 @@
 import { Component, OnInit }              from '@angular/core';
-import { ModalOptions }                   from 'mapfre-design-library/lib/_models/modal-options';
 import { User }                           from '../../_models/user';
 import { UserService }                    from '../../_services/user.service';
 import { AuthenticationService }          from '../../_services/_iam/authentication-service.service';
@@ -12,34 +11,22 @@ import { AuthenticationService }          from '../../_services/_iam/authenticat
 export class AccountMainComponent implements OnInit {
   hideModal:                          boolean = false;
   onClickEventWalletPass:             boolean = false;
-  walletDownloadModalOptions:         ModalOptions;
   user:                               User;
 
   constructor(
     private authService:              AuthenticationService,
     private userService:              UserService
-  ) { 
-    this.walletDownloadModalOptions = new ModalOptions({
-      animatePosition:                "bottom", 
-			modalId:                        "helpModal",
-			modalTranslateCopy:             "MODAL_WHERE_CAN_I_TITLE",
-      typeOfModal:                    "wallet",
-      onLoad:                         true
-		});
+  ) {
   }
 
-  ngOnInit() {
 
+  ngOnInit() {
+    
     this.userService.$user.subscribe(
       user => {
-        if(user == undefined){
-          this.user = this.testingData();
-          this.userService.updateUser(this.user);
-        }
-        else {
-          this.user = user;
-        }
+        this.user = user;
       }
     );
+    
   }
 }

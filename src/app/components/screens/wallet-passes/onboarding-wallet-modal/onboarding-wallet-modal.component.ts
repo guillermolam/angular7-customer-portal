@@ -32,6 +32,9 @@ export class OnboardingWalletModalComponent implements OnInit {
 
   firstTimeLogInCheck(): void {
     this.getCookie();
+    if(this.userData == undefined){
+      this.walletDownloadModalOptions.onLoad = false;
+    }
   }
 
   getCookie(): void {
@@ -57,7 +60,7 @@ export class OnboardingWalletModalComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.firstTimeLogInCheck();
+    this.firstTimeLogInCheck();
   }
 
 }
