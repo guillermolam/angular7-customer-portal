@@ -28,31 +28,6 @@ export class AccountMainComponent implements OnInit {
 		});
   }
 
-
-
-  testingData(): User {
-    //This object is for development use. And will be taken out
-    let object = {
-      addPolicyAttempts:          3,
-      firstName:                  'TestFirstName',
-      middleName:                 'TM',
-      lastName:                   'TestLastName',
-      email:                      'testUpdate@email.com',
-      password:                   'abcd12D!',
-      policyDetails: [{
-        InsName1:                 null,
-        effDate:                  '12/12/2018',
-        expDate:                  '12/12/2018',
-        policynumbers:             { policynumber: 'BB0490' },
-        policyStatus:             'cancelled',
-        policyType:               'home',
-        status:                   null,
-      },
-      ]
-    };
-    return object;
-  }
-
   ngOnInit() {
 
     this.userService.$user.subscribe(
