@@ -1,13 +1,14 @@
 {
   "include": [
     "src/**/*.ts",
-    "node_modules/angular-bootstrap-md/**/*.ts",
-    "node_modules/mapfre-design-library/**/*.ts"
+    "./node_modules/angular-bootstrap-md/**/*.ts",
+    "./node_modules/@types/mapfre-design-library/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "node_modules/mapfre-design-library/**/*.spec.ts"
+    "./node_modules",
+    "./node_modules/@types/mapfre-design-libraryy/**/*.spec.ts"
   ],
+  
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",

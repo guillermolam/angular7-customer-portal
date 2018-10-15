@@ -58,6 +58,7 @@
     "@auth0/angular-jwt": "^2.0.0",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
+    "@types/mapfre-design-library": "git+https://amanda-iaria:nTGJnZ5epN36yEpgDAYs@bitbucket.org/mapfre-usa-b2c/design-library.git",
     "@types/node": "^6.0.113",
     "codelyzer": "~3.2.0",
     "design-library": "git+https://amanda-iaria:nTGJnZ5epN36yEpgDAYs@bitbucket.org/mapfre-usa-b2c/design-library.git",

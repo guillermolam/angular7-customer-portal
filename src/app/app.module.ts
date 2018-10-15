@@ -25,11 +25,9 @@ import { JwtInterceptor }                       from './_helpers/jwt.interceptor
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
 // ----- Account ----- //
-
-import { AccountMainComponent }               from "./components/dashboard/account-main.component";
-import { AccountHeaderComponent }             from "./components/dashboard/account-header/account-header.component";
-import { SidenavComponent }                   from "./components/dashboard/sidenav/sidenav.component";
-
+import { AccountMainComponent }                 from "./components/dashboard/account-main.component";
+import { AccountHeaderComponent }               from "./components/dashboard/account-header/account-header.component";
+import { SidenavComponent }                     from "./components/dashboard/sidenav/sidenav.component";
 // ----- Routes ----- //
 import { CreateNewPasswordComponent }           from './routes/create-new-password/create-new-password.component';
 import { DashboardComponent }                   from './routes/dashboard/dashboard.component';
