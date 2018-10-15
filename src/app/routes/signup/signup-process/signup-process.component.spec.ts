@@ -1,25 +1,103 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
+import { FakeAccountResponse } from './../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
+import { FormBase } from './../../../_models/form-base';
+import { AddPolicyService } from './../../../_services/forms/create-account/add-policy.service';
+import { ActivatedRoute } from '@angular/router';
+import { ModalOptions } from './../../../_models/modal-options';
+import { EditPolicyService } from './../../../_services/forms/create-account/edit-policy.service';
+import { CreateNewPasswordFormService } from './../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
+import { UserService } from './../../../_services/user.service';
+import { Observable, Observer } from 'rxjs';
 import { SignupProcessComponent } from './signup-process.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { User } from '../../../_models/user';
+
 
 describe('SignupProcessComponent', () => {
   let component: SignupProcessComponent;
   let fixture: ComponentFixture<SignupProcessComponent>;
+  let route: ActivatedRoute;
+  let userService: UserService;
+  let editPolicyService: EditPolicyService;
+  let passwordService: CreateNewPasswordFormService;
+  let policyService: AddPolicyService;
+  let user: User;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupProcessComponent ]
+      declarations: [ SignupProcessComponent ],
+      imports: [TranslateModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
+      providers:[
+        UserService,
+        CreateNewPasswordFormService, 
+        EditPolicyService,
+        {provide: ActivatedRoute,
+        useValue: {
+          params: Observable.of({parm: 'whereInTheProcess'})
+        }
+      } 
+    ],
+      schemas:[NO_ERRORS_SCHEMA]
     })
     .compileComponents();
+
+    fixture = TestBed.createComponent(SignupProcessComponent);
+    policyService = fixture.debugElement.injector.get(AddPolicyService);
+    passwordService = fixture.debugElement.injector.get(CreateNewPasswordFormService);
+    editPolicyService = fixture.debugElement.injector.get(EditPolicyService);
+    userService = fixture.debugElement.injector.get(UserService);
+    user = FakeAccountResponse.getUserData();
+
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SignupProcessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
-    expect(component).toBeTruthy();
+  it('should initialize ', () => {
+    let formBase = [new FormBase({})];
+    let fakeModalOption = new ModalOptions({
+      additionalButtonClasses:        "flat normal-link", 
+			animatePosition:                "bottom", 
+			buttonCopy:                     "MODAL_WHERE_CAN_I_LINK",
+			modalId:                        "helpModal",
+			modalTranslateCopy:             "MODAL_WHERE_CAN_I_TITLE",
+			typeOfModal:                    "default",
+    });
+    spyOn(policyService,'getInputs').and.returnValue(formBase);
+    spyOn(passwordService,'getInputs').and.returnValue(formBase);
+    spyOn(editPolicyService,'getInputs').and.returnValue(formBase);
+    component.constructor(route,userService,editPolicyService,passwordService,policyService);
+    fixture.detectChanges();
+    expect(component.addPolicy).toEqual(formBase);
+    expect(component.createNewPassword).toEqual(formBase);
+    expect(component.editPolicyInfo).toEqual(formBase);
+    expect(component.whereToFindModalOptions).toEqual(fakeModalOption);
   });
+
+  it('should initialize user and update whereInTheProcess', fakeAsync(()=>{
+
+    spyOn(userService,'$user').and.callFake(()=>{
+      Observable.create((observer: Observer<User>)=>{
+       observer.next(user)
+      }
+    )
+  });
+    component.ngOnInit();
+    tick();
+    fixture.detectChanges();
+    // expect(component.user).toEqual(user);
+    expect(component.whereInTheProcess).toBe('whereInTheProcess');
+  }));
+
+
 });
