@@ -21,7 +21,7 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "./node_modules/mapfre-design-library/lib/assets/",
+                "input": "./node_modules/mapfre-design-library/assets/",
                 "output": "./assets/"
               }
             ],
