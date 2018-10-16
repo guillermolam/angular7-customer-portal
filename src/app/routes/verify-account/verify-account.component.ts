@@ -1,6 +1,6 @@
 import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Router }   from '@angular/router';
-import { AlertService }             from 'mapfre-design-library/lib/_services/alert.service';
+import { AlertService }             from 'mapfre-design-library';
 import { AuthenticationService }    from '../../_services/_iam/authentication-service.service';
 import { User }                     from '../../_models/user';
 import { UserService }              from '../../_services/user.service';

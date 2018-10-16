@@ -3,6 +3,8 @@ import { Routes, RouterModule,  }     from "@angular/router";
 import { NgModule }                   from "@angular/core";
 
 import { AuthGuard }                  from "./_guards/auth.guard";
+import { SignUpGuard }                from "./_guards/signup.guard";
+import { VerifyUserGuard }            from "./_guards/verify-user.guard";
 
 // ----- Routes ----- //
 import { DashboardComponent }         from './routes/dashboard/dashboard.component';
@@ -14,18 +16,19 @@ import { SignupProcessComponent }     from "./routes/signup/signup-process/signu
 import { TestingComponent }           from "./routes/testing/testing.component";
 import { WelcomeComponent }           from "./routes/welcome/welcome.component";
 import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
-import { WalletCardComponent } from "./routes/wallet-card/wallet-card.component";
+import { WalletCardComponent }        from "./routes/wallet-card/wallet-card.component";
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent, canActivate: [AuthGuard] },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
+
   { path: "forgotpassword", component: ForgotPasswordComponent },
   { path: "createpassword", component: CreateNewPasswordComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
-  { path: "signup/:parm", component: SignupProcessComponent },
+  { path: "signup/:parm", component: SignupProcessComponent, canActivate: [SignUpGuard] },
   { path: "testing", component: TestingComponent },
-  { path: "verifyaccount", component: VerifyAccountComponent },
+  { path: "verifyaccount", component: VerifyAccountComponent, canActivate: [VerifyUserGuard] },
   { path: "welcome", component: WelcomeComponent },
   { path: "walletcard", component: WalletCardComponent},
   { path: "**", redirectTo: "" } // otherwise redirect to home
@@ -36,5 +39,6 @@ const appRoutes: Routes = [
   exports: [RouterModule],
   declarations: []
 })
+
 export class RoutingModule {}
 

@@ -6,7 +6,7 @@
   ],
   "exclude": [
     "./node_modules",
-    "./node_modules/mapfre-design-libraryy/**/*.spec.ts"
+    "./node_modules/mapfre-design-library/**/*.spec.ts"
   ],
   
   "compileOnSave": false,

@@ -5,18 +5,14 @@ import { RouterTestingModule }                        from '@angular/router/test
 import { ReactiveFormsModule, FormsModule }           from '@angular/forms';
 import { CookieService }                              from 'ngx-cookie-service';
 import { TranslateModule }                            from '@ngx-translate/core';
-import { AlertService }                               from 'mapfre-design-library/lib/_services/alert.service';
-import { FormBase }                                   from 'mapfre-design-library/lib/_models/form-base';
-import { TextBox }                                    from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
-import { FormBaseControlService }                     from 'mapfre-design-library/lib/_services/form-base-control.service';
-
+import { FormBase, TextBox, AlertService, 
+  FormBaseControlService, RegExHelper }               from 'mapfre-design-library';
+import { Observable, Observer }                       from 'rxjs';
 import { SendEmailFormComponent }                     from './send-email-form.component';
-import { RegExHelper }                                from '../../../../_helpers/regex-helper';
 import { AuthenticationService }                      from '../../../../_services/_iam/authentication-service.service';
 import { UserService }                                from '../../../../_services/user.service';
 import { EmailFormService }                           from '../../../../_services/forms/forgot-password/email-form/email-form.service';
-import { shouldCallLifecycleInitHook }                from '@angular/core/src/view';
-import { Observable, Observer }                       from 'rxjs';
+
 
 class MockAuthService extends AuthenticationService{
     forgotPasswordSendEmailId(email): Observable<any>{

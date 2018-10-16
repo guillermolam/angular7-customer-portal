@@ -3,7 +3,7 @@ import { ActivatedRoute, Params }         from '@angular/router';
 import { AddPolicyService }               from '../../../_services/forms/create-account/add-policy.service';
 import { CreateNewPasswordFormService }   from '../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
 import { EditPolicyService }              from '../../../_services/forms/create-account/edit-policy.service';
-import { ModalOptions }                   from 'mapfre-design-library/lib/_models/modal-options';
+import { ModalOptions }                   from 'mapfre-design-library';
 import { User }                           from '../../../_models/user';
 import { UserService }                    from '../../../_services/user.service';
 

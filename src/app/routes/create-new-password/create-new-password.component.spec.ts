@@ -60,6 +60,10 @@ describe('CreateNewPasswordComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    localStorage.removeItem('currentUser');
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

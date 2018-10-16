@@ -1,6 +1,5 @@
 
-import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
-import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+import { FormBase }  from 'mapfre-design-library';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -50,6 +49,10 @@ describe('SignupComponent', () => {
   beforeEach(() => {
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    localStorage.removeItem('currentUser');
   });
 
   it('should get the inputs', () => {

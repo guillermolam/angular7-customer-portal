@@ -1,6 +1,6 @@
 import { Component, OnInit, Input }         from '@angular/core';
 import { CookieService }                    from 'ngx-cookie-service';
-import { ModalOptions }                     from 'mapfre-design-library/lib/_models/modal-options';
+import { ModalOptions }                     from 'mapfre-design-library';
 import { User }                             from '../../../../_models/user';
 
 @Component({

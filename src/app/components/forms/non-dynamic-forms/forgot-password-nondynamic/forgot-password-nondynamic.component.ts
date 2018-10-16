@@ -1,14 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter }   from "@angular/core";
-import { CookieService }              from "angular2-cookie/services/cookies.service";
 import { HttpClient }                 from '@angular/common/http';
-import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute }     from "@angular/router";
+import { AlertService, RegExHelper }  from 'mapfre-design-library';
 // --- Components | Services | Models --- //
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
-import { RegExHelper }                from '../../../../_helpers/regex-helper';
 import { UserService }                from "../../../../_services/user.service";
 import { User }                       from "../../../../_models/user";
-import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
+
 
 @Component({
   selector: 'app-forgot-password-form-nondynamic',

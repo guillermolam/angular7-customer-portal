@@ -1,6 +1,6 @@
 // --- Design Library --- //
 import { MDBBootstrapModule }                   from 'angular-bootstrap-md';
-
+import { MapfreDesignLibraryModule }            from 'mapfre-design-library';
 // ----- Packages ---- //
 import { BrowserModule }                        from '@angular/platform-browser';
 import { BrowserAnimationsModule }              from '@angular/platform-browser/animations';
@@ -63,48 +63,6 @@ import { OnboardingWalletBackListComponent }    from './components/screens/walle
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
 
 
-
-import {
-  Language,
-  MapfreIputWithValidationComponent,
-  RegExHelper,
-  FormBaseControlService,
-  AlertService, 
-  HeaderComponent,
-  FooterComponent,
-  MapfreButtonComponent,
-  MapfreCardComponent,
-  MapfreSwitchComponent,
-  MapfreModalComponent,
-  CreateNewPasswordSvgComponent,
-  CreateNewPasswordExpiredSvgComponent,
-  LoginIconSvgComponent,
-  ForgotPasswordIconSvgComponent,
-  CheckEmailIconSvgComponent,
-  TooManyAttemptsSvgComponent,
-  CongratsSvgComponent,
-  CreateAccountSvgComponent,
-  PolicySvgComponent ,
-  PolicyErrorSvgComponent,
-  EmailErrorSvgComponent,
-  CarIconSvgComponent,
-  HomeIconSvgComponent,
-  MapfreFormComponent,
-  MapfreIconComponent,
-  MapfreInputComponent,
-  MapfreLabelComponent,
-  MapfreLinkComponent,
-  MapfreAlertComponent,
-  MapfreCodeComponent,
-  MapfreLoadingComponent,
-  MapfreTooltipComponent,
-  MapfreDropdownComponent,
-  MapfreIconInformationComponent,
-  MapfreCheckboxComponent,
-  MapfreInfoDivsComponent,
-} from 'mapfre-design-library/lib/design-library';
-
-
 if(environment.production) {
   enableProdMode();
 }
@@ -115,39 +73,6 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    CreateNewPasswordSvgComponent,
-    CreateNewPasswordExpiredSvgComponent,
-    LoginIconSvgComponent,
-    ForgotPasswordIconSvgComponent,
-    CheckEmailIconSvgComponent,
-    TooManyAttemptsSvgComponent,
-    CongratsSvgComponent,
-    CreateAccountSvgComponent,
-    PolicySvgComponent ,
-    PolicyErrorSvgComponent,
-    EmailErrorSvgComponent,
-    CarIconSvgComponent,
-    HomeIconSvgComponent,
-    MapfreFormComponent,
-    MapfreIconComponent,
-    MapfreInputComponent,
-    MapfreLabelComponent,
-    MapfreLinkComponent,
-    MapfreAlertComponent,
-    MapfreCodeComponent,
-    MapfreLoadingComponent,
-    MapfreTooltipComponent,
-    MapfreDropdownComponent,
-    MapfreIconInformationComponent,
-    MapfreCheckboxComponent,
-    MapfreInfoDivsComponent,
-    MapfreSwitchComponent,
-    MapfreModalComponent,
-    MapfreIputWithValidationComponent,
-    HeaderComponent,
-    FooterComponent,
-    MapfreButtonComponent,
-    MapfreCardComponent,
     AppComponent,
     AccountMainComponent,
     AccountHeaderComponent,
@@ -198,7 +123,7 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:4000/api/auth']
       }
     }),
-   
+    MapfreDesignLibraryModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     RoutingModule,
@@ -215,13 +140,9 @@ export function tokenGetter() {
       useClass: JwtInterceptor,
       multi: true
     },
-    Language,
     MockBackend,
     UserService,
     WalletCardService,  //provider for wallet card service
-    FormBaseControlService,
-    AlertService,
-    RegExHelper,
   ],
   bootstrap: [AppComponent]
 })

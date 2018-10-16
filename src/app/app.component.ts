@@ -1,7 +1,8 @@
 import { Component, enableProdMode }  from "@angular/core";
 import { TranslateService }           from '@ngx-translate/core';
-import { Language }                   from 'mapfre-design-library/lib/_helpers/_language';
-import { _ }                          from 'underscore';
+import * as _ from 'underscore';
+import { Language }                   from 'mapfre-design-library';
+
 
 @Component({
   selector: "mapfre-root",
@@ -32,8 +33,6 @@ export class AppComponent {
 		self.translate.use(lang);
   }
 
-  
-  
   ngOnInit() {
     this.findLanguage();
 	}

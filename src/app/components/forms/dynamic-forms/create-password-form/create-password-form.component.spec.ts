@@ -4,20 +4,17 @@ import { HttpClient, HttpClientModule }                 from '@angular/common/ht
 import { RouterTestingModule }                          from '@angular/router/testing';
 import { FormGroup, ReactiveFormsModule, FormsModule }  from '@angular/forms';
 import { TranslateModule }                              from '@ngx-translate/core';
-import { FormBase }                                     from 'mapfre-design-library/lib/_models/form-base';
-import { TextBox }                                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
-import { CreatePasswordFormComponent }                  from './create-password-form.component';
-import { RegExHelper }                                  from '../../../../_helpers/regex-helper';
-import { AuthenticationService }                        from '../../../../_services/_iam/authentication-service.service';
-import { AlertService }                                 from 'mapfre-design-library/lib/_services/alert.service';
-import { UserService }                                  from '../../../../_services/user.service';
-import { FormBaseControlService }                       from 'mapfre-design-library/lib/_services/form-base-control.service';
-import { CreateNewPasswordFormService }                 from '../../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
-import { Observable, Observer }                         from 'rxjs';
-import { User }                                         from '../../../../_models/user';
-import { FakeAccountResponse }                          from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
+import { FormBase, TextBox, AlertService, 
+        FormBaseControlService, RegExHelper }           from 'mapfre-design-library';
 import { Router, ActivatedRoute }                       from '@angular/router';
 import { Location }                                     from '@angular/common';
+import { Observable, Observer }                         from 'rxjs';
+import { CreatePasswordFormComponent }                  from './create-password-form.component';
+import { AuthenticationService }                        from '../../../../_services/_iam/authentication-service.service';
+import { UserService }                                  from '../../../../_services/user.service';
+import { CreateNewPasswordFormService }                 from '../../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
+import { User }                                         from '../../../../_models/user';
+import { FakeAccountResponse }                          from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
 import { VerifyAccountComponent }                       from '../../../../routes/verify-account/verify-account.component';
 
 class MockAuthService extends AuthenticationService{
@@ -96,6 +93,9 @@ describe('CreatePasswordFormComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    localStorage.removeItem('currentUser');
+  });
 
   it('should call createPassword method', fakeAsync(()=>{
     component.whereInTheProcess = 'createpassword';

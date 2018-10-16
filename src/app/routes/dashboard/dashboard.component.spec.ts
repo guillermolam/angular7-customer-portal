@@ -19,6 +19,10 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    localStorage.removeItem('currentUser');
+  });
+
   xit('should create', () => {
     expect(component).toBeTruthy();
   });

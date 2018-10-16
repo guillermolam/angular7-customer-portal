@@ -1,21 +1,20 @@
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { async, ComponentFixture, 
+  TestBed, fakeAsync, tick }        from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA }         from '@angular/core';
+import { HttpClientTestingModule }  from '@angular/common/http/testing';
+import { RouterTestingModule }      from '@angular/router/testing';
+import { TranslateModule }          from '@ngx-translate/core';
+import { FormBase, ModalOptions }   from 'mapfre-design-library';
+import { ActivatedRoute }           from '@angular/router';
+import { Observable, Observer }     from 'rxjs';
 
-import { FakeAccountResponse } from './../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
-import { FormBase } from './../../../_models/form-base';
-import { AddPolicyService } from './../../../_services/forms/create-account/add-policy.service';
-import { ActivatedRoute } from '@angular/router';
-import { ModalOptions } from './../../../_models/modal-options';
-import { EditPolicyService } from './../../../_services/forms/create-account/edit-policy.service';
+import { FakeAccountResponse }      from './../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
+import { AddPolicyService }         from './../../../_services/forms/create-account/add-policy.service';
+import { EditPolicyService }        from './../../../_services/forms/create-account/edit-policy.service';
 import { CreateNewPasswordFormService } from './../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
-import { UserService } from './../../../_services/user.service';
-import { Observable, Observer } from 'rxjs';
-import { SignupProcessComponent } from './signup-process.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule } from '@ngx-translate/core';
-import { User } from '../../../_models/user';
-
+import { UserService }              from './../../../_services/user.service';
+import { SignupProcessComponent }   from './signup-process.component';
+import { User }                     from '../../../_models/user';
 
 describe('SignupProcessComponent', () => {
   let component: SignupProcessComponent;
@@ -30,8 +29,11 @@ describe('SignupProcessComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupProcessComponent ],
-      imports: [TranslateModule.forRoot(),
+      declarations: [ 
+        SignupProcessComponent,
+       ],
+      imports: [
+        TranslateModule.forRoot(),
         RouterTestingModule,
         HttpClientTestingModule
       ],
@@ -63,10 +65,14 @@ describe('SignupProcessComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    localStorage.removeItem('currentUser');
+  });
+
   it('should initialize ', () => {
     let formBase = [new FormBase({})];
     let fakeModalOption = new ModalOptions({
-      additionalButtonClasses:        "flat normal-link", 
+      additionalButtonClasses:        "flat normal-link small", 
 			animatePosition:                "bottom", 
 			buttonCopy:                     "MODAL_WHERE_CAN_I_LINK",
 			modalId:                        "helpModal",

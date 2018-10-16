@@ -9,10 +9,7 @@ import { AuthenticationService }        from '../../../../_services/_iam/authent
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';
 
-import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
-import { RegExHelper }                  from 'mapfre-design-library/lib/_helpers/regex-helper';
-import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
-import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
+import { AlertService, RegExHelper, FormBase, FormBaseControlService }  from 'mapfre-design-library';
 
 @Component({
   selector: 'app-login-form',

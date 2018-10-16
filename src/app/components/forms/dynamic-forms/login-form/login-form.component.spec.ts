@@ -14,28 +14,28 @@ src/app/components/individual-components/inputs/mapfre-input/mapfre-input.compon
 /*src/tsconfig.spec.json*/
 
 /** Importing angular default component **/
-import { async, ComponentFixture, TestBed, inject, fakeAsync, tick }    from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA}                             from '@angular/core';
-import { HttpClientModule }                            from '@angular/common/http';
-import { RouterTestingModule }                         from '@angular/router/testing';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormControl }            from '@angular/forms';
-import { CookieService }                               from 'ngx-cookie-service';
-import { TranslateModule }                             from '@ngx-translate/core';
+import { async, ComponentFixture, TestBed, 
+  inject, fakeAsync, tick }              from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA}               from '@angular/core';
+import { HttpClientModule }              from '@angular/common/http';
+import { RouterTestingModule }           from '@angular/router/testing';
+import { ReactiveFormsModule, FormsModule, 
+  FormGroup, FormControl }               from '@angular/forms';
+import { CookieService }                 from 'ngx-cookie-service';
+import { TranslateModule }               from '@ngx-translate/core';
+import { AlertService, 
+  FormBaseControlService, FormBase, 
+  TextBox, RegExHelper }                from 'mapfre-design-library';
+import { Location }                     from '@angular/common';
+import { Observable, Observer }         from 'rxjs';
 
 /** Import component & services **/
 import { LoginFormComponent }           from './login-form.component';
-import { RegExHelper }                  from '../../../../_helpers/regex-helper';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
 import { UserService }                  from '../../../../_services/user.service';
-import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
 import { LoginService }                 from '../../../../_services/forms/login/login.service';
-import { Observable, Observer }         from 'rxjs';
 import { DashboardComponent }           from '../../../../routes/dashboard/dashboard.component';
-import { Location }                     from '@angular/common';
 import { ForgotPasswordComponent }      from '../../../../routes/forgot-password/forgot-password.component';
-import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
-import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
 
 class MockAuthService extends AuthenticationService{
 

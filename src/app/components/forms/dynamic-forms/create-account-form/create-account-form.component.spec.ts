@@ -15,9 +15,7 @@ import { DashboardComponent } from '../../../../routes/dashboard/dashboard.compo
 import { VerifyAccountComponent } from '../../../../routes/verify-account/verify-account.component';
 import { SignupProcessComponent } from '../../../../routes/signup/signup-process/signup-process.component';
 import { Location } from '@angular/common';
-import { AlertService } from 'mapfre-design-library/lib/_services/alert.service';
-import { FormBaseControlService } from 'mapfre-design-library/lib/_services/form-base-control.service';
-import { RegExHelper } from '../../../../_helpers/regex-helper';
+import { AlertService, FormBaseControlService, RegExHelper } from 'mapfre-design-library';
 
 describe('CreateAccountFormComponent', () => {
   let component: CreateAccountFormComponent;

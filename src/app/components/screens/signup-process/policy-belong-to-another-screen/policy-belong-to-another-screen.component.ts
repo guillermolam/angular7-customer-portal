@@ -1,6 +1,6 @@
 import { Component, OnInit, Input }     from '@angular/core';
 import { Router }                       from '@angular/router';
-import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
+import { AlertService }                 from 'mapfre-design-library';
 
 
 // --- Components | Services | Models --- //

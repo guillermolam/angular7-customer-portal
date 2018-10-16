@@ -2,12 +2,10 @@ import { Component, EventEmitter, OnInit, Input, Output }   from "@angular/core"
 import { FormGroup }                  from "@angular/forms";
 import { ActivatedRoute, Params, Router }     from "@angular/router";
 import { Observable }                 from 'rxjs';
+import { AlertService, FormBase, FormBaseControlService } from 'mapfre-design-library';
 
 // --- Components | Services | Models --- //
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
-import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
-import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
-import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
 import { User }                       from '../../../../_models/user';
 import { UserService }                from '../../../../_services/user.service';
 

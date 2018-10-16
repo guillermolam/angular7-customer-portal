@@ -5,10 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
-import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
-import { FormBaseControlService }       from 'mapfre-design-library/lib/_services/form-base-control.service';
-import { AlertService }                 from 'mapfre-design-library/lib/_services/alert.service';
+import { TextBox, FormBase, FormBaseControlService, AlertService } from 'mapfre-design-library';
 
 import { EmailFormService } from './../../_services/forms/forgot-password/email-form/email-form.service';
 
@@ -58,6 +55,10 @@ describe('ForgotPasswordComponent', () => {
     fixture = TestBed.createComponent(ForgotPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    localStorage.removeItem('currentUser');
   });
 
   it('should create', () => {

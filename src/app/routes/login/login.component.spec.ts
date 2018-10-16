@@ -6,8 +6,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { TextBox }                      from 'mapfre-design-library/lib/_models/form-base-extends/text-box';
-import { FormBase }                     from 'mapfre-design-library/lib/_models/form-base';
+import { TextBox, FormBase }    from 'mapfre-design-library';
 
 
 class MockLoginService extends LoginService{
@@ -47,6 +46,10 @@ describe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    localStorage.removeItem('currentUser');
   });
 
   it('should get the inputs', () => {

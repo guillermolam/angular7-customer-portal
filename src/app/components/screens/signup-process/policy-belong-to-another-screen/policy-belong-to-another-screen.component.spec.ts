@@ -1,4 +1,4 @@
-import { AlertService } from './../../../../_services/alert.service';
+import { AlertService } from 'mapfre-design-library';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { SignupProcessComponent } from './../../../../routes/signup/signup-process/signup-process.component';
