@@ -23,13 +23,13 @@ pipeline{
 			}
 		}
 		
-		//Running unit test before build
-		// stage('Run Unit Test'){
-		//     steps{
-		//     	//Added to run unit test case for all module.
-		//        sh "npm run test_on_ciserver"
-		//     }
-		// }
+		// Running unit test after build
+		stage('Run Unit Test'){
+		    steps{
+		    	//Added to run unit test case for all module.
+		       sh "npm run test_on_ciserver"
+		    }
+		}
 
 		stage('Static analysis'){
 		    steps{

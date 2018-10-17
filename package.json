@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test --watch=false --browsers Chrome",
-    "test_on_ciserver": "ng test --watch=false --browsers Chromium_no_sandbox",
+    "test_on_ciserver": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox",
     "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox && ng build",
     "lint": "ng lint",
     "e2e": "ng e2e",
