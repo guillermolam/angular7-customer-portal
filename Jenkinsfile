@@ -49,6 +49,22 @@ pipeline{
 					sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
+
+		stage("Lighthouse Performance Monitor"){
+			steps{
+				sh "npm run lighthouse:ci"
+			publishHTML (target: [
+			allowMissing: false,
+			alwaysLinkToLastBuild: false,
+			keepAll: true,
+			reportDir: '.',
+			reportFiles: 'lighthouse-report.html',
+			reportName: "Lighthouse"
+			])
+			}
+		}
+
+
 		stage("Deploy Image to test"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')

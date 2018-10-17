@@ -13,7 +13,8 @@
     "e2e": "ng e2e",
     "cibuild": "ng test --code-coverage && ng build --prod --no-progress",
     "sonar-run": "sonar-scanner -Dsonar.host.url=http://mdv-docdevl01:9000",
-    "proxy": "ng serve --proxy-config proxy.config.json"
+    "proxy": "ng serve --proxy-config proxy.config.json",
+    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless' https://mdv-doctest"
   },
   "private": true,
   "dependencies": {
@@ -70,6 +71,7 @@
     "karma-jasmine": "^1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-junit-reporter": "^1.2.0",
+    "lighthouse": "^3.2.1",
     "mapfre-design-library": "git+https://amanda-iaria:nTGJnZ5epN36yEpgDAYs@bitbucket.org/mapfre-usa-b2c/design-library.git",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
