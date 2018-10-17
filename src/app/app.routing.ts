@@ -19,7 +19,7 @@ import { VerifyAccountComponent }     from './routes/verify-account/verify-accou
 import { WalletCardComponent }        from "./routes/wallet-card/wallet-card.component";
 
 const appRoutes: Routes = [
-  { path: "", component: LoginComponent, canActivate: [AuthGuard] },
+  { path: "", component: LoginComponent },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
 
   { path: "forgotpassword", component: ForgotPasswordComponent },
@@ -41,4 +41,3 @@ const appRoutes: Routes = [
 })
 
 export class RoutingModule {}
-

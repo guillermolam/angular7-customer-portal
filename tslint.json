@@ -33,7 +33,7 @@
         "no-unconditional-jump": true,
         "no-misleading-array-reverse": true,
         "no-empty-nested-blocks": false,
-        "no-multiline-string-literals": true,
+        "no-multiline-string-literals": false,
         "no-array-delete": true,
         "no-dead-store": true,
         "arrow-return-shorthand": false,

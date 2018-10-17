@@ -1,15 +1,14 @@
 // --- Angular ---//
-import { Component, Input, OnInit }     from '@angular/core';
-import { CookieService }                from 'ngx-cookie-service';
-import { FormGroup }                    from '@angular/forms';
-import { Router }                       from '@angular/router';
+import { Component, Input, OnInit }   from '@angular/core';
+import { CookieService }              from 'ngx-cookie-service';
+import { FormGroup }                  from '@angular/forms';
+import { ActivatedRoute ,Router }     from '@angular/router';
+import { AlertService, RegExHelper,
+  FormBase, FormBaseControlService }  from 'mapfre-design-library';
 // --- Components | Services | Models --- //
-import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-
-import { UserService }                  from '../../../../_services/user.service';
-import { User }                         from '../../../../_models/user';
-
-import { AlertService, RegExHelper, FormBase, FormBaseControlService }  from 'mapfre-design-library';
+import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
+import { UserService }                from '../../../../_services/user.service';
+import { User }                       from '../../../../_models/user';
 
 @Component({
   selector: 'app-login-form',
@@ -26,9 +25,10 @@ export class LoginFormComponent implements OnInit {
             returnUrl:                  string;
             rememberMe:                 boolean = false;
             user:                       User = {};
-  
+
   constructor(
     private _cookieService:             CookieService,
+    private activatedRoute:             ActivatedRoute,
     private authenticationService:      AuthenticationService,
     private alertService:               AlertService,
     private ipt:                        FormBaseControlService,
@@ -36,13 +36,13 @@ export class LoginFormComponent implements OnInit {
     private router:                     Router,
     private userService:                UserService
   ) {}
-  
+
   getCookie(): void {
     if ( this._cookieService.get('remember') ) {
       this.loginForm.setValue({
         loginEmail:                   this._cookieService.get('email'),
         loginPassword:                this._cookieService.get('password'),
-      })
+      });
     }
   }
 
@@ -52,15 +52,16 @@ export class LoginFormComponent implements OnInit {
     this.user.password  =               this.loginForm.controls.loginPassword.value;
     this.loading =                      true;
     this.putCookie();
-    
+
     if(this.user) {
       this.authenticationService
         .login (this.user.email, this.user.password)
         .subscribe (
-          data => {
-            this.router.navigate(['/dashboard']);
+          (data) => {
+            let redirectURl = this.returnUrl != '/' ? this.returnUrl : '/';
+            this.router.navigate([`/${redirectURl}`]);
           },
-          err => {
+          (err) => {
             // console.log(err)
             this.alertService.error('INVALID_EMAIL_PASSWORD');
           }
@@ -74,16 +75,16 @@ export class LoginFormComponent implements OnInit {
   }
 
   prefillEmailParamater(): void {
-		let email = this.loginForm.controls.loginEmail.value,
+    let email = this.loginForm.controls.loginEmail.value,
         emailPattern = this.regExHelper.strictEmailPattern;
-		
-		this.emailPrefillOnBlur = emailPattern.test(email) ? email : '';
-		this.router.navigate(['/forgotpassword'],  { queryParams: { emailPrefill: this.emailPrefillOnBlur } });
-	}
-  
+
+    this.emailPrefillOnBlur = emailPattern.test(email) ? email : '';
+    this.router.navigate(['/forgotpassword'],  { queryParams: { emailPrefill: this.emailPrefillOnBlur } });
+  }
+
   putCookie(): void {
     if(this.rememberMe) {
-			// Cookie valid for 1 Year
+      // Cookie valid for 1 Year
       this._cookieService.set('remember', 'yes', this.expireInDays)
       this._cookieService.set('email', this.user.email, this.expireInDays);
       this._cookieService.set('password', this.user.password, this.expireInDays);
@@ -91,7 +92,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.$user.subscribe(user => { });
+    this.userService.$user.subscribe( (user) => { });
     this.loginForm = this.ipt.toFormGroup(this.inputs);
 
     // Recover cookie if exists
@@ -99,5 +100,6 @@ export class LoginFormComponent implements OnInit {
 
     // reset login status
     this.authenticationService.logout();
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
   }
 }
