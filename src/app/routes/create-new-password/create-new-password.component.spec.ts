@@ -118,12 +118,12 @@ describe('CreateNewPasswordComponent', () => {
   it('should set successpassword property to true', ()=>{
       component.userConfirmation(true);
       fixture.detectChanges();
-      expect(component.successChangePassword).toBeTruthy;
+      expect(component.successChangePassword).toBeTruthy();
   });
 
   it('should call isTockenValid if route params exists', ()=>{
     component.ngOnInit();
     fixture.detectChanges();
-    expect(component.successChangePassword).toBeTruthy;
+    expect(component.successChangePassword).toBeTruthy();
 });
 });
