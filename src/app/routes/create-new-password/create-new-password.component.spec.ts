@@ -121,9 +121,11 @@ describe('CreateNewPasswordComponent', () => {
       expect(component.successChangePassword).toBeTruthy();
   });
 
-  it('should call isTockenValid if route params exists', ()=>{
+  it('should call isTockenValid if route params exists', fakeAsync(()=>{
+    spyOn(component,'isTokenValid');
     component.ngOnInit();
+    tick();
     fixture.detectChanges();
-    expect(component.successChangePassword).toBeTruthy();
-});
+    expect(component.isTokenValid).toHaveBeenCalled();
+}));
 });
