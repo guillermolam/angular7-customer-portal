@@ -100,10 +100,11 @@ ports:
 		}
 
 
-		stage("Pushing reports to git repo"){
+		stage("Push reports to git repo"){
 			steps{
-				sh "cd ./customer-portal"
-				sh "git status > status.txt"
+				sh "git -C './customer-portal' add ."
+				sh "git -C './customer-portal' commit -m 'Milind:Adding reports'"
+				sh "git -C './customer-portal' push"
 			}
 		}
 
