@@ -33,6 +33,7 @@ pipeline{
 
 		stage('Static analysis'){
 		    steps{
+				sh "mv ./coverage/* ./customer-portal/reports/coverage"
 		        sh "npm run sonar-run"
 		    }
 		}
@@ -86,6 +87,7 @@ ports:
 		stage("Lighthouse Performance Monitor"){
 			steps{
 				sh "npm run lighthouse:ci"
+				sh "mv ./lighthouse-report.html ./customer-portal/reports/lighthouse"
 			publishHTML (target: [
 			allowMissing: false,
 			alwaysLinkToLastBuild: false,
