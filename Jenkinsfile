@@ -100,6 +100,14 @@ ports:
 		}
 
 
+		stage("Pushing reports to git repo"){
+			steps{
+				sh "cd ./customer-portal"
+				sh "git status > status.txt"
+			}
+		}
+
+
 
 		stage("Deploy Image to Prod"){
 			environment {
