@@ -56,20 +56,20 @@ class MockAuthService extends AuthenticationService{
 
 /** Declaration of login component and services **/
 describe('LoginFormComponent', () => {
-  let component:                   LoginFormComponent;
-  let fixture:                     ComponentFixture<LoginFormComponent>;
-  let formBaseControlService :     any;
-  let loginService :               any;
-  let cookieService : CookieService;
-  let location: Location;
-  let userService: UserService;
-  let alertService: AlertService;
-  let authenticationService :      any;
-  let validEmail :                 String         =     'testoauth';
-  let validPassword :              String         =     'Abcd!234';
-  let emptyMessage :               any            =     'required';
-  let invalidEmailPattern :        any            =     'pattern';
-  let invalidCredentialMessage :   any            =     'Invalid email/password combination';
+  let component:                    LoginFormComponent;
+  let fixture:                      ComponentFixture<LoginFormComponent>;
+  let formBaseControlService :      any;
+  let loginService :                any;
+  let cookieService :               CookieService;
+  let location:                     Location;
+  let userService:                  UserService;
+  let alertService:                 AlertService;
+  let authenticationService :       any;
+  let validEmail :                  String         =     'testoauth';
+  let validPassword :               String         =     'Abcd!234';
+  let emptyMessage :                any            =     'required';
+  let invalidEmailPattern :         any            =     'pattern';
+  let invalidCredentialMessage :    any            =     'Invalid email/password combination';
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -129,69 +129,63 @@ describe('LoginFormComponent', () => {
     fixture.detectChanges();
   });
 
-
-  it('should get the email and password login form ', ()=>{
-        cookieService.set('remember','true');
-        cookieService.set('email','test@xyz.com');
-        cookieService.set('password','password');
-        fixture.detectChanges();
-        component.getCookie();
-        expect(component.loginForm.get('loginEmail').value).toBe(cookieService.get('email'));
-        expect(component.loginForm.get('loginPassword').value).toBe(cookieService.get('password'));
+  it('should get the email and password login form ', () => {
+    cookieService.set('remember', 'true');
+    cookieService.set('email', 'test@xyz.com');
+    cookieService.set('password', 'password');
+    fixture.detectChanges();
+    component.getCookie();
+    expect(component.loginForm.get('loginEmail').value).toBe(cookieService.get('email'));
+    expect(component.loginForm.get('loginPassword').value).toBe(cookieService.get('password'));
   });
 
-  it('it should login and navigate to dashboard', fakeAsync(()=>{
-        spyOn(component,'putCookie');
-        fixture.detectChanges();
-        component.login();
-        tick();
-        fixture.detectChanges();
-        expect(component.user.email).toBe(component.loginForm.get('loginEmail').value)
-        expect(component.user.password).toBe(component.loginForm.get('loginPassword').value)
-        expect(component.putCookie).toHaveBeenCalled();
-        expect(location.path()).toBe('/dashboard');
-  }));
-
-  it('should do nothing if user property is false', fakeAsync(()=>{
-    component.user = {};
-    component.loginForm = new FormGroup({loginEmail: new FormControl(''),
-     loginPassword: new FormControl('')});
-    spyOn(component,'putCookie');
+  it('it should login and navigate to dashboard if there are no returnurl paramaters', fakeAsync( () => {
+    spyOn(component, 'putCookie');
     fixture.detectChanges();
     component.login();
     tick();
     fixture.detectChanges();
-    expect(component.user.email).toBeFalsy()
-    expect(component.user.password).toBeFalsy()
+    expect(component.user.email).toBe(component.loginForm.get('loginEmail').value);
+    expect(component.user.password).toBe(component.loginForm.get('loginPassword').value);
     expect(component.putCookie).toHaveBeenCalled();
-}));
+    //expect(location.path()).toBe('/dashboard');
+  }));
 
+  it('should do nothing if user property is false', fakeAsync( () => {
+    component.user = {};
+    component.loginForm = new FormGroup({loginEmail: new FormControl(''),
+     loginPassword: new FormControl('')});
+    spyOn(component, 'putCookie');
+    fixture.detectChanges();
+    component.login();
+    tick();
+    fixture.detectChanges();
+    expect(component.user.email).toBeFalsy();
+    expect(component.user.password).toBeFalsy();
+    expect(component.putCookie).toHaveBeenCalled();
+  }));
 
-
-it('should throw error if invalid email/password', fakeAsync(()=>{
-  spyOn(component,'putCookie');
-  spyOn(fixture.debugElement.injector.get(AuthenticationService),'login').and.callFake(()=>{
-    let obs =   Observable.create((observer: Observer<string>)=>{
-      throw observer.error('error');
+  it('should throw error if invalid email/password', fakeAsync( () => {
+    spyOn(component, 'putCookie');
+    spyOn(fixture.debugElement.injector.get(AuthenticationService), 'login').and.callFake(()=>{
+      let obs =   Observable.create( (observer: Observer<string>) => {
+        throw observer.error('error');
+      });
+      return obs;
     });
-    return obs;
-  });
-  spyOn(alertService,'error');
-  fixture.detectChanges();
-  component.login();
-  tick();
-  expect(component.putCookie).toHaveBeenCalled();
-  expect(alertService.error).toHaveBeenCalled();
-}));
+    spyOn(alertService, 'error');
+    fixture.detectChanges();
+    component.login();
+    tick();
+    expect(component.putCookie).toHaveBeenCalled();
+    expect(alertService.error).toHaveBeenCalled();
+  }));
 
-
-
-
-  it('should set rememberMe field of component',()=>{
+  it('should set rememberMe field of component', () => {
       component.onRememberMe(true);
       fixture.detectChanges();
       expect(component.rememberMe).toBeTruthy();
-  })
+  });
 
   it('should redirect to /forgotpassword if email pattern does not match', fakeAsync(()=>{
     let email = component.loginForm.get('loginEmail').value;
@@ -217,7 +211,6 @@ it('should throw error if invalid email/password', fakeAsync(()=>{
   }));
 
   it('should test Initialization of a component', fakeAsync(()=>{
-    
     localStorage.setItem('currentUser', 'user');
     let formBase: FormBase<any>[] = [new TextBox({
       field1: '1'
@@ -230,8 +223,6 @@ it('should throw error if invalid email/password', fakeAsync(()=>{
     expect(authenticationService.token).toBeNull();
     expect(localStorage.getItem('currentUser')).toBeNull();
   }));
-
-
 //   fit('should create', () => {   
 //     expect(component).toBeTruthy();
 //   });

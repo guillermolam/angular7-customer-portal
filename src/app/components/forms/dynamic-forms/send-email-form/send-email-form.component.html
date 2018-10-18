@@ -4,7 +4,7 @@
   (ngSubmit)="passwordEmailForm.valid && forgotPasswordSendEmailId()" 
   >
   <div class="group-email">
-    <div *ngFor="let input of inputs; trackBy: trackingInputs" class="">
+    <div *ngFor="let input of inputs" class="">
       <mapfre-validation [input]="input" [form]="passwordEmailForm"></mapfre-validation>
     </div>
   </div>
