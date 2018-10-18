@@ -50,21 +50,6 @@ pipeline{
 			}
 		}
 
-		stage("Lighthouse Performance Monitor"){
-			steps{
-				sh "npm run lighthouse:ci"
-			publishHTML (target: [
-			allowMissing: false,
-			alwaysLinkToLastBuild: false,
-			keepAll: true,
-			reportDir: '.',
-			reportFiles: 'lighthouse-report.html',
-			reportName: "Lighthouse"
-			])
-			}
-		}
-
-
 		stage("Deploy Image to test"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
@@ -97,6 +82,23 @@ ports:
             )			
 				}
 		}
+
+		stage("Lighthouse Performance Monitor"){
+			steps{
+				sh "npm run lighthouse:ci"
+			publishHTML (target: [
+			allowMissing: false,
+			alwaysLinkToLastBuild: false,
+			keepAll: true,
+			reportDir: '.',
+			reportFiles: 'lighthouse-report.html',
+			reportName: "Lighthouse"
+			])
+			}
+		}
+
+
+
 		stage("Deploy Image to Prod"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
