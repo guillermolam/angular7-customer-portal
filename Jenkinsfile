@@ -33,6 +33,7 @@ pipeline{
 
 		stage('Static analysis'){
 		    steps{
+				sh "cp -r ./coverage/* ./customer-portal/reports/coverage"
 		        sh "npm run sonar-run"
 		    }
 		}
@@ -49,21 +50,6 @@ pipeline{
 					sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
 			}
 		}
-
-		stage("Lighthouse Performance Monitor"){
-			steps{
-				sh "npm run lighthouse:ci"
-			publishHTML (target: [
-			allowMissing: false,
-			alwaysLinkToLastBuild: false,
-			keepAll: true,
-			reportDir: '.',
-			reportFiles: 'lighthouse-report.html',
-			reportName: "Lighthouse"
-			])
-			}
-		}
-
 
 		stage("Deploy Image to test"){
 			environment {
@@ -97,6 +83,33 @@ ports:
             )			
 				}
 		}
+
+		stage("Lighthouse Performance Monitor"){
+			steps{
+				sh "npm run lighthouse:ci"
+				sh "cp ./lighthouse-report.html ./customer-portal/reports/lighthouse"
+			publishHTML (target: [
+			allowMissing: false,
+			alwaysLinkToLastBuild: false,
+			keepAll: true,
+			reportDir: '.',
+			reportFiles: 'lighthouse-report.html',
+			reportName: "Lighthouse"
+			])
+			}
+		}
+
+
+		stage("Push reports to git repo"){
+			steps{
+				sh "git -C './customer-portal' add ."
+				sh "git -C './customer-portal' commit -m 'Milind:Adding reports'"
+				sh "git -C './customer-portal' push"
+			}
+		}
+
+
+
 		stage("Deploy Image to Prod"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')

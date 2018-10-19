@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --aot",
     "test": "ng test --watch=false --browsers Chrome",
     "test_on_ciserver": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox",
     "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox && ng build",
@@ -14,7 +14,7 @@
     "cibuild": "ng test --code-coverage && ng build --prod --no-progress",
     "sonar-run": "sonar-scanner -Dsonar.host.url=http://mdv-docdevl01:9000",
     "proxy": "ng serve --proxy-config proxy.config.json",
-    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js 'https://www.google.com/' --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu'"
+    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu'"
   },
   "private": true,
   "dependencies": {
