@@ -152,9 +152,7 @@
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,7 +201,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -219,7 +216,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -266,7 +262,7 @@
 import { Component, Input, OnInit }   from '@angular/core';
 import { CookieService }              from 'ngx-cookie-service';
 import { FormGroup }                  from '@angular/forms';
-import { ActivatedRoute ,Router }     from '@angular/router';
+import { ActivatedRoute, Router }     from '@angular/router';
 import { AlertService, RegExHelper,
   FormBase, FormBaseControlService }  from 'mapfre-design-library';
 // --- Components | Services | Models --- //
@@ -281,24 +277,24 @@ import { User }                       from '../../../../_models/user';
   providers: [ FormBaseControlService ]
 })
 export class LoginFormComponent implements OnInit {
-  @Input()  inputs:                     FormBase&lt;any&gt;[] = [];
-            emailPrefillOnBlur:         string; 
-            expireInDays:               number = 365;
-            loading:                    boolean = false;
-            loginForm:                  FormGroup;
-            returnUrl:                  string;
-            rememberMe:                 boolean = false;
-            user:                       User = {};
+  @Input()  inputs:                   FormBase&lt;any&gt;[] = [];
+            emailPrefillOnBlur:       string;
+            expireInDays:             number = 365;
+            loading:                  boolean = false;
+            loginForm:                FormGroup;
+            returnUrl:                string;
+            rememberMe:               boolean = false;
+            user:                     User = {};
 &nbsp;
   constructor(
-    private _cookieService:             CookieService,
-    private activatedRoute:             ActivatedRoute,
-    private authenticationService:      AuthenticationService,
-    private alertService:               AlertService,
-    private ipt:                        FormBaseControlService,
-    private regExHelper:                RegExHelper,
-    private router:                     Router,
-    private userService:                UserService
+    private _cookieService:           CookieService,
+    private activatedRoute:           ActivatedRoute,
+    private authenticationService:    AuthenticationService,
+    private alertService:             AlertService,
+    private ipt:                      FormBaseControlService,
+    private regExHelper:              RegExHelper,
+    private router:                   Router,
+    private userService:              UserService
   ) {}
 &nbsp;
   getCookie(): void {
@@ -311,10 +307,9 @@ export class LoginFormComponent implements OnInit {
   }
 &nbsp;
   login(): void {
-&nbsp;
-    this.user.email =                   this.loginForm.controls.loginEmail.value;
-    this.user.password  =               this.loginForm.controls.loginPassword.value;
-    this.loading =                      true;
+    this.user.email =                 this.loginForm.controls.loginEmail.value;
+    this.user.password  =             this.loginForm.controls.loginPassword.value;
+    this.loading =                    true;
     this.putCookie();
 &nbsp;
     <span class="missing-if-branch" title="else path not taken" >E</span>if(this.user) {
@@ -329,7 +324,6 @@ export class LoginFormComponent implements OnInit {
             this.router.navigate([redirectURl]);
           },
           (err) =&gt; {
-            // console.log(err)
             this.alertService.error('INVALID_EMAIL_PASSWORD');
           }
         )
@@ -342,15 +336,15 @@ export class LoginFormComponent implements OnInit {
   }
 &nbsp;
   prefillEmailParamater(): void {
-    let email = this.loginForm.controls.loginEmail.value,
-        emailPattern = this.regExHelper.strictEmailPattern;
+    const email = this.loginForm.controls.loginEmail.value,
+          emailPattern = this.regExHelper.strictEmailPattern;
 &nbsp;
     this.emailPrefillOnBlur = emailPattern.test(email) ? email : <span class="branch-1 cbranch-no" title="branch not covered" >'';</span>
     this.router.navigate(['/forgotpassword'],  { queryParams: { emailPrefill: this.emailPrefillOnBlur } });
   }
 &nbsp;
   putCookie(): void {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if(this.rememberMe) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.rememberMe) {
       // Cookie valid for 1 Year
       this._cookieService.set('remember', 'yes', this.expireInDays)
       this._cookieService.set('email', this.user.email, this.expireInDays);
@@ -376,7 +370,7 @@ export class LoginFormComponent implements OnInit {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 19 2018 10:08:18 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 19 2018 20:03:41 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../../prettify.js"></script>
