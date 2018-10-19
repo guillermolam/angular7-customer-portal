@@ -6,4 +6,3 @@ export const environment = {
     account:            'https://mdv-doctest:8083',
     personalpolicy:     'https://mdv-doctest:8084'
   };
-  

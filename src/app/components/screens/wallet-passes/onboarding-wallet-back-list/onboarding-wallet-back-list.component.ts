@@ -12,7 +12,7 @@ import { WalletCardService }                from '../../../../_services/_iam/wal
 export class OnboardingWalletBackListComponent implements OnInit {
   @Input() userData:                        User;
 
-  constructor(  
+  constructor(
     private walletCardService:        WalletCardService,
     private cookieService:            CookieService
     ) { }
@@ -25,13 +25,13 @@ export class OnboardingWalletBackListComponent implements OnInit {
     this.walletCardService
       .generatePkPass(user.email)
       .subscribe(
-        success => {
+        (success) => {
           console.log("Successfully Download of Card");
           this.createCookie(365, 'download');
           //close the modal
           //
         },
-        err => {
+        (err) => {
           console.log("ERR Download of Card");
         }
       )
