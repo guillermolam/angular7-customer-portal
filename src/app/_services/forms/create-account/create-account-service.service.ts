@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { FormBase, TextBox }   from 'mapfre-design-library';
+import { Injectable }           from '@angular/core';
+import { FormBase, TextBox }    from 'mapfre-design-library';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import { FormBase, TextBox }   from 'mapfre-design-library';
 export class CreateAccountService {
 
   getInputs() {
-    let inputs: FormBase<any>[] = [
+    const inputs: FormBase<any>[] = [
       new TextBox({
         additionalClasses:        'form-control',
         inputType:                'text',
@@ -46,7 +46,7 @@ export class CreateAccountService {
         type:                     'email',
         validationMessageError:   'VALID_EMAIL_VALIDATION_MESSAGE',
       }),
-    ]
+    ];
     return inputs;
   }
 }

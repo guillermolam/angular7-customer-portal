@@ -1,10 +1,10 @@
 
-import { UserService } from './../_services/user.service';
-import { Observable } from 'rxjs';
-import { TestBed, async, inject,fakeAsync,tick } from '@angular/core/testing';
-
-import { VerifyUserGuard } from './verify-user.guard';
-import { ActivatedRouteSnapshot,ActivatedRoute, RouterStateSnapshot, Router, RouterState } from '@angular/router';
+import { ActivatedRouteSnapshot, ActivatedRoute,
+  RouterStateSnapshot, Router }                     from '@angular/router';
+import { Observable , of }                               from 'rxjs';
+import { TestBed, async, fakeAsync, tick }          from '@angular/core/testing';
+import { VerifyUserGuard }                          from './verify-user.guard';
+import { UserService }                              from './../_services/user.service';
 
 describe('AuthGuard', () => {
 
@@ -12,10 +12,14 @@ describe('AuthGuard', () => {
   let route:              ActivatedRouteSnapshot;
   let state:              RouterStateSnapshot;
   let router = {
-
-    navigate: jasmine.createSpy('navigate',(login)=>{
-        if(login=='/login') return true;
-        else return false;
+    navigate: jasmine
+    .createSpy('navigate', (login) => {
+      if (login == '/login') {
+        return true;
+      }
+      else {
+        return false;
+      }
     })
   };
   let userService: UserService;
@@ -25,43 +29,33 @@ describe('AuthGuard', () => {
       providers: [
         VerifyUserGuard,
         UserService,
-        {provide: Router, useValue: router},
-        {provide: ActivatedRoute,
+        { provide: Router, useValue: router },
+        { provide: ActivatedRoute,
           useValue: {
-            queryParams: Observable.of({email: 'test@xyz.com'})
+            queryParams: of( {email: 'test@xyz.com'} )
           }
         }
-
       ]
     });
-
     verifyUserGuard = TestBed.get(VerifyUserGuard);
-
     userService = TestBed.get(UserService);
     route = TestBed.get(ActivatedRoute);
   }));
 
-  afterEach(()=>{
-    
-  })
-
-
-  it('should be able to route when user has an observable',fakeAsync(()=>{
-
-    userService.updateUser({email: "test@xyz.com"});
-    verifyUserGuard.canActivate(route,state).subscribe((res)=>{
-      expect(res).toBeTruthy();
-    });
+  it('should be able to route when user has an observable', fakeAsync( ()=> {
+    userService.updateUser({email: 'test@xyz.com'});
+    verifyUserGuard.canActivate(route, state)
+      .subscribe( (res) => {
+        expect(res).toBeTruthy();
+      }
+    );
   }));
 
-  it('should not route when user has no observable',fakeAsync(()=>{
-
+  it('should not route when user has no observable', fakeAsync( () => {
     userService.updateUser(null);
-
-    verifyUserGuard.canActivate(route,state).subscribe((res)=>{
+    verifyUserGuard.canActivate(route, state).subscribe( (res) => {
       expect(res).toBeFalsy();
     });
     tick();
   }));
-
 });

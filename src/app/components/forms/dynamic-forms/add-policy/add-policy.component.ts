@@ -1,13 +1,12 @@
-import { Component, OnInit, Input }     from "@angular/core";
-import { FormGroup }                    from "@angular/forms";
-import { Router }                       from "@angular/router";
-import { Observable }                   from 'rxjs';
-
-// --- Components | Services | Models --- //
-import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
+import { Component, OnInit, Input }   from '@angular/core';
+import { FormGroup }                  from '@angular/forms';
+import { Router }                     from '@angular/router';
+import { Observable }                 from 'rxjs';
 import { FormBase , FormBaseControlService }  from 'mapfre-design-library';
-import { UserService }                  from "../../../../_services/user.service";
-import { User }                         from "../../../../_models/user";
+// --- Components | Services | Models --- //
+import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
+import { UserService }                from '../../../../_services/user.service';
+import { User }                       from '../../../../_models/user';
 
 @Component({
   selector: 'app-add-policy-form',
@@ -16,39 +15,39 @@ import { User }                         from "../../../../_models/user";
   providers: [ FormBaseControlService ]
 })
 export class AddPolicyComponent implements OnInit {
-  @Input()  inputs:                  FormBase<any>[] = [];
-  @Input()  userData:                Observable<User>;
-            addPolicyForm:           FormGroup;
-            legalCheckbox:           boolean = false;
-            loading:                 boolean = false;
+  @Input()  inputs:                   FormBase<any>[] = [];
+  @Input()  userData:                 Observable<User>;
+            addPolicyForm:            FormGroup;
+            legalCheckbox:            boolean = false;
+            loading:                  boolean = false;
 
   constructor(
-    private authService:            AuthenticationService,
-    private ipt:                    FormBaseControlService,
-    private router:                 Router,
-    private userService:            UserService
+    private authService:              AuthenticationService,
+    private ipt:                      FormBaseControlService,
+    private router:                   Router,
+    private userService:              UserService
   ) { }
 
   addPolicy(): void {
     this.addPolicyToObject(this.userData);
-    if(this.legalCheckbox){
+    if (this.legalCheckbox) {
       this.authService
         .verifyPolicy(this.userService)
         .subscribe(
-          data => {
+          (data) => {
             this.router.navigate(['signup', 'createpassword']);
           },
-          err => {
-            if(err.status === 404){
-              //Policy is not found
+          (err) => {
+            if (err.status === 404) {
+              // Policy is not found
               this.router.navigate(['signup', 'notfound']);
             }
-            else if(err.status === 400) {
-              //bad requrest - 400 - Biz Policy
+            else if (err.status === 400) {
+              // bad requrest - 400 - Biz Policy
               this.router.navigate(['signup', 'bop']);
             }
-            else if(err.status === 409){
-              //conflict - 409 - if the policy belongs to another
+            else if (err.status === 409){
+              // conflict - 409 - if the policy belongs to another
               this.router.navigate(['signup', 'policybelongstoanother']);
             }
           }
@@ -58,7 +57,7 @@ export class AddPolicyComponent implements OnInit {
   }
 
   addPolicyToObject(userObject): void {
-    let policyDetail = [{
+    const policyDetail = [{
       policynumber : { policynumber: this.addPolicyForm.value.addPolicy }
     }];
     userObject.policyDetails = policyDetail;

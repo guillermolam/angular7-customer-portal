@@ -9,7 +9,7 @@ import { User }                        from '../../../../_models/user';
   styleUrls: ['./review-policy-screen.component.scss']
 })
 export class ReviewPolicyScreenComponent implements OnInit {
-  @Input()  policyObject:              Object;
+  @Input()  policyObject:              object;
   @Input()  userData:                  User;
             user:                      User = {};
 
@@ -18,21 +18,7 @@ export class ReviewPolicyScreenComponent implements OnInit {
   ) { }
 
   downLoadWalletCard(): void {
-    console.log("you just downloaded a walletcard");
-  }
-
-  confirmIfPaperLessEligible(): void {
-    this.authService
-      .confirmPaperLessPolicy(this.userData)
-      .subscribe(
-        data => {
-          //go to paperless
-        },
-        err => {
-          //go to dashboard
-        }
-      )
-    ;
+    console.log('You just downloaded a walletcard');
   }
 
   get userAgentTest() {

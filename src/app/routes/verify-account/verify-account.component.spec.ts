@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
-import { VerifyAccountComponent } from './verify-account.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { AuthenticationService } from '../../_services/_iam/authentication-service.service';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Observable, Observer, observable, ErrorObserver, BehaviorSubject } from 'rxjs';
-import { LoginComponent } from '../login/login.component';
-import { UserService } from '../../_services/user.service';
-import { Location } from '@angular/common';
-import { AlertService } from 'mapfre-design-library';
-import { ActivatedRoute } from '@angular/router';
+import { async, ComponentFixture,
+  TestBed }                         from '@angular/core/testing';
+import { Location }                 from '@angular/common';
+import { ActivatedRoute }           from '@angular/router';
+import { NO_ERRORS_SCHEMA }         from '@angular/core';
+import { RouterTestingModule }      from '@angular/router/testing';
+import { HttpClientTestingModule }  from '@angular/common/http/testing';
+import { of }                       from 'rxjs';
+import { AlertService }             from 'mapfre-design-library';
+import { TranslateModule }          from '@ngx-translate/core';
+import { VerifyAccountComponent }   from './verify-account.component';
+import { AuthenticationService }    from '../../_services/_iam/authentication-service.service';
+import { LoginComponent }           from '../login/login.component';
+import { UserService }              from '../../_services/user.service';
 
 describe('VerifyAccountComponent', () => {
   let component: VerifyAccountComponent;
   let fixture: ComponentFixture<VerifyAccountComponent>;
-  let authService : AuthenticationService;
+  let authService: AuthenticationService;
   let alertService: AlertService;
   let location: Location;
-  let userService : UserService;
+  let userService: UserService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,15 +27,15 @@ describe('VerifyAccountComponent', () => {
       imports: [TranslateModule.forRoot(),
         RouterTestingModule.withRoutes(
           [
-          { path: "login", component: LoginComponent }
-      ]
+          { path: 'login', component: LoginComponent }
+        ]
       ),
         HttpClientTestingModule,
       ],
       providers: [ UserService, AuthenticationService, AlertService,
         {provide: ActivatedRoute,
           useValue: {
-            queryParams: Observable.of({email: 'test@xyz.com',token: 'abcdef'})
+            queryParams: of({email: 'test@xyz.com',token: 'abcdef'})
           }}],
       schemas: [NO_ERRORS_SCHEMA]
     })

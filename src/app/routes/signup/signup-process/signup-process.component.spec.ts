@@ -6,8 +6,7 @@ import { RouterTestingModule }      from '@angular/router/testing';
 import { TranslateModule }          from '@ngx-translate/core';
 import { FormBase, ModalOptions }   from 'mapfre-design-library';
 import { ActivatedRoute }           from '@angular/router';
-import { Observable, Observer }     from 'rxjs';
-
+import { Observable, Observer, of } from 'rxjs';
 import { FakeAccountResponse }      from './../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
 import { AddPolicyService }         from './../../../_services/forms/create-account/add-policy.service';
 import { EditPolicyService }        from './../../../_services/forms/create-account/edit-policy.service';
@@ -26,10 +25,9 @@ describe('SignupProcessComponent', () => {
   let policyService: AddPolicyService;
   let user: User;
 
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         SignupProcessComponent,
        ],
       imports: [
@@ -37,17 +35,17 @@ describe('SignupProcessComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule
       ],
-      providers:[
+      providers: [
         UserService,
-        CreateNewPasswordFormService, 
+        CreateNewPasswordFormService,
         EditPolicyService,
         {provide: ActivatedRoute,
         useValue: {
-          params: Observable.of({parm: 'whereInTheProcess'})
+          params: of({parm: 'whereInTheProcess'})
         }
-      } 
+      }
     ],
-      schemas:[NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
@@ -57,7 +55,6 @@ describe('SignupProcessComponent', () => {
     editPolicyService = fixture.debugElement.injector.get(EditPolicyService);
     userService = fixture.debugElement.injector.get(UserService);
     user = FakeAccountResponse.getUserData();
-
   }));
 
   beforeEach(() => {
@@ -72,12 +69,12 @@ describe('SignupProcessComponent', () => {
   it('should initialize ', () => {
     let formBase = [new FormBase({})];
     let fakeModalOption = new ModalOptions({
-      additionalButtonClasses:        "flat normal-link small", 
-			animatePosition:                "bottom", 
-			buttonCopy:                     "MODAL_WHERE_CAN_I_LINK",
-			modalId:                        "helpModal",
-			modalTranslateCopy:             "MODAL_WHERE_CAN_I_TITLE",
-			typeOfModal:                    "default",
+        additionalButtonClasses:        'flat normal-link small',
+        animatePosition:                'bottom',
+        buttonCopy:                     'MODAL_WHERE_CAN_I_LINK',
+        modalId:                        'helpModal',
+        modalTranslateCopy:             'MODAL_WHERE_CAN_I_TITLE',
+        typeOfModal:                    'default',
     });
     spyOn(policyService,'getInputs').and.returnValue(formBase);
     spyOn(passwordService,'getInputs').and.returnValue(formBase);
@@ -90,11 +87,11 @@ describe('SignupProcessComponent', () => {
     expect(component.whereToFindModalOptions).toEqual(fakeModalOption);
   });
 
-  it('should initialize user and update whereInTheProcess', fakeAsync(()=>{
+  it('should initialize user and update whereInTheProcess', fakeAsync(() => {
 
-    spyOn(userService,'$user').and.callFake(()=>{
-      Observable.create((observer: Observer<User>)=>{
-       observer.next(user)
+    spyOn(userService, '$user').and.callFake(() => {
+      Observable.create((observer: Observer<User>) => {
+       observer.next(user);
       }
     )
   });
@@ -104,6 +101,5 @@ describe('SignupProcessComponent', () => {
     // expect(component.user).toEqual(user);
     expect(component.whereInTheProcess).toBe('whereInTheProcess');
   }));
-
 
 });

@@ -1,20 +1,18 @@
-import { Observable } from 'rxjs/Observable';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule } from '@ngx-translate/core';
-import { ActivatedRoute } from '@angular/router';
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { TextBox, FormBase, FormBaseControlService, AlertService } from 'mapfre-design-library';
-
-import { EmailFormService } from './../../_services/forms/forgot-password/email-form/email-form.service';
-
-import { ForgotPasswordComponent } from './forgot-password.component';
-
+import { NO_ERRORS_SCHEMA }         from '@angular/core';
+import { HttpClientTestingModule }  from '@angular/common/http/testing';
+import { RouterTestingModule }      from '@angular/router/testing';
+import { TranslateModule }          from '@ngx-translate/core';
+import { ActivatedRoute }           from '@angular/router';
+import { async, ComponentFixture,
+  TestBed, fakeAsync, tick }        from '@angular/core/testing';
+import { of }                       from 'rxjs';
+import { FormBase }                 from 'mapfre-design-library';
+import { EmailFormService }         from './../../_services/forms/forgot-password/email-form/email-form.service';
+import { ForgotPasswordComponent }  from './forgot-password.component';
 
 class MockEmailFormService extends EmailFormService{
   getInputs() {
-    let res = [new FormBase({value:"formbase"})];
+    let res = [new FormBase({value: 'formbase'})];
       return res;
   }
 }
@@ -25,7 +23,6 @@ describe('ForgotPasswordComponent', () => {
   let emailFormService: EmailFormService;
   let activatedRoute: ActivatedRoute;
 
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ForgotPasswordComponent ],
@@ -33,19 +30,19 @@ describe('ForgotPasswordComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule
       ],
-      providers:[ EmailFormService, {provide: ActivatedRoute,
+      providers: [ EmailFormService, {provide: ActivatedRoute,
         useValue: {
-          queryParams: Observable.of({emailPrefill: 'emailPrefill'})
+          queryParams: of({emailPrefill: 'emailPrefill'})
         }
       } ],
-      schemas:[NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
     TestBed.overrideComponent(
       ForgotPasswordComponent,
       {set: {providers: [{provide: EmailFormService, useClass: MockEmailFormService}]}}
-    )
+    );
 
     emailFormService = TestBed.get(EmailFormService);
 
@@ -65,29 +62,28 @@ describe('ForgotPasswordComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get email from parameter', fakeAsync(()=>{
+  it('should get email from parameter', fakeAsync(() => {
     component.getEmailFromParamater();
     tick();
     fixture.detectChanges();
-    expect(component.emailPrefillParamater).toBe('emailPrefill')
+    expect(component.emailPrefillParamater).toBe('emailPrefill');
 
   }));
 
-
-  it('should set showConfirmation to true', ()=>{
+  it('should set showConfirmation to true', () => {
     component.showConfirmationAction(true);
     fixture.detectChanges();
     expect(component.showConfirmation).toBeTruthy();
   });
 
-  it('should call method getEmailFromParamater', ()=>{
-    spyOn(component,'getEmailFromParamater');
+  it('should call method getEmailFromParamater', () => {
+    spyOn(component, 'getEmailFromParamater');
     component.ngOnInit();
     expect(component.getEmailFromParamater).toHaveBeenCalled();
   });
 
-  it('should set the emailInputs', ()=>{
-    spyOn(emailFormService,'getInputs').and.returnValue(true);
+  it('should set the emailInputs', () => {
+    spyOn(emailFormService, 'getInputs').and.returnValue(true);
     component.constructor(activatedRoute, emailFormService);
     fixture.detectChanges();
     expect(component.emailInputs).toBeTruthy();

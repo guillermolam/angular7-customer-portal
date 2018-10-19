@@ -23,6 +23,7 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
+    browserNoActivityTimeout: 400000,
     reporters: ['progress', 'junit','coverage-istanbul'],
     browsers: ['Chromium_no_sandbox','Chrome'],
     customLaunchers: {

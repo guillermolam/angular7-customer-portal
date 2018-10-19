@@ -1,24 +1,20 @@
 import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
-
 import { WalletCardService } from './wallet-card.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { environment } from '../../../environments/environment.dev';
 
-
-
 describe('WalletCardService', () => {
 
-    let httpMock: HttpTestingController;
-    let walletService: WalletCardService;
-
+  let httpMock: HttpTestingController;
+  let walletService: WalletCardService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         WalletCardService
-      ],imports:[
+      ], imports: [
           HttpClientTestingModule,
           RouterTestingModule
         ]
@@ -26,16 +22,13 @@ describe('WalletCardService', () => {
 
     httpMock = TestBed.get(HttpTestingController);
     walletService = TestBed.get(WalletCardService);
-
-
-
   });
 
-  it('should return the Policy details', fakeAsync(()=>{
-    let email = 'testmc@gmail.com';
-    let arrayBuffer = new ArrayBuffer(1);
-    
-    walletService.generatePkPass(email).subscribe((response)=>{
+  it('should return the Policy details', fakeAsync( () => {
+    const email = 'testmc@gmail.com';
+    const arrayBuffer = new ArrayBuffer(1);
+
+    walletService.generatePkPass(email).subscribe( (response) => {
         expect(response).toEqual(arrayBuffer);
     });
 
@@ -46,11 +39,4 @@ describe('WalletCardService', () => {
     req.flush(new ArrayBuffer(1));
 
     }));
-
-
-    
-
-
-  
 });
-

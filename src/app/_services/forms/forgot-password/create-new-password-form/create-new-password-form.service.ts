@@ -6,7 +6,7 @@ import { FormBase, TextBox }   from 'mapfre-design-library';
 })
 export class CreateNewPasswordFormService {
   getInputs() {
-    let inputs: FormBase<any>[] = [
+    const inputs: FormBase<any>[] = [
       new TextBox({
         additionalClasses:  'form-control',
         inputType:          'password',
@@ -18,7 +18,7 @@ export class CreateNewPasswordFormService {
         type:               'password',
         validationMessageError: 'VALID_PASSWORD_VALIDATION_MESSAGE'
       })
-    ]
+    ];
     return inputs;
   }
 }

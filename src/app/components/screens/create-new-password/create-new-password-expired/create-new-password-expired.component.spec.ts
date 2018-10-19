@@ -1,12 +1,11 @@
-import { CreateNewPasswordExpiredComponent } from './create-new-password-expired.component';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
+import { CreateNewPasswordExpiredComponent } from './create-new-password-expired.component';
 
 
 describe('CreateNewPasswordExpiredComponent', () => {
@@ -20,9 +19,9 @@ describe('CreateNewPasswordExpiredComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule
       ],
-      providers:[  {provide: ActivatedRoute,
+      providers: [  {provide: ActivatedRoute,
         useValue: {
-          queryParams: Observable.of({emailPrefill: 'test@xyz.com'})
+          queryParams: of({emailPrefill: 'test@xyz.com'})
         }
       } ],
       schemas:[NO_ERRORS_SCHEMA]
@@ -44,7 +43,7 @@ describe('CreateNewPasswordExpiredComponent', () => {
   }));
 
   it('should call getEmailFromParameter', fakeAsync(() => {
-    spyOn(component,'getEmailFromParamater')
+    spyOn(component, 'getEmailFromParamater')
     component.ngOnInit();
     tick();
     fixture.detectChanges();

@@ -1,14 +1,13 @@
-import { TestBed, inject,async } from '@angular/core/testing';
-import { HttpTestingController,HttpClientTestingModule} from '@angular/common/http/testing';
-import { AuthenticationService } from './authentication-service.service';
-import { environment } from '../../../environments/environment.dev'
-import { UserService } from '../user.service';
-import { User } from '../../_models/user';
-import { FakeAccountResponse } from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
-import { FakePolicyResponse } from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-policy-response.model';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { TestBed, inject, async } from '@angular/core/testing';
+import { HttpTestingController,
+  HttpClientTestingModule}        from '@angular/common/http/testing';
+import { HttpResponse}            from '@angular/common/http';
+import { AuthenticationService }  from './authentication-service.service';
+import { environment }            from '../../../environments/environment.dev';
+import { UserService }            from '../user.service';
+import { User }                   from '../../_models/user';
+import { FakeAccountResponse }    from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
+import { FakePolicyResponse }     from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-policy-response.model';
 
 describe('AuthenticationService', () => {
 
@@ -24,7 +23,7 @@ describe('AuthenticationService', () => {
         AuthenticationService,
         UserService
       ],
-      imports:[HttpClientTestingModule]
+      imports: [HttpClientTestingModule]
     });
 
     user = FakeAccountResponse.getUserData();
@@ -34,10 +33,9 @@ describe('AuthenticationService', () => {
     authService = TestBed.get(AuthenticationService);
 
     userService.updateUser(user);
-    
   });
 
-  afterEach(()=>{
+  afterEach( () => {
     httpMock.verify();
     user = null;
     httpMock = null;
@@ -49,8 +47,8 @@ describe('AuthenticationService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should confirm policy and account', async(()=>{
-    authService.confirmPolicyAndAccount(userService).subscribe((resUser)=>{
+  it('should confirm policy and account', async( () => {
+    authService.confirmPolicyAndAccount(userService).subscribe( (resUser) => {
       expect(resUser).toEqual(user);
     });
 
@@ -59,10 +57,10 @@ describe('AuthenticationService', () => {
     req.flush(user);
   }));
 
-  it('should throw error for confirm policy and account', async(()=>{
+  it('should throw error for confirm policy and account', async( () => {
 
-    authService.confirmPolicyAndAccount(userService).subscribe((resUser)=>{   
-    }, (err)=>{
+    authService.confirmPolicyAndAccount(userService).subscribe( (resUser) => {
+    }, (err) => {
       expect(err).toBe('error');
     });
 
@@ -70,19 +68,7 @@ describe('AuthenticationService', () => {
     req.error(new ErrorEvent('error'));
   }));
 
-
-  it('should confirm paperless policy', async(()=>{
-    authService.confirmPaperLessPolicy(userService).subscribe((resUser)=>{
-      expect(resUser).toEqual(user);
-    });
-
-    const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
-    expect(req.request.method).toBe('PUT');
-    req.flush(user);
-  }));
-
   it('should create a password', async(()=>{
-    
     authService.createPassword(userService).subscribe((resUser)=>{
       expect(resUser).toEqual(user);
     });
@@ -92,10 +78,10 @@ describe('AuthenticationService', () => {
     req.flush(user);
   }));
 
-  it('should send email on forgot password', async(()=>{
-    
-    authService.forgotPasswordSendEmailId(user.email).subscribe((resUser)=>{
-      expect(resUser.email).toBe(user.email)
+  it('should send email on forgot password', async( () => {
+
+    authService.forgotPasswordSendEmailId(user.email).subscribe( (resUser) => {
+      expect(resUser.email).toBe(user.email);
       expect(resUser).toEqual(user);
     });
 
@@ -105,7 +91,7 @@ describe('AuthenticationService', () => {
     req.flush(user);
   }));
 
-  it('should login successfully',async(()=>{
+  it('should login successfully', async( () => {
     let username = 'test@xyz.com';
     let password = 'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
@@ -116,49 +102,47 @@ describe('AuthenticationService', () => {
 
     authService.login(username,password).subscribe((response)=>{
       expect(response).toBeTruthy();
-    }, (err)=>{
+    }, (err) => {
       expect(err).toBe('Invalid email/password combination');
     });
-    
+
     const req = httpMock.expectOne(url);
     expect(req.request.method).toBe('POST');
     req.flush({token: 'asdfghjkl'});
   }));
 
-  it('should throw error while login', async(()=>{
-    let username = 'test@xyz.com';
-    let password = 'password';
+  it('should throw error while login', async(() => {
+    let username =        'test@xyz.com';
+    let password =        'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
     let urlpartone =      `${environment.api_gateway_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
     let url = urlpartone + '?' + urlparttwo;
 
-    authService.login(username,password).subscribe((response)=>{
-  
-    }, (err)=>{
+    authService.login(username,password).subscribe((response) => {
+    }, (err) => {
       expect(err).toBe('Invalid email/password combination');
     });
-    
+
     const req = httpMock.expectOne(url);
     expect(req.request.method).toBe('POST');
     req.error(new ErrorEvent('Invalid email/password combination'));
   }));
 
-
-  it('should not login successfully',async(()=>{
-    let username = 'test@xyz.com';
-    let password = 'password';
+  it('should not login successfully', async( () => {
+    let username =        'test@xyz.com';
+    let password =        'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
     let urlpartone =      `${environment.api_gateway_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
     let url = urlpartone + '?' + urlparttwo;
 
-    authService.login(username,password).subscribe((response)=>{
+    authService.login(username,password).subscribe( (response) => {
       expect(response).not.toBeTruthy();
     });
-    
+
     const req = httpMock.expectOne(url);
     expect(req.request.method).toBe('POST');
     expect(req.request.params.get('username')).not.toBe('username');
@@ -166,90 +150,79 @@ describe('AuthenticationService', () => {
     req.flush(null);
   }));
 
-  it('should logout the user', async(()=>{
+  it('should logout the user', async( () => {
     authService.token = 'token';
-    localStorage.setItem('currentUser',JSON.stringify({ user: 'username', token: 'access_token' }));
+    localStorage.setItem('currentUser', JSON.stringify({ user: 'username', token: 'access_token' }));
     authService.logout();
     expect(localStorage.getItem('currentUser')).toBeNull();
     expect(authService.token).toBeNull();
   }));
 
-  it('should verify the token for verifyaccount', async(()=>{
-    
+  it('should verify the token for verifyaccount', async( () => {
+
     let token = 'asdfghjkl';
     let email = 'test@xyz.com';
-    authService.verifyAccountTokenVerification(token,email).subscribe((response: HttpResponse<Number>)=>{
+    authService.verifyAccountTokenVerification(token, email).subscribe((response: HttpResponse<number>) => {
         expect(response.status).toBe(200);
     });
 
     const req = httpMock.expectOne(`${environment.account}/accounts?token=${token}&email=${email}`);
     expect(req.request.method).toBe('PUT');
-    req.flush(new HttpResponse<Number>({status: 200}));
+    req.flush(new HttpResponse<number>({status: 200}));
   }));
-  
-  it('should verify the token for forgotpassword', async(()=>{
-    
+
+  it('should verify the token for forgotpassword', async( () => {
     let token = 'asdfghjkl';
     let email = 'test@xyz.com';
-    authService.tokenVerification(token,email).subscribe((response: HttpResponse<Number>)=>{
+    authService.tokenVerification(token,email).subscribe((response: HttpResponse<number>) => {
         expect(response.status).toBe(200);
     });
 
     const req = httpMock.expectOne(`${environment.identity}/identity/users/${email}?token=${token}`);
     expect(req.request.method).toBe('POST');
-    req.flush(new HttpResponse<Number>({status: 200}));
+    req.flush(new HttpResponse<number>({status: 200}));
   }));
 
-  it('should update the password', async(()=>{
-    
+  it('should update the password', async( () => {
     let token = 'asdfghjkl';
-
-    authService.updatePassword(user,token).subscribe((res: HttpResponse<Number>)=>{
+    authService.updatePassword(user, token).subscribe((res: HttpResponse<number>) => {
         expect(res.status).toBe(200);
     });
-    const req = httpMock.expectOne(`${environment.identity}/identity/users/password/${user.email}?newPassword=${user.password}&token=${token}`);
+    const req = httpMock
+      .expectOne(`${environment.identity}/identity/users/password/${user.email}?newPassword=${user.password}&token=${token}`);
     expect(req.request.method).toBe('PUT');
-    req.flush(new HttpResponse<Number>({status: 200}));
+    req.flush(new HttpResponse<number>({status: 200}));
   }));
 
-
-  it('should not update the password', async(()=>{
-    
+  it('should not update the password', async( () => {
     let token = 'asdfghjkl';
-
-    authService.updatePassword(user,token).subscribe((res: HttpResponse<Number>)=>{
+    authService.updatePassword(user, token).subscribe((res: HttpResponse<number>) => {
         expect(res.status).toBe(400);
     });
-    const req = httpMock.expectOne(`${environment.identity}/identity/users/password/${user.email}?newPassword=${user.password}&token=${token}`);
+    const req = httpMock
+      .expectOne(`${environment.identity}/identity/users/password/${user.email}?newPassword=${user.password}&token=${token}`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.params.get('token')).not.toBe('pqrstuv');
-    req.flush(new HttpResponse<Number>({status: 400}));
+    req.flush(new HttpResponse<number>({status: 400}));
   }));
 
-
-  it('should verify the policy',async(()=>{
-
+  it('should verify the policy', async( () => {
     let policyNumber = user.policyDetails[0].policynumber.policynumber;
-
-    authService.verifyPolicy(userService).subscribe((response)=>{
+    authService.verifyPolicy(userService).subscribe((response) => {
       expect(response).toEqual(policyResponse);
-    })
+    });
 
     const req = httpMock.expectOne(`${environment.personalpolicy}/policies/${policyNumber}`);
     expect(req.request.method).toBe('PUT');
     req.flush(policyResponse);
   }));
 
-  it('should verify the user', async(()=>{
-
-    authService.verifyUser(userService).subscribe((response)=>{
+  it('should verify the user', async( () => {
+    authService.verifyUser(userService).subscribe( (response) => {
       expect(response).toEqual(user);
-    })
-
+    });
     const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
     expect(req.request.method).toBe('POST');
     req.flush(user);
   }));
-
-
 });

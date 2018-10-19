@@ -17,31 +17,34 @@ export class CreateNewPasswordComponent implements OnInit {
   successChangePassword:                  boolean = false;
   tooManyAttempts:                        boolean = false;
   waitingForResponse:                     boolean = false;  // waiting token api response
-  
-  constructor( 
+  constructor(
     service:                              CreateNewPasswordFormService,
-  	private route:                        ActivatedRoute,
-    private authenticationService:        AuthenticationService 
+    private route:                        ActivatedRoute,
+    private authenticationService:        AuthenticationService
   ) {
       this.createNewPassword = service.getInputs();
-      this.route = route
+      this.route = route;
   }
 
   checkForConfirmation(event): void {
-    if(event) this.successChangePassword = event;
+    if (event) {
+      this.successChangePassword = event;
+    }
   }
 
-  isTokenValid(token,email) {
-    if(!token || !email) return false;
-  	this.waitingForResponse =           true;
+  isTokenValid(token, email) {
+    if (!token || !email) {
+      return false;
+    }
+    this.waitingForResponse =           true;
     return this.authenticationService
       .tokenVerification(token, email)
       .subscribe(
-        data => {
+        (data) => {
           this.expiredLink =            false;
           this.waitingForResponse =     false;
-        }, 
-        error => {
+        },
+        (error) => {
           this.expiredLink =            true;
           this.waitingForResponse =     false;
         }
@@ -54,8 +57,8 @@ export class CreateNewPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if(params) {
+    this.route.queryParams.subscribe((params) => {
+      if (params) {
         return this.isTokenValid(params.token, params.email);
       }
     });

@@ -3,7 +3,8 @@
 
 /*** Replace all '\@angular\cli' with '@angular-devkit/build-angular' in '\customer-portal\karma.conf.js' file. ***/
 
-/**** Some files were throwing errors whenever I run cammand `ng test`, So I have commented it. Will revert commented code once we will write test cases for those modules ****/
+/**** Some files were throwing errors whenever I run cammand `ng test`, So I have commented it. 
+ * Will revert commented code once we will write test cases for those modules ****/
 /**** src/app/_directives/forms/repeat-password/repeat-password-directive.directive.spec.ts
 src/app/components/confirmations/forgot-password-set/forgot-password-set.component.spec.ts
 src/app/components/confirmations/forgot-password/forgot-password.component.spec.ts
@@ -11,10 +12,10 @@ src/app/components/forms/non-dynamic-forms/send-email-form/send-email-form.compo
 src/app/components/individual-components/inputs/mapfre-input/mapfre-input.component.spec.ts
 
 /****** Added 'polyfills.ts' in include property, because it throws error polyfills.ts file missing *****/
-/*src/tsconfig.spec.json*/
+/* src/tsconfig.spec.json */
 
-/** Importing angular default component **/
-import { async, ComponentFixture, TestBed, 
+/* Importing angular default component */
+import { async, ComponentFixture, TestBed,
   inject, fakeAsync, tick }              from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA}               from '@angular/core';
 import { HttpClientModule }              from '@angular/common/http';
@@ -29,7 +30,7 @@ import { AlertService,
 import { Location }                     from '@angular/common';
 import { Observable, Observer }         from 'rxjs';
 
-/** Import component & services **/
+/* Import component & services */
 import { LoginFormComponent }           from './login-form.component';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { UserService }                  from '../../../../_services/user.service';
@@ -41,7 +42,7 @@ class MockAuthService extends AuthenticationService{
 
     public  token: string = 'token';
     login(): Observable<any>{
-      let obs = Observable.create((observer: Observer<string>)=>{
+      const obs = Observable.create((observer: Observer<string>) => {
         observer.next('verifyaccount');
       });
       return obs;
@@ -53,24 +54,18 @@ class MockAuthService extends AuthenticationService{
     }
   }
 
-
-/** Declaration of login component and services **/
+/* Declaration of login component and services */
 describe('LoginFormComponent', () => {
   let component:                    LoginFormComponent;
   let fixture:                      ComponentFixture<LoginFormComponent>;
-  let formBaseControlService :      any;
-  let loginService :                any;
-  let cookieService :               CookieService;
+  let formBaseControlService:       any;
+  let loginService:                 any;
+  let cookieService:                CookieService;
   let location:                     Location;
   let userService:                  UserService;
   let alertService:                 AlertService;
-  let authenticationService :       any;
-  let validEmail :                  String         =     'testoauth';
-  let validPassword :               String         =     'Abcd!234';
-  let emptyMessage :                any            =     'required';
-  let invalidEmailPattern :         any            =     'pattern';
-  let invalidCredentialMessage :    any            =     'Invalid email/password combination';
-
+  let authenticationService:        any;
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginFormComponent,DashboardComponent, ForgotPasswordComponent ],
@@ -89,7 +84,7 @@ describe('LoginFormComponent', () => {
       providers: [
         CookieService, AuthenticationService, AlertService, RegExHelper, UserService, FormBaseControlService, LoginService
       ],
-      schemas:[NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
@@ -122,7 +117,7 @@ describe('LoginFormComponent', () => {
   }));
 
   beforeEach(() => {
-    let inputs = loginService.getInputs();
+    const inputs = loginService.getInputs();
     component.inputs = inputs;
     component.loginForm = formBaseControlService.toFormGroup(component.inputs);
     component.loginForm.setValue({loginEmail: 'test@xyz.com', loginPassword: 'password'});
@@ -148,7 +143,7 @@ describe('LoginFormComponent', () => {
     expect(component.user.email).toBe(component.loginForm.get('loginEmail').value);
     expect(component.user.password).toBe(component.loginForm.get('loginPassword').value);
     expect(component.putCookie).toHaveBeenCalled();
-    //expect(location.path()).toBe('/dashboard');
+    // expect(location.path()).toBe('/dashboard');
   }));
 
   it('should do nothing if user property is false', fakeAsync( () => {
@@ -168,7 +163,7 @@ describe('LoginFormComponent', () => {
   it('should throw error if invalid email/password', fakeAsync( () => {
     spyOn(component, 'putCookie');
     spyOn(fixture.debugElement.injector.get(AuthenticationService), 'login').and.callFake(()=>{
-      let obs =   Observable.create( (observer: Observer<string>) => {
+      const obs = Observable.create( (observer: Observer<string>) => {
         throw observer.error('error');
       });
       return obs;
@@ -187,8 +182,8 @@ describe('LoginFormComponent', () => {
       expect(component.rememberMe).toBeTruthy();
   });
 
-  it('should redirect to /forgotpassword if email pattern does not match', fakeAsync(()=>{
-    let email = component.loginForm.get('loginEmail').value;
+  it('should redirect to /forgotpassword if email pattern does not match', fakeAsync( () => {
+    const email = component.loginForm.get('loginEmail').value;
     // let emailPattern = fixture.debugElement.injector.get(RegExHelper).strictEmailPattern;
     component.prefillEmailParamater();
     fixture.detectChanges();
@@ -203,16 +198,16 @@ describe('LoginFormComponent', () => {
     component.user.password = 'password';
     component.putCookie();
     fixture.detectChanges();
-    let cookie = fixture.debugElement.injector.get(CookieService);
+    const cookie = fixture.debugElement.injector.get(CookieService);
     fixture.detectChanges();
     expect(cookie.get('remember')).toBeTruthy();
     expect(cookie.get('email')).toBeTruthy();
     expect(cookie.get('password')).toBeTruthy();
   }));
 
-  it('should test Initialization of a component', fakeAsync(()=>{
+  it('should test Initialization of a component', fakeAsync( () => {
     localStorage.setItem('currentUser', 'user');
-    let formBase: FormBase<any>[] = [new TextBox({
+    const formBase: FormBase<any>[] = [new TextBox({
       field1: '1'
     })];
     component.inputs = formBase;
@@ -223,7 +218,7 @@ describe('LoginFormComponent', () => {
     expect(authenticationService.token).toBeNull();
     expect(localStorage.getItem('currentUser')).toBeNull();
   }));
-//   fit('should create', () => {   
+//   fit('should create', () => {
 //     expect(component).toBeTruthy();
 //   });
 
@@ -238,7 +233,7 @@ describe('LoginFormComponent', () => {
 //       loginEmail.setValue('test');
 //       expect(loginEmail.errors[invalidEmailPattern]).toBeDefined();
 //       // Verify for valid email.
-//       loginEmail.setValue('validEmail@gmail.com');     
+//       loginEmail.setValue('validEmail@gmail.com');
 //       expect(loginEmail.valid).toBeTruthy();
 //       done();
 //     });
@@ -251,7 +246,6 @@ describe('LoginFormComponent', () => {
 //       // Verify first blank password field should be required
 //       expect(loginPassword.valid).toBeFalsy();
 //       expect(loginPassword.errors[emptyMessage]).toBeTruthy();
-      
 //       // verify password field should not more than 24 character.
 //       loginPassword.setValue('1234561231456123456123456123456');
 //       expect(loginPassword.errors['maxlength']).toBeDefined();
@@ -271,7 +265,7 @@ describe('LoginFormComponent', () => {
 //       component.onRememberMe(true);
 //       /** After calling remember me verifying the remember me output.**/
 //       expect(component.rememberMe).toBeTruthy();
-//       done();         
+//       done();
 //     });
 //   });
 
@@ -289,17 +283,18 @@ describe('LoginFormComponent', () => {
 //       loginEmail.setValue('inValidEmail@mapfre.com');
 //       loginPassword.setValue(validPassword);
 //       expect(component.loginForm.valid).toBeTruthy();
-//       authenticationService.login(component.loginForm.controls['loginEmail'].value, component.loginForm.controls['loginPassword'].value).subscribe (
+//       authenticationService.login(
+//          component.loginForm.controls['loginEmail'].value, component.loginForm.controls['loginPassword'].value).subscribe (
 //         data => {
 //           expect('200').toEqual(data['status']);
-//           done();                  
+//           done();
 //         },
 //         error => {
 //           // expect(error.ok).toBeFalsy();
 //           expect(error).toEqual(invalidCredentialMessage);
 //           done();
 //         }
-//       ); 
+//       );
 //     });
 //   });
 
@@ -316,17 +311,18 @@ describe('LoginFormComponent', () => {
 //       /** Verify the valid credential message. **/
 //       loginEmail.setValue(validEmail);
 //       loginPassword.setValue(validPassword);
-//       authenticationService.login(component.loginForm.controls['loginEmail'].value, component.loginForm.controls['loginPassword'].value).subscribe (
-//         data => {         
+//       authenticationService.login(
+//          component.loginForm.controls['loginEmail'].value, component.loginForm.controls['loginPassword'].value).subscribe (
+//         data => {
 //           expect('200').toEqual(data['status']);
-//           done();                  
+//           done();
 //         },
 //         error => {
 //           // expect(error.ok).toBeFalsy();
 //           expect(error).toEqual(invalidCredentialMessage);
 //           done();
 //         }
-//       ); 
+//       );
 //     });
 //   });
 });

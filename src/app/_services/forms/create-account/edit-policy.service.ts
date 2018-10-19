@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { FormBase, TextBox }   from 'mapfre-design-library';
+import { Injectable }         from '@angular/core';
+import { FormBase, TextBox }  from 'mapfre-design-library';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import { FormBase, TextBox }   from 'mapfre-design-library';
 export class EditPolicyService {
 
   getInputs() {
-    let inputs: FormBase<any>[] = [
+    const inputs: FormBase<any>[] = [
       new TextBox({
         additionalClasses: 'form-control',
         inputType: 'text',
@@ -50,7 +50,7 @@ export class EditPolicyService {
         validationMessageError: 'VALID_POLICY_VALIDATION_MESSAGE',
         userSubscription: 'policyDetails[0].policynumber.policynumber'
       }),
-    ]
+    ];
     return inputs;
   }
 }

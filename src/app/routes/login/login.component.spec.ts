@@ -1,18 +1,17 @@
-import { LoginService } from './../../_services/forms/login/login.service';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { LoginComponent } from './login.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule } from '@ngx-translate/core';
-import { TextBox, FormBase }    from 'mapfre-design-library';
-
+import { NO_ERRORS_SCHEMA }         from '@angular/core';
+import { HttpClientTestingModule }  from '@angular/common/http/testing';
+import { RouterTestingModule }      from '@angular/router/testing';
+import { async, ComponentFixture,
+  TestBed }                         from '@angular/core/testing';
+import { TranslateModule }          from '@ngx-translate/core';
+import { FormBase }                 from 'mapfre-design-library';
+import { LoginService }             from './../../_services/forms/login/login.service';
+import { LoginComponent }           from './login.component';
 
 class MockLoginService extends LoginService{
   getInputs() {
-    let res = [new FormBase({value:"formbase"})];
-      return res;
+    let res = [new FormBase({value: 'formbase'})];
+    return res;
   }
 }
 
@@ -53,11 +52,11 @@ describe('LoginComponent', () => {
   });
 
   it('should get the inputs', () => {
-    expect(component.inputs).toEqual([new FormBase({value:"formbase"})]);
+    expect(component.inputs).toEqual([new FormBase({value: 'formbase'})]);
   });
 
   it('should get the null inputs', () => {
-    spyOn(loginService,'getInputs').and.returnValue(null);
+    spyOn(loginService, 'getInputs').and.returnValue(null);
     component.constructor(loginService);
     fixture.detectChanges();
     expect(component.inputs).toBeNull();

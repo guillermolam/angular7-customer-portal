@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormGroup }                    from "@angular/forms";
+import { Component, OnInit, Input,
+  EventEmitter, Output }                from '@angular/core';
+import { FormGroup }                    from '@angular/forms';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { User }                         from '../../../../_models/user';
 import { AlertService, FormBase, FormBaseControlService } from 'mapfre-design-library';
@@ -30,7 +31,7 @@ export class SendEmailFormComponent implements OnInit {
   }
 
   forgotPasswordSendEmailId(): void {
-    let emailAddress =                  this.passwordEmailForm.controls.sendEmail.value;
+    const emailAddress =                this.passwordEmailForm.controls.sendEmail.value;
     this.user.email =                   emailAddress;
 
     if(this.user.email) {
