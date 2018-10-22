@@ -62,7 +62,7 @@ export class LoginFormComponent implements OnInit {
               redirectURl = `/${this.returnUrl}`;
             }
             else {
-              redirectURl = '/dashboard';
+              redirectURl = `/dashboard`;
             }
             this.router.navigate([redirectURl]);
           },
