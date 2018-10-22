@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="858" lines-covered="739" line-rate="0.8613" branches-valid="123" branches-covered="66" branch-rate="0.5366" timestamp="1540230688769" complexity="0" version="0.1">
+<coverage lines-valid="858" lines-covered="739" line-rate="0.8613" branches-valid="121" branches-covered="65" branch-rate="0.5372" timestamp="1540232581190" complexity="0" version="0.1">
   <sources>
     <source>/var/jenkins_home/workspace/customer-portal-ui_master-57FOZRL6BI452PRGJCGUJAKWDOCNWTZQ4GEBXYSOY3MBWKI2SL6A</source>
   </sources>
@@ -1179,9 +1179,9 @@
         </class>
       </classes>
     </package>
-    <package name="src.app.components.forms.dynamic-forms.login-form" line-rate="0.9815" branch-rate="0.6429">
+    <package name="src.app.components.forms.dynamic-forms.login-form" line-rate="0.9815" branch-rate="0.6667000000000001">
       <classes>
-        <class name="login-form.component.ts" filename="src/app/components/forms/dynamic-forms/login-form/login-form.component.ts" line-rate="0.9815" branch-rate="0.6429">
+        <class name="login-form.component.ts" filename="src/app/components/forms/dynamic-forms/login-form/login-form.component.ts" line-rate="0.9815" branch-rate="0.6667000000000001">
           <methods>
             <method name="(anonymous_2)" hits="1" signature="()V">
               <lines>
@@ -1270,9 +1270,9 @@
             <line number="53" hits="3" branch="false"/>
             <line number="55" hits="3" branch="true" condition-coverage="50% (1/2)"/>
             <line number="56" hits="3" branch="false"/>
-            <line number="61" hits="2" branch="true" condition-coverage="50% (2/4)"/>
-            <line number="62" hits="2" branch="false"/>
-            <line number="65" hits="0" branch="false"/>
+            <line number="61" hits="2" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="62" hits="0" branch="false"/>
+            <line number="65" hits="2" branch="false"/>
             <line number="67" hits="2" branch="false"/>
             <line number="70" hits="1" branch="false"/>
             <line number="77" hits="1" branch="false"/>
