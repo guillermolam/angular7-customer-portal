@@ -31,9 +31,8 @@ export class CreateAccountFormComponent implements OnInit {
     private userData:               UserService
   ) {}
 
-
   createUserObject(object, numbers): void {
-    if(numbers === null){
+    if (numbers === null) {
       this.user = {
         firstName:                  object.signUpFirst_name,
         middleName:                 object.signUpMI_name,
@@ -51,24 +50,27 @@ export class CreateAccountFormComponent implements OnInit {
   register() {
     this.loading = true;
     this.createUserObject(this.signUpForm.value, null);
-    if(this.userData) {
+    if (this.userData) {
       this.authService.verifyUser(this.userData)
       .subscribe(
-        result => {
+        (result) => {
           this.createUserObject(this.userData, result);
           this.router.navigate(['signup', 'createpassword' ]);
         },
-        err =>{
-          if(err.status === 400){
+        (err) => {
+          if (err.status === 400) {
             // --- Email is already in use
             this.router.navigate(['signup', 'emailinuse' ]);
           }
-          else if(err.status === 403){
+          else if (err.status === 403) {
             // --- If the user does not have any policies
             this.router.navigate(['signup', 'addpolicy' ]);
           }
+          else {
+            console.log(err);
+          }
         }
-      )
+      );
     }
   }
 

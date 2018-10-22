@@ -22,6 +22,8 @@ export class AuthenticationService {
   }
 
   creatUserObject(items, db): object {
+    const pn = items.policyDetails === undefined ? '' : items.policyDetails[0].policynumber.policynumber ,
+          pword = items.password || null;
     let obj;
     if ( db == 'account' ) {
       obj =  {
@@ -32,11 +34,11 @@ export class AuthenticationService {
           email:            items.email
         },
         policynumbers: [{
-            policynumber:   items.policyDetails[0].policynumber.policynumber
+            policynumber:   pn
         }],
         credentials: {
           email:            items.email,
-          password:         items.password
+          password:         pword
         }
       };
     }
