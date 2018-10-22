@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="858" lines-covered="739" line-rate="0.8613" branches-valid="121" branches-covered="65" branch-rate="0.5372" timestamp="1540234618219" complexity="0" version="0.1">
+<coverage lines-valid="858" lines-covered="739" line-rate="0.8613" branches-valid="121" branches-covered="65" branch-rate="0.5372" timestamp="1540242192186" complexity="0" version="0.1">
   <sources>
     <source>/var/jenkins_home/workspace/customer-portal-ui_master-57FOZRL6BI452PRGJCGUJAKWDOCNWTZQ4GEBXYSOY3MBWKI2SL6A</source>
   </sources>
@@ -376,9 +376,9 @@
                 <line number="16" hits="96"/>
               </lines>
             </method>
-            <method name="(anonymous_4)" hits="5" signature="()V">
+            <method name="(anonymous_4)" hits="4" signature="()V">
               <lines>
-                <line number="24" hits="5"/>
+                <line number="24" hits="4"/>
               </lines>
             </method>
             <method name="(anonymous_5)" hits="2" signature="()V">
@@ -464,13 +464,13 @@
             <line number="20" hits="96" branch="false"/>
             <line number="21" hits="96" branch="true" condition-coverage="100% (2/2)"/>
             <line number="24" hits="1" branch="false"/>
-            <line number="25" hits="5" branch="true" condition-coverage="50% (1/2)"/>
-            <line number="26" hits="5" branch="true" condition-coverage="50% (1/2)"/>
-            <line number="28" hits="5" branch="true" condition-coverage="100% (2/2)"/>
-            <line number="29" hits="4" branch="false"/>
+            <line number="25" hits="4" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="26" hits="4" branch="true" condition-coverage="50% (1/2)"/>
+            <line number="28" hits="4" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="29" hits="3" branch="false"/>
             <line number="45" hits="1" branch="true" condition-coverage="50% (1/2)"/>
             <line number="46" hits="0" branch="false"/>
-            <line number="52" hits="5" branch="false"/>
+            <line number="52" hits="4" branch="false"/>
             <line number="55" hits="1" branch="false"/>
             <line number="57" hits="2" branch="false"/>
             <line number="58" hits="2" branch="false"/>
@@ -520,8 +520,8 @@
             <line number="171" hits="1" branch="false"/>
             <line number="172" hits="1" branch="false"/>
             <line number="173" hits="1" branch="false"/>
-            <line number="175" hits="1" branch="false"/>
-            <line number="178" hits="1" branch="false"/>
+            <line number="182" hits="1" branch="false"/>
+            <line number="185" hits="1" branch="false"/>
           </lines>
         </class>
         <class name="wallet-card.service.ts" filename="src/app/_services/_iam/wallet-card.service.ts" line-rate="1" branch-rate="1">
