@@ -1,42 +1,42 @@
 <?xml version="1.0"?>
-<testsuite name="Chrome 67.0.3396 (Mac OS X 10.13.4)" package="" timestamp="2018-10-22T18:19:48" id="0" hostname="MAMR00195.local" tests="123" errors="0" failures="0" time="14.048">
+<testsuite name="Chrome 67.0.3396 (Mac OS X 10.13.4)" package="" timestamp="2018-10-22T20:59:37" id="0" hostname="MAMR00195.local" tests="123" errors="0" failures="0" time="15.325">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36"/>
   </properties>
-  <testcase name="AuthGuard should be able to route when user is logged in" time="0.204" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthGuard"/>
-  <testcase name="AuthGuard should not route when user is not logged in" time="0.045" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthGuard"/>
-  <testcase name="SignUpGuard should be able to route when user has an observable" time="0.031" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignUpGuard"/>
-  <testcase name="SignUpGuard should not route when user there is no user observable" time="0.02" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignUpGuard"/>
-  <testcase name="AuthGuard should be able to route when user has an observable" time="0.029" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthGuard"/>
-  <testcase name="AuthGuard should not route when user has no observable" time="0.033" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthGuard"/>
+  <testcase name="AuthGuard should be able to route when user is logged in" time="0.103" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthGuard"/>
+  <testcase name="AuthGuard should not route when user is not logged in" time="0.033" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthGuard"/>
+  <testcase name="SignUpGuard should be able to route when user has an observable" time="0.044" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignUpGuard"/>
+  <testcase name="SignUpGuard should not route when user there is no user observable" time="0.031" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignUpGuard"/>
+  <testcase name="AuthGuard should be able to route when user has an observable" time="0.06" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthGuard"/>
+  <testcase name="AuthGuard should not route when user has no observable" time="0.081" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthGuard"/>
   <testcase name="estingService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).estingService">
     <skipped/>
   </testcase>
-  <testcase name="AuthenticationService should be created" time="0.044" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should confirm policy and account" time="0.041" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should throw error for confirm policy and account" time="0.061" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should create a password" time="0.027" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should send email on forgot password" time="0.023" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should login successfully" time="0.02" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should throw error while login" time="0.023" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should not login successfully" time="0.019" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should logout the user" time="0.027" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should verify the token for verifyaccount" time="0.024" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should verify the token for forgotpassword" time="0.019" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should update the password" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should not update the password" time="0.027" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should verify the policy" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="AuthenticationService should verify the user" time="0.014" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
-  <testcase name="WalletCardService should return the Policy details" time="0.058" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).WalletCardService"/>
-  <testcase name="AddPolicyService should return Formbase to add policy" time="0.014" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyService"/>
-  <testcase name="CreateAccountService should return formbase to create account service" time="0.017" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountService"/>
-  <testcase name="EditPolicyService should return formbase to edit policy service" time="0.014" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyService"/>
+  <testcase name="AuthenticationService should be created" time="0.043" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should confirm policy and account" time="0.036" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should throw error for confirm policy and account" time="0.031" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should create a password" time="0.023" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should send email on forgot password" time="0.036" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should login successfully" time="0.026" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should throw error while login" time="0.021" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should not login successfully" time="0.034" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should logout the user" time="0.03" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the token for verifyaccount" time="0.032" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the token for forgotpassword" time="0.027" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should update the password" time="0.025" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should not update the password" time="0.022" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the policy" time="0.028" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the user" time="0.022" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AuthenticationService"/>
+  <testcase name="WalletCardService should return the Policy details" time="0.079" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).WalletCardService"/>
+  <testcase name="AddPolicyService should return Formbase to add policy" time="0.02" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyService"/>
+  <testcase name="CreateAccountService should return formbase to create account service" time="0.014" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountService"/>
+  <testcase name="EditPolicyService should return formbase to edit policy service" time="0.015" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyService"/>
   <testcase name="CreateNewPasswordFormService should create new password form" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordFormService">
     <skipped/>
   </testcase>
-  <testcase name="EmailFormService should return the formbase for email" time="0.01" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailFormService"/>
-  <testcase name="LoginService should return formbase for creating login form" time="0.017" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginService"/>
-  <testcase name="UserService should update the user" time="0.014" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).UserService"/>
+  <testcase name="EmailFormService should return the formbase for email" time="0.018" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailFormService"/>
+  <testcase name="LoginService should return formbase for creating login form" time="0.031" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginService"/>
+  <testcase name="UserService should update the user" time="0.028" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).UserService"/>
   <testcase name="AppComponent should create the app" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AppComponent">
     <skipped/>
   </testcase>
@@ -55,72 +55,72 @@
   <testcase name="SidenavComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SidenavComponent">
     <skipped/>
   </testcase>
-  <testcase name="AddPolicyComponent should verify policy and route user to createpassword page" time="0.538" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
-  <testcase name="AddPolicyComponent should throw error and redirect to signup/notfound" time="0.24" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
-  <testcase name="AddPolicyComponent should throw error and redirect to signup/addpolicy" time="0.246" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
-  <testcase name="AddPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0.265" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should verify policy and route user to createpassword page" time="0.698" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/notfound" time="0.325" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/addpolicy" time="0.345" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0.243" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
   <testcase name="AddPolicyComponent should add policy to the userObject" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent">
     <skipped/>
   </testcase>
-  <testcase name="AddPolicyComponent should return the true checkbox value" time="0.275" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
-  <testcase name="AddPolicyComponent should return the false checkbox value" time="0.225" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
-  <testcase name="CreateAccountFormComponent should create the user object" time="0.217" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
-  <testcase name="CreateAccountFormComponent should update the user object" time="0.342" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
-  <testcase name="CreateAccountFormComponent should call register() to register the user" time="0.267" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
-  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/emailinuse" time="0.229" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
-  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/addpolicy" time="0.202" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
-  <testcase name="CreatePasswordFormComponent should call createPassword method" time="0.101" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreatePasswordFormComponent"/>
+  <testcase name="AddPolicyComponent should return the true checkbox value" time="0.249" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should return the false checkbox value" time="0.235" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).AddPolicyComponent"/>
+  <testcase name="CreateAccountFormComponent should create the user object" time="0.347" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should update the user object" time="0.468" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should call register() to register the user" time="0.462" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/emailinuse" time="0.318" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/addpolicy" time="0.299" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateAccountFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should call createPassword method" time="0.189" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreatePasswordFormComponent"/>
   <testcase name="CreatePasswordFormComponent should call updatePassword method" time="0.073" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreatePasswordFormComponent"/>
-  <testcase name="CreatePasswordFormComponent should redirect user to verify account" time="0.07" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreatePasswordFormComponent"/>
-  <testcase name="CreatePasswordFormComponent should initializes parameters oninitialization" time="0.043" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreatePasswordFormComponent"/>
-  <testcase name="EditPolicyComponent should create" time="0.25" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
-  <testcase name="EditPolicyComponent should create user object" time="0.177" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
-  <testcase name="EditPolicyComponent should edit the policy" time="0.188" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
-  <testcase name="EditPolicyComponent should throw error and redirect to signup/notfound" time="0.204" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
-  <testcase name="EditPolicyComponent should throw error and redirect to signup/bop" time="0.509" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
-  <testcase name="EditPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0.259" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
-  <testcase name="EditPolicyComponent should get the prefill data" time="0.236" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
-  <testcase name="EditPolicyComponent should Initialize" time="0.248" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
-  <testcase name="LoginFormComponent should get the email and password login form " time="0.266" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
-  <testcase name="LoginFormComponent it should login and navigate to dashboard if there are no returnurl paramaters" time="0.276" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should do nothing if user property is false" time="0.255" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should throw error if invalid email/password" time="0.231" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should set rememberMe field of component" time="0.16" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should redirect to /forgotpassword if email pattern does not match" time="0.199" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should set the expiry of the cookie" time="0.213" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should test Initialization of a component" time="0.156" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
-  <testcase name="SendEmailFormComponent should check is valid method" time="0.061" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SendEmailFormComponent"/>
-  <testcase name="SendEmailFormComponent should send email id to authservice when forgot password" time="0.097" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SendEmailFormComponent"/>
-  <testcase name="SendEmailFormComponent should get email from existing parameters" time="0.056" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SendEmailFormComponent"/>
-  <testcase name="SendEmailFormComponent should run getEmailParameter on initialization" time="0.054" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SendEmailFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should redirect user to verify account" time="0.08" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should initializes parameters oninitialization" time="0.079" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreatePasswordFormComponent"/>
+  <testcase name="EditPolicyComponent should create" time="0.236" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should create user object" time="0.207" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should edit the policy" time="0.219" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/notfound" time="0.287" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/bop" time="0.286" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0.25" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should get the prefill data" time="0.271" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should Initialize" time="0.255" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EditPolicyComponent"/>
+  <testcase name="LoginFormComponent should get the email and password login form " time="0.229" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
+  <testcase name="LoginFormComponent it should login and navigate to dashboard if there are no returnurl paramaters" time="0.199" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should do nothing if user property is false" time="0.183" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should throw error if invalid email/password" time="0.247" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should set rememberMe field of component" time="0.146" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should redirect to /forgotpassword if email pattern does not match" time="0.159" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should set the expiry of the cookie" time="0.176" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should test Initialization of a component" time="0.148" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginFormComponent"/>
+  <testcase name="SendEmailFormComponent should check is valid method" time="0.072" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should send email id to authservice when forgot password" time="0.071" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should get email from existing parameters" time="0.078" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should run getEmailParameter on initialization" time="0.158" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SendEmailFormComponent"/>
   <testcase name="ForgotPasswordNondynamicComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordNondynamicComponent">
     <skipped/>
   </testcase>
-  <testcase name="CreateNewPasswordExpiredComponent should get email from parameter" time="0.046" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordExpiredComponent"/>
-  <testcase name="CreateNewPasswordExpiredComponent should call getEmailFromParameter" time="0.036" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordExpiredComponent"/>
-  <testcase name="CreateNewPasswordSetComponent should create" time="0.032" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordSetComponent"/>
-  <testcase name="ForgotPasswordTooManyComponent should create" time="0.033" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordTooManyComponent"/>
-  <testcase name="EmailConfirmationComponent should emit false value" time="0.075" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailConfirmationComponent"/>
-  <testcase name="EmailConfirmationComponent should send email to user and emit true" time="0.1" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailConfirmationComponent"/>
-  <testcase name="EmailConfirmationComponent should do nothing" time="0.087" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailConfirmationComponent"/>
-  <testcase name="EmailConfirmationComponent should throw error" time="0.068" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailConfirmationComponent"/>
-  <testcase name="BopScreenComponent should create" time="0.045" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).BopScreenComponent"/>
+  <testcase name="CreateNewPasswordExpiredComponent should get email from parameter" time="0.135" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordExpiredComponent"/>
+  <testcase name="CreateNewPasswordExpiredComponent should call getEmailFromParameter" time="0.064" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordExpiredComponent"/>
+  <testcase name="CreateNewPasswordSetComponent should create" time="0.03" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordSetComponent"/>
+  <testcase name="ForgotPasswordTooManyComponent should create" time="0.039" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordTooManyComponent"/>
+  <testcase name="EmailConfirmationComponent should emit false value" time="0.154" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should send email to user and emit true" time="0.084" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should do nothing" time="0.079" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should throw error" time="0.086" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailConfirmationComponent"/>
+  <testcase name="BopScreenComponent should create" time="0.038" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).BopScreenComponent"/>
   <testcase name="EmailUseScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).EmailUseScreenComponent">
     <skipped/>
   </testcase>
-  <testcase name="PolicyBelongToAnotherScreenComponent should redirect ro createpassword page" time="0.359" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyBelongToAnotherScreenComponent"/>
-  <testcase name="PolicyBelongToAnotherScreenComponent should throw error" time="0.248" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyBelongToAnotherScreenComponent"/>
-  <testcase name="PolicyBelongToAnotherScreenComponent should create usr object" time="0.32" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyBelongToAnotherScreenComponent"/>
-  <testcase name="PolicyNotFoundScreenComponent should update policy holdername and number" time="0.412" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
-  <testcase name="PolicyNotFoundScreenComponent should call updateObservable" time="0.288" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
-  <testcase name="PolicyNotFoundScreenComponent should call get ovbservable on initialization" time="0.269" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
-  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to dashboard" time="0.356" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should redirect ro createpassword page" time="0.376" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyBelongToAnotherScreenComponent"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should throw error" time="0.278" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyBelongToAnotherScreenComponent"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should create usr object" time="0.253" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyBelongToAnotherScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should update policy holdername and number" time="0.357" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should call updateObservable" time="0.267" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should call get ovbservable on initialization" time="0.281" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to dashboard" time="0.341" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
   <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to verifyaccount" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent">
     <skipped/>
   </testcase>
-  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/notfound" time="0.261" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
-  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/bop" time="0.268" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
-  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/policybelongstoanother" time="0.244" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/notfound" time="0.312" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/bop" time="0.271" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/policybelongstoanother" time="0.276" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).PolicyNotFoundScreenComponent"/>
   <testcase name="ReviewPolicyScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ReviewPolicyScreenComponent">
     <skipped/>
   </testcase>
@@ -139,33 +139,33 @@
   <testcase name="OnboardingWalletModalComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).OnboardingWalletModalComponent">
     <skipped/>
   </testcase>
-  <testcase name="CreateNewPasswordComponent should create" time="0.11" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should set successChangePassword to true" time="0.193" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should set successChangePassword to false" time="0.079" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should return false if the token is invalid" time="0.074" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should verify if the token is valid" time="0.115" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should verify for the invalid token" time="0.073" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should set successpassword property to true" time="0.086" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should call isTockenValid if route params exists" time="0.088" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should create" time="0.183" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to true" time="0.13" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to false" time="0.149" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should return false if the token is invalid" time="0.116" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should verify if the token is valid" time="0.134" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should verify for the invalid token" time="0.126" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successpassword property to true" time="0.105" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should call isTockenValid if route params exists" time="0.204" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).CreateNewPasswordComponent"/>
   <testcase name="DashboardComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).DashboardComponent">
     <skipped/>
   </testcase>
-  <testcase name="ForgotPasswordComponent should create" time="0.078" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
-  <testcase name="ForgotPasswordComponent should get email from parameter" time="0.127" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
-  <testcase name="ForgotPasswordComponent should set showConfirmation to true" time="0.151" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
-  <testcase name="ForgotPasswordComponent should call method getEmailFromParamater" time="0.073" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
-  <testcase name="ForgotPasswordComponent should set the emailInputs" time="0.077" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
-  <testcase name="LoginComponent should get the inputs" time="0.07" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginComponent"/>
-  <testcase name="LoginComponent should get the null inputs" time="0.054" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginComponent"/>
-  <testcase name="SignupProcessComponent should initialize " time="0.147" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignupProcessComponent"/>
-  <testcase name="SignupProcessComponent should initialize user and update whereInTheProcess" time="0.194" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignupProcessComponent"/>
-  <testcase name="SignupComponent should get the inputs" time="0.136" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignupComponent"/>
-  <testcase name="SignupComponent should get the null inputs" time="0.077" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignupComponent"/>
+  <testcase name="ForgotPasswordComponent should create" time="0.121" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should get email from parameter" time="0.102" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should set showConfirmation to true" time="0.098" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should call method getEmailFromParamater" time="0.083" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should set the emailInputs" time="0.104" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).ForgotPasswordComponent"/>
+  <testcase name="LoginComponent should get the inputs" time="0.086" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginComponent"/>
+  <testcase name="LoginComponent should get the null inputs" time="0.056" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).LoginComponent"/>
+  <testcase name="SignupProcessComponent should initialize " time="0.15" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignupProcessComponent"/>
+  <testcase name="SignupProcessComponent should initialize user and update whereInTheProcess" time="0.172" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignupProcessComponent"/>
+  <testcase name="SignupComponent should get the inputs" time="0.056" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignupComponent"/>
+  <testcase name="SignupComponent should get the null inputs" time="0.045" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).SignupComponent"/>
   <testcase name="TestingComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).TestingComponent">
     <skipped/>
   </testcase>
-  <testcase name="WalletCardComponent should call the wallet card service to generate the pk pass" time="0.046" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).WalletCardComponent"/>
-  <testcase name="WelcomeComponent should create" time="0.124" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).WelcomeComponent"/>
+  <testcase name="WalletCardComponent should call the wallet card service to generate the pk pass" time="0.074" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).WalletCardComponent"/>
+  <testcase name="WelcomeComponent should create" time="0.03" classname="Chrome_67_0_3396_(Mac_OS_X_10_13_4).WelcomeComponent"/>
   <system-out>
     <![CDATA[Chrome 67.0.3396 (Mac OS X 10.13.4) LOG: 'error'
 

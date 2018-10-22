@@ -170,8 +170,15 @@ export class AuthenticationService {
     const
       user =            userObject.$user.source.value,
       url =             `${environment.account}/accounts/${user.email}`,
-      userSendObject =  this.creatUserObject(user, 'account')
-    ;
+      userSendObject =  {
+        firstName:        userObject.firstName,
+        middleName:       userObject.middleName,
+        lastName:         userObject.lastName,
+        email:            userObject.email
+      };
+
+      //userSendObject =  this.creatUserObject(user, 'account')
+    
     return this.http.post(url, userSendObject, this.options);
   }
 
