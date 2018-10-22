@@ -1,9 +1,9 @@
 import { Component, OnInit }              from '@angular/core';
 import { ActivatedRoute, Params }         from '@angular/router';
+import { ModalOptions }                   from 'mapfre-design-library';
 import { AddPolicyService }               from '../../../_services/forms/create-account/add-policy.service';
 import { CreateNewPasswordFormService }   from '../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
 import { EditPolicyService }              from '../../../_services/forms/create-account/edit-policy.service';
-import { ModalOptions }                   from 'mapfre-design-library';
 import { User }                           from '../../../_models/user';
 import { UserService }                    from '../../../_services/user.service';
 
@@ -20,7 +20,7 @@ export class SignupProcessComponent implements OnInit {
   whereInTheProcess:                   string;
   whereToFindModalOptions:             ModalOptions;
 
-  constructor( 
+  constructor(
     private activatedRoute:            ActivatedRoute,
     private userService:               UserService,
     editPolicyService:                 EditPolicyService,
@@ -31,25 +31,21 @@ export class SignupProcessComponent implements OnInit {
     this.createNewPassword = passwordService.getInputs();
     this.editPolicyInfo = editPolicyService.getInputs();
     this.whereToFindModalOptions = new ModalOptions({
-      additionalButtonClasses:        "flat normal-link small", 
-			animatePosition:                "bottom", 
-			buttonCopy:                     "MODAL_WHERE_CAN_I_LINK",
-			modalId:                        "helpModal",
-			modalTranslateCopy:             "MODAL_WHERE_CAN_I_TITLE",
-			typeOfModal:                    "default",
-		});
+      additionalButtonClasses:        'flat normal-link small',
+      animatePosition:                'bottom',
+      buttonCopy:                     'MODAL_WHERE_CAN_I_LINK',
+      modalId:                        'helpModal',
+      modalTranslateCopy:             'MODAL_WHERE_CAN_I_TITLE',
+      typeOfModal:                    'default',
+    });
   }
 
-
-
   ngOnInit() {
-    
     this.userService.$user.subscribe(
-      user => {
+      (user) => {
         this.user = user;
       }
     );
-    
     this.activatedRoute.params.subscribe((params: Params) => {
       this.whereInTheProcess = params['parm'];
     });

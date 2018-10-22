@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   { path: 'createpassword', component: CreateNewPasswordComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'signup/:parm', component: SignupProcessComponent, canActivate: [SignUpGuard] },
+  { path: 'signup/:parm', component: SignupProcessComponent},
   { path: 'testing', component: TestingComponent, canActivate: [AuthGuard] },
   { path: 'verifyaccount', component: VerifyAccountComponent, canActivate: [VerifyUserGuard] },
   { path: 'welcome', component: WelcomeComponent },

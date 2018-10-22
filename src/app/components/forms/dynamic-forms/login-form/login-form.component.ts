@@ -58,7 +58,7 @@ export class LoginFormComponent implements OnInit {
         .subscribe (
           (data) => {
             let redirectURl = '/dashboard';
-            if ( this.returnUrl !== '%2f' || !this.returnUrl  ) {
+            if ( this.returnUrl.includes('%2f') || !this.returnUrl  ) {
               redirectURl = `/${this.returnUrl}`;
             }
             this.router.navigate([redirectURl]);
