@@ -1,0 +1,7 @@
+<ul *ngIf="userData != undefined">
+  <li *ngFor="let detail of userData?.policyDetails">
+    policy type: {{ detail?.policyType }} 
+      | Polcy Number: {{ detail?.policynumbers.policynumber }} 
+      | <a href="#">Download</a>
+  </li>
+</ul>
