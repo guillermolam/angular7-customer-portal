@@ -58,7 +58,7 @@ export class LoginFormComponent implements OnInit {
         .subscribe (
           (data) => {
             let redirectURl;
-            if ( this.returnUrl != '' || !this.returnUrl  ) {
+            if ( this.returnUrl != '/' ) {
               redirectURl = `/${this.returnUrl}`;
             }
             else {
