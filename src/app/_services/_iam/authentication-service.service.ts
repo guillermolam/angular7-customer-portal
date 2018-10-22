@@ -171,10 +171,10 @@ export class AuthenticationService {
       user =            userObject.$user.source.value,
       url =             `${environment.account}/accounts/${user.email}`,
       userSendObject =  {
-        firstName:        userObject.firstName,
-        middleName:       userObject.middleName,
-        lastName:         userObject.lastName,
-        email:            userObject.email
+        firstName:        user.firstName,
+        middleName:       user.middleName,
+        lastName:         user.lastName,
+        email:            user.email
       };
 
       //userSendObject =  this.creatUserObject(user, 'account')
