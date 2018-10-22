@@ -57,9 +57,12 @@ export class LoginFormComponent implements OnInit {
         .login (this.user.email, this.user.password)
         .subscribe (
           (data) => {
-            let redirectURl = '/dashboard';
-            if ( this.returnUrl.includes('%2f') || !this.returnUrl  ) {
+            let redirectURl;
+            if ( this.returnUrl != '' || !this.returnUrl  ) {
               redirectURl = `/${this.returnUrl}`;
+            }
+            else {
+              redirectURl = '/dashboard';
             }
             this.router.navigate([redirectURl]);
           },
