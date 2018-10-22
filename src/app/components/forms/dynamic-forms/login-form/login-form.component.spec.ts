@@ -143,7 +143,7 @@ describe('LoginFormComponent', () => {
     expect(component.user.email).toBe(component.loginForm.get('loginEmail').value);
     expect(component.user.password).toBe(component.loginForm.get('loginPassword').value);
     expect(component.putCookie).toHaveBeenCalled();
-    // expect(location.path()).toBe('/dashboard');
+    expect(location.path()).toBe('/dashboard');
   }));
 
   it('should do nothing if user property is false', fakeAsync( () => {

@@ -64,7 +64,7 @@ export class LoginFormComponent implements OnInit {
             else {
               redirectURl = `/dashboard`;
             }
-            this.router.navigate([redirectURl]);
+            this.router.navigate([`/dashboard`]);
           },
           (err) => {
             this.alertService.error('INVALID_EMAIL_PASSWORD');
