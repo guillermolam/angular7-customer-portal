@@ -121,14 +121,12 @@
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -198,16 +196,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit, Input }     from "@angular/core";
-import { FormGroup }                    from "@angular/forms";
-import { Router }                       from "@angular/router";
-import { Observable }                   from 'rxjs';
-&nbsp;
-// --- Components | Services | Models --- //
-import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit, Input }   from '@angular/core';
+import { FormGroup }                  from '@angular/forms';
+import { Router }                     from '@angular/router';
+import { Observable }                 from 'rxjs';
 import { FormBase , FormBaseControlService }  from 'mapfre-design-library';
-import { UserService }                  from "../../../../_services/user.service";
-import { User }                         from "../../../../_models/user";
+// --- Components | Services | Models --- //
+import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
+import { UserService }                from '../../../../_services/user.service';
+import { User }                       from '../../../../_models/user';
 &nbsp;
 @Component({
   selector: 'app-add-policy-form',
@@ -216,39 +213,39 @@ import { User }                         from "../../../../_models/user";
   providers: [ FormBaseControlService ]
 })
 export class AddPolicyComponent implements OnInit {
-  @Input()  inputs:                  FormBase&lt;any&gt;[] = [];
-  @Input()  userData:                Observable&lt;User&gt;;
-            addPolicyForm:           FormGroup;
-            legalCheckbox:           boolean = false;
-            loading:                 boolean = false;
+  @Input()  inputs:                   FormBase&lt;any&gt;[] = [];
+  @Input()  userData:                 Observable&lt;User&gt;;
+            addPolicyForm:            FormGroup;
+            legalCheckbox:            boolean = false;
+            loading:                  boolean = false;
 &nbsp;
   constructor(
-    private authService:            AuthenticationService,
-    private ipt:                    FormBaseControlService,
-    private router:                 Router,
-    private userService:            UserService
+    private authService:              AuthenticationService,
+    private ipt:                      FormBaseControlService,
+    private router:                   Router,
+    private userService:              UserService
   ) { }
 &nbsp;
   addPolicy(): void {
     this.addPolicyToObject(this.userData);
-    <span class="missing-if-branch" title="else path not taken" >E</span>if(this.legalCheckbox){
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.legalCheckbox) {
       this.authService
         .verifyPolicy(this.userService)
         .subscribe(
-          data =&gt; {
+          (data) =&gt; {
             this.router.navigate(['signup', 'createpassword']);
           },
-          err =&gt; {
-            if(err.status === 404){
-              //Policy is not found
+          (err) =&gt; {
+            if (err.status === 404) {
+              // Policy is not found
               this.router.navigate(['signup', 'notfound']);
             }
-            else if(err.status === 400) {
-              //bad requrest - 400 - Biz Policy
+            else if (err.status === 400) {
+              // bad requrest - 400 - Biz Policy
               this.router.navigate(['signup', 'bop']);
             }
-            else <span class="missing-if-branch" title="else path not taken" >E</span>if(err.status === 409){
-              //conflict - 409 - if the policy belongs to another
+            else <span class="missing-if-branch" title="else path not taken" >E</span>if (err.status === 409){
+              // conflict - 409 - if the policy belongs to another
               this.router.navigate(['signup', 'policybelongstoanother']);
             }
           }
@@ -258,7 +255,7 @@ export class AddPolicyComponent implements OnInit {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  addPolicyToObject(</span>userObject): void {
-    let policyDetail = <span class="cstat-no" title="statement not covered" >[{</span>
+    const policyDetail = <span class="cstat-no" title="statement not covered" >[{</span>
       policynumber : { policynumber: this.addPolicyForm.value.addPolicy }
     }];
 <span class="cstat-no" title="statement not covered" >    userObject.policyDetails = policyDetail;</span>
@@ -280,7 +277,7 @@ export class AddPolicyComponent implements OnInit {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 19 2018 10:08:18 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 22 2018 17:11:29 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../../prettify.js"></script>
