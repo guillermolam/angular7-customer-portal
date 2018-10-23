@@ -1,11 +1,10 @@
 import { Component, Input, OnInit }     from '@angular/core';
-import { FormGroup }                    from "@angular/forms";
-import { HttpClient }                   from "@angular/common/http";
-import { Router }                       from "@angular/router";
+import { FormGroup }                    from '@angular/forms';
+import { Router }                       from '@angular/router';
+import { FormBase, FormBaseControlService } from 'mapfre-design-library';
 
 // --- Components | Services | Models --- //
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
-import { FormBase, FormBaseControlService } from 'mapfre-design-library';
 import { User }                       from '../../../../_models/user';
 import { UserService }                from '../../../../_services/user.service';
 
@@ -49,20 +48,20 @@ export class EditPolicyComponent implements OnInit {
     this.authService
       .verifyPolicy(this.userService)
       .subscribe(
-        data => {
+        (data) => {
           this.router.navigate(['signup', 'createpassword']);
         },
-        err => {
-          if(err.status === 404){
-            //Policy is not found
+        (err) => {
+          if (err.status === 404) {
+            // Policy is not found
             this.router.navigate(['signup', 'notfound']);
           }
-          else if(err.status === 400) {
-            //bad requrest - 400 - Biz Policy
+          else if (err.status === 400) {
+            // bad requrest - 400 - Biz Policy
             this.router.navigate(['signup', 'bop']);
           }
-          else if(err.status === 409){
-            //conflict - 409 - if the policy belongs to another
+          else if (err.status === 409) {
+            // conflict - 409 - if the policy belongs to another
             this.router.navigate(['signup', 'policybelongstoanother']);
           }
         }
@@ -71,10 +70,10 @@ export class EditPolicyComponent implements OnInit {
   }
 
   prefillData(prefillData): void {
-    this.editPolicyForm.get("editFirst_name").setValue(prefillData.firstName);
-    this.editPolicyForm.get("editMI_name").setValue(prefillData.middleName);
-    this.editPolicyForm.get("editLast_name").setValue(prefillData.lastName);
-    this.editPolicyForm.get("editPolicyNumber").setValue(prefillData.policyDetails[0].policynumber.policynumber);
+    this.editPolicyForm.get('editFirst_name').setValue(prefillData.firstName);
+    this.editPolicyForm.get('editMI_name').setValue(prefillData.middleName);
+    this.editPolicyForm.get('editLast_name').setValue(prefillData.lastName);
+    this.editPolicyForm.get('editPolicyNumber').setValue(prefillData.policyDetails[0].policynumber.policynumber);
   }
 
   ngOnInit() {

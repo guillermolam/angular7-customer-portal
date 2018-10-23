@@ -32,15 +32,15 @@ export class PolicyNotFoundScreenComponent implements OnInit {
     this.authService
       .verifyPolicy(this.userService)
       .subscribe(
-        data => {
-          this.userService.$user.subscribe(userService => {
-            let checkPassword = userService.password,
+        (data) => {
+          this.userService.$user.subscribe((userService) => {
+            const checkPassword = userService.password,
               email = this.userData.email,
               password = this.userData.password;
-              
-            if( checkPassword != "" || checkPassword != undefined || checkPassword != null ) {
+
+            if( checkPassword != '' || checkPassword != undefined || checkPassword != null ) {
               this.authService.login(email, password).subscribe(
-                data => { this.router.navigate(['/dashboard']); }
+                (data) => { this.router.navigate(['/dashboard']); }
               )
             }
             else {
@@ -48,17 +48,17 @@ export class PolicyNotFoundScreenComponent implements OnInit {
             }
           })
         },
-        err => {
-          if(err.status === 404){
-            //Policy is not found
+        (err) => {
+          if (err.status === 404){
+            // Policy is not found
             this.router.navigate(['signup', 'notfound']);
           }
-          else if(err.status === 400) {
-            //bad requrest - 400 - Biz Policy
+          else if (err.status === 400) {
+            // bad requrest - 400 - Biz Policy
             this.router.navigate(['signup', 'bop']);
           }
-          else if(err.status === 409){
-            //conflict - 409 - if the policy belongs to another
+          else if (err.status === 409){
+            // conflict - 409 - if the policy belongs to another
             this.router.navigate(['signup', 'policybelongstoanother']);
           }
         }
@@ -67,7 +67,7 @@ export class PolicyNotFoundScreenComponent implements OnInit {
   }
 
   updateObservable(userData): void {
-    userData.addPolicyAttempts = userData.addPolicyAttempts+1;
+    userData.addPolicyAttempts = userData.addPolicyAttempts + 1;
     this.userService.updateUser(userData);
   }
 

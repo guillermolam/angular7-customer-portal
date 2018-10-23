@@ -1,8 +1,11 @@
-import { Component, EventEmitter, OnInit, Input, Output }   from "@angular/core";
-import { FormGroup }                  from "@angular/forms";
-import { ActivatedRoute, Params, Router }     from "@angular/router";
+import { Component, EventEmitter,
+  OnInit, Input, Output }             from '@angular/core';
+import { FormGroup }                  from '@angular/forms';
+import { ActivatedRoute, Params,
+  Router }                            from '@angular/router';
 import { Observable }                 from 'rxjs';
-import { AlertService, FormBase, FormBaseControlService } from 'mapfre-design-library';
+import { AlertService, FormBase,
+  FormBaseControlService }            from 'mapfre-design-library';
 
 // --- Components | Services | Models --- //
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
@@ -25,7 +28,7 @@ export class CreatePasswordFormComponent implements OnInit {
             whereInTheProcess:      string;
 
   @Output() confirmationOfPasswordCreation:   EventEmitter<boolean> = new EventEmitter();
-  
+
   constructor(
     private activeRoute:            ActivatedRoute,
     private alertService:           AlertService,
@@ -36,7 +39,7 @@ export class CreatePasswordFormComponent implements OnInit {
   ) {}
 
   createNewPassword(): void {
-    if (this.whereInTheProcess == "createpassword") {
+    if (this.whereInTheProcess == 'createpassword') {
       this.createPassword(this.userData);
     }
     else {
@@ -50,10 +53,10 @@ export class CreatePasswordFormComponent implements OnInit {
     this.authenticationService
       .createPassword(this.userService)
       .subscribe (
-        data => {
-          this.router.navigate(['/verifyaccount' ] );
+        (data) => {
+          this.router.navigate(['/verifyaccount']);
         },
-        error => {
+        (error) => {
           console.log(error);
         }
       );
@@ -66,8 +69,16 @@ export class CreatePasswordFormComponent implements OnInit {
       .updatePassword (this.user, this.token)
       .subscribe (
         (data) => {
-          this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
-          this.router.navigate(['login']);
+          this.authenticationService
+            .login(this.user.email, this.user.password)
+            .subscribe((succ) => {
+              this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
+              this.router.navigate(['dashboard']);
+            },
+            (err) => {
+              this.alertService.success('Login has failed', true);
+              this.router.navigate(['login']);
+            });
         },
         (error) => {
           this.confirmationOfPasswordCreation.emit( false );
@@ -78,14 +89,13 @@ export class CreatePasswordFormComponent implements OnInit {
 
   ngOnInit() {
     this.createPasswordForm =         this.ipt.toFormGroup(this.inputs);
-    
-    //url paramaters for example ?token=token
-    this.activeRoute.queryParams.subscribe( params => { 
+    // url paramaters for example ?token=token
+    this.activeRoute.queryParams.subscribe((params: Params) => {
       this.email =                    params.email;
       this.token =                    params.token;
      });
-    
-    //route paramaters for example /signup/:parm
+
+    // route paramaters for example /signup/:parm
     this.activeRoute.params.subscribe((params: Params) => {
       this.whereInTheProcess =        params['parm'];
     });

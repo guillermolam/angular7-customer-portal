@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output }     from '@angular/core';
+import { Component, EventEmitter,
+  Input, OnInit, Output }               from '@angular/core';
 import { User }                         from '../../../_models/user';
 import { AuthenticationService }        from '../../../_services/_iam/authentication-service.service';
-
 
 @Component({
   selector: 'app-email-confirmation',
@@ -12,14 +12,14 @@ export class EmailConfirmationComponent implements OnInit {
   @Input()  sendEmailAgain:       string;
             user:                 User  = {};
 
-  @Output() showConfirmation:    EventEmitter<boolean> = new EventEmitter();
+  @Output() showConfirmation:     EventEmitter<boolean> = new EventEmitter();
 
   constructor( private authService: AuthenticationService ) { }
 
-  forgotPasswordSendEmailId(): void{
+  forgotPasswordSendEmailId(): void {
     this.user.email =                 this.sendEmailAgain;
-    
-    if(this.user.email) {
+
+    if (this.user.email) {
       this.authService
         .forgotPasswordSendEmailId(this.user.email)
         .subscribe(
@@ -27,7 +27,7 @@ export class EmailConfirmationComponent implements OnInit {
             this.showConfirmation.emit(true);
           },
           (error) => {
-            console.log(error)
+            console.log(error);
           }
         )
       ;
