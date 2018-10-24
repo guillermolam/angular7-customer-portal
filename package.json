@@ -44,7 +44,7 @@
     "jshint": "^2.9.6",
     "ngx-cookie-service": "^1.0.10",
     "ngx-google-places-autocomplete": "^2.0.1",
-    "popper.js": "^1.14.3",
+    
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
     "sonarqube-scanner": "2.1.0",
