@@ -1,1 +1,11 @@
 @import '_app-components/all';
+
+.container {
+  &.loggedin {
+    max-width: 1190px;
+  }
+
+  &.loggedout {
+    max-width: 992px;
+  }
+}

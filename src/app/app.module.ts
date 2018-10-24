@@ -61,6 +61,7 @@ import { OnboardingWalletFrontComponent }       from './components/screens/walle
 import { OnboardingWalletBackComponent }        from './components/screens/wallet-passes/onboarding-wallet-back/onboarding-wallet-back.component';
 import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
+import { ContainerComponent } from './components/_logged-out/container/container.component';
 
 
 if(environment.production) {
@@ -107,7 +108,8 @@ export function tokenGetter() {
     OnboardingWalletFrontComponent,
     OnboardingWalletBackComponent,
     OnboardingWalletBackListComponent,
-    OnboardingWalletModalComponent
+    OnboardingWalletModalComponent,
+    ContainerComponent
 
   ],
   imports: [
