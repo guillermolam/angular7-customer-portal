@@ -61,6 +61,7 @@ import { OnboardingWalletFrontComponent }       from './components/screens/walle
 import { OnboardingWalletBackComponent }        from './components/screens/wallet-passes/onboarding-wallet-back/onboarding-wallet-back.component';
 import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 if(environment.production) {
@@ -127,7 +128,8 @@ export function tokenGetter() {
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     RoutingModule,
-    TranslateModule.forRoot()
+    TranslateModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
