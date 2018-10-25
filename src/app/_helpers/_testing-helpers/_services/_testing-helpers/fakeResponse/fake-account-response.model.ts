@@ -22,9 +22,9 @@ export class FakeAccountResponse {
           policynumber:             { policynumber: '120490' },
           policyStatus:             'cancelled',
           policyType:               'auto',
-          status:                   null, 
+          status:                   null,
         }]
-      }
+      };
 
       private static user2 = {
         addPolicyAttempts:          3,
@@ -49,15 +49,15 @@ export class FakeAccountResponse {
           policynumbers:             { policynumber: '120490' },
           policyStatus:             'cancelled',
           policyType:               'auto',
-          status:                   null, 
+          status:                   null,
         }]
-      }
-  
-      static getUserData(){
+      };
+
+      static getUserData() {
           return this.user;
       }
 
-      static getUserPolicyData(){
+      static getUserPolicyData() {
         return this.user2;
       }
 }
