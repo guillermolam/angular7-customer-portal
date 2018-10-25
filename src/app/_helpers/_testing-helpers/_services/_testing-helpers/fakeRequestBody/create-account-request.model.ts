@@ -9,9 +9,6 @@ export class CreateAccountRequest {
         policynumbers: [
           {
             policynumber: 'BSHD21'
-          },
-          {
-            policynumber: 'B2WNDJ'
           }
         ],
           credentials: {
