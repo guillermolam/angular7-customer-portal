@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="859" lines-covered="740" line-rate="0.8615" branches-valid="121" branches-covered="65" branch-rate="0.5372" timestamp="1540375742805" complexity="0" version="0.1">
+<coverage lines-valid="859" lines-covered="741" line-rate="0.8626" branches-valid="121" branches-covered="65" branch-rate="0.5372" timestamp="1540505185130" complexity="0" version="0.1">
   <sources>
     <source>/var/jenkins_home/workspace/customer-portal-ui_master-57FOZRL6BI452PRGJCGUJAKWDOCNWTZQ4GEBXYSOY3MBWKI2SL6A</source>
   </sources>
@@ -362,9 +362,9 @@
         </class>
       </classes>
     </package>
-    <package name="src.app._services._iam" line-rate="0.9876999999999999" branch-rate="0.75">
+    <package name="src.app._services._iam" line-rate="1" branch-rate="0.75">
       <classes>
-        <class name="authentication-service.service.ts" filename="src/app/_services/_iam/authentication-service.service.ts" line-rate="0.9854999999999999" branch-rate="0.75">
+        <class name="authentication-service.service.ts" filename="src/app/_services/_iam/authentication-service.service.ts" line-rate="1" branch-rate="0.75">
           <methods>
             <method name="(anonymous_2)" hits="1" signature="()V">
               <lines>
@@ -469,7 +469,7 @@
             <line number="28" hits="4" branch="true" condition-coverage="100% (2/2)"/>
             <line number="29" hits="3" branch="false"/>
             <line number="45" hits="1" branch="true" condition-coverage="50% (1/2)"/>
-            <line number="46" hits="0" branch="false"/>
+            <line number="46" hits="1" branch="false"/>
             <line number="52" hits="4" branch="false"/>
             <line number="55" hits="1" branch="false"/>
             <line number="57" hits="2" branch="false"/>
