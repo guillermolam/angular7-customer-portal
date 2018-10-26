@@ -1,14 +1,24 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../out-tsc/e2e",
-    "baseUrl": "./",
-    "module": "commonjs",
-    "target": "es5",
-    "types": [
-      "jasmine",
-      "jasminewd2",
-      "node"
-    ]
-  }
+      "module": "commonjs",
+      "target": "es6",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "declaration": false,
+      "removeComments": false,
+      "noImplicitAny": false,
+      "outDir": "typeScript",
+      "typeRoots": [ "../node_modules/@types" ],
+      "types": ["node","cucumber", "chai"]
+  },
+  "exclude": [
+      "node_modules",
+      "typescript"
+  ],
+  "lib": [
+    "es2017",
+    "dom"
+  ]
 }
