@@ -1,5 +1,5 @@
 Feature: Verifying the functionality of Forgot Password Link on landing page and module with valid/invalid data.
-	
+	@CucumberScenario
 	Scenario: Verifying the functionality of Forgot Password link on landing page of MAPFRE with prefilled email.
 	  Given Navigate to Landing Page of MAPFRE.
 	  Then Verify The Login Page.
@@ -8,7 +8,7 @@ Feature: Verifying the functionality of Forgot Password Link on landing page and
 	  Then Verify The Forgot Password Page.
 	  Then Verify prefiled email id -"demo@mapfre.com".
 	
-	
+	@CucumberScenario
 	Scenario Outline: Verifying the functionality of Forgot Password page send email field with invalid Email.
 	  When Enter reset password email "<Email>" In email field.
 	  When Click on Send Email Button.
@@ -52,7 +52,7 @@ Feature: Verifying the functionality of Forgot Password Link on landing page and
 				|de<mo@gmail.com                   |Please Enter A Valid Email|
 				|de,mo@gmail.com                   |Please Enter A Valid Email|
     
-    
+    @CucumberScenario
     Scenario Outline: Verifying the functionality of Forgot Password page send email field with valid email and active email.
 	  Then Verify The Forgot Password Page.
 	  When Enter reset password email "<email>" In email field.
@@ -69,14 +69,14 @@ Feature: Verifying the functionality of Forgot Password Link on landing page and
          |will@mapfre.gov.in  	|Reset Password link has been send in your mail.|
          |will@map-fre.com    	|Reset Password link has been send in your mail.|
     
-    
+    @CucumberScenario
     Scenario: Verifying the functionality of Forgot Password module with valid email and Non-Existing in MAPFRE.
 	  Then Verify The Forgot Password Page.
 	  When Enter reset password email "User.demo@gmail.com" In email field.
 	  And Click on Send Email Button.
 	  Then Verify the Success message - "This Email is not registered with us."
 	
-	
+	@CucumberScenario
 	Scenario: Verifying the functionality of Forgot Password module with Existing user and Deactivated user in MAPFRE.
 	  Then Verify The Forgot Password Page.
 	  When Enter reset password email "User.demo@gmail.com" In email field.

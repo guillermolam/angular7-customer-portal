@@ -9,7 +9,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     'chromeOptions': {
-      'args': ['disable-infobars','--headless']
+      'args': ['disable-infobars']
     }
   },
   directConnect: true,
@@ -20,6 +20,6 @@ exports.config = {
     compiler: "ts:ts-node/register",
     require: ["typeScript/stepdefinitions/*.js"],
     strict: true,
-    tags: ["@CucumberScenario"],
+    tags: ["@test"],
 }
 };
