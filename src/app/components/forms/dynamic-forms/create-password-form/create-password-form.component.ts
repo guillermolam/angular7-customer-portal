@@ -54,7 +54,7 @@ export class CreatePasswordFormComponent implements OnInit {
           this.router.navigate(['/verifyaccount' ] );
         },
         error => {
-          console.log(error);
+          console.log(this.userService, error);
         }
       );
   }
