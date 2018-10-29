@@ -170,7 +170,7 @@ export class AuthenticationService {
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
       url =             `${environment.personalpolicy}/policies/${policyNumber}`,
-      userSendObject =  this.creatUserObject(user, 'policies')
+      userSendObject =  this.creatUserObject(user, 'personalpolicy')
     ;
     return this.http.put(url, userSendObject, this.options);
   }

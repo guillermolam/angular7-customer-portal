@@ -14,6 +14,7 @@ import { NgModule, NO_ERRORS_SCHEMA,
         enableProdMode }                        from '@angular/core';
 import { ReactiveFormsModule }                  from '@angular/forms';
 import { TranslateModule }                      from '@ngx-translate/core';
+import { ServiceWorkerModule }                  from '@angular/service-worker';
 // ----- App ----- //
 import { AppComponent }                         from './app.component';
 import { RoutingModule }                        from './app.routing';
@@ -62,7 +63,6 @@ import { OnboardingWalletBackComponent }        from './components/screens/walle
 import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
 import { ContainerComponent } from './components/_logged-out/container/container.component';
-
 
 if(environment.production) {
   enableProdMode();
@@ -129,7 +129,8 @@ export function tokenGetter() {
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     RoutingModule,
-    TranslateModule.forRoot()
+    TranslateModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [

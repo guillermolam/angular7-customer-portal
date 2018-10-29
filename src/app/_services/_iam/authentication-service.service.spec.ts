@@ -8,10 +8,11 @@ import { UserService }            from '../user.service';
 import { User }                   from '../../_models/user';
 import { FakeAccountResponse }    from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
 import { FakePolicyResponse }     from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-policy-response.model';
+import { CreateAccountRequest } from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeRequestBody/create-account-request.model';
 
 describe('AuthenticationService', () => {
 
-  let authService : AuthenticationService;
+  let authService: AuthenticationService;
   let httpMock: HttpTestingController;
   let userService: UserService;
   let user: User;
@@ -41,20 +42,18 @@ describe('AuthenticationService', () => {
     httpMock = null;
     userService = null;
     authService = null;
-  })
-
-  it('should be created', inject([AuthenticationService], (service: AuthenticationService) => {
-    expect(service).toBeTruthy();
-  }));
+  });
 
   it('should confirm policy and account', async( () => {
+
     authService.confirmPolicyAndAccount(userService).subscribe( (resUser) => {
-      expect(resUser).toEqual(user);
+      expect(resUser).toEqual(new HttpResponse({status: 201}));
     });
 
     const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
     expect(req.request.method).toBe('PUT');
-    req.flush(user);
+    expect(req.request.body).toEqual(CreateAccountRequest.requestBody);
+    req.flush(new HttpResponse({status: 201}));
   }));
 
   it('should throw error for confirm policy and account', async( () => {
@@ -68,27 +67,27 @@ describe('AuthenticationService', () => {
     req.error(new ErrorEvent('error'));
   }));
 
-  it('should create a password', async(()=>{
+  it('should create a password', async(() => {
     authService.createPassword(userService).subscribe((resUser)=>{
-      expect(resUser).toEqual(user);
+      expect(resUser).toEqual(new HttpResponse({status: 201}));
     });
 
     const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
     expect(req.request.method).toBe('PUT');
-    req.flush(user);
+    expect(req.request.body).toEqual(CreateAccountRequest.requestBody);
+    req.flush(new HttpResponse({status: 201}));
   }));
 
   it('should send email on forgot password', async( () => {
-
-    authService.forgotPasswordSendEmailId(user.email).subscribe( (resUser) => {
-      expect(resUser.email).toBe(user.email);
-      expect(resUser).toEqual(user);
+    const email = 'abc@test.com';
+    authService.forgotPasswordSendEmailId(email).subscribe( (resUser) => {
+      expect(resUser).toEqual(new HttpResponse({status: 200}));
     });
 
-    const req = httpMock.expectOne(`${environment.identity}/identity/users/account-recovery?email=${user.email}`);
+    const req = httpMock.expectOne(`${environment.identity}/identity/users/account-recovery?email=${email}`);
     expect(req.request.method).toBe('POST');
-    expect(req.request.params.get('email')).toBe(user.email);
-    req.flush(user);
+    expect(req.request.params.get('email')).toBe(email);
+    req.flush(new HttpResponse({status: 200}));
   }));
 
   it('should login successfully', async( () => {
@@ -100,7 +99,7 @@ describe('AuthenticationService', () => {
         urlparttwo =      `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
     let url = urlpartone + '?' + urlparttwo;
 
-    authService.login(username,password).subscribe((response)=>{
+    authService.login(username, password).subscribe((response) => {
       expect(response).toBeTruthy();
     }, (err) => {
       expect(err).toBe('Invalid email/password combination');

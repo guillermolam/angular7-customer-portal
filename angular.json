@@ -23,7 +23,8 @@
                 "glob": "**/*",
                 "input": "./node_modules/mapfre-design-library/assets/",
                 "output": "./assets/"
-              }
+              },
+              "src/manifest.json"
             ],
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.scss",
@@ -51,7 +52,8 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "serviceWorker": true
             },
             "dev": {
               "optimization": true,
@@ -104,7 +106,7 @@
             "qa": {
               "browserTarget": "login:build:qa"
             }
-          } 
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -135,7 +137,8 @@
                 "glob": "**/*",
                 "input": "../node_modules/mapfre-design-library/lib/assets/",
                 "output": "./assets/"
-              }
+              },
+              "src/manifest.json"
             ]
           }
         },
@@ -190,5 +193,3 @@
     }
   }
 }
-
-

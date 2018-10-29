@@ -1,16 +1,16 @@
 export class FakeAccountResponse {
     private static user = {
         addPolicyAttempts:          3,
-        firstName:                  'TestFirstName',
-        middleName:                 'TM',
-        lastName:                   'TestLastName',
-        email:                      'testUpdate@email.com',
-        password:                   'abcd12D!',
+        firstName: 'tesing',
+        middleName: 'testing',
+        lastName: 'testing',
+        email: 'user@policies.com',
+        password: 'test@2018',
         policyDetails: [{
           InsName1:                 null,
           effDate:                  '12/12/2018',
           expDate:                  '12/12/2018',
-          policynumber:             { policynumber: 'BB0490' },
+          policynumber:             { policynumber: 'BSHD21' },
           policyStatus:             'cancelled',
           policyType:               'home',
           status:                   null,
@@ -19,12 +19,12 @@ export class FakeAccountResponse {
           InsName1:                 null,
           effDate:                  '12/12/2018',
           expDate:                  '12/12/2018',
-          policynumber:             { policynumber: '120490' },
+          policynumber:             { policynumber: 'B2WNDJ' },
           policyStatus:             'cancelled',
           policyType:               'auto',
-          status:                   null, 
+          status:                   null,
         }]
-      }
+      };
 
       private static user2 = {
         addPolicyAttempts:          3,
@@ -49,15 +49,15 @@ export class FakeAccountResponse {
           policynumbers:             { policynumber: '120490' },
           policyStatus:             'cancelled',
           policyType:               'auto',
-          status:                   null, 
+          status:                   null,
         }]
-      }
-  
-      static getUserData(){
+      };
+
+      static getUserData() {
           return this.user;
       }
 
-      static getUserPolicyData(){
+      static getUserPolicyData() {
         return this.user2;
       }
 }

@@ -10,9 +10,36 @@
   }
 }
 
+.col {
+  @media (min-width: 992px) and (max-width: 1019px) {
+    margin-left: 256px;
+    max-width: 71%;
+  }
+}
+
+.navbar .container.loggedin {
+  padding-left:         0;
+}
+
+
+
+.mapfre-content.loggedin ~ .footer-copyright {
+  background: #749806;
+
+  @media (min-width: 992px) {
+    padding: 56px;
+  }
+}
+
 .dashboard-navigation {
-  .mapfre.card{
+  
+  .nav-content-card {
     padding:          0;
+
+    @media (min-width: 992px) {
+      width:            256px;
+      position:         fixed;
+    }
   }
 
   a {
@@ -20,7 +47,6 @@
     padding:        8px;
     color:        #737373;
     font-size:      14px;
-    font-family:    NotoSans;
     text-align:     left;
     line-height:    24px;
     position:       relative;
@@ -29,24 +55,12 @@
       font-size:    24px;
     }
 
-    .nav-icon  svg path{
-      fill:       #737373;
+    .active-icon {
+      display:      none;
     }
 
-    &.active {
-      color:        #006580;
-      
-      .nav-copy {
-        font-weight: bold;
-      }
-
-      .nav-icon  svg path{
-        fill:       #006580;
-      }
-
-      &:hover:after {
-        color:      #006580;
-      }
+    .icon-content {
+      margin:       auto;
     }
 
     .nav-icon {
@@ -57,6 +71,38 @@
       svg {
         height:       24px;
         width:        24px;
+      }
+    }
+
+    .non-active-icon {
+      display:      block;
+      
+      svg {
+        fill:       #737373;
+      }
+    }
+
+    &.active {
+      color:        #006580;
+      
+      .nav-copy {
+        text-shadow: 1px 0 0 #006580;
+      }
+
+      .nav-icon  svg path{
+        fill:       #006580;
+      }
+
+      .non-active-icon {
+        display: none;
+      }
+
+      .active-icon {
+        display: block;
+      }
+
+      &:hover:after {
+        color:      #006580;
       }
     }
 
@@ -72,12 +118,11 @@
 
   ul {
     list-style:       none;
-    display:          table;
     margin:           0;
     padding:          0;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     width:            256px;
     float:            left;
     
@@ -97,9 +142,10 @@
     ul {
       padding-top:      32px;
       padding-bottom:   32px;
+      display:          block;
 
       li {
-        display:        table-row;
+        display:        block;
       }
     }
 
@@ -116,14 +162,36 @@
       float:            left;
     }
   }
+
+  @media (max-width: 350px) {
+    a {
+      font-size: 8px;
+    }
+
+    .active .nav-copy {
+      text-shadow: none;
+    }
+
+    .nav-copy {
+      font-size: 8px;
+    }
+  } 
   
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     position:           fixed;
     bottom:             0;
+    right:              0;
+    left:               0;
     width:              100%;
+    z-index:          100;
 
-    ul li {
-      display:          table-cell;
+    ul {
+      display: table;
+      width:100%;
+
+      li {
+        display:          table-cell;
+      }
     }
 
     a {
@@ -142,7 +210,7 @@
 }
 
 .account {
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     margin-left:        65px;
   }
   
@@ -161,7 +229,6 @@
     float:              left;
     color:            #fff;
     font-size:          14px;
-    font-family:        NotoSans;
     line-height:        24px;
     font-weight:        400;
 
@@ -170,7 +237,7 @@
       margin-right:     10px;
       margin-bottom:    -4px;
       text-transform:   capitalize;
-      @media (max-width: 767px) {
+      @media (max-width: 991px) {
         display:        none;
       }
     }
@@ -178,7 +245,7 @@
     i {
       color:          #fff;
       font-size:        14px;
-      @media (max-width: 767px) {
+      @media (max-width: 991px) {
         display:        none;
       }
     }
@@ -207,11 +274,10 @@
   a {
     border:             none;
     font-size:          14px;
-    font-family:        NotoSans;
     text-align:         left;
     line-height:        24px;
     &:hover {
-      background: #F7F7F7;
+      background:     #F7F7F7;
     }
   }
   .icon-container {
@@ -274,8 +340,12 @@
   }
 }
   
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .center-on-page {
     margin: auto;
   }
+}
+
+.iphonex {
+  padding-bottom: 32px;
 }
