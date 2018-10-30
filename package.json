@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --aot",
+    "build": "ng build --prod",
     "test": "ng test --watch=false --browsers Chrome",
     "test_on_ciserver": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox",
     "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox && ng build",
