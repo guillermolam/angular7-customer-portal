@@ -112,8 +112,8 @@ ports:
 						sh "cp ./lighthouse-report.html ./api-documentation/customer-portal-ui"
 						sh "git -C './api-documentation' add ."
 						sh "git -C './api-documentation' commit -m 'Milind:Adding Customer Portal Performance Analysis'"
-						sh "git -C './api-documentation' pull"
-						sh "git -C './api-documentation' push"
+						sh 'git -C "./api-documentation" pull https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
+						sh 'git -C "./api-documentation" push https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
 				}
 				)
 			}
