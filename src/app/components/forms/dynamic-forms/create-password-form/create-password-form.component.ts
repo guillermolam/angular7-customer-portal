@@ -54,12 +54,12 @@ export class CreatePasswordFormComponent implements OnInit {
           this.router.navigate(['/verifyaccount' ] );
         },
         error => {
-          console.log(error);
+          console.log(this.userService, error);
         }
       );
   }
 
-  updatePassword(): void {
+  /*updatePassword(): void {
     this.user.password =              this.createPasswordForm.value.createPassword;
     this.user.email =                 this.email;
     this.authenticationService
@@ -68,6 +68,31 @@ export class CreatePasswordFormComponent implements OnInit {
         (data) => {
           this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
           this.router.navigate(['login']);
+        },
+        (error) => {
+          this.confirmationOfPasswordCreation.emit( false );
+          this.alertService.error(error.message);
+        }
+      );
+  }*/
+
+  updatePassword(): void {
+    this.user.password =              this.createPasswordForm.value.createPassword;
+    this.user.email =                 this.email;
+    this.authenticationService
+      .updatePassword (this.user, this.token)
+      .subscribe (
+        (data) => {
+          this.authenticationService
+            .login(this.user.email, this.user.password)
+            .subscribe((succ) => {
+              this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
+              this.router.navigate(['dashboard']);
+            },
+            (err) => {
+              this.alertService.success('Login has failed', true);
+              this.router.navigate(['login']);
+            });
         },
         (error) => {
           this.confirmationOfPasswordCreation.emit( false );
