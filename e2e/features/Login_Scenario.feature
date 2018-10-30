@@ -56,7 +56,7 @@ Feature: Verifying the functionality of Login to the application.
 	  When Click on Submit Button.
 	  Then Verify Invalid Email/Password - "<Error Message>".
 		Examples:
-        	|email	 			         |password|Status							              	|
+        	|email	 			         |password|Error Message         	|
         	|user@mapfre.com       |admin		|Invalid Email/Password	|
         	|USER@MAPFRE.COM	     |admin		|Invalid Email/Password	|
         	|will@mapfre99.com     |admin		|Invalid Email/Password	|
@@ -73,7 +73,10 @@ Feature: Verifying the functionality of Login to the application.
     When I enter "test@hello2018" in password field.
     When I click on remember me toggle.
     When Click on Submit Button.
+    Then Navigate to Dashboard.
   
   @test
-  Scenario: Verify the logged user should be set to email by default after launching the feature.
-    Then Verify The Login Page.
+  Scenario: Verify the Forgot Password link.
+  When I click on Forgot Password
+  And Email field has valid address
+  Then Redirect to forgotpassword page with prefilled email

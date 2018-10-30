@@ -3,7 +3,7 @@ pipeline{
 	  stages {
 
 		   // cloning code into the container
-        stage('Setup'){
+        stage('SETUP'){
          environment {
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
             }
@@ -14,7 +14,7 @@ pipeline{
             }
         }
 		 
-		stage("Linting & Build") {
+		stage("LINTING & BUILD") {
 			steps{
               	// removing .spec.ts from linting
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
@@ -24,21 +24,21 @@ pipeline{
 		}
 		
 		// Running unit test after build
-		stage('Run Unit Test'){
+		stage('RUN UNIT TESTS'){
 		    steps{
 		    	//Added to run unit test case for all module.
 		       sh "npm run test_on_ciserver"
 		    }
 		}
 
-		stage('Static analysis'){
+		stage('STATIC ANALYSIS'){
 		    steps{
 				sh "cp -r ./coverage/* ./customer-portal/reports/coverage"
 		        sh "npm run sonar-run"
 		    }
 		}
 
-		stage("Build & Publish Image"){
+		stage("BUILD & PUBLISH IMAGE"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
@@ -51,7 +51,7 @@ pipeline{
 			}
 		}
 
-		stage("Deploy Image to test"){
+		stage("DEPLOY IMAGE TO TEST"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
@@ -84,7 +84,7 @@ ports:
 				}
 		}
 
-		stage("Lighthouse Performance Monitor"){
+		stage("PERFORMANCE ANALYSIS"){
 			steps{
 				sh "npm run lighthouse:ci"
 				sh "cp ./lighthouse-report.html ./customer-portal/reports/lighthouse"
@@ -100,17 +100,28 @@ ports:
 		}
 
 
-		stage("Push reports to git repo"){
+		stage("DOCUMENTATION"){
 			steps{
-				sh "git -C './customer-portal' add ."
-				sh "git -C './customer-portal' commit -m 'Milind:Adding reports'"
-				sh "git -C './customer-portal' push"
+				parallel( 
+					"PUBLISH CUSTOMER PORTAL" : {
+						sh "git -C './customer-portal' add ."
+						sh "git -C './customer-portal' commit -m 'Milind:Adding reports'"
+						sh "git -C './customer-portal' push"
+				},
+				"PUBLISH API DOCUMENTATION" : {
+						sh "cp ./lighthouse-report.html ./api-documentation/customer-portal-ui"
+						sh "git -C './api-documentation' add ."
+						sh "git -C './api-documentation' commit -m 'Milind:Adding Customer Portal Performance Analysis'"
+						sh "git -C './api-documentation' pull"
+						sh "git -C './api-documentation' push"
+				}
+				)
 			}
 		}
 
 
 
-		stage("Deploy Image to Prod"){
+		stage("DEPLOY IMAGE TO PROD"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
             }

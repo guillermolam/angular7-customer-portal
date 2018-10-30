@@ -1,30 +1,29 @@
 //  Importing classes by that we can perfomr web element actions or create object of pericular pages..
 import { browser, protractor,by }     from 'protractor';
-import { HeaderFooterPageObject }  from "../pages/headerFooterPage";
-import { LandingPageObject }       from "../pages/landingPage";
-
+import { HeaderFooterPageObject }  from '../pages/headerFooterPage';
+import { LandingPageObject }       from '../pages/landingPage';
+import { environment } from '../environment/environment.dev';
+import { Given, When, Then } from 'cucumber';
+import * as chai from 'chai';
+import * as cap from 'chai-as-promised';
 //  Creating page object to use there elements variable.
 const lPage:         LandingPageObject          = new LandingPageObject();
 const headerFooter:  HeaderFooterPageObject     = new HeaderFooterPageObject();
 //  Creating variable which gonna use to develop step definition.
-const { Given, When, Then }     = require("cucumber");
-const chai                      = require("chai").use(require("chai-as-promised"));
-const expect                    = chai.expect;
-var expected                    = protractor.ExpectedConditions;
 
-// Implement implicit wait for the wait untill element is present.
-//  browser.manage().timeouts().implicitlyWait(timeout);`
+const chaiAsPromised = chai.use(cap);
+const expect = chai.expect;
+const expected = protractor.ExpectedConditions;
 
 // Step definition to navigate on login page URL.
-Given(/^Navigate to Landing Page of MAPFRE.$/, async()=>{
-    await browser.get("http://localhost:4200/login");
+Given(/^Navigate to Landing Page of MAPFRE.$/, async () => {
+    await browser.get(`${environment.localHost}/login`);
 });
 
 // Step definition to verify login page
-Then(/^Verify The Login Page.$/, async() => {
-    var exp_url = "http://localhost:4200/login";
-    //  console.log("english json files **********      ",menObject)
-   // expect(browser.getCurrentUrl()).equal(exp_url).and.notify("Verified URL");
+Then(/^Verify The Login Page.$/, async () => {
+    const exp_url = `${environment.localHost}/login`;
+    expect(await browser.getCurrentUrl()).equal(exp_url);
 });
 
 // Step definition to enter email in email field on login page.
@@ -67,21 +66,20 @@ When(/^I click on Create Account link.$/, async () => {
 });
 
 // Step definition to Verify the error message for invalid data in input fields.
-Then(/^Verify the Error message - "(.*?)"$/, async(errorMessage) => {
-    console.log(errorMessage);
+Then(/^Verify the Error message - "(.*?)"$/, async (errorMessage) => {
     await browser.wait(expected.visibilityOf(lPage.getErrorMessage));
     const errorMsg = await lPage.getErrorMessage.getText();
     expect(errorMsg).to.equal(errorMessage);
 });
 
 // Step definition to click on Forgot Password link on login page.
-When(/^Click on Forgot Password link.$/, async() => {
+When(/^Click on Forgot Password link.$/, async () => {
     await browser.wait(expected.elementToBeClickable(lPage.clickForgotPassword));
     await lPage.clickForgotPassword.click();
 });
 
 // Step definiton to get the selected language from language change module.
-When(/^Get the set value from the footer language module.$/,  async() => {
+When(/^Get the set value from the footer language module.$/,  async () => {
     await browser.wait(expected.visibilityOf(headerFooter.languageChangeButton));
     //  languageSet = await headerFooter.languageChangeButton.getText();
 });
@@ -92,8 +90,20 @@ Then(/^Verify the Landing page content language in - "(.*?)".$/, async (language
     //  console.log("login language check *********             ",languageEnglish.login);
 });
 
+Then(/^Navigate to Dashboard.$/, async () => {
+    const currentUrl = await browser.getCurrentUrl();
+    const dashboardUrl = `${environment.localHost}/dashboard`;
+    expect(currentUrl).to.equal(dashboardUrl);
+});
+
 // Step definition to Navigate Create Account page on landing page.
-Given(/^Navigate to Create Account Page of MAPFRE.$/, async()=>{
+Given(/^Navigate to Create Account Page of MAPFRE.$/, async () => {
     await browser.wait(expected.visibilityOf(lPage.clickCreateAccount));
     await lPage.clickCreateAccount.click();
+});
+
+When(/^I click on Forgot Password.$/,  async () => {
+    await browser.wait(expected.visibilityOf(lPage.forgotPassword));
+    await lPage.forgotPassword.click();
+
 });
