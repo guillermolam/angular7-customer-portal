@@ -101,6 +101,9 @@ ports:
 
 
 		stage("DOCUMENTATION"){
+			environment {
+                BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
+            }
 			steps{
 				parallel( 
 					"PUBLISH CUSTOMER PORTAL" : {
