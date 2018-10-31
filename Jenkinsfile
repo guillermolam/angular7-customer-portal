@@ -4,7 +4,7 @@ pipeline{
 
        // cloning code into the container
         stage('Setup'){
-         environment {
+environment {
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
             }
             //removing old code if there is any, initializing new local repo and cloning into it.
@@ -13,6 +13,7 @@ pipeline{
               sh "npm install"
             }
         }
+
      
     stage("Linting & Build") {
       steps{
@@ -41,7 +42,7 @@ pipeline{
     stage("Build & Publish Image"){
       environment {
         DOCKER_NEXUS_CREDS = credentials('nexus')
-            }
+}
       steps{
           sh 'docker build -t ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER} .'
           // login into nexus docker, push the image to nexus and remove from local.
@@ -50,6 +51,7 @@ pipeline{
           sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}'
       }
     }
+
 
     stage("Deploy Image to test"){
       environment {
@@ -84,6 +86,7 @@ pipeline{
         }
     }
 
+
     stage("Lighthouse Performance Monitor"){
       steps{
         sh "npm run lighthouse:ci"
@@ -113,6 +116,7 @@ pipeline{
     stage("Deploy Image to Prod"){
       environment {
         DOCKER_NEXUS_CREDS = credentials('nexus')
+
             }
       steps{
             ansibleTower(

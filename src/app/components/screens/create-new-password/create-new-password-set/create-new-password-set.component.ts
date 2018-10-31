@@ -10,7 +10,6 @@ export class CreateNewPasswordSetComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let password = "asdasd"
   }
 
 }

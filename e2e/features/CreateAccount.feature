@@ -1,11 +1,12 @@
 Feature: Verifying the functionality of Create account link and Verifying module with valid/invalid data.
 	
+	@CucumberScenario
 	Scenario: Verifying the functionality of Create account link on Landing page and with invalid email type of MAPFRE.
 		Given Navigate to Landing Page of MAPFRE.
 		Then Verify The Login Page.
 		Given Navigate to Create Account Page of MAPFRE.
 
-	
+	@CucumberScenario
 	Scenario Outline: Verifying the functionality of Create account link on Landing page and with invalid email type of MAPFRE.
 		Then Verify The Create Account Page.
 		When Enter email "<email>" in your email field.
@@ -65,7 +66,7 @@ Feature: Verifying the functionality of Create account link and Verifying module
 		When Click on Register Button.
 		Then Verify the account create success message - "Password didn't match."
 
-	
+	@CucumberScenario
 	Scenario Outline: Verifying the functionality of password field with minimum and maximum value.
 		Given Navigate to Create Account Page of MAPFRE.
 		Then Verify The Create Account Page.
@@ -82,7 +83,7 @@ Feature: Verifying the functionality of Create account link and Verifying module
 	            |demo@mapfre.com     |adminfda... | admin.....|Password should be 6-32 character.|
 	            |demo@mapfre.com     |admin       | admin     |Password should be 6-32 character.|
 	
-	
+	@CucumberScenario
     Scenario Outline: Verifying the functionality of Create account link with different password.
 		Given Navigate to Create Account Page of MAPFRE.
 		Then Verify The Create Account Page.
