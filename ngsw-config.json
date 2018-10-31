@@ -2,11 +2,12 @@
   "index": "/index.html",
   "assetGroups": [
     {
-      "name": "app",
+      "name": "mapfre customer portal",
       "installMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
+          "/manifest.json",
           "/index.html",
           "/*.css",
           "/*.js"
