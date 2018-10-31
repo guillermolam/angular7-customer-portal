@@ -1,13 +1,44 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit }      from '@angular/core';
+import { Router }                 from '@angular/router';
+import { ModalOptions }           from 'mapfre-design-library';
 
 @Component({
-  selector: "app-account-header",
-  templateUrl: "./account-header.component.html",
-  styleUrls: ["./account-header.component.scss"]
+  selector: 'app-account-header',
+  templateUrl: './account-header.component.html',
+  styleUrls: ['./account-header.component.scss']
 })
 export class AccountHeaderComponent implements OnInit {
+  headerAccountModalOptions:      ModalOptions;
+  hideModalOnRoute:               boolean = false;
 
-  constructor() { }
+  constructor(
+    private router:               Router,
+  ) { 
+    this.headerAccountModalOptions = new ModalOptions({
+      additionalClasses:          'account',
+      additionalButtonClasses:    'header-flat account',
+      animatePosition:            'top',
+      buttonCopy:                 'Account',
+      modalId:                    'accountModal',
+      iconClasses:                'far fa-user-circle',
+      iconFamily:                 'font-awesome',
+      modalTranslateCopy:         'Account',
+      typeOfModal:                'header',
+      screenReader:               true,
+      showIcons:                  true,
+    });
+  }
+
+  hideModalAction(event, activePath): void {
+    const currentUrl = this.router.url;
+    if (event && activePath == currentUrl) {
+      this.hideModalOnRoute = !this.hideModalOnRoute;
+    }
+  }
+
+  resetHideModal(event): void {
+    this.hideModalOnRoute = !this.hideModalOnRoute;
+  }
 
   ngOnInit() {
   }

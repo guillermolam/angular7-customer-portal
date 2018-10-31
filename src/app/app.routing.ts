@@ -20,7 +20,7 @@ import { WalletCardComponent }        from './routes/wallet-card/wallet-card.com
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
- { path: 'forgotpassword', component: ForgotPasswordComponent },
+  { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'createpassword', component: CreateNewPasswordComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },

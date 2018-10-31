@@ -21,7 +21,11 @@
   padding-left:         0;
 }
 
-
+.loggedin-footer {
+  @media (max-width: 992px) {
+    padding-bottom: 50px;
+  }
+}
 
 .mapfre-content.loggedin ~ .footer-copyright {
   background: #749806;
