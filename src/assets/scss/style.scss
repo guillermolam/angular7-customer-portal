@@ -1,12 +1,86 @@
 @import '_app-components/all';
 
-.container {
-  &.loggedin {
-    max-width:        1190px;
+.account {
+  @media (min-width: 992px) {
+    margin-left:        65px;
+  }
+  
+  .active {
+    background: #F7F7F7;
   }
 
-  &.loggedout {
-    max-width:        992px;
+  i {
+    font-size:          24px;
+  }
+  .header-icon-icon-height {
+    float:              left;
+  }
+
+  .account-header {
+    float:              left;
+    color:            #fff;
+    font-size:          14px;
+    line-height:        24px;
+    font-weight:        400;
+
+    .account-header-copy {
+      margin-left:      10px;
+      margin-right:     10px;
+      margin-bottom:    -4px;
+      text-transform:   capitalize;
+      @media (max-width: 991px) {
+        display:        none;
+      }
+    }
+    
+    i {
+      color:          #fff;
+      font-size:        14px;
+      @media (max-width: 991px) {
+        display:        none;
+      }
+    }
+  }
+
+  .modal-content {
+    padding-bottom:     18px;
+  }
+
+  .modal-header {
+    h4 {
+      padding-top:      16px;
+      padding-bottom:   16px;
+    }
+
+    button {
+      margin-top:       -6px;
+    }
+  }
+
+  .modal-body {
+    padding-top:        0;
+    padding-bottom:     0;
+  }
+
+  a {
+    border:             none;
+    font-size:          14px;
+    text-align:         left;
+    line-height:        24px;
+    &:hover {
+      background:     #F7F7F7;
+    }
+  }
+  .icon-container {
+    padding-top:        0 !important;
+    height:             24px;
+    display:            flex;
+    align-items:        center;
+      
+      svg {
+        height:         24px;
+        width:          24px;
+      }
   }
 }
 
@@ -17,26 +91,81 @@
   }
 }
 
-.navbar .container.loggedin {
-  padding-left:         0;
-}
+.container {
+  &.loggedin {
+    max-width:        1190px;
+  }
 
-.loggedin-footer {
-  @media (max-width: 992px) {
-    padding-bottom: 50px;
+  &.loggedout {
+    max-width:        992px;
   }
 }
 
-.mapfre-content.loggedin ~ .footer-copyright {
-  background: #749806;
+.card.mapfre.dashboard-policies {
+  padding-left:       0;
+  padding-right:      0;
+  padding-bottom:     0;
 
-  @media (min-width: 992px) {
-    padding: 56px;
+  .policy-background {
+    max-width:        122px;
+  }
+
+  .policy-content {
+    h2 {
+      font-size: 18px;
+      padding: 0;
+      margin: 0;
+      border-bottom: thin solid #ccc;
+      margin-bottom: 24px;
+      line-height: 32px;
+
+      .col {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .policy-icon {
+    width: 24px;
+    float: left;
+    margin-right: 8px;
+  }
+
+  .policy-info {
+    line-height: 24px;
+  }
+
+  .policy-link {
+    background: #006580;
+    color: #fff;
+    display: block;
+    padding: 8px;
+    padding-right: 16px;
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .policy-row {
+    padding-bottom: 24px;
+  }
+}
+
+.claim-desktop {
+  text-align: center;
+
+  a {
+    line-height: 24px;
+  }
+  
+  .small-title {
+    color: #737373;
+    font-size: 12px;
+    font-family: NotoSans;
+    margin-top: 8px;
   }
 }
 
 .dashboard-navigation {
-  
   .nav-content-card {
     padding:          0;
 
@@ -213,90 +342,46 @@
   }
 }
 
-.account {
-  @media (min-width: 992px) {
-    margin-left:        65px;
-  }
   
-  .active {
-    background: #F7F7F7;
-  }
-
-  i {
-    font-size:          24px;
-  }
-  .header-icon-icon-height {
-    float:              left;
-  }
-
-  .account-header {
-    float:              left;
-    color:            #fff;
-    font-size:          14px;
-    line-height:        24px;
-    font-weight:        400;
-
-    .account-header-copy {
-      margin-left:      10px;
-      margin-right:     10px;
-      margin-bottom:    -4px;
-      text-transform:   capitalize;
-      @media (max-width: 991px) {
-        display:        none;
-      }
-    }
-    
-    i {
-      color:          #fff;
-      font-size:        14px;
-      @media (max-width: 991px) {
-        display:        none;
-      }
-    }
-  }
-
-  .modal-content {
-    padding-bottom:     18px;
-  }
-
-  .modal-header {
-    h4 {
-      padding-top:      16px;
-      padding-bottom:   16px;
-    }
-
-    button {
-      margin-top:       -6px;
-    }
-  }
-
-  .modal-body {
-    padding-top:        0;
-    padding-bottom:     0;
-  }
-
-  a {
-    border:             none;
-    font-size:          14px;
-    text-align:         left;
-    line-height:        24px;
-    &:hover {
-      background:     #F7F7F7;
-    }
-  }
-  .icon-container {
-    padding-top:        0 !important;
-    height:             24px;
-    display:            flex;
-    align-items:        center;
-      
-      svg {
-        height:         24px;
-        width:          24px;
-      }
+@media (max-width: 991px) {
+  .center-on-page {
+    margin: auto;
   }
 }
 
+.iphonex {
+  padding-bottom: 32px;
+}
+
+.loggedin-footer {
+  @media (max-width: 992px) {
+    padding-bottom: 50px;
+  }
+}
+
+.mapfre-content.loggedin ~ .footer-copyright {
+  background: #749806;
+
+  @media (min-width: 992px) {
+    padding: 56px;
+  }
+}
+
+.navbar .container.loggedin {
+  padding-left:         0;
+}
+
+.column-misc {
+  width: 216px;
+  padding-right: 16px;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    padding-left: 16px;
+  }
+}
+
+/* helper classes */
 .grey-color {
   color: #737373;
 
@@ -343,13 +428,11 @@
     color: #BE0F0F;
   }
 }
-  
-@media (max-width: 991px) {
-  .center-on-page {
-    margin: auto;
-  }
+
+.no-padding-left {
+  padding-left: 0;
 }
 
-.iphonex {
-  padding-bottom: 32px;
+.no-padding-right {
+  padding-right: 0;
 }
