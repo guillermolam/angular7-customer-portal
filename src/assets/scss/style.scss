@@ -1,1 +1,355 @@
 @import '_app-components/all';
+
+.container {
+  &.loggedin {
+    max-width:        1190px;
+  }
+
+  &.loggedout {
+    max-width:        992px;
+  }
+}
+
+.col {
+  @media (min-width: 992px) and (max-width: 1019px) {
+    margin-left: 256px;
+    max-width: 71%;
+  }
+}
+
+.navbar .container.loggedin {
+  padding-left:         0;
+}
+
+.loggedin-footer {
+  @media (max-width: 992px) {
+    padding-bottom: 50px;
+  }
+}
+
+.mapfre-content.loggedin ~ .footer-copyright {
+  background: #749806;
+
+  @media (min-width: 992px) {
+    padding: 56px;
+  }
+}
+
+.dashboard-navigation {
+  
+  .nav-content-card {
+    padding:          0;
+
+    @media (min-width: 992px) {
+      width:            256px;
+      position:         fixed;
+    }
+  }
+
+  a {
+    display:        block;
+    padding:        8px;
+    color:        #737373;
+    font-size:      14px;
+    text-align:     left;
+    line-height:    24px;
+    position:       relative;
+
+    i {
+      font-size:    24px;
+    }
+
+    .active-icon {
+      display:      none;
+    }
+
+    .icon-content {
+      margin:       auto;
+    }
+
+    .nav-icon {
+      height:         24px;
+      display:        flex;
+      align-items:    center;
+      
+      svg {
+        height:       24px;
+        width:        24px;
+      }
+    }
+
+    .non-active-icon {
+      display:      block;
+      
+      svg {
+        fill:       #737373;
+      }
+    }
+
+    &.active {
+      color:        #006580;
+      
+      .nav-copy {
+        text-shadow: 1px 0 0 #006580;
+      }
+
+      .nav-icon  svg path{
+        fill:       #006580;
+      }
+
+      .non-active-icon {
+        display: none;
+      }
+
+      .active-icon {
+        display: block;
+      }
+
+      &:hover:after {
+        color:      #006580;
+      }
+    }
+
+    &:after {
+      transition:     1s ease;
+      font-family:    FontAwesome;
+      font-size:      16px;
+      position:       absolute;
+      right:          16px;
+      top:            16px;
+    }
+  }
+
+  ul {
+    list-style:       none;
+    margin:           0;
+    padding:          0;
+  }
+
+  @media (min-width: 992px) {
+    width:            256px;
+    float:            left;
+    
+    a {
+      padding:        12px;
+      padding-left:   32px;
+
+      &:hover {
+        background: #F7F7F7;
+        
+        &:after {
+          content:    '\f054';
+        }
+      }
+    }
+
+    ul {
+      padding-top:      32px;
+      padding-bottom:   32px;
+      display:          block;
+
+      li {
+        display:        block;
+      }
+    }
+
+    .nav-copy {
+      padding-left:     16px;
+    }
+
+    .nav-content {
+      display:          table-cell;
+      vertical-align:   middle;
+    }
+
+    .nav-icon {
+      float:            left;
+    }
+  }
+
+  @media (max-width: 350px) {
+    a {
+      font-size: 8px;
+    }
+
+    .active .nav-copy {
+      text-shadow: none;
+    }
+
+    .nav-copy {
+      font-size: 8px;
+    }
+  } 
+  
+  @media (max-width: 991px) {
+    position:           fixed;
+    bottom:             0;
+    right:              0;
+    left:               0;
+    width:              100%;
+    z-index:          100;
+
+    ul {
+      display: table;
+      width:100%;
+
+      li {
+        display:          table-cell;
+      }
+    }
+
+    a {
+      text-align:       center;
+    }
+
+    .nav-content {
+      display:          block;
+    }
+
+    svg {
+      margin:           auto;
+      display:          block;
+    }
+  }
+}
+
+.account {
+  @media (min-width: 992px) {
+    margin-left:        65px;
+  }
+  
+  .active {
+    background: #F7F7F7;
+  }
+
+  i {
+    font-size:          24px;
+  }
+  .header-icon-icon-height {
+    float:              left;
+  }
+
+  .account-header {
+    float:              left;
+    color:            #fff;
+    font-size:          14px;
+    line-height:        24px;
+    font-weight:        400;
+
+    .account-header-copy {
+      margin-left:      10px;
+      margin-right:     10px;
+      margin-bottom:    -4px;
+      text-transform:   capitalize;
+      @media (max-width: 991px) {
+        display:        none;
+      }
+    }
+    
+    i {
+      color:          #fff;
+      font-size:        14px;
+      @media (max-width: 991px) {
+        display:        none;
+      }
+    }
+  }
+
+  .modal-content {
+    padding-bottom:     18px;
+  }
+
+  .modal-header {
+    h4 {
+      padding-top:      16px;
+      padding-bottom:   16px;
+    }
+
+    button {
+      margin-top:       -6px;
+    }
+  }
+
+  .modal-body {
+    padding-top:        0;
+    padding-bottom:     0;
+  }
+
+  a {
+    border:             none;
+    font-size:          14px;
+    text-align:         left;
+    line-height:        24px;
+    &:hover {
+      background:     #F7F7F7;
+    }
+  }
+  .icon-container {
+    padding-top:        0 !important;
+    height:             24px;
+    display:            flex;
+    align-items:        center;
+      
+      svg {
+        height:         24px;
+        width:          24px;
+      }
+  }
+}
+
+.grey-color {
+  color: #737373;
+
+  i {
+    color: #737373;
+  }
+
+  svg path {
+    color: #737373;
+  }
+  &:hover {
+    color: #737373;
+  }
+}
+
+.green-color {
+  color: #749806;
+
+  i {
+    color: #749806;
+  }
+
+  svg path {
+    color: #749806;
+  }
+
+  &:hover {
+    color: #749806;
+  }
+}
+
+.red-color {
+  color: #BE0F0F;
+
+  i{
+    color: #BE0F0F;
+  }
+
+  svg path {
+    color: #BE0F0F;
+  }
+
+  &:hover {
+    color: #BE0F0F;
+  }
+}
+  
+@media (max-width: 991px) {
+  .center-on-page {
+    margin: auto;
+  }
+}
+
+.iphonex {
+  padding-bottom: 32px;
+}

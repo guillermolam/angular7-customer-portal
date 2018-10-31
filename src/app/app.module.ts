@@ -14,6 +14,7 @@ import { NgModule, NO_ERRORS_SCHEMA,
         enableProdMode }                        from '@angular/core';
 import { ReactiveFormsModule }                  from '@angular/forms';
 import { TranslateModule }                      from '@ngx-translate/core';
+import { ServiceWorkerModule }                  from '@angular/service-worker';
 // ----- App ----- //
 import { AppComponent }                         from './app.component';
 import { RoutingModule }                        from './app.routing';
@@ -61,10 +62,8 @@ import { OnboardingWalletFrontComponent }       from './components/screens/walle
 import { OnboardingWalletBackComponent }        from './components/screens/wallet-passes/onboarding-wallet-back/onboarding-wallet-back.component';
 import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 
-
-if(environment.production) {
+if (environment.production) {
   enableProdMode();
 }
 
@@ -109,7 +108,6 @@ export function tokenGetter() {
     OnboardingWalletBackComponent,
     OnboardingWalletBackListComponent,
     OnboardingWalletModalComponent
-
   ],
   imports: [
     BrowserModule,

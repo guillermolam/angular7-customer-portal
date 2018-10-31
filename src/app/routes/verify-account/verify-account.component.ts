@@ -12,7 +12,7 @@ import { UserService }              from '../../_services/user.service';
 })
 export class VerifyAccountComponent implements OnInit {
   user:                             User;
-  
+
   constructor(
     private activatedRoute:         ActivatedRoute,
     private alertService:           AlertService,
@@ -22,27 +22,31 @@ export class VerifyAccountComponent implements OnInit {
   ) { }
 
   validateToken(email: string, token: string) {
-    if(!email || !token) return null;
-   return this.authService.verifyAccountTokenVerification(token, email)
+    if (!email || !token) {
+      return null;
+    }
+    return this.authService
+      .verifyAccountTokenVerification(token, email)
       .subscribe(
-        data => {
+        (data) => {
           this.alertService.success('Thank You for validating you account!', true);
           this.router.navigate(['login']);
         }
-      )
+      );
   }
 
   ngOnInit() {
     this.userService.$user.subscribe(
-      user => {
+      (user) => {
         this.user = user;
       }
     );
-    console.log(typeof this.user)
     this.activatedRoute.queryParams
-      .subscribe( params => {
-        if( params ) {
-          if( this.user == undefined ) this.user = params;
+      .subscribe( (params) => {
+        if ( params ) {
+          if ( this.user == undefined ) {
+            this.user = params;
+          }
           return this.validateToken( params.email, params.token );
         }
       }

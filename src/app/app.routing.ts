@@ -20,8 +20,6 @@ import { WalletCardComponent }        from './routes/wallet-card/wallet-card.com
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'createpassword', component: CreateNewPasswordComponent },
   { path: 'login', component: LoginComponent },
@@ -31,6 +29,19 @@ const appRoutes: Routes = [
   { path: 'verifyaccount', component: VerifyAccountComponent, canActivate: [VerifyUserGuard] },
   { path: 'welcome', component: WelcomeComponent },
   { path: 'walletcard', component: WalletCardComponent},
+
+  //when logged in
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'billing', component: DashboardComponent },
+  { path: 'claims', component: DashboardComponent },
+  { path: 'information', component: DashboardComponent },
+  { path: 'contact', component: DashboardComponent },
+  { path: 'profile', component: DashboardComponent },
+  { path: 'policy', component: DashboardComponent },
+  { path: 'policy/addpolicy', component: DashboardComponent },
+  { path: 'contact', component: DashboardComponent },
+
+  { path: 'offline', component: DashboardComponent },
   { path: '**', redirectTo: '' } // otherwise redirect to home
 ];
 

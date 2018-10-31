@@ -2,7 +2,6 @@ import { Component, OnInit, Input }     from '@angular/core';
 import { Router }                       from '@angular/router';
 import { AlertService }                 from 'mapfre-design-library';
 
-
 // --- Components | Services | Models --- //
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { PolicyDetails }                from '../../../../_models/policy-details';
@@ -32,17 +31,17 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
     this.authService
       .confirmPolicyAndAccount(this.user)
       .subscribe(
-        data => {
+        (data) => {
           this.router.navigate(['/signup', 'createpassword']);
         },
-        err => {
+        (err) => {
           this.alertService.error('There was an issue');
         }
       );
   }
 
   createUserObject(formValue): void {
-    this.policyDetail =          [{ policynumber:{ policynumber: formValue.editPolicyNumber } }];
+    this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
     this.user = {
       firstName:                    formValue.editFirst_name,
       middleName:                   formValue.editMI_name,
@@ -54,7 +53,7 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
 }

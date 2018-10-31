@@ -25,7 +25,7 @@ export class AuthenticationService {
     const pn = items.policyDetails === undefined ? '' : items.policyDetails[0].policynumber.policynumber ,
           pword = items.password || null;
     let obj;
-    if ( db == 'account' ) {
+    if ( db == 'createaccount' ) {
       obj =  {
         customer: {
           firstName:        items.firstName,
@@ -49,6 +49,14 @@ export class AuthenticationService {
         lastName:           items.lastName
       };
     }
+    else if (db == 'verifyuser') {
+      obj = {
+        firstName:          items.firstName,
+        middleName:         items.middleName,
+        lastName:           items.lastName,
+        email:              items.email
+      };
+    }
     return obj;
   }
 
@@ -56,7 +64,7 @@ export class AuthenticationService {
     const
       user =                userObject.$user.source.value,
       url =                 `${environment.account}/accounts/${user.email}`,
-      userSendObject =      this.creatUserObject(user, 'account')
+      userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options)
       .pipe(
@@ -69,7 +77,7 @@ export class AuthenticationService {
     const
       user =                userObject.$user.source.value,
       url =                 `${environment.account}/accounts/${user.email}`,
-      userSendObject =      this.creatUserObject(user, 'account')
+      userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options);
   }
@@ -103,6 +111,7 @@ export class AuthenticationService {
               'currentUser',
               JSON.stringify({ username, access_token })
             );
+            console.log('access_token', access_token);
             return true;
           }
           else {
@@ -134,7 +143,7 @@ export class AuthenticationService {
   }
 
   tokenVerification(token: string, email: string): Observable<object> {
-    const url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
+    const url =           `${environment.identity}/identity/users/${email}?token=${token}`;
     return this.http.post(url, {}, this.options);
   }
 
@@ -156,7 +165,7 @@ export class AuthenticationService {
     return this.http.put(url, {}, this.options);
   }
 
-  verifyPolicy(userObject): Observable<any> {
+  verifyPolicy(userObject): Observable<object> {
     const
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
@@ -166,19 +175,12 @@ export class AuthenticationService {
     return this.http.put(url, userSendObject, this.options);
   }
 
-  verifyUser(userObject): Observable<any> {
+  verifyUser(userObject): Observable<object> {
     const
       user =            userObject.$user.source.value,
       url =             `${environment.account}/accounts/${user.email}`,
-      userSendObject =  {
-        firstName:        user.firstName,
-        middleName:       user.middleName,
-        lastName:         user.lastName,
-        email:            user.email
-      };
-
-      //userSendObject =  this.creatUserObject(user, 'account')
-    
+      userSendObject = this.creatUserObject(user, 'verifyuser')
+    ;
     return this.http.post(url, userSendObject, this.options);
   }
 

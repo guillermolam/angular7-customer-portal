@@ -1,9 +1,10 @@
 import { Component, OnInit, Input,
   EventEmitter, Output }                from '@angular/core';
 import { FormGroup }                    from '@angular/forms';
+import { AlertService, FormBase,
+  FormBaseControlService }              from 'mapfre-design-library';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { User }                         from '../../../../_models/user';
-import { AlertService, FormBase, FormBaseControlService } from 'mapfre-design-library';
 
 @Component({
   selector: 'app-send-email-form',
@@ -34,7 +35,7 @@ export class SendEmailFormComponent implements OnInit {
     const emailAddress =                this.passwordEmailForm.controls.sendEmail.value;
     this.user.email =                   emailAddress;
 
-    if(this.user.email) {
+    if (this.user.email) {
       this.authService
         .forgotPasswordSendEmailId(this.user.email)
         .subscribe(
@@ -53,7 +54,7 @@ export class SendEmailFormComponent implements OnInit {
     this.passwordEmailForm = this.ipt.toFormGroup(this.inputs); 
     this.passwordEmailForm.controls.sendEmail.setValue( this.emailPrefillParamater );
   }
-  
+
   ngOnInit() {
     this.getEmailFromParamater();
   }
