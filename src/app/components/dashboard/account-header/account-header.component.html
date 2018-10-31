@@ -1,40 +1,120 @@
-<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar ie-nav" [containerInside]="false">
-  <logo>
-      <img class="logo" src="assets/img/MAPFRE_horiz__red_logo.png" alt="Mapfre Red Logo">
-  </logo>
-  <links>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active waves-light" mdbWavesEffect>
-        <a class="nav-link">Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Features</a>
-      </li>
-      <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Pricing</a>
-      </li>
-      <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Opinions</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav nav-flex-icons">
-      <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">
-          <i class="fa fa-facebook"></i>
-        </a>
-      </li>
-      <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">
-          <i class="fa fa-twitter"></i>
-        </a>
-      </li>
-      <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">
-          <i class="fa fa-instagram"></i>
-        </a>
-      </li>
-    </ul>
-  </links>
-</mdb-navbar>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark red scrolling-navbar ie-nav">
+    <div class="container loggedin">
+      <div class="brand">
+        <!-- <img src="./assets/img/logos/mapfre_ins_white.png" alt="Mapfre Insurance" class="logo" />-->
+      </div>
+      <div class="navbar-nav nav-flex-icons">
+        <mapfre-modal 
+          [modalOptions]="headerAccountModalOptions"
+          [hideModal]="hideModalOnRoute"
+          (hideModalOutput)="resetHideModal($event)">
+          <div class="modal-body no-margin-top margin-bottom mb24">
+            <hr class="no-margin-bottom no-margin-top" />
+          </div>
+          <a 
+            routerLink="/profile"
+            routerLinkActive="active"
+            class=" modal-footer grey-color"
+            (click)="hideModalAction($event, '/profile')">
+            <div class="mapfre-information-container">
+              <div class="mapfre-icon-information row">
+                <div class="col">
+                  <div class="icon-container align-middle">
+                      <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+                        <title>04_Icons/small/account</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs>
+                            <path d="M12,0 C5.37231953,0 5.68434189e-14,5.37175954 5.68434189e-14,11.9996393 C5.68434189e-14,18.627519 5.37256002,24 12,24 C18.6276805,24 24,18.6272785 24,11.9996393 C24,5.37175954 18.62744,7.60967752e-16 12,0 Z M12,1.63651559 C17.7239168,1.63651559 22.363702,6.27644023 22.363702,12.0005291 C22.363702,14.0344192 21.7690408,15.9264157 20.756359,17.5271692 C19.0484909,15.7008768 16.7844162,14.3987735 14.2246343,13.9187398 C15.8169466,13.1070596 16.9094713,11.456523 16.9094713,9.54648923 C16.9094713,6.83535719 14.7112429,4.63696652 12.0000962,4.63696652 C9.28904565,4.63696652 7.09072107,6.83526099 7.09072107,9.54648923 C7.09072107,11.4563787 8.18420778,13.1070596 9.77555814,13.9187398 C7.21649766,14.3987975 4.95251914,15.7008768 3.24383342,17.5271692 C2.23115155,15.9263676 1.63649044,14.0344192 1.63649044,12.0005291 C1.63649044,6.27644023 6.27723756,1.63651559 12.0001924,1.63651559 L12,1.63651559 Z M12,13.0921487 C10.0422622,13.0921487 8.45468756,11.5044783 8.45468756,9.54672973 C8.45468756,7.58898119 10.0423103,6.00131071 12,6.00131071 C13.9577378,6.00131071 15.5453124,7.58898119 15.5453124,9.54672973 C15.5453124,11.5044783 13.9576897,13.0921487 12,13.0921487 Z M12,22.3645426 C8.9092148,22.3645426 6.14285142,21.0032768 4.24321616,18.8576032 C6.1408313,16.7081539 8.90825284,15.3458539 12,15.3458539 C15.0924686,15.3458539 17.8600345,16.7071197 19.7567838,18.8566412 C17.8582308,21.0032768 15.0917472,22.3645426 12,22.3645426 Z" id="account"></path>
+                        </defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Artboard" transform="translate(-150.000000, -34.000000)">
+                                <g id="04_Icons/small/account" transform="translate(150.000000, 34.000000)">
+                                    <mask id="mask-2" fill="white">
+                                        <use xlink:href="#account"></use>
+                                    </mask>
+                                    <use id="Mask" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#account"></use>
+                                    <g id="00_Basic/Colors/grey6" mask="url(#mask-2)" fill="#4C4C4C" fill-rule="evenodd">
+                                        <polygon id="box" points="0 0 24 0 24 24 0 24"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                  </div>
+                  <div class="information-container">
+                    Profile &amp; Settings
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a> 
+          <a
+          routerLink="/policy/addpolicy"
+          routerLinkActive="active"
+          class="modal-footer green-color"
+          (click)="hideModalAction($event, '/policy/addpolicy')">
+            <div class="mapfre-information-container">
+              <div class="mapfre-icon-information row">
+                <div class="col">
+                  <div class="icon-container align-middle">
+                     
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g id="Desktop-Nav_selected-item-and-hovers" transform="translate(-872.000000, -148.000000)" fill="#8DB602" fill-rule="nonzero">
+                              <g id="Add-Policy" transform="translate(848.000000, 136.000000)">
+                                  <g id="Group-3" transform="translate(24.000000, 12.000000)">
+                                      <path d="M12,24 C5.372583,24 0,18.627417 0,12 C0,5.372583 5.372583,0 12,0 C18.627417,0 24,5.372583 24,12 C24,18.627417 18.627417,24 12,24 Z M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z" id="Combined-Shape"></path>
+                                      <g id="Group-2" transform="translate(5.760000, 5.760000)">
+                                          <path d="M1.04,5.2 L11.44,5.2 C12.0143761,5.2 12.48,5.66562386 12.48,6.24 L12.48,6.24 C12.48,6.81437614 12.0143761,7.28 11.44,7.28 L1.04,7.28 C0.46562386,7.28 7.03407901e-17,6.81437614 0,6.24 L0,6.24 C-7.03407901e-17,5.66562386 0.46562386,5.2 1.04,5.2 Z" id="Rectangle-2"></path>
+                                          <path d="M1.04,5.2 L11.44,5.2 C12.0143761,5.2 12.48,5.66562386 12.48,6.24 L12.48,6.24 C12.48,6.81437614 12.0143761,7.28 11.44,7.28 L1.04,7.28 C0.46562386,7.28 7.03407901e-17,6.81437614 0,6.24 L0,6.24 C-7.03407901e-17,5.66562386 0.46562386,5.2 1.04,5.2 Z" id="Rectangle-2" transform="translate(6.240000, 6.240000) rotate(90.000000) translate(-6.240000, -6.240000) "></path>
+                                      </g>
+                                  </g>
+                              </g>
+                          </g>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="information-container">
+                    Add Policy
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a> 
+          <a href="#" class="modal-footer red-color" (click)="logout()">
+            <div class="mapfre-information-container">
+              <div class="mapfre-icon-information row">
+                <div class="col">
+                  <div class="icon-container align-middle">
+                      <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+                        <title>04_Icons/small/exit</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs>
+                            <path d="M21.312,0 C22.037337,0 22.666664,0.266664 23.2,0.8 C23.733336,1.333336 24,1.96266304 24,2.688 L24,21.312 C24,22.037337 23.733336,22.666664 23.2,23.2 C22.666664,23.733336 22.037337,24 21.312,24 L2.688,24 C1.9413296,24 1.30666928,23.733336 0.784,23.2 C0.26133072,22.666664 0,22.037337 0,21.312 L0,16 L2.688,16 L2.688,21.312 L21.312,21.312 L21.312,2.688 L2.688,2.688 L2.688,8 L0,8 L0,2.688 C0,1.96266304 0.26133072,1.333336 0.784,0.8 C1.30666928,0.266664 1.9413296,0 2.688,0 L21.312,0 Z M9.44,16.8 L12.864,13.312 L0,13.312 L0,10.688 L12.864,10.688 L9.44,7.2 L11.328,5.312 L18.016,12 L11.328,18.688 L9.44,16.8 Z" id="logout"></path>
+                        </defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="04_Icons/small/exit">
+                                <mask id="logout1" fill="white">
+                                    <use xlink:href="#logout"></use>
+                                </mask>
+                                <use id="Mask" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#logout"></use>
+                                <g id="00_Basic/Colors/red2" mask="url(#logout1)" fill="#BE0F0F" fill-rule="evenodd">
+                                    <polygon id="box" points="0 0 24 0 24 24 0 24"></polygon>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                  </div>
+                  <div class="information-container">
+                    LOGOUT
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </mapfre-modal>
+      </div>
+    </div>
+  </nav>

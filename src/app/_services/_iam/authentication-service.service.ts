@@ -111,6 +111,7 @@ export class AuthenticationService {
               'currentUser',
               JSON.stringify({ username, access_token })
             );
+            console.log('access_token', access_token);
             return true;
           }
           else {
