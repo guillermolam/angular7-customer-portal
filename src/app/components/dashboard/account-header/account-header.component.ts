@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../../_services/_iam/authentication-service.service';
 import { Component, OnInit }      from '@angular/core';
 import { Router }                 from '@angular/router';
 import { ModalOptions }           from 'mapfre-design-library';
@@ -13,7 +14,8 @@ export class AccountHeaderComponent implements OnInit {
 
   constructor(
     private router:               Router,
-  ) { 
+    private authService:          AuthenticationService
+  ) {
     this.headerAccountModalOptions = new ModalOptions({
       additionalClasses:          'account',
       additionalButtonClasses:    'header-flat account',
@@ -34,6 +36,10 @@ export class AccountHeaderComponent implements OnInit {
     if (event && activePath == currentUrl) {
       this.hideModalOnRoute = !this.hideModalOnRoute;
     }
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   resetHideModal(event): void {
