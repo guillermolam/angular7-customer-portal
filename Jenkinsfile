@@ -51,7 +51,7 @@ pipeline{
 			}
 		}
 
-		stage("DEPLOY IMAGE TO TEST"){
+		stage("DEPLOY TO DEV"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
@@ -124,7 +124,7 @@ ports:
 
 
 
-		stage("DEPLOY IMAGE TO PROD"){
+		stage("DEPLOY TO PROD"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
