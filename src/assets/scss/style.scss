@@ -4,16 +4,24 @@
   @media (min-width: 992px) {
     margin-left:        65px;
   }
-  
-  .active {
-    background: #F7F7F7;
+
+  a {
+    border:             none;
+    font-size:          14px;
+    text-align:         left;
+    line-height:        24px;
+
+    &:hover {
+      background:     #F7F7F7;
+    }
   }
 
   i {
     font-size:          24px;
   }
-  .header-icon-icon-height {
-    float:              left;
+
+  .active {
+    background: #F7F7F7;
   }
 
   .account-header {
@@ -28,6 +36,7 @@
       margin-right:     10px;
       margin-bottom:    -4px;
       text-transform:   capitalize;
+
       @media (max-width: 991px) {
         display:        none;
       }
@@ -36,10 +45,27 @@
     i {
       color:          #fff;
       font-size:        14px;
+
       @media (max-width: 991px) {
         display:        none;
       }
     }
+  }
+
+  .icon-container {
+    padding-top:        0 !important;
+    height:             24px;
+    display:            flex;
+    align-items:        center;
+
+    svg {
+      height:         24px;
+      width:          24px;
+    }
+  }
+
+  .header-icon-icon-height {
+    float:              left;
   }
 
   .modal-content {
@@ -61,30 +87,9 @@
     padding-top:        0;
     padding-bottom:     0;
   }
-
-  a {
-    border:             none;
-    font-size:          14px;
-    text-align:         left;
-    line-height:        24px;
-    &:hover {
-      background:     #F7F7F7;
-    }
-  }
-  .icon-container {
-    padding-top:        0 !important;
-    height:             24px;
-    display:            flex;
-    align-items:        center;
-      
-      svg {
-        height:         24px;
-        width:          24px;
-      }
-  }
 }
 
-.col {
+.col.one-column {
   @media (min-width: 992px) and (max-width: 1019px) {
     margin-left: 256px;
     max-width: 71%;
@@ -150,31 +155,163 @@
   }
 }
 
-.claim-desktop {
+.col.dashboard-container {
+  @media (max-width: 376px){
+     padding-right: 0;
+  }
+}
+
+.claims {
   text-align: center;
+  
+  @media (min-width: 377px) and (max-width:577px) {
+    &.card.mapfre {
+      padding: 8px 16px;
+    }
+  }
+
+  @media (max-width: 376px) {
+    &.card.mapfre{
+      padding: 8px;
+    }
+  }
 
   a {
     line-height: 24px;
   }
-  
-  .small-title {
-    color: #737373;
-    font-size: 12px;
-    font-family: NotoSans;
+
+  i {
+    font-size: 16px;
+    
+    vertical-align: middle;
+  }
+
+  .accident-copy,
+  .callus-copy {
     margin-top: 8px;
   }
-}
 
-.dashboard-navigation {
-  .nav-content-card {
-    padding:          0;
+  .icon-title > * {
+    vertical-align: middle;
+  }
 
-    @media (min-width: 992px) {
-      width:            256px;
-      position:         fixed;
+  .small-font {
+    font-size: 12px;
+  }
+
+  @media (max-width:376px) {
+    .accident-copy.small-font {
+      font-size: 12px;
+    }
+
+    .claims-mobile {
+      .button-link {
+        width: 72px;
+        float: left;
+      }
     }
   }
 
+  @media (max-width: 767px) {
+
+    .accident-copy {
+      float: left;
+      max-width: 100%;
+    }
+
+    .claim-desktop {
+      float: right;
+      text-align: right;
+      width: 169px;
+    }
+
+    .callus-copy {
+      margin-top: 0px;
+      float: left;
+    }
+
+    .report-claim {
+
+    }
+
+    .alarm.svg-container {
+      float: left;
+      margin-right: 24px;
+
+      svg{
+        width: 56px;
+        height: 45px;
+      }
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 767px) {
+    .accident-copy.small-font {
+      font-size: 16px;
+      margin-top: 16px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .accident-copy{
+      max-width: 81px;
+      text-align: left;
+
+      &.small-font {
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 0;
+      }
+    }
+    
+    .alarm.svg-container {
+      margin-right: 16px;
+
+      svg {
+        height: 40px;
+        width: 40px;
+      }
+    }
+
+    .claim-icon.svg-container svg {
+      height: 24px;
+      width: 24px;
+    }
+    
+  }
+}
+
+.claim-desktop {
+  @media (max-width: 575px) {
+    display:none;
+  }
+}
+
+.claim-mobile {
+  @media (min-width: 576px) {
+    display:none;
+  }
+
+  .button-link {
+    display:            block;
+    float:              right;
+    cursor:             pointer;
+    width:              76px;
+
+    i {
+      font-size:        24px;
+    }
+
+    .small-font {
+      line-height:      16px;
+      font-size:        10px;
+      margin-top:       2px;
+    }
+  }
+
+}
+
+.dashboard-navigation {
   a {
     display:        block;
     padding:        8px;
@@ -253,6 +390,15 @@
     list-style:       none;
     margin:           0;
     padding:          0;
+  }
+
+  .nav-content-card {
+    padding:          0;
+
+    @media (min-width: 992px) {
+      width:          256px;
+      position:       fixed;
+    }
   }
 
   @media (min-width: 992px) {
@@ -342,7 +488,6 @@
   }
 }
 
-  
 @media (max-width: 991px) {
   .center-on-page {
     margin: auto;
@@ -375,64 +520,9 @@
   width: 216px;
   padding-right: 16px;
 
-  @media (max-width: 576px) {
+  @media (max-width: 767px) {
     width: 100%;
     padding-left: 16px;
+    padding-left: 0;
   }
-}
-
-/* helper classes */
-.grey-color {
-  color: #737373;
-
-  i {
-    color: #737373;
-  }
-
-  svg path {
-    color: #737373;
-  }
-  &:hover {
-    color: #737373;
-  }
-}
-
-.green-color {
-  color: #749806;
-
-  i {
-    color: #749806;
-  }
-
-  svg path {
-    color: #749806;
-  }
-
-  &:hover {
-    color: #749806;
-  }
-}
-
-.red-color {
-  color: #BE0F0F;
-
-  i{
-    color: #BE0F0F;
-  }
-
-  svg path {
-    color: #BE0F0F;
-  }
-
-  &:hover {
-    color: #BE0F0F;
-  }
-}
-
-.no-padding-left {
-  padding-left: 0;
-}
-
-.no-padding-right {
-  padding-right: 0;
 }
