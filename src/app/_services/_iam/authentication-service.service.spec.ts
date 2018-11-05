@@ -50,7 +50,7 @@ describe('AuthenticationService', () => {
       expect(resUser).toEqual(new HttpResponse({status: 201}));
     });
 
-    const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/${user.email}`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual(CreateAccountRequest.requestBody);
     req.flush(new HttpResponse({status: 201}));
@@ -63,7 +63,7 @@ describe('AuthenticationService', () => {
       expect(err).toBe('error');
     });
 
-    const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/${user.email}`);
     req.error(new ErrorEvent('error'));
   }));
 
@@ -72,7 +72,7 @@ describe('AuthenticationService', () => {
       expect(resUser).toEqual(new HttpResponse({status: 201}));
     });
 
-    const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/${user.email}`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual(CreateAccountRequest.requestBody);
     req.flush(new HttpResponse({status: 201}));
@@ -84,7 +84,7 @@ describe('AuthenticationService', () => {
       expect(resUser).toEqual(new HttpResponse({status: 200}));
     });
 
-    const req = httpMock.expectOne(`${environment.identity}/identity/users/account-recovery?email=${email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/identity/users/account-recovery?email=${email}`);
     expect(req.request.method).toBe('POST');
     expect(req.request.params.get('email')).toBe(email);
     req.flush(new HttpResponse({status: 200}));
@@ -95,7 +95,7 @@ describe('AuthenticationService', () => {
     let password = 'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone =      `${environment.api_gateway_url}/auth/oauth/v2/token`,
+    let urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
     let url = urlpartone + '?' + urlparttwo;
 
@@ -115,7 +115,7 @@ describe('AuthenticationService', () => {
     let password =        'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone =      `${environment.api_gateway_url}/auth/oauth/v2/token`,
+    let urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
     let url = urlpartone + '?' + urlparttwo;
 
@@ -134,7 +134,7 @@ describe('AuthenticationService', () => {
     let password =        'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone =      `${environment.api_gateway_url}/auth/oauth/v2/token`,
+    let urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`;
     let url = urlpartone + '?' + urlparttwo;
 
@@ -165,7 +165,7 @@ describe('AuthenticationService', () => {
         expect(response.status).toBe(200);
     });
 
-    const req = httpMock.expectOne(`${environment.account}/accounts?token=${token}&email=${email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts?token=${token}&email=${email}`);
     expect(req.request.method).toBe('PUT');
     req.flush(new HttpResponse<number>({status: 200}));
   }));
@@ -177,7 +177,7 @@ describe('AuthenticationService', () => {
         expect(response.status).toBe(200);
     });
 
-    const req = httpMock.expectOne(`${environment.identity}/identity/users/${email}?token=${token}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/identity/users/${email}?token=${token}`);
     expect(req.request.method).toBe('POST');
     req.flush(new HttpResponse<number>({status: 200}));
   }));
@@ -188,7 +188,7 @@ describe('AuthenticationService', () => {
         expect(res.status).toBe(200);
     });
     const req = httpMock
-      .expectOne(`${environment.identity}/identity/users/password/${user.email}?newPassword=${user.password}&token=${token}`);
+      .expectOne(`${environment.backend_server_url}/identity/users/password/${user.email}?newPassword=${user.password}&token=${token}`);
     expect(req.request.method).toBe('PUT');
     req.flush(new HttpResponse<number>({status: 200}));
   }));
@@ -199,7 +199,7 @@ describe('AuthenticationService', () => {
         expect(res.status).toBe(400);
     });
     const req = httpMock
-      .expectOne(`${environment.identity}/identity/users/password/${user.email}?newPassword=${user.password}&token=${token}`);
+      .expectOne(`${environment.backend_server_url}/identity/users/password/${user.email}?newPassword=${user.password}&token=${token}`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.params.get('token')).not.toBe('pqrstuv');
     req.flush(new HttpResponse<number>({status: 400}));
@@ -211,7 +211,7 @@ describe('AuthenticationService', () => {
       expect(response).toEqual(policyResponse);
     });
 
-    const req = httpMock.expectOne(`${environment.personalpolicy}/policies/${policyNumber}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/policies/${policyNumber}`);
     expect(req.request.method).toBe('PUT');
     req.flush(policyResponse);
   }));
@@ -220,7 +220,7 @@ describe('AuthenticationService', () => {
     authService.verifyUser(userService).subscribe( (response) => {
       expect(response).toEqual(user);
     });
-    const req = httpMock.expectOne(`${environment.account}/accounts/${user.email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/${user.email}`);
     expect(req.request.method).toBe('POST');
     req.flush(user);
   }));
