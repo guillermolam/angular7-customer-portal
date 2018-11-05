@@ -99,6 +99,12 @@
 .container {
   &.loggedin {
     max-width:        1190px;
+    
+    .logo {
+      @media (max-width:1190px) {
+        padding-left: 16px;
+      }
+    }
   }
 
   &.loggedout {
@@ -116,6 +122,11 @@
   }
 
   .policy-content {
+    max-width: 100%;
+    flex-basis: 0;
+    flex-grow: 1;
+    padding-right: 16px;
+
     h2 {
       font-size: 18px;
       padding: 0;
@@ -124,9 +135,39 @@
       margin-bottom: 24px;
       line-height: 32px;
 
-      .col {
-        padding-left: 0;
+      @media (max-width: 576px){
+        small {
+          font-size: 12px;
+        }
       }
+
+      .col-6,
+      .col-8 {
+        &.title {
+          padding-left: 0;
+        }
+      }
+    }
+
+    @media (max-width:375px) {
+      h2 {
+        margin-bottom: 16px;
+      }
+
+      .policy-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .policy-info-link a {
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .policy-row {
+        padding-bottom: 16px;
+      }
+
     }
   }
 
@@ -134,10 +175,40 @@
     width: 24px;
     float: left;
     margin-right: 8px;
+
+    @media (max-width:375px) {
+      height: 16px;
+      width: 16px;
+    }
   }
 
   .policy-info {
     line-height: 24px;
+  }
+
+  .policy-info-content {
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 75%;
+    margin-right: 8px;
+
+    @media (max-width: 515px) {
+      max-width: 60%;
+    }
+
+    @media (max-width: 375px) {
+      font-size: 12px;
+    }
+
+    &:after {
+      content:            '...';
+      font-family:        $font-family-law;
+    }
+  }
+
+  .policy-info-link {
+    padding-right: 16px;
   }
 
   .policy-link {
@@ -155,9 +226,15 @@
   }
 }
 
-.col.dashboard-container {
+.col.main-column {
   @media (max-width: 376px){
-     padding-right: 0;
+     //padding-right: 0;
+  }
+}
+
+@media (max-width: 376px){
+  .container-fluid {
+    overflow: hidden;
   }
 }
 
@@ -451,7 +528,7 @@
       text-shadow: none;
     }
 
-    .nav-copy {
+    .nav-content {
       font-size: 8px;
     }
   } 
@@ -523,6 +600,111 @@
   @media (max-width: 767px) {
     width: 100%;
     padding-left: 16px;
-    padding-left: 0;
+  }
+
+  @media (max-width: 376px) {
+    padding-right: 0;
+  }
+}
+
+.policy-background {
+  .svg-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .svg-container svg {
+    height: 51%;
+    width: 100%;
+    overflow: visible;
+  }
+}
+
+.auto .policy-background .svg-container svg {
+  margin-left: 13px;
+}
+
+.property .policy-background .svg-container svg {
+  margin-left: -13px;
+}
+
+.policy-info {
+  .date-amount {
+    width: auto;
+    float: left;
+
+    @media (max-width: 577px) {
+      float: none;
+    }
+  }
+
+  .pay-now-button {
+    float: left;
+    display: block;
+    margin-left: 16px;
+
+    @media (max-width: 577px) {
+      float: none;
+      margin-left: 34px;
+      margin-top: 12px;
+    }
+
+    @media (min-width:376px) and (max-width: 577px) {
+      margin-left: 34px;
+    }
+
+    @media (max-width:375px) {
+      margin-left: 26px;
+    }
+  }
+
+}
+
+@media (max-width: 376px) {
+  .card.mapfre.dashboard-policies .policy-background {
+    max-width: 72px;
+    height: 90px;
+    bottom: 39px;
+    position: absolute;
+  }
+
+  .card.mapfre.dashboard-policies {
+    .policy-link {
+      font-size: 12px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+
+      i,
+      svg {
+        height: 8px;
+        width: 12px;
+      }
+    }
+
+    .policy-content {
+      h2 {
+        margin-left: 32px;
+        font-size: 16px;
+      }
+
+      .policy-icon svg {
+        vertical-align: top;
+      }
+
+      .policy-info {
+        height: 16px;
+        line-height: 16px;
+      }
+
+      .policy-row {
+        padding-left: 72px;
+        font-size: 12px;
+      }
+
+      .pay-now {
+        height: auto;
+      }
+    }
   }
 }
