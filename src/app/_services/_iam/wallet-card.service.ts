@@ -14,7 +14,7 @@ export class WalletCardService {
     const options = {
         responseType:               'arraybuffer' as 'json'
     };
-    const url: string =           `${environment.account}/accounts/wallet/${email}`;
+    const url: string =           `${environment.backend_server_url}/accounts/wallet/${email}`;
     return this.http.get(url, options);
   }
 

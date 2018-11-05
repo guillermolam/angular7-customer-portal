@@ -5,9 +5,5 @@
 
 export const environment = {
   production: false,
-  api_gateway_url:    'https://dev.mapfreapis.com',
-  backend_server_url: 'https://mdv-docdevl01:8081',
-  identity:           'https://mdv-doctest:8082',
-  account:            'https://mdv-doctest:8083',
-  personalpolicy:     'https://mdv-doctest:8084'
+  backend_server_url: 'https://10.175.0.168'
 }
