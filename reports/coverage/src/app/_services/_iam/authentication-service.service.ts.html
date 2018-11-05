@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>71/71</span>
+        <span class='fraction'>74/74</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">78.57% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>9/12</span>
+        <span class='fraction'>11/14</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>69/69</span>
+        <span class='fraction'>72/72</span>
       </div>
     </div>
     <p class="quiet">
@@ -231,7 +231,9 @@
 <a name='L183'></a><a href='#L183'>183</a>
 <a name='L184'></a><a href='#L184'>184</a>
 <a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -255,10 +257,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -275,6 +277,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -282,7 +291,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -337,6 +347,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -404,13 +415,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -443,7 +447,7 @@ export class AuthenticationService {
     const pn = items.policyDetails === undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>: items.policyDetails[0].policynumber.policynumber ,
           pword = items.password || <span class="branch-1 cbranch-no" title="branch not covered" >null;</span>
     let obj;
-    if ( db == 'account' ) {
+    if ( db == 'createaccount' ) {
       obj =  {
         customer: {
           firstName:        items.firstName,
@@ -460,11 +464,19 @@ export class AuthenticationService {
         }
       };
     }
-    else <span class="missing-if-branch" title="else path not taken" >E</span>if (db == 'personalpolicy') {
+    else if (db == 'personalpolicy') {
       obj = {
         firstName:          items.firstName,
         middleName:         items.middleName,
         lastName:           items.lastName
+      };
+    }
+    else <span class="missing-if-branch" title="else path not taken" >E</span>if (db == 'verifyuser') {
+      obj = {
+        firstName:          items.firstName,
+        middleName:         items.middleName,
+        lastName:           items.lastName,
+        email:              items.email
       };
     }
     return obj;
@@ -474,7 +486,7 @@ export class AuthenticationService {
     const
       user =                userObject.$user.source.value,
       url =                 `${environment.account}/accounts/${user.email}`,
-      userSendObject =      this.creatUserObject(user, 'account')
+      userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options)
       .pipe(
@@ -487,7 +499,7 @@ export class AuthenticationService {
     const
       user =                userObject.$user.source.value,
       url =                 `${environment.account}/accounts/${user.email}`,
-      userSendObject =      this.creatUserObject(user, 'account')
+      userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options);
   }
@@ -521,6 +533,7 @@ export class AuthenticationService {
               'currentUser',
               JSON.stringify({ username, access_token })
             );
+            console.log('access_token', access_token);
             return true;
           }
           else {
@@ -552,7 +565,7 @@ export class AuthenticationService {
   }
 &nbsp;
   tokenVerification(token: string, email: string): Observable&lt;object&gt; {
-    const url =           `${environment.identity}/identity/users/${email}?token=${token}`;	
+    const url =           `${environment.identity}/identity/users/${email}?token=${token}`;
     return this.http.post(url, {}, this.options);
   }
 &nbsp;
@@ -574,7 +587,7 @@ export class AuthenticationService {
     return this.http.put(url, {}, this.options);
   }
 &nbsp;
-  verifyPolicy(userObject): Observable&lt;any&gt; {
+  verifyPolicy(userObject): Observable&lt;object&gt; {
     const
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
@@ -584,19 +597,12 @@ export class AuthenticationService {
     return this.http.put(url, userSendObject, this.options);
   }
 &nbsp;
-  verifyUser(userObject): Observable&lt;any&gt; {
+  verifyUser(userObject): Observable&lt;object&gt; {
     const
       user =            userObject.$user.source.value,
       url =             `${environment.account}/accounts/${user.email}`,
-      userSendObject =  {
-        firstName:        user.firstName,
-        middleName:       user.middleName,
-        lastName:         user.lastName,
-        email:            user.email
-      };
-&nbsp;
-      //userSendObject =  this.creatUserObject(user, 'account')
-    
+      userSendObject = this.creatUserObject(user, 'verifyuser')
+    ;
     return this.http.post(url, userSendObject, this.options);
   }
 &nbsp;
@@ -607,7 +613,7 @@ export class AuthenticationService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Oct 30 2018 22:57:11 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 05 2018 10:07:36 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
