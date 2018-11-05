@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="899" lines-covered="754" line-rate="0.8387" branches-valid="147" branches-covered="67" branch-rate="0.4558" timestamp="1541326071139" complexity="0" version="0.1">
+<coverage lines-valid="899" lines-covered="754" line-rate="0.8387" branches-valid="147" branches-covered="67" branch-rate="0.4558" timestamp="1541412457302" complexity="0" version="0.1">
   <sources>
     <source>/var/jenkins_home/workspace/customer-portal-ui_master-57FOZRL6BI452PRGJCGUJAKWDOCNWTZQ4GEBXYSOY3MBWKI2SL6A</source>
   </sources>
