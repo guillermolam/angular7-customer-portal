@@ -5,9 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --configuration=production",
     "test": "ng test --watch=false --browsers Chrome",
-    "test_on_ciserver": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox",
+    "test_on_ciserver": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox --environment=dev",
     "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox && ng build",
     "lint": "ng lint",
     "e2e": "ng e2e",
