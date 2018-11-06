@@ -73,10 +73,10 @@ user: "glam"
 docker_registry_username: "$DOCKER_NEXUS_CREDS_USR"
 docker_registry_password: "$DOCKER_NEXUS_CREDS_PSW"
 docker_registry: "${NEXUS_REPO_URL}"
-image_name: "${NEXUS_REPO_URL}/${JOB_NAME}-DEV"
+image_name: "${NEXUS_REPO_URL}/${JOB_NAME}-dev"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
-container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-DEV:${BUILD_NUMBER}"
+container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
 ports: 
  - "80:80"
  - "443:443"'''
