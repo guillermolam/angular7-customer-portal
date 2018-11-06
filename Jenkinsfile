@@ -43,11 +43,11 @@ pipeline{
 				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
 			steps{
-					sh 'docker build -t ${NEXUS_REPO_URL}/${JOB_NAME}-DEV:${BUILD_NUMBER} .'
+					sh 'docker build -t ${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER} .'
 					// login into nexus docker, push the image to nexus and remove from local.
 					sh 'docker login --username $DOCKER_NEXUS_CREDS_USR --password $DOCKER_NEXUS_CREDS_PSW ${NEXUS_REPO_URL}'
-					sh 'docker push ${NEXUS_REPO_URL}/${JOB_NAME}-DEV:${BUILD_NUMBER}'
-					sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}-DEV:${BUILD_NUMBER}'
+					sh 'docker push ${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}'
+					sh 'docker rmi ${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}'
 			}
 		}
 
