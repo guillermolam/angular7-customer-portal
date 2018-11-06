@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build-dev": "ng build --configuration=dev",
-    "build": "ng build --configuration=prod",
+    "build": "ng build --configuration=production",
     "test": "ng test --watch=false --browsers Chrome",
     "test_on_ciserver": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox --environment=dev",
     "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox && ng build --configuration=dev",
