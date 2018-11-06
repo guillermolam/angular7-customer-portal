@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">89.19% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>74/74</span>
+        <span class='fraction'>66/74</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">78.57% </span>
+        <span class="strong">57.14% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>11/14</span>
+        <span class='fraction'>8/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">76.47% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>17/17</span>
+        <span class='fraction'>13/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">88.89% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>72/72</span>
+        <span class='fraction'>64/72</span>
       </div>
     </div>
     <p class="quiet">
@@ -303,8 +303,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -341,19 +341,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -440,7 +440,7 @@ export class AuthenticationService {
   ) {
     // set token if saved in local storage
     const currentUser =       JSON.parse(localStorage.getItem('currentUser'));
-    this.token =              currentUser &amp;&amp; currentUser.token;
+    this.token =              currentUser &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >currentUser.token;</span>
   }
 &nbsp;
   creatUserObject(items, db): object {
@@ -485,27 +485,27 @@ export class AuthenticationService {
   confirmPolicyAndAccount(userObject): Observable&lt;any&gt; {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.account}/accounts/${user.email}`,
+      url =                 `${environment.backend_server_url}/accounts/${user.email}`,
       userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options)
       .pipe(
-        map((response) =&gt; response ),
-        catchError((err) =&gt; of(err))
+        map(<span class="fstat-no" title="function not covered" >(</span>response) =&gt; <span class="cstat-no" title="statement not covered" >response </span>),
+        catchError(<span class="fstat-no" title="function not covered" >(</span>err) =&gt; <span class="cstat-no" title="statement not covered" >of(err))</span>
       );
   }
 &nbsp;
   createPassword(userObject): Observable&lt;any&gt; {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.account}/accounts/${user.email}`,
+      url =                 `${environment.backend_server_url}/accounts/${user.email}`,
       userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options);
   }
 &nbsp;
   forgotPasswordSendEmailId(userEmail: string): Observable&lt;any&gt; {
-    const url = `${environment.identity}/identity/users/account-recovery`;
+    const url = `${environment.backend_server_url}/identity/users/account-recovery`;
     return this.http.post(url, {} , {
       params : { email: userEmail },
       headers : {
@@ -517,7 +517,7 @@ export class AuthenticationService {
   login(username: string, password: string) {
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d',
-          urlpartone =      `${environment.api_gateway_url}/auth/oauth/v2/token`,
+          urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
           urlparttwo =      `grant_type=password&amp;username=${username}&amp;password=${password}&amp;client_id=${client_id}&amp;client_secret=${client_secret}&amp;scope=oob`,
           url = urlpartone + '?' + urlparttwo;
 &nbsp;
@@ -527,20 +527,20 @@ export class AuthenticationService {
         }
       })
       .pipe(
-        map((access_token) =&gt; {
-          if (access_token) {
-            localStorage.setItem(
+        map(<span class="fstat-no" title="function not covered" >(</span>access_token) =&gt; {
+<span class="cstat-no" title="statement not covered" >          if (access_token) {</span>
+<span class="cstat-no" title="statement not covered" >            localStorage.setItem(</span>
               'currentUser',
               JSON.stringify({ username, access_token })
             );
-            console.log('access_token', access_token);
-            return true;
+<span class="cstat-no" title="statement not covered" >            console.log('access_token', access_token);</span>
+<span class="cstat-no" title="statement not covered" >            return true;</span>
           }
           else {
-            return false;
+<span class="cstat-no" title="statement not covered" >            return false;</span>
           }
         }),
-        catchError( (error) =&gt; throwError('Invalid email/password combination'))
+        catchError( <span class="fstat-no" title="function not covered" >(</span>error) =&gt; <span class="cstat-no" title="statement not covered" >throwError('Invalid email/password combination'))</span>
       );
   }
    /*oringal params -- do not get rid of for the moment
@@ -565,12 +565,12 @@ export class AuthenticationService {
   }
 &nbsp;
   tokenVerification(token: string, email: string): Observable&lt;object&gt; {
-    const url =           `${environment.identity}/identity/users/${email}?token=${token}`;
+    const url =           `${environment.backend_server_url}/identity/users/${email}?token=${token}`;
     return this.http.post(url, {}, this.options);
   }
 &nbsp;
   updatePassword(user: User, userToken: string) {
-    const url =           `${environment.identity}/identity/users/password/${user.email}`;
+    const url =           `${environment.backend_server_url}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : {
         newPassword:    user.password,
@@ -583,7 +583,7 @@ export class AuthenticationService {
   }
 &nbsp;
   verifyAccountTokenVerification(token: string, email: string): Observable&lt;object&gt; {
-    const url =           `${environment.account}/accounts?token=${token}&amp;email=${email}`;
+    const url =           `${environment.backend_server_url}/accounts?token=${token}&amp;email=${email}`;
     return this.http.put(url, {}, this.options);
   }
 &nbsp;
@@ -591,7 +591,7 @@ export class AuthenticationService {
     const
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
-      url =             `${environment.personalpolicy}/policies/${policyNumber}`,
+      url =             `${environment.backend_server_url}/policies/${policyNumber}`,
       userSendObject =  this.creatUserObject(user, 'personalpolicy')
     ;
     return this.http.put(url, userSendObject, this.options);
@@ -600,7 +600,7 @@ export class AuthenticationService {
   verifyUser(userObject): Observable&lt;object&gt; {
     const
       user =            userObject.$user.source.value,
-      url =             `${environment.account}/accounts/${user.email}`,
+      url =             `${environment.backend_server_url}/accounts/${user.email}`,
       userSendObject = this.creatUserObject(user, 'verifyuser')
     ;
     return this.http.post(url, userSendObject, this.options);
@@ -613,7 +613,7 @@ export class AuthenticationService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 05 2018 10:07:36 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 06 2018 14:22:02 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
