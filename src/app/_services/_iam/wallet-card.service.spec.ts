@@ -3,7 +3,7 @@ import { WalletCardService } from './wallet-card.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { environment } from '../../../environments/environment.dev';
+import { environment } from '../../../environments/environment';
 
 describe('WalletCardService', () => {
 

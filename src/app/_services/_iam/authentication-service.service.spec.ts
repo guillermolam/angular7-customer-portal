@@ -3,7 +3,7 @@ import { HttpTestingController,
   HttpClientTestingModule}        from '@angular/common/http/testing';
 import { HttpResponse}            from '@angular/common/http';
 import { AuthenticationService }  from './authentication-service.service';
-import { environment }            from '../../../environments/environment.dev';
+import { environment }            from '../../../environments/environment';
 import { UserService }            from '../user.service';
 import { User }                   from '../../_models/user';
 import { FakeAccountResponse }    from '../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
