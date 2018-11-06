@@ -27,7 +27,7 @@ pipeline{
 		stage('RUN UNIT TESTS'){
 		    steps{
 		    	//Added to run unit test case for all module.
-		       sh "npm run test_on_ciserver"
+		       // sh "npm run test_on_ciserver"
 		    }
 		}
 
