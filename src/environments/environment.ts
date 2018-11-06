@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  backend_server_url: 'https://10.175.0.168'
+  backend_server_url: 'https://10.175.0.168:443'
 }
