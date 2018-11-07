@@ -35,7 +35,7 @@ import { LoginFormComponent }           from './login-form.component';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { UserService }                  from '../../../../_services/user.service';
 import { LoginService }                 from '../../../../_services/forms/login/login.service';
-import { DashboardComponent }           from '../../../../routes/dashboard/dashboard.component';
+import { DashboardComponent }           from '../../../../routes/my-insurance/dashboard.component';
 import { ForgotPasswordComponent }      from '../../../../routes/forgot-password/forgot-password.component';
 
 class MockAuthService extends AuthenticationService{
@@ -143,7 +143,7 @@ describe('LoginFormComponent', () => {
     expect(component.user.email).toBe(component.loginForm.get('loginEmail').value);
     expect(component.user.password).toBe(component.loginForm.get('loginPassword').value);
     expect(component.putCookie).toHaveBeenCalled();
-    expect(location.path()).toBe('/dashboard');
+    expect(location.path()).toBe('/my-insurance');
   }));
 
   it('should do nothing if user property is false', fakeAsync( () => {

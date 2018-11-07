@@ -40,7 +40,7 @@ export class PolicyNotFoundScreenComponent implements OnInit {
 
             if( checkPassword != '' || checkPassword != undefined || checkPassword != null ) {
               this.authService.login(email, password).subscribe(
-                (data) => { this.router.navigate(['/dashboard']); }
+                (data) => { this.router.navigate(['/my-insurance']); }
               )
             }
             else {

@@ -48,11 +48,11 @@ export class LoginFormComponent implements OnInit {
 
   login(): void {
     this.user.email =                 this.loginForm.controls.loginEmail.value;
-    this.user.password  =             this.loginForm.controls.loginPassword.value;
+    this.user.password =              this.loginForm.controls.loginPassword.value;
     this.loading =                    true;
     this.putCookie();
 
-    if(this.user) {
+    if (this.user) {
       this.authenticationService
         .login (this.user.email, this.user.password)
         .subscribe (
@@ -62,9 +62,29 @@ export class LoginFormComponent implements OnInit {
               redirectURl = `/${this.returnUrl}`;
             }
             else {
-              redirectURl = `/dashboard`;
+              redirectURl = `/my-insurance`;
             }
-            this.router.navigate([`/dashboard`]);
+            this.authenticationService
+              .verifyUser(this.user)
+              .subscribe(
+                (info: any) => {
+                  console.log(info);
+                  this.user = {
+                    firstName: info[0].insurer['firstName'],
+                    middleName: info[0].insurer['middleName'],
+                    lastName: info[0].insurer['lastName'],
+                    policyDetails: info
+                  };
+                  this.userService.updateUser(this.user);
+                },
+                (err) => {
+                  console.log('login success but verifyuser err', err);
+                },
+                () => {
+                  this.alertService.success('Successful Login', true);
+                  this.router.navigate([`/my-insurance`]);
+                }
+              );
           },
           (err) => {
             this.alertService.error('INVALID_EMAIL_PASSWORD');
