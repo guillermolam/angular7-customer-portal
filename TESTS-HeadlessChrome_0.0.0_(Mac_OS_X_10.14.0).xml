@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<testsuite name="HeadlessChrome 0.0.0 (Mac OS X 10.14.0)" package="" timestamp="2018-11-07T22:30:03" id="0" hostname="MAMR00195.local" tests="0" errors="0" failures="0" time="21.823">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/67.0.3396.62 Safari/537.36"/>
+  </properties>
+  <testcase name="AuthGuard should be able to route when user is logged in" time="0.133" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="AuthGuard should be able to route when user has an observable" time="0.082" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="AuthGuard should not route when user has no observable" time="0.044" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="EmailUseScreenComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EmailUseScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignUpGuard should be able to route when user has an observable" time="0.058" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SignUpGuard"/>
+  <testcase name="SignUpGuard should not route when user there is no user observable" time="0.018" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SignUpGuard"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should redirect ro createpassword page" time="0.937" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyBelongToAnotherScreenComponent"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should create usr object" time="0.784" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyBelongToAnotherScreenComponent"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should throw error" time="0.718" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyBelongToAnotherScreenComponent"/>
+  <testcase name="AuthGuard should not route when user is not logged in" time="0.03" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="AuthGuard should be able to route when user is logged in" time="0.06" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="PolicyNotFoundScreenComponent should call updateObservable" time="0.659" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should update policy holdername and number" time="0.653" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/policybelongstoanother" time="0.571" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/bop" time="0.665" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should call get ovbservable on initialization" time="0.676" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/notfound" time="0.514" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to verifyaccount" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to my-insurance" time="0.656" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/addpolicy" time="0.849" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should return the true checkbox value" time="0.272" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0.402" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should return the false checkbox value" time="0.306" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should verify policy and route user to createpassword page" time="0.204" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/notfound" time="0.327" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should add policy to the userObject" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should send email on forgot password" time="0.025" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the user" time="0.014" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should throw error while login" time="0.015" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should logout the user" time="0.017" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should login successfully" time="0.08" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should not login successfully" time="0.05" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should update the password" time="0.044" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the policy" time="0.012" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the token for forgotpassword" time="0.013" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the token for verifyaccount" time="0.026" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should not update the password" time="0.012" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should confirm policy and account" time="0.026" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should throw error for confirm policy and account" time="0.018" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should create a password" time="0.014" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="ReviewPolicyScreenComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).ReviewPolicyScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="UserService should update the user" time="0.013" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).UserService"/>
+  <testcase name="EmailConfirmationComponent should throw error" time="0.081" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should do nothing" time="0.148" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should send email to user and emit true" time="0.128" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should emit false value" time="0.17" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="estingService should be created" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).estingService">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginService should return formbase for creating login form" time="0.008" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginService"/>
+  <testcase name="BopScreenComponent should create" time="0.089" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).BopScreenComponent"/>
+  <testcase name="AccountHeaderComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AccountHeaderComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="WalletCardService should return the Policy details" time="0.032" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).WalletCardService"/>
+  <testcase name="AppComponent should have as title 'app'" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should create the app" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should render title in a h1 tag" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountService should return formbase to create account service" time="0.141" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateAccountService"/>
+  <testcase name="AddPolicyService should return Formbase to add policy" time="0.01" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AddPolicyService"/>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to false" time="0.15" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to true" time="0.204" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should call isTockenValid if route params exists" time="0.07" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should return false if the token is invalid" time="0.09" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should verify if the token is valid" time="0.22" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should create" time="0.105" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successpassword property to true" time="0.117" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should verify for the invalid token" time="0.14" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="WalletCardComponent should call the wallet card service to generate the pk pass" time="0.109" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).WalletCardComponent"/>
+  <testcase name="LoginFormComponent it should login and navigate to my-insurance if there are no returnurl paramaters" time="0.36" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should do nothing if user property is false" time="0.236" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should throw error if invalid email/password" time="0.303" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should get the email and password login form " time="0.262" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should set rememberMe field of component" time="0.24" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should redirect to /forgotpassword if email pattern does not match" time="0.305" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should set the expiry of the cookie" time="0.291" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should test Initialization of a component" time="0.29" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="DashboardComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).DashboardComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyService should return formbase to edit policy service" time="0.012" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EditPolicyService"/>
+  <testcase name="LoginComponent should get the null inputs" time="0.108" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginComponent"/>
+  <testcase name="LoginComponent should get the inputs" time="0.086" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).LoginComponent"/>
+  <testcase name="SendEmailFormComponent should check is valid method" time="0.075" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should send email id to authservice when forgot password" time="0.154" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should get email from existing parameters" time="0.071" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should run getEmailParameter on initialization" time="0.052" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="EmailFormService should return the formbase for email" time="0.013" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EmailFormService"/>
+  <testcase name="CreateNewPasswordFormService should create new password form" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordFormService">
+    <skipped/>
+  </testcase>
+  <testcase name="CreatePasswordFormComponent should initializes parameters oninitialization" time="0.056" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should call updatePassword method" time="0.051" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should redirect user to verify account" time="0.095" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should call createPassword method" time="0.163" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreatePasswordFormComponent"/>
+  <testcase name="PolicyDetailsComponent should create" time="0.02" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).PolicyDetailsComponent"/>
+  <testcase name="WelcomeComponent should create" time="0.032" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).WelcomeComponent"/>
+  <testcase name="SignupProcessComponent should initialize " time="0.26" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SignupProcessComponent"/>
+  <testcase name="SignupProcessComponent should initialize user and update whereInTheProcess" time="0.286" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SignupProcessComponent"/>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/bop" time="0.407" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should create" time="0.361" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0.378" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should edit the policy" time="0.395" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/notfound" time="0.342" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should Initialize" time="0.335" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should get the prefill data" time="0.239" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should create user object" time="0.446" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="CreateNewPasswordSetComponent should create" time="0.031" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordSetComponent"/>
+  <testcase name="VerifyAccountScreenComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).VerifyAccountScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="OnboardingWalletBackComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).OnboardingWalletBackComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="TestingComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).TestingComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="OnboardingWalletBackListComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).OnboardingWalletBackListComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should create" time="0.108" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should set showConfirmation to true" time="0.131" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should get email from parameter" time="0.091" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should set the emailInputs" time="0.114" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should call method getEmailFromParamater" time="0.152" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordTooManyComponent should create" time="0.054" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).ForgotPasswordTooManyComponent"/>
+  <testcase name="OnboardingWalletFrontComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).OnboardingWalletFrontComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupComponent should get the null inputs" time="0.092" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SignupComponent"/>
+  <testcase name="SignupComponent should get the inputs" time="0.155" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SignupComponent"/>
+  <testcase name="SidenavComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).SidenavComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="OnboardingWalletModalComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).OnboardingWalletModalComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordNondynamicComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).ForgotPasswordNondynamicComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AccountMainComponent should create" time="0" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).AccountMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordExpiredComponent should call getEmailFromParameter" time="0.093" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordExpiredComponent"/>
+  <testcase name="CreateNewPasswordExpiredComponent should get email from parameter" time="0.063" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateNewPasswordExpiredComponent"/>
+  <testcase name="CreateAccountFormComponent should create the user object" time="0.425" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should call register() to register the user" time="0.52" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/emailinuse" time="0.277" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/addpolicy" time="0.418" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should update the user object" time="0.366" classname="HeadlessChrome_0_0_0_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <system-out>
+    <![CDATA[HeadlessChrome 0.0.0 (Mac OS X 10.14.0) ERROR: 'DEPRECATION:', 'Setting specFilter directly on Env is deprecated, please use the specFilter option in `configure`'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) ERROR
+  DisconnectedClient disconnected from CONNECTED state (ping timeout)
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) LOG: 'access_token', Object{token: 'asdfghjkl'}
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) LOG: 'error'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,HeadlessChrome 0.0.0 (Mac OS X 10.14.0) WARN: undefined
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

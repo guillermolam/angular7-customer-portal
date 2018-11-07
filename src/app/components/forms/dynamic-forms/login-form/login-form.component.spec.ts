@@ -182,9 +182,8 @@ describe('LoginFormComponent', () => {
       expect(component.rememberMe).toBeTruthy();
   });
 
-  fit('should redirect to /forgotpassword if email pattern does not match', fakeAsync( () => {
-    const email = 'test@xyz.com';
-    console.log(email);
+  it('should redirect to /forgotpassword if email pattern does not match', fakeAsync( () => {
+    const email = component.loginForm.get('loginEmail').value;
     // let emailPattern = fixture.debugElement.injector.get(RegExHelper).strictEmailPattern;
     component.prefillEmailParamater();
     fixture.detectChanges();

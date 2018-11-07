@@ -127,14 +127,14 @@ ports:
 			}
 		}
 
-		stage('E2E TEST'){
+		/*stage('E2E TEST'){
 			 agent {
                 docker { image 'selenium-hub' }
             }
             steps {
                 sh 'ng e2e --webdriver-update=false'
             }
-		}
+		}*/
 
 		stage("PROD - BUILD & PUBLISH IMAGE"){
 			environment {
