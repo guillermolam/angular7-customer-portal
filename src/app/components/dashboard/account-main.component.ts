@@ -14,7 +14,7 @@ export class AccountMainComponent implements OnInit {
   user:                           User;
 
   constructor(
-    private authService:          AuthenticationService,
+    private authenticationService: AuthenticationService,
     private router:               Router,
     private userService:          UserService
   ) {
@@ -34,7 +34,6 @@ export class AccountMainComponent implements OnInit {
           balance: 0,
           nextDueDate: '10/28/2018',
           nextDueAmount: 0,
-          
           policynumber: {
               policynumber: 'QJN952'
           },
@@ -213,9 +212,27 @@ export class AccountMainComponent implements OnInit {
       ],
     };
   }
-  //[routerLink]="['/my-insurance', policy.policynumber.policynumber, 'details']"
+
   ngOnInit() {
     // When logging in go a verify user
+    this.authenticationService
+      .verifyUser(this.user)
+      .subscribe(
+        (info: any) => {
+          console.log(info);
+          this.user = {
+            firstName: info[0].insurer['firstName'],
+            middleName: info[0].insurer['middleName'],
+            lastName: info[0].insurer['lastName'],
+            policyDetails: info
+          };
+          this.userService.updateUser(this.user);
+        },
+        (err) => {
+          console.log('login success but verifyuser err', err);
+        }
+      );
+
     this.userService.$user.subscribe(
       (user) => {
         if ( user != undefined ) {

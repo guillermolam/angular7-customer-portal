@@ -46,7 +46,7 @@ describe('PolicyNotFoundScreenComponent', () => {
       imports: [TranslateModule.forRoot(),
         RouterTestingModule.withRoutes(
           [
-          { path: "dashboard", component: DashboardComponent },
+          { path: "my-insurance", component: DashboardComponent },
           { path: "verifyaccount", component: VerifyAccountComponent },
           { path: "signup/:parm", component: SignupProcessComponent }
       ]
@@ -63,7 +63,6 @@ describe('PolicyNotFoundScreenComponent', () => {
     //   {set: {providers: [{provide: UserService, useClass: MockUserService}]}}
     // )
 
-
     fixture = TestBed.createComponent(PolicyNotFoundScreenComponent);
     user = FakeAccountResponse.getUserPolicyData();
     // userService = TestBed.get(UserService);
@@ -76,7 +75,6 @@ describe('PolicyNotFoundScreenComponent', () => {
     component = fixture.componentInstance;
     component.userData = user;
     fixture.detectChanges();
-    
   });
 
   it('should update policy holdername and number',()=>{
@@ -101,15 +99,15 @@ describe('PolicyNotFoundScreenComponent', () => {
     expect(component.getObservableData).toHaveBeenCalled();
   });
 
-  it('should check the users credential and route them to dashboard', fakeAsync(()=>{
-    spyOn(component,'updateObservable');
-    spyOn(authService,'verifyPolicy').and.callFake(()=>{
-      return Observable.create((observer: Observer<string>)=>{
+  it('should check the users credential and route them to my-insurance', fakeAsync(() => {
+    spyOn(component, 'updateObservable');
+    spyOn(authService, 'verifyPolicy').and.callFake(() => {
+      return Observable.create((observer: Observer<string>) => {
         observer.next('forgotpassword');
       });
     });
-    spyOn(authService,'login').and.callFake(()=>{
-      return Observable.create((observer: Observer<string>)=>{
+    spyOn(authService, 'login').and.callFake(() => {
+      return Observable.create((observer: Observer<string>) => {
         observer.next('forgotpassword');
       });
     });

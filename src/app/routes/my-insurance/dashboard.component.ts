@@ -8,5 +8,7 @@ import * as Chartist from "chartist";
 })
 export class DashboardComponent implements OnInit {
   constructor() {}
-  ngOnInit(){}
+  ngOnInit(){
+   
+  }
 }

@@ -74,7 +74,7 @@ describe('LoginFormComponent', () => {
         HttpClientModule,
         RouterTestingModule.withRoutes(
             [
-            { path: 'dashboard', component: DashboardComponent },
+            { path: 'my-insurance', component: DashboardComponent },
             { path: 'forgotpassword', component: ForgotPasswordComponent }
         ]
         ),
@@ -134,7 +134,7 @@ describe('LoginFormComponent', () => {
     expect(component.loginForm.get('loginPassword').value).toBe(cookieService.get('password'));
   });
 
-  it('it should login and navigate to dashboard if there are no returnurl paramaters', fakeAsync( () => {
+  it('it should login and navigate to my-insurance if there are no returnurl paramaters', fakeAsync( () => {
     spyOn(component, 'putCookie');
     fixture.detectChanges();
     component.login();

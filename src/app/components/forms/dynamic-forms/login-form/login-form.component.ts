@@ -64,27 +64,8 @@ export class LoginFormComponent implements OnInit {
             else {
               redirectURl = `/my-insurance`;
             }
-            this.authenticationService
-              .verifyUser(this.user)
-              .subscribe(
-                (info: any) => {
-                  console.log(info);
-                  this.user = {
-                    firstName: info[0].insurer['firstName'],
-                    middleName: info[0].insurer['middleName'],
-                    lastName: info[0].insurer['lastName'],
-                    policyDetails: info
-                  };
-                  this.userService.updateUser(this.user);
-                },
-                (err) => {
-                  console.log('login success but verifyuser err', err);
-                },
-                () => {
-                  this.alertService.success('Successful Login', true);
-                  this.router.navigate([`/my-insurance`]);
-                }
-              );
+            this.alertService.success('Successful Login', true);
+            this.router.navigate([`/my-insurance`]);
           },
           (err) => {
             this.alertService.error('INVALID_EMAIL_PASSWORD');

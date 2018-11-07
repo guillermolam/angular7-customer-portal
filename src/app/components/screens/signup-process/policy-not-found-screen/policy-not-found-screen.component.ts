@@ -38,18 +38,18 @@ export class PolicyNotFoundScreenComponent implements OnInit {
               email = this.userData.email,
               password = this.userData.password;
 
-            if( checkPassword != '' || checkPassword != undefined || checkPassword != null ) {
+            if ( checkPassword != '' || checkPassword != undefined || checkPassword != null ) {
               this.authService.login(email, password).subscribe(
                 (data) => { this.router.navigate(['/my-insurance']); }
-              )
+              );
             }
             else {
               this.router.navigate(['/verifyaccount']);
             }
-          })
+          });
         },
         (err) => {
-          if (err.status === 404){
+          if (err.status === 404) {
             // Policy is not found
             this.router.navigate(['signup', 'notfound']);
           }
@@ -57,7 +57,7 @@ export class PolicyNotFoundScreenComponent implements OnInit {
             // bad requrest - 400 - Biz Policy
             this.router.navigate(['signup', 'bop']);
           }
-          else if (err.status === 409){
+          else if (err.status === 409) {
             // conflict - 409 - if the policy belongs to another
             this.router.navigate(['signup', 'policybelongstoanother']);
           }
