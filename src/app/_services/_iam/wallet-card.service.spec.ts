@@ -3,7 +3,7 @@ import { WalletCardService } from './wallet-card.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { environment } from '../../../environments/environment.dev';
+import { environment } from '../../../environments/environment';
 
 describe('WalletCardService', () => {
 
@@ -32,7 +32,7 @@ describe('WalletCardService', () => {
         expect(response).toEqual(arrayBuffer);
     });
 
-    const req = httpMock.expectOne(`${environment.account}/accounts/wallet/${email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/wallet/${email}`);
     expect(req.request.method).toBe('GET');
     expect(req.request.body).toBeFalsy();
     expect(req.request.responseType).toBe('arraybuffer');

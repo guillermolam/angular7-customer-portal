@@ -63,7 +63,7 @@ export class AuthenticationService {
   confirmPolicyAndAccount(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.account}/accounts/${user.email}`,
+      url =                 `${environment.backend_server_url}/accounts/${user.email}`,
       userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options)
@@ -76,14 +76,14 @@ export class AuthenticationService {
   createPassword(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.account}/accounts/${user.email}`,
+      url =                 `${environment.backend_server_url}/accounts/${user.email}`,
       userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options);
   }
 
   forgotPasswordSendEmailId(userEmail: string): Observable<any> {
-    const url = `${environment.identity}/identity/users/account-recovery`;
+    const url = `${environment.backend_server_url}/identity/users/account-recovery`;
     return this.http.post(url, {} , {
       params : { email: userEmail },
       headers : {
@@ -95,7 +95,7 @@ export class AuthenticationService {
   login(username: string, password: string) {
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d',
-          urlpartone =      `${environment.api_gateway_url}/auth/oauth/v2/token`,
+          urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
           urlparttwo =      `grant_type=password&username=${username}&password=${password}&client_id=${client_id}&client_secret=${client_secret}&scope=oob`,
           url = urlpartone + '?' + urlparttwo;
 
@@ -143,12 +143,12 @@ export class AuthenticationService {
   }
 
   tokenVerification(token: string, email: string): Observable<object> {
-    const url =           `${environment.identity}/identity/users/${email}?token=${token}`;
+    const url =           `${environment.backend_server_url}/identity/users/${email}?token=${token}`;
     return this.http.post(url, {}, this.options);
   }
 
   updatePassword(user: User, userToken: string) {
-    const url =           `${environment.identity}/identity/users/password/${user.email}`;
+    const url =           `${environment.backend_server_url}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : {
         newPassword:    user.password,
@@ -161,7 +161,7 @@ export class AuthenticationService {
   }
 
   verifyAccountTokenVerification(token: string, email: string): Observable<object> {
-    const url =           `${environment.account}/accounts?token=${token}&email=${email}`;
+    const url =           `${environment.backend_server_url}/accounts?token=${token}&email=${email}`;
     return this.http.put(url, {}, this.options);
   }
 
@@ -169,7 +169,7 @@ export class AuthenticationService {
     const
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
-      url =             `${environment.personalpolicy}/policies/${policyNumber}`,
+      url =             `${environment.backend_server_url}/policies/${policyNumber}`,
       userSendObject =  this.creatUserObject(user, 'personalpolicy')
     ;
     return this.http.put(url, userSendObject, this.options);
@@ -178,7 +178,7 @@ export class AuthenticationService {
   verifyUser(userObject): Observable<object> {
     const
       user =            userObject.$user.source.value,
-      url =             `${environment.account}/accounts/${user.email}`,
+      url =             `${environment.backend_server_url}/accounts/${user.email}`,
       userSendObject = this.creatUserObject(user, 'verifyuser')
     ;
     return this.http.post(url, userSendObject, this.options);

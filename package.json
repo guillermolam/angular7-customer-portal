@@ -5,17 +5,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build-dev": "ng build --configuration=dev",
+    "build": "ng build --configuration=production",
     "test": "ng test --watch=false --browsers Chrome",
-    "test_on_ciserver": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox",
-    "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox && ng build",
+    "test_on_ciserver": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox --environment=dev",
+    "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox && ng build --configuration=dev",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "cibuild": "ng test --code-coverage && ng build --prod --no-progress",
+    "cibuild": "ng test --code-coverage && ng build --configuration=dev --no-progress",
     "sonar-run": "sonar-scanner -D sonar.host.url=http://mdv-docdevl01:9000",
     "proxy": "ng serve --proxy-config proxy.config.json",
-    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu'",
-    "prepush": "git pull && npm run build && npm run test"
+    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu'"
   },
   "private": true,
   "dependencies": {
