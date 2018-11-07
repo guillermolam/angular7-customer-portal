@@ -102,8 +102,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "styles": [
-              "../node_modules/font-awesome/scss/font-awesome.scss",
-              "./styles.scss"
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "src/styles.scss"
             ],
             "scripts": [
               "./node_modules/chart.js/dist/Chart.js",
