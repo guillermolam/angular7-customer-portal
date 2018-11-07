@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../../_services/user.service';
 import { User } from '../../../../_models/user';
 import { FakeAccountResponse } from '../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
-import { DashboardComponent } from '../../../../routes/dashboard/dashboard.component';
+import { DashboardComponent } from '../../../../routes/my-insurance/dashboard.component';
 import { VerifyAccountComponent } from '../../../../routes/verify-account/verify-account.component';
 import { SignupProcessComponent } from '../../../../routes/signup/signup-process/signup-process.component';
 import { Location } from '@angular/common';

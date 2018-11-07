@@ -127,6 +127,15 @@ ports:
 			}
 		}
 
+		stage('E2E TEST'){
+			 agent {
+                docker { image 'selenium-hub' }
+            }
+            steps {
+                sh 'ng e2e --webdriver-update=false'
+            }
+		}
+
 		stage("PROD - BUILD & PUBLISH IMAGE"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
