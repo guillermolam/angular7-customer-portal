@@ -215,7 +215,9 @@ export class AccountMainComponent implements OnInit {
 
   ngOnInit() {
     // When logging in go a verify user
-    this.authenticationService
+    // We will need this once the new endpoints are set.
+
+    /*this.authenticationService
       .verifyUser(this.user)
       .subscribe(
         (info: any) => {
@@ -231,7 +233,7 @@ export class AccountMainComponent implements OnInit {
         (err) => {
           console.log('login success but verifyuser err', err);
         }
-      );
+      );*/
 
     this.userService.$user.subscribe(
       (user) => {
