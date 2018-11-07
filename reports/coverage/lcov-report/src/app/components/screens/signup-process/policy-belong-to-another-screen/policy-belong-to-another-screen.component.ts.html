@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">52% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>13/25</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">14.29% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/7</span>
+        <span class='fraction'>1/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>22/22</span>
+        <span class='fraction'>11/22</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -125,38 +125,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -184,38 +184,38 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
             policyDate:             string;
             policyDetail:           PolicyDetails[];
             policyNumber:           string;
-            user:                   User = {};
+<span class="cstat-no" title="statement not covered" >            user:                   User = {};</span>
 &nbsp;
-  constructor(
-    private alertService:           AlertService,
-    private authService:            AuthenticationService,
-    private router:                 Router,
-    private userService:            UserService
+<span class="fstat-no" title="function not covered" >  constructor(</span>
+    private <span class="cstat-no" title="statement not covered" >alertService:           AlertService,</span>
+    private <span class="cstat-no" title="statement not covered" >authService:            AuthenticationService,</span>
+    private <span class="cstat-no" title="statement not covered" >router:                 Router,</span>
+    private <span class="cstat-no" title="statement not covered" >userService:            UserService</span>
   ) { }
 &nbsp;
-  confirmPolicy(): void {
-    this.authService
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  confirmPolicy(): void {</span></span>
+<span class="cstat-no" title="statement not covered" >    this.authService</span>
       .confirmPolicyAndAccount(this.user)
       .subscribe(
-        (data) =&gt; {
-          this.router.navigate(['/signup', 'createpassword']);
+<span class="fstat-no" title="function not covered" >        (</span>data) =&gt; {
+<span class="cstat-no" title="statement not covered" >          this.router.navigate(['/signup', 'createpassword']);</span>
         },
-        (err) =&gt; {
-          this.alertService.error('There was an issue');
+<span class="fstat-no" title="function not covered" >        (</span>err) =&gt; {
+<span class="cstat-no" title="statement not covered" >          this.alertService.error('There was an issue');</span>
         }
       );
   }
 &nbsp;
-  createUserObject(formValue): void {
-    this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
-    this.user = {
+<span class="fstat-no" title="function not covered" >  createUserObject(</span>formValue): void {
+<span class="cstat-no" title="statement not covered" >    this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];</span>
+<span class="cstat-no" title="statement not covered" >    this.user = {</span>
       firstName:                    formValue.editFirst_name,
       middleName:                   formValue.editMI_name,
       lastName:                     formValue.editLast_name,
       email:                        formValue.editEmail,
       policyDetails:                this.policyDetail
     };
-    this.userService.updateUser(this.user);
+<span class="cstat-no" title="statement not covered" >    this.userService.updateUser(this.user);</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ngOnInit() {</span>
@@ -229,7 +229,7 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 07 2018 10:07:47 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 07 2018 22:23:43 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../../prettify.js"></script>

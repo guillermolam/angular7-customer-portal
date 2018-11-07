@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">55% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>20/20</span>
+        <span class='fraction'>11/20</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">14.29% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>7/7</span>
+        <span class='fraction'>1/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">52.94% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/17</span>
+        <span class='fraction'>9/17</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -103,32 +103,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -148,35 +148,35 @@ import { AuthenticationService }        from '../../../_services/_iam/authentica
 })
 export class EmailConfirmationComponent implements OnInit {
   @Input()  sendEmailAgain:       string;
-            user:                 User  = {};
+<span class="cstat-no" title="statement not covered" >            user:                 User  = {};</span>
 &nbsp;
   @Output() showConfirmation:     EventEmitter&lt;boolean&gt; = new EventEmitter();
 &nbsp;
-  constructor( private authService: AuthenticationService ) { }
+<span class="fstat-no" title="function not covered" >  constructor( private <span class="cstat-no" title="statement not covered" ></span>authService: AuthenticationService </span>) { }
 &nbsp;
-  forgotPasswordSendEmailId(): void {
-    this.user.email =                 this.sendEmailAgain;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  forgotPasswordSendEmailId(): void {</span></span>
+<span class="cstat-no" title="statement not covered" >    this.user.email =                 this.sendEmailAgain;</span>
 &nbsp;
-    if (this.user.email) {
-      this.authService
+<span class="cstat-no" title="statement not covered" >    if (this.user.email) {</span>
+<span class="cstat-no" title="statement not covered" >      this.authService</span>
         .forgotPasswordSendEmailId(this.user.email)
         .subscribe(
-          (data) =&gt; {
-            this.showConfirmation.emit(true);
+<span class="fstat-no" title="function not covered" >          (</span>data) =&gt; {
+<span class="cstat-no" title="statement not covered" >            this.showConfirmation.emit(true);</span>
           },
-          (error) =&gt; {
-            console.log(error);
+<span class="fstat-no" title="function not covered" >          (</span>error) =&gt; {
+<span class="cstat-no" title="statement not covered" >            console.log(error);</span>
           }
         )
       ;
     }
   }
 &nbsp;
-  goBackToForm(){
-    this.showConfirmation.emit(false);
+<span class="fstat-no" title="function not covered" >  goBackToForm(){</span>
+<span class="cstat-no" title="statement not covered" >    this.showConfirmation.emit(false);</span>
   }
 &nbsp;
-  ngOnInit() {
+<span class="fstat-no" title="function not covered" >  ngOnInit() {</span>
    
   }
 &nbsp;
@@ -187,7 +187,7 @@ export class EmailConfirmationComponent implements OnInit {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 07 2018 10:07:47 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 07 2018 22:23:43 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>
