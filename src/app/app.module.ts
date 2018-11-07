@@ -64,7 +64,6 @@ import { OnboardingWalletFrontComponent }       from './components/screens/walle
 import { OnboardingWalletBackComponent }        from './components/screens/wallet-passes/onboarding-wallet-back/onboarding-wallet-back.component';
 import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
-import { HouseMonoSvgComponent } from './svg/house-mono-svg/house-mono-svg.component';
 
 if (environment.production) {
   enableProdMode();
@@ -111,8 +110,7 @@ export function tokenGetter() {
     OnboardingWalletBackComponent,
     OnboardingWalletBackListComponent,
     OnboardingWalletModalComponent,
-    PolicyDetailsComponent,
-    HouseMonoSvgComponent
+    PolicyDetailsComponent
   ],
   imports: [
     BrowserModule,
