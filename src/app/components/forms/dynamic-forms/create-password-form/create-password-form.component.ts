@@ -73,7 +73,7 @@ export class CreatePasswordFormComponent implements OnInit {
             .login(this.user.email, this.user.password)
             .subscribe((succ) => {
               this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
-              this.router.navigate(['dashboard']);
+              this.router.navigate(['my-insurance']);
             },
             (err) => {
               this.alertService.success('Login has failed', true);
@@ -98,7 +98,7 @@ export class CreatePasswordFormComponent implements OnInit {
             .login(this.user.email, this.user.password)
             .subscribe((succ) => {
               this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
-              this.router.navigate(['dashboard']);
+              this.router.navigate(['my-insurance']);
             },
             (err) => {
               this.alertService.success('Login has failed', true);

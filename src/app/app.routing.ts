@@ -7,7 +7,7 @@ import { SignUpGuard }                from './_guards/signup.guard';
 import { VerifyUserGuard }            from './_guards/verify-user.guard';
 
 // ----- Routes ----- //
-import { DashboardComponent }         from './routes/dashboard/dashboard.component';
+import { DashboardComponent }         from './routes/my-insurance/dashboard.component';
 import { ForgotPasswordComponent }    from './routes/forgot-password/forgot-password.component';
 import { CreateNewPasswordComponent } from './routes/create-new-password/create-new-password.component';
 import { LoginComponent }             from './routes/login/login.component';
@@ -17,6 +17,7 @@ import { TestingComponent }           from './routes/testing/testing.component';
 import { WelcomeComponent }           from './routes/welcome/welcome.component';
 import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }        from './routes/wallet-card/wallet-card.component';
+import { PolicyDetailsComponent }     from './routes/policy/policydetails/policydetails.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -31,16 +32,35 @@ const appRoutes: Routes = [
   { path: 'walletcard', component: WalletCardComponent},
 
   //when logged in
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'my-insurance', component: DashboardComponent,
+    children: [
+      {
+        path: ':policyid',
+        component: PolicyDetailsComponent,
+        children: [
+          {
+            path: 'details',
+            component: PolicyDetailsComponent,
+          },
+          {
+            path: 'billing',
+            component: PolicyDetailsComponent,
+          },
+          {
+            path: 'documents',
+            component: PolicyDetailsComponent,
+          },
+        ]
+      }
+    ]
+  },
   { path: 'billing', component: DashboardComponent },
   { path: 'claims', component: DashboardComponent },
   { path: 'information', component: DashboardComponent },
   { path: 'contact', component: DashboardComponent },
   { path: 'profile', component: DashboardComponent },
-  { path: 'policy', component: DashboardComponent },
   { path: 'policy/addpolicy', component: DashboardComponent },
   { path: 'contact', component: DashboardComponent },
-
   { path: 'offline', component: DashboardComponent },
   { path: '**', redirectTo: '' } // otherwise redirect to home
 ];

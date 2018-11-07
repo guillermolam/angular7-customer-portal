@@ -89,6 +89,10 @@
   }
 }
 
+.auto .policy-background .svg-container svg {
+  margin-left: 13px;
+}
+
 .col.one-column {
   @media (min-width: 992px) and (max-width: 1019px) {
     margin-left: 256px;
@@ -116,10 +120,6 @@
   padding-left:       0;
   padding-right:      0;
   padding-bottom:     0;
-
-  .policy-background {
-    max-width:        122px;
-  }
 
   .policy-content {
     max-width: 100%;
@@ -154,11 +154,6 @@
         margin-bottom: 16px;
       }
 
-      .policy-icon svg {
-        width: 16px;
-        height: 16px;
-      }
-
       .policy-info-link a {
         font-size: 12px;
         line-height: 16px;
@@ -171,16 +166,6 @@
     }
   }
 
-  .policy-icon {
-    width: 24px;
-    float: left;
-    margin-right: 8px;
-
-    @media (max-width:375px) {
-      height: 16px;
-      width: 16px;
-    }
-  }
 
   .policy-info {
     line-height: 24px;
@@ -199,11 +184,6 @@
 
     @media (max-width: 375px) {
       font-size: 12px;
-    }
-
-    &:after {
-      content:            '...';
-      font-family:        $font-family-law;
     }
   }
 
@@ -226,15 +206,9 @@
   }
 }
 
-.col.main-column {
-  @media (max-width: 376px){
-     //padding-right: 0;
-  }
-}
-
-@media (max-width: 376px){
-  .container-fluid {
-    overflow: hidden;
+.center-on-page {
+  @media (max-width: 991px) {
+    margin: auto;
   }
 }
 
@@ -279,6 +253,7 @@
   @media (max-width:376px) {
     .accident-copy.small-font {
       font-size: 12px;
+      margin-top: 5px;
     }
 
     .claims-mobile {
@@ -386,6 +361,32 @@
     }
   }
 
+}
+
+.col.main-column {
+  @media (max-width: 376px){
+     //padding-right: 0;
+  }
+}
+
+.column-misc {
+  width: 216px;
+  padding-right: 16px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    padding-left: 16px;
+  }
+
+  @media (max-width: 376px) {
+    padding-right: 0;
+  }
+}
+
+.container-fluid {
+  @media (max-width: 376px){ 
+    overflow: hidden;
+  }
 }
 
 .dashboard-navigation {
@@ -565,12 +566,6 @@
   }
 }
 
-@media (max-width: 991px) {
-  .center-on-page {
-    margin: auto;
-  }
-}
-
 .iphonex {
   padding-bottom: 32px;
 }
@@ -591,42 +586,6 @@
 
 .navbar .container.loggedin {
   padding-left:         0;
-}
-
-.column-misc {
-  width: 216px;
-  padding-right: 16px;
-
-  @media (max-width: 767px) {
-    width: 100%;
-    padding-left: 16px;
-  }
-
-  @media (max-width: 376px) {
-    padding-right: 0;
-  }
-}
-
-.policy-background {
-  .svg-container {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .svg-container svg {
-    height: 51%;
-    width: 100%;
-    overflow: visible;
-  }
-}
-
-.auto .policy-background .svg-container svg {
-  margin-left: 13px;
-}
-
-.property .policy-background .svg-container svg {
-  margin-left: -13px;
 }
 
 .policy-info {
@@ -661,11 +620,19 @@
 
 }
 
+.show-more-button {
+  cursor: pointer;
+}
+
+.show-more-detail {
+  overflow: auto;
+  display: block;
+  background: #fff000;
+  white-space: normal;
+}
+
 @media (max-width: 376px) {
   .card.mapfre.dashboard-policies .policy-background {
-    max-width: 72px;
-    height: 90px;
-    bottom: 39px;
     position: absolute;
   }
 
@@ -688,17 +655,12 @@
         font-size: 16px;
       }
 
-      .policy-icon svg {
-        vertical-align: top;
-      }
-
       .policy-info {
         height: 16px;
         line-height: 16px;
       }
 
       .policy-row {
-        padding-left: 72px;
         font-size: 12px;
       }
 
@@ -708,3 +670,119 @@
     }
   }
 }
+
+
+/* icons for policy-row */
+.policy-icon {
+  height: 24px;
+  width: 24px;
+  float: left;
+  margin-right: 8px;
+
+  @media (max-width:375px) {
+    height: 16px;
+    width: 16px;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+
+    @media (max-width:375px) {
+      vertical-align: top;
+    }
+
+    path {
+      fill: #ADAAAA;
+    }
+  }
+}
+
+.waves-ripple {
+  background: #ADAAAA;
+}
+
+@media (max-width: 375px) {
+  .no-pay {
+    .policy-background {
+      max-width: 40px;
+      margin-top: 51px;
+    }
+
+    .policy-content .policy-row{
+      padding-left: 72px;
+    }
+
+    .car,
+    .house {
+      background-size: 40px 80px;
+      height: 80px;
+      width: 40px;
+    }
+  }
+
+  .pay {
+    .policy-background {
+      max-width: 72px;
+      margin-top: 48px;
+    }
+
+    .policy-content .policy-row{
+      padding-left: 100px;
+    }
+
+    .car,
+    .house {
+      background-size: 72px 148px;
+      height: 148px;
+      width: 72px;
+    }
+  }
+}
+
+@media (min-width: 376px) {
+  .policy-content {
+    padding-left: 32px;
+  }
+
+  .no-pay {
+    .policy-background {
+      max-width: 88px;
+      padding: 0;
+      padding-left: 15px;
+    }
+
+    .car,
+    .house {
+      background-size: 88px 178px;
+      height: 178px;
+      width: 88px;
+    }
+  }
+
+  .pay {
+    .policy-background {
+      max-width: 110px;
+      padding: 0;
+      padding-left: 15px;
+    }
+
+    .car,
+    .house {
+      background-size: 110px 226px;
+      height: 226px;
+      width: 110px;
+    }
+  }
+}
+
+
+.car {
+  background-image: url('./assets/img/images/car_background.png');
+}
+
+.house {
+  background-image: url('./assets/img/images/house_bg.png');
+}
+

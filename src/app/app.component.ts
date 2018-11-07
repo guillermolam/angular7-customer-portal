@@ -25,7 +25,7 @@ export class AppComponent {
   checkRoute() {
     /* ** ToDo: Create a better loop ** */
     const rs = [
-      '/dashboard',
+      '/my-insurance',
       '/billing',
       '/claims',
       '/information',
