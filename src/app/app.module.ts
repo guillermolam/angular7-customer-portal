@@ -1,6 +1,7 @@
 // --- Design Library --- //
 import { MDBBootstrapModule }                   from 'angular-bootstrap-md';
 import { MapfreDesignLibraryModule }            from 'mapfre-design-library';
+// import { ComponentsModule }                     from 'mapfre-framework';
 // ----- Packages ---- //
 import { BrowserModule }                        from '@angular/platform-browser';
 import { BrowserAnimationsModule }              from '@angular/platform-browser/animations';
@@ -64,6 +65,7 @@ import { OnboardingWalletFrontComponent }       from './components/screens/walle
 import { OnboardingWalletBackComponent }        from './components/screens/wallet-passes/onboarding-wallet-back/onboarding-wallet-back.component';
 import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
+
 
 if (environment.production) {
   enableProdMode();
