@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">39.29% </span>
+        <span class="strong">47.83% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>11/28</span>
+        <span class='fraction'>11/23</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">16.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>1/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36% </span>
+        <span class="strong">45% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/25</span>
+        <span class='fraction'>9/20</span>
       </div>
     </div>
     <p class="quiet">
@@ -294,7 +294,9 @@
 <a name='L246'></a><a href='#L246'>246</a>
 <a name='L247'></a><a href='#L247'>247</a>
 <a name='L248'></a><a href='#L248'>248</a>
-<a name='L249'></a><a href='#L249'>249</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -511,21 +513,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -759,23 +763,25 @@ export class AccountMainComponent implements OnInit {
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  ngOnInit() {</span></span>
     // When logging in go a verify user
-<span class="cstat-no" title="statement not covered" >    this.authenticationService</span>
+    // We will need this once the new endpoints are set.
+&nbsp;
+    /*this.authenticationService
       .verifyUser(this.user)
       .subscribe(
-<span class="fstat-no" title="function not covered" >        (</span>info: any) =&gt; {
-<span class="cstat-no" title="statement not covered" >          console.log(info);</span>
-<span class="cstat-no" title="statement not covered" >          this.user = {</span>
+        (info: any) =&gt; {
+          console.log(info);
+          this.user = {
             firstName: info[0].insurer['firstName'],
             middleName: info[0].insurer['middleName'],
             lastName: info[0].insurer['lastName'],
             policyDetails: info
           };
-<span class="cstat-no" title="statement not covered" >          this.userService.updateUser(this.user);</span>
+          this.userService.updateUser(this.user);
         },
-<span class="fstat-no" title="function not covered" >        (</span>err) =&gt; {
-<span class="cstat-no" title="statement not covered" >          console.log('login success but verifyuser err', err);</span>
+        (err) =&gt; {
+          console.log('login success but verifyuser err', err);
         }
-      );
+      );*/
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    this.userService.$user.subscribe(</span>
 <span class="fstat-no" title="function not covered" >      (</span>user) =&gt; {
@@ -796,7 +802,7 @@ export class AccountMainComponent implements OnInit {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 07 2018 22:23:43 GMT+0000 (UTC)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 09 2018 16:31:06 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
