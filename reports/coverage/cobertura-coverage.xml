@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="937" lines-covered="764" line-rate="0.8154" branches-valid="153" branches-covered="66" branch-rate="0.4314" timestamp="1541794906909" complexity="0" version="0.1">
+<coverage lines-valid="944" lines-covered="766" line-rate="0.8114" branches-valid="153" branches-covered="66" branch-rate="0.4314" timestamp="1541801556431" complexity="0" version="0.1">
   <sources>
     <source>/var/jenkins_home/workspace/customer-portal-ui_master-57FOZRL6BI452PRGJCGUJAKWDOCNWTZQ4GEBXYSOY3MBWKI2SL6A</source>
   </sources>
@@ -2697,20 +2697,42 @@
         </class>
       </classes>
     </package>
-    <package name="src.app.routes.testing" line-rate="1" branch-rate="1">
+    <package name="src.app.routes.testing" line-rate="0.5" branch-rate="1">
       <classes>
-        <class name="testing.component.ts" filename="src/app/routes/testing/testing.component.ts" line-rate="1" branch-rate="1">
+        <class name="testing.component.ts" filename="src/app/routes/testing/testing.component.ts" line-rate="0.5" branch-rate="1">
           <methods>
-            <method name="(anonymous_1)" hits="1" signature="()V">
+            <method name="(anonymous_2)" hits="1" signature="()V">
               <lines>
-                <line number="9" hits="1"/>
+                <line number="10" hits="1"/>
+              </lines>
+            </method>
+            <method name="TestingComponent" hits="0" signature="()V">
+              <lines>
+                <line number="14" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_4)" hits="0" signature="()V">
+              <lines>
+                <line number="18" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_5)" hits="0" signature="()V">
+              <lines>
+                <line number="20" hits="0"/>
               </lines>
             </method>
           </methods>
           <lines>
             <line number="1" hits="1" branch="false"/>
-            <line number="9" hits="1" branch="false"/>
-            <line number="11" hits="1" branch="false"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="12" hits="0" branch="false"/>
+            <line number="14" hits="0" branch="false"/>
+            <line number="18" hits="1" branch="false"/>
+            <line number="19" hits="0" branch="false"/>
+            <line number="21" hits="0" branch="false"/>
+            <line number="22" hits="0" branch="false"/>
+            <line number="29" hits="1" branch="false"/>
           </lines>
         </class>
       </classes>
