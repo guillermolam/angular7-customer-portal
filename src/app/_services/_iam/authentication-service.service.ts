@@ -142,6 +142,11 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
   }
 
+  policyByEmail(email): Observable<object> {
+    const url = `/policies/personal/${email}`;
+    return this.http.get(url);
+  }
+
   tokenVerification(token: string, email: string): Observable<object> {
     const url =           `${environment.backend_server_url}/identity/users/${email}?token=${token}`;
     return this.http.post(url, {}, this.options);
@@ -176,12 +181,30 @@ export class AuthenticationService {
   }
 
   verifyUser(userObject): Observable<object> {
-    const
-      user =            userObject.$user.source.value,
-      url =             `${environment.backend_server_url}/accounts/${user.email}`,
-      userSendObject = this.creatUserObject(user, 'verifyuser')
+    let user,
+        userSendObject;
+    const url =          `${environment.backend_server_url}/accounts/${user.email}`;
+    if (typeof user === 'object') {
+      user =            userObject.$user.source.value;
+      userSendObject = this.creatUserObject(user, 'verifyuser');
+      console.log('object');
+    }
+    else if (userObject != '') {
+      user = userObject;
+      userSendObject = {};
+      console.log('not object');
+    }
+    else {
+      return;
+    }
+
+    return this.http
+      .post(url, userSendObject, this.options)
+      .pipe(
+        map((info: any) => info),
+        catchError( (error) => throwError('There was an error:', error))
+      )
     ;
-    return this.http.post(url, userSendObject, this.options);
   }
 
 }

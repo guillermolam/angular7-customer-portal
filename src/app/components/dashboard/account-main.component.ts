@@ -24,6 +24,7 @@ export class AccountMainComponent implements OnInit {
     this.hideOrShow = !this.hideOrShow;
   }
 
+  // This will be removed
   testDatafunction() {
     return {
       firstName: 'FirstName',
@@ -217,32 +218,35 @@ export class AccountMainComponent implements OnInit {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
 
-    /*this.authenticationService
-      .verifyUser(this.user)
-      .subscribe(
-        (info: any) => {
-          console.log(info);
-          this.user = {
-            firstName: info[0].insurer['firstName'],
-            middleName: info[0].insurer['middleName'],
-            lastName: info[0].insurer['lastName'],
-            policyDetails: info
-          };
-          this.userService.updateUser(this.user);
-        },
-        (err) => {
-          console.log('login success but verifyuser err', err);
-        }
-      );*/
-
     this.userService.$user.subscribe(
       (user) => {
         if ( user != undefined ) {
           this.user = user ;
         }
         else {
-          this.user = this.testDatafunction();
-          console.log(this.user);
+          if (localStorage.getItem('access_token')) {
+            this.authenticationService
+            .verifyUser(this.user)
+            .subscribe(
+              (info: any) => {
+                console.log(info);
+                this.user = {
+                  firstName: info[0].insurer['firstName'],
+                  middleName: info[0].insurer['middleName'],
+                  lastName: info[0].insurer['lastName'],
+                  policyDetails: info
+                };
+                this.userService.updateUser(this.user);
+              },
+              (err) => {
+                console.log('login success but verifyuser err', err);
+              }
+            );
+          }
+          else {
+            this.user = this.testDatafunction();
+            this.userService.updateUser(this.user);
+          }
         }
       }
     );

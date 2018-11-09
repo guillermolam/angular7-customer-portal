@@ -1,0 +1,758 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 67.0.3396 (Mac OS X 10.14.0)" package="" timestamp="2018-11-08T19:43:24" id="0" hostname="MAMR00195.local" tests="125" errors="0" failures="5" time="12.694">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36"/>
+  </properties>
+  <testcase name="CreateAccountFormComponent should update the user object" time="0.706" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/emailinuse" time="0.342" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should call register() to register the user" time="0.194" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/addpolicy" time="0.207" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <testcase name="CreateAccountFormComponent should create the user object" time="0.282" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent"/>
+  <testcase name="DashboardComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).DashboardComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/addpolicy" time="0.21" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should add policy to the userObject" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should return the true checkbox value" time="0.215" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0.202" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should verify policy and route user to createpassword page" time="0.255" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should return the false checkbox value" time="0.262" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/notfound" time="0.218" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent"/>
+  <testcase name="SignUpGuard should be able to route when user has an observable" time="0.015" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignUpGuard"/>
+  <testcase name="SignUpGuard should not route when user there is no user observable" time="0.018" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignUpGuard"/>
+  <testcase name="EmailConfirmationComponent should throw error" time="0.112" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should send email to user and emit true" time="0.08" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should do nothing" time="0.082" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should emit false value" time="0.136" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="BopScreenComponent should create" time="0.05" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BopScreenComponent"/>
+  <testcase name="EditPolicyService should return formbase to edit policy service" time="0.015" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyService"/>
+  <testcase name="LoginService should return formbase for creating login form" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginService"/>
+  <testcase name="PolicyDetailsComponent should create" time="0.353" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyDetailsComponent">
+    <failure type="">1. If 'app-account-header' is an Angular component, then verify that it is part of this module.
+2. If 'app-account-header' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("[ERROR -&gt;]&lt;app-account-header&gt;&lt;/app-account-header&gt;
+1. If 'app-sidenav' is an Angular component, then verify that it is part of this module.
+2. If 'app-sidenav' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+&lt;div class="mapfre-content container loggedin container-fluid"&gt;
+  &lt;div class="row"&gt;
+    [ERROR -&gt;]&lt;app-sidenav&gt;&lt;/app-sidenav&gt;
+    &lt;div class="col main-column"&gt;
+      &lt;mapfre-alert&gt;&lt;/mapfre-alert&gt;
+'app-account-header' is not a known element:
+1. If 'app-account-header' is an Angular component, then verify that it is part of this module.
+2. If 'app-account-header' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("[ERROR -&gt;]&lt;app-account-header&gt;&lt;/app-account-header&gt;
+&lt;div class="mapfre-content container loggedin container-flu"): ng:///DynamicTestModule/PolicyDetailsComponent.html@0:0
+'app-sidenav' is not a known element:
+1. If 'app-sidenav' is an Angular component, then verify that it is part of this module.
+2. If 'app-sidenav' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+&lt;div class="mapfre-content container loggedin container-fluid"&gt;
+  &lt;div class="row"&gt;
+    [ERROR -&gt;]&lt;app-sidenav&gt;&lt;/app-sidenav&gt;
+    &lt;div class="col main-column"&gt;
+      &lt;mapfre-alert&gt;&lt;/mapfre-alert&gt;
+"): ng:///DynamicTestModule/PolicyDetailsComponent.html@3:4
+'mapfre-alert' is not a known element:
+1. If 'mapfre-alert' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-alert' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+    &lt;app-sidenav&gt;&lt;/app-sidenav&gt;
+    &lt;div class="col main-column"&gt;
+      [ERROR -&gt;]&lt;mapfre-alert&gt;&lt;/mapfre-alert&gt;
+      &lt;app-policy-details-screen&gt;&lt;/app-policy-details-screen&gt;
+    &lt;/div"): ng:///DynamicTestModule/PolicyDetailsComponent.html@5:6
+'app-policy-details-screen' is not a known element:
+1. If 'app-policy-details-screen' is an Angular component, then verify that it is part of this module.
+2. If 'app-policy-details-screen' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+    &lt;div class="col main-column"&gt;
+      &lt;mapfre-alert&gt;&lt;/mapfre-alert&gt;
+      [ERROR -&gt;]&lt;app-policy-details-screen&gt;&lt;/app-policy-details-screen&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+"): ng:///DynamicTestModule/PolicyDetailsComponent.html@6:6
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'app-account-header' is not a known element:
+&lt;div class="mapfre-content container loggedin container-flu"): ng:///DynamicTestModule/PolicyDetailsComponent.html@0:0, 'app-sidenav' is not a known element:
+"): ng:///Dyn ...
+Error: Template parse errors:
+    at syntaxError (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2547:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:19495:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25041:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25028:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24889:1
+    at Object.then (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2538:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24887:1)
+</failure>
+    <failure type="">1. If 'app-account-header' is an Angular component, then verify that it is part of this module.
+2. If 'app-account-header' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("[ERROR -&gt;]&lt;app-account-header&gt;&lt;/app-account-header&gt;
+1. If 'app-sidenav' is an Angular component, then verify that it is part of this module.
+2. If 'app-sidenav' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+&lt;div class="mapfre-content container loggedin container-fluid"&gt;
+  &lt;div class="row"&gt;
+    [ERROR -&gt;]&lt;app-sidenav&gt;&lt;/app-sidenav&gt;
+    &lt;div class="col main-column"&gt;
+      &lt;mapfre-alert&gt;&lt;/mapfre-alert&gt;
+Error: Template parse errors:
+'app-account-header' is not a known element:
+1. If 'app-account-header' is an Angular component, then verify that it is part of this module.
+2. If 'app-account-header' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("[ERROR -&gt;]&lt;app-account-header&gt;&lt;/app-account-header&gt;
+&lt;div class="mapfre-content container loggedin container-flu"): ng:///DynamicTestModule/PolicyDetailsComponent.html@0:0
+'app-sidenav' is not a known element:
+1. If 'app-sidenav' is an Angular component, then verify that it is part of this module.
+2. If 'app-sidenav' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+&lt;div class="mapfre-content container loggedin container-fluid"&gt;
+  &lt;div class="row"&gt;
+    [ERROR -&gt;]&lt;app-sidenav&gt;&lt;/app-sidenav&gt;
+    &lt;div class="col main-column"&gt;
+      &lt;mapfre-alert&gt;&lt;/mapfre-alert&gt;
+"): ng:///DynamicTestModule/PolicyDetailsComponent.html@3:4
+'mapfre-alert' is not a known element:
+1. If 'mapfre-alert' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-alert' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+    &lt;app-sidenav&gt;&lt;/app-sidenav&gt;
+    &lt;div class="col main-column"&gt;
+      [ERROR -&gt;]&lt;mapfre-alert&gt;&lt;/mapfre-alert&gt;
+      &lt;app-policy-details-screen&gt;&lt;/app-policy-details-screen&gt;
+    &lt;/div"): ng:///DynamicTestModule/PolicyDetailsComponent.html@5:6
+'app-policy-details-screen' is not a known element:
+1. If 'app-policy-details-screen' is an Angular component, then verify that it is part of this module.
+2. If 'app-policy-details-screen' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+    &lt;div class="col main-column"&gt;
+      &lt;mapfre-alert&gt;&lt;/mapfre-alert&gt;
+      [ERROR -&gt;]&lt;app-policy-details-screen&gt;&lt;/app-policy-details-screen&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+"): ng:///DynamicTestModule/PolicyDetailsComponent.html@6:6
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'app-account-header' is not a known element:
+&lt;div class="mapfre-content container loggedin container-flu"): ng:///DynamicTestModule/PolicyDetailsComponent.html@0:0, 'app-sidenav' is not a known element:
+"): ng:///Dyn ...
+    at syntaxError (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2547:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:19495:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25041:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25028:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24889:1
+    at Object.then (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2538:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24887:1)
+</failure>
+    <failure type="">Expected undefined to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.&lt;anonymous&gt; (http://localhost:9876/src/app/routes/my-insurance/policy-details/policy-details.component.spec.ts?:23:23)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/node_modules/zone.js/dist/zone.js?:388:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke (http://localhost:9876/node_modules/zone.js/dist/proxy.js?:128:1)
+</failure>
+  </testcase>
+  <testcase name="UserService should update the user" time="0.014" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).UserService"/>
+  <testcase name="ForgotPasswordComponent should call method getEmailFromParamater" time="0.083" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should set the emailInputs" time="0.097" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should create" time="0.092" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should get email from parameter" time="0.071" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="ForgotPasswordComponent should set showConfirmation to true" time="0.099" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent"/>
+  <testcase name="estingService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).estingService">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginComponent should get the inputs" time="0.084" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginComponent"/>
+  <testcase name="LoginComponent should get the null inputs" time="0.081" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginComponent"/>
+  <testcase name="MiscColumnComponent should create" time="0.052" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).MiscColumnComponent">
+    <failure type="">1. If 'mapfre-card' is an Angular component and it has 'singleCard' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;div class="column-misc"&gt;
+    &lt;mapfre-card 
+      [ERROR -&gt;][singleCard]="false" 
+      [additionalClasses]="'claims'"&gt;
+      &lt;div class="icon-title"&gt;
+1. If 'mapfre-card' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+Can't bind to 'singleCard' since it isn't a known property of 'mapfre-card'.
+1. If 'mapfre-card' is an Angular component and it has 'singleCard' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;div class="column-misc"&gt;
+    &lt;mapfre-card 
+      [ERROR -&gt;][singleCard]="false" 
+      [additionalClasses]="'claims'"&gt;
+      &lt;div class="icon-title"&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@2:6
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-card'.
+1. If 'mapfre-card' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+    &lt;mapfre-card 
+      [singleCard]="false" 
+      [ERROR -&gt;][additionalClasses]="'claims'"&gt;
+      &lt;div class="icon-title"&gt;
+        &lt;div class="alarm svg-containe"): ng:///DynamicTestModule/MiscColumnComponent.html@3:6
+'svg-alarm-color-svg' is not a known element:
+1. If 'svg-alarm-color-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-alarm-color-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+      &lt;div class="icon-title"&gt;
+        &lt;div class="alarm svg-container"&gt;
+          [ERROR -&gt;]&lt;svg-alarm-color-svg&gt;&lt;/svg-alarm-color-svg&gt;
+        &lt;/div&gt;
+        &lt;div class="grey-color small-font "): ng:///DynamicTestModule/MiscColumnComponent.html@6:10
+The pipe 'translate' could not be found ("
+        &lt;/div&gt;
+        &lt;div class="grey-color small-font accident-copy claim-copy"&gt;
+   [ERROR -&gt;]       {{ 'BEEN_IN_AN_ACCIDENT' | translate}}
+        &lt;/div&gt;
+      &lt;/div&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@9:3
+The pipe 'translate' could not be found ("//mcr.mapfreinsurance.com/claims/#/ReportClaim" class="mapfre link underline"&gt;
+            &lt;span&gt;{{ [ERROR -&gt;]'REPORT_A_CLAIM' | translate}}&lt;/span&gt;
+            &lt;i class="fas fa-angle-right"&gt;&lt;/i&gt;
+          &lt;/a&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@15:21
+The pipe 'translate' could not be found ("       &lt;div class="contact"&gt;
+          &lt;div class="grey-color small-font claim-copy callus-copy"&gt;{{ [ERROR -&gt;]'OR_CALL_US' | translate}}&lt;/div&gt;
+          &lt;div class="contact-url"&gt;
+            &lt;a href="tel:1800221"): ng:///DynamicTestModule/MiscColumnComponent.html@20:71
+The pipe 'translate' could not be found (" fa-phone fa-flip-horizontal"&gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class="small-font grey-color"&gt;{{ [ERROR -&gt;]'CALL_US' | translate }}&lt;/div&gt;
+        &lt;/a&gt;
+        &lt;a class="button-link grey-color"&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@32:48
+The pipe 'translate' could not be found ("
+            &lt;/div&gt;
+            &lt;div class="small-font grey-color"&gt;
+   [ERROR -&gt;]           {{ 'REPORT_A_CLAIM' | translate}}
+            &lt;/div&gt;
+          &lt;/a&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@56:3
+'mapfre-card' is not a known element:
+1. If 'mapfre-card' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("&lt;div class="column-misc"&gt;
+    [ERROR -&gt;]&lt;mapfre-card 
+      [singleCard]="false" 
+      [additionalClasses]="'claims'"&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@1:4
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ Can't bind to 'singleCard' since it isn't a known property of 'mapfre-card'.
+"): ng:///DynamicTestModule/MiscColumnComponent.html@2:6, Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-card'.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.sch ...
+Error: Template parse errors:
+    at syntaxError (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2547:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:19495:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25041:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25028:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24889:1
+    at Object.then (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2538:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24887:1)
+</failure>
+    <failure type="">1. If 'mapfre-card' is an Angular component and it has 'singleCard' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;div class="column-misc"&gt;
+    &lt;mapfre-card 
+      [ERROR -&gt;][singleCard]="false" 
+      [additionalClasses]="'claims'"&gt;
+      &lt;div class="icon-title"&gt;
+1. If 'mapfre-card' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+Error: Template parse errors:
+Can't bind to 'singleCard' since it isn't a known property of 'mapfre-card'.
+1. If 'mapfre-card' is an Angular component and it has 'singleCard' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;div class="column-misc"&gt;
+    &lt;mapfre-card 
+      [ERROR -&gt;][singleCard]="false" 
+      [additionalClasses]="'claims'"&gt;
+      &lt;div class="icon-title"&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@2:6
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-card'.
+1. If 'mapfre-card' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+    &lt;mapfre-card 
+      [singleCard]="false" 
+      [ERROR -&gt;][additionalClasses]="'claims'"&gt;
+      &lt;div class="icon-title"&gt;
+        &lt;div class="alarm svg-containe"): ng:///DynamicTestModule/MiscColumnComponent.html@3:6
+'svg-alarm-color-svg' is not a known element:
+1. If 'svg-alarm-color-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-alarm-color-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+      &lt;div class="icon-title"&gt;
+        &lt;div class="alarm svg-container"&gt;
+          [ERROR -&gt;]&lt;svg-alarm-color-svg&gt;&lt;/svg-alarm-color-svg&gt;
+        &lt;/div&gt;
+        &lt;div class="grey-color small-font "): ng:///DynamicTestModule/MiscColumnComponent.html@6:10
+The pipe 'translate' could not be found ("
+        &lt;/div&gt;
+        &lt;div class="grey-color small-font accident-copy claim-copy"&gt;
+   [ERROR -&gt;]       {{ 'BEEN_IN_AN_ACCIDENT' | translate}}
+        &lt;/div&gt;
+      &lt;/div&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@9:3
+The pipe 'translate' could not be found ("//mcr.mapfreinsurance.com/claims/#/ReportClaim" class="mapfre link underline"&gt;
+            &lt;span&gt;{{ [ERROR -&gt;]'REPORT_A_CLAIM' | translate}}&lt;/span&gt;
+            &lt;i class="fas fa-angle-right"&gt;&lt;/i&gt;
+          &lt;/a&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@15:21
+The pipe 'translate' could not be found ("       &lt;div class="contact"&gt;
+          &lt;div class="grey-color small-font claim-copy callus-copy"&gt;{{ [ERROR -&gt;]'OR_CALL_US' | translate}}&lt;/div&gt;
+          &lt;div class="contact-url"&gt;
+            &lt;a href="tel:1800221"): ng:///DynamicTestModule/MiscColumnComponent.html@20:71
+The pipe 'translate' could not be found (" fa-phone fa-flip-horizontal"&gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class="small-font grey-color"&gt;{{ [ERROR -&gt;]'CALL_US' | translate }}&lt;/div&gt;
+        &lt;/a&gt;
+        &lt;a class="button-link grey-color"&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@32:48
+The pipe 'translate' could not be found ("
+            &lt;/div&gt;
+            &lt;div class="small-font grey-color"&gt;
+   [ERROR -&gt;]           {{ 'REPORT_A_CLAIM' | translate}}
+            &lt;/div&gt;
+          &lt;/a&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@56:3
+'mapfre-card' is not a known element:
+1. If 'mapfre-card' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("&lt;div class="column-misc"&gt;
+    [ERROR -&gt;]&lt;mapfre-card 
+      [singleCard]="false" 
+      [additionalClasses]="'claims'"&gt;
+"): ng:///DynamicTestModule/MiscColumnComponent.html@1:4
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ Can't bind to 'singleCard' since it isn't a known property of 'mapfre-card'.
+"): ng:///DynamicTestModule/MiscColumnComponent.html@2:6, Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-card'.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.sch ...
+    at syntaxError (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2547:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:19495:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25041:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25028:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24889:1
+    at Object.then (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2538:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24887:1)
+</failure>
+    <failure type="">Expected undefined to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.&lt;anonymous&gt; (http://localhost:9876/src/app/components/dashboard/misc-column/misc-column.component.spec.ts?:23:23)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/node_modules/zone.js/dist/zone.js?:388:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke (http://localhost:9876/node_modules/zone.js/dist/proxy.js?:128:1)
+</failure>
+  </testcase>
+  <testcase name="AuthGuard should be able to route when user has an observable" time="0.012" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="AuthGuard should not route when user has no observable" time="0.01" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="PolicyNotFoundScreenComponent should call get ovbservable on initialization" time="0.331" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to my-insurance" time="0.241" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to verifyaccount" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/notfound" time="0.353" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should update policy holdername and number" time="0.219" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should call updateObservable" time="0.247" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/bop" time="0.366" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/policybelongstoanother" time="0.279" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent"/>
+  <testcase name="SidenavComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SidenavComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="TestingComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).TestingComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should verify the token for forgotpassword" time="0.018" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the token for verifyaccount" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the policy" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should throw error while login" time="0.012" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should login successfully" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should verify the user" time="0.011" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <failure type="">Failed: Cannot read property 'email' of undefined
+    at &lt;Jasmine&gt;
+    at AuthenticationService../src/app/_services/_iam/authentication-service.service.ts.AuthenticationService.verifyUser (http://localhost:9876/src/app/_services/_iam/authentication-service.service.ts?:181:77)
+    at UserContext.&lt;anonymous&gt; (http://localhost:9876/src/app/_services/_iam/authentication-service.service.spec.ts?:220:17)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/node_modules/zone.js/dist/zone.js?:388:1)
+    at AsyncTestZoneSpec.push../node_modules/zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke (http://localhost:9876/node_modules/zone.js/dist/async-test.js?:106:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke (http://localhost:9876/node_modules/zone.js/dist/proxy.js?:125:1)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/node_modules/zone.js/dist/zone.js?:387:1)
+    at Zone../node_modules/zone.js/dist/zone.js.Zone.runGuarded (http://localhost:9876/node_modules/zone.js/dist/zone.js?:151:1)
+    at runInTestZone (http://localhost:9876/node_modules/zone.js/dist/async-test.js?:234:1)
+    at UserContext.&lt;anonymous&gt; (http://localhost:9876/node_modules/zone.js/dist/async-test.js?:168:1)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/node_modules/zone.js/dist/zone.js?:388:1)
+</failure>
+  </testcase>
+  <testcase name="AuthenticationService should not update the password" time="0.028" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should update the password" time="0.012" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should send email on forgot password" time="0.017" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should logout the user" time="0.012" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should throw error for confirm policy and account" time="0.009" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should create a password" time="0.01" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should confirm policy and account" time="0.015" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="AuthenticationService should not login successfully" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService"/>
+  <testcase name="ReviewPolicyScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ReviewPolicyScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AccountMainComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AccountMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="DetailsComponent should create" time="0.042" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).DetailsComponent">
+    <failure type="">1. If 'mapfre-card' is an Angular component and it has 'singleCard' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;mapfre-card 
+  [ERROR -&gt;][singleCard]="false"
+  [additionalClasses]="'policy-details auto'"&gt;
+1. If 'mapfre-card' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+Can't bind to 'singleCard' since it isn't a known property of 'mapfre-card'.
+1. If 'mapfre-card' is an Angular component and it has 'singleCard' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;mapfre-card 
+  [ERROR -&gt;][singleCard]="false"
+  [additionalClasses]="'policy-details auto'"&gt;
+  &lt;header class="row margin-botto"): ng:///DynamicTestModule/DetailsComponent.html@1:2
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-card'.
+1. If 'mapfre-card' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;mapfre-card 
+  [singleCard]="false"
+  [ERROR -&gt;][additionalClasses]="'policy-details auto'"&gt;
+  &lt;header class="row margin-bottom mb16"&gt;
+    &lt;div class"): ng:///DynamicTestModule/DetailsComponent.html@2:2
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+          mapfre | card 
+          &lt;mapfre-button
+            [ERROR -&gt;][additionalClasses]="'ghost primary xsmall'"&gt;
+            DOWNLOAD
+          &lt;/mapfre-button&gt;
+"): ng:///DynamicTestModule/DetailsComponent.html@47:12
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+        &lt;div class="col"&gt;
+          mapfre | card 
+          [ERROR -&gt;]&lt;mapfre-button
+            [additionalClasses]="'ghost primary xsmall'"&gt;
+            DOWNLOAD
+"): ng:///DynamicTestModule/DetailsComponent.html@46:10
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+              &lt;div class="col"&gt;
+                &lt;mapfre-button
+                  [ERROR -&gt;][additionalClasses]="'ghost primary xsmall'"&gt;
+                  Update Mileage
+                &lt;/mapf"): ng:///DynamicTestModule/DetailsComponent.html@71:18
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+              &lt;/div&gt;
+              &lt;div class="col"&gt;
+                [ERROR -&gt;]&lt;mapfre-button
+                  [additionalClasses]="'ghost primary xsmall'"&gt;
+                  Upda"): ng:///DynamicTestModule/DetailsComponent.html@70:16
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+              &lt;div class="col"&gt;
+                &lt;mapfre-button
+                  [ERROR -&gt;][additionalClasses]="'ghost primary xsmall'"&gt;
+                  Update Mileage
+                &lt;/mapf"): ng:///DynamicTestModule/DetailsComponent.html@87:18
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+              &lt;/div&gt;
+              &lt;div class="col"&gt;
+                [ERROR -&gt;]&lt;mapfre-button
+                  [additionalClasses]="'ghost primary xsmall'"&gt;
+                  Upda"): ng:///DynamicTestModule/DetailsComponent.html@86:16
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+            &lt;div&gt;
+              &lt;mapfre-button
+                [ERROR -&gt;][additionalClasses]="'basic primary full small'"&gt;
+                Enroll Now
+              &lt;/mapfre-b"): ng:///DynamicTestModule/DetailsComponent.html@144:16
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+            &lt;/div&gt;
+            &lt;div&gt;
+              [ERROR -&gt;]&lt;mapfre-button
+                [additionalClasses]="'basic primary full small'"&gt;
+                Enro"): ng:///DynamicTestModule/DetailsComponent.html@143:14
+'mapfre-card' is not a known element:
+1. If 'mapfre-card' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("[ERROR -&gt;]&lt;mapfre-card 
+  [singleCard]="false"
+  [additionalClasses]="'policy-details auto'"&gt;
+"): ng:///DynamicTestModule/DetailsComponent.html@0:0
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ Can't bind to 'singleCard' since it isn't a known property of 'mapfre-card'.
+  &lt;header class="row margin-botto"): ng:///DynamicTestModule/DetailsComponent.html@1:2, Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-card'.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to  ...
+Error: Template parse errors:
+    at syntaxError (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2547:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:19495:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25041:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25028:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24889:1
+    at Object.then (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2538:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24887:1)
+</failure>
+    <failure type="">1. If 'mapfre-card' is an Angular component and it has 'singleCard' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;mapfre-card 
+  [ERROR -&gt;][singleCard]="false"
+  [additionalClasses]="'policy-details auto'"&gt;
+1. If 'mapfre-card' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+Error: Template parse errors:
+Can't bind to 'singleCard' since it isn't a known property of 'mapfre-card'.
+1. If 'mapfre-card' is an Angular component and it has 'singleCard' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;mapfre-card 
+  [ERROR -&gt;][singleCard]="false"
+  [additionalClasses]="'policy-details auto'"&gt;
+  &lt;header class="row margin-botto"): ng:///DynamicTestModule/DetailsComponent.html@1:2
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-card'.
+1. If 'mapfre-card' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("&lt;mapfre-card 
+  [singleCard]="false"
+  [ERROR -&gt;][additionalClasses]="'policy-details auto'"&gt;
+  &lt;header class="row margin-bottom mb16"&gt;
+    &lt;div class"): ng:///DynamicTestModule/DetailsComponent.html@2:2
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+          mapfre | card 
+          &lt;mapfre-button
+            [ERROR -&gt;][additionalClasses]="'ghost primary xsmall'"&gt;
+            DOWNLOAD
+          &lt;/mapfre-button&gt;
+"): ng:///DynamicTestModule/DetailsComponent.html@47:12
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+        &lt;div class="col"&gt;
+          mapfre | card 
+          [ERROR -&gt;]&lt;mapfre-button
+            [additionalClasses]="'ghost primary xsmall'"&gt;
+            DOWNLOAD
+"): ng:///DynamicTestModule/DetailsComponent.html@46:10
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+              &lt;div class="col"&gt;
+                &lt;mapfre-button
+                  [ERROR -&gt;][additionalClasses]="'ghost primary xsmall'"&gt;
+                  Update Mileage
+                &lt;/mapf"): ng:///DynamicTestModule/DetailsComponent.html@71:18
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+              &lt;/div&gt;
+              &lt;div class="col"&gt;
+                [ERROR -&gt;]&lt;mapfre-button
+                  [additionalClasses]="'ghost primary xsmall'"&gt;
+                  Upda"): ng:///DynamicTestModule/DetailsComponent.html@70:16
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+              &lt;div class="col"&gt;
+                &lt;mapfre-button
+                  [ERROR -&gt;][additionalClasses]="'ghost primary xsmall'"&gt;
+                  Update Mileage
+                &lt;/mapf"): ng:///DynamicTestModule/DetailsComponent.html@87:18
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+              &lt;/div&gt;
+              &lt;div class="col"&gt;
+                [ERROR -&gt;]&lt;mapfre-button
+                  [additionalClasses]="'ghost primary xsmall'"&gt;
+                  Upda"): ng:///DynamicTestModule/DetailsComponent.html@86:16
+Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+            &lt;div&gt;
+              &lt;mapfre-button
+                [ERROR -&gt;][additionalClasses]="'basic primary full small'"&gt;
+                Enroll Now
+              &lt;/mapfre-b"): ng:///DynamicTestModule/DetailsComponent.html@144:16
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+            &lt;/div&gt;
+            &lt;div&gt;
+              [ERROR -&gt;]&lt;mapfre-button
+                [additionalClasses]="'basic primary full small'"&gt;
+                Enro"): ng:///DynamicTestModule/DetailsComponent.html@143:14
+'mapfre-card' is not a known element:
+1. If 'mapfre-card' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("[ERROR -&gt;]&lt;mapfre-card 
+  [singleCard]="false"
+  [additionalClasses]="'policy-details auto'"&gt;
+"): ng:///DynamicTestModule/DetailsComponent.html@0:0
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ Can't bind to 'singleCard' since it isn't a known property of 'mapfre-card'.
+  &lt;header class="row margin-botto"): ng:///DynamicTestModule/DetailsComponent.html@1:2, Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-card'.
+2. If 'mapfre-card' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to  ...
+    at syntaxError (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2547:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:19495:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25041:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:25028:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24971:1)
+    at http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24889:1
+    at Object.then (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:2538:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents (http://localhost:9876/node_modules/@angular/compiler/fesm5/compiler.js?:24887:1)
+</failure>
+    <failure type="">Expected undefined to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.&lt;anonymous&gt; (http://localhost:9876/src/app/components/dashboard/details/details.component.spec.ts?:23:23)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/node_modules/zone.js/dist/zone.js?:388:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke (http://localhost:9876/node_modules/zone.js/dist/proxy.js?:128:1)
+</failure>
+  </testcase>
+  <testcase name="EmailUseScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailUseScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordExpiredComponent should call getEmailFromParameter" time="0.038" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordExpiredComponent"/>
+  <testcase name="CreateNewPasswordExpiredComponent should get email from parameter" time="0.034" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordExpiredComponent"/>
+  <testcase name="SignupProcessComponent should initialize " time="0.187" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupProcessComponent"/>
+  <testcase name="SignupProcessComponent should initialize user and update whereInTheProcess" time="0.239" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupProcessComponent"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should redirect ro createpassword page" time="0.252" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyBelongToAnotherScreenComponent"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should create usr object" time="0.222" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyBelongToAnotherScreenComponent"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should throw error" time="0.252" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyBelongToAnotherScreenComponent"/>
+  <testcase name="CreateNewPasswordFormService should create new password form" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordFormService">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordNondynamicComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordNondynamicComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="OnboardingWalletBackComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).OnboardingWalletBackComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupComponent should get the null inputs" time="0.077" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupComponent"/>
+  <testcase name="SignupComponent should get the inputs" time="0.066" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupComponent"/>
+  <testcase name="AuthGuard should be able to route when user is logged in" time="0.011" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="AuthGuard should not route when user is not logged in" time="0.01" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="EmailFormService should return the formbase for email" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailFormService"/>
+  <testcase name="OnboardingWalletFrontComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).OnboardingWalletFrontComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="VerifyAccountScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).VerifyAccountScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="WelcomeComponent should create" time="0.038" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).WelcomeComponent"/>
+  <testcase name="ForgotPasswordTooManyComponent should create" time="0.039" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordTooManyComponent"/>
+  <testcase name="OnboardingWalletBackListComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).OnboardingWalletBackListComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="WalletCardComponent should call the wallet card service to generate the pk pass" time="0.035" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).WalletCardComponent"/>
+  <testcase name="CreateNewPasswordSetComponent should create" time="0.036" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordSetComponent"/>
+  <testcase name="EditPolicyComponent should create user object" time="0.238" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should get the prefill data" time="0.163" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should edit the policy" time="0.264" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/notfound" time="0.301" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/bop" time="0.223" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0.222" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should Initialize" time="0.219" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="EditPolicyComponent should create" time="0.215" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent"/>
+  <testcase name="CreatePasswordFormComponent should call updatePassword method" time="0.081" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should call createPassword method" time="0.052" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should redirect user to verify account" time="0.053" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreatePasswordFormComponent"/>
+  <testcase name="CreatePasswordFormComponent should initializes parameters oninitialization" time="0.068" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreatePasswordFormComponent"/>
+  <testcase name="WalletCardService should return the Policy details" time="0.044" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).WalletCardService"/>
+  <testcase name="AccountHeaderComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AccountHeaderComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SendEmailFormComponent should send email id to authservice when forgot password" time="0.049" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should check is valid method" time="0.042" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should run getEmailParameter on initialization" time="0.056" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should get email from existing parameters" time="0.045" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="OnboardingWalletModalComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).OnboardingWalletModalComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginFormComponent should redirect to /forgotpassword if email pattern does not match" time="0.13" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent">
+    <failure type="">Expected '/forgotpassword?emailPrefill=' to be '/forgotpassword?emailPrefill=test@xyz.com'.
+    at &lt;Jasmine&gt;
+    at UserContext.&lt;anonymous&gt; (http://localhost:9876/src/app/components/forms/dynamic-forms/login-form/login-form.component.spec.ts?:192:29)
+    at UserContext.&lt;anonymous&gt; (http://localhost:9876/node_modules/zone.js/dist/fake-async-test.js?:593:1)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/node_modules/zone.js/dist/zone.js?:388:1)
+</failure>
+  </testcase>
+  <testcase name="LoginFormComponent should set rememberMe field of component" time="0.144" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should throw error if invalid email/password" time="0.111" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should do nothing if user property is false" time="0.147" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should test Initialization of a component" time="0.12" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should set the expiry of the cookie" time="0.127" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent it should login and navigate to my-insurance if there are no returnurl paramaters" time="0.245" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should get the email and password login form " time="0.155" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="CreateNewPasswordComponent should create" time="0.078" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should call isTockenValid if route params exists" time="0.105" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successpassword property to true" time="0.098" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should verify for the invalid token" time="0.1" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should return false if the token is invalid" time="0.08" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to false" time="0.078" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to true" time="0.076" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should verify if the token is valid" time="0.064" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateAccountService should return formbase to create account service" time="0.006" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountService"/>
+  <testcase name="AddPolicyService should return Formbase to add policy" time="0.01" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyService"/>
+  <testcase name="AppComponent should have as title 'app'" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should render title in a h1 tag" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should create the app" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <system-out>
+    <![CDATA[Chrome 67.0.3396 (Mac OS X 10.14.0) ERROR: 'DEPRECATION:', 'Setting specFilter directly on Env is deprecated, please use the specFilter option in `configure`'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) LOG: 'error'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) LOG: 'access_token', Object{token: 'asdfghjkl'}
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

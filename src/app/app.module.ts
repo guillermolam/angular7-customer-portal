@@ -27,9 +27,9 @@ import { JwtInterceptor }                       from './_helpers/jwt.interceptor
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
 // ----- Account ----- //
-import { AccountMainComponent }                 from "./components/dashboard/account-main.component";
-import { AccountHeaderComponent }               from "./components/dashboard/account-header/account-header.component";
-import { SidenavComponent }                     from "./components/dashboard/sidenav/sidenav.component";
+import { AccountMainComponent }                 from './components/dashboard/account-main.component';
+import { AccountHeaderComponent }               from './components/dashboard/account-header/account-header.component';
+import { SidenavComponent }                     from './components/dashboard/sidenav/sidenav.component';
 // ----- Routes ----- //
 import { CreateNewPasswordComponent }           from './routes/create-new-password/create-new-password.component';
 import { DashboardComponent }                   from './routes/my-insurance/dashboard.component';
@@ -41,7 +41,7 @@ import { TestingComponent }                     from './routes/testing/testing.c
 import { VerifyAccountComponent }               from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }                  from './routes/wallet-card/wallet-card.component';
 import { WelcomeComponent }                     from './routes/welcome/welcome.component';
-import { PolicyDetailsComponent }               from './routes/policy/policydetails/policydetails.component';
+import { PolicyDetailsComponent }               from './routes/my-insurance/policy-details/policy-details.component';
 
 // ----- Components ----- //
 import { LoginFormComponent }                   from './components/forms/dynamic-forms/login-form/login-form.component';
@@ -65,7 +65,8 @@ import { OnboardingWalletFrontComponent }       from './components/screens/walle
 import { OnboardingWalletBackComponent }        from './components/screens/wallet-passes/onboarding-wallet-back/onboarding-wallet-back.component';
 import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
-
+import { MiscColumnComponent }                  from './components/dashboard/misc-column/misc-column.component';
+import { DetailsComponent }                     from './components/dashboard/details/details.component';
 
 if (environment.production) {
   enableProdMode();
@@ -112,7 +113,9 @@ export function tokenGetter() {
     OnboardingWalletBackComponent,
     OnboardingWalletBackListComponent,
     OnboardingWalletModalComponent,
-    PolicyDetailsComponent
+    PolicyDetailsComponent,
+    MiscColumnComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

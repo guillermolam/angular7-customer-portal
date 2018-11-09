@@ -17,7 +17,7 @@ import { TestingComponent }           from './routes/testing/testing.component';
 import { WelcomeComponent }           from './routes/welcome/welcome.component';
 import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }        from './routes/wallet-card/wallet-card.component';
-import { PolicyDetailsComponent }     from './routes/policy/policydetails/policydetails.component';
+import { PolicyDetailsComponent }     from './routes/my-insurance/policy-details/policy-details.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -32,12 +32,20 @@ const appRoutes: Routes = [
   { path: 'walletcard', component: WalletCardComponent},
 
   //when logged in
-  { path: 'my-insurance', component: DashboardComponent,
+  { path: 'my-insurance',
     children: [
       {
+        path: '',
+        component: DashboardComponent,
+      },
+      {
         path: ':policyid',
-        component: PolicyDetailsComponent,
         children: [
+          {
+            path: '',
+            redirectTo: 'details',
+            pathMatch: 'full',
+          },
           {
             path: 'details',
             component: PolicyDetailsComponent,
