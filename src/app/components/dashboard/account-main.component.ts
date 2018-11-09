@@ -30,6 +30,7 @@ export class AccountMainComponent implements OnInit {
       firstName: 'FirstName',
       middleName: 'MiddleName',
       lastName: 'LastName',
+      
       policyDetails: [
         {
           balance: 0,

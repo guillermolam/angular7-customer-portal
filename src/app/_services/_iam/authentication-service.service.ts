@@ -143,7 +143,7 @@ export class AuthenticationService {
   }
 
   policyByEmail(email): Observable<object> {
-    const url = `/policies/personal/${email}`;
+    const url = `${environment.backend_server_url}/policies/personal/${email}`;
     return this.http.get(url);
   }
 
@@ -181,22 +181,9 @@ export class AuthenticationService {
   }
 
   verifyUser(userObject): Observable<object> {
-    let user,
-        userSendObject;
-    const url =          `${environment.backend_server_url}/accounts/${user.email}`;
-    if (typeof user === 'object') {
-      user =            userObject.$user.source.value;
-      userSendObject = this.creatUserObject(user, 'verifyuser');
-      console.log('object');
-    }
-    else if (userObject != '') {
-      user = userObject;
-      userSendObject = {};
-      console.log('not object');
-    }
-    else {
-      return;
-    }
+    const user =           userObject.$user.source.value,
+        userSendObject = this.creatUserObject(user, 'verifyuser'),
+        url =          `${environment.backend_server_url}/accounts/${user.email}`;
 
     return this.http
       .post(url, userSendObject, this.options)
