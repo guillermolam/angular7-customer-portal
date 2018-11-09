@@ -16,7 +16,8 @@
     "sonar-run": "sonar-scanner -D sonar.host.url=http://mdv-docdevl01:9000",
     "proxy": "ng serve --proxy-config proxy.config.json",
     "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu'",
-    "prepull": "git pull && npm run build && npm run test"
+    "prepull": "git pull && npm run build && npm run test",
+    "pre_e2e": "node_modules/protractor/node_modules/webdriver-manager/bin/webdriver-manager update --proxy='http://10.169.5.196:8080' --igonre_ssl" 
   },
   "private": true,
   "dependencies": {
