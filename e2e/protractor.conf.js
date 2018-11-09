@@ -9,11 +9,11 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     'chromeOptions': {
-      'args': ['disable-infobars']
+      'args': ['disable-infobars','--headless','--disable-gpu','--no-sandbox']
     }
   },
-  directConnect: true,
-  baseUrl: 'http://localhost:4200/',
+  directConnect: false,
+  baseUrl: 'http://mdv-docdevl01:4444/wd/hub/',
   framework: 'custom',
   frameworkPath: require.resolve("protractor-cucumber-framework"),
   cucumberOpts: {

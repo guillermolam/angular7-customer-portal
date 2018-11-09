@@ -15,7 +15,11 @@
     "cibuild": "ng test --code-coverage && ng build --configuration=dev --no-progress",
     "sonar-run": "sonar-scanner -D sonar.host.url=http://mdv-docdevl01:9000",
     "proxy": "ng serve --proxy-config proxy.config.json",
-    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu'"
+    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu'",
+    "prepull": "git pull && npm run build && npm run test",
+    "pre_e2e": "node_modules/protractor/node_modules/webdriver-manager/bin/webdriver-manager update --proxy='http://10.169.5.196:8080' --igonre_ssl" ,
+    "e2e_compile": "node_modules/typescript/bin/tsc -p customer-portal/e2e/tsconfig.e2e.json",
+    "e2e_run": "node_modules/protractor/bin/protractor customer-portal/e2e/protractor/protractor.conf.js"
   },
   "private": true,
   "dependencies": {
@@ -80,7 +84,7 @@
     "karma-junit-reporter": "^1.2.0",
     "lighthouse": "^3.2.1",
     "mapfre-design-library": "git+https://bitbucket.org/mapfre-usa-b2c/design-library.git",
-    "protractor": "git+https://bitbucket.org/mapfre-usa-b2c/protractor-module.git",
+    "protractor": "^5.4.1",
     "protractor-cucumber-framework": "^6.1.1",
     "ts-node": "~7.0.1",
     "tslint": "~5.11.0",

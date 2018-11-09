@@ -25,10 +25,10 @@ pipeline{
 		
 		// Running unit test after build
 		stage('RUN UNIT TESTS'){
-		   steps{
+		  steps{
 		    	// Added to run unit test case for all module.
-		       sh "npm run test_on_ciserver"
-		   }
+		      sh "npm run test_on_ciserver"
+		  }
 		}
 
 		stage('STATIC ANALYSIS'){
@@ -125,6 +125,14 @@ ports:
 				}
 				)
 			}
+		}
+
+		stage('E2E TEST'){
+            steps {
+                sh 'npm run pre_e2e'
+                sh 'npm run e2e_compile'
+                sh 'npm run e2e_run'
+            }
 		}
 
 		stage("PROD - BUILD & PUBLISH IMAGE"){

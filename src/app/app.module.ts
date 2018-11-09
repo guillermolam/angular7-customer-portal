@@ -32,7 +32,7 @@ import { AccountHeaderComponent }               from "./components/dashboard/acc
 import { SidenavComponent }                     from "./components/dashboard/sidenav/sidenav.component";
 // ----- Routes ----- //
 import { CreateNewPasswordComponent }           from './routes/create-new-password/create-new-password.component';
-import { DashboardComponent }                   from './routes/dashboard/dashboard.component';
+import { DashboardComponent }                   from './routes/my-insurance/dashboard.component';
 import { ForgotPasswordComponent }              from './routes/forgot-password/forgot-password.component';
 import { LoginComponent }                       from './routes/login/login.component';
 import { SignupComponent }                      from './routes/signup/signup.component';
@@ -41,6 +41,8 @@ import { TestingComponent }                     from './routes/testing/testing.c
 import { VerifyAccountComponent }               from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }                  from './routes/wallet-card/wallet-card.component';
 import { WelcomeComponent }                     from './routes/welcome/welcome.component';
+import { PolicyDetailsComponent }               from './routes/policy/policydetails/policydetails.component';
+
 // ----- Components ----- //
 import { LoginFormComponent }                   from './components/forms/dynamic-forms/login-form/login-form.component';
 import { CreatePasswordFormComponent }          from './components/forms/dynamic-forms/create-password-form/create-password-form.component';
@@ -109,7 +111,8 @@ export function tokenGetter() {
     OnboardingWalletFrontComponent,
     OnboardingWalletBackComponent,
     OnboardingWalletBackListComponent,
-    OnboardingWalletModalComponent
+    OnboardingWalletModalComponent,
+    PolicyDetailsComponent
   ],
   imports: [
     BrowserModule,
