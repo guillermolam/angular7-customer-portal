@@ -8,12 +8,10 @@ exports.config = {
   ],
   capabilities: {
     'browserName': 'chrome',
-    'chromeOptions': {
-      'args': ['disable-infobars','--headless','--disable-gpu','--no-sandbox']
-    }
   },
   directConnect: false,
-  baseUrl: 'http://mdv-docdevl01:4444/wd/hub/',
+  seleniumAddress: 'http://mdv-docdevl01:4444/wd/hub/',
+  baseUrl: 'http://mdv-doctest' ,
   framework: 'custom',
   frameworkPath: require.resolve("protractor-cucumber-framework"),
   cucumberOpts: {
