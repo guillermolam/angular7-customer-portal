@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="1055" lines-covered="818" line-rate="0.7754000000000001" branches-valid="165" branches-covered="66" branch-rate="0.4" timestamp="1542056518909" complexity="0" version="0.1">
+<coverage lines-valid="1063" lines-covered="826" line-rate="0.777" branches-valid="165" branches-covered="66" branch-rate="0.4" timestamp="1542064992177" complexity="0" version="0.1">
   <sources>
     <source>/var/jenkins_home/workspace/customer-portal-ui_master-57FOZRL6BI452PRGJCGUJAKWDOCNWTZQ4GEBXYSOY3MBWKI2SL6A</source>
   </sources>
@@ -1718,7 +1718,7 @@
             <line number="37" hits="6" branch="false"/>
             <line number="40" hits="1" branch="false"/>
             <line number="41" hits="7" branch="true" condition-coverage="100% (2/2)"/>
-            <line number="42" hits="4" branch="false"/>
+            <line number="42" hits="5" branch="false"/>
             <line number="49" hits="3" branch="false"/>
             <line number="50" hits="3" branch="false"/>
             <line number="51" hits="3" branch="false"/>
@@ -1751,6 +1751,35 @@
             <line number="107" hits="6" branch="false"/>
             <line number="108" hits="6" branch="true" condition-coverage="100% (2/2)"/>
             <line number="110" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="src.app.components.forms.dynamic-forms.profile-setings-forms.change-phone" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="change-phone.component.ts" filename="src/app/components/forms/dynamic-forms/profile-setings-forms/change-phone/change-phone.component.ts" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="(anonymous_2)" hits="1" signature="()V">
+              <lines>
+                <line number="8" hits="1"/>
+              </lines>
+            </method>
+            <method name="ChangePhoneComponent" hits="0" signature="()V">
+              <lines>
+                <line number="10" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_4)" hits="0" signature="()V">
+              <lines>
+                <line number="12" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
           </lines>
         </class>
       </classes>
@@ -1934,6 +1963,35 @@
               </lines>
             </method>
             <method name="ProfileComponent" hits="0" signature="()V">
+              <lines>
+                <line number="10" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_4)" hits="0" signature="()V">
+              <lines>
+                <line number="12" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="src.app.components.profile.profile-checking-account" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="profile-checking-account.component.ts" filename="src/app/components/profile/profile-checking-account/profile-checking-account.component.ts" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="(anonymous_2)" hits="1" signature="()V">
+              <lines>
+                <line number="8" hits="1"/>
+              </lines>
+            </method>
+            <method name="ProfileCheckingAccountComponent" hits="0" signature="()V">
               <lines>
                 <line number="10" hits="0"/>
               </lines>
