@@ -78,7 +78,7 @@ tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
 env:
-  API_GATEWAY_URL: "https://dev.mapfreapis.com"
+  ENV: "https://dev.mapfreapis.com"
 ports: 
  - "80:80"
  - "443:443"'''
