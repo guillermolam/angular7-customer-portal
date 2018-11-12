@@ -1,3 +1,6 @@
+import { ContactComponent } from './routes/contact/contact.component';
+import { ClaimsComponent } from './routes/claims/claims.component';
+import { InformationComponent } from './routes/information/information.component';
 import { ProfilePhoneComponent } from './components/profile/profile-phone/profile-phone.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }     from '@angular/router';
@@ -72,12 +75,11 @@ const appRoutes: Routes = [
     { path: 'change-phone', component: ProfilePhoneComponent}
   ] },
   { path: 'billing', component: DashboardComponent },
-  { path: 'claims', component: DashboardComponent },
-  { path: 'information', component: DashboardComponent },
-  { path: 'contact', component: DashboardComponent },
-  { path: 'profile', component: DashboardComponent },
+  { path: 'claims', component: ClaimsComponent },
+  { path: 'information', component: InformationComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'profile', component: ProfileSettingsComponent },
   { path: 'policy/addpolicy', component: DashboardComponent },
-  { path: 'contact', component: DashboardComponent },
   { path: 'offline', component: DashboardComponent },
   { path: '**', redirectTo: '' } // otherwise redirect to home
 ];

@@ -76,6 +76,9 @@ import { BillingComponent } from './components/dashboard/billing/billing.compone
 import { DocumentsComponent } from './components/dashboard/documents/documents.component';
 import { DocumentDetailsComponent } from './routes/my-insurance/document-details/document-details.component';
 import { BillingDetailsComponent } from './routes/my-insurance/billing-details/billing-details.component';
+import { InformationComponent } from './routes/information/information.component';
+import { ClaimsComponent } from './routes/claims/claims.component';
+import { ContactComponent } from './routes/contact/contact.component';
 
 if (environment.production) {
   enableProdMode();
@@ -133,7 +136,10 @@ export function tokenGetter() {
     BillingComponent,
     DocumentsComponent,
     DocumentDetailsComponent,
-    BillingDetailsComponent
+    BillingDetailsComponent,
+    InformationComponent,
+    ClaimsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
