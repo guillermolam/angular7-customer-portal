@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="1063" lines-covered="826" line-rate="0.777" branches-valid="165" branches-covered="66" branch-rate="0.4" timestamp="1542064992177" complexity="0" version="0.1">
+<coverage lines-valid="1063" lines-covered="826" line-rate="0.777" branches-valid="165" branches-covered="66" branch-rate="0.4" timestamp="1542065501350" complexity="0" version="0.1">
   <sources>
     <source>/var/jenkins_home/workspace/customer-portal-ui_master-57FOZRL6BI452PRGJCGUJAKWDOCNWTZQ4GEBXYSOY3MBWKI2SL6A</source>
   </sources>
@@ -1718,7 +1718,7 @@
             <line number="37" hits="6" branch="false"/>
             <line number="40" hits="1" branch="false"/>
             <line number="41" hits="7" branch="true" condition-coverage="100% (2/2)"/>
-            <line number="42" hits="5" branch="false"/>
+            <line number="42" hits="2" branch="false"/>
             <line number="49" hits="3" branch="false"/>
             <line number="50" hits="3" branch="false"/>
             <line number="51" hits="3" branch="false"/>
