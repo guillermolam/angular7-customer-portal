@@ -181,7 +181,7 @@ export class AuthenticationService {
   }
 
   verifyUser(userObject): Observable<object> {
-    const user =           userObject.$user.source.value,
+    const user =         userObject.$user.source.value,
         userSendObject = this.creatUserObject(user, 'verifyuser'),
         url =          `${environment.backend_server_url}/accounts/${user.email}`;
 

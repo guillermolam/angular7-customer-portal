@@ -105,12 +105,12 @@
         <svg-arror-right-svg></svg-arror-right-svg>
       </a>
     </mapfre-card>
-
-  <!-- Property -->
+    
+  <!-- HOME -->
   <mapfre-card 
     [singleCard]="false"
     [additionalClasses]="'dashboard-policies property'"
-    *ngIf="policy?.policyType == 'PROPERTY'">
+    *ngIf="policy?.policyType == 'HOME'">
     <div class="row" [ngClass]="{ 'no-pay': policy?.balance == 0, 'pay': policy?.balance != 0 }">
       <div class="policy-background col">
           <div class="house"></div>
@@ -136,7 +136,7 @@
               </div>
               <div class="policy-info">
                 <div class="policy-info-content">
-                  {{ policy?.address }}
+                  {{ policy?.property[0].address.streetName }}  {{ policy?.property[0].address.city }}  {{ policy?.property[0].address.state }}  {{ policy?.property[0].address.zipCode.code }}
                 </div>
               </div>
             </div>

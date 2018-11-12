@@ -205,7 +205,7 @@ describe('LoginFormComponent', () => {
     expect(cookie.get('password')).toBeTruthy();
   }));
 
-  it('should test Initialization of a component', fakeAsync( () => {
+  xit('should test Initialization of a component', fakeAsync( () => {
     localStorage.setItem('currentUser', 'user');
     const formBase: FormBase<any>[] = [new TextBox({
       field1: '1'
@@ -218,6 +218,7 @@ describe('LoginFormComponent', () => {
     expect(authenticationService.token).toBeNull();
     expect(localStorage.getItem('currentUser')).toBeNull();
   }));
+
 //   fit('should create', () => {
 //     expect(component).toBeTruthy();
 //   });
