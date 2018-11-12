@@ -1,3 +1,4 @@
+import { ProfileCheckingAccountComponent } from './components/profile/profile-checking-account/profile-checking-account.component';
 import { ProfilePhoneComponent } from './components/profile/profile-phone/profile-phone.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }     from '@angular/router';
@@ -69,7 +70,8 @@ const appRoutes: Routes = [
   },
   { path: 'profile', component: ProfileSettingsComponent, children: [
     { path: '', component: ProfileMainComponent },
-    { path: 'change-phone', component: ProfilePhoneComponent}
+    { path: 'change-phone', component: ProfilePhoneComponent},
+    { path: 'edit-account', component: ProfileCheckingAccountComponent}
   ] },
   { path: 'billing', component: DashboardComponent },
   { path: 'claims', component: DashboardComponent },
