@@ -67,6 +67,12 @@ import { OnboardingWalletBackListComponent }    from './components/screens/walle
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
 import { MiscColumnComponent }                  from './components/dashboard/misc-column/misc-column.component';
 import { DetailsComponent }                     from './components/dashboard/details/details.component';
+import { RemovingSpacesPipe } from './_helpers/_pipes/removing-spaces.pipe';
+import { ApartmentPipePipe } from './_helpers/_pipes/apartment-pipe.pipe';
+import { BillingComponent } from './components/dashboard/billing/billing.component';
+import { DocumentsComponent } from './components/dashboard/documents/documents.component';
+import { DocumentDetailsComponent } from './routes/my-insurance/document-details/document-details.component';
+import { BillingDetailsComponent } from './routes/my-insurance/billing-details/billing-details.component';
 
 if (environment.production) {
   enableProdMode();
@@ -115,7 +121,13 @@ export function tokenGetter() {
     OnboardingWalletModalComponent,
     PolicyDetailsComponent,
     MiscColumnComponent,
-    DetailsComponent
+    DetailsComponent,
+    RemovingSpacesPipe,
+    ApartmentPipePipe,
+    BillingComponent,
+    DocumentsComponent,
+    DocumentDetailsComponent,
+    BillingDetailsComponent
   ],
   imports: [
     BrowserModule,

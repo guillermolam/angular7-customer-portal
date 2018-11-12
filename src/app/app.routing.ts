@@ -18,6 +18,8 @@ import { WelcomeComponent }           from './routes/welcome/welcome.component';
 import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }        from './routes/wallet-card/wallet-card.component';
 import { PolicyDetailsComponent }     from './routes/my-insurance/policy-details/policy-details.component';
+import { BillingDetailsComponent }    from './routes/my-insurance/billing-details/billing-details.component';
+import { DocumentDetailsComponent }   from './routes/my-insurance/document-details/document-details.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -52,11 +54,11 @@ const appRoutes: Routes = [
           },
           {
             path: 'billing',
-            component: PolicyDetailsComponent,
+            component: BillingDetailsComponent,
           },
           {
             path: 'documents',
-            component: PolicyDetailsComponent,
+            component: DocumentDetailsComponent,
           },
         ]
       }

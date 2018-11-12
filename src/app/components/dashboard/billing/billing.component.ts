@@ -7,20 +7,16 @@ import { AuthenticationService }    from '../../../_services/_iam/authentication
 import { User }                     from '../../../_models/user';
 import { UserService }              from './../../../_services/user.service';
 
+
 @Component({
-  selector: 'app-policy-details-screen',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  selector: 'app-billing',
+  templateUrl: './billing.component.html',
+  styleUrls: ['./billing.component.scss']
 })
-export class DetailsComponent implements OnInit {
-  input:                    object;
-  legalCheckbox:            boolean = false;
+export class BillingComponent implements OnInit {
+
   policyId:                 number;
   user:                     User;
-  updateMileage =           new FormGroup({
-    updateMileageInput: new FormControl('')
-  });
-  vehicles:                 object;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,30 +24,6 @@ export class DetailsComponent implements OnInit {
     private userService:    UserService,
     private sanitizer:      DomSanitizer
   ) { }
-
-  getAddress(a: string[]): SafeUrl {
-    let address,
-        safeUrl:          SafeUrl;
-
-    address =             `${a[0].replace(/\s/g, '%20')}%20${a[1]}%20${a[2]}%20${a[3]}`;
-
-    const google =        `https://maps.google.com/maps?q=`,
-          googleQuery =   `&t=&z=13&ie=UTF8&iwloc=&output=embed`,
-          url =           `${google}${address}${googleQuery}`;
-
-    safeUrl =             this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    return safeUrl;
-  }
-
-  getLegalCheckBoxValue(e): void {
-    this.legalCheckbox = e.target.checked ? true : false;
-  }
-
-  onSubmit(): void {
-    if (this.legalCheckbox) {
-      console.log('click the update form', this.updateMileage.value);
-    }
-  }
 
   testDatafunction() {
     return {
@@ -75,15 +47,7 @@ export class DetailsComponent implements OnInit {
               agentNameExt: '',
               agentPhone: {
                   number: '(800) 222-4242'
-              },
-              address: {
-                streetName: '1320 NORTH MAIN STREET',
-                city: 'FALL RIVER',
-                state: 'MASSACHUSETTS',
-                zipCode: {
-                    code: '02720'
-                }
-            }
+              }
           },
           insurer: [
             {
@@ -131,15 +95,7 @@ export class DetailsComponent implements OnInit {
               agentNameExt: '',
               agentPhone: {
                   number: '(800) 222-4242'
-              },
-              address: {
-                streetName: '1320 NORTH MAIN STREET',
-                city: 'FALL RIVER',
-                state: 'MASSACHUSETTS',
-                zipCode: {
-                    code: '02720'
-                }
-            },
+              }
           },
           insurer: [
             {
@@ -188,15 +144,7 @@ export class DetailsComponent implements OnInit {
               agentNameExt: '',
               agentPhone: {
                   number: '(508) 675-7475'
-              },
-              address: {
-                streetName: '1320 NORTH MAIN STREET',
-                city: 'FALL RIVER',
-                state: 'MASSACHUSETTS',
-                zipCode: {
-                    code: '02720'
-                }
-            }
+              }
           },
           insurer: [
               {
@@ -246,15 +194,7 @@ export class DetailsComponent implements OnInit {
             agentNameExt: '',
             agentPhone: {
                 number: '(508) 675-7475'
-            },
-            address: {
-              streetName: '1320 NORTH MAIN STREET',
-              city: 'FALL RIVER',
-              state: 'MASSACHUSETTS',
-              zipCode: {
-                  code: '02720'
-              }
-          }
+            }
         },
         insurer: [
             {
@@ -333,4 +273,5 @@ export class DetailsComponent implements OnInit {
       }
     );
   }
+
 }

@@ -807,6 +807,34 @@
     }
   }
 
+  .policy-details-content {
+    padding: 0 24px;
+  }
+
+  .col1 {
+    padding-right: 40px;
+
+    @media (max-width: 575px) {
+      
+    }
+  }
+  .col2 {
+   @media (min-width: 576px) {
+      padding-left: 40px;
+      max-width: 310px;
+      border-left: 2px solid #EAE9E9;
+      padding-right: 0;
+    }
+    
+  }
+
+  .row-section.mb40,
+  .policy-holders.row-section.mb16 {
+    @media (max-width: 575px) {
+      margin-bottom: 32px !important;
+    }
+  }
+
   .type-title {
     display: table-cell;
     vertical-align: middle;
@@ -826,13 +854,8 @@
     }
   }
 
-  .col2 {
-    @media (min-width: 576px) {
-      max-width: 270px;
-      border-left: 2px solid #EAE9E9;
-      padding-right: 0;
-    }
-
+  .legal-section {
+    padding-top: 56px;
   }
 
   .title {
@@ -847,6 +870,25 @@
     small {
       font-size: 16px;
       padding-left: 16px;
+    }
+  }
+
+  .vehicle-spacer-input {
+    margin-top: 56px;
+  }
+
+  .vehicle {
+    .input-field.mapfre label.active.error {
+      color: #737373;
+    }
+
+    .input-field.mapfre .counter-success + label {
+      color: #737373;
+    }
+
+    input {
+      color: #4c4c4c;
+      border-bottom-color: #c4c4c4;
     }
   }
 
@@ -866,6 +908,7 @@
   }
   .address {
     display: table;
+    width: 100%;
 
     i {
       font-size: 18px;
@@ -900,6 +943,7 @@
 
     .paperless-copy {
       padding-left: 0;
+      padding-right: 0;
     }
   }
 }
@@ -968,4 +1012,8 @@
 #gmap_canvas {
   max-width: 600px;
   width: 100%;
+}
+
+.title-case {
+  text-transform: capitalize;
 }
