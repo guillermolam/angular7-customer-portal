@@ -75,7 +75,7 @@ Feature: Verifying the functionality of Login to the application.
     When Click on Submit Button.
     Then Navigate to Dashboard.
   
-  @test
+  @CucumberScenario
   Scenario: Verify the Forgot Password link.
   When I click on Forgot Password
   And Email field has valid address

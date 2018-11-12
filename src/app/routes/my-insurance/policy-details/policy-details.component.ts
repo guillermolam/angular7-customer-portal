@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-policydetails',
-  templateUrl: './policydetails.component.html',
-  styleUrls: ['./policydetails.component.scss']
+  selector: 'app-policy-details',
+  templateUrl: './policy-details.component.html',
+  styleUrls: ['./policy-details.component.scss']
 })
 export class PolicyDetailsComponent implements OnInit {
 

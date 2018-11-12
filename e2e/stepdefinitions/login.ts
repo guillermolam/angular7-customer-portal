@@ -92,7 +92,7 @@ Then(/^Verify the Landing page content language in - "(.*?)".$/, async (language
 
 Then(/^Navigate to Dashboard.$/, async () => {
     const currentUrl = await browser.getCurrentUrl();
-    const dashboardUrl = `${environment.localHost}/dashboard`;
+    const dashboardUrl = `${environment.localHost}/my-insurance`;
     expect(currentUrl).to.equal(dashboardUrl);
 });
 
