@@ -1,0 +1,43 @@
+<mapfre-card 
+[singleCard]="false"
+[additionalClasses]="'policy-details billing auto'">
+<header class="margin-bottom mb16">
+    <div class="policy-background">
+      <div class="house"></div>
+    </div>
+    <div class="type-title">
+      <h1 class="title">
+         policy type &mdash; policy number
+        <small><span class="green-color">10/10/1984 {{ 'TO' |translate }} 10/10/2190
+        </span></small>
+      </h1>
+    </div>
+  </header>
+
+  <nav class="policy-details-nav margin-bottom mb40">
+      <div class="accordian-navigation">
+        <ul>
+          <li routerLinkActive="active">
+            <a 
+              routerLink="/my-insurance/{{policyId}}/details" 
+              title="Policy Details"
+            >{{'DETAILS' | translate}}</a>
+          </li>
+          <li routerLinkActive="active">
+              <a
+                routerLink="/my-insurance/{{policyId}}/billing"
+                title="Policy Billing"
+              >{{'BILLING' | translate}}</a>
+          </li>
+          <li routerLinkActive="active">
+              <a
+                routerLink="/my-insurance/{{policyId}}/documents"
+                title="Policy Documents"
+              >{{'DOCUMENTS' | translate}}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  
+
+<section class="row billing-content"> Billing </section> </mapfre-card>
