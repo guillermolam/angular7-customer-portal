@@ -999,6 +999,22 @@
   }
 }
 
+.hide {
+  display: none;
+}
+
+.no-documents .col {
+    max-width: 456px;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 80px;
+    padding-top: 64px;
+
+    img {
+      text-align: center;
+      max-width: 344px;
+    }
+}
 
 .legal {
   color: #ADAAAA;
@@ -1016,4 +1032,12 @@
 
 .title-case {
   text-transform: capitalize;
+}
+
+.input-control.disabled {
+  .btn.mapfre.ghost.primary:disabled {
+    border-color: #c6db80;
+    color: #C6DB81 !important;
+    background: transparent !important;
+  }
 }

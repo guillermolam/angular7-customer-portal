@@ -1,7 +1,8 @@
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl }    from '@angular/platform-browser';
 import { Component, OnInit }        from '@angular/core';
 import { FormGroup, FormControl }   from '@angular/forms';
 import { ActivatedRoute, Params }   from '@angular/router';
+import { AlertService }             from 'mapfre-design-library';
 
 import { AuthenticationService }    from '../../../_services/_iam/authentication-service.service';
 import { User }                     from '../../../_models/user';
@@ -13,6 +14,7 @@ import { UserService }              from './../../../_services/user.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
+  alerton:                 boolean = false;
   input:                    object;
   legalCheckbox:            boolean = false;
   policyId:                 number;
@@ -24,6 +26,7 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private alertService:   AlertService,
     private authService:    AuthenticationService,
     private userService:    UserService,
     private sanitizer:      DomSanitizer
@@ -50,10 +53,12 @@ export class DetailsComponent implements OnInit {
   onSubmit(): void {
     if (this.legalCheckbox) {
       console.log('click the update form', this.updateMileage.value);
+      this.alerton = true;
+      this.alertService.success(`You've updated your ODOMETER`);
     }
   }
 
-  testDatafunction() {
+  testDatafunction() { 
     return {
       firstName: 'FirstName',
       middleName: 'MiddleName',
