@@ -15,6 +15,8 @@ const chaiAsPromised = chai.use(cap);
 const expect = chai.expect;
 const expected = protractor.ExpectedConditions;
 
+browser.ignoreSynchronization = true;
+
 // Step definition to navigate on login page URL.
 Given(/^Navigate to Landing Page of MAPFRE.$/, async () => {
     await browser.get(`${environment.localHost}/login`);

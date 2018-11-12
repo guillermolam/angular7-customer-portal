@@ -1,0 +1,53 @@
+<div class="row text-center">
+      <div class="col"> 
+          <div class="header-icon full-icon">
+              <svg-account-profile-svg></svg-account-profile-svg>  
+          </div>
+          <h1 class="title-copy">{{ 'My account' | translate }}</h1>
+          <div class="sub-title-copy">{{ 'Thomas A. Anderson' }}</div>
+      </div>
+  </div>
+  <hr class="hr-stretch"/>
+  <div class="profile-flex">
+     <label class="account-settings no-margin-bottom">Change Password</label>
+     <a 
+     [routerLink]="['/profile','edit-password']"
+     routerLinkActive="active"
+     class="btn btn-icon edit-icon-position" > 
+         <svg-edit-icon-svg></svg-edit-icon-svg>
+     </a>
+  </div>
+  <hr class="hr-stretch"/>
+  <div>
+      <label class="account-settings no-margin-bottom">Email</label> 
+      <div class="sub-title-copy">{{ 'john@gmail.com' }}
+      <div class="btn btn-icon edit-icon-position">
+        <a 
+        [routerLink]="['/profile','change-email']"
+        routerLinkActive="active"
+        class="btn btn-icon edit-icon-position" > 
+            <svg-edit-icon-svg></svg-edit-icon-svg>
+        </a>
+      </div>
+  </div>
+  </div>
+  <div>
+      <label class="account-settings no-margin-bottom margin-top mt16">Phone</label> 
+      <div class="sub-title-copy"><em>{{ 'Add more security to your account' }}</em>
+          <div class="btn btn-icon edit-icon-position"><a 
+            [routerLink]="['/profile','change-phone']"
+            routerLinkActive="active"
+            class="btn btn-icon edit-icon-position" > 
+                <svg-add-icon-svg></svg-add-icon-svg>
+            </a>
+        </div>
+      </div>
+  </div>
+  <hr class="hr-stretch"/>
+  <div>
+      <label class="account-settings no-margin-bottom"> Checking Account Information</label> 
+      <div class="sub-title-copy"><em>{{ 'Save time and effort in your payments' }}</em>
+      <div class="btn edit-icon-position"> <svg-add-icon-svg></svg-add-icon-svg></div>
+      </div>
+  </div>
+  

@@ -1,3 +1,4 @@
+import { ProfilePhoneComponent } from './components/profile/profile-phone/profile-phone.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }     from '@angular/router';
 import { NgModule }                   from '@angular/core';
@@ -18,6 +19,8 @@ import { WelcomeComponent }           from './routes/welcome/welcome.component';
 import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }        from './routes/wallet-card/wallet-card.component';
 import { PolicyDetailsComponent }     from './routes/my-insurance/policy-details/policy-details.component';
+import { ProfileSettingsComponent } from './routes/profile-settings/profile-settings.component';
+import { ProfileMainComponent } from './components/profile/profile-main/profile-main.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -62,6 +65,10 @@ const appRoutes: Routes = [
       }
     ]
   },
+  { path: 'profile', component: ProfileSettingsComponent, children: [
+    { path: '', component: ProfileMainComponent },
+    { path: 'change-phone', component: ProfilePhoneComponent}
+  ] },
   { path: 'billing', component: DashboardComponent },
   { path: 'claims', component: DashboardComponent },
   { path: 'information', component: DashboardComponent },

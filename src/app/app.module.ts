@@ -67,6 +67,10 @@ import { OnboardingWalletBackListComponent }    from './components/screens/walle
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
 import { MiscColumnComponent }                  from './components/dashboard/misc-column/misc-column.component';
 import { DetailsComponent }                     from './components/dashboard/details/details.component';
+import { ProfileSettingsComponent } from './routes/profile-settings/profile-settings.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileMainComponent } from './components/profile/profile-main/profile-main.component';
+import { ProfilePhoneComponent } from './components/profile/profile-phone/profile-phone.component';
 
 if (environment.production) {
   enableProdMode();
@@ -115,7 +119,11 @@ export function tokenGetter() {
     OnboardingWalletModalComponent,
     PolicyDetailsComponent,
     MiscColumnComponent,
-    DetailsComponent
+    DetailsComponent,
+    ProfileSettingsComponent,
+    ProfileComponent,
+    ProfileMainComponent,
+    ProfilePhoneComponent
   ],
   imports: [
     BrowserModule,
