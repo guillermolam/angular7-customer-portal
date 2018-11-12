@@ -58,7 +58,7 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  testDatafunction() { 
+  testDatafunction() {
     return {
       firstName: 'FirstName',
       middleName: 'MiddleName',
@@ -66,7 +66,7 @@ export class DetailsComponent implements OnInit {
       
       policyDetails: [
         {
-          balance: 0,
+          balance: 0, 
           nextDueDate: '10/28/2018',
           nextDueAmount: 0,
           policynumber: {

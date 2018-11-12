@@ -786,9 +786,6 @@
   background-image: url('./assets/img/images/house_bg.png');
 }
 
-.policy-details-content {
-}
-
 .policy-details {
   header {
     display: table;
@@ -808,29 +805,48 @@
   }
 
   .policy-details-content {
-    padding: 0 24px;
+    
+    @media (min-width: 1200px) {
+      padding: 0 24px;
+    }
+  }
+
+  .col1,
+  .col2 {
+    @media (max-width: 767px) {
+      padding: 0;
+    }
+
   }
 
   .col1 {
-    padding-right: 40px;
-
-    @media (max-width: 575px) {
-      
+    @media (min-width: 1200px) {
+      padding-right: 40px;
+    }
+    @media (min-width:768px) and (max-width: 1199px) {
+      padding-left: 8px;
+      padding-right: 16px;
     }
   }
   .col2 {
-   @media (min-width: 576px) {
+    @media (min-width: 1200px) {
       padding-left: 40px;
+    }
+
+    @media (min-width:768px) and (max-width: 1199px) {
+      padding-left: 16px;
+      padding-right: 8px;
+    }
+   
+    @media (min-width: 768px) {   
       max-width: 310px;
       border-left: 2px solid #EAE9E9;
-      padding-right: 0;
     }
-    
   }
 
   .row-section.mb40,
   .policy-holders.row-section.mb16 {
-    @media (max-width: 575px) {
+    @media (max-width: 767px) {
       margin-bottom: 32px !important;
     }
   }
@@ -1039,5 +1055,9 @@
     border-color: #c6db80;
     color: #C6DB81 !important;
     background: transparent !important;
+  }
+
+  .form-control.disabled {
+
   }
 }

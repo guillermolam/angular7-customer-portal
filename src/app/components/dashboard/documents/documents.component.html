@@ -1,19 +1,23 @@
+<ng-container *ngFor="let policy of user?.policyDetails">
+    <ng-container *ngIf="policy?.policynumber.policynumber == policyId">
+      
 
 <mapfre-card 
-[singleCard]="false"
-[additionalClasses]="'policy-details documents auto'">
-<header class="margin-bottom mb16">
+  [singleCard]="false"
+  [additionalClasses]="'policy-details documents ' + policy?.policyType">
+  <header class="margin-bottom mb16">
     <div class="policy-background">
-      <div class="house"></div>
+      <div class="car" *ngIf="policy?.policyType == 'AUTO'"></div>
+       <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
     </div>
     <div class="type-title">
-      <h1 class="title">
-         policy type &mdash; policy number
-        <small><span class="green-color">10/10/1984 {{ 'TO' |translate }} 10/10/2190
-        </span></small>
-      </h1>
-    </div>
-  </header>
+        <h1 class="title">
+            {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
+          <small><span class="green-color">{{policy?.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy?.expDate | date:'shortDate' }}
+          </span></small>
+        </h1>
+      </div>
+    </header>
 
   <nav class="policy-details-nav margin-bottom mb40">
       <div class="accordian-navigation">
@@ -48,3 +52,5 @@
     <p> Your documents tab will list the available Coverage Selection Pages and allowyou to view, print, and save them. </p>
   </div>
 </section> </mapfre-card>
+</ng-container>
+</ng-container>

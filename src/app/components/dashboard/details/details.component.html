@@ -22,6 +22,7 @@
             <ul>
               <li routerLinkActive="active">
                 <a 
+                  class="underline"
                   routerLink="/my-insurance/{{policyId}}/details" 
                   title="Policy Details"
                 >{{'DETAILS' | translate}}</a>
@@ -43,7 +44,7 @@
         </nav>
       
         <section class="row policy-details-content">
-          <div class="col-xs-12 col-sm col1">
+          <div class="col-sm-12 col-md col1">
       
             <div class="row margin-bottom mb24">
               <div class="col">
@@ -132,7 +133,7 @@
                 <h2 class="title margin-bottom mb16">
                   <svg-holder-mono-color-svg></svg-holder-mono-color-svg> {{ 'POLICY_HOLDER' | translate }}
                 </h2>
-                <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a  routerLink="/my-insurance/QJN952/documents">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
+                <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
                 <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insurer; let i = index">
                   <div class="col">
                     <strong>{{ holder['Insurer Name'] }}</strong>
@@ -149,7 +150,7 @@
             </div>
           </div>
       
-          <div class="col-xs-12 col-sm col2">
+          <div class="col-sm-12 col-md col2">
             <div class="row margin-bottom mb40 agent row-section">
               <div class="col">
                 <h2 class="title margin-bottom mb16">
@@ -172,7 +173,7 @@
                   {{ policy?.agent.agentName }}
                 </strong>
                 <p class="title-case">{{ policy?.agent.address.streetName  }} {{ policy?.agent.address.city }} {{ policy?.agent.address.state }} {{ policy?.agent.address.zipCode.code }}</p>
-                <p>{{'PHONE' | translate }}: <a href="tel:{{ policy?.agent.agentPhone.number }}"> {{ policy?.agent.agentPhone.number }}</a></p>
+                <p>{{'PHONE' | translate }}: <a href="tel:{{ policy?.agent.agentPhone.number }}" class="underline"> {{ policy?.agent.agentPhone.number }}</a></p>
               </div>
             </div>
       
@@ -342,6 +343,7 @@
                 <ul>
                   <li routerLinkActive="active">
                     <a 
+                      class="underline"
                       routerLink="/my-insurance/{{policyId}}/details" 
                       title="Policy Details"
                     >{{'DETAILS' | translate}}</a>
@@ -364,7 +366,7 @@
           
       
         <section class="row policy-details-content">
-          <div class="col-xs-12 col-sm col1">
+          <div class="col-sm-12 col-md col1">
       
             <div class="row margin-bottom mb40 vehicles">
               <div class="col">
@@ -391,7 +393,7 @@
                   <h2 class="title margin-bottom mb16">
                     <svg-holder-mono-color-svg></svg-holder-mono-color-svg> {{ 'POLICY_HOLDER' | translate }}
                   </h2>
-                  <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a  routerLink="/my-insurance/{{policyId}}/documents">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
+                  <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a class="underline" routerLink="/my-insurance/{{policyId}}/documents">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
                   <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insurer; let i = index">
                     <div class="col">
                       <strong>{{ holder['Insurer Name'] }}</strong>
@@ -408,7 +410,7 @@
               </div>
             </div>
       
-            <div class="col-xs-12 col-sm col2">
+            <div class="col-sm-12 col-md col2">
                 <div class="row margin-bottom mb40 agent row-section">
                   <div class="col">
                     <h2 class="title margin-bottom mb16">
@@ -431,7 +433,7 @@
                       {{ policy?.agent.agentName }}
                     </strong>
                     <p class="title-case">{{ policy?.agent.address.streetName  }} {{ policy?.agent.address.city }} {{ policy?.agent.address.state }} {{ policy?.agent.address.zipCode.code }}</p>
-                    <p>{{'PHONE' | translate }}: <a href="tel:{{ policy?.agent.agentPhone.number }}"> {{ policy?.agent.agentPhone.number }}</a></p>
+                    <p>{{'PHONE' | translate }}: <a href="tel:{{ policy?.agent.agentPhone.number }}" class="underline"> {{ policy?.agent.agentPhone.number }}</a></p>
                   </div>
                 </div>
           
