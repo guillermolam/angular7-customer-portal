@@ -67,10 +67,18 @@ import { OnboardingWalletBackListComponent }    from './components/screens/walle
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
 import { MiscColumnComponent }                  from './components/dashboard/misc-column/misc-column.component';
 import { DetailsComponent }                     from './components/dashboard/details/details.component';
+<<<<<<< HEAD
 import { ProfileSettingsComponent } from './routes/profile-settings/profile-settings.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileMainComponent } from './components/profile/profile-main/profile-main.component';
 import { ProfilePhoneComponent } from './components/profile/profile-phone/profile-phone.component';
+=======
+import { ApartmentPipePipe } from './_helpers/_pipes/apartment-pipe.pipe';
+import { BillingComponent } from './components/dashboard/billing/billing.component';
+import { DocumentsComponent } from './components/dashboard/documents/documents.component';
+import { DocumentDetailsComponent } from './routes/my-insurance/document-details/document-details.component';
+import { BillingDetailsComponent } from './routes/my-insurance/billing-details/billing-details.component';
+>>>>>>> 715b5221c6cb171035513203b521e44a01f43425
 
 if (environment.production) {
   enableProdMode();
@@ -120,10 +128,18 @@ export function tokenGetter() {
     PolicyDetailsComponent,
     MiscColumnComponent,
     DetailsComponent,
+<<<<<<< HEAD
     ProfileSettingsComponent,
     ProfileComponent,
     ProfileMainComponent,
     ProfilePhoneComponent
+=======
+    ApartmentPipePipe,
+    BillingComponent,
+    DocumentsComponent,
+    DocumentDetailsComponent,
+    BillingDetailsComponent
+>>>>>>> 715b5221c6cb171035513203b521e44a01f43425
   ],
   imports: [
     BrowserModule,

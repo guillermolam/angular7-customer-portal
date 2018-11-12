@@ -47,7 +47,15 @@ export class AccountMainComponent implements OnInit {
               agentNameExt: '',
               agentPhone: {
                   number: '(800) 222-4242'
-              }
+              },
+              address: {
+                streetName: '1320 NORTH MAIN STREET',
+                city: 'FALL RIVER',
+                state: 'MASSACHUSETTS',
+                zipCode: {
+                    code: '02720'
+                }
+            }
           },
           insurer: [
             {
@@ -59,7 +67,7 @@ export class AccountMainComponent implements OnInit {
           ],
           policyStatus: 'INACTIVE',
           policyFlags: {
-            isEft: true,
+            isEft: false,
             isEftEligi: false,
             isEbillElig: false,
             isEdfElig: false,
@@ -95,17 +103,25 @@ export class AccountMainComponent implements OnInit {
               agentNameExt: '',
               agentPhone: {
                   number: '(800) 222-4242'
-              }
+              },
+              address: {
+                streetName: '1320 NORTH MAIN STREET',
+                city: 'FALL RIVER',
+                state: 'MASSACHUSETTS',
+                zipCode: {
+                    code: '02720'
+                }
+            },
           },
           insurer: [
             {
-              'firstName': 'JENNIFER',
+              'firstName': 'JENNIFER1',
               'middleName': 'L',
               'lastName': 'JUDD',
               'Insurer Name': 'JENNIFER L JUDD'
             },
             {
-              'firstName': 'JENNIFER',
+              'firstName': 'JENNIFER2',
               'middleName': 'L',
               'lastName': 'JUDD',
               'Insurer Name': 'JENNIFER L JUDD'
@@ -125,7 +141,6 @@ export class AccountMainComponent implements OnInit {
               {
                 vehicle: '2016 RAM 1500 SLT'
               },
-              
           ],
           effDate: '2016-09-10T04:00:00.000+0000',
           expDate: '2017-09-10T04:00:00.000+0000'
@@ -134,83 +149,118 @@ export class AccountMainComponent implements OnInit {
           balance: 0,
           nextDueDate: '10/28/2018',
           nextDueAmount: 0,
-          address: '110 Strathmore Rd APT #123, Brighton MA 02135',
-          
           policynumber: {
-              policynumber: '73371'
+              policynumber: 'BBWQKQ'
           },
           agent: {
               agentCode: {
-                  code: '434'
+                  code: 'AS9'
               },
-              agentName: 'AAA NORTHEAST INSURANCE AGCY, INC.',
+              agentName: 'GILBERT C. OLIVEIRA INS AGENCY INC',
               agentNameExt: '',
               agentPhone: {
-                  number: '(800) 222-4242'
-              }
+                  number: '(508) 675-7475'
+              },
+              address: {
+                streetName: '1320 NORTH MAIN STREET',
+                city: 'FALL RIVER',
+                state: 'MASSACHUSETTS',
+                zipCode: {
+                    code: '02720'
+                }
+            }
           },
           insurer: [
-            {
-              'firstName': 'JENNIFER',
-              'middleName': 'L',
-              'lastName': 'JUDD',
-              'Insurer Name': 'JENNIFER L JUDD'
-            }
+              {
+                  'firstName': 'CONRAD',
+                  'middleName': '',
+                  'lastName': 'GAGNE',
+                  'Insurer Name': 'CONRAD GAGNE'
+              }
           ],
           policyStatus: 'INACTIVE',
           policyFlags: {
-            isEft: true,
-            isEftEligi: false,
-            isEbillElig: false,
-            isEdfElig: false,
-            isEbill: false,
-            isEdf: false
+              isEft: false,
+              isEftEligi: false,
+              isEbillElig: false,
+              isEdfElig: false,
+              isEbill: false,
+              isEdf: false
           },
-          policyType: 'PROPERTY',
-          effDate: '2016-09-10T04:00:00.000+0000',
-          expDate: '2017-09-10T04:00:00.000+0000'
-        },
-        {
-        
-          balance: 1000.99,
-          nextDueDate: '10/28/2018',
-          nextDueAmount: 79.99,
-          address: '111 Boston Rd APT #44, Brighton MA 02135',
-
-          policynumber: {
-              policynumber: 'Q12345'
-          },
-          agent: {
-              agentCode: {
-                  code: '434'
-              },
-              agentName: 'AAA NORTHEAST INSURANCE AGCY, INC.',
-              agentNameExt: '',
-              agentPhone: {
-                  number: '(800) 222-4242'
+          property: [
+              {
+                  address: {
+                      streetName: '1833 Commonwealth ave apt 12',
+                      city: 'Brighton',
+                      state: 'MASSACHUSETTS',
+                      zipCode: {
+                          code: '02135'
+                      }
+                  }
               }
-          },
-          insurer: [
-            {
-              'firstName': 'JENNIFER',
-              'middleName': 'L',
-              'lastName': 'JUDD',
-              'Insurer Name': 'JENNIFER L JUDD'
-            }
           ],
-          policyStatus: 'ACTIVE',
-          policyFlags: {
-            isEft: true,
+          policyType: 'HOME',
+          effDate: '2017-05-10T04:00:00.000+0000',
+          expDate: '2018-05-10T04:00:00.000+0000'
+      },
+      {
+        balance: 0,
+        nextDueDate: '10/28/2018',
+        nextDueAmount: 0,
+        policynumber: {
+            policynumber: 'abc123'
+        },
+        agent: {
+            agentCode: {
+                code: 'AS9'
+            },
+            agentName: 'GILBERT C. OLIVEIRA INS AGENCY INC',
+            agentNameExt: '',
+            agentPhone: {
+                number: '(508) 675-7475'
+            },
+            address: {
+              streetName: '1320 NORTH MAIN STREET',
+              city: 'FALL RIVER',
+              state: 'MASSACHUSETTS',
+              zipCode: {
+                  code: '02720'
+              }
+          }
+        },
+        insurer: [
+            {
+                'firstName': 'CONRAD',
+                'middleName': '',
+                'lastName': 'GAGNE',
+                'Insurer Name': 'CONRAD GAGNE'
+            }
+        ],
+        policyStatus: 'INACTIVE',
+        policyFlags: {
+            isEft: false,
             isEftEligi: false,
             isEbillElig: false,
             isEdfElig: false,
             isEbill: false,
             isEdf: false
-          },
-          policyType: 'PROPERTY',
-          effDate: '2016-09-10T04:00:00.000+0000',
-          expDate: '2017-09-10T04:00:00.000+0000'
         },
+        property: [
+            {
+                address: {
+                    streetName: 'Ray St Fall River Ma',
+                    city: 'Fall River',
+                    state: 'MASSACHUSETTS',
+                    zipCode: {
+                        code: '02720'
+                    }
+                }
+            }
+        ],
+        policyType: 'HOME',
+        effDate: '2017-05-10T04:00:00.000+0000',
+        expDate: '2018-05-10T04:00:00.000+0000'
+    }
       ],
     };
   }

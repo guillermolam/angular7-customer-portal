@@ -19,8 +19,13 @@ import { WelcomeComponent }           from './routes/welcome/welcome.component';
 import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }        from './routes/wallet-card/wallet-card.component';
 import { PolicyDetailsComponent }     from './routes/my-insurance/policy-details/policy-details.component';
+<<<<<<< HEAD
 import { ProfileSettingsComponent } from './routes/profile-settings/profile-settings.component';
 import { ProfileMainComponent } from './components/profile/profile-main/profile-main.component';
+=======
+import { BillingDetailsComponent }    from './routes/my-insurance/billing-details/billing-details.component';
+import { DocumentDetailsComponent }   from './routes/my-insurance/document-details/document-details.component';
+>>>>>>> 715b5221c6cb171035513203b521e44a01f43425
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -55,11 +60,11 @@ const appRoutes: Routes = [
           },
           {
             path: 'billing',
-            component: PolicyDetailsComponent,
+            component: BillingDetailsComponent,
           },
           {
             path: 'documents',
-            component: PolicyDetailsComponent,
+            component: DocumentDetailsComponent,
           },
         ]
       }
