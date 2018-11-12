@@ -17,7 +17,7 @@
      image: "{{container_image}}"
      state: started
      env:
-      - "ENV: {{environment}}"
+       ENV: "{{environment}}"
      ports:
       - "80:80"
       - "443:443"
