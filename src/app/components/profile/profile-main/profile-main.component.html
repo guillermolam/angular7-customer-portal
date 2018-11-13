@@ -34,7 +34,8 @@
   <div>
       <label class="account-settings no-margin-bottom margin-top mt16">Phone</label> 
       <div class="sub-title-copy"><em>{{ 'Add more security to your account' }}</em>
-          <div class="btn btn-icon edit-icon-position"><a 
+          <div class="btn btn-icon edit-icon-position">
+            <a 
             [routerLink]="['/profile','change-phone']"
             routerLinkActive="active"
             class="btn btn-icon edit-icon-position" > 
@@ -47,7 +48,14 @@
   <div>
       <label class="account-settings no-margin-bottom"> Checking Account Information</label> 
       <div class="sub-title-copy"><em>{{ 'Save time and effort in your payments' }}</em>
-      <div class="btn edit-icon-position"> <svg-add-icon-svg></svg-add-icon-svg></div>
+      <div class="btn edit-icon-position">
+            <a 
+            [routerLink]="['/profile','edit-account']"
+            routerLinkActive="active"
+            class="btn btn-icon edit-icon-position" > 
+                <svg-add-icon-svg></svg-add-icon-svg>
+            </a>
+        </div>
       </div>
   </div>
   

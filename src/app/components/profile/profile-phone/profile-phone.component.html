@@ -1,9 +1,14 @@
 <div class="row text-center">
     <div class="col"> 
         <div class="header-icon full-icon">
-            <!-- <svg--svg></svg-account-profile-svg>   -->
+            <svg-phone-svg></svg-phone-svg>
         </div>
-        <h1 class="title-copy">{{ 'My account' | translate }}</h1>
-        <div class="sub-title-copy">{{ 'Thomas A. Anderson' }}</div>
+        <div *ngIf="true;else addPhone">
+            <h1 class="title-copy">{{ 'Change phone number' | translate }}</h1>
+        </div>
+        <ng-template #addPhone>
+            <h1 class="title-copy">{{ 'Add phone number' | translate }}</h1>
+        </ng-template>
+        
     </div>
 </div>

@@ -77,8 +77,6 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}-dev"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
-env:
-  ENV: "DEV"
 ports: 
  - "80:80"
  - "443:443"'''
