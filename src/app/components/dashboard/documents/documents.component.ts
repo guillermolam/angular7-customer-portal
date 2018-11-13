@@ -1,7 +1,11 @@
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Component, OnInit }        from '@angular/core';
+import { TestingDataService } from './../../../_helpers/testing-data.service';
+
+import { MdbTablePaginationComponent, MdbTableService } from 'angular-bootstrap-md';
+
+import { Component, OnInit, ViewChild, HostListener, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl }   from '@angular/forms';
-import { ActivatedRoute, Params }   from '@angular/router';
+import { ActivatedRoute, Params,
+          Router }                  from '@angular/router';
 
 import { AuthenticationService }    from '../../../_services/_iam/authentication-service.service';
 import { User }                     from '../../../_models/user';
@@ -12,227 +16,86 @@ import { UserService }              from './../../../_services/user.service';
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.scss']
 })
-export class DocumentsComponent implements OnInit {
+export class DocumentsComponent implements OnInit, AfterViewInit  {
+  @ViewChild(MdbTablePaginationComponent) mdbTablePagination: MdbTablePaginationComponent;
 
+  firstItemIndex;
+  lastItemIndex;
+  filterType:               string = 'all-docs';
+  filterName:               string = 'All Documents';
   policyId:                 number;
+  previous:                 any = [];
   user:                     User;
+
+  /**
+   * 
+   *  Information ----
+   *  Many of these elements in here will become it's own component
+   *  However I don't have the time at the moment
+   *  to create a stand a lone version.
+   * 
+   */
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService:    AuthenticationService,
     private userService:    UserService,
-    private sanitizer:      DomSanitizer
-  ) { }
+    private tableService:   MdbTableService,
+    private router:         Router,
+    private cdRef:          ChangeDetectorRef,
+    private testingData:    TestingDataService
+    ) {}
 
-  testDatafunction() {
-    return {
-      firstName: 'FirstName',
-      middleName: 'MiddleName',
-      lastName: 'LastName',
-      
-      policyDetails: [
-        {
-          balance: 0,
-          nextDueDate: '10/28/2018',
-          nextDueAmount: 0,
-          policynumber: {
-              policynumber: 'QJN952'
-          },
-          agent: {
-              agentCode: {
-                  code: '434'
-              },
-              agentName: 'AAA NORTHEAST INSURANCE AGCY, INC.',
-              agentNameExt: '',
-              agentPhone: {
-                  number: '(800) 222-4242'
-              }
-          },
-          insurer: [
-            {
-              'firstName': 'JENNIFER',
-              'middleName': 'L',
-              'lastName': 'JUDD',
-              'Insurer Name': 'JENNIFER L JUDD'
-            }
-          ],
-          policyStatus: 'INACTIVE',
-          policyFlags: {
-            isEft: false,
-            isEftEligi: false,
-            isEbillElig: false,
-            isEdfElig: false,
-            isEbill: false,
-            isEdf: false
-          },
-          policyType: 'AUTO',
-          vehicle: [
-              {
-                vehicle: '2016 RAM 1500 SLT'
-              },
-              {
-                vehicle: '1998 HONDA CR-V LX'
-              }
-          ],
-          effDate: '2016-09-10T04:00:00.000+0000',
-          expDate: '2017-09-10T04:00:00.000+0000'
-        },
-        {
-          
-          balance: 1000.99,
-          nextDueDate: '10/28/2018',
-          nextDueAmount: 79.99,
+  asALink(url): void {
+    this.router.navigate(url);
+  }
 
-          policynumber: {
-              policynumber: '66161'
-          },
-          agent: {
-              agentCode: {
-                  code: '434'
-              },
-              agentName: 'AAA NORTHEAST INSURANCE AGCY, INC.',
-              agentNameExt: '',
-              agentPhone: {
-                  number: '(800) 222-4242'
-              }
-          },
-          insurer: [
-            {
-              'firstName': 'JENNIFER1',
-              'middleName': 'L',
-              'lastName': 'JUDD',
-              'Insurer Name': 'JENNIFER L JUDD'
-            },
-            {
-              'firstName': 'JENNIFER2',
-              'middleName': 'L',
-              'lastName': 'JUDD',
-              'Insurer Name': 'JENNIFER L JUDD'
-            }
-          ],
-          policyStatus: 'ACTIVE',
-          policyFlags: {
-            isEft: true,
-            isEftEligi: false,
-            isEbillElig: false,
-            isEdfElig: false,
-            isEbill: false,
-            isEdf: false
-          },
-          policyType: 'AUTO',
-          vehicle: [
-              {
-                vehicle: '2016 RAM 1500 SLT'
-              },
-          ],
-          effDate: '2016-09-10T04:00:00.000+0000',
-          expDate: '2017-09-10T04:00:00.000+0000'
-        },
-        {
-          balance: 0,
-          nextDueDate: '10/28/2018',
-          nextDueAmount: 0,
-          policynumber: {
-              policynumber: 'BBWQKQ'
-          },
-          agent: {
-              agentCode: {
-                  code: 'AS9'
-              },
-              agentName: 'GILBERT C. OLIVEIRA INS AGENCY INC',
-              agentNameExt: '',
-              agentPhone: {
-                  number: '(508) 675-7475'
-              }
-          },
-          insurer: [
-              {
-                  'firstName': 'CONRAD',
-                  'middleName': '',
-                  'lastName': 'GAGNE',
-                  'Insurer Name': 'CONRAD GAGNE'
-              }
-          ],
-          policyStatus: 'INACTIVE',
-          policyFlags: {
-              isEft: false,
-              isEftEligi: false,
-              isEbillElig: false,
-              isEdfElig: false,
-              isEbill: false,
-              isEdf: false
-          },
-          property: [
-              {
-                  address: {
-                      streetName: '1833 Commonwealth ave apt 12',
-                      city: 'Brighton',
-                      state: 'MASSACHUSETTS',
-                      zipCode: {
-                          code: '02135'
-                      }
-                  }
-              }
-          ],
-          policyType: 'HOME',
-          effDate: '2017-05-10T04:00:00.000+0000',
-          expDate: '2018-05-10T04:00:00.000+0000'
-      },
-      {
-        balance: 0,
-        nextDueDate: '10/28/2018',
-        nextDueAmount: 0,
-        policynumber: {
-            policynumber: 'abc123'
-        },
-        agent: {
-            agentCode: {
-                code: 'AS9'
-            },
-            agentName: 'GILBERT C. OLIVEIRA INS AGENCY INC',
-            agentNameExt: '',
-            agentPhone: {
-                number: '(508) 675-7475'
-            }
-        },
-        insurer: [
-            {
-                'firstName': 'CONRAD',
-                'middleName': '',
-                'lastName': 'GAGNE',
-                'Insurer Name': 'CONRAD GAGNE'
-            }
-        ],
-        policyStatus: 'INACTIVE',
-        policyFlags: {
-            isEft: false,
-            isEftEligi: false,
-            isEbillElig: false,
-            isEdfElig: false,
-            isEbill: false,
-            isEdf: false
-        },
-        property: [
-            {
-                address: {
-                    streetName: 'Ray St Fall River Ma',
-                    city: 'Fall River',
-                    state: 'MASSACHUSETTS',
-                    zipCode: {
-                        code: '02720'
-                    }
-                }
-            }
-        ],
-        policyType: 'HOME',
-        effDate: '2017-05-10T04:00:00.000+0000',
-        expDate: '2018-05-10T04:00:00.000+0000'
+  onSelectFilter(filterName): void {
+    switch (filterName) {
+      case 'all-doc':
+        this.filterType =     'all-docs';
+        this.filterName =     'All Documents';
+        break;
+
+      case 'end':
+        this.filterType =     'endorsments';
+        this.filterName =     'Endorsments';
+        break;
+
+      case 'misc':
+        this.filterType =     'misc';
+        this.filterName =     'Misc';
+        break;
+
+      case 'renew':
+        this.filterType =     'renewal';
+        this.filterName =     'Renewal';
+        break;
     }
-      ],
-    };
+  }
+
+  onNextPageClick(data: any) {
+    this.firstItemIndex = data.first;
+    this.lastItemIndex = data.last;
+  }
+
+  onPreviousPageClick(data: any) {
+    this.firstItemIndex = data.first;
+    this.lastItemIndex = data.last;
+  }
+
+  ngAfterViewInit() {
+    this.mdbTablePagination.setMaxVisibleItemsNumberTo(10);
+    this.firstItemIndex = this.mdbTablePagination.firstItemIndex;
+    this.lastItemIndex = this.mdbTablePagination.lastItemIndex;
+
+    this.mdbTablePagination.calculateFirstItemIndex();
+    this.mdbTablePagination.calculateLastItemIndex();
+    this.cdRef.detectChanges();
   }
 
   ngOnInit() {
+
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -265,12 +128,16 @@ export class DocumentsComponent implements OnInit {
             );
           }
           else {
-            this.user = this.testDatafunction();
+            this.user = this.testingData.testDatafunction();
             this.userService.updateUser(this.user);
           }
         }
       }
     );
+
+    this.tableService.setDataSource(this.user.documents);
+    this.user.documents = this.tableService.getDataSource();
+    this.previous = this.tableService.getDataSource();
   }
 
 }

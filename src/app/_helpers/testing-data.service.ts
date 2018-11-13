@@ -1,30 +1,12 @@
-import { Component, OnInit }      from '@angular/core';
-import { Router }                 from '@angular/router';
-import { User }                   from '../../_models/user';
-import { UserService }            from '../../_services/user.service';
-import { AuthenticationService }  from '../../_services/_iam/authentication-service.service';
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-account-main',
-  templateUrl: './account-main.component.html',
-  styleUrls: ['./account-main.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class AccountMainComponent implements OnInit {
-  hideOrShow:                     boolean = false;
-  user:                           User;
+export class TestingDataService {
 
-  constructor(
-    private authenticationService: AuthenticationService,
-    private router:               Router,
-    private userService:          UserService
-  ) {
-  }
+  constructor() { }
 
-  showMore(e): void {
-    this.hideOrShow = !this.hideOrShow;
-  }
-
-  // This will be removed
   testDatafunction() {
     return {
       firstName: 'FirstName',
@@ -267,84 +249,94 @@ export class AccountMainComponent implements OnInit {
           documentName: 'Document Name 1',
           documentLocation: '#',
           documentType: 'renewal',
-          documentDate: 10/10/2018
+          documentDate: '2016-09-10T04:00:00.000+0000'
         },
         {
           documentName: 'Document Name 2',
           documentLocation: '#',
           documentType: 'renewal',
-          documentDate: 10/10/2018
+          documentDate: '2016-09-10T04:00:00.000+0000'
         },
         {
           documentName: 'Document Name 3',
           documentLocation: '#',
           documentType: 'renewal',
-          documentDate: 10/10/2018
+          documentDate: '2016-09-10T04:00:00.000+0000'
         },
         {
           documentName: 'Document Name 4',
           documentLocation: '#',
           documentType: 'endorsments',
-          documentDate: 10/10/2018
+          documentDate: '2016-09-10T04:00:00.000+0000'
         },
         {
           documentName: 'Document Name 5',
           documentLocation: '#',
           documentType: 'misc',
-          documentDate: 10/10/2018
+          documentDate: '2016-09-10T04:00:00.000+0000'
         },
         {
           documentName: 'Document Name 6',
           documentLocation: '#',
           documentType: 'misc',
-          documentDate: 10/10/2018
+          documentDate: '2016-09-10T04:00:00.000+0000'
         },
         {
           documentName: 'Document Name 7',
           documentLocation: '#',
           documentType: 'renewal',
-          documentDate: 10/10/2018
+          documentDate: '2016-09-10T04:00:00.000+0000'
+        },
+        {
+          documentName: 'Document Name 8',
+          documentLocation: '#',
+          documentType: 'renewal',
+          documentDate: '2016-09-10T04:00:00.000+0000'
+        },
+        {
+          documentName: 'Document Name 9',
+          documentLocation: '#',
+          documentType: 'renewal',
+          documentDate: '2016-09-10T04:00:00.000+0000'
+        },
+        {
+          documentName: 'Document Name 10',
+          documentLocation: '#',
+          documentType: 'renewal',
+          documentDate: '2016-09-10T04:00:00.000+0000'
+        },
+        {
+          documentName: 'Document Name 11',
+          documentLocation: '#',
+          documentType: 'renewal',
+          documentDate: '2016-09-10T04:00:00.000+0000'
+        },
+        {
+          documentName: 'Document Name 12',
+          documentLocation: '#',
+          documentType: 'renewal',
+          documentDate: '2016-09-10T04:00:00.000+0000'
+        },
+        {
+          documentName: 'Document Name 13',
+          documentLocation: '#',
+          documentType: 'renewal',
+          documentDate: '2016-09-10T04:00:00.000+0000'
+        },
+        {
+          documentName: 'Document Name 14',
+          documentLocation: '#',
+          documentType: 'renewal',
+          documentDate: '2016-09-10T04:00:00.000+0000'
+        },
+        {
+          documentName: 'Document Name 15',
+          documentLocation: '#',
+          documentType: 'renewal',
+          documentDate:'2016-09-10T04:00:00.000+0000'
         },
 
       ]
     };
-  }
-
-  ngOnInit() {
-    // When logging in go a verify user
-    // We will need this once the new endpoints are set.
-
-    this.userService.$user.subscribe(
-      (user) => {
-        if ( user != undefined ) {
-          this.user = user ;
-        }
-        else {
-          if (localStorage.getItem('access_token')) {
-            this.authenticationService
-            .verifyUser(this.user)
-            .subscribe(
-              (info: any) => {
-                console.log(info);
-                this.user = {
-                  firstName: info[0].insurer['firstName'],
-                  middleName: info[0].insurer['middleName'],
-                  lastName: info[0].insurer['lastName'],
-                  policyDetails: info
-                };
-                this.userService.updateUser(this.user);
-              },
-              (err) => {
-                console.log('login success but verifyuser err', err);
-              }
-            );
-          }
-          else {
-            this.user = this.testDatafunction();
-            this.userService.updateUser(this.user);
-          }
-        }
-      }
-    );
   }
 }

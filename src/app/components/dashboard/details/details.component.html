@@ -46,11 +46,11 @@
         <section class="row policy-details-content">
           <div class="col-sm-12 col-md col1">
       
-            <div class="row margin-bottom mb24">
-              <div class="col">
+            <div class="row margin-bottom mb24 mapfre-card-download-button">
+              <div class="col col-left">
                 <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
               </div>
-              <div class="col">
+              <div class="col col-right">
                 <mapfre-button
                   [additionalClasses]="'ghost primary xsmall full'">
                     {{'DOWNLOAD' | translate}}
@@ -72,44 +72,45 @@
                 <div class="mapfre-input vehicle" 
                   *ngFor="let vehicle of policy?.vehicle; let i = index; let last = last; let first = first">
                   <mapfre-alert></mapfre-alert>
-
                   <div [ngClass]="{ 
                     'margin-bottom mb32 vehicle-spacer-input': last, 
                     'vehicle-spacer-input margin-bottom mb40': i != 0, 
                     'margin-bottom mb40': i == 0,
-                  'hide': alerton }">
-                  <form [formGroup]="updateMileage">
-                    
-                    <h3 class="title">
-                        {{vehicle.vehicle}}
-                    </h3>
-                    <div class="row input-control margin-top mt24" [ngClass]="{ 'disabled': !legalCheckbox }">
-                      <div class="col input-field mapfre">
-                        <mapfre-label [forInput]= "'form-input'+i">{{ 'MILEAGE' | translate }}</mapfre-label>
-                        <input 
-                          mdbInputDirective 
-                          value="{{vehicle?.mileage}}" 
-                          type="text" 
-                          [id]="'form-input'+i" 
-                          class="form-control" 
-                          formControlName="updateMileageInput"
-                          [attr.disabled]="!legalCheckbox ? '' : null"
-                          [ngClass]="{ 'disabled': !legalCheckbox }">
-                        <label>{{ 'LAST_UPDATE' | translate }} {{vehicle.lastupdate}}</label>
+                    'hide': i
+                  }">
+
+                    <form [formGroup]="updateMileage">
+                      <h3 class="title">
+                          {{vehicle.vehicle}}
+                      </h3>
+                      <div class="row input-control margin-top mt24" [ngClass]="{ 'disabled': !legalCheckbox }">
+                        <div class="col input-field mapfre">
+                          <mapfre-label [forInput]= "'form-input'+i">{{ 'MILEAGE' | translate }}</mapfre-label>
+                          <input 
+                            mdbInputDirective 
+                            value="{{vehicle?.mileage}}" 
+                            type="number" 
+                            [id]="'form-input'+i" 
+                            class="form-control" 
+                            formControlName="updateMileageInput"
+                            [attr.disabled]="!legalCheckbox ? '' : null"
+                            [ngClass]="{ 'disabled': !legalCheckbox }">
+                          <label>{{ 'LAST_UPDATE' | translate }} {{vehicle.lastupdate}}</label>
+                        </div>
+                        <div class="col">
+                          <mapfre-button
+                            (click)="onSubmit(i)"
+                            [inputType]="'submit'"
+                            [additionalClasses]="'ghost primary xsmall full'"
+                            [disabledValue]="legalCheckbox"
+                            [translateValue]=" 'UPDATE_MILEAGE' | translate "
+                          >
+                            {{ 'UPDATE_MILEAGE' | translate }}
+                          </mapfre-button>
+                        </div>
                       </div>
-                      <div class="col">
-                        <mapfre-button
-                          (click)="onSubmit()"
-                          [inputType]="'submit'"
-                          [additionalClasses]="'ghost primary xsmall full'"
-                          [disabledValue]="legalCheckbox"
-                          [translateValue]=" 'UPDATE_MILEAGE' | translate ">
-                          {{ 'UPDATE_MILEAGE' | translate }}
-                        
-                        </mapfre-button>
-                      </div>
-                    </div>
-                  </form>
+                    </form>
+
                   </div>
                 </div>
               
@@ -126,8 +127,7 @@
                 </div>
               </div>
             </div>
-      
-      
+            
             <div class="row margin-bottom mb16 policy-holders row-section">
               <div class="col">
                 <h2 class="title margin-bottom mb16">
