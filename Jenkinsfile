@@ -22,7 +22,7 @@ pipeline{
 
 		stage('STATIC ANALYSIS'){
 		    steps{
-				sh "cp -r ./coverage/* ./customer-portal/reports/coverage"
+				sh "cp -r ./coverage/* ./reports/coverage"
 		        sh "npm run sonar-run"
 		    }
 		}
