@@ -47,9 +47,9 @@ pipeline{
         		ansibleTower(
 								towerServer: 'Ansible Tower',
 								templateType: 'job',
-								jobTemplate: 'deploy_customer_portal_ui',
+								jobTemplate: 'deploy_customer_portal_ui_on_prem',
 								importTowerLogs: true,
-								inventory: 'dev_boxes',
+								inventory: 'ON_PREM_DEVELOPMENT',
 								jobTags: '',
 								skipJobTags: '',
 								limit: '',
