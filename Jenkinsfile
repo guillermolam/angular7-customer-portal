@@ -1,21 +1,10 @@
 pipeline{
 	agent any
 	  stages {
-
-		   // cloning code into the container
-        stage('SETUP'){
-         environment {
-                BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
-            }
-            //removing old code if there is any, initializing new local repo and cloning into it.
-            steps{
-                sh 'rm -rf customer-portal && git init && git clone https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/customer-portal.git'
-				sh "npm install"
-            }
-        }
-		 
+ 
 		stage("LINTING & BUILD") {
 			steps{
+				sh "npm install"
               	// removing .spec.ts from linting
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
 			//	sh "npm run cibuild_test"
@@ -33,7 +22,7 @@ pipeline{
 
 		stage('STATIC ANALYSIS'){
 		    steps{
-				sh "cp -r ./coverage/* ./customer-portal/reports/coverage"
+				sh "cp -r ./coverage/* ./reports/coverage"
 		        sh "npm run sonar-run"
 		    }
 		}
