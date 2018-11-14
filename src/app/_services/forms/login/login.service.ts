@@ -1,30 +1,19 @@
 import { Injectable }   from '@angular/core';
 import { FormBase, TextBox }   from 'mapfre-design-library';
+import { EmailPasswordFormService } from '../email-password-form/email-password-form.service';
 
 @Injectable()
 export class LoginService {
+
+  constructor(private passwordService: EmailPasswordFormService){
+
+  }
+
   getInputs() {
+    
     const inputs: FormBase<any>[] = [
-      new TextBox({
-        additionalClasses: 'form-control',
-        inputType: 'email',
-        key: 'loginEmail',
-        label: 'EMAIL',
-        required: true,
-        type: 'email',
-        validationMessageError: 'VALID_EMAIL_VALIDATION_MESSAGE',
-      }),
-      new TextBox({
-        additionalClasses: 'form-control',
-        inputType: 'password',
-        key: 'loginPassword',
-        label: 'PASSWORD',
-        maxLength: 24,
-        minLength: 1,
-        required: true,
-        showPasswordIcon: true,
-        type: 'password'
-      })
+      this.passwordService.getEmailInputs('loginEmail'),
+      this.passwordService.getPasswordInputs('loginPassword')
     ];
     return inputs;
   }
