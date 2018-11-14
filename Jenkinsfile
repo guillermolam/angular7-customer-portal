@@ -22,7 +22,6 @@ pipeline{
 
 		stage('STATIC ANALYSIS'){
 		    steps{
-				sh "cp -r ./coverage/* ./reports/coverage"
 		        sh "npm run sonar-run"
 		    }
 		}
@@ -99,12 +98,6 @@ ports:
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
             }
 			steps{
-				parallel( 
-					"PUBLISH CUSTOMER PORTAL" : {
-						sh "git -C './customer-portal' add ."
-						sh "git -C './customer-portal' commit -m 'Milind:Adding reports'"
-						sh "git -C './customer-portal' push"
-				},
 				"PUBLISH API DOCUMENTATION" : {
 						sh "cp ./lighthouse*.html ./api-documentation/customer-portal-ui"
 						sh "git -C './api-documentation' add ."
@@ -112,7 +105,6 @@ ports:
 						sh 'git -C "./api-documentation" pull https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
 						sh 'git -C "./api-documentation" push https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
 				}
-				)
 			}
 		}
 
