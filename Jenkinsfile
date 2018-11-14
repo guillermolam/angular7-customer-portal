@@ -45,7 +45,7 @@ pipeline{
             }
 			steps{
         		ansibleTower(
-								towerServer: 'Ansible Tower',
+								towerServer: 'ANSIBLE_TOWER',
 								templateType: 'job',
 								jobTemplate: 'deploy_customer_portal_ui_on_prem',
 								importTowerLogs: true,
