@@ -80,15 +80,6 @@ ports:
         sh "./node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report-3g-mobile.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu' --throttling.throughputKbps=2000"
         sh "./node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report-4g-mobile.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu' --throttling.throughputKbps=5000"
         sh "./node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report-fast-4g-mobile.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu' --throttling.throughputKbps=14000"
-				sh "cp ./lighthouse-report-3g-desktop.html ./customer-portal/reports/lighthouse"
-			publishHTML (target: [
-			allowMissing: false,
-			alwaysLinkToLastBuild: false,
-			keepAll: true,
-			reportDir: '.',
-			reportFiles: 'lighthouse-report-3g-desktop.html',
-			reportName: "Lighthouse-3g-desktop"
-			])
 			}
 		}
 
@@ -98,11 +89,11 @@ ports:
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
             }
 			steps{
-						sh "cp ./lighthouse*.html ./api-documentation/customer-portal-ui"
-						sh "git -C './api-documentation' add ."
-						sh "git -C './api-documentation' commit -m 'Publishing new API Documentation'"
-						sh 'git -C "./api-documentation" pull https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
-						sh 'git -C "./api-documentation" push https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
+						sh "cp ./lighthouse*.html ../api-documentation/customer-portal-ui"
+						sh "git -C '../api-documentation' add ."
+						sh "git -C '../api-documentation' commit -m 'Publishing new API Documentation'"
+						sh 'git -C "../api-documentation" pull https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
+						sh 'git -C "../api-documentation" push https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
 				
 			}
 		}
