@@ -28,6 +28,7 @@ import { ProfileSettingsComponent } from './routes/profile-settings/profile-sett
 import { ProfileMainComponent } from './components/profile/profile-main/profile-main.component';
 import { BillingDetailsComponent }    from './routes/my-insurance/billing-details/billing-details.component';
 import { DocumentDetailsComponent }   from './routes/my-insurance/document-details/document-details.component';
+import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -75,7 +76,9 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileSettingsComponent, children: [
     { path: '', component: ProfileMainComponent },
     { path: 'change-phone', component: ProfilePhoneComponent},
-    { path: 'edit-account', component: ProfileCheckingAccountComponent}
+    { path: 'edit-account', component: ProfileCheckingAccountComponent},
+    { path: 'enter-password', component: ProfileEditPasswordComponent },
+    { path: 'edit-password' , component: ProfileEditPasswordComponent }
   ] },
   { path: 'billing', component: DashboardComponent },
   { path: 'claims', component: ClaimsComponent },

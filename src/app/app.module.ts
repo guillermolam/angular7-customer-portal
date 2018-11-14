@@ -81,6 +81,9 @@ import { ClaimsComponent } from './routes/claims/claims.component';
 import { ContactComponent } from './routes/contact/contact.component';
 import { ChangePhoneComponent } from './components/forms/dynamic-forms/profile-setings-forms/change-phone/change-phone.component';
 import { ProfileCheckingAccountComponent } from './components/profile/profile-checking-account/profile-checking-account.component';
+import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
+import { ChangePasswordFormComponent } from './components/forms/dynamic-forms/change-password-form/change-password-form.component';
+import { ProfileEditEmailComponent } from './components/profile/profile-edit-email/profile-edit-email.component';
 
 if (environment.production) {
   enableProdMode();
@@ -143,7 +146,10 @@ export function tokenGetter() {
     ClaimsComponent,
     ContactComponent,
     ChangePhoneComponent,
-    ProfileCheckingAccountComponent
+    ProfileCheckingAccountComponent,
+    ProfileEditPasswordComponent,
+    ChangePasswordFormComponent,
+    ProfileEditEmailComponent
 
   ],
   imports: [
