@@ -1,0 +1,22 @@
+<form 
+  [formGroup]="changeAddressForm" 
+  name="changeAddressForm"  
+  (ngSubmit)="changeAddressForm.valid && changeAddress()">
+  
+  <div class="">
+    <div *ngFor="let input of inputs" class="input">
+      <mapfre-validation [input]="input" [form]="changeAddressForm"></mapfre-validation>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'basic primary large'"
+        [disabledValue]="changeAddressForm.valid" 
+        [inputType]="'submit'"
+        [translateValue]="'CHANGE_ADDRESS' | translate"
+      ></mapfre-button>
+    </div>
+  </div>
+</form>

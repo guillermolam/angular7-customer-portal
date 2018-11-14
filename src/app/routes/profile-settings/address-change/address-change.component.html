@@ -1,0 +1,17 @@
+<mapfre-header></mapfre-header>
+<div class="container loggedout mapfre-content">
+<mapfre-card 
+  additionalClasses="login"> 
+  <div class="row text-center">
+    <div class="col"> 
+      <div class="header-icon full-icon">
+          
+      </div>
+      <h1 class="title-copy">{{ 'CHANGE_ADDRESS' | translate }}</h1> 
+    </div>
+  </div>
+  <mapfre-alert></mapfre-alert> 
+  <app-change-address-form [inputs]="inputs"></app-change-address-form>
+  
+</mapfre-card>
+</div>

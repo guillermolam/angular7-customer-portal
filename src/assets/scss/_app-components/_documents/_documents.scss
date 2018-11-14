@@ -1,5 +1,5 @@
 .documents-table {
-  tr{
+  tr:not(.download-mapfrecard){
     color: #006580;
 
     &:hover {
@@ -50,6 +50,13 @@
   .pagination {
     p {
       display: none;
+    }
+  }
+
+  .footer-page {
+    nav {
+      float: right;
+      margin-right: -11px;
     }
   }
 }

@@ -1,5 +1,9 @@
+<ng-container *ngIf="loading">
+  <mapfre-loading></mapfre-loading>
+</ng-container>
+
 <ng-container *ngFor="let policy of user?.policyDetails">
-  <ng-container *ngIf="policy?.policynumber.policynumber == policyId">
+  <ng-container *ngIf="policy?.policynumber.policynumber == policyId && !loading">
     <ng-container *ngIf="policy?.policyType == 'AUTO'">
       <mapfre-card 
         [singleCard]="false"
@@ -52,7 +56,8 @@
               </div>
               <div class="col col-right">
                 <mapfre-button
-                  [additionalClasses]="'ghost primary xsmall full'">
+                  [additionalClasses]="'ghost primary xsmall full'"
+                  (click)="downloadWalletCard(user.email, policyId)">
                     {{'DOWNLOAD' | translate}}
                 </mapfre-button>
               </div>
@@ -71,13 +76,22 @@
       
                 <div class="mapfre-input vehicle" 
                   *ngFor="let vehicle of policy?.vehicle; let i = index; let last = last; let first = first">
-                  <mapfre-alert></mapfre-alert>
-                  <div [ngClass]="{ 
-                    'margin-bottom mb32 vehicle-spacer-input': last, 
-                    'vehicle-spacer-input margin-bottom mb40': i != 0, 
-                    'margin-bottom mb40': i == 0,
-                    'hide': i
+                  <div id="id{{i}}" [ngClass]="{
+                    'hide' : displayIndex === i && !showHide
                   }">
+                    <mapfre-alert [nonDynamic]="true">
+                      You have updated the odometer.
+                    </mapfre-alert>
+                  </div>
+                  <div 
+                    id="id{{i}}"
+                    [ngClass]="{ 
+                      'margin-bottom mb32 vehicle-spacer-input': last, 
+                      'vehicle-spacer-input margin-bottom mb40': i != 0, 
+                      'margin-bottom mb40': i == 0,
+                      'hide' : displayIndex === i && showHide
+                    }"
+                  >
 
                     <form [formGroup]="updateMileage">
                       <h3 class="title">
@@ -99,7 +113,7 @@
                         </div>
                         <div class="col">
                           <mapfre-button
-                            (click)="onSubmit(i)"
+                            (click)="onSubmit(i, $event)"
                             [inputType]="'submit'"
                             [additionalClasses]="'ghost primary xsmall full'"
                             [disabledValue]="legalCheckbox"
@@ -296,7 +310,7 @@
                           *policy holder address*
                       </div>
                       <div class="col edit-address">
-                        <a href="#"><i class="far fa-edit"></i></a>
+                          <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
                       </div>
                     </div>
                   </div>
@@ -308,7 +322,7 @@
                         {{ 'SAME_AS_MAILING' | translate}}
                     </div>
                     <div class="col edit-address">
-                      <a href="#"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>
@@ -556,7 +570,8 @@
                               *policy holder address*
                           </div>
                           <div class="col edit-address">
-                            <a href="#"><i class="far fa-edit"></i></a>
+                              <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
+
                           </div>
                         </div>
                       </div>
@@ -568,7 +583,7 @@
                             {{ 'SAME_AS_MAILING' | translate}}
                         </div>
                         <div class="col edit-address">
-                          <a href="#"><i class="far fa-edit"></i></a>
+                            <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
                         </div>
                       </div>
                     </div>

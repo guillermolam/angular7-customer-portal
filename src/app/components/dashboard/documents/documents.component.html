@@ -43,79 +43,103 @@
         </div>
       </nav>
 
-      <section class="row documents-content"> 
-        <div class="col">
-          <div>
-            <div class="row margin-bottom mb16">
-              <div class="filters col">
-                <h1 class="title">{{filterName}}</h1>
-              </div>
-              <div class="col">
-                <select (change)="onSelectFilter($event.target.value)" class="browser-default custom-select">
-                  <option [value]="'all-doc'">All Documents</option>
-                  <option [value]="'renew'">Renewals</option>
-                  <option [value]="'end'">Endorsments</option>
-                  <option [value]="'misc'">Miscellaneous</option>
-                </select>
-              </div>
-            </div>
-            <table mdbTable class="z-depth-1 documents-table">
-              <thead>
-                <tr>
-                  <th colspan="4"  scope="col">
-                    <div class="row mapfre-card-download-button ">
-                      <div class="col col-left">
-                        <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
-                      </div>
-                      <div class="col col-right">
-                        <mapfre-button
-                          [additionalClasses]="'ghost primary xsmall full'">
-                            {{'DOWNLOAD' | translate}}
-                        </mapfre-button>
-                      </div>
-                    </div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="row row-content" 
-                  *ngFor="let doc of user?.documents; let i = index" 
-                  (click)="asALink(doc.documentLocation)" 
-                  [class.hide]="filterType != doc.documentType && filterType != 'all-docs'">
-                  <td class="col  col-type" *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">
-                    <div *ngIf="doc.documentType == 'renewal' " class="circle-with-type">R</div>
-                    <div *ngIf="doc.documentType == 'misc' " class="circle-with-type">M</div>
-                    <div *ngIf="doc.documentType == 'endorsments' " class="circle-with-type">E</div>
-                  </td>
-                  <td class="col col-name"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.documentName}}</td>
-                  <td class="col col-date"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.documentDate | date}}</td>
-                  <td class="col col-view"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">view <i class="fas fa-angle-right"></i> </td>
-                </tr>
-              </tbody>
-              <tfoot class="grey lighten-5 w-100">
-            
-                <tr>
-                  <td colspan="4">
-                    <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
-                    </mdb-table-pagination>
-                  </td>
-                </tr>
-            
-              </tfoot>
-            </table>
-          </div>
-        </div>
-      </section>
+      <ng-container *ngIf="loading">
+          <mapfre-loading></mapfre-loading>
+        </ng-container>
 
-      <section class="row documents-content no-documents"> 
-        <div class="col">
-          <div>
-            <img src="./assets/img/images/no-documents.png">
-            <h1 class="title"> No Documents available yet </h1>
-            <p> Your documents tab will list the available Coverage Selection Pages and allowyou to view, print, and save them. </p>
+      <ng-template [ngIf]="showDocuments && !loading" >
+        <section class="row documents-content"> 
+          <div class="col">
+            <div>
+              <div class="row margin-bottom mb16">
+                <div class="filters col">
+                  <h1 class="title">{{filterName}}</h1>
+                </div>
+                <div class="col">
+                    <div class="dropdown" mdbDropdown>
+                        <button mdbDropdownToggle type="button" mdbBtn color="primary" class="dropdown-toggle waves-light"
+                          mdbWavesEffect>
+                          Dropdown
+                        </button>
+                      
+                        <div class="dropdown-menu">
+                          <h6 class="dropdown-header">Dropdown header</h6>
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                      </div>
+                  <select (change)="onSelectFilter($event.target.value)" class="browser-default custom-select">
+                    <option [value]="'all-doc'">All Documents</option>
+                    <option [value]="'renew'">Renewals</option>
+                    <option [value]="'end'">Endorsments</option>
+                    <option [value]="'misc'">Miscellaneous</option>
+                  </select>
+                </div>
+              </div>
+              <table mdbTable class="z-depth-1 documents-table">
+                <thead>
+                  <tr class="download-mapfrecard">
+                    <th colspan="4"  scope="col">
+                      <div class="row mapfre-card-download-button ">
+                        <div class="col col-left">
+                          <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
+                        </div>
+                        <div class="col col-right">
+                          <mapfre-button
+                            [additionalClasses]="'ghost primary xsmall full'"
+                            (click)="downloadWalletCard(user.email, policyId)">
+                              {{'DOWNLOAD' | translate}}
+                          </mapfre-button>
+                        </div>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="row row-content" 
+                    *ngFor="let doc of documents; let i = index" 
+                    (click)="asALink(doc.documentLocation)" 
+                    [class.hide]="filterType != doc.documentType && filterType != 'all-docs'">
+                    <ng-container *ngIf="doc.policyid == policyId">
+                      <td class="col  col-type" *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">
+                        <div *ngIf="doc.documentType == 'renewal' " class="circle-with-type">R</div>
+                        <div *ngIf="doc.documentType == 'misc' " class="circle-with-type">M</div>
+                        <div *ngIf="doc.documentType == 'endorsments' " class="circle-with-type">E</div>
+                      </td>
+                      <td class="col col-name"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.documentName}}</td>
+                      <td class="col col-date"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.documentDate | date}}</td>
+                      <td class="col col-view"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">view <i class="fas fa-angle-right"></i> </td>
+                    </ng-container>
+                  </tr>
+                </tbody>
+                <tfoot class="grey lighten-5 w-100">
+              
+                  <tr>
+                    <td colspan="4" class="footer-page">
+                      <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
+                      </mdb-table-pagination>
+                    </td>
+                  </tr>
+              
+                </tfoot>
+              </table>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ng-template>
+
+      <ng-template [ngIf]="showNoDocuments && !loading">
+        <section class="row documents-content no-documents"> 
+          <div class="col">
+            <div>
+              <img src="./assets/img/images/no-documents.png">
+              <h1 class="title"> No Documents available yet </h1>
+              <p> Your documents tab will list the available Coverage Selection Pages and allowyou to view, print, and save them. </p>
+            </div>
+          </div>
+        </section>
+      </ng-template>
 
     </mapfre-card>
 

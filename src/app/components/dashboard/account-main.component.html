@@ -20,7 +20,7 @@
                   <small>{{policy?.policyStatus | translate}}</small>
                 </ng-container>
                 <ng-container *ngIf="policy?.policyStatus == 'ACTIVE'">
-                  <small>{{policy?.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy?.expDate | date:'shortDate' }}</small>
+                  <small>{{policy?.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy?.expDate | customDateFormat }}</small>
                 </ng-container>
               </div>
             </h2>
@@ -81,7 +81,7 @@
                   </div>
                   <div class="policy-info pay-now">
                     <div class="date-amount">
-                      {{ 'NEXT' | translate}}: {{policy?.nextDueDate | date: 'shortDate'}}
+                      {{ 'NEXT' | translate}}: {{policy?.nextDueDate |  customDateFormat }}
                       <strong>{{policy?.nextDueAmount | currency}}</strong>
                     </div>
                     <div class="pay-now-button">
@@ -125,7 +125,7 @@
                 <small>{{policy?.policyStatus | translate}}</small>
               </ng-container>
               <ng-container *ngIf="policy?.policyStatus == 'ACTIVE'">
-                <small>{{policy?.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy?.expDate | date:'shortDate'}}</small>
+                <small>{{policy?.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy?.expDate | customDateFormat}}</small>
               </ng-container>
             </div>
           </h2>
@@ -184,7 +184,7 @@
                 </div>
                 <div class="policy-info pay-now">
                   <div class="date-amount">
-                    {{'NEXT' | translate }}: {{policy?.nextDueDate | date:'shortDate' }}
+                    {{'NEXT' | translate }}: {{policy?.nextDueDate | customDateFormat }}
                     <strong>${{policy?.nextDueAmount}}</strong>
                   </div>
                   <div class="pay-now-button">

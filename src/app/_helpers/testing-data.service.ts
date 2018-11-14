@@ -12,7 +12,7 @@ export class TestingDataService {
       firstName: 'FirstName',
       middleName: 'MiddleName',
       lastName: 'LastName',
-      
+      email: 'test@email.com',
       policyDetails: [
         {
           balance: 0, 
@@ -132,7 +132,7 @@ export class TestingDataService {
           nextDueDate: '10/28/2018',
           nextDueAmount: 0,
           policynumber: {
-              policynumber: 'BBWQKQ'
+              policynumber: 'BBWQKQ' 
           },
           agent: {
               agentCode: {
@@ -244,99 +244,7 @@ export class TestingDataService {
         expDate: '2018-05-10T04:00:00.000+0000'
     }
       ],
-      documents: [
-        {
-          documentName: 'Document Name 1',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 2',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 3',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 4',
-          documentLocation: '#',
-          documentType: 'endorsments',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 5',
-          documentLocation: '#',
-          documentType: 'misc',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 6',
-          documentLocation: '#',
-          documentType: 'misc',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 7',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 8',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 9',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 10',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 11',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 12',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 13',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 14',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: '2016-09-10T04:00:00.000+0000'
-        },
-        {
-          documentName: 'Document Name 15',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate:'2016-09-10T04:00:00.000+0000'
-        },
-
-      ]
+      
     };
   }
 }

@@ -1,15 +1,17 @@
 import { TestingDataService } from './../../../_helpers/testing-data.service';
 
 import { MdbTablePaginationComponent, MdbTableService } from 'angular-bootstrap-md';
-
-import { Component, OnInit, ViewChild, HostListener, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormControl }   from '@angular/forms';
+import { Component, OnInit,
+  ViewChild, HostListener,
+  AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Params,
-          Router }                  from '@angular/router';
+  Router }                          from '@angular/router';
 
 import { AuthenticationService }    from '../../../_services/_iam/authentication-service.service';
 import { User }                     from '../../../_models/user';
 import { UserService }              from './../../../_services/user.service';
+import { UserInfoService }          from './../../../_services/_userinformation/user-info.service';
+import { WalletCardService }        from './../../../_services/_iam/wallet-card.service';
 
 @Component({
   selector: 'app-documents',
@@ -21,10 +23,14 @@ export class DocumentsComponent implements OnInit, AfterViewInit  {
 
   firstItemIndex;
   lastItemIndex;
+  documents:                any;
   filterType:               string = 'all-docs';
   filterName:               string = 'All Documents';
+  loading:                  boolean = false;
   policyId:                 number;
   previous:                 any = [];
+  showNoDocuments:          boolean = false;
+  showDocuments:            boolean = false;
   user:                     User;
 
   /**
@@ -43,11 +49,78 @@ export class DocumentsComponent implements OnInit, AfterViewInit  {
     private tableService:   MdbTableService,
     private router:         Router,
     private cdRef:          ChangeDetectorRef,
+    private walletCardService: WalletCardService,
+    private userInformation: UserInfoService,
     private testingData:    TestingDataService
     ) {}
 
   asALink(url): void {
     this.router.navigate(url);
+  }
+
+  downloadWalletCard(email, policyid) {
+    this.walletCardService
+      .generatePkPass(email)
+      .subscribe(
+        (success) => {
+          console.log("Successful download of wallet card");
+        },
+        (err) => {
+          console.log("Err download of wallet card", err);
+        }
+      )
+    ;
+  }
+
+  getUserData(parm): void {
+    this.loading = true;
+    this.userService.$user.subscribe(
+      (user) => {
+        if ( user != undefined ) {
+          this.user = user ;
+        }
+        else {
+          if (localStorage.getItem('access_token')) {
+            this.userInformation
+            .policyByEmail(this.user)
+            .subscribe(
+              (info: any) => {
+                console.log(info);
+                this.user = {
+                  firstName: info[0].insurer['firstName'],
+                  middleName: info[0].insurer['middleName'],
+                  lastName: info[0].insurer['lastName'],
+                  policyDetails: info
+                };
+                this.userService.updateUser(this.user);
+              },
+              (err) => {
+                console.log('login success but verifyuser err', err);
+              }
+            );
+          }
+          else {
+            this.user = this.testingData.testDatafunction();
+            this.userService.updateUser(this.user);
+          }
+        }
+      }
+    );
+
+    this.userInformation
+      .getUserDocuments(parm, this.user, localStorage.getItem('access-token'))
+      .subscribe(
+        (success) => {
+          this.documents = success;
+          this.loading = false;
+          this.showDocuments = true;
+        },
+        (err) => {
+          this.loading = false;
+          this.showNoDocuments = true;
+        }
+      )
+    ;
   }
 
   onSelectFilter(filterName): void {
@@ -102,38 +175,7 @@ export class DocumentsComponent implements OnInit, AfterViewInit  {
       this.policyId = params['policyid'];
     });
 
-    this.userService.$user.subscribe(
-      (user) => {
-        if ( user != undefined ) {
-          this.user = user ;
-        }
-        else {
-          if (localStorage.getItem('access_token')) {
-            this.authService
-            .verifyUser(this.user)
-            .subscribe(
-              (info: any) => {
-                console.log(info);
-                this.user = {
-                  firstName: info[0].insurer['firstName'],
-                  middleName: info[0].insurer['middleName'],
-                  lastName: info[0].insurer['lastName'],
-                  policyDetails: info
-                };
-                this.userService.updateUser(this.user);
-              },
-              (err) => {
-                console.log('login success but verifyuser err', err);
-              }
-            );
-          }
-          else {
-            this.user = this.testingData.testDatafunction();
-            this.userService.updateUser(this.user);
-          }
-        }
-      }
-    );
+    this.getUserData(this.policyId);
 
     this.tableService.setDataSource(this.user.documents);
     this.user.documents = this.tableService.getDataSource();

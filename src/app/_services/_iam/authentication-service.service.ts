@@ -142,14 +142,14 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
   }
 
-  policyByEmail(email): Observable<object> {
-    const url = `${environment.backend_server_url}/policies/personal/${email}`;
-    return this.http.get(url);
-  }
-
   tokenVerification(token: string, email: string): Observable<object> {
     const url =           `${environment.backend_server_url}/identity/users/${email}?token=${token}`;
     return this.http.post(url, {}, this.options);
+  }
+
+  updateMileage(user: User, mileage: number) {
+    const url =  `https://httpstat.us/404`;
+    return this.http.get(url, {});
   }
 
   updatePassword(user: User, userToken: string) {

@@ -1,4 +1,3 @@
-
 import { ContactComponent } from './routes/contact/contact.component';
 import { ClaimsComponent } from './routes/claims/claims.component';
 import { InformationComponent } from './routes/information/information.component';
@@ -24,10 +23,11 @@ import { WelcomeComponent }           from './routes/welcome/welcome.component';
 import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }        from './routes/wallet-card/wallet-card.component';
 import { PolicyDetailsComponent }     from './routes/my-insurance/policy-details/policy-details.component';
-import { ProfileSettingsComponent } from './routes/profile-settings/profile-settings.component';
-import { ProfileMainComponent } from './components/profile/profile-main/profile-main.component';
+import { ProfileSettingsComponent }   from './routes/profile-settings/profile-settings.component';
+import { ProfileMainComponent }       from './components/profile/profile-main/profile-main.component';
 import { BillingDetailsComponent }    from './routes/my-insurance/billing-details/billing-details.component';
 import { DocumentDetailsComponent }   from './routes/my-insurance/document-details/document-details.component';
+import { AddressChangeComponent }     from './routes/profile-settings/address-change/address-change.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -75,14 +75,14 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileSettingsComponent, children: [
     { path: '', component: ProfileMainComponent },
     { path: 'change-phone', component: ProfilePhoneComponent},
-    { path: 'edit-account', component: ProfileCheckingAccountComponent}
+    { path: 'edit-account', component: ProfileCheckingAccountComponent},
+    { path: 'change-address/:address-type', component: AddressChangeComponent}
   ] },
   { path: 'billing', component: DashboardComponent },
   { path: 'claims', component: ClaimsComponent },
   { path: 'information', component: InformationComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'profile', component: ProfileSettingsComponent },
-  { path: 'policy/addpolicy', component: DashboardComponent },
+  { path: 'policy/add', component: DashboardComponent },
   { path: 'offline', component: DashboardComponent },
   { path: '**', redirectTo: '' } // otherwise redirect to home
 ];

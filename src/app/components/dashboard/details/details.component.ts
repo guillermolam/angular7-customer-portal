@@ -8,6 +8,8 @@ import { AuthenticationService }    from '../../../_services/_iam/authentication
 import { User }                     from '../../../_models/user';
 import { UserService }              from './../../../_services/user.service';
 import { TestingDataService }       from './../../../_helpers/testing-data.service';
+import { WalletCardService }        from './../../../_services/_iam/wallet-card.service';
+import { UserInfoService }          from '../../../_services/_userinformation/user-info.service';
 
 @Component({
   selector: 'app-policy-details-screen',
@@ -17,9 +19,12 @@ import { TestingDataService }       from './../../../_helpers/testing-data.servi
 export class DetailsComponent implements OnInit {
   alerton;
   input:                    object;
+  loading:                  boolean = false;
   legalCheckbox:            boolean = false;
   policyId:                 number;
   user:                     User;
+  displayIndex:             number = 0;
+  showMe:                   boolean = true;
   updateMileage =           new FormGroup({
     updateMileageInput: new FormControl('')
   });
@@ -31,10 +36,25 @@ export class DetailsComponent implements OnInit {
     private authService:    AuthenticationService,
     private userService:    UserService,
     private sanitizer:      DomSanitizer,
-
+    private walletCardService: WalletCardService,
+    private userInformation: UserInfoService,
     private testingData:    TestingDataService
   ) {
    }
+
+  downloadWalletCard(email, policyid) {
+    this.walletCardService
+      .generatePkPass(email)
+      .subscribe(
+        (success) => {
+          console.log("Successful download of wallet card");
+        },
+        (err) => {
+          console.log("Err download of wallet card", err);
+        }
+      )
+    ;
+  }
 
   getAddress(a: string[]): SafeUrl {
     let address,
@@ -54,27 +74,41 @@ export class DetailsComponent implements OnInit {
     this.legalCheckbox = e.target.checked ? true : false;
   }
 
-  onSubmit(i): void {
+  onSubmit(i, e): void {
     if (this.legalCheckbox) {
       console.log('click the update form', this.updateMileage.value);
-      this.alerton = true;
-      this.alertService.success(`You've updated your ODOMETER`);
-      setTimeout(() => {
-        this.alerton = false;
-        this.alertService.clear();
-      }, 2000); //5000
+      this.authService
+        .updateMileage(this.user, i)
+        .subscribe(
+          (success) => {
+            this.showHide(i);
+            setTimeout(() => {
+              this.showHide(i);
+            }, 2000); //5000
+          },
+          (err) => {
+            this.showHide(i);
+            setTimeout(() => {
+              this.showHide(i);
+            }, 2000); //5000
+          }
+        )
+      ;
     }
   }
 
-  setAlert(i, bool): boolean {
-    return bool;
+  showHide(i): void {
+    console.log('before', this.displayIndex, i, this.showMe);
+    this.displayIndex = i;
+    this.showMe = !this.showMe;
+    console.log('after', this.displayIndex, i, this.showMe);
   }
-
 
   ngOnInit() {
     
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
     });
@@ -85,26 +119,34 @@ export class DetailsComponent implements OnInit {
           this.user = user ;
         }
         else {
+          this.loading = true;
           if (localStorage.getItem('access_token')) {
-            this.authService
-            .verifyUser(this.user)
-            .subscribe(
-              (info: any) => {
-                console.log(info);
-                this.user = {
-                  firstName: info[0].insurer['firstName'],
-                  middleName: info[0].insurer['middleName'],
-                  lastName: info[0].insurer['lastName'],
-                  policyDetails: info
-                };
-                this.userService.updateUser(this.user);
-              },
-              (err) => {
-                console.log('login success but verifyuser err', err);
-              }
-            );
+            // If a user comes straight to the page turn on loading
+            this.loading = true;
+            // That way we can gather the information
+            this.userInformation
+              .policyByEmail(this.user.email)
+              .subscribe(
+                (info: any) => {
+                  console.log(info);
+                  this.user = {
+                    firstName: info[0].insurer['firstName'],
+                    middleName: info[0].insurer['middleName'],
+                    lastName: info[0].insurer['lastName'],
+                    policyDetails: info
+                  };
+                  this.userService.updateUser(this.user);
+                  this.loading = false;
+                },
+                (err) => {
+                  this.loading = false;
+                  console.log('login success but verifyuser err', err);
+                }
+              )
+            ;
           }
           else {
+            this.loading = false;
             this.user = this.testingData.testDatafunction();
             this.userService.updateUser(this.user);
           }

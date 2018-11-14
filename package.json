@@ -55,7 +55,8 @@
     "sonarqube-scanner": "2.1.2",
     "tslint-sonarts": "^1.8.0",
     "underscore": "^1.9.1",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "popper.js": "^1.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.10.4",
