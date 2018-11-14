@@ -17,7 +17,7 @@ describe('EditPasswordService', () => {
 
 
 
-fit('should return the password textbox', ()=>{
+it('should return the password textbox', ()=>{
   const inputs = new TextBox({
     additionalClasses: 'form-control',
     inputType: 'password',

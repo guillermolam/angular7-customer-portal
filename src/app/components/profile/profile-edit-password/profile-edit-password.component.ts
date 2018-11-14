@@ -1,13 +1,15 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { CreateNewPasswordFormService } from '../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
 import { User } from 'mapfre-design-library';
 import { UserService } from '../../../_services/user.service';
+import { EditPasswordService } from '../../../_services/forms/profile-settings/edit-password.service';
+import { CreateNewPasswordFormService } from '../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
 
 @Component({
   selector: 'app-profile-edit-password',
   templateUrl: './profile-edit-password.component.html',
-  styleUrls: ['./profile-edit-password.component.scss']
+  styleUrls: ['./profile-edit-password.component.scss'],
+  providers: [EditPasswordService]
 })
 export class ProfileEditPasswordComponent implements OnInit {
 
@@ -18,9 +20,10 @@ export class ProfileEditPasswordComponent implements OnInit {
   constructor(
     private userService : UserService,
     private activatedRoute: ActivatedRoute,
-    passwordService:                   CreateNewPasswordFormService
+    private passwordService:                   EditPasswordService,
+    private createPasswordService:             CreateNewPasswordFormService,
   ) { 
-    this.changePassword = passwordService.getInputs();
+    
   }
 
   ngOnInit() {
@@ -29,6 +32,12 @@ export class ProfileEditPasswordComponent implements OnInit {
         this.user = user;
       }
     );
+    
     this.whereInTheProcess = this.activatedRoute.snapshot.routeConfig.path;
+    if(this.whereInTheProcess==='enter-password'){
+      this.changePassword = this.passwordService.getInputs('changePassword');
+    }else {
+      this.changePassword = this.createPasswordService.getInputs();
+    }
   }
 }

@@ -2,9 +2,7 @@ import { Injectable }   from '@angular/core';
 import { FormBase, TextBox }   from 'mapfre-design-library';
 import { EmailPasswordFormService } from '../email-password-form/email-password-form.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EditPasswordService {
 
   constructor(private passwordService: EmailPasswordFormService){
