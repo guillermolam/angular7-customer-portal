@@ -45,11 +45,11 @@ pipeline{
             }
 			steps{
         		ansibleTower(
-								towerServer: 'Ansible Tower',
+								towerServer: 'ANSIBLE_TOWER',
 								templateType: 'job',
-								jobTemplate: 'deploy_customer_portal_ui',
+								jobTemplate: 'deploy_customer_portal_ui_on_prem',
 								importTowerLogs: true,
-								inventory: 'dev_boxes',
+								inventory: 'ON_PREM_DEVELOPMENT',
 								jobTags: '',
 								skipJobTags: '',
 								limit: '',
@@ -98,13 +98,12 @@ ports:
                 BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
             }
 			steps{
-				"PUBLISH API DOCUMENTATION" : {
 						sh "cp ./lighthouse*.html ./api-documentation/customer-portal-ui"
 						sh "git -C './api-documentation' add ."
 						sh "git -C './api-documentation' commit -m 'Publishing new API Documentation'"
 						sh 'git -C "./api-documentation" pull https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
 						sh 'git -C "./api-documentation" push https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
-				}
+				
 			}
 		}
 
