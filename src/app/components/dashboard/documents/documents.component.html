@@ -98,14 +98,7 @@
                       <td class="col col-view"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">view <i class="fas fa-angle-right"></i> </td>
                   </tr>
                 </tbody>
-                <tfoot class="grey lighten-5 w-100 footer" [class.hide]="documents.length <= 10">
-                  <tr>
-                    <td colspan="4" class="footer-page">
-                      <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
-                      </mdb-table-pagination>
-                    </td>
-                  </tr>
-                </tfoot>
+                
               </table>
             </div>
           </div>
@@ -115,6 +108,18 @@
       <ng-template [ngIf]="showNoDocuments && !loading">
         <section class="row documents-content no-documents"> 
           <div class="col">
+              <div class="row mapfre-card-download-button ">
+                  <div class="col col-left">
+                    <img src="/assets/img/images/mapfre-card-logo-color.png" width="177"> 
+                  </div>
+                  <div class="col col-right">
+                    <mapfre-button
+                      [additionalClasses]="'ghost primary xsmall full'"
+                      (click)="downloadWalletCard(user.email, policyId)">
+                        {{'DOWNLOAD' | translate}}
+                    </mapfre-button>
+                  </div>
+                </div>
             <div>
               <img src="./assets/img/images/no-documents.png">
               <h1 class="title"> No Documents available yet </h1>
