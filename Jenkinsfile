@@ -28,7 +28,7 @@ pipeline{
 
 		stage("BUILD & PUBLISH IMAGE"){
 			environment {
-				DOCKER_NEXUS_CREDS = credentials('ansible_tower')
+				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
 			steps{
 					sh 'docker build -t ${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER} .'
@@ -109,7 +109,7 @@ ports:
 
 		stage("PROD - BUILD & PUBLISH IMAGE"){
 			environment {
-				DOCKER_NEXUS_CREDS = credentials('ansible_tower')
+				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
 			steps{
 					sh "npm run build"
