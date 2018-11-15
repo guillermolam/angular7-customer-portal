@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
-ENV nginx_file_path server/nginx.conf
-COPY $nginx_file_path /etc/nginx/nginx.conf
+ENV NGINX_FILE_PATH="server/nginx.conf"
+COPY $NGINX_FILE_PATH /etc/nginx/nginx.conf
 COPY certs/customerportal.crt /etc/ssl/
 COPY certs/customerportal.key /etc/ssl
 
