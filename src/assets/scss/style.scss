@@ -1108,5 +1108,84 @@
   }
 }
 
+// ---- this will be placed in the design library
+// ---- and be used in the mapfre card
+.single-card-column {
+  max-width: 446px;
+  margin: auto;
+
+  .btn.large {
+    max-width: 240px;
+    margin: auto;
+
+    @media (max-width: 529px) {
+      max-width: 100%;
+    }
+  }
+
+  .first-input {
+    @media (max-width: 529px) {
+      width: 100%;
+      float: none;
+    }
+  }
+  
+  .custom-radio {
+    @media (max-width: 529px) {
+
+    }
+  }
+
+  .custom-control-inline {
+    width: 80px;
+  }
+
+  .custom-control {
+    padding-left: 10px;
+  }
+
+  // ---- radio buttons these will need to be placed in the design- library
+
+  input[type="radio"] {
+    &:before {
+      top: -1px;
+      left: -12px;
+    }
+
+    &:after {
+      left: -10px;
+      top: 1px;
+    }
+  }
+
+  .custom-control-label {
+    padding-left: 8px;
+  }
+
+}
+
+  // ---- alert updates these will need to be placed in the design- library
+.mapfre.alert {
+  .a-cont {
+    display: table;
+  }
+
+  .col {
+    padding: 0;
+  }
+
+  .icon {
+    padding-right: 0;
+    padding-left: 8px;
+    width: 40px;
+  }
+
+  .m {
+    display: table-cell;
+    padding-left: 8px;
+    vertical-align: middle;
+  }
+}
+
 
 

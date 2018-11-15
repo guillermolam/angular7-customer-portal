@@ -23,8 +23,7 @@ export class DetailsComponent implements OnInit {
   legalCheckbox:            boolean = false;
   policyId:                 number;
   user:                     User;
-  displayIndex:             number = 0;
-  showMe:                   boolean = true;
+  showMessage:              boolean = false;
   updateMileage =           new FormGroup({
     updateMileageInput: new FormControl('')
   });
@@ -77,31 +76,25 @@ export class DetailsComponent implements OnInit {
   onSubmit(i, e): void {
     if (this.legalCheckbox) {
       console.log('click the update form', this.updateMileage.value);
+
       this.authService
         .updateMileage(this.user, i)
         .subscribe(
           (success) => {
-            this.showHide(i);
+            this.showMessage = true;
             setTimeout(() => {
-              this.showHide(i);
+              this.showMessage = true;
             }, 2000); //5000
           },
           (err) => {
-            this.showHide(i);
+            this.showMessage = true;
             setTimeout(() => {
-              this.showHide(i);
+              this.showMessage = false;
             }, 2000); //5000
           }
         )
       ;
     }
-  }
-
-  showHide(i): void {
-    console.log('before', this.displayIndex, i, this.showMe);
-    this.displayIndex = i;
-    this.showMe = !this.showMe;
-    console.log('after', this.displayIndex, i, this.showMe);
   }
 
   ngOnInit() {

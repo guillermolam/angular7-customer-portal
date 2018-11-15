@@ -12,7 +12,7 @@
         <div class="type-title">
             <h1 class="title">
                 {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
-              <small><span class="green-color">{{policy?.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy?.expDate | date:'shortDate' }}
+              <small><span class="green-color">{{policy?.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy?.expDate | customDateFormat }}
               </span></small>
             </h1>
           </div>
@@ -51,32 +51,7 @@
         <section class="row documents-content"> 
           <div class="col">
             <div>
-              <div class="row margin-bottom mb16">
-                <div class="filters col">
-                  <h1 class="title">{{filterName}}</h1>
-                </div>
-                <div class="col">
-                    <div class="dropdown" mdbDropdown>
-                        <button mdbDropdownToggle type="button" mdbBtn color="primary" class="dropdown-toggle waves-light"
-                          mdbWavesEffect>
-                          Dropdown
-                        </button>
-                      
-                        <div class="dropdown-menu">
-                          <h6 class="dropdown-header">Dropdown header</h6>
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
-                  <select (change)="onSelectFilter($event.target.value)" class="browser-default custom-select">
-                    <option [value]="'all-doc'">All Documents</option>
-                    <option [value]="'renew'">Renewals</option>
-                    <option [value]="'end'">Endorsments</option>
-                    <option [value]="'misc'">Miscellaneous</option>
-                  </select>
-                </div>
-              </div>
+              
               <table mdbTable class="z-depth-1 documents-table">
                 <thead>
                   <tr class="download-mapfrecard">
@@ -96,32 +71,40 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody> 
                   <tr class="row row-content" 
                     *ngFor="let doc of documents; let i = index" 
-                    (click)="asALink(doc.documentLocation)" 
-                    [class.hide]="filterType != doc.documentType && filterType != 'all-docs'">
-                    <ng-container *ngIf="doc.policyid == policyId">
+                    (click)="asALink(doc.documentId)" >
                       <td class="col  col-type" *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">
-                        <div *ngIf="doc.documentType == 'renewal' " class="circle-with-type">R</div>
-                        <div *ngIf="doc.documentType == 'misc' " class="circle-with-type">M</div>
-                        <div *ngIf="doc.documentType == 'endorsments' " class="circle-with-type">E</div>
+                        <div *ngIf="doc.type == 'HONBEND' " class="circle-with-type"> E </div>
+                        <div *ngIf="doc.type == 'HONB-END' " class="circle-with-type"> E </div>
+                        <div *ngIf="doc.type == 'NEW' " class="circle-with-type"> N </div>
+                        <div *ngIf="doc.type == 'HOREN' " class="circle-with-type"> R </div>
+                        <div *ngIf="doc.type == 'ENDORSE' " class="circle-with-type"> E </div>
+                        <div *ngIf="doc.type == 'INSPECT' " class="circle-with-type"> I </div>
+                        <div *ngIf="doc.type == 'RENEWAL' " class="circle-with-type"> R </div>
+                        <div *ngIf="doc.type == 'MISC' " class="circle-with-type"> M </div>
+                        <div *ngIf="doc.type == 'OTAREINI' " class="circle-with-type"> R </div>
+                        <div *ngIf="doc.type == 'OTASNCDI' " class="circle-with-type"> C </div>
+                        <div *ngIf="doc.type == 'OTASNCDM' " class="circle-with-type"> C </div>
+                        <div *ngIf="doc.type == 'OTAREINM' " class="circle-with-type"> R </div>
+                        <div *ngIf="doc.type == 'URQ' " class="circle-with-type"> U </div>
+                        <div *ngIf="doc.type == 'WMMISC' " class="circle-with-type"> M </div>
+                        <div *ngIf="doc.type == 'INVOICE' " class="circle-with-type"> I </div>
+                        <div *ngIf="doc.type == 'Unknown' " class="circle-with-type"> ? </div>
                       </td>
-                      <td class="col col-name"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.documentName}}</td>
-                      <td class="col col-date"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.documentDate | date}}</td>
+                      <td class="col col-name"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.description}}</td>
+                      <td class="col col-date"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.transactionDate | date}}</td>
                       <td class="col col-view"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">view <i class="fas fa-angle-right"></i> </td>
-                    </ng-container>
                   </tr>
                 </tbody>
-                <tfoot class="grey lighten-5 w-100">
-              
+                <tfoot class="grey lighten-5 w-100 footer" [class.hide]="documents.length <= 10">
                   <tr>
                     <td colspan="4" class="footer-page">
                       <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
                       </mdb-table-pagination>
                     </td>
                   </tr>
-              
                 </tfoot>
               </table>
             </div>

@@ -1,3 +1,4 @@
+import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -246,5 +247,133 @@ export class TestingDataService {
       ],
       
     };
+  }
+
+  testDataDocuments(policyID): any {
+    let object;
+    if (policyID == 'abc123' ) {
+      object = [
+        {
+          policyEffectiveYear: '2001',
+          documentId: 'bac2ab56-55f3-45a7-a1a0-553652847bb7',
+          type: 'HONBEND',
+          transactionDate: '02/20/2002',
+          description: 'Homeowner NB/Endorse DEC (SDSHONBAM1)'
+        },
+        {
+          policyEffectiveYear: '2001',
+          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+          type: 'ENDORSE',
+          transactionDate: '02/20/2002',
+          description: 'Endorsement Documents'
+        },
+        {
+          policyEffectiveYear: '2001',
+          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+          type: 'ENDORSE',
+          transactionDate: '02/20/2002',
+          description: 'Endorsement Documents'
+      },
+      {
+        policyEffectiveYear: '2001',
+        documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+        type: 'ENDORSE',
+        transactionDate: '02/20/2002',
+        description: 'Endorsement Documents'
+      }
+      ];
+    }
+    else if ( policyID == 'QJN952') {
+      object = [
+        {
+          policyEffectiveYear: '2001',
+          documentId: 'bac2ab56-55f3-45a7-a1a0-553652847bb7',
+          type: 'HONBEND',
+          transactionDate: '02/20/2002',
+          description: 'Homeowner NB/Endorse DEC (SDSHONBAM1)'
+        },
+        {
+          policyEffectiveYear: '2001',
+          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+          type: 'ENDORSE',
+          transactionDate: '02/20/2002',
+          description: 'Endorsement Documents'
+        },
+        {
+          policyEffectiveYear: '2001',
+          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+          type: 'ENDORSE',
+          transactionDate: '02/20/2002',
+          description: 'Endorsement Documents'
+          },
+          {
+            policyEffectiveYear: '2001',
+            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+            type: 'ENDORSE',
+            transactionDate: '02/20/2002',
+            description: 'Endorsement Documents'
+          },
+          {
+            policyEffectiveYear: '2001',
+            documentId: 'bac2ab56-55f3-45a7-a1a0-553652847bb7',
+            type: 'HONBEND',
+            transactionDate: '02/20/2002',
+            description: 'Homeowner NB/Endorse DEC (SDSHONBAM1)'
+          },
+          {
+            policyEffectiveYear: '2001',
+            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+            type: 'ENDORSE',
+            transactionDate: '02/20/2002',
+            description: 'Endorsement Documents'
+          },
+          {
+            policyEffectiveYear: '2001',
+            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+            type: 'ENDORSE',
+            transactionDate: '02/20/2002',
+            description: 'Endorsement Documents'
+          },
+          {
+            policyEffectiveYear: '2001',
+            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+            type: 'ENDORSE',
+            transactionDate: '02/20/2002',
+            description: 'Endorsement Documents'
+          },
+          {
+            policyEffectiveYear: '2001',
+            documentId: 'bac2ab56-55f3-45a7-a1a0-553652847bb7',
+            type: 'HONBEND',
+            transactionDate: '02/20/2002',
+            description: 'Homeowner NB/Endorse DEC (SDSHONBAM1)'
+          },
+          {
+            policyEffectiveYear: '2001',
+            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+            type: 'ENDORSE',
+            transactionDate: '02/20/2002',
+            description: 'Endorsement Documents'
+          },
+          {
+            policyEffectiveYear: '2001',
+            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+            type: 'ENDORSE',
+            transactionDate: '02/20/2002',
+            description: 'Endorsement Documents'
+        },
+        {
+          policyEffectiveYear: '2001',
+          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
+          type: 'ENDORSE',
+          transactionDate: '02/20/2002',
+          description: 'Endorsement Documents'
+        }
+      ];
+    }
+    else {
+      object = false;
+    }
+    return object;
   }
 }

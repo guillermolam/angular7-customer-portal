@@ -23,7 +23,7 @@ export class DocumentsComponent implements OnInit, AfterViewInit  {
 
   firstItemIndex;
   lastItemIndex;
-  documents:                any;
+  documents:                any = [];
   filterType:               string = 'all-docs';
   filterName:               string = 'All Documents';
   loading:                  boolean = false;
@@ -106,8 +106,9 @@ export class DocumentsComponent implements OnInit, AfterViewInit  {
         }
       }
     );
-
-    this.userInformation
+    
+    /*
+      this.userInformation
       .getUserDocuments(parm, this.user, localStorage.getItem('access-token'))
       .subscribe(
         (success) => {
@@ -120,7 +121,8 @@ export class DocumentsComponent implements OnInit, AfterViewInit  {
           this.showNoDocuments = true;
         }
       )
-    ;
+    ;*/
+
   }
 
   onSelectFilter(filterName): void {
@@ -177,9 +179,20 @@ export class DocumentsComponent implements OnInit, AfterViewInit  {
 
     this.getUserData(this.policyId);
 
-    this.tableService.setDataSource(this.user.documents);
-    this.user.documents = this.tableService.getDataSource();
-    this.previous = this.tableService.getDataSource();
+    if ( this.testingData.testDataDocuments(this.policyId) ) {
+      this.documents = this.testingData.testDataDocuments(this.policyId);
+      this.loading = false;
+      this.showDocuments = true;
+      this.tableService.setDataSource(this.documents);
+      this.documents = this.tableService.getDataSource();
+      this.previous = this.tableService.getDataSource();
+      console.log(this.documents)
+    }
+    else {
+      this.loading = false;
+      this.showNoDocuments = true;
+    }
+
   }
 
 }

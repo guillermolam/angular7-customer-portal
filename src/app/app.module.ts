@@ -83,7 +83,7 @@ import { ChangePhoneComponent } from './components/forms/dynamic-forms/profile-s
 import { ProfileCheckingAccountComponent } from './components/profile/profile-checking-account/profile-checking-account.component';
 import { CustomDateFormatPipe } from './_helpers/_pipes/custom-date-format.pipe';
 import { AddressChangeComponent } from './routes/profile-settings/address-change/address-change.component';
-import { ChangeAddressComponent } from './components/forms/dynamic-forms/change-address/change-address.component';
+import { ChangeAddressComponent } from './components/forms/dynamic-forms/profile-setings-forms/change-address/change-address.component';
 
 if (environment.production) {
   enableProdMode();

@@ -1,16 +1,18 @@
 .documents-table {
-  tr:not(.download-mapfrecard){
-    color: #006580;
+  tbody {
+    tr {
+      color: #006580;
 
-    &:hover {
-      cursor: pointer;
-      background: #F7F7F7;
-    }
+      &:hover {
+        cursor: pointer;
+        background: #F7F7F7;
+      }
 
-    &.row {
-      margin: 0;
+      &.row {
+        margin: 0;
+      }
     }
-  } 
+  }
   
   &.table thead th {
     border: thin solid #ccc;
