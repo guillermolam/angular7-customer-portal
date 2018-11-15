@@ -41,7 +41,7 @@ pipeline{
 
 		stage("DEPLOY TO DEV"){
 			environment {
-				DOCKER_NEXUS_CREDS = credentials('ansible_tower')
+				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
 			steps{
         		ansibleTower(
@@ -123,7 +123,7 @@ ports:
 
 		stage("PROD"){
 			environment {
-				DOCKER_NEXUS_CREDS = credentials('ansible_tower')
+				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
 			steps{
         		ansibleTower(
