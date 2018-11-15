@@ -86,7 +86,7 @@ ports:
 
 		stage("DOCUMENTATION"){
 			environment {
-                BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
+                BITBUCKET_COMMON_CREDS = credentials('bitbucket')
             }
 			steps{
 						sh "cp ./lighthouse*.html ../api-documentation/customer-portal-ui"
