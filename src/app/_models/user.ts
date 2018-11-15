@@ -10,4 +10,5 @@ export interface User {
   password?:                    string;
   policyDetails?:               PolicyDetails[];
   temporaryPassword?:           string;
+  documents?:                   any; //Just for the moment
 }

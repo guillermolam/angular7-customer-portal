@@ -862,12 +862,22 @@
     max-width: 63px;
     position: relative;
 
+    @media (max-width: 575px) {
+      max-width: 32px;
+    }
+
     .car,
     .house {
       height: 64px;
       width: 90px;
       background-size: auto 64px;
       background-repeat: no-repeat;
+
+      @media (max-width: 575px) {
+        height: 32px;
+        width: 45px;
+        background-size: auto 32px;
+      }
     }
   }
 
@@ -884,9 +894,38 @@
     font-size: 24px;
     line-height: 40px;
 
+    @media (max-width: 575px) {
+      font-size: 14px;
+    }
+
     small {
       font-size: 16px;
       padding-left: 16px;
+
+      @media (max-width: 575px) {
+        font-size: 12px;
+        padding-left: 8px;
+      }
+    }
+  }
+
+  .mapfre-card-download-button {
+    .col-right {
+      @media (max-width: 394px) {
+        max-width: 122px;
+        padding-left: 0;
+      }
+    }
+
+    .btn.mapfre.xsmall {
+      // This maybe moved to the library.
+      // Don't know if these reponsive actions should be on all xsmall buttons
+
+      @media (max-width: 394px) {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 12px;
+      }
     }
   }
 
@@ -1017,7 +1056,13 @@
 }
 
 .hide {
+  @include transition(1s);
   display: none;
+}
+
+.show {
+  @include transition(1s);
+  display: block;
 }
 
 .no-documents .col {
@@ -1062,3 +1107,85 @@
 
   }
 }
+
+// ---- this will be placed in the design library
+// ---- and be used in the mapfre card
+.single-card-column {
+  max-width: 446px;
+  margin: auto;
+
+  .btn.large {
+    max-width: 240px;
+    margin: auto;
+
+    @media (max-width: 529px) {
+      max-width: 100%;
+    }
+  }
+
+  .first-input {
+    @media (max-width: 529px) {
+      width: 100%;
+      float: none;
+    }
+  }
+  
+  .custom-radio {
+    @media (max-width: 529px) {
+
+    }
+  }
+
+  .custom-control-inline {
+    width: 80px;
+  }
+
+  .custom-control {
+    padding-left: 10px;
+  }
+
+  // ---- radio buttons these will need to be placed in the design- library
+
+  input[type="radio"] {
+    &:before {
+      top: -1px;
+      left: -12px;
+    }
+
+    &:after {
+      left: -10px;
+      top: 1px;
+    }
+  }
+
+  .custom-control-label {
+    padding-left: 8px;
+  }
+
+}
+
+  // ---- alert updates these will need to be placed in the design- library
+.mapfre.alert {
+  .a-cont {
+    display: table;
+  }
+
+  .col {
+    padding: 0;
+  }
+
+  .icon {
+    padding-right: 0;
+    padding-left: 8px;
+    width: 40px;
+  }
+
+  .m {
+    display: table-cell;
+    padding-left: 8px;
+    vertical-align: middle;
+  }
+}
+
+
+

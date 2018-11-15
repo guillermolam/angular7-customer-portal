@@ -1,0 +1,68 @@
+<ng-container *ngIf="addressType == 'mailing'">
+
+<form 
+  class="mailing"
+  name="changeAddressForm"  
+  [formGroup]="changeAddressForm" 
+  (ngSubmit)="changeAddressForm.valid && changeAddress()">
+  
+  <div class="margin-bottom mb24">
+    <div *ngFor="let input of inputs; let index = index" class="input" [class.first-input]="index == 0">
+      <mapfre-validation [input]="input" [form]="changeAddressForm"></mapfre-validation>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'basic primary large'"
+        [disabledValue]="changeAddressForm.valid" 
+        [inputType]="'submit'"
+        [translateValue]="'SAVE_NEW_ADDRESS' | translate"
+      ></mapfre-button>
+    </div>
+  </div>
+</form>
+</ng-container>
+<ng-container *ngIf="addressType == 'residential'">
+<form
+  class="residential"
+  name="changeAddressForm" 
+  [formGroup]="changeAddressForm" 
+   (ngSubmit)="changeAddressForm.valid && changeAddress()">
+  
+  <div class="margin-bottom mb8">
+      <div *ngFor="let input of inputs; let index = index" class="input" [class.first-input]="index == 0">
+      <mapfre-validation [input]="input" [form]="changeAddressForm"></mapfre-validation>
+    </div>
+  </div>
+  <div class="row margin-bottom mb8">
+    <div class="col">
+      <div class="margin-bottom mb8">{{ 'RESIDENTIAL_GARAGE' | translate }}</div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="" id="residential-car-yes" name="residential-car-radio" mdbInputDirective>
+        <label class="custom-control-label" for="residential-car-yes">Yes</label>
+      </div> 
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="" id="residential-car-no" name="residential-car-radio" mdbInputDirective>
+        <label class="custom-control-label" for="residential-car-no">No</label>
+      </div>
+    </div>
+  </div>
+  <div class="margin-bottom mb24">
+    <mapfre-alert nonDynamic="true">
+        This change will be referred for further review.
+    </mapfre-alert>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'basic primary large '"
+        [disabledValue]="changeAddressForm.valid" 
+        [inputType]="'submit'"
+        [translateValue]="'SAVE_NEW_ADDRESS' | translate"
+      ></mapfre-button>
+    </div>
+  </div>
+</form>
+</ng-container>

@@ -1,6 +1,6 @@
 // --- Design Library --- //
-import { MDBBootstrapModule }                   from 'angular-bootstrap-md';
 import { MapfreDesignLibraryModule }            from 'mapfre-design-library';
+import { MDBBootstrapModule }                   from 'angular-bootstrap-md';
 // import { ComponentsModule }                     from 'mapfre-framework';
 // ----- Packages ---- //
 import { BrowserModule }                        from '@angular/platform-browser';
@@ -81,6 +81,9 @@ import { ClaimsComponent } from './routes/claims/claims.component';
 import { ContactComponent } from './routes/contact/contact.component';
 import { ChangePhoneComponent } from './components/forms/dynamic-forms/profile-settings-forms/change-phone/change-phone.component';
 import { ProfileCheckingAccountComponent } from './components/profile/profile-checking-account/profile-checking-account.component';
+import { CustomDateFormatPipe } from './_helpers/_pipes/custom-date-format.pipe';
+import { AddressChangeComponent } from './routes/profile-settings/address-change/address-change.component';
+import { ChangeAddressComponent } from './components/forms/dynamic-forms/profile-setings-forms/change-address/change-address.component';
 import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
 import { ChangePasswordFormComponent } from './components/forms/dynamic-forms/change-password-form/change-password-form.component';
 import { ProfileEditEmailComponent } from './components/profile/profile-edit-email/profile-edit-email.component';
@@ -148,6 +151,9 @@ export function tokenGetter() {
     ContactComponent,
     ChangePhoneComponent,
     ProfileCheckingAccountComponent,
+    CustomDateFormatPipe,
+    AddressChangeComponent,
+    ChangeAddressComponent,
     ProfileEditPasswordComponent,
     ChangePasswordFormComponent,
     ProfileEditEmailComponent,
