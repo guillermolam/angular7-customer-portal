@@ -8,7 +8,7 @@ import { Constants }            from './../../_models/constants';
 })
 export class CustomDateFormatPipe extends DatePipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
+  transform(value: any): any {
     return super.transform(value, Constants.DATE_SPECIAL_FMT);
   }
 
