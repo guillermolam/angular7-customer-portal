@@ -36,8 +36,10 @@ export class ProfileEditPasswordComponent implements OnInit {
     this.whereInTheProcess = this.activatedRoute.snapshot.routeConfig.path;
     if(this.whereInTheProcess==='enter-password'){
       this.changePassword = this.passwordService.getInputs('changePassword');
-    }else {
+    }else if (this.whereInTheProcess==='edit-password'){
       this.changePassword = this.createPasswordService.getInputs();
+    }else if (this.whereInTheProcess==='edit-email'){
+      
     }
   }
 }

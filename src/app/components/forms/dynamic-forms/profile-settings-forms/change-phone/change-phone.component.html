@@ -1,0 +1,24 @@
+<form 
+  [formGroup]="phoneAccountForm" 
+  name="phoneAccountForm"  
+  (ngSubmit)="phoneAccountForm.valid">
+  
+  <div class="row">
+      <div class="col">
+        <div *ngFor="let input of inputs" class="inputs">
+          <mapfre-validation [input]="input" [form]="phoneAccountForm"></mapfre-validation>
+        </div>
+      </div>
+    </div>
+    <section class="row">
+        <div class="col">
+          <mapfre-button
+            [additionalClasses]="'basic primary large'"
+            [disabledValue]="phoneAccountForm.valid" 
+            [inputType]="'submit'"
+            [translateValue]="'CONFIRM' | translate"
+          ></mapfre-button>
+        </div>
+      </section>
+
+  </form>

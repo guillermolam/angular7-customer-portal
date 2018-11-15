@@ -1,3 +1,4 @@
+import { ProfileEditEmailComponent } from './components/profile/profile-edit-email/profile-edit-email.component';
 
 import { ContactComponent } from './routes/contact/contact.component';
 import { ClaimsComponent } from './routes/claims/claims.component';
@@ -78,6 +79,7 @@ const appRoutes: Routes = [
     { path: 'change-phone', component: ProfilePhoneComponent},
     { path: 'edit-account', component: ProfileCheckingAccountComponent},
     { path: 'enter-password', component: ProfileEditPasswordComponent },
+    { path: 'edit-email', component: ProfileEditEmailComponent },
     { path: 'edit-password' , component: ProfileEditPasswordComponent }
   ] },
   { path: 'billing', component: DashboardComponent },
