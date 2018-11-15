@@ -130,7 +130,7 @@ ports:
 								templateType: 'job',
 								jobTemplate: 'deploy_customer_portal_ui_to_aws',
 								importTowerLogs: true,
-								inventory: 'Front-End-AWS',
+								inventory: 'AWS_DEVELOPMENT',
 								jobTags: '',
 								skipJobTags: '',
 								limit: '',
