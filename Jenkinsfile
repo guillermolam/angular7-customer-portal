@@ -126,7 +126,7 @@ ports:
             }
 			steps{
         		ansibleTower(
-								towerServer: 'Ansible Tower',
+								towerServer: 'ANSIBLE_TOWER',
 								templateType: 'job',
 								jobTemplate: 'deploy_customer_portal_ui_to_aws',
 								importTowerLogs: true,
