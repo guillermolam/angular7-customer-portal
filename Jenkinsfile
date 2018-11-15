@@ -65,7 +65,7 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}-dev"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
-nginx_file_path: "server/nginx.dev.conf"
+nginx_file_path: "src/server/nginx.dev.conf"
 ports: 
  - "80:80"
  - "443:443"'''
@@ -147,7 +147,7 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
-nginx_file_path: "server/nginx.conf"
+nginx_file_path: "src/server/nginx.conf"
 ports: 
  - "80:80"
  - "443:443"'''
