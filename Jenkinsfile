@@ -1,21 +1,10 @@
 pipeline{
 	agent any
 	  stages {
-
-		   // cloning code into the container
-        stage('SETUP'){
-         environment {
-                BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
-            }
-            //removing old code if there is any, initializing new local repo and cloning into it.
-            steps{
-                sh 'rm -rf customer-portal && git init && git clone https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/customer-portal.git'
-				sh "npm install"
-            }
-        }
-		 
+ 
 		stage("LINTING & BUILD") {
 			steps{
+				sh "npm install"
               	// removing .spec.ts from linting
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
 			//	sh "npm run cibuild_test"
@@ -33,7 +22,6 @@ pipeline{
 
 		stage('STATIC ANALYSIS'){
 		    steps{
-				sh "cp -r ./coverage/* ./customer-portal/reports/coverage"
 		        sh "npm run sonar-run"
 		    }
 		}
@@ -57,11 +45,11 @@ pipeline{
             }
 			steps{
         		ansibleTower(
-								towerServer: 'Ansible Tower',
+								towerServer: 'ANSIBLE_TOWER',
 								templateType: 'job',
-								jobTemplate: 'deploy_customer_portal_ui',
+								jobTemplate: 'deploy_customer_portal_ui_on_prem',
 								importTowerLogs: true,
-								inventory: 'dev_boxes',
+								inventory: 'ON_PREM_DEVELOPMENT',
 								jobTags: '',
 								skipJobTags: '',
 								limit: '',
@@ -77,6 +65,7 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}-dev"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
+nginx_file_path: "server/nginx.dev.conf"
 ports: 
  - "80:80"
  - "443:443"'''
@@ -92,38 +81,21 @@ ports:
         sh "./node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report-3g-mobile.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu' --throttling.throughputKbps=2000"
         sh "./node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report-4g-mobile.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu' --throttling.throughputKbps=5000"
         sh "./node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report-fast-4g-mobile.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu' --throttling.throughputKbps=14000"
-				sh "cp ./lighthouse-report-3g-desktop.html ./customer-portal/reports/lighthouse"
-			publishHTML (target: [
-			allowMissing: false,
-			alwaysLinkToLastBuild: false,
-			keepAll: true,
-			reportDir: '.',
-			reportFiles: 'lighthouse-report-3g-desktop.html',
-			reportName: "Lighthouse-3g-desktop"
-			])
 			}
 		}
 
 
 		stage("DOCUMENTATION"){
 			environment {
-                BITBUCKET_COMMON_CREDS = credentials('anj-bitbucket')
+                BITBUCKET_COMMON_CREDS = credentials('bitbucket')
             }
 			steps{
-				parallel( 
-					"PUBLISH CUSTOMER PORTAL" : {
-						sh "git -C './customer-portal' add ."
-						sh "git -C './customer-portal' commit -m 'Milind:Adding reports'"
-						sh "git -C './customer-portal' push"
-				},
-				"PUBLISH API DOCUMENTATION" : {
-						sh "cp ./lighthouse*.html ./api-documentation/customer-portal-ui"
-						sh "git -C './api-documentation' add ."
-						sh "git -C './api-documentation' commit -m 'Publishing new API Documentation'"
-						sh 'git -C "./api-documentation" pull https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
-						sh 'git -C "./api-documentation" push https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
-				}
-				)
+						sh "cp ./lighthouse*.html ../api-documentation/customer-portal-ui"
+						sh "git -C '../api-documentation' add ."
+						sh "git -C '../api-documentation' commit -m 'Publishing new API Documentation'"
+						sh 'git -C "../api-documentation" pull https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
+						sh 'git -C "../api-documentation" push https://$BITBUCKET_COMMON_CREDS_USR:$BITBUCKET_COMMON_CREDS_PSW@bitbucket.org/mapfre-usa-b2c/api-documentation.git'
+				
 			}
 		}
 
@@ -155,11 +127,11 @@ ports:
             }
 			steps{
         		ansibleTower(
-								towerServer: 'Ansible Tower',
+								towerServer: 'ANSIBLE_TOWER',
 								templateType: 'job',
 								jobTemplate: 'deploy_customer_portal_ui_to_aws',
 								importTowerLogs: true,
-								inventory: 'Front-End-AWS',
+								inventory: 'AWS_DEVELOPMENT',
 								jobTags: '',
 								skipJobTags: '',
 								limit: '',
@@ -175,6 +147,7 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
+nginx_file_path: "server/nginx.conf"
 ports: 
  - "80:80"
  - "443:443"'''

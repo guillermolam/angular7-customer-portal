@@ -18,8 +18,8 @@
     "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login' --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu'",
     "prepull": "git pull && npm run build && npm run test",
     "pre_e2e": "node_modules/protractor/node_modules/webdriver-manager/bin/webdriver-manager update --proxy='http://10.169.5.196:8080' --igonre_ssl",
-    "e2e_compile": "node_modules/typescript/bin/tsc -p customer-portal/e2e/tsconfig.e2e.json",
-    "e2e_run": "node_modules/protractor/bin/protractor customer-portal/e2e/protractor.conf.js"
+    "e2e_compile": "node_modules/typescript/bin/tsc -p e2e/tsconfig.e2e.json",
+    "e2e_run": "node_modules/protractor/bin/protractor e2e/protractor.conf.js"
   },
   "private": true,
   "dependencies": {
