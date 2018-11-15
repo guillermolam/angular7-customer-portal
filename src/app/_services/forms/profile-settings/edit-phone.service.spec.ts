@@ -15,7 +15,7 @@ describe('EditPhoneService', () => {
 
 });
 
-fit('should return the phone formbase', ()=> {
+it('should return the phone formbase', ()=> {
   const inputs: FormBase<any>[] = [
     new TextBox({
       additionalClasses:  'form-control',
