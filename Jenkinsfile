@@ -4,7 +4,7 @@ pipeline{
  
 		stage("LINTING & BUILD") {
 			steps{
-				sh "check_npm_update.sh"
+				// sh "check_npm_update.sh"
               	// removing .spec.ts from linting
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
 			//	sh "npm run cibuild_test"
