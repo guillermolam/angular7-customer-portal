@@ -1,17 +1,16 @@
 import { Component, OnInit }      from '@angular/core';
 import { Router }                 from '@angular/router';
-import { User }                   from '../../_models/user';
-import { UserService }            from '../../_services/user.service';
-import { AuthenticationService }  from '../../_services/_iam/authentication-service.service';
-import { TestingDataService }     from './../../_helpers/testing-data.service';
-
+import { User }                   from '../../../_models/user';
+import { UserService }            from '../../../_services/user.service';
+import { AuthenticationService }  from '../../../_services/_iam/authentication-service.service';
+import { TestingDataService }     from './../../../_helpers/testing-data.service';
 
 @Component({
-  selector: 'app-account-main',
+  selector: 'app-dashboard',
   templateUrl: './account-main.component.html',
   styleUrls: ['./account-main.component.scss']
 })
-export class AccountMainComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   hideOrShow:                     boolean = false;
   user:                           User;
 
@@ -27,8 +26,6 @@ export class AccountMainComponent implements OnInit {
     this.hideOrShow = !this.hideOrShow;
   }
 
-  // This will be removed
- 
 
   ngOnInit() {
     // When logging in go a verify user

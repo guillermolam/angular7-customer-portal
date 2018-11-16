@@ -230,11 +230,14 @@
 
   a {
     line-height: 24px;
+
+    span {
+      margin-right: 4px;
+    }
   }
 
   i {
-    font-size: 16px;
-    
+    font-size: 12px;
     vertical-align: middle;
   }
 
@@ -284,7 +287,7 @@
     }
 
     .report-claim {
-
+      
     }
 
     .alarm.svg-container {
@@ -345,6 +348,8 @@
 }
 
 .claim-desktop {
+  margin: auto;
+
   @media (max-width: 575px) {
     display:none;
   }

@@ -75,7 +75,7 @@
                   <tr class="row row-content" 
                     *ngFor="let doc of documents; let i = index" 
                     (click)="asALink(doc.documentId)" >
-                      <td class="col  col-type" *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">
+                      <td class="col  col-type" scope="row">
                         <div *ngIf="doc.type == 'HONBEND' " class="circle-with-type"> E </div>
                         <div *ngIf="doc.type == 'HONB-END' " class="circle-with-type"> E </div>
                         <div *ngIf="doc.type == 'NEW' " class="circle-with-type"> N </div>
@@ -93,9 +93,9 @@
                         <div *ngIf="doc.type == 'INVOICE' " class="circle-with-type"> I </div>
                         <div *ngIf="doc.type == 'Unknown' " class="circle-with-type"> ? </div>
                       </td>
-                      <td class="col col-name"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.description}}</td>
-                      <td class="col col-date"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{doc.transactionDate | date}}</td>
-                      <td class="col col-view"  *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">view <i class="fas fa-angle-right"></i> </td>
+                      <td class="col col-name">{{doc.description}}</td>
+                      <td class="col col-date">{{doc.transactionDate | date}}</td>
+                      <td class="col col-view">view <i class="fas fa-angle-right"></i> </td>
                   </tr>
                 </tbody>
                 

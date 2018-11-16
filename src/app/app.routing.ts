@@ -47,30 +47,13 @@ const appRoutes: Routes = [
   //when logged in
   { path: 'my-insurance',
     children: [
-      {
-        path: '',
-        component: DashboardComponent,
-      },
-      {
-        path: ':policyid',
+      { path: '',  component: DashboardComponent},
+      { path: ':policyid',
         children: [
-          {
-            path: '',
-            redirectTo: 'details',
-            pathMatch: 'full',
-          },
-          {
-            path: 'details',
-            component: PolicyDetailsComponent,
-          },
-          {
-            path: 'billing',
-            component: BillingDetailsComponent,
-          },
-          {
-            path: 'documents',
-            component: DocumentDetailsComponent,
-          },
+          {path: '', redirectTo: 'details', pathMatch: 'full' },
+          { path: 'details', component: PolicyDetailsComponent },
+          { path: 'billing', component: BillingDetailsComponent },
+          { path: 'documents', component: DocumentDetailsComponent },
         ]
       }
     ]
