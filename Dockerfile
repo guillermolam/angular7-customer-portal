@@ -4,7 +4,7 @@ ENV RESOLVER=127.0.0.0 \
     API_GATEWAY_URL=https://www.mapfreapis.com \
     ESC='$'
 
-COPY nginx.tmpl /etc/nginx/nginx.tmpl
+COPY server/nginx.tmpl /etc/nginx/nginx.tmpl
 
 COPY certs/customerportal.crt /etc/ssl/
 COPY certs/customerportal.key /etc/ssl
