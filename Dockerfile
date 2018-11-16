@@ -1,7 +1,8 @@
 FROM nginx:alpine
 
-WORKDIR $APP_PATH
-ENV NGINX_FILE_PATH=$APP_PATH/server/nginx.conf
+#WORKDIR $APP_PATH
+#ENV NGINX_FILE_PATH=$APP_PATH/server/nginx.conf
+ENV NGINX_FILE_PATH server/nginx.conf
 RUN ["cp", ${NGINX_FILE_PATH}, "/etc/nginx/nginx.conf"]
 RUN echo $NGINX_FILE_PATH
 COPY certs/customerportal.crt /etc/ssl/
