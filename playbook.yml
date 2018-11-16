@@ -18,7 +18,6 @@
      state: started
      env:
        API_GATEWAY_URL: "{{api_gateway_url}}"
-       RESOLVER: "{{resolver}}"
      ports:
       - "80:80"
       - "443:443"

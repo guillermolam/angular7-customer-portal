@@ -66,7 +66,6 @@ tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
 api_gateway_url: "https://dev.mapfreapis.com/"
-resolver: "localhost"
 ports: 
  - "80:80"
  - "443:443"'''
@@ -149,7 +148,6 @@ tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
 api_gateway_url: "https://dev.mapfreapis.com/"
-resolver: "localhost"
 ports: 
  - "80:80"
  - "443:443"'''

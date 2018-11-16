@@ -1,7 +1,6 @@
 FROM nginx:alpine
 
-ENV RESOLVER=127.0.0.0 \
-    API_GATEWAY_URL=https://www.mapfreapis.com \
+ENV API_GATEWAY_URL=https://www.mapfreapis.com \
     ESC='$'
 
 COPY server/nginx.tmpl /etc/nginx/nginx.tmpl

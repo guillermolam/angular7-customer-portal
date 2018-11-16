@@ -13,7 +13,6 @@ http {
         root   /usr/share/nginx/html;
         index  index.html index.htm;
         include /etc/nginx/mime.types;
-        resolver ${RESOLVER};
 
         gzip on;
         gzip_min_length 1000;
@@ -48,9 +47,7 @@ http {
         gzip_min_length 1000;
         gzip_proxied expired no-cache no-store private auth;
         gzip_types text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
-
-        resolver ${RESOLVER};
-
+   
         location / {
             root   /usr/share/nginx/html;
             index  index.html index.htm;
