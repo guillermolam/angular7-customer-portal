@@ -1,13 +1,16 @@
 FROM nginx:alpine
 
-#WORKDIR $APP_PATH
-#ENV NGINX_FILE_PATH=$APP_PATH/server/nginx.conf
-ENV NGINX_FILE_PATH server/nginx.conf
-RUN ["cp", ${NGINX_FILE_PATH}, "/etc/nginx/nginx.conf"]
-RUN echo $NGINX_FILE_PATH
+ENV RESOLVER=127.0.0.0 \
+    API_GATEWAY_URL=https://www.mapfreapis.com \
+    ESC='$'
+
+COPY nginx.tmpl /etc/nginx/nginx.tmpl
+
 COPY certs/customerportal.crt /etc/ssl/
 COPY certs/customerportal.key /etc/ssl
 
 WORKDIR /usr/share/nginx/html
 EXPOSE 80 443
 COPY dist .
+
+CMD /bin/sh -c "envsubst < /etc/nginx/nginx.tmpl > /etc/nginx/nginx.conf && nginx -g 'daemon off;' || cat /etc/nginx/nginx.conf"

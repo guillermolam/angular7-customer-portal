@@ -148,6 +148,7 @@ tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
 nginx_file_path: "server/nginx.conf"
+api_gateway_url: "https://dev.mapfreapis.com/"
 ports: 
  - "80:80"
  - "443:443"'''

@@ -18,6 +18,8 @@
      state: started
      env:
        NGINX_FILE_PATH: "{{nginx_file_path}}"
+       RESOLVER: "{{resolver}}"
+       API_GATEWAY_URL: "{{api_gateway_url}}"
      ports:
       - "80:80"
       - "443:443"
