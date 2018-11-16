@@ -147,7 +147,7 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
-api_gateway_url: "https://dev.mapfreapis.com/"
+api_gateway_url: "https://mapfreapis.com:443/"
 ports: 
  - "80:80"
  - "443:443"'''

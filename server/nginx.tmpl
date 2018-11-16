@@ -29,7 +29,7 @@ http {
             proxy_pass ${API_GATEWAY_URL};
         }
         location /apis/ {
-            proxy_pass ${API_GATEWAY_URL}/mapfre;
+            proxy_pass ${API_GATEWAY_URL}mapfre;
         }
     }
   server {
@@ -57,7 +57,7 @@ http {
             proxy_pass ${API_GATEWAY_URL};
         }
         location /apis/ {
-            proxy_pass ${API_GATEWAY_URL}/mapfre;
+            proxy_pass ${API_GATEWAY_URL}mapfre;
         }
        
     }

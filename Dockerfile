@@ -1,8 +1,7 @@
 FROM nginx:alpine
 
 ENV API_GATEWAY_URL=https://www.mapfreapis.com \
-    DEFAULT='$uri $uri/' \
-    ESC='$'
+    DEFAULT='$uri $uri/'
 
 COPY server/nginx.tmpl /etc/nginx/nginx.tmpl
 
