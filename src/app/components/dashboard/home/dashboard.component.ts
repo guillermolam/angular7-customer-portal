@@ -6,11 +6,11 @@ import { AuthenticationService }  from '../../../_services/_iam/authentication-s
 import { TestingDataService }     from './../../../_helpers/testing-data.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './account-main.component.html',
-  styleUrls: ['./account-main.component.scss']
+  selector: 'app-dashboard-home',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardHomeComponent implements OnInit {
   hideOrShow:                     boolean = false;
   user:                           User;
 

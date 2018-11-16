@@ -96,6 +96,7 @@ import { InformationDiscountsComponent } from './components/information/informat
 import { InformationRenewalComponent } from './components/information/information-renewal/information-renewal.component';
 import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
 import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
+import { DashboardHomeComponent } from './components/dashboard/home/dashboard.component';
 
 if (environment.production) {
   enableProdMode();
@@ -107,6 +108,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
+    DashboardHomeComponent,
     AppComponent,
     AccountMainComponent,
     AccountHeaderComponent,
