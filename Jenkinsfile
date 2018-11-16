@@ -41,7 +41,9 @@ pipeline{
 
 		stage("DEPLOY TO DEV"){
 			environment {
-				DOCKER_NEXUS_CREDS = credentials('ansible_tower')
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+				CUSTOMER_PORTAL_CLIENT_ID = credentials('CUSTOMER_PORTAL_CLIENT_ID')
+				CUSTOMER_PORTAL_CLIENT_SECRET_KEY = credentials('CUSTOMER_PORTAL_CLIENT_SECRET_KEY')
             }
 			steps{
         		ansibleTower(
@@ -65,7 +67,9 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}-dev"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
-nginx_file_path: "src/server/nginx.dev.conf"
+api_gateway_url: "https://dev.mapfreapis.com/"
+client_id: "$CUSTOMER_PORTAL_CLIENT_ID"
+client_secret: "$CUSTOMER_PORTAL_CLIENT_SECRET_KEY"
 ports: 
  - "80:80"
  - "443:443"'''
@@ -110,6 +114,8 @@ ports:
 		stage("PROD - BUILD & PUBLISH IMAGE"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
+				CUSTOMER_PORTAL_CLIENT_ID = credentials('CUSTOMER_PORTAL_CLIENT_ID')
+				CUSTOMER_PORTAL_CLIENT_SECRET_KEY = credentials('CUSTOMER_PORTAL_CLIENT_SECRET_KEY')
             }
 			steps{
 					sh "npm run build"
@@ -123,7 +129,7 @@ ports:
 
 		stage("PROD"){
 			environment {
-				DOCKER_NEXUS_CREDS = credentials('ansible_tower')
+				DOCKER_NEXUS_CREDS = credentials('nexus')
             }
 			steps{
         		ansibleTower(
@@ -147,7 +153,9 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
-nginx_file_path: "src/server/nginx.conf"
+api_gateway_url: "https://mapfreapis.com:443/"
+client_id: "$CUSTOMER_PORTAL_CLIENT_ID"
+client_secret: "$CUSTOMER_PORTAL_CLIENT_SECRET_KEY"
 ports: 
  - "80:80"
  - "443:443"'''

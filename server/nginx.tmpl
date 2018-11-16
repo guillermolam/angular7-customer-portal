@@ -5,7 +5,6 @@ events {
 }
 
 http {
-    
 
    server {
         listen 80;
@@ -23,17 +22,17 @@ http {
         location / {
             root   /usr/share/nginx/html;
             index  index.html;
-            try_files $uri $uri/ /index.html;
+            try_files ${DEFAULT} /index.html;
         }
 
-        location /auth/ {
-            proxy_pass https://mapfreapis.com/;
+        location /token/ {
+            proxy_pass ${API_GATEWAY_URL}auth/oauth/v2/token/&client_id=${client_id}&client_secret=${client_secret}&scope=oob/;
         }
         location /apis/ {
-            proxy_pass https://mapfreapis.com/mapfre/;
+            proxy_pass ${API_GATEWAY_URL}mapfre;
         }
     }
-    server {
+  server {
         listen 443;
         ssl on;
         ssl_certificate /etc/ssl/customerportal.crt;
@@ -48,18 +47,17 @@ http {
         gzip_min_length 1000;
         gzip_proxied expired no-cache no-store private auth;
         gzip_types text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
-
-    
+   
         location / {
             root   /usr/share/nginx/html;
             index  index.html index.htm;
-            try_files $uri $uri/ /index.html;
+            try_files ${DEFAULT} /index.html;
         }
-        location /auth/ {
-            proxy_pass https://mapfreapis.com/;
+        location /token/ {
+            proxy_pass ${API_GATEWAY_URL}auth/oauth/v2/token/&client_id=${client_id}&client_secret=${client_secret}&scope=oob/;
         }
         location /apis/ {
-            proxy_pass https://mapfreapis.com/mapfre/;
+            proxy_pass ${API_GATEWAY_URL}mapfre;
         }
        
     }
