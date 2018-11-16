@@ -18,6 +18,8 @@
      state: started
      env:
        API_GATEWAY_URL: "{{api_gateway_url}}"
+       CLIENT_ID: "{{client_id}}"
+       CLIENT_SECRET: "{{client_secret}}"
      ports:
       - "80:80"
       - "443:443"

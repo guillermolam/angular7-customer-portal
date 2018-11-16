@@ -25,8 +25,8 @@ http {
             try_files ${DEFAULT} /index.html;
         }
 
-        location /auth/ {
-            proxy_pass ${API_GATEWAY_URL};
+        location /token/ {
+            proxy_pass ${API_GATEWAY_URL}auth/oauth/v2/token/&client_id=${client_id}&client_secret=${client_secret}&scope=oob/;
         }
         location /apis/ {
             proxy_pass ${API_GATEWAY_URL}mapfre;
@@ -53,8 +53,8 @@ http {
             index  index.html index.htm;
             try_files ${DEFAULT} /index.html;
         }
-        location /auth/ {
-            proxy_pass ${API_GATEWAY_URL};
+        location /token/ {
+            proxy_pass ${API_GATEWAY_URL}auth/oauth/v2/token/&client_id=${client_id}&client_secret=${client_secret}&scope=oob/;
         }
         location /apis/ {
             proxy_pass ${API_GATEWAY_URL}mapfre;

@@ -42,6 +42,8 @@ pipeline{
 		stage("DEPLOY TO DEV"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
+				CUSTOMER_PORTAL_CLIENT_ID = credentials('CUSTOMER_PORTAL_CLIENT_ID')
+				CUSTOMER_PORTAL_CLIENT_SECRET_KEY = credentials('CUSTOMER_PORTAL_CLIENT_SECRET_KEY')
             }
 			steps{
         		ansibleTower(
@@ -66,6 +68,8 @@ tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
 api_gateway_url: "https://dev.mapfreapis.com/"
+client_id: "$CUSTOMER_PORTAL_CLIENT_ID"
+client_secret: "$CUSTOMER_PORTAL_CLIENT_SECRET_KEY"
 ports: 
  - "80:80"
  - "443:443"'''
@@ -110,6 +114,8 @@ ports:
 		stage("PROD - BUILD & PUBLISH IMAGE"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
+				CUSTOMER_PORTAL_CLIENT_ID = credentials('CUSTOMER_PORTAL_CLIENT_ID')
+				CUSTOMER_PORTAL_CLIENT_SECRET_KEY = credentials('CUSTOMER_PORTAL_CLIENT_SECRET_KEY')
             }
 			steps{
 					sh "npm run build"
@@ -148,6 +154,8 @@ tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
 api_gateway_url: "https://mapfreapis.com:443/"
+client_id: "$CUSTOMER_PORTAL_CLIENT_ID"
+client_secret: "$CUSTOMER_PORTAL_CLIENT_SECRET_KEY"
 ports: 
  - "80:80"
  - "443:443"'''
