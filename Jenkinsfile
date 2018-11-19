@@ -4,6 +4,7 @@ pipeline{
  
 		stage("LINTING & BUILD") {
 			steps{
+				sh 'rm -rf dist'
 				sh "npm install"
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
 				sh "npm run build-dev"
@@ -14,7 +15,7 @@ pipeline{
 		stage('RUN UNIT TESTS'){
 		  steps{
 		    	// Added to run unit test case for all module.
-		      //sh "npm run cibuild_test"
+		      sh "npm run cibuild_test"
 		  }
 		}
 
