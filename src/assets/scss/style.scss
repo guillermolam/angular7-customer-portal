@@ -230,11 +230,14 @@
 
   a {
     line-height: 24px;
+
+    span {
+      margin-right: 4px;
+    }
   }
 
   i {
-    font-size: 16px;
-    
+    font-size: 12px;
     vertical-align: middle;
   }
 
@@ -284,16 +287,16 @@
     }
 
     .report-claim {
-
+      
     }
 
     .alarm.svg-container {
       float: left;
       margin-right: 24px;
 
-      svg{
-        width: 56px;
-        height: 45px;
+      img{
+        height: 56px;
+        width: 80px;
       }
     }
   }
@@ -304,7 +307,17 @@
       margin-top: 16px;
     }
   }
+  @media (min-width: 377px) and (max-width: 575px)  {
+    .accident-copy{
+     
+    
 
+      &.small-font {
+        
+        margin-top: 0;
+      }
+    }
+  }
   @media (max-width: 575px) {
     .accident-copy{
       max-width: 81px;
@@ -313,15 +326,15 @@
       &.small-font {
         font-size: 12px;
         line-height: 16px;
-        margin-top: 0;
+       
       }
     }
     
     .alarm.svg-container {
       margin-right: 16px;
 
-      svg {
-        height: 40px;
+      img {
+        height: auto;
         width: 40px;
       }
     }
@@ -335,6 +348,8 @@
 }
 
 .claim-desktop {
+  margin: auto;
+
   @media (max-width: 575px) {
     display:none;
   }
@@ -381,6 +396,14 @@
 
   @media (max-width: 376px) {
     padding-right: 0;
+  }
+
+  img {
+    max-width: 144px;
+
+    @media (max-width: 376px) {
+      max-width: 80px;
+    }
   }
 }
 

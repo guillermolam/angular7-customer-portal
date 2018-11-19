@@ -9,6 +9,16 @@ import { VerifyUserGuard }            from './_guards/verify-user.guard';
 import { ProfileEditEmailComponent }  from './components/profile/profile-edit-email/profile-edit-email.component';
 import { ProfileCheckingAccountComponent } from './components/profile/profile-checking-account/profile-checking-account.component';
 import { ProfilePhoneComponent }      from './components/profile/profile-phone/profile-phone.component';
+import { InformationHomeComponent }   from './components/information/information-home/information-home.component';
+import { InformationMainComponent }   from './components/information/information-main.component';
+import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
+import { ProfileMainComponent }       from './components/profile/profile-main/profile-main.component';
+import { InformationProductsComponent } from './components/information/information-products/information-products.component';
+import { InformationAboutComponent } from './components/information/information-about/information-about.component';
+import { InformationDiscountsComponent } from './components/information/information-discounts/information-discounts.component';
+import { InformationRenewalComponent } from './components/information/information-renewal/information-renewal.component';
+import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
+import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
 
 // ----- Routes ----- //
 import { DashboardComponent }         from './routes/my-insurance/dashboard.component';
@@ -23,11 +33,9 @@ import { VerifyAccountComponent }     from './routes/verify-account/verify-accou
 import { WalletCardComponent }        from './routes/wallet-card/wallet-card.component';
 import { PolicyDetailsComponent }     from './routes/my-insurance/policy-details/policy-details.component';
 import { ProfileSettingsComponent }   from './routes/profile-settings/profile-settings.component';
-import { ProfileMainComponent }       from './components/profile/profile-main/profile-main.component';
 import { BillingDetailsComponent }    from './routes/my-insurance/billing-details/billing-details.component';
 import { DocumentDetailsComponent }   from './routes/my-insurance/document-details/document-details.component';
 import { AddressChangeComponent }     from './routes/profile-settings/address-change/address-change.component';
-import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
 import { ContactComponent }           from './routes/contact/contact.component';
 import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
@@ -47,30 +55,13 @@ const appRoutes: Routes = [
   //when logged in
   { path: 'my-insurance',
     children: [
-      {
-        path: '',
-        component: DashboardComponent,
-      },
-      {
-        path: ':policyid',
+      { path: '',  component: DashboardComponent},
+      { path: ':policyid',
         children: [
-          {
-            path: '',
-            redirectTo: 'details',
-            pathMatch: 'full',
-          },
-          {
-            path: 'details',
-            component: PolicyDetailsComponent,
-          },
-          {
-            path: 'billing',
-            component: BillingDetailsComponent,
-          },
-          {
-            path: 'documents',
-            component: DocumentDetailsComponent,
-          },
+          {path: '', redirectTo: 'details', pathMatch: 'full' },
+          { path: 'details', component: PolicyDetailsComponent },
+          { path: 'billing', component: BillingDetailsComponent },
+          { path: 'documents', component: DocumentDetailsComponent },
         ]
       }
     ]
@@ -84,6 +75,16 @@ const appRoutes: Routes = [
     { path: 'enter-password', component: ProfileEditPasswordComponent },
     { path: 'edit-email', component: ProfileEditEmailComponent },
     { path: 'edit-password' , component: ProfileEditPasswordComponent }
+
+  ] },
+  { path: 'information', component: InformationComponent,  children: [
+    { path: '', component: InformationHomeComponent },
+    { path: 'products', component: InformationProductsComponent },
+    { path: 'about', component: InformationAboutComponent },
+    { path: 'discounts', component: InformationDiscountsComponent },
+    { path: 'renewal', component: InformationRenewalComponent },
+    { path: 'cancel', component: InformationCancelComponent },
+    { path: 'legal', component: InformationLegalComponent },
 
   ] },
   { path: 'billing', component: DashboardComponent },
