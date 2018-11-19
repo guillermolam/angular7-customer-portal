@@ -33,7 +33,8 @@ http {
             index  index.html index.htm;
             try_files ${DEFAULT} /index.html;
         }
-        location /token? {
+        location ~ ^/token/(.*)$ {
+            rewrite     ^/token/(.*)$ /$1 break;
             proxy_pass ${API_GATEWAY_URL}auth/oauth/v2/token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&scope=oob&;
         }
         location /apis/ {
