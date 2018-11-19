@@ -53,54 +53,22 @@
                 <div class="small-subtitle">For policy changes, coverages, and discountss</div>
               </h2>
 
-              <div class="agent-info  margin-bottom mb32">
-                  <div class="row agent-name margin-bottom mb8">
-                    <div class="col">
-                      Johnny Utah
-                    </div>
-                  </div>
-                  <div class="row policy-info margin-bottom mb8">
-                    <div class="col">
-                      Auto - ABC123
-                    </div>
-                  </div>
-                  <div class="row agent-address margin-bottom mb8">
-                    <div class="col">
-                        47 Winter Street, Weymouth, MA 02188
-                    </div>
-                  </div>
-                  <div class="row agent-phone margin-bottom mb8">
-                    <div class="col col-description">
-                        <strong>Phone:</strong>
-                    </div>
-                    <div class="col col-info">
-                        <a href="tel:5555555555" class="mapfre link underline">(555) 555-5555</a>
-                    </div>
-                  </div>
-                  <div class="row agent-email">
-                    <div class="col col-description"> 
-                      <strong>Email:</strong>
-                    </div>
-                    <div class="col col-info">
-                        <a href="mailto:johnny@massagency.com" class="mapfre link underline">johnny@massagency.com</a>
-                    </div>
-                  </div>
-                </div>
+            <ng-container *ngFor="let policy of user.policyDetails">
               
                 <div class="agent-info  margin-bottom mb32">
-                    <div class="row agent-name margin-bottom mb8"> s
+                    <div class="row agent-name margin-bottom mb8">
                       <div class="col">
-                        Johnny Utah
+                        {{policy?.agent.agentName}}
                       </div>
                     </div>
                     <div class="row policy-info margin-bottom mb8">
                       <div class="col">
-                        Auto - ABC123
+                          {{policy?.policyType | translate }} &mdash; {{policy?.policynumber.policynumber}}
                       </div>
                     </div>
                     <div class="row agent-address margin-bottom mb8">
                       <div class="col">
-                          47 Winter Street, Weymouth, MA 02188
+                          {{policy?.agent.address.streetName}} {{policy?.agent.address.city}} {{policy?.agent.address.state}} {{policy?.agent.address.zipCode.code}}
                       </div>
                     </div>
                     <div class="row agent-phone margin-bottom mb8">
@@ -108,7 +76,7 @@
                           <strong>Phone:</strong>
                       </div>
                       <div class="col col-info">
-                          <a href="tel:5555555555" class="mapfre link underline">(555) 555-5555</a>
+                          <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline">{{policy?.agent.agentPhone.number}}</a>
                       </div>
                     </div>
                     <div class="row agent-email">
@@ -116,11 +84,11 @@
                         <strong>Email:</strong>
                       </div>
                       <div class="col col-info">
-                          <a href="mailto:johnny@massagency.com" class="mapfre link underline">johnny@massagency.com</a>
+                          <a href="mailto:{{policy?.agent.email}}" class="mapfre link underline">{{policy?.agent.email}}</a>
                       </div>
                     </div>
                   </div>
-              
+                </ng-container>
 
             </div>
           </div>
