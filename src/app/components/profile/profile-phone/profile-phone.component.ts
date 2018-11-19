@@ -12,6 +12,7 @@ export class ProfilePhoneComponent implements OnInit {
 
   accountPhoneForm: any[];
   whereInTheProcess: string;
+  phoneNumber: string;
 
   constructor(
     private editPhoneService: EditPhoneService,

@@ -34,7 +34,7 @@
   <div>
       <label class="account-settings no-margin-bottom margin-top mt16">Phone</label> 
       <div class="sub-title-copy"><em *ngIf="!user.phone;else phoneNumber">{{ 'Add more security to your account' }}</em>
-        <ng-template #phoneNumber> {{ user.phone }}</ng-template>
+        <ng-template #phoneNumber> {{ user.phone | formatPhone }}</ng-template>
           <div class="btn btn-icon edit-icon-position">
             <a *ngIf="!user.phone;else editPhone"
             [routerLink]="['/profile','add-phone']"
