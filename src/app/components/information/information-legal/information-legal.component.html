@@ -1,70 +1,34 @@
-<div class="row header">
-    <div class="col">
-        <div class="header-container">
-          <img src="./assets/img/images/headers/legal.png">
-        </div>
-    </div>
-  </div>
-  
-  <div class="row margin-vertical mv24">
-    <div class="col">
-        <mapfre-button
-        [additionalClasses]="'flat link small top-information'"
-        [customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [routerLink]="['/information']"
-        [showIconsCustom]="true"
-      >  {{ 'BACK' | translate }}
-      </mapfre-button>
-    </div>
-  </div>
-  
-  <div class="row margin-bottom mb24">
-    <div class="col">
-      <h1 class="information-title">{{ 'INFORMATION_LEGAL_1' | translate }}</h1>
-      <div class="row information-content">
-        <div class="col">
-            <p>{{ 'INFORMATION_LEGAL_2' | translate }}
-              </p><p>
-                  {{ 'INFORMATION_LEGAL_3' | translate }}
-          </p><p>
-              {{ 'INFORMATION_LEGAL_4' | translate }}
-          </p><p>
-              {{ 'INFORMATION_LEGAL_5' | translate }}
-          </p><p>
-            <strong>{{ 'INFORMATION_LEGAL_6' | translate }}</strong><br>
-            {{ 'INFORMATION_LEGAL_7' | translate }}
-          </p><p>
-              <strong>{{ 'INFORMATION_LEGAL_8' | translate }}</strong><br>
-              {{ 'INFORMATION_LEGAL_9' | translate }}
-          </p><p>
-              <strong>{{ 'INFORMATION_LEGAL_10' | translate }}</strong><br>
-              {{ 'INFORMATION_LEGAL_11' | translate }}
-          </p><p>
-              <strong>{{ 'INFORMATION_LEGAL_12' | translate }}</strong><br>
-              {{ 'INFORMATION_LEGAL_13' | translate }}
-          </p><p>
-            
-            CONTINUE …
-          </p>
 
-
-
-          
-        </div>
-      </div>
-    </div>
+<mapfre-generic-information-template
+[headerImageURL]="'./assets/img/images/headers/legal.png'"
+[backButtonUrl]="'/information'"
+[type]="'page'">
+<h1 class="information-title">{{ 'INFORMATION_LEGAL_1' | translate }}</h1>
+<div class="row information-content">
+  <div class="col">
+      <p>{{ 'INFORMATION_LEGAL_2' | translate }}
+        </p><p>
+            {{ 'INFORMATION_LEGAL_3' | translate }}
+    </p><p>
+        {{ 'INFORMATION_LEGAL_4' | translate }}
+    </p><p>
+        {{ 'INFORMATION_LEGAL_5' | translate }}
+    </p><p>
+      <strong>{{ 'INFORMATION_LEGAL_6' | translate }}</strong><br>
+      {{ 'INFORMATION_LEGAL_7' | translate }}
+    </p><p>
+        <strong>{{ 'INFORMATION_LEGAL_8' | translate }}</strong><br>
+        {{ 'INFORMATION_LEGAL_9' | translate }}
+    </p><p>
+        <strong>{{ 'INFORMATION_LEGAL_10' | translate }}</strong><br>
+        {{ 'INFORMATION_LEGAL_11' | translate }}
+    </p><p>
+        <strong>{{ 'INFORMATION_LEGAL_12' | translate }}</strong><br>
+        {{ 'INFORMATION_LEGAL_13' | translate }}
+    </p><p>
+      
+      CONTINUE …
+    </p>
   </div>
-  
-  <div class="row text-center">
-    <div class="col">
-        <mapfre-button
-        [additionalClasses]="'flat link small'"
-        [customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [routerLink]="['/information']"
-        [showIconsCustom]="true"
-      >  {{ 'BACK' | translate }}
-      </mapfre-button>
-    </div>
-  </div>
+</div>
+</mapfre-generic-information-template>

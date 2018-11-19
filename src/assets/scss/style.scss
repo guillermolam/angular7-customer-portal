@@ -810,7 +810,8 @@
   background-image: url('./assets/img/images/house_bg.png');
 }
 
-.policy-details {
+.policy-details,
+.contact {
   header {
     display: table;
     position: relative;
@@ -977,6 +978,14 @@
     border-bottom: 2px solid #EAE9E9;;
     color: #adaaaa;
     padding-bottom: 10px;
+
+    .small-subtitle { 
+      color: #7E7E7E;
+      font-size: 11px;
+      font-family: NotoSans;
+      text-align: left;
+      line-height: 16px;
+    }
   }
 
   h3.title {
@@ -1210,5 +1219,75 @@
   }
 }
 
+.social {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &.inline {
+    display: table;
+
+    li {
+    display: table-cell;
+    }
+  }
+
+  li a {
+    padding: 8px;
+  }
+}
+
+.info {
+  color: #737373;
+  font-size: 12px;
+  font-family: NotoSans;
+  line-height: 16px;
+}
+
+.agent-info {
+  .col-description {
+    max-width: 57px;
+    padding-right: 0;
+  }
+
+  .col-info {
+    padding-left: 8px;
+  }
+
+  .agent-name {
+    color: #4C4C4C;
+    font-size: 16px;
+    font-family: NotoSans-Bold;
+    font-weight: bold;
+    text-align: left;
+    line-height: 24px;
+  }
+
+  .policy-info {
+    color: #7E7E7E;
+    font-size: 12px;
+    font-family: NotoSans;
+    text-align: left;
+    line-height: 16px;
+  }
+
+  .agent-address {
+    color: #4C4C4C;
+    font-size: 12px;
+    font-family: NotoSans;
+    text-align: left;
+    line-height: 16px;
+  }
+
+  .agent-phone,
+  .agent-email {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .agent-email {
+
+  }
+}
 
 
