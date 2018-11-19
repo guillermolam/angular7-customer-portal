@@ -1,7 +1,9 @@
 import { Injectable }   from '@angular/core';
 import { FormBase, TextBox }   from 'mapfre-design-library';
 
-@Injectable()
+@Injectable({
+  providedIn : 'root'
+})
 export class ChangeAddressService {
   getInputs() {
     const inputs: FormBase<any>[] = [

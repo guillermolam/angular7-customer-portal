@@ -3,7 +3,7 @@
         <div class="header-icon full-icon">
             <svg-phone-svg></svg-phone-svg>
         </div>
-        <div *ngIf="true;else addPhone">
+        <div *ngIf="whereInTheProcess==='edit-phone';else addPhone">
             <h1 class="title-copy">{{ 'Change phone number' | translate }}</h1>
         </div>
         <ng-template #addPhone>
@@ -14,3 +14,18 @@
 </div>
 
 <app-change-phone [inputs]='accountPhoneForm'></app-change-phone>
+
+<div class="row margin-top mt24 text-center">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'flat link small'"
+        [customIcon]="'assets/img/icons/back-arrow.png'"
+        [iconClasses]="'align-middle'"
+        [routerLink]="['/profile']"
+        [showIconsCustom]="true"
+      >  {{ 'BACK' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
+
+  <input appNumericInput type="text" />

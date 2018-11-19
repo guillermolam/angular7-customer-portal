@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { EditPhoneService } from './../../../_services/forms/profile-settings/edit-phone.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,12 +11,15 @@ import { Component, OnInit } from '@angular/core';
 export class ProfilePhoneComponent implements OnInit {
 
   accountPhoneForm: any[];
+  whereInTheProcess: string;
 
   constructor(
-    private editPhoneService: EditPhoneService
+    private editPhoneService: EditPhoneService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.accountPhoneForm = this.editPhoneService.getInputs();
+    this.whereInTheProcess = this.activatedRoute.snapshot.routeConfig.path;
   }
 }

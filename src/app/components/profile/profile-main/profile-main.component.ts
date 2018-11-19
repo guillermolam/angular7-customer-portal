@@ -1,3 +1,4 @@
+import { FakeAccountSettings } from './../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileMainComponent implements OnInit {
 
+  user: any = {};
+
   constructor() { }
 
   ngOnInit() {
+    FakeAccountSettings.getUserData().subscribe((user)=>{
+      this.user = user;
+    });
   }
 
 }
