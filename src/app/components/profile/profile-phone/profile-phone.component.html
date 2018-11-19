@@ -28,4 +28,5 @@
     </div>
   </div>
 
-  <input appNumericInput type="text" />
+
+  <input appNumericInput [ngModel]="phoneNumber | formatPhone: true" (ngModelChange)="phoneNumber=$event"  type="tel">
