@@ -68,7 +68,8 @@ const appRoutes: Routes = [
   },
   { path: 'profile', component: ProfileSettingsComponent, children: [
     { path: '', component: ProfileMainComponent },
-    { path: 'change-phone', component: ProfilePhoneComponent},
+    { path: 'edit-phone', component: ProfilePhoneComponent},
+    { path: 'add-phone', component: ProfilePhoneComponent},
     { path: 'edit-account', component: ProfileCheckingAccountComponent},
     { path: 'change-address/:address-type', component: AddressChangeComponent},
     { path: 'enter-password', component: ProfileEditPasswordComponent },

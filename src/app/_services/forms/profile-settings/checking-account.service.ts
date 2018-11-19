@@ -1,10 +1,11 @@
+import { ChangeAddressService } from './../change-address/change-address.service';
 import { Injectable } from '@angular/core';
 import { FormBase, TextBox } from 'mapfre-design-library';
 
 @Injectable()
 export class CheckingAccountService {
 
-  constructor() { }
+  constructor(private changeAddressService: ChangeAddressService) { }
 
   getInputs(){
     const inputs: FormBase<any>[] = [
@@ -39,23 +40,7 @@ export class CheckingAccountService {
         type:               'number',
         validationMessageError: 'VALID_BANK_ACCOUNT_NUMBER'
       }),
-      new TextBox({
-        additionalClasses:  'form-control',
-        inputType:          'text',
-        key:                'bankAccountMailingAddress',
-        label:              'BANK_ACCOUNT_MAILING_ADDRESS',
-        required:           true,
-        type:               'text',
-        validationMessageError: 'VALID_BANK_ACCOUNT_MAILING_ADDRESS_MESSAGE'
-      }),
-      new TextBox({
-        additionalClasses:  'form-control',
-        inputType:          'text',
-        key:                'bankAccountMailingApartment',
-        label:              'BANK_ACCOUNT_MAILING_APARTMENT',
-        required:           true,
-        type:               'text'
-      }),
+      ...this.changeAddressService.getInputs()
     ];
 
     return inputs; 

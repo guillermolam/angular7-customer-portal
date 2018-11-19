@@ -19,6 +19,7 @@ it('should return the phone formbase', ()=> {
   const inputs: FormBase<any>[] = [
     new TextBox({
       additionalClasses:  'form-control',
+      additionalDirectives: 'appNumericInput',
       inputType:          'tel',
       key:                'accountPhone',
       label:              'Phone',

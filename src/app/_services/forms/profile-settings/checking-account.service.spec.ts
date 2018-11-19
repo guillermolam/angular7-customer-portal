@@ -49,22 +49,27 @@ describe('CheckingAccountService', () => {
         validationMessageError: 'VALID_BANK_ACCOUNT_NUMBER'
       }),
       new TextBox({
-        additionalClasses:  'form-control',
-        inputType:          'text',
-        key:                'bankAccountMailingAddress',
-        label:              'BANK_ACCOUNT_MAILING_ADDRESS',
-        required:           true,
-        type:               'text',
-        validationMessageError: 'VALID_BANK_ACCOUNT_MAILING_ADDRESS_MESSAGE'
+        additionalClasses: 'form-control',
+        inputType: 'address',
+        key: 'changeAddress',
+        label: 'ADDRESS',
+        required: true,
+        minLength: 1,
+        maxLength: 150,
+        type: 'text',
+        validationMessageError: 'VALID_ADDRESS',
       }),
       new TextBox({
-        additionalClasses:  'form-control',
-        inputType:          'text',
-        key:                'bankAccountMailingApartment',
-        label:              'BANK_ACCOUNT_MAILING_APARTMENT',
-        required:           true,
-        type:               'text'
-      }),
+        additionalClasses: 'form-control',
+        inputType: 'text',
+        key: 'changeAddressAPT',
+        label: 'ADDRESS_APT',
+        required: false,
+        minLength: 1,
+        maxLength: 50,
+        type: 'text',
+        validationMessageError: 'VALID_ADDRESS_APT',
+      })
     ];
 
 

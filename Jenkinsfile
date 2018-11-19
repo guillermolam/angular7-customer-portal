@@ -4,11 +4,10 @@ pipeline{
  
 		stage("LINTING & BUILD") {
 			steps{
-				// sh "check_npm_update.sh"
-              	// removing .spec.ts from linting
+				sh 'rm -rf dist'
+				sh "npm install"
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
-			//	sh "npm run cibuild_test"
-				 sh "npm run build-dev"
+				sh "npm run build-dev"
 			}
 		}
 		
@@ -16,7 +15,7 @@ pipeline{
 		stage('RUN UNIT TESTS'){
 		  steps{
 		    	// Added to run unit test case for all module.
-		      sh "npm run test_on_ciserver"
+		      sh "npm run cibuild_test"
 		  }
 		}
 

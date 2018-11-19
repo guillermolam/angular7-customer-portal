@@ -95,9 +95,9 @@ export class AuthenticationService {
   login(username: string, password: string) {
     //const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
     //      client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d',
-    const urlpartone =      `${environment.backend_auth_server_url}/auth/oauth/v2/token`,
+    const urlpartone =      `${environment.backend_auth_server_url}/auth/oauth/v2/token/`,
           urlparttwo =      `grant_type=password&username=${username}&password=${password}`,
-          url = urlpartone + '?' + urlparttwo;
+          url = urlpartone + urlparttwo;
 
     return this.http.post(url, {}, {
         headers : {
