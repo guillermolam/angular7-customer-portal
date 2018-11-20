@@ -1,18 +1,12 @@
 <form 
-  [formGroup]="phoneAccountForm" 
-  name="phoneAccountForm"  
-  (ngSubmit)="phoneAccountForm.valid">
+  [formGroup]="editEmailForm" 
+  name="editEmailForm"  
+  (ngSubmit)="editEmailForm.valid">
   
   <div class="row">
       <div class="col">
         <div *ngFor="let input of inputs" class="inputs">
-          <mapfre-validation 
-          [input]="input" 
-          [form]="phoneAccountForm"  
-          [maximumLength]="'10'" 
-          [phoneNumber]="phoneNumber"
-          [additionalClasses]="'margin-top mt24 margin-bottom mb16'"
-          ></mapfre-validation>
+          <mapfre-validation [input]="input" [form]="editEmailForm" [additionalClasses]="'margin-top mt24 margin-bottom mb16'"></mapfre-validation>
         </div>
       </div>
     </div>
@@ -20,7 +14,7 @@
         <div class="col">
           <mapfre-button
             [additionalClasses]="'basic primary large'"
-            [disabledValue]="phoneAccountForm.valid" 
+            [disabledValue]="editEmailForm.valid" 
             [inputType]="'submit'"
             [translateValue]="'CONFIRM' | translate"
           ></mapfre-button>

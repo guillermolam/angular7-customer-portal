@@ -74,6 +74,7 @@ const appRoutes: Routes = [
     { path: 'add-checking-account', component: ProfileCheckingAccountComponent},
     { path: 'change-address/:address-type', component: AddressChangeComponent},
     { path: 'enter-password', component: ProfileEditPasswordComponent },
+    { path: 'verify-password', component: ProfileEditEmailComponent },
     { path: 'edit-email', component: ProfileEditEmailComponent },
     { path: 'edit-password' , component: ProfileEditPasswordComponent }
 
