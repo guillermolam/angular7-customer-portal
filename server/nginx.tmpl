@@ -6,13 +6,19 @@ events {
 
 http {
 
+    log_format compression '$remote_addr - $remote_user [$time_local] '
+                           '"$request" $status $body_bytes_sent '
+                           '"$http_referer" "$http_user_agent" "$gzip_ratio"';
+
    server {
         server_name _;
         listen 80 default_server;
 	    listen [::]:80 default_server;
 	    rewrite ^ https://$host$request_uri;
+        access_log /var/log/nginx/access.log upstream_time;
     }
-  server {
+   
+   server {
         listen 443;
         ssl on;
         ssl_certificate /etc/ssl/customerportal.crt;
@@ -33,12 +39,15 @@ http {
             index  index.html index.htm;
             try_files ${DEFAULT} /index.html;
         }
-        location /token/ {
+
+        location /auth/ {
             proxy_pass ${API_GATEWAY_URL}auth/oauth/v2/token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&scope=oob&;
         }
+
         location /apis/ {
             proxy_pass ${API_GATEWAY_URL}mapfre;
         }
        
+        access_log /var/log/nginx/access.log upstream_time;
     }
 }
