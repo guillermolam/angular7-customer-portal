@@ -97,6 +97,10 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+  showMe(e): void {
+    this.showMessage = e;
+  }
+
   ngOnInit() {
     
     // When logging in go a verify user

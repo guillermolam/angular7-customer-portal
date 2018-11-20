@@ -62,8 +62,28 @@
                 </mapfre-button>
               </div>
             </div>
+
+            <div class="row margin-bottom mb16 policy-holders row-section">
+                <div class="col">
+                  <h2 class="title margin-bottom mb16">
+                    <svg-holder-mono-color-svg></svg-holder-mono-color-svg> {{ 'POLICY_HOLDER' | translate }}
+                  </h2>
+                  <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
+                  <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insurer; let i = index">
+                    <div class="col">
+                      <strong>{{ holder['Insurer Name'] }}</strong>
+                    </div>
+                    
+                    <div class="col" *ngIf="i == 0">
+                      <small>{{ 'PRIMARY' | translate }}</small>
+                    </div>
+                    <div class="col" *ngIf="i != 0">
+                        <small>{{ 'SECONDARY' | translate }}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
       
-          
             <div class="row margin-bottom mb40 vehicles row-section">
               <div class="col">
                 <h2 class="title margin-bottom mb16">
@@ -73,17 +93,17 @@
                   {{ 'ODOMETER_UPDATE' | translate }}<strong>{{ 'NEW_DISCOUNTS' | translate}}</strong>.
                 </p>
                
-                <form [formGroup]="updateMileage">
+                <form [formGroup]="updateMileage" class="update-mileage">
                   <div class="margin-bottom mb24">
+                    
                     <div class="mapfre-input vehicle" *ngFor="let vehicle of policy?.vehicle; let i = index; let last = last; let first = first">
-                      <div id="id{{i}}" [ngClass]="{ 
-                        'margin-bottom mb32 vehicle-spacer-input': last, 
-                        'vehicle-spacer-input margin-bottom mb40': i != 0, 
-                        'margin-bottom mb40': i == 0}">
+                      
+                      <div id="id{{i}}" [ngClass]="{'margin-top mt24': i != 0}">
+                        
                         <h3 class="title">
                             {{vehicle.vehicle}}
                         </h3>
-                        <div class="row input-control margin-top mt24" [ngClass]="{ 'disabled': !legalCheckbox }">
+                        <div class="row input-control margin-top mt16" [ngClass]="{ 'disabled': !legalCheckbox }">
                           <div class="col input-field mapfre">
                             <input 
                               mdbInputDirective 
@@ -100,19 +120,16 @@
                       </div> 
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row margin-top mt32 margin-bottom mb24 checkbox">
                     <div class="col">
-                        <div class="checkmark">
-                            <div class="form-check margin-bottom mb24">
-                              <input class="form-check-input" type="checkbox" id="legal-checkbox" required (change)="getLegalCheckBoxValue($event)">
-                              <label class="form-check-label legal disclaimer disclaimer small" for="legal-checkbox">{{ 'LEGAL_CHECKMARK' | translate }}</label>
-                            </div>
-                          </div>
+                        <input class="single-checkbox" type="checkbox" id="legal-checkbox" required (change)="getLegalCheckBoxValue($event)">
+                        <label class="form-check-label legal disclaimer disclaimer small" for="legal-checkbox">{{ 'LEGAL_CHECKMARK' | translate }}</label>
                     </div>
                   </div>
                   <div class="row" *ngIf="showMessage">
+                     
                     <div class="col">
-                        <mapfre-alert [nonDynamic]="true">
+                        <mapfre-alert [nonDynamic]="true" [alertType]="'success'" (hide)="showMe($event)">
                             You have updated the odometer.
                           </mapfre-alert>
                     </div>
@@ -122,7 +139,7 @@
                       <mapfre-button
                         (click)="onSubmit(i, $event)"
                         [inputType]="'submit'"
-                        [additionalClasses]="'ghost primary small full'"
+                        [additionalClasses]="'ghost primary large full'"
                         [disabledValue]="legalCheckbox"
                         [translateValue]=" 'UPDATE_MILEAGE' | translate ">
                           {{ 'UPDATE_MILEAGE' | translate }}
@@ -131,7 +148,7 @@
                   </div>
                 </form>
               
-                <div class="legal-section">
+                <div class="margin-top mt16">
                   <div class="legal">
                     {{ 'LEGAL' | translate}}
                   </div>
@@ -139,26 +156,6 @@
               </div>
             </div>
             
-            <div class="row margin-bottom mb16 policy-holders row-section">
-              <div class="col">
-                <h2 class="title margin-bottom mb16">
-                  <svg-holder-mono-color-svg></svg-holder-mono-color-svg> {{ 'POLICY_HOLDER' | translate }}
-                </h2>
-                <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
-                <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insurer; let i = index">
-                  <div class="col">
-                    <strong>{{ holder['Insurer Name'] }}</strong>
-                  </div>
-                  
-                  <div class="col" *ngIf="i == 0">
-                    <small>{{ 'PRIMARY' | translate }}</small>
-                  </div>
-                  <div class="col" *ngIf="i != 0">
-                      <small>{{ 'SECONDARY' | translate }}</small>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
       
           <div class="col-sm-12 col-md col2">
@@ -208,7 +205,7 @@
                 </h2>
 
                 <ng-container *ngIf="!policy?.policyFlags.isEft">
-                    <p>{{ 'PAPERLESS_PARTIAL' | translate}}</p>
+                    <p>{{ 'ENROLL_NOW_COPY' | translate}}</p>
                     <div class="paperless row">
                       <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 row">
                         <div class="col paperless-icon">
@@ -272,7 +269,13 @@
                           <strong>{{ 'ENROLLED' | translate}}</strong>
                         </div>
                       </div>
-                  
+                      <div class="col-lg-12 col-md-12 col-sm-6">
+                          <mapfre-button
+                            [additionalClasses]="'ghost primary full small'"
+                            [routerLink]="['/paperless']">
+                            {{ 'PAPERLESS_SETTINGS' | translate}}
+                          </mapfre-button>
+                        </div>
                     </div>
                 </ng-container>
                
@@ -378,8 +381,29 @@
       
         <section class="row policy-details-content">
           <div class="col-sm-12 col-md col1">
-      
-            <div class="row margin-bottom mb40 vehicles">
+            
+              <div class="row margin-bottom mb16 policy-holders row-section">
+                  <div class="col">
+                    <h2 class="title margin-bottom mb16">
+                      <svg-holder-mono-color-svg></svg-holder-mono-color-svg> {{ 'POLICY_HOLDER' | translate }}
+                    </h2>
+                    
+                    <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insurer; let i = index">
+                      <div class="col">
+                        <strong>{{ holder['Insurer Name'] }}</strong>
+                      </div>
+                      
+                      <div class="col" *ngIf="i == 0">
+                        <small>{{ 'PRIMARY' | translate }}</small>
+                      </div>
+                      <div class="col" *ngIf="i != 0">
+                          <small>{{ 'SECONDARY' | translate }}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            <div class="row margin-bottom mb40 property">
               <div class="col">
                 <h2 class="title margin-bottom mb16">
                     <svg-house-mono-color-small-svg></svg-house-mono-color-small-svg> {{ 'PROPERTY_COVERED' | translate }}
@@ -399,26 +423,6 @@
               </div>
             </div>
       
-            <div class="row margin-bottom mb16 policy-holders row-section">
-                <div class="col">
-                  <h2 class="title margin-bottom mb16">
-                    <svg-holder-mono-color-svg></svg-holder-mono-color-svg> {{ 'POLICY_HOLDER' | translate }}
-                  </h2>
-                  <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a class="underline" routerLink="/my-insurance/{{policyId}}/documents">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
-                  <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insurer; let i = index">
-                    <div class="col">
-                      <strong>{{ holder['Insurer Name'] }}</strong>
-                    </div>
-                    
-                    <div class="col" *ngIf="i == 0">
-                      <small>{{ 'PRIMARY' | translate }}</small>
-                    </div>
-                    <div class="col" *ngIf="i != 0">
-                        <small>{{ 'SECONDARY' | translate }}</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
       
             <div class="col-sm-12 col-md col2">
