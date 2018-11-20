@@ -97,6 +97,11 @@ import { InformationRenewalComponent } from './components/information/informatio
 import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
 import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
 import { DashboardHomeComponent } from './components/dashboard/home/dashboard.component';
+<<<<<<< HEAD
+=======
+import { ContactScreenComponent } from './components/screens/contact-screen/contact-screen.component';
+import { FormatPhonePipe } from './_helpers/_pipes/format-phone.pipe';
+>>>>>>> c2b5153dbca059a8b573bf32055cc73559300df5
 
 if (environment.production) {
   enableProdMode();
@@ -108,6 +113,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
+    ContactScreenComponent,
     DashboardHomeComponent,
     AppComponent,
     AccountMainComponent,

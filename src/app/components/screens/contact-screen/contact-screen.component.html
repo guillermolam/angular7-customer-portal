@@ -1,0 +1,100 @@
+<app-account-header></app-account-header>
+<div class="mapfre-content container loggedin container-fluid">
+  <div class="row">
+    <app-sidenav></app-sidenav>
+    <div class="col main-column">
+      <mapfre-alert></mapfre-alert>
+      <mapfre-card 
+        [singleCard]="false"
+        [additionalClasses]="'contact'">
+       <div class="row">
+         <div class="col col1">
+          <div class="row">
+            <div class="col">
+                <h2 class="title margin-bottom mb16">New and Existing Claims</h2>
+                <p>
+                  <strong>Phone:</strong>&nbsp;<a href="tel:18002211605" class="mapfre link underline">1-800-221-1605</a>&nbsp;<span class="info">27/7</span><br>
+                  <strong>Email:</strong>&nbsp;<a href="mailto:claims@mapfreusa.com" class="mapfre link underline">claims@mapfreusa.com</a> 
+                </p>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+                <h2 class="title margin-bottom mb16">Billing, Customer Service, and Quotes</h2>
+                <p>
+                  <strong>Phone:</strong>&nbsp;<a href="tel:18002211605,14300" class="mapfre link underline">1-800-221-1605 X 14300</a>&nbsp;<span class="info">8am to 6pm (EST) Mon - Fri</span><br>
+                  <strong>Email:</strong>&nbsp;<a href="mailto:service@mapfreusa.com" class="mapfre link underline">service@mapfreusa.com</a> 
+                </p>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+                <h2 class="title margin-bottom mb16">Follow Us</h2>
+                <ul class="social inline">
+                    <li><a href="https://www.facebook.com/mapfreinsurance" target="_blank" class="mapfre link underline"><i class="fab fa-facebook-square"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/mapfre/" target="_blank" class="mapfre link underline"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="https://www.youtube.com/user/mapfreins" target="_blank" class="mapfre link underline"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://twitter.com/mapfreins" target="_blank" class="mapfre link underline"><i class="fab fa-twitter-square"></i></a></li>
+                    <li><a href="https://www.instagram.com/mapfreinsurance/" target="_blank" class="mapfre link underline"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+          </div>
+          
+           
+        </div>
+        <div class="col col2">
+          <div class="row">
+            <div class="col">
+              <h2 class="title margin-bottom mb16 ">
+                <div>Contact Your Agents </div>
+                <div class="small-subtitle">For policy changes, coverages, and discountss</div>
+              </h2>
+
+            <ng-container *ngFor="let policy of user.policyDetails">
+              
+                <div class="agent-info  margin-bottom mb32">
+                    <div class="row agent-name margin-bottom mb8">
+                      <div class="col">
+                        {{policy?.agent.agentName}}
+                      </div>
+                    </div>
+                    <div class="row policy-info margin-bottom mb8">
+                      <div class="col">
+                          {{policy?.policyType | translate }} &mdash; {{policy?.policynumber.policynumber}}
+                      </div>
+                    </div>
+                    <div class="row agent-address margin-bottom mb8">
+                      <div class="col">
+                          {{policy?.agent.address.streetName}} {{policy?.agent.address.city}} {{policy?.agent.address.state}} {{policy?.agent.address.zipCode.code}}
+                      </div>
+                    </div>
+                    <div class="row agent-phone margin-bottom mb8">
+                      <div class="col col-description">
+                          <strong>Phone:</strong>
+                      </div>
+                      <div class="col col-info">
+                          <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline">{{policy?.agent.agentPhone.number}}</a>
+                      </div>
+                    </div>
+                    <div class="row agent-email">
+                      <div class="col col-description"> 
+                        <strong>Email:</strong>
+                      </div>
+                      <div class="col col-info">
+                          <a href="mailto:{{policy?.agent.email}}" class="mapfre link underline">{{policy?.agent.email}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+
+            </div>
+          </div>
+        </div>
+       </div>
+      </mapfre-card>
+    </div>
+  </div>
+</div>

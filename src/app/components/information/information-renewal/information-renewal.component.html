@@ -1,27 +1,9 @@
-<div class="row header">
-    <div class="col">
-        <div class="header-container">
-          <img src="./assets/img/images/headers/renewal.png">
-        </div>
-    </div>
-  </div>
-  
-  <div class="row margin-vertical mv24">
-    <div class="col">
-        <mapfre-button
-        [additionalClasses]="'flat link small top-information'"
-        [customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [routerLink]="['/information']"
-        [showIconsCustom]="true"
-      >  {{ 'BACK' | translate }}
-      </mapfre-button>
-    </div>
-  </div>
-  
-  <div class="row margin-bottom mb24">
-    <div class="col">
-      <h1 class="information-title">Your Personal Auto Policy Renewal</h1>
+
+<mapfre-generic-information-template
+[headerImageURL]="'./assets/img/images/headers/renewal.png'"
+[backButtonUrl]="'/information'"
+[type]="'page'">
+<h1 class="information-title">Your Personal Auto Policy Renewal</h1>
       <div class="row information-content">
         <div class="col">
           <p>
@@ -96,18 +78,4 @@
 
         </div>
       </div>
-    </div>
-  </div>
-  
-  <div class="row text-center">
-    <div class="col">
-        <mapfre-button
-        [additionalClasses]="'flat link small'"
-        [customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [routerLink]="['/information']"
-        [showIconsCustom]="true"
-      >  {{ 'BACK' | translate }}
-      </mapfre-button>
-    </div>
-  </div>
+</mapfre-generic-information-template>
