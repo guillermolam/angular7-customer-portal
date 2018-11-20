@@ -11,7 +11,7 @@ exports.config = {
   },
   directConnect: false,
   seleniumAddress: 'http://mdv-docdevl01:4444/wd/hub/',
-  baseUrl: 'http://mdv-doctest' ,
+  baseUrl: 'https://mdv-doctest' ,
   framework: 'custom',
   frameworkPath: require.resolve("protractor-cucumber-framework"),
   cucumberOpts: {

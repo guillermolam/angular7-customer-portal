@@ -98,7 +98,6 @@ import { InformationCancelComponent } from './components/information/information
 import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
 import { DashboardHomeComponent } from './components/dashboard/home/dashboard.component';
 import { ContactScreenComponent } from './components/screens/contact-screen/contact-screen.component';
-import { FormatPhonePipe } from './_helpers/_pipes/format-phone.pipe';
 
 if (environment.production) {
   enableProdMode();
@@ -179,7 +178,6 @@ export function tokenGetter() {
     InformationRenewalComponent,
     InformationCancelComponent,
     InformationLegalComponent,
-    FormatPhonePipe
 
   ],
   imports: [
