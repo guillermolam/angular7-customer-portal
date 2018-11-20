@@ -20,24 +20,24 @@ export class CheckingAccountService {
       }),
       new TextBox({
         additionalClasses:  'form-control',
-        inputType:          'number',
+        inputType:          'phone',
         key:                'bankAccountRoutingNumber',
         label:              'BANK_ROUTING_NUMBER',
         maxLength: 9,
         minLength: 9,
         required:           true,
-        type:               'number',
+        type:               'tel',
         validationMessageError: 'VALID_BANK_ROUTING_NUMBER'
       }),
       new TextBox({
         additionalClasses:  'form-control',
-        inputType:          'number',
+        inputType:          'phone',
         key:                'bankAccountNumber',
         label:              'BANK_ACCOUNT_NUMBER',
-        maxLength: 4,
-        minLength: 17,
+        maxLength: 17,
+        minLength: 4,
         required:           true,
-        type:               'number',
+        type:               'tel',
         validationMessageError: 'VALID_BANK_ACCOUNT_NUMBER'
       }),
       ...this.changeAddressService.getInputs()
