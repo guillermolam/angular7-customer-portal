@@ -16,7 +16,6 @@ http {
         listen 80 default_server;
 	    listen [::]:80 default_server;
 	    rewrite ^ https://$host$request_uri;
-        access_log /var/log/nginx/access.log;
     }
    
    server {
@@ -49,6 +48,6 @@ http {
             proxy_pass ${API_GATEWAY_URL}mapfre;
         }
        
-        access_log /var/log/nginx/access.log upstream_time;
+        access_log /var/log/nginx/access.log combined;
     }
 }
