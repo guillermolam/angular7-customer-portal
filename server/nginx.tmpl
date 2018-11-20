@@ -1,0 +1,44 @@
+worker_processes  auto;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+
+   server {
+        server_name _;
+        listen 80 default_server;
+	    listen [::]:80 default_server;
+	    return 301 https://$host$request_uri;
+    }
+  server {
+        listen 443;
+        ssl on;
+        ssl_certificate /etc/ssl/customerportal.crt;
+        ssl_certificate_key /etc/ssl/customerportal.key;
+        server_name customerportal.mapfre.com;
+        
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+        include /etc/nginx/mime.types;
+
+        gzip on;
+        gzip_min_length 1000;
+        gzip_proxied expired no-cache no-store private auth;
+        gzip_types text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+   
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+            try_files ${DEFAULT} /index.html;
+        }
+        location /token/ {
+            proxy_pass ${API_GATEWAY_URL}auth/oauth/v2/token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&scope=oob&;
+        }
+        location /apis/ {
+            proxy_pass ${API_GATEWAY_URL}mapfre;
+        }
+       
+    }
+}

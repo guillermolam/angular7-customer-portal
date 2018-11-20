@@ -19,7 +19,7 @@ import { WalletCardService }        from './../../../_services/_iam/wallet-card.
   styleUrls: ['./documents.component.scss']
 })
 export class DocumentsComponent implements OnInit, AfterViewInit  {
-  @ViewChild(MdbTablePaginationComponent) mdbTablePagination: MdbTablePaginationComponent;
+  //@ViewChild(MdbTablePaginationComponent) mdbTablePagination: MdbTablePaginationComponent;
 
   firstItemIndex;
   lastItemIndex;
@@ -160,13 +160,16 @@ export class DocumentsComponent implements OnInit, AfterViewInit  {
   }
 
   ngAfterViewInit() {
-    this.mdbTablePagination.setMaxVisibleItemsNumberTo(10);
-    this.firstItemIndex = this.mdbTablePagination.firstItemIndex;
-    this.lastItemIndex = this.mdbTablePagination.lastItemIndex;
-
-    this.mdbTablePagination.calculateFirstItemIndex();
-    this.mdbTablePagination.calculateLastItemIndex();
-    this.cdRef.detectChanges();
+   /*  
+    * Please leave this in, this is for pagenation and maybe used later
+    * 
+    * this.mdbTablePagination.setMaxVisibleItemsNumberTo(10);
+    * this.firstItemIndex = this.mdbTablePagination.firstItemIndex;
+    * this.lastItemIndex = this.mdbTablePagination.lastItemIndex;
+    * this.mdbTablePagination.calculateFirstItemIndex();
+    * this.mdbTablePagination.calculateLastItemIndex();
+    * this.cdRef.detectChanges();
+    */
   }
 
   ngOnInit() {
@@ -183,10 +186,10 @@ export class DocumentsComponent implements OnInit, AfterViewInit  {
       this.documents = this.testingData.testDataDocuments(this.policyId);
       this.loading = false;
       this.showDocuments = true;
-      this.tableService.setDataSource(this.documents);
-      this.documents = this.tableService.getDataSource();
-      this.previous = this.tableService.getDataSource();
-      console.log(this.documents)
+    // --- please do not remove this is for pagenation that maybe used later
+    // this.tableService.setDataSource(this.documents);
+    // this.documents = this.tableService.getDataSource();
+    // this.previous = this.tableService.getDataSource();
     }
     else {
       this.loading = false;

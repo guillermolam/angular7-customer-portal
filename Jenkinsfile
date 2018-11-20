@@ -4,11 +4,10 @@ pipeline{
  
 		stage("LINTING & BUILD") {
 			steps{
-				// sh "check_npm_update.sh"
-              	// removing .spec.ts from linting
+				sh 'rm -rf dist'
+				sh "npm install"
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
-			//	sh "npm run cibuild_test"
-				 sh "npm run build-dev"
+				sh "npm run build-dev"
 			}
 		}
 		
@@ -16,7 +15,7 @@ pipeline{
 		stage('RUN UNIT TESTS'){
 		  steps{
 		    	// Added to run unit test case for all module.
-		      sh "npm run test_on_ciserver"
+		      sh "npm run cibuild_test"
 		  }
 		}
 
@@ -42,6 +41,8 @@ pipeline{
 		stage("DEPLOY TO DEV"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
+				CUSTOMER_PORTAL_CLIENT_ID = credentials('CUSTOMER_PORTAL_CLIENT_ID')
+				CUSTOMER_PORTAL_CLIENT_SECRET_KEY = credentials('CUSTOMER_PORTAL_CLIENT_SECRET_KEY')
             }
 			steps{
         		ansibleTower(
@@ -65,7 +66,9 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}-dev"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
-nginx_file_path: "server/nginx.dev.conf"
+api_gateway_url: "https://dev.mapfreapis.com/"
+client_id: "$CUSTOMER_PORTAL_CLIENT_ID"
+client_secret: "$CUSTOMER_PORTAL_CLIENT_SECRET_KEY"
 ports: 
  - "80:80"
  - "443:443"'''
@@ -110,6 +113,8 @@ ports:
 		stage("PROD - BUILD & PUBLISH IMAGE"){
 			environment {
 				DOCKER_NEXUS_CREDS = credentials('nexus')
+				CUSTOMER_PORTAL_CLIENT_ID = credentials('CUSTOMER_PORTAL_CLIENT_ID')
+				CUSTOMER_PORTAL_CLIENT_SECRET_KEY = credentials('CUSTOMER_PORTAL_CLIENT_SECRET_KEY')
             }
 			steps{
 					sh "npm run build"
@@ -147,7 +152,9 @@ image_name: "${NEXUS_REPO_URL}/${JOB_NAME}"
 tag: "${BUILD_NUMBER}"
 container_name: "${CUSTOMER_PORTAL_APP_NAME}"
 container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
-nginx_file_path: "server/nginx.conf"
+api_gateway_url: "https://mapfreapis.com:443/"
+client_id: "$CUSTOMER_PORTAL_CLIENT_ID"
+client_secret: "$CUSTOMER_PORTAL_CLIENT_SECRET_KEY"
 ports: 
  - "80:80"
  - "443:443"'''

@@ -3,9 +3,13 @@
   <div class="row">
     <app-sidenav></app-sidenav>
     <div class="col">
-      <mapfre-card [singleCard]="false" [additionalClasses]="">
+    <mapfre-card [singleCard]="false">
+        <div class="profile-components">
+      <mapfre-card [singleCard]="true" [additionalSectionClasses]="'profile-components'" [additionalClasses]="'profile-section-card'">
         <router-outlet></router-outlet>
       </mapfre-card>
+    </div>
+    </mapfre-card>
     </div>
   </div>
 </div>

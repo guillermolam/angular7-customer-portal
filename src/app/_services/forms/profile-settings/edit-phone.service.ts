@@ -10,7 +10,7 @@ export class EditPhoneService {
     const inputs: FormBase<any>[] = [
       new TextBox({
         additionalClasses:  'form-control',
-        inputType:          'tel',
+        inputType:          'phone',
         key:                'accountPhone',
         label:              'Phone',
         required:           true,

@@ -3,6 +3,8 @@ import { Router }                 from '@angular/router';
 import { User }                   from '../../_models/user';
 import { UserService }            from '../../_services/user.service';
 import { AuthenticationService }  from '../../_services/_iam/authentication-service.service';
+import { TestingDataService }     from './../../_helpers/testing-data.service';
+
 
 @Component({
   selector: 'app-account-main',
@@ -16,7 +18,8 @@ export class AccountMainComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private router:               Router,
-    private userService:          UserService
+    private userService:          UserService,
+    private testingData:          TestingDataService
   ) {
   }
 
@@ -25,290 +28,7 @@ export class AccountMainComponent implements OnInit {
   }
 
   // This will be removed
-  testDatafunction() {
-    return {
-      firstName: 'FirstName',
-      middleName: 'MiddleName',
-      lastName: 'LastName',
-      
-      policyDetails: [
-        {
-          balance: 0, 
-          nextDueDate: '10/28/2018',
-          nextDueAmount: 0,
-          policynumber: {
-              policynumber: 'QJN952'
-          },
-          agent: {
-              agentCode: {
-                  code: '434'
-              },
-              agentName: 'AAA NORTHEAST INSURANCE AGCY, INC.',
-              agentNameExt: '',
-              agentPhone: {
-                  number: '(800) 222-4242'
-              },
-              address: {
-                streetName: '1320 NORTH MAIN STREET',
-                city: 'FALL RIVER',
-                state: 'MASSACHUSETTS',
-                zipCode: {
-                    code: '02720'
-                }
-            }
-          },
-          insurer: [
-            {
-              'firstName': 'JENNIFER',
-              'middleName': 'L',
-              'lastName': 'JUDD',
-              'Insurer Name': 'JENNIFER L JUDD'
-            }
-          ],
-          policyStatus: 'INACTIVE',
-          policyFlags: {
-            isEft: false,
-            isEftEligi: false,
-            isEbillElig: false,
-            isEdfElig: false,
-            isEbill: false,
-            isEdf: false
-          },
-          policyType: 'AUTO',
-          vehicle: [
-              {
-                vehicle: '2016 RAM 1500 SLT'
-              },
-              {
-                vehicle: '1998 HONDA CR-V LX'
-              }
-          ],
-          effDate: '2016-09-10T04:00:00.000+0000',
-          expDate: '2017-09-10T04:00:00.000+0000'
-        },
-        {
-          
-          balance: 1000.99,
-          nextDueDate: '10/28/2018',
-          nextDueAmount: 79.99,
-
-          policynumber: {
-              policynumber: '66161'
-          },
-          agent: {
-              agentCode: {
-                  code: '434'
-              },
-              agentName: 'AAA NORTHEAST INSURANCE AGCY, INC.',
-              agentNameExt: '',
-              agentPhone: {
-                  number: '(800) 222-4242'
-              },
-              address: {
-                streetName: '1320 NORTH MAIN STREET',
-                city: 'FALL RIVER',
-                state: 'MASSACHUSETTS',
-                zipCode: {
-                    code: '02720'
-                }
-            },
-          },
-          insurer: [
-            {
-              'firstName': 'JENNIFER1',
-              'middleName': 'L',
-              'lastName': 'JUDD',
-              'Insurer Name': 'JENNIFER L JUDD'
-            },
-            {
-              'firstName': 'JENNIFER2',
-              'middleName': 'L',
-              'lastName': 'JUDD',
-              'Insurer Name': 'JENNIFER L JUDD'
-            }
-          ],
-          policyStatus: 'ACTIVE',
-          policyFlags: {
-            isEft: true,
-            isEftEligi: false,
-            isEbillElig: false,
-            isEdfElig: false,
-            isEbill: false,
-            isEdf: false
-          },
-          policyType: 'AUTO',
-          vehicle: [
-              {
-                vehicle: '2016 RAM 1500 SLT'
-              },
-          ],
-          effDate: '2016-09-10T04:00:00.000+0000',
-          expDate: '2017-09-10T04:00:00.000+0000'
-        },
-        {
-          balance: 0,
-          nextDueDate: '10/28/2018',
-          nextDueAmount: 0,
-          policynumber: {
-              policynumber: 'BBWQKQ'
-          },
-          agent: {
-              agentCode: {
-                  code: 'AS9'
-              },
-              agentName: 'GILBERT C. OLIVEIRA INS AGENCY INC',
-              agentNameExt: '',
-              agentPhone: {
-                  number: '(508) 675-7475'
-              },
-              address: {
-                streetName: '1320 NORTH MAIN STREET',
-                city: 'FALL RIVER',
-                state: 'MASSACHUSETTS',
-                zipCode: {
-                    code: '02720'
-                }
-            }
-          },
-          insurer: [
-              {
-                  'firstName': 'CONRAD',
-                  'middleName': '',
-                  'lastName': 'GAGNE',
-                  'Insurer Name': 'CONRAD GAGNE'
-              }
-          ],
-          policyStatus: 'INACTIVE',
-          policyFlags: {
-              isEft: false,
-              isEftEligi: false,
-              isEbillElig: false,
-              isEdfElig: false,
-              isEbill: false,
-              isEdf: false
-          },
-          property: [
-              {
-                  address: {
-                      streetName: '1833 Commonwealth ave apt 12',
-                      city: 'Brighton',
-                      state: 'MASSACHUSETTS',
-                      zipCode: {
-                          code: '02135'
-                      }
-                  }
-              }
-          ],
-          policyType: 'HOME',
-          effDate: '2017-05-10T04:00:00.000+0000',
-          expDate: '2018-05-10T04:00:00.000+0000'
-      },
-      {
-        balance: 0,
-        nextDueDate: '10/28/2018',
-        nextDueAmount: 0,
-        policynumber: {
-            policynumber: 'abc123'
-        },
-        agent: {
-            agentCode: {
-                code: 'AS9'
-            },
-            agentName: 'GILBERT C. OLIVEIRA INS AGENCY INC',
-            agentNameExt: '',
-            agentPhone: {
-                number: '(508) 675-7475'
-            },
-            address: {
-              streetName: '1320 NORTH MAIN STREET',
-              city: 'FALL RIVER',
-              state: 'MASSACHUSETTS',
-              zipCode: {
-                  code: '02720'
-              }
-          }
-        },
-        insurer: [
-            {
-                'firstName': 'CONRAD',
-                'middleName': '',
-                'lastName': 'GAGNE',
-                'Insurer Name': 'CONRAD GAGNE'
-            }
-        ],
-        policyStatus: 'INACTIVE',
-        policyFlags: {
-            isEft: false,
-            isEftEligi: false,
-            isEbillElig: false,
-            isEdfElig: false,
-            isEbill: false,
-            isEdf: false
-        },
-        property: [
-            {
-                address: {
-                    streetName: 'Ray St Fall River Ma',
-                    city: 'Fall River',
-                    state: 'MASSACHUSETTS',
-                    zipCode: {
-                        code: '02720'
-                    }
-                }
-            }
-        ],
-        policyType: 'HOME',
-        effDate: '2017-05-10T04:00:00.000+0000',
-        expDate: '2018-05-10T04:00:00.000+0000'
-    }
-      ],
-      documents: [
-        {
-          documentName: 'Document Name 1',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: 10/10/2018
-        },
-        {
-          documentName: 'Document Name 2',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: 10/10/2018
-        },
-        {
-          documentName: 'Document Name 3',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: 10/10/2018
-        },
-        {
-          documentName: 'Document Name 4',
-          documentLocation: '#',
-          documentType: 'endorsments',
-          documentDate: 10/10/2018
-        },
-        {
-          documentName: 'Document Name 5',
-          documentLocation: '#',
-          documentType: 'misc',
-          documentDate: 10/10/2018
-        },
-        {
-          documentName: 'Document Name 6',
-          documentLocation: '#',
-          documentType: 'misc',
-          documentDate: 10/10/2018
-        },
-        {
-          documentName: 'Document Name 7',
-          documentLocation: '#',
-          documentType: 'renewal',
-          documentDate: 10/10/2018
-        },
-
-      ]
-    };
-  }
+ 
 
   ngOnInit() {
     // When logging in go a verify user
@@ -340,7 +60,7 @@ export class AccountMainComponent implements OnInit {
             );
           }
           else {
-            this.user = this.testDatafunction();
+            this.user = this.testingData.testDatafunction();
             this.userService.updateUser(this.user);
           }
         }
