@@ -10,7 +10,6 @@ export class ContactScreenComponent implements OnInit {
   @Input() user:                           User;
 
   constructor(
-   
   ) { }
 
   ngOnInit() {

@@ -64,6 +64,9 @@ export class TestingDataService {
               },
               {
                 vehicle: '1998 HONDA CR-V LX'
+              },
+              {
+                vehicle: '1998 HONDA CR-V LX'
               }
           ],
           effDate: '2016-09-10T04:00:00.000+0000',

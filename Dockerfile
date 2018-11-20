@@ -1,16 +1,13 @@
 FROM nginx:alpine
 
-<<<<<<< HEAD
-COPY nginx.conf /etc/nginx/nginx.conf
-=======
 ENV API_GATEWAY_URL=https://www.mapfreapis.com \
     CLIENT_ID=  \
     CLIENT_SECRET=  \
-    DEFAULT='$uri $uri/'
+    DEFAULT='$uri $uri/' \
+    ESCAPE='$'
 
 COPY server/nginx.tmpl /etc/nginx/nginx.tmpl
 
->>>>>>> ba099f7af1b2939490e23fad9d0b13b6d35faaca
 COPY certs/customerportal.crt /etc/ssl/
 COPY certs/customerportal.key /etc/ssl
 
