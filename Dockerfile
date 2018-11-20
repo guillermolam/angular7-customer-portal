@@ -3,7 +3,8 @@ FROM nginx:alpine
 ENV API_GATEWAY_URL=https://www.mapfreapis.com \
     CLIENT_ID=  \
     CLIENT_SECRET=  \
-    DEFAULT='$uri $uri/'
+    DEFAULT='$uri $uri/' \
+    ESCAPE='$'
 
 COPY server/nginx.tmpl /etc/nginx/nginx.tmpl
 
