@@ -15,7 +15,8 @@ http {
         server_name _;
         listen 80 default_server;
 	    listen [::]:80 default_server;
-	    rewrite ^ https://customerportal.mapfre.com;
+	    rewrite ^ https://${ESCAPE}host${ESCAPE}request_uri;
+        access_log /var/log/nginx/access.log combined;
     }
    
    server {
