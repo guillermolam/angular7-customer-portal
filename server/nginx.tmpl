@@ -46,7 +46,5 @@ http {
         location /apis/ {
             proxy_pass ${API_GATEWAY_URL}mapfre;
         }
-       
-        access_log /var/log/nginx/access.log upstream_time;
     }
 }
