@@ -28,7 +28,7 @@ export class LandingPageObject {
             this.clickForgotPassword  = $("a[class='mapfre small-link underline switch-line-up']");
             this.clickToggle          = $("span[class='slider round']");
             this.getErrorMessage      = $('form[name="loginForm"]>div:nth-of-type(1)>div:nth-of-type(1)>mapfre-validation>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(3)');
-            this.invalidEmailMessage  = $("div[class='copy']");
+            this.invalidEmailMessage  = $("mapfre-alert>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(2)");
             this.customerAccessTitle  = $("h1[class='title-copy']");
             this.emailTitle           = $("label[for='loginEmail']");
             this.passwordTitle        = $("label[for='loginPassword']");

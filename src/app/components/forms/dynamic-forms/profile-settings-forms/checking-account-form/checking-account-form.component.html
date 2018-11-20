@@ -6,7 +6,10 @@
   <div class="row">
       <div class="col">
         <div *ngFor="let input of inputs" class="inputs">
-          <mapfre-validation [input]="input" [form]="checkingAccountForm"></mapfre-validation>
+          <mapfre-validation 
+          [input]="input" 
+          [form]="checkingAccountForm"
+          [maximumLength]="17"></mapfre-validation>
         </div>
       </div>
     </div>

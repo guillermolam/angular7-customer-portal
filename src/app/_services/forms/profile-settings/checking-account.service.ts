@@ -20,7 +20,7 @@ export class CheckingAccountService {
       }),
       new TextBox({
         additionalClasses:  'form-control',
-        inputType:          'phone',
+        inputType:          'bank',
         key:                'bankAccountRoutingNumber',
         label:              'BANK_ROUTING_NUMBER',
         maxLength: 9,
@@ -31,7 +31,7 @@ export class CheckingAccountService {
       }),
       new TextBox({
         additionalClasses:  'form-control',
-        inputType:          'phone',
+        inputType:          'bank',
         key:                'bankAccountNumber',
         label:              'BANK_ACCOUNT_NUMBER',
         maxLength: 17,
