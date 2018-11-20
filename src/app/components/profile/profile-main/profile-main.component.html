@@ -56,14 +56,36 @@
   <hr class="hr-stretch"/>
   <div>
       <label class="account-settings no-margin-bottom"> Checking Account Information</label> 
-      <div class="sub-title-copy"><em>{{ 'Save time and effort in your payments' }}</em>
+      <div class="sub-title-copy">
+        <em *ngIf="!user.checkingAccount.accountNumber;else bankName">
+          {{ 'Save time and effort in your payments' }}
+        </em>
+        <ng-template #bankName> 
+            {{ user.checkingAccount.bankName | checkingAccount:'bank' }} 
+            <span class="profile-account-number">
+                {{ user.checkingAccount.accountNumber | checkingAccount: 'account' }}
+            </span>
+        </ng-template>
       <div class="btn edit-icon-position">
-            <a 
-            [routerLink]="['/profile','edit-account']"
+            <a *ngIf="!user.checkingAccount.accountNumber;else editBank"
+            [routerLink]="['/profile','add-checking-account']"
             routerLinkActive="active"
             class="btn btn-icon edit-icon-position" > 
                 <svg-add-icon-svg></svg-add-icon-svg>
             </a>
+            <ng-template #editBank>
+            <a 
+            [routerLink]="['/profile','edit-checking-account']"
+            routerLinkActive="active"
+            class="btn btn-icon edit-icon-position" > 
+                <div class="bank-account-edit">
+                    <svg-edit-icon-svg></svg-edit-icon-svg>
+                </div>
+            </a>
+            <div class="bank-account-remove">
+                    <svg-add-icon-svg></svg-add-icon-svg>
+            </div>
+        </ng-template>
         </div>
       </div>
   </div>

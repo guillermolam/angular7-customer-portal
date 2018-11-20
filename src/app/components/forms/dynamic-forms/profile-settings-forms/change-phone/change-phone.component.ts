@@ -11,10 +11,12 @@ export class ChangePhoneComponent implements OnInit {
 
 @Input() inputs: FormBase<any>[] = [];
          phoneAccountForm: FormGroup;
+         phoneNumber: string;
 
 constructor(private ipt:                      FormBaseControlService) { }
 
 ngOnInit() {
+      this.phoneNumber = this.inputs[0].value;
       this.phoneAccountForm = this.ipt.toFormGroup(this.inputs);
 }
 

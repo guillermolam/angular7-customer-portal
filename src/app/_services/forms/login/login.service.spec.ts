@@ -37,7 +37,8 @@ describe('LoginService', () => {
         minLength: 1,
         required: true,
         showPasswordIcon: true,
-        type: 'password'
+        type: 'password',
+        validationMessageError: 'VALID_PASSWORD_VALIDATION_MESSAGE',
       })
     ]
 

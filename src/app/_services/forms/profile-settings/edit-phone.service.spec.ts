@@ -15,12 +15,15 @@ describe('EditPhoneService', () => {
 
 });
 
-it('should return the phone formbase', ()=> {
+xit('should return the phone formbase', ()=> {
   const inputs: FormBase<any>[] = [
     new TextBox({
       additionalClasses:  'form-control',
       inputType:          'phone',
+      value:              this.phoneNumber,
       key:                'accountPhone',
+      minLength:           7,
+      maxLength:           10,
       label:              'Phone',
       required:           true,
       type:               'tel',

@@ -8,9 +8,9 @@ export class FakeAccountSettings{
         lastName: 'testing',
         email: 'john@test.com',
         password: 'test@2018',
-        phone: 1234567890,
+        phone: '',
         checkingAccount: {
-            bankName: "BOA",
+            bankName: "PNC Financial Services Group, Inc.",
             accountHolderName: "John",
             routingNumber: 123456789,
             accountNumber: 1111222233334444,

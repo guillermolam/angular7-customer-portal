@@ -10,3 +10,16 @@
 </div>
 
 <app-checking-account-form [inputs]="checkingAccountForm"></app-checking-account-form>
+
+<div class="row margin-top mt24 text-center">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'flat link small'"
+        [customIcon]="'assets/img/icons/back-arrow.png'"
+        [iconClasses]="'align-middle'"
+        [routerLink]="['/profile']"
+        [showIconsCustom]="true"
+      >  {{ 'BACK' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
