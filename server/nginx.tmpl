@@ -15,7 +15,6 @@ http {
         listen 80 default_server;
 	    listen [::]:80 default_server;
 	    rewrite ^ https://$host$request_uri;
-        access_log /var/log/nginx/access.log upstream_time;
     }
    
    server {
