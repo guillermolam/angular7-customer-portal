@@ -1,12 +1,12 @@
 <form 
   [formGroup]="editEmailForm" 
   name="editEmailForm"  
-  (ngSubmit)="editEmailForm.valid">
-  
+  (ngSubmit)="editEmailForm.valid && onChangeEmail()">
+  <mapfre-alert></mapfre-alert>
   <div class="row">
       <div class="col">
         <div *ngFor="let input of inputs" class="inputs">
-          <mapfre-validation [input]="input" [form]="editEmailForm" [additionalClasses]="'margin-top mt24 margin-bottom mb16'"></mapfre-validation>
+          <mapfre-validation [input]="input" [form]="editEmailForm" [additionalClasses]="'margin-bottom mb16'"></mapfre-validation>
         </div>
       </div>
     </div>

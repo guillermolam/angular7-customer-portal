@@ -1,0 +1,9 @@
+.svg-container{
+    &.display-inline{
+        display: inline-block;
+        &.svg{
+            transform: translateY(-1.5px);
+            margin-right: 0.5rem;
+        }
+    } 
+}

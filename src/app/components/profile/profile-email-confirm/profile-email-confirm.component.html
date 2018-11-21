@@ -1,0 +1,54 @@
+<div class="row text-center">
+    <div class="col">
+      <div class="header-icon">
+        <svg-validate-svg></svg-validate-svg>
+      </div>  
+          <h1 class="title-copy">{{ 'Check your email' | translate }}</h1> 
+          <div class="sub-title-copy">
+           {{ 'We sent you an email please' | translate }} 
+          </div>
+          <div class="sub-title-copy">
+              {{ 'validate it to confirm.' | translate }} 
+             </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row text-center">
+      <div class="col">
+  <div class=account-settings>
+      {{ 'Didn’t receive the email?' | translate }}
+  </div>
+  <div class="sub-title-copy">
+      {{ 'Check your spam for a message with the subject:' | translate }} 
+      <span class=account-settings>
+          {{ '[SUBJECT-EMAIL]' | translate }}
+      </span>
+  </div>
+  <div class="margin-top mt24 margin-bottom mb8">
+      <mapfre-link
+      (click)="sendEmail()"
+      [additionalClasses]="'blue-link'"
+      >
+      <div class="svg-container display-inline svg">
+          <svg-email-icon-svg></svg-email-icon-svg>
+      </div>
+      <div class="svg-container display-inline">
+          {{ 'Send email again' | translate }}
+      </div>
+    </mapfre-link>
+  </div>
+  </div>
+  </div>
+  <hr />
+  <div class="row margin-top mt24 text-center">
+      <div class="col">
+        <mapfre-button
+          [additionalClasses]="'flat link small'"
+          [customIcon]="'assets/img/icons/back-arrow.png'"
+          [iconClasses]="'align-middle'"
+          [routerLink]="['/profile']"
+          [showIconsCustom]="true"
+        >  {{ 'BACK' | translate }}
+        </mapfre-button>
+      </div>
+    </div>

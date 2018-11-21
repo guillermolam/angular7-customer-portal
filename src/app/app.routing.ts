@@ -39,6 +39,7 @@ import { AddressChangeComponent }     from './routes/profile-settings/address-ch
 import { ContactComponent }           from './routes/contact/contact.component';
 import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
+import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -76,8 +77,8 @@ const appRoutes: Routes = [
     { path: 'enter-password', component: ProfileEditPasswordComponent },
     { path: 'verify-password', component: ProfileEditEmailComponent },
     { path: 'edit-email', component: ProfileEditEmailComponent },
-    { path: 'edit-password' , component: ProfileEditPasswordComponent }
-
+    { path: 'edit-password' , component: ProfileEditPasswordComponent },
+    { path: 'email-confirmation' , component: ProfileEmailConfirmComponent}
   ] },
   { path: 'information', component: InformationComponent,  children: [
     { path: '', component: InformationHomeComponent },

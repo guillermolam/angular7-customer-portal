@@ -99,6 +99,7 @@ import { InformationLegalComponent } from './components/information/information-
 import { DashboardHomeComponent } from './components/dashboard/home/dashboard.component';
 import { ContactScreenComponent } from './components/screens/contact-screen/contact-screen.component';
 import { EditEmailFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/edit-email-form/edit-email-form.component';
+import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
 
 if (environment.production) {
   enableProdMode();
@@ -180,6 +181,7 @@ export function tokenGetter() {
     InformationCancelComponent,
     InformationLegalComponent,
     EditEmailFormComponent,
+    ProfileEmailConfirmComponent,
 
   ],
   imports: [
