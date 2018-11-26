@@ -379,4 +379,41 @@ export class TestingDataService {
     }
     return object;
   }
+
+  testDataClaims(): any {
+    return [
+      {
+         LOSS_NUMBER: 'AAABBB-CCCDDD',
+         LOSS_DATE: '21/01/1992',
+         LOSS_DESC: 'collision',
+         SUCCESS: '1',
+         policyid: 'QJN952',
+         policytype: 'auto'
+      },
+      {
+        LOSS_NUMBER: 'A1B1C1-D1E1F1',
+        LOSS_DATE: '21/01/1992',
+        LOSS_DESC: 'collision',
+        SUCCESS: '0',
+        policyid: '66161',
+        policytype: 'auto'
+     },
+     {
+      LOSS_NUMBER: 'AAABBB-BBBBBBB',
+      LOSS_DATE: '21/01/1992',
+      LOSS_DESC: 'water damage',
+      SUCCESS: '1',
+      policyid: 'abc123',
+      policytype: 'property'
+   },
+   {
+     LOSS_NUMBER: 'CCCCCC-D1E1F1',
+     LOSS_DATE: '21/01/1992',
+     LOSS_DESC: 'lightening damage',
+     SUCCESS: '0',
+     policyid: 'BBWQKQ',
+     policytype: 'property'
+  }
+   ];
+  }
 }

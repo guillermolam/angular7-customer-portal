@@ -98,6 +98,16 @@ import { InformationCancelComponent } from './components/information/information
 import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
 import { DashboardHomeComponent } from './components/dashboard/home/dashboard.component';
 import { ContactScreenComponent } from './components/screens/contact-screen/contact-screen.component';
+import { ClaimsHomeComponent } from './components/claims/claims-home-active/claims-home.component';
+import { ClaimsWrapperComponent } from './components/claims/claims.component';
+import { ClaimsDetailComponent } from './components/claims/claims-detail/claims-detail.component';
+import { ClaimsHomeClosedComponent } from './components/claims/claims-home-closed/claims-home-closed.component';
+import { ClaimsAccordianFaqComponent } from './components/claims/claims-accordian-faq/claims-accordian-faq.component';
+import { ClaimsNavigationComponent } from './components/claims/claims-navigation/claims-navigation.component';
+import { NoClaimsComponent } from './components/claims/no-claims/no-claims.component';
+import { ClaimsReportComponent } from './components/claims/claims-report/claims-report.component';
+import { ClaimsHomeCarComponent } from './components/claims/claims-home-car/claims-home-car.component';
+import { ClaimsHomePropertyComponent } from './components/claims/claims-home-property/claims-home-property.component';
 
 if (environment.production) {
   enableProdMode();
@@ -109,6 +119,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
+    ClaimsWrapperComponent,
     ContactScreenComponent,
     DashboardHomeComponent,
     AppComponent,
@@ -178,6 +189,15 @@ export function tokenGetter() {
     InformationRenewalComponent,
     InformationCancelComponent,
     InformationLegalComponent,
+    ClaimsHomeComponent,
+    ClaimsDetailComponent,
+    ClaimsHomeClosedComponent,
+    ClaimsAccordianFaqComponent,
+    ClaimsNavigationComponent,
+    NoClaimsComponent,
+    ClaimsReportComponent,
+    ClaimsHomeCarComponent,
+    ClaimsHomePropertyComponent,
 
   ],
   imports: [
