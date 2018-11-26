@@ -6,12 +6,26 @@
 }
 
 
-.edit-icon-position{
-    position: absolute;
-    right: 0;
-    padding: 0 1.5rem;
-    border: none;
-    margin:0;
+
+@media (min-width: 992px) {
+    
+    .edit-icon-position{
+        float:right;
+        right: 0;
+        padding: 0;
+        border: none;
+        // margin-right:5rem;
+    }
+}
+
+@media (max-width:991px){
+    .edit-icon-position{
+        position: absolute;
+        right: 0;
+        padding: 0 1.5rem;
+        border: none;
+        margin:0;
+    }
 }
 
 
@@ -23,4 +37,10 @@
     margin: 0;
     padding: 0;
     border: none;
+}
+
+@media (min-width:768px){
+.checking-account-card{
+    width: 100% !important;
+}
 }

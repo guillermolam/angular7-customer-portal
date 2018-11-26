@@ -100,6 +100,7 @@ import { DashboardHomeComponent } from './components/dashboard/home/dashboard.co
 import { ContactScreenComponent } from './components/screens/contact-screen/contact-screen.component';
 import { EditEmailFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/edit-email-form/edit-email-form.component';
 import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
+import { ProfileSettingsRoutingService } from './_services/profile-settings/profile-settings-routing.service';
 
 if (environment.production) {
   enableProdMode();
@@ -218,6 +219,7 @@ export function tokenGetter() {
     MockBackend,
     UserService,
     WalletCardService,  //provider for wallet card service
+    ProfileSettingsRoutingService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,4 @@
+<div class="padding-left-right">
 <div class="row text-center">
       <div class="col"> 
           <div class="header-icon full-icon">
@@ -77,16 +78,21 @@
             <a 
             [routerLink]="['/profile','edit-checking-account']"
             routerLinkActive="active"
-            class="btn btn-icon edit-icon-position" > 
-                <div class="bank-account-edit">
+            > 
+                <div class="bank-account-edit display-inline">
                     <svg-edit-icon-svg></svg-edit-icon-svg>
                 </div>
             </a>
-            <div class="bank-account-remove">
+            <a 
+            [routerLink]="['/profile','edit-checking-account']"
+            routerLinkActive="active"
+            > 
+                <div class="bank-account-remove display-inline">
                     <svg-add-icon-svg></svg-add-icon-svg>
-            </div>
+                </div>
+            </a>
         </ng-template>
         </div>
       </div>
   </div>
-  
+</div>

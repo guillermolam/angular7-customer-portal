@@ -12,4 +12,8 @@ export class ProfileEmailConfirmComponent implements OnInit {
   ngOnInit() {
   }
 
+  sendEmail(){
+    
+  }
+
 }

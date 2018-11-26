@@ -90,6 +90,10 @@ export class CreatePasswordFormComponent implements OnInit {
   updatePassword(): void {
     this.user.password =              this.createPasswordForm.value.createPassword;
     this.user.email =                 this.email;
+    if(this.whereInTheProcess==='edit-password'){
+      this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
+      this.router.navigate(['/profile']);
+    }else {
     this.authenticationService
       .updatePassword (this.user, this.token)
       .subscribe (
@@ -110,6 +114,7 @@ export class CreatePasswordFormComponent implements OnInit {
           this.alertService.error(error.message);
         }
       );
+      }
   }
 
   ngOnInit() {
@@ -120,9 +125,12 @@ export class CreatePasswordFormComponent implements OnInit {
       this.token =                    params.token;
      });
 
-    // route paramaters for example /signup/:parm
-    this.activeRoute.params.subscribe((params: Params) => {
-      this.whereInTheProcess =        params['parm'];
-    });
+     this.whereInTheProcess = this.activeRoute.snapshot.routeConfig.path;
+     if(this.whereInTheProcess!=='edit-password'){
+       // route paramaters for example /signup/:parm
+      this.activeRoute.params.subscribe((params: Params) => {
+       this.whereInTheProcess =        params['parm'];
+      });
+     }
   }
 }
