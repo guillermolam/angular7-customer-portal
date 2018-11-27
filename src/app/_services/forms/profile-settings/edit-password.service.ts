@@ -12,7 +12,7 @@ export class EditPasswordService {
   getInputs(id:string) {
     
     const inputs: FormBase<any>[] = [
-       this.passwordService.getPasswordInputs(id)
+       this.passwordService.getPasswordInputs(id, 'profile-input-border')
     ];
     return inputs;
   }

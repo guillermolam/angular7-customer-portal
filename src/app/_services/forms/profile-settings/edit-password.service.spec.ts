@@ -19,7 +19,7 @@ describe('EditPasswordService', () => {
 
 it('should return the password textbox', ()=>{
   const inputs = new TextBox({
-    additionalClasses: 'form-control',
+    additionalClasses: 'form-control profile-input-border',
     inputType: 'password',
     key: 'currentPassword',
     label: 'PASSWORD',

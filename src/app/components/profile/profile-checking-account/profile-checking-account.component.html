@@ -1,4 +1,4 @@
-<mapfre-card [singleCard]="true" [additionalCardContentClasses]="'checking-account-card'" [additionalClasses]="'profile-section-card'">
+<div class="change-address single-card-column">
 <div class="row text-center">
     <div class="col"> 
         <div class="header-icon full-icon">
@@ -12,9 +12,10 @@
 
 <app-checking-account-form [inputs]="checkingAccountForm"></app-checking-account-form>
 
-<div class="row margin-top mt24 text-center">
+<!-- <div class="row margin-top mt24 text-center">
     <div class="col">
       <mapfre-button
+        (click)="onCheckDirty()"
         [additionalClasses]="'flat link small'"
         [customIcon]="'assets/img/icons/back-arrow.png'"
         [iconClasses]="'align-middle'"
@@ -23,5 +24,11 @@
       >  {{ 'BACK' | translate }}
       </mapfre-button>
     </div>
-  </div>
-</mapfre-card>
+  </div> -->
+</div>
+    <div class="margin-vertical mv32 text-center sub-title-copy checking-account-bottom">
+        <hr />
+        <em>
+            {{ 'Updating your stored checking account will not update any information about your checking accounts on our e-Bill site.' | translate}}
+        </em>
+    </div>

@@ -1,3 +1,4 @@
+<app-profile-confirm-modal [toDo]="'confirm'" *ngIf="confirmModal"></app-profile-confirm-modal>
 <form 
   [formGroup]="editEmailForm" 
   name="editEmailForm"  
@@ -10,7 +11,7 @@
         </div>
       </div>
     </div>
-    <section class="row">
+    <div class="row">
         <div class="col">
           <mapfre-button
             [additionalClasses]="'basic primary large'"
@@ -19,6 +20,17 @@
             [translateValue]="'CONFIRM' | translate"
           ></mapfre-button>
         </div>
-      </section>
-
+      </div>
   </form>
+  <div class="row margin-top mt24 text-center">
+    <div class="col">
+      <mapfre-button
+        (click)="onCheckDirty()"
+        [additionalClasses]="'flat link small'"
+        [customIcon]="'assets/img/icons/back-arrow.png'"
+        [iconClasses]="'align-middle'"
+        [showIconsCustom]="true"
+      >  {{ 'BACK' | translate }}
+      </mapfre-button>
+    </div>
+  </div>

@@ -18,7 +18,7 @@ export class EditPhoneService {
 
     const inputs: FormBase<any>[] = [
       new TextBox({
-        additionalClasses:  'form-control',
+        additionalClasses:  'form-control profile-input-border',
         inputType:          'phone',
         value:              this.phoneNumber,
         key:                'accountPhone',

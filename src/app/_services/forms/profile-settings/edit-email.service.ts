@@ -14,7 +14,7 @@ export class EditEmailService {
   getInputs(id:string) {
     
     const inputs: FormBase<any>[] = [
-       this.passwordService.getEmailInputs(id)
+       this.passwordService.getEmailInputs(id, 'profile-input-border')
     ];
     return inputs;
   }

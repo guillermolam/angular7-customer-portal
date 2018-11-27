@@ -1,6 +1,9 @@
+import { FakeAccountSettings } from './../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBase, FormBaseControlService } from 'mapfre-design-library';
+import { FormBase, FormBaseControlService, AlertService } from 'mapfre-design-library';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
 
 @Component({
   selector: 'app-change-phone',
@@ -12,12 +15,35 @@ export class ChangePhoneComponent implements OnInit {
 @Input() inputs: FormBase<any>[] = [];
          phoneAccountForm: FormGroup;
          phoneNumber: string;
+         confirmModal:        boolean;
 
-constructor(private ipt:                      FormBaseControlService) { }
+constructor(
+  private ipt:                      FormBaseControlService,
+  private router:                   Router,
+  private alertService:             AlertService,
+  private profileConfirmModalService: ProfileConfirmModalService
+  ) { }
 
 ngOnInit() {
       this.phoneNumber = this.inputs[0].value;
       this.phoneAccountForm = this.ipt.toFormGroup(this.inputs);
+}
+
+onSubmitPhoneDetails(){
+  this.alertService.success('Phone number succesfully updated',true);
+  FakeAccountSettings.user.phone = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");
+  this.router.navigate(['/profile']);
+}
+
+onCheckDirty(){
+  this.profileConfirmModalService.onCheckDirty(this.phoneAccountForm);
+  this.profileConfirmModalService.$checkDirty.subscribe((value)=>{
+    this.confirmModal = value;
+  });
+  
+  if(this.confirmModal===false){
+    this.router.navigate(['/profile']);
+  }
 }
 
 }

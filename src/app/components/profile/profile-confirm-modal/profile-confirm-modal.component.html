@@ -1,0 +1,54 @@
+    <mapfre-modal 
+    *ngIf="toDo==='confirm';else removeAccount"
+    [modalOptions]="profileAccountModalOptions"
+    [hideModal]="hideModalOnRoute"
+    (hideModalOutput)="resetHideModal($event)"
+    (click)="resetHideModal($event)">
+    <div class="modal-body no-margin-top margin-bottom mb8">
+        <hr class="no-margin-bottom no-margin-top" />
+      </div>
+      <div class="sub-title-copy profile-modal-font">
+        {{ 'If you go back you will loose all your progress.' }}
+      </div>
+      <div class="profile-modal-button">
+          <mapfre-button
+              (click)="onClickBack('stay')"
+              [additionalClasses]="'basic primary large margin-vertical mv32'" 
+              [inputType]="'submit'"
+              [translateValue]="'STAY HERE' | translate"
+            ></mapfre-button>
+            <mapfre-button
+              (click)="onClickBack('back')"
+              [additionalClasses]="'basic cancel medium margin-bottom mb32'" 
+              [inputType]="'submit'"
+              [translateValue]="'DISCARD CHANGES' | translate"
+            ></mapfre-button>
+      </div>
+    </mapfre-modal>
+<ng-template #removeAccount>
+    <mapfre-modal 
+    [modalOptions]="profileAccountModalOptions"
+    [hideModal]="hideModalOnRoute"
+    (hideModalOutput)="resetHideModal($event)">
+    <div class="modal-body no-margin-top margin-bottom mb8">
+        <hr class="no-margin-bottom no-margin-top" />
+      </div>
+      <div class="sub-title-copy profile-modal-font">
+        {{ 'Are you sure that you want to remove all Checking account information?' }}
+      </div>
+      <div class="profile-modal-button">
+          <mapfre-button
+              (click)="onRemoveCheckingAccount('remove')"
+              [additionalClasses]="'basic profile-remove-account-button large margin-vertical mv32 '" 
+              [inputType]="'submit'"
+              [translateValue]="'REMOVE CHECKING ACCOUNT' | translate"
+            ></mapfre-button>
+            <mapfre-button
+              (click)="onRemoveCheckingAccount('cancel')"
+              [additionalClasses]="'basic cancel medium margin-bottom mb32'" 
+              [inputType]="'submit'"
+              [translateValue]="'CANCEL' | translate"
+            ></mapfre-button>
+      </div>
+    </mapfre-modal>
+</ng-template>

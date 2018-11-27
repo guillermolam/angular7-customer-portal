@@ -1,3 +1,4 @@
+<app-profile-confirm-modal [toDo]="'removeAccount'" *ngIf="confirmModal"></app-profile-confirm-modal>
 <div class="padding-left-right">
 <div class="row text-center">
       <div class="col"> 
@@ -41,7 +42,7 @@
             [routerLink]="['/profile','add-phone']"
             routerLinkActive="active"
             class="btn btn-icon edit-icon-position" > 
-                <svg-add-icon-svg></svg-add-icon-svg>
+                <svg-add-icon-svg [color]="'#749806'"></svg-add-icon-svg>
             </a>
             <ng-template #editPhone>
             <a
@@ -62,7 +63,7 @@
           {{ 'Save time and effort in your payments' }}
         </em>
         <ng-template #bankName> 
-            {{ user.checkingAccount.bankName | checkingAccount:'bank' }} 
+            {{ 'Checking account' | translate }} 
             <span class="profile-account-number">
                 {{ user.checkingAccount.accountNumber | checkingAccount: 'account' }}
             </span>
@@ -72,7 +73,7 @@
             [routerLink]="['/profile','add-checking-account']"
             routerLinkActive="active"
             class="btn btn-icon edit-icon-position" > 
-                <svg-add-icon-svg></svg-add-icon-svg>
+                <svg-add-icon-svg [color]="'#749806'"></svg-add-icon-svg>
             </a>
             <ng-template #editBank>
             <a 
@@ -84,11 +85,11 @@
                 </div>
             </a>
             <a 
-            [routerLink]="['/profile','edit-checking-account']"
+            (click)="onRemoveAccount()"
             routerLinkActive="active"
             > 
                 <div class="bank-account-remove display-inline">
-                    <svg-add-icon-svg></svg-add-icon-svg>
+                    <svg-add-icon-svg [color]="'#BE0F0F'"></svg-add-icon-svg>
                 </div>
             </a>
         </ng-template>

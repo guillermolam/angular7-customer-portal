@@ -5,13 +5,14 @@ import { FormBase, TextBox }   from 'mapfre-design-library';
   providedIn : 'root'
 })
 export class ChangeAddressService {
-  getInputs() {
+  getInputs(classes?:string, address?:string, apartment?:string) {
     const inputs: FormBase<any>[] = [
       new TextBox({
-        additionalClasses: 'form-control',
+        additionalClasses: `form-control ${classes}`,
         inputType: 'address',
         key: 'changeAddress',
         label: 'ADDRESS',
+        value: address,
         required: true,
         minLength: 1,
         maxLength: 150,
@@ -19,10 +20,11 @@ export class ChangeAddressService {
         validationMessageError: 'VALID_ADDRESS',
       }),
       new TextBox({
-        additionalClasses: 'form-control',
+        additionalClasses: `form-control ${classes}`,
         inputType: 'text',
         key: 'changeAddressAPT',
         label: 'ADDRESS_APT',
+        value: apartment,
         required: false,
         minLength: 1,
         maxLength: 50,

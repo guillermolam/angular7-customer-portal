@@ -1,3 +1,4 @@
+import { ChangeAddressService } from './../../../_services/forms/change-address/change-address.service';
 import { CheckingAccountService } from './../../../_services/forms/profile-settings/checking-account.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'mapfre-design-library';
@@ -12,10 +13,16 @@ export class ProfileCheckingAccountComponent implements OnInit {
 
   checkingAccountForm : any[];
 
-  constructor(private checkingAccountService: CheckingAccountService) { }
+  constructor(
+    private checkingAccountService: CheckingAccountService
+    ) { }
 
   ngOnInit() {
     this.checkingAccountForm = this.checkingAccountService.getInputs();
+  }
+
+  onCheckDirty(){
+    
   }
 
 }

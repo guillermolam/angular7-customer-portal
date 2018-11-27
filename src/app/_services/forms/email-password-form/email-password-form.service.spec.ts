@@ -16,7 +16,7 @@ describe('EmailEmailPasswordFormService', () => {
 
   it('should return the password textbox', ()=>{
     const inputs = new TextBox({
-      additionalClasses: 'form-control',
+      additionalClasses: `form-control class`,
       inputType: 'password',
       key: 'loginPassword',
       label: 'PASSWORD',
@@ -27,20 +27,20 @@ describe('EmailEmailPasswordFormService', () => {
       type: 'password',
       validationMessageError: 'VALID_PASSWORD_VALIDATION_MESSAGE'
     });
-    expect(emailPasswordFormService.getPasswordInputs('loginPassword')).toEqual(inputs);
+    expect(emailPasswordFormService.getPasswordInputs('loginPassword','class')).toEqual(inputs);
   });
 
   it('should return the email textbox', ()=>{
     const inputs =  new TextBox({
-      additionalClasses: 'form-control',
+      additionalClasses:  `form-control class`,
       inputType: 'email',
       key: 'loginEmail',
       label: 'EMAIL',
       required: true,
       type: 'email',
       validationMessageError: 'VALID_EMAIL_VALIDATION_MESSAGE',
-    })
-    expect(emailPasswordFormService.getEmailInputs('loginEmail')).toEqual(inputs);
+    });
+    expect(emailPasswordFormService.getEmailInputs('loginEmail','class')).toEqual(inputs);
   });
 
 

@@ -1,27 +1,30 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { Observable, Observer, BehaviorSubject } from 'rxjs';
 
 
 
 @Injectable()
 export class ProfileSettingsRoutingService {
 
-  private changePasswordAlert: boolean = true;
-  private whereInTheProcess: string;
 
-  constructor(private router: Router) { }
+  private routeSubject=           new BehaviorSubject<any>(this.router.pathFromRoot);
+  private changePasswordAlert=    new BehaviorSubject<boolean>(false);
+  $alert=                          this.changePasswordAlert.asObservable();
+  $routeSubject=                  this.routeSubject.asObservable();
+
+  constructor(private router: ActivatedRoute) { }
 
   setChangePasswordAlert(value:boolean){
-    this.changePasswordAlert = value;
+    this.changePasswordAlert.next(value);
   }
 
-  getChangePasswordAlert(){
-    
-    return this.changePasswordAlert;
+  setRouteSubject(route:any){
+    this.routeSubject.next(route);
   }
 
   setDefault(){
-    this.changePasswordAlert = false;
+    this.changePasswordAlert.next(false);
   }
 
 

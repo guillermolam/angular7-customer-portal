@@ -3,7 +3,9 @@
   <div class="row">
     <app-sidenav></app-sidenav>
     <div class="col">
-    <mapfre-alert *ngIf="showAlert"></mapfre-alert>
+    <div *ngIf="showAlert" class="margin-top mt24">
+        <mapfre-alert></mapfre-alert>
+    </div>
       <mapfre-card [singleCard]="false">
         <router-outlet></router-outlet>
       </mapfre-card>

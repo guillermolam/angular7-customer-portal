@@ -6,9 +6,9 @@ import { TextBox } from 'mapfre-design-library';
 })
 export class EmailPasswordFormService {
 
-  getPasswordInputs(id: string){
+  getPasswordInputs(id: string, classes?:string){
     const inputs = new TextBox({
-      additionalClasses: 'form-control',
+      additionalClasses: `form-control ${classes}`,
       inputType: 'password',
       key: id,
       label: 'PASSWORD',
@@ -22,9 +22,9 @@ export class EmailPasswordFormService {
     return inputs;
   }
 
-  getEmailInputs(id: string){
+  getEmailInputs(id: string, classes?:string){
     const inputs =  new TextBox({
-      additionalClasses: 'form-control',
+      additionalClasses:  `form-control ${classes}`,
       inputType: 'email',
       key: id,
       label: 'EMAIL',

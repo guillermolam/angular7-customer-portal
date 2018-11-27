@@ -20,7 +20,7 @@ describe('LoginService', () => {
     let formBaseService = loginService.getInputs();
     let formBase: FormBase<any>[] = [
       new TextBox({
-        additionalClasses: 'form-control',
+        additionalClasses: 'form-control undefined',
         inputType: 'email',
         key: 'loginEmail',
         label: 'EMAIL',
@@ -29,7 +29,7 @@ describe('LoginService', () => {
         validationMessageError: 'VALID_EMAIL_VALIDATION_MESSAGE',
       }),
       new TextBox({
-        additionalClasses: 'form-control',
+        additionalClasses: 'form-control undefined',
         inputType: 'password',
         key: 'loginPassword',
         label: 'PASSWORD',

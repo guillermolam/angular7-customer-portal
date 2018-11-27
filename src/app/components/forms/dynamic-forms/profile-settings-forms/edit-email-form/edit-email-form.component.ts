@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBase, FormBaseControlService,AlertService } from 'mapfre-design-library';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
 
 @Component({
   selector: 'app-edit-email-form',
@@ -12,12 +13,14 @@ export class EditEmailFormComponent implements OnInit {
 
 @Input() inputs: FormBase<any>[] = [];
          editEmailForm: FormGroup;
+         confirmModal:        boolean;
         //  email: string;
 
 constructor(
   private ipt:                      FormBaseControlService,
   private alertService:             AlertService,
-  private router:                   Router
+  private router:                   Router,
+  private profileConfirmModalService: ProfileConfirmModalService
   ) { }
 
 ngOnInit() {
@@ -30,6 +33,18 @@ onChangeEmail(){
       this.alertService.error('EMAIL_EXISTS_ERROR_MESSAGE')
     }else {
       this.router.navigate(['/profile','email-confirmation'],);
+    }
+  }
+
+
+  onCheckDirty(){
+    this.profileConfirmModalService.onCheckDirty(this.editEmailForm);
+    this.profileConfirmModalService.$checkDirty.subscribe((value)=>{
+      this.confirmModal = value;
+    });
+    
+    if(this.confirmModal===false){
+      this.router.navigate(['/profile']);
     }
   }
 

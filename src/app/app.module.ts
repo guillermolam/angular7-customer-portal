@@ -101,6 +101,8 @@ import { ContactScreenComponent } from './components/screens/contact-screen/cont
 import { EditEmailFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/edit-email-form/edit-email-form.component';
 import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
 import { ProfileSettingsRoutingService } from './_services/profile-settings/profile-settings-routing.service';
+import { ProfileConfirmModalService } from './_services/profile-settings/profile-confirm-modal.service';
+import { ProfileConfirmModalComponent } from './components/profile/profile-confirm-modal/profile-confirm-modal.component';
 
 if (environment.production) {
   enableProdMode();
@@ -183,6 +185,7 @@ export function tokenGetter() {
     InformationLegalComponent,
     EditEmailFormComponent,
     ProfileEmailConfirmComponent,
+    ProfileConfirmModalComponent,
 
   ],
   imports: [
@@ -219,7 +222,8 @@ export function tokenGetter() {
     MockBackend,
     UserService,
     WalletCardService,  //provider for wallet card service
-    ProfileSettingsRoutingService
+    ProfileSettingsRoutingService,
+    ProfileConfirmModalService
   ],
   bootstrap: [AppComponent]
 })

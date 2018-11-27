@@ -16,7 +16,7 @@ describe('EditEmailService', () => {
 
   it('should return the email textbox', ()=>{
     const inputs =  new TextBox({
-      additionalClasses: 'form-control',
+      additionalClasses: 'form-control profile-input-border',
       inputType: 'email',
       key: 'loginEmail',
       label: 'EMAIL',

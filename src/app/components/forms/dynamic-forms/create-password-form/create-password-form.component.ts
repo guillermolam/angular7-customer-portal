@@ -1,3 +1,4 @@
+import { ProfileSettingsRoutingService } from './../../../../_services/profile-settings/profile-settings-routing.service';
 import { Component, EventEmitter,
   OnInit, Input, Output }             from '@angular/core';
 import { FormGroup }                  from '@angular/forms';
@@ -11,6 +12,7 @@ import { AlertService, FormBase,
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
 import { User }                       from '../../../../_models/user';
 import { UserService }                from '../../../../_services/user.service';
+import { ProfileConfirmModalService } from '../../../../_services/profile-settings/profile-confirm-modal.service';
 
 @Component({
   selector: 'app-create-password-form',
@@ -26,6 +28,7 @@ export class CreatePasswordFormComponent implements OnInit {
             token:                  string;
             user:                   User = {};
             whereInTheProcess:      string;
+            confirmModal:        boolean;
 
   @Output() confirmationOfPasswordCreation:   EventEmitter<boolean> = new EventEmitter();
 
@@ -36,6 +39,8 @@ export class CreatePasswordFormComponent implements OnInit {
     private ipt:                    FormBaseControlService,
     private router:                 Router,
     private userService:            UserService,
+    private profileSettingsRoutingService: ProfileSettingsRoutingService,
+    private profileConfirmModalService: ProfileConfirmModalService
   ) {}
 
   createNewPassword(): void {
@@ -91,6 +96,7 @@ export class CreatePasswordFormComponent implements OnInit {
     this.user.password =              this.createPasswordForm.value.createPassword;
     this.user.email =                 this.email;
     if(this.whereInTheProcess==='edit-password'){
+      this.profileSettingsRoutingService.setChangePasswordAlert(true);
       this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
       this.router.navigate(['/profile']);
     }else {
@@ -115,6 +121,17 @@ export class CreatePasswordFormComponent implements OnInit {
         }
       );
       }
+  }
+
+  onCheckDirty(){
+    this.profileConfirmModalService.onCheckDirty(this.createPasswordForm);
+    this.profileConfirmModalService.$checkDirty.subscribe((value)=>{
+      this.confirmModal = value;
+    });
+    
+    if(this.confirmModal===false){
+      this.router.navigate(['/profile']);
+    }
   }
 
   ngOnInit() {

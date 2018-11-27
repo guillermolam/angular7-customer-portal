@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { ProfileSettingsRoutingService } from './../../_services/profile-settings/profile-settings-routing.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -11,11 +13,19 @@ export class ProfileComponent implements OnInit {
   showAlert: boolean;
 
   constructor(
-    private profileRoutingService: ProfileSettingsRoutingService
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.showAlert = this.profileRoutingService.getChangePasswordAlert();
-  }
 
-}
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+          if(this.router.url==='/profile'){
+            this.showAlert = true;
+          }else {
+            this.showAlert = false;
+          }
+        } 
+      });
+    }
+  }

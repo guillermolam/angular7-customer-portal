@@ -5,7 +5,43 @@
     font-weight: bold;
 }
 
+.profile-modal-font{
+    padding: 0 2rem;
+    font-size: 1rem;
+}
 
+.profile-modal-button{
+    text-align: center;
+    padding: 0 3.2rem;
+}
+
+.btn.mapfre.basic{
+    &.profile-remove-account-button{
+        background: $white;
+        border: 0.1rem solid  $corprate-red;
+        font-size: small;
+        color:  $corprate-red;
+    }
+
+    &.cancel{
+        align-items: center;
+        background: $white;
+        border: 0.1rem solid  $grey;
+        font-size: small;
+        color:  $grey;
+        width: 12.5rem;
+        height: 2rem;
+    }
+    
+
+}
+
+@media (max-width: 992px){
+    .hr-stretch{
+        margin-right: -1.5rem;
+        margin-left:  -1.5rem;
+    }
+}
 
 @media (min-width: 992px) {
     
@@ -44,3 +80,42 @@
     width: 100% !important;
 }
 }
+
+.profile-input-border{
+    border-bottom: 0.05rem solid $grey !important;
+}
+
+.checking-account-address-apt{
+    padding-right:-15px;
+}
+
+.checking-account-bottom{
+    font-size: 0.7rem;
+}
+
+@media (max-width:767px){
+    .checking-account-bottom{
+        padding: 0;
+    }
+}
+
+@media (min-width:768px){
+.checking-account-bottom{
+    padding: 0 5rem;
+}
+}
+
+// @media (min-width:768px){
+//     .checking-account-address{
+//         display: inline-block;
+//         max-width: 30%;
+//         border:0;
+//         margin:0;
+//     }
+//     .checking-account-apt{
+//         display: inline-block;
+//         width: 30% !important;
+//         border:0;
+//         margin:0;
+//     }
+// }
