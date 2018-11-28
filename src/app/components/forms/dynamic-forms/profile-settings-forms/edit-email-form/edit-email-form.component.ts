@@ -30,7 +30,10 @@ ngOnInit() {
 
 onChangeEmail(){
     if(this.editEmailForm.controls.changeEmail.value === 'john@gmail.com'){
-      this.alertService.error('Email is already in use')
+      this.alertService.error('Email is already in use');
+      setTimeout(()=>{
+        this.alertService.clear();
+      },3000);
     }else {
       this.router.navigate(['/profile','email-confirmation'],);
     }

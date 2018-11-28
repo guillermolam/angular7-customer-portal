@@ -24,6 +24,9 @@ export class ProfileComponent implements OnInit {
       if (event instanceof NavigationEnd) {
           if(this.router.url==='/profile'){
             this.showAlert = true;
+            setTimeout(()=>{
+              this.showAlert = false;
+            },3000);
           }else {
             this.showAlert = false;
           }
