@@ -71,8 +71,6 @@
   h1.title {
     color: #ADAAAA;
     font-size: 24px;
-    font-family: NotoSans;
-    text-align: left;
     line-height: normal;
     padding-left: 8px;
     margin-bottom: 0;
@@ -87,8 +85,6 @@
   h2.claim-id {
     color: #4C4C4C;
     font-size: 18px;
-    font-family: NotoSans;
-    text-align: left;
     line-height: 32px;
     margin-bottom: 0;
 
@@ -108,8 +104,6 @@
     .small-subtitle { 
       color: #7E7E7E;
       font-size: 11px;
-      font-family: NotoSans;
-      text-align: left;
       line-height: 16px;
     }
 
@@ -126,15 +120,12 @@
   .policy-id {
     color: #737373;
     font-size: 14px;
-    font-family: NotoSans;
     line-height: 24px;
   }
 
   .date-loss {
     color: #4C4C4C;
     font-size: 14px;
-    font-family: NotoSans;
-    text-align: left;
     line-height: 24px;
   }
 }
@@ -166,7 +157,6 @@
   &.active {
     color: #006580 !important;
     font-size: 14px;
-    font-family: NotoSans-Bold;
     font-weight: bold;
   }
 }
