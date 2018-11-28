@@ -12,6 +12,8 @@ import { Router, ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd } from '@
 export class ProfileComponent implements OnInit {
 
   showAlert: boolean;
+  alertValue: any;
+
 
   constructor(
     private router: Router,
@@ -20,9 +22,15 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
 
+
+    //can do it better
+    this.alertService.getMessage().subscribe((value)=>{
+      this.alertValue = value;
+    });
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-          if(this.router.url==='/profile'){
+          if(this.router.url==='/profile' && this.alertValue){
             this.showAlert = true;
             setTimeout(()=>{
               this.showAlert = false;
