@@ -192,16 +192,6 @@
     padding-right: 16px;
   }
 
-  .policy-link {
-    background: #006580;
-    color: #fff;
-    display: block;
-    padding: 8px;
-    padding-right: 16px;
-    text-align: right;
-    font-weight: bold;
-  }
-
   .policy-row {
     padding-bottom: 24px;
   }
@@ -213,171 +203,7 @@
   }
 }
 
-.claims {
-  text-align: center;
-  
-  @media (min-width: 377px) and (max-width:577px) {
-    &.card.mapfre {
-      padding: 8px 16px;
-    }
-  }
 
-  @media (max-width: 376px) {
-    &.card.mapfre{
-      padding: 8px;
-    }
-  }
-
-  a {
-    line-height: 24px;
-
-    span {
-      margin-right: 4px;
-    }
-  }
-
-  i {
-    font-size: 12px;
-    vertical-align: middle;
-  }
-
-  .accident-copy,
-  .callus-copy {
-    margin-top: 8px;
-  }
-
-  .icon-title > * {
-    vertical-align: middle;
-  }
-
-  .small-font {
-    font-size: 12px;
-  }
-
-  @media (max-width:376px) {
-    .accident-copy.small-font {
-      font-size: 12px;
-      margin-top: 5px;
-    }
-
-    .claims-mobile {
-      .button-link {
-        width: 72px;
-        float: left;
-      }
-    }
-  }
-
-  @media (max-width: 767px) {
-
-    .accident-copy {
-      float: left;
-      max-width: 100%;
-    }
-
-    .claim-desktop {
-      float: right;
-      text-align: right;
-      width: 169px;
-    }
-
-    .callus-copy {
-      margin-top: 0px;
-      float: left;
-    }
-
-    .report-claim {
-      
-    }
-
-    .alarm.svg-container {
-      float: left;
-      margin-right: 24px;
-
-      img{
-        height: 56px;
-        width: 80px;
-      }
-    }
-  }
-
-  @media (min-width: 576px) and (max-width: 767px) {
-    .accident-copy.small-font {
-      font-size: 16px;
-      margin-top: 16px;
-    }
-  }
-  @media (min-width: 377px) and (max-width: 575px)  {
-    .accident-copy{
-     
-    
-
-      &.small-font {
-        
-        margin-top: 0;
-      }
-    }
-  }
-  @media (max-width: 575px) {
-    .accident-copy{
-      max-width: 81px;
-      text-align: left;
-
-      &.small-font {
-        font-size: 12px;
-        line-height: 16px;
-       
-      }
-    }
-    
-    .alarm.svg-container {
-      margin-right: 16px;
-
-      img {
-        height: auto;
-        width: 40px;
-      }
-    }
-
-    .claim-icon.svg-container svg {
-      height: 24px;
-      width: 24px;
-    }
-    
-  }
-}
-
-.claim-desktop {
-  margin: auto;
-
-  @media (max-width: 575px) {
-    display:none;
-  }
-}
-
-.claim-mobile {
-  @media (min-width: 576px) {
-    display:none;
-  }
-
-  .button-link {
-    display:            block;
-    float:              right;
-    cursor:             pointer;
-    width:              76px;
-
-    i {
-      font-size:        24px;
-    }
-
-    .small-font {
-      line-height:      16px;
-      font-size:        10px;
-      margin-top:       2px;
-    }
-  }
-
-}
 
 .col.main-column {
   @media (max-width: 376px){
@@ -982,8 +808,6 @@
     .small-subtitle { 
       color: #7E7E7E;
       font-size: 11px;
-      font-family: NotoSans;
-      text-align: left;
       line-height: 16px;
     }
   }
@@ -994,6 +818,7 @@
     font-weight: bold;
     text-transform: uppercase;
   }
+
   .address {
     display: table;
     width: 100%;
@@ -1048,8 +873,6 @@
 .section-description {
   color: #737373;
   font-size: 12px;
-  font-family: NotoSans;
-  text-align: left;
   line-height: 16px;
 }
 
@@ -1244,7 +1067,6 @@
 .info {
   color: #737373;
   font-size: 12px;
-  font-family: NotoSans;
   line-height: 16px;
 }
 
@@ -1261,25 +1083,19 @@
   .agent-name {
     color: #4C4C4C;
     font-size: 16px;
-    font-family: NotoSans-Bold;
     font-weight: bold;
-    text-align: left;
     line-height: 24px;
   }
 
   .policy-info {
     color: #7E7E7E;
     font-size: 12px;
-    font-family: NotoSans;
-    text-align: left;
     line-height: 16px;
   }
 
   .agent-address {
     color: #4C4C4C;
     font-size: 12px;
-    font-family: NotoSans;
-    text-align: left;
     line-height: 16px;
   }
 
@@ -1328,5 +1144,30 @@
     }
   }
 }
+.policy-link {
+  padding: 8px;
+  padding-right: 16px;
+}
 
+.policy-link,
+.claim-link {
+  background: #006580;
+  color: #fff;
+  display: block;
+  text-align: right;
+  font-weight: bold;
+}
 
+.image-max-width {
+  max-width: 100%;
+  padding: 32px;
+}
+
+h1.title-cta {
+  font-size: 24px;
+  line-height: normal;
+}
+
+.no-border {
+  border: none !important;
+}

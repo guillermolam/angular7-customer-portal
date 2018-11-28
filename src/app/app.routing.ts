@@ -19,7 +19,9 @@ import { InformationDiscountsComponent } from './components/information/informat
 import { InformationRenewalComponent } from './components/information/information-renewal/information-renewal.component';
 import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
 import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
-
+import { ClaimsDetailComponent }      from './components/claims/claims-detail/claims-detail.component';
+import { ClaimsHomeComponent }        from './components/claims/claims-dashboard-active/claims-home.component';
+import { ClaimsHomeClosedComponent } from './components/claims/claims-dashboard-closed/claims-home-closed.component';
 // ----- Routes ----- //
 import { DashboardComponent }         from './routes/my-insurance/dashboard.component';
 import { ForgotPasswordComponent }    from './routes/forgot-password/forgot-password.component';
@@ -80,6 +82,15 @@ const appRoutes: Routes = [
     { path: 'edit-password' , component: ProfileEditPasswordComponent },
     { path: 'email-confirmation' , component: ProfileEmailConfirmComponent}
   ] },
+  { path: 'claims', component: ClaimsComponent, children: [
+    { path: '', redirectTo: 'active', pathMatch: 'full' },
+    { path: 'active', component: ClaimsHomeComponent },
+    { path: 'closed', component: ClaimsHomeClosedComponent },
+    { path: ':claimid', children: [
+      {path: '', redirectTo: 'details', pathMatch: 'full'},
+      { path: 'details', component: ClaimsDetailComponent },
+    ] }
+  ] },
   { path: 'information', component: InformationComponent,  children: [
     { path: '', component: InformationHomeComponent },
     { path: 'products', component: InformationProductsComponent },
@@ -91,7 +102,7 @@ const appRoutes: Routes = [
 
   ] },
   { path: 'billing', component: DashboardComponent },
-  { path: 'claims', component: ClaimsComponent },
+  
   { path: 'information', component: InformationComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'policy/add', component: DashboardComponent },
