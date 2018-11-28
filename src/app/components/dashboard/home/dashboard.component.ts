@@ -1,3 +1,4 @@
+import { UserInfoService } from './../../../_services/_userinformation/user-info.service';
 import { Component, OnInit }      from '@angular/core';
 import { Router }                 from '@angular/router';
 import { User }                   from '../../../_models/user';
@@ -18,7 +19,8 @@ export class DashboardHomeComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private router:               Router,
     private userService:          UserService,
-    private testingData:          TestingDataService
+    private testingData:          TestingDataService,
+    private userInfoService:      UserInfoService
   ) {
   }
 
@@ -26,10 +28,17 @@ export class DashboardHomeComponent implements OnInit {
     this.hideOrShow = !this.hideOrShow;
   }
 
+  // This will be removed
+ 
 
   ngOnInit() {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
+
+    // console.log('hello');
+    // this.userInfoService.policyByEmail('testmfre@gmail.com').subscribe((response)=>{
+    //   console.log(response);
+    // });
 
     this.userService.$user.subscribe(
       (user) => {

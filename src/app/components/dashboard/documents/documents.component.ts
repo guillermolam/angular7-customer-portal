@@ -18,7 +18,7 @@ import { WalletCardService }        from './../../../_services/_iam/wallet-card.
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.scss']
 })
-export class DocumentsComponent implements OnInit, AfterViewInit  {
+export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   //@ViewChild(MdbTablePaginationComponent) mdbTablePagination: MdbTablePaginationComponent;
 
   firstItemIndex;

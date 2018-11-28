@@ -14,7 +14,7 @@ import { UserService }              from './../../../_services/user.service';
   templateUrl: './billing.component.html',
   styleUrls: ['./billing.component.scss']
 })
-export class BillingComponent implements OnInit {
+export class BillingDetailsComponent implements OnInit {
 
   policyId:                 number;
   user:                     User;

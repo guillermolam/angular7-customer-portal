@@ -16,7 +16,7 @@ import { UserInfoService }          from '../../../_services/_userinformation/us
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent implements OnInit {
+export class PolicyDetailsComponent implements OnInit {
   alerton;
   input:                    object;
   loading:                  boolean = false;
