@@ -50,7 +50,7 @@ describe('AuthenticationService', () => {
       expect(resUser).toEqual(new HttpResponse({status: 201}));
     });
 
-    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/${user.email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/customers/accounts/${user.email}`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual(CreateAccountRequest.requestBody);
     req.flush(new HttpResponse({status: 201}));
@@ -63,7 +63,7 @@ describe('AuthenticationService', () => {
       expect(err).toBe('error');
     });
 
-    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/${user.email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/customers/accounts/${user.email}`);
     req.error(new ErrorEvent('error'));
   }));
 
@@ -72,7 +72,7 @@ describe('AuthenticationService', () => {
       expect(resUser).toEqual(new HttpResponse({status: 201}));
     });
 
-    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/${user.email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/customers/accounts/${user.email}`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual(CreateAccountRequest.requestBody);
     req.flush(new HttpResponse({status: 201}));
@@ -165,7 +165,7 @@ describe('AuthenticationService', () => {
         expect(response.status).toBe(200);
     });
 
-    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts?token=${token}&email=${email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/customers/accounts?token=${token}&email=${email}`);
     expect(req.request.method).toBe('PUT');
     req.flush(new HttpResponse<number>({status: 200}));
   }));
@@ -211,7 +211,7 @@ describe('AuthenticationService', () => {
       expect(response).toEqual(policyResponse);
     });
 
-    const req = httpMock.expectOne(`${environment.backend_server_url}/policies/${policyNumber}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/policies/personal/${policyNumber}`);
     expect(req.request.method).toBe('PUT');
     req.flush(policyResponse);
   }));
@@ -220,7 +220,7 @@ describe('AuthenticationService', () => {
     authService.verifyUser(userService).subscribe( (response) => {
       expect(response).toEqual(user);
     });
-    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/${user.email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/customers/accounts/${user.email}`);
     expect(req.request.method).toBe('POST');
     req.flush(user);
   }));

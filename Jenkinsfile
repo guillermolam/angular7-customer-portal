@@ -5,25 +5,25 @@ pipeline{
 		stage("LINTING & BUILD") {
 			steps{
 				sh 'rm -rf dist'
-				// sh "npm install"
-				// sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
+				sh "npm install"
+				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
 				sh "npm run build-dev"
 			}
 		}
 		
 		// Running unit test after build
-		// stage('RUN UNIT TESTS'){
-		//   steps{
-		//     	// Added to run unit test case for all module.
-		//       sh "npm run cibuild_test"
-		//   }
-		// }
+		stage('RUN UNIT TESTS'){
+		  steps{
+		    	// Added to run unit test case for all module.
+		      sh "npm run cibuild_test"
+		  }
+		}
 
-		// stage('STATIC ANALYSIS'){
-		//     steps{
-		//         sh "npm run sonar-run"
-		//     }
-		// }
+		stage('STATIC ANALYSIS'){
+		    steps{
+		        sh "npm run sonar-run"
+		    }
+		}
 
 		stage("BUILD & PUBLISH IMAGE"){
 			environment {
