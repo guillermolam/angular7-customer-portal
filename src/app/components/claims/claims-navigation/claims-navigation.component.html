@@ -1,0 +1,18 @@
+<nav class="row claim-details-nav margin-bottom mb40">
+    <div class="col accordian-navigation">
+      <ul>
+        <li routerLinkActive="active">
+          <a 
+            [routerLink]="['/claims/active']" 
+            title="Active Claims"
+          >{{'ACTIVE' | translate}}</a>
+        </li>
+        <li routerLinkActive="active">
+            <a
+              [routerLink]="['/claims/closed']"
+              title="Closed Claims"
+            >{{'CLOSED' | translate}}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

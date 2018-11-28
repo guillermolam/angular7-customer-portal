@@ -1,0 +1,182 @@
+<ng-container *ngFor="let claim of claims">
+  <ng-container *ngIf="claim.LOSS_NUMBER == claimid">
+    <header class="row margin-bottom mb16">
+      <div class="col">
+        <ng-container *ngIf="claim.policytype == 'auto' ">
+            <app-claims-home-car [claim]="claim" type="details"></app-claims-home-car>
+          </ng-container>
+
+          <ng-container *ngIf="claim.policytype == 'property' ">
+            <app-claims-home-property [claim]="claim" type="details"></app-claims-home-property>
+          </ng-container>
+      </div>
+    </header>
+    <div class="row">
+      
+      <div class="col col1">
+        <div class="row">
+          <div class="col">
+            <h2 class="title">
+                Information
+              </h2>
+          </div>
+        </div>
+        <div class="claim-info">
+          <div class="row margin-bottom mb16 margin-top mt8">
+            <div class="col info-type">
+                Claimant:
+            </div>
+            <div class="col info-data">
+              {{claim.details.claimant}}
+            </div>
+          </div>
+          <div class="row margin-bottom mb16">
+            <div class="col info-type">
+                Payments to Date:
+            </div>
+            <div class="col info-data">
+                {{claim.details.payments_to_date}}
+              </div>
+          </div>
+          <div class="row margin-bottom mb16"> 
+            <div class="col info-type">
+                Location:
+            </div>
+            <div class="col info-data">
+                {{claim.details.location}}
+              </div>
+          </div>
+          <div class="row margin-bottom mb16">
+            <div class="col">
+                <iframe height="168" id="gmap_canvas" 
+                [src]="getAddress(claim.details.location)" 
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            </div>
+          </div>
+          <div class="row margin-bottom mb16">
+            <div class="col info-type">
+                Description:
+            </div>
+            <div class="col info-data">
+                {{claim.details.description}}
+              </div>
+          </div>
+          <div class="row margin-bottom mb16">
+            <div class="col info-type">
+                Claim Adjuster:
+              </div>
+              <div class="col info-data">
+                <div>
+                    phone: <a href="tel:{{claim.details.claim_adjustter_number}}" class="mapfre link underline">{{claim.details.claim_adjustter_number}}</a>
+                </div>
+                <div>
+                    email: <a href="mailto:{{claim.details.claim_adjustter_email}}" class="mapfre link underline">{{claim.details.claim_adjustter_email}}</a>
+                </div>
+                <div>
+                    fax: {{claim.details.claim_adjustter_fax}}
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="appraisal-info margin-top mt32">
+          <div class="row">
+            <div class="col">
+              <h2 class="title no-border">
+                  Appraisal Information
+              </h2>
+              <table mdbTable class="claims-table">
+                <thead>
+                  <tr>
+                    <td>
+                        Number
+                    </td>
+                    <td>
+                        Appraiser
+                    </td>
+                    <td>
+                        Amount
+                    </td>
+                    <td>
+                        Status
+                    </td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let appraisal of claim.details.appraisal">
+                    <td>
+                      {{appraisal.number}}
+                    </td>
+                    <td>
+                      {{appraisal.appraiser}}
+                    </td>
+                    <td>
+                      {{appraisal.amount}}
+                    </td>
+                    <td>
+                      {{appraisal.status}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="payment-info margin-top mt32">
+          <div class="row">
+            <div class="col">
+                <h2 class="title no-border">
+                    Payment Information
+                </h2>
+                <table mdbTable class="claims-table">
+                  <thead>
+                    <tr>
+                      <td>
+                          Check
+                      </td>
+                      <td>
+                          Date Paid
+                      </td>
+                      <td>
+                          Amount
+                      </td>
+                      <td>
+                          Status
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let payment of claim.details.payments">
+                      <td>
+                        {{payment.check}}
+                      </td>
+                      <td>
+                        {{payment.datepaid}}
+                      </td>
+                      <td>
+                        {{payment.amount}}
+                      </td>
+                      <td>
+                        {{payment.status}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    
+      <div class="col col2">
+        <div class="row claims-faq">
+          <div class="col">
+            <app-claims-accordian-faq></app-claims-accordian-faq>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+</ng-container>

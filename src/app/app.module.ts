@@ -103,6 +103,17 @@ import { ProfileEmailConfirmComponent } from './components/profile/profile-email
 import { ProfileSettingsRoutingService } from './_services/profile-settings/profile-settings-routing.service';
 import { ProfileConfirmModalService } from './_services/profile-settings/profile-confirm-modal.service';
 import { ProfileConfirmModalComponent } from './components/profile/profile-confirm-modal/profile-confirm-modal.component';
+import { ClaimsHomeComponent } from './components/claims/claims-dashboard-active/claims-home.component';
+import { ClaimsWrapperComponent } from './components/claims/claims.component';
+import { ClaimsDetailComponent } from './components/claims/claims-detail/claims-detail.component';
+import { ClaimsHomeClosedComponent } from './components/claims/claims-dashboard-closed/claims-home-closed.component';
+import { ClaimsAccordianFaqComponent } from './components/claims/claims-accordian-faq/claims-accordian-faq.component';
+import { ClaimsNavigationComponent } from './components/claims/claims-navigation/claims-navigation.component';
+import { NoClaimsComponent } from './components/claims/no-claims/no-claims.component';
+import { ClaimsReportComponent } from './components/claims/claims-report/claims-report.component';
+import { ClaimsHomeCarComponent } from './components/claims/claims-dashboard-car/claims-home-car.component';
+import { ClaimsHomePropertyComponent } from './components/claims/claims-dashboard-property/claims-home-property.component';
+
 
 if (environment.production) {
   enableProdMode();
@@ -114,6 +125,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
+    ClaimsWrapperComponent,
     ContactScreenComponent,
     DashboardHomeComponent,
     AppComponent,
@@ -186,6 +198,15 @@ export function tokenGetter() {
     EditEmailFormComponent,
     ProfileEmailConfirmComponent,
     ProfileConfirmModalComponent,
+    ClaimsHomeComponent,
+    ClaimsDetailComponent,
+    ClaimsHomeClosedComponent,
+    ClaimsAccordianFaqComponent,
+    ClaimsNavigationComponent,
+    NoClaimsComponent,
+    ClaimsReportComponent,
+    ClaimsHomeCarComponent,
+    ClaimsHomePropertyComponent,
 
   ],
   imports: [

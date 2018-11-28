@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col col1">
+      <header class="row margin-bottom mb16">
+        <div class="col">
+          <h1 class="title">
+            {{ 'CLOSED_CLAIMS' | translate}}
+          </h1>
+        </div>
+      </header>
+    
+      <ng-container *ngIf="claims?.length != 0">
+        <app-claims-navigation></app-claims-navigation>
+  
+        <ng-container *ngFor="let claim of claims">
+          <ng-container *ngIf="claim.SUCCESS == '1'">
+            <ng-container *ngIf="claim.policytype == 'auto' ">
+              <app-claims-home-car [claim]="claim"></app-claims-home-car>
+            </ng-container>
+  
+            <ng-container *ngIf="claim.policytype == 'property' ">
+              <app-claims-home-property [claim]="claim"></app-claims-home-property>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      
+        <div class="row report-claim margin-top mt40">
+          <div class="col">
+            <app-claims-report></app-claims-report>
+          </div>
+        </div>
+      </ng-container>
+  
+      <ng-container *ngIf="claims?.length == 0 || claims == undefinded">
+       <app-no-claims></app-no-claims>
+      </ng-container>
+    </div>
+  
+    <div class="col col2">
+      <div class="row claims-faq">
+        <div class="col">
+            <app-claims-accordian-faq></app-claims-accordian-faq>
+        </div>
+      </div>
+    </div>
+  </div>
