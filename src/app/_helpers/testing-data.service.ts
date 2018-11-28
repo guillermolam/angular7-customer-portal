@@ -372,6 +372,7 @@ export class TestingDataService {
           transactionDate: '02/20/2002',
           description: 'Endorsement Documents'
         }
+        
       ];
     }
     else {
@@ -388,7 +389,38 @@ export class TestingDataService {
          LOSS_DESC: 'collision',
          SUCCESS: '1',
          policyid: 'QJN952',
-         policytype: 'auto'
+         policytype: 'auto',
+         details: {
+           claimant: 'MARIA C. BRILHANT',
+           payments_to_date: '$2868.87',
+           location: '10 City Square, Charlestown, MA 02129',
+           description: 'Ins Veh was hit & run or run off road by unidentified veh',
+           claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
+           claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
+           claim_adjustter_fax: '1-508-949-5930',
+           appraisal: [
+            {
+              number: 'ABC1234',
+              appraiser: 'Boston Appraisals',
+              amount: '$500.12',
+              status: 'Complete'
+            }
+           ],
+           payments: [
+            {
+              check: '0026929804',
+              datepaid: '12/03/2018',
+              amount: '$320.12',
+              status: 'Cashed 09/08/2018'
+            },
+            {
+              check: '0026929804',
+              datepaid: '12/03/2018',
+              amount: '$320.12',
+              status: 'Cashed 09/08/2018'
+            },
+           ],
+         }
       },
       {
         LOSS_NUMBER: 'A1B1C1-D1E1F1',
@@ -396,7 +428,44 @@ export class TestingDataService {
         LOSS_DESC: 'collision',
         SUCCESS: '0',
         policyid: '66161',
-        policytype: 'auto'
+        policytype: 'auto',
+        details: {
+          claimant: 'MARIA C. BRILHANT',
+          payments_to_date: '$2868.87',
+          location: '62 Summer St, Boston, MA 02110',
+          description: 'Ins Veh was hit & run or run off road by unidentified veh',
+          claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
+          claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
+          claim_adjustter_fax: '1-508-949-5930',
+          appraisal: [
+           {
+             number: 'ABC1234',
+             appraiser: 'Boston Appraisals',
+             amount: '$500.12',
+             status: 'Complete'
+           },
+           {
+            number: 'ABC1234',
+            appraiser: 'Boston Appraisals',
+            amount: '$333.12',
+            status: 'Complete'
+          }
+          ],
+          payments: [
+           {
+             check: '0026929804',
+             datepaid: '12/03/2018',
+             amount: '$320.12',
+             status: 'Cashed 09/08/2018'
+           },
+           {
+             check: '0026131104',
+             datepaid: '12/03/2018',
+             amount: '$331.12',
+             status: 'Cashed 09/08/2018'
+           },
+          ],
+        }
      },
      {
       LOSS_NUMBER: 'AAABBB-BBBBBBB',
@@ -404,7 +473,45 @@ export class TestingDataService {
       LOSS_DESC: 'water damage',
       SUCCESS: '1',
       policyid: 'abc123',
-      policytype: 'property'
+      policytype: 'property',
+      details: {
+        claimant: 'MARIA C. BRILHANT',
+        payments_to_date: '$2868.87',
+        location: '110 Strathmore Rd. 02135 Brighton, MA',
+        description: 'Water Damage from a leaky roof',
+        claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
+        claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
+        claim_adjustter_fax: '1-508-949-5930',
+        appraisal: [
+         {
+           number: 'ABC1234',
+           appraiser: 'Boston Appraisals',
+           amount: '$500.12',
+           status: 'Complete'
+         },
+         {
+          number: 'ABC1234',
+          appraiser: 'Boston Appraisals',
+          amount: '$333.12',
+          status: 'Complete'
+        }
+        ],
+        payments: [
+         {
+           check: '0026929804',
+           datepaid: '12/03/2018',
+           amount: '$320.12',
+           status: 'Cashed 09/08/2018'
+         },
+         {
+           check: '0026131104',
+           datepaid: '12/03/2018',
+           amount: '$331.12',
+           status: 'Cashed 09/08/2018'
+         },
+        ],
+      }
+      
    },
    {
      LOSS_NUMBER: 'CCCCCC-D1E1F1',
@@ -412,7 +519,44 @@ export class TestingDataService {
      LOSS_DESC: 'lightening damage',
      SUCCESS: '0',
      policyid: 'BBWQKQ',
-     policytype: 'property'
+     policytype: 'property',
+     details: {
+      claimant: 'MARIA C. BRILHANT',
+      payments_to_date: '$2868.87',
+      location: '1848 Commonwealth Ave Brighton MA 02135',
+      description: 'lightening struck the building',
+      claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
+      claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
+      claim_adjustter_fax: '1-508-949-5930',
+      appraisal: [
+       {
+         number: 'ABC1234',
+         appraiser: 'Boston Appraisals',
+         amount: '$500.12',
+         status: 'Complete'
+       },
+       {
+        number: 'ABC1234',
+        appraiser: 'Boston Appraisals',
+        amount: '$333.12',
+        status: 'Complete'
+      }
+      ],
+      payments: [
+       {
+         check: '0026929804',
+         datepaid: '12/03/2018',
+         amount: '$320.12',
+         status: 'Cashed 09/08/2018'
+       },
+       {
+         check: '0026131104',
+         datepaid: '12/03/2018',
+         amount: '$331.12',
+         status: 'Cashed 09/08/2018'
+       },
+      ],
+    }
   }
    ];
   }

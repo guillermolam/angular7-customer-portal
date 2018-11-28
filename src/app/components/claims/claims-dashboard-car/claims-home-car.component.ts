@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ClaimsHomeCarComponent implements OnInit {
   @Input() claim;
+  @Input() type: string;
   constructor() { }
 
   ngOnInit() {

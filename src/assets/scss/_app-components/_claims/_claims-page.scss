@@ -1,19 +1,20 @@
-.claims {
+.claims,
+.claim-detail {
+  hr.bottom-border {
+    margin-left: -17px;
+    margin-right: -10px;
+  }
+  
+  i {
+    font-size: 16px;
+  }
+  
   .accordian-navigation ul {
     margin: 0;
   }
 
   .col.accordian-navigation {
     padding: 0;
-  }
-
-  header > .col {
-    padding: 0;
-    padding-left: 8px;
-  }
-
-  .col1 {
-    margin-left: -9px;
   }
 
   .col2 {
@@ -25,11 +26,20 @@
       padding-left: 16px;
       padding-right: 8px;
     }
-   
+  
     @media (min-width: 768px) {   
       max-width: 310px;
       border-left: 2px solid #EAE9E9;
     }
+
+    @media (max-width: 767px) {
+      flex-basis: auto;
+    }
+  }
+
+  header > .col {
+    padding: 0;
+    padding-left: 8px;
   }
 
   .policy-background {
@@ -53,9 +63,7 @@
       background-repeat: no-repeat;
 
       @media (max-width: 575px) {
-        height: 32px;
-        width: 45px;
-        background-size: auto 32px;
+        background-size: auto 70px;
       }
     }
   }
@@ -71,8 +79,9 @@
     margin-top: -8px;
 
     @media (max-width: 575px) {
-      font-size: 14px;
-    }
+      font-size: 18px;
+      margin-top: 8px;
+    } 
   }
 
   h2.claim-id {
@@ -82,6 +91,11 @@
     text-align: left;
     line-height: 32px;
     margin-bottom: 0;
+
+    @media (max-width: 575px) {
+      font-size: 14px;
+      line-height: 24px;
+    } 
   }
 
   h2.title {
@@ -89,6 +103,7 @@
     line-height: 32px;
     border-bottom: 2px solid #EAE9E9;;
     color: #adaaaa;
+    text-align: left;
 
     .small-subtitle { 
       color: #7E7E7E;
@@ -124,6 +139,38 @@
   }
 }
 
+.claims .col1 {
+  @media (min-width: 580px) and (max-width:767px){
+    margin-left: 0;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  @media (min-width: 768px) {
+    margin-left: -9px;
+  }
+}
+
+.claim-detail {
+  .col1 {
+    padding-right: 32px;
+  }
+
+  .policy-background {
+    margin-left: -2px;
+  }
+}
+
+
+.collapse-link {
+  &.active {
+    color: #006580 !important;
+    font-size: 14px;
+    font-family: NotoSans-Bold;
+    font-weight: bold;
+  }
+}
+
 .claim-link {
   padding: 4px 0;
 }
@@ -142,11 +189,33 @@
 }
 
 .collapse-content {
-  font-size: 12px; 
-  background: #F7F7F7;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  font-size: 12px;
+  line-height: normal; 
 }
 
+.info-type  {
+  max-width:  151px;
+  color: #737373;
+}
 
+.info-data {
+  font-weight: bold;
+  font-size: 12px;
+  color: #4c4c4c;
+}
+
+.claims-table {
+  tr {
+    border: thin solid #EAE9E9;
+    padding: 16px;
+  }
+
+  thead {
+    color: #ADAAAA;
+  }
+
+  tbody {
+    color: #4C4C4C;
+  }
+}
 

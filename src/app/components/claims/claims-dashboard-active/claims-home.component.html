@@ -4,7 +4,12 @@
     <header class="row margin-bottom mb16">
       <div class="col">
         <h1 class="title">
+          <ng-container *ngIf="claims?.length != 0">
           {{ 'ACTIVE_CLAIMS' | translate }}
+          </ng-container>
+          <ng-container *ngIf="claims?.length == 0">
+              {{ 'CLAIMS' | translate }}
+          </ng-container>
         </h1>
       </div>
     </header>

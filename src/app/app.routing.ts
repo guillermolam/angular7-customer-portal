@@ -20,8 +20,8 @@ import { InformationRenewalComponent } from './components/information/informatio
 import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
 import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
 import { ClaimsDetailComponent }      from './components/claims/claims-detail/claims-detail.component';
-import { ClaimsHomeComponent }        from './components/claims/claims-home-active/claims-home.component';
-import { ClaimsHomeClosedComponent } from './components/claims/claims-home-closed/claims-home-closed.component';
+import { ClaimsHomeComponent }        from './components/claims/claims-dashboard-active/claims-home.component';
+import { ClaimsHomeClosedComponent } from './components/claims/claims-dashboard-closed/claims-home-closed.component';
 // ----- Routes ----- //
 import { DashboardComponent }         from './routes/my-insurance/dashboard.component';
 import { ForgotPasswordComponent }    from './routes/forgot-password/forgot-password.component';
