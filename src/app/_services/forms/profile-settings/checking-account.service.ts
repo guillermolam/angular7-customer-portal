@@ -29,34 +29,34 @@ export class CheckingAccountService {
         inputType:          'text',
         value:               this.checkingAccount.accountHolderName,
         key:                'bankAccountHolder',
-        label:              'BANK_ACCOUNT_HOLDER_NAME',
+        label:              "Bank account holder's name",
         required:           true,
         type:               'text',
-        validationMessageError: 'VALID_ACCOUNT_HOLDER_NAME_MESSAGE'
+        validationMessageError: 'Please enter valid name'
       }),
       new TextBox({
         additionalClasses:  'form-control profile-input-border',
         inputType:          'bank',
         key:                'bankAccountRoutingNumber',
-        label:              'BANK_ROUTING_NUMBER',
+        label:              'Bank routing number',
         maxLength: 9,
         minLength: 9,
         required:           true,
         type:               'tel',
         value:              this.checkingAccount.routingNumber,
-        validationMessageError: 'VALID_BANK_ROUTING_NUMBER'
+        validationMessageError: 'Please enter valid routing number'
       }),
       new TextBox({
         additionalClasses:  'form-control profile-input-border',
         inputType:          'bank',
         key:                'bankAccountNumber',
-        label:              'BANK_ACCOUNT_NUMBER',
+        label:              'Bank account number',
         maxLength: 17,
         minLength: 4,
         required:           true,
         type:               'tel',
         value:              this.checkingAccount.accountNumber,
-        validationMessageError: 'VALID_BANK_ACCOUNT_NUMBER'
+        validationMessageError: 'Please enter valid account number'
       }),
       ...this.changeAddressService.getInputs(
         'profile-input-border checking-account-address',

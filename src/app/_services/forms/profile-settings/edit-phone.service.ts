@@ -27,7 +27,7 @@ export class EditPhoneService {
         label:              'Phone',
         required:           true,
         type:               'tel',
-        validationMessageError: 'VALID_PHONE_NUMBER_MESSAGE'
+        validationMessageError: 'Please enter valid phone number'
       })
     ];
 

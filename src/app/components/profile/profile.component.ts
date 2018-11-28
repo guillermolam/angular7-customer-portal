@@ -1,3 +1,4 @@
+import { AlertService } from 'mapfre-design-library';
 import { Location } from '@angular/common';
 import { ProfileSettingsRoutingService } from './../../_services/profile-settings/profile-settings-routing.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -13,7 +14,8 @@ export class ProfileComponent implements OnInit {
   showAlert: boolean;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
