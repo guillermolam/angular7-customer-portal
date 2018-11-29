@@ -1,15 +1,23 @@
-import { HttpClient }         from '@angular/common/http';
+import { HttpClient, HttpHeaders }         from '@angular/common/http';
 import { Injectable }         from '@angular/core';
 import { of, throwError }     from 'rxjs';
-import { Observable }         from 'rxjs/Observable';
+import { Observable }         from 'rxjs';
 import { catchError, map }    from 'rxjs/operators';
-import { environment }        from '../../../environments/environment.dev';//change it to environment later
+import { environment }        from '../../../environments/environment';//change it to environment later
 import { User }               from '../../_models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserInfoService {
+
+  httpOptions: any = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+      'Content-Type': 'application/json;charset=utf-8'
+    })
+  }
 
   constructor(
     private http: HttpClient
