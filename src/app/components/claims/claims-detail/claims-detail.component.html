@@ -18,6 +18,15 @@
           <div class="col">
             <h2 class="title">
                 Information
+               
+                  <mapfre-tooltip
+                    additionalClasses="right float"
+                    [tooltipCopy]="'For `collision` losses, a surcharge may apply depending on who is responsible for the accident.'"
+                    [placementLocation]="'right'"
+                  >
+                  Surcharges may apply <svg-information-svg></svg-information-svg>
+                  </mapfre-tooltip>
+               
               </h2>
           </div>
         </div>
@@ -86,24 +95,24 @@
                   Appraisal Information
               </h2>
               <table mdbTable class="claims-table">
-                <thead>
-                  <tr>
-                    <td>
+                <thead class="lite-grey-color">
+                  <tr class="row-content border-full grey-border">
+                    <td>  
                         Number
                     </td>
-                    <td>
+                    <td> 
                         Appraiser
                     </td>
-                    <td>
+                    <td> 
                         Amount
                     </td>
-                    <td>
+                    <td> 
                         Status
                     </td>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr *ngFor="let appraisal of claim.details.appraisal">
+                <tbody class="med-grey-color">
+                  <tr *ngFor="let appraisal of claim.details.appraisal" class="row-content border-full grey-border">
                     <td>
                       {{appraisal.number}}
                     </td>
@@ -123,15 +132,15 @@
           </div>
         </div>
 
-        <div class="payment-info margin-top mt32">
+        <div class="payment-info margin-top mt16 margin-bottom mb32">
           <div class="row">
             <div class="col">
                 <h2 class="title no-border">
                     Payment Information
                 </h2>
                 <table mdbTable class="claims-table">
-                  <thead>
-                    <tr>
+                  <thead  class="lite-grey-color">
+                    <tr class="row-content  border-full grey-border">
                       <td>
                           Check
                       </td>
@@ -146,8 +155,8 @@
                       </td>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr *ngFor="let payment of claim.details.payments">
+                  <tbody class="med-grey-color">
+                    <tr *ngFor="let payment of claim.details.payments" class="row-content border-full grey-border">
                       <td>
                         {{payment.check}}
                       </td>

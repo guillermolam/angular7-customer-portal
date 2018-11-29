@@ -15,24 +15,22 @@
 }
 
 .btn.mapfre.basic{
-    &.profile-remove-account-button{
-        background: $white;
-        border: 0.1rem solid  $corprate-red;
-        font-size: small;
-        color:  $corprate-red;
-    }
+  &.profile-remove-account-button{
+    background: $white;
+    border: 0.1rem solid  $corprate-red;
+    font-size: small;
+    color:  $corprate-red;
+  }
 
-    &.cancel{
-        align-items: center;
-        background: $white;
-        border: 0.1rem solid  $grey;
-        font-size: small;
-        color:  $grey;
-        width: 12.5rem;
-        height: 2rem;
-    }
-    
-
+  &.cancel{
+    align-items: center;
+    background: $white;
+    border: 0.1rem solid  $grey;
+    font-size: small;
+    color:  $grey;
+    width: 12.5rem;
+    height: 2rem;
+  }
 }
 
 @media (max-width: 992px){

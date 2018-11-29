@@ -1168,6 +1168,33 @@ h1.title-cta {
   line-height: normal;
 }
 
+/* general should be moved to the general area */
+
+.border-full {
+  border: thin solid;
+
+  &.grey-border {
+    border-color: $soft-grey;
+  }
+}
+
 .no-border {
   border: none !important;
+}
+
+.lite-grey-color {
+  color: $grey;
+}
+
+.med-grey-color {
+  color: $med-gray;
+}
+
+.table {
+  @media (max-width:520px) {
+    td {
+      font-size: 12px;
+      padding: 8px !important;
+    }
+  }
 }

@@ -97,10 +97,9 @@
       </div>
       <div class="clear-fix"></div>
       <a 
-      [routerLink]="['/my-insurance', policy?.policynumber.policynumber, 'details']" 
-      class="policy-link waves-light"
-      mdbWavesEffect 
-      > 
+        mdbWavesEffect 
+        [routerLink]="['/my-insurance', policy?.policynumber.policynumber, 'details']" 
+        class="policy-link  waves-light d-block"> 
         {{ 'Details_Billing_Documents' | translate }} 
         <svg-arror-right-svg></svg-arror-right-svg>
       </a>
@@ -202,7 +201,7 @@
     <a 
       mdbWavesEffect 
       [routerLink]="['/my-insurance', policy?.policynumber.policynumber, 'details']" 
-      class="policy-link"> 
+      class="policy-link  waves-light d-block"> 
       {{ 'Details_Billing_Documents' | translate }} 
       <svg-arror-right-svg></svg-arror-right-svg>
     </a>
