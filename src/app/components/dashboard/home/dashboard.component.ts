@@ -35,10 +35,10 @@ export class DashboardHomeComponent implements OnInit {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
 
-    // console.log('hello');
-    // this.userInfoService.policyByEmail('testmfre@gmail.com').subscribe((response)=>{
-    //   console.log(response);
-    // });
+    console.log('hello');
+    this.userInfoService.policyByEmail('testmfre@gmail.com').subscribe((response)=>{
+      console.log(response);
+    });
 
     this.userService.$user.subscribe(
       (user) => {
