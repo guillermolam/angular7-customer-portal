@@ -9,7 +9,7 @@ describe('StorageServiceObservablesService', () => {
   });
 });
 
-  fit('should be created', () => {
+  it('should be created', () => {
     const service: StorageServiceObservablesService = TestBed.get(StorageServiceObservablesService);
     expect(service).toBeTruthy();
   });

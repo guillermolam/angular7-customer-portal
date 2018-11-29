@@ -12,5 +12,5 @@ export class StorageServiceObservablesService {
   setPolicyDetails(policyDetail: any){
     this.policyDetails.next(policyDetail);
   }
-  
+
 }
