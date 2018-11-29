@@ -29,7 +29,7 @@
   
     @media (min-width: 768px) {   
       max-width: 310px;
-      border-left: 2px solid #EAE9E9;
+      border-left: 2px solid $soft-grey;
     }
 
     @media (max-width: 767px) {
@@ -69,7 +69,7 @@
   }
 
   h1.title {
-    color: #ADAAAA;
+    color: $grey;
     font-size: 24px;
     line-height: normal;
     padding-left: 8px;
@@ -83,7 +83,7 @@
   }
 
   h2.claim-id {
-    color: #4C4C4C;
+    color: $med-gray;
     font-size: 18px;
     line-height: 32px;
     margin-bottom: 0;
@@ -97,12 +97,12 @@
   h2.title {
     font-size: 18px;
     line-height: 32px;
-    border-bottom: 2px solid #EAE9E9;;
-    color: #adaaaa;
+    border-bottom: 2px solid $soft-grey;;
+    color: $grey;
     text-align: left;
 
     .small-subtitle { 
-      color: #7E7E7E;
+      color: $dark-grey;
       font-size: 11px;
       line-height: 16px;
     }
@@ -118,13 +118,13 @@
   }
   
   .policy-id {
-    color: #737373;
+    color: $dark-grey;
     font-size: 14px;
     line-height: 24px;
   }
 
   .date-loss {
-    color: #4C4C4C;
+    color: $med-gray;
     font-size: 14px;
     line-height: 24px;
   }
@@ -145,6 +145,10 @@
 .claim-detail {
   .col1 {
     padding-right: 32px;
+
+    @media (max-width: 767px) {
+      padding-right: 15px;
+    }
   }
 
   .policy-background {
@@ -152,60 +156,24 @@
   }
 }
 
-
-.collapse-link {
-  &.active {
-    color: #006580 !important;
-    font-size: 14px;
-    font-weight: bold;
-  }
-}
-
 .claim-link {
   padding: 4px 0;
 }
 
-.claim {
-  text-align: left;
-}
-
-.claims-faq {
-  text-align: left;
-}
-
-.collapse-carot {
-  max-width: 21px;
-  padding: 0;
-}
-
-.collapse-content {
-  font-size: 12px;
-  line-height: normal; 
-}
-
 .info-type  {
   max-width:  151px;
-  color: #737373;
+  color: $dark-grey;
 }
 
 .info-data {
   font-weight: bold;
   font-size: 12px;
-  color: #4c4c4c;
+  color: $med-gray;
 }
 
-.claims-table {
-  tr {
-    border: thin solid #EAE9E9;
-    padding: 16px;
-  }
-
-  thead {
-    color: #ADAAAA;
-  }
-
-  tbody {
-    color: #4C4C4C;
+.hug-border-on-mobile {
+  @media (max-width: 579px) {
+    margin-left: -24px;
+    margin-right: -24px;
   }
 }
-

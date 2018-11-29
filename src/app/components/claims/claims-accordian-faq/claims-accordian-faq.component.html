@@ -1,106 +1,118 @@
 <h2 class="title">{{ 'CLAIM_FAQ_1' | translate }}</h2>
 <div>
 
-  <div class="row margin-vertical mv16">
-    <div class="col">
-      <a  class="waves-light mapfre link collapse-link row" (click)="one.toggle()" mdbWavesEffect [class.active]="!one.isCollapsed">
-        <div class="col">{{ 'CLAIM_FAQ_2' | translate }} </div>
-        <div class="col collapse-carot"> 
-          <i class="fas fa-caret-down" *ngIf="one.isCollapsed"></i>
-          <i class="fas fa-caret-up" *ngIf="!one.isCollapsed"></i>
+  <div class="row margin-top mt16 margin-bottom mb8">
+   
+      <a  class="waves-light mapfre link collapse-link" (click)="one.toggle()" mdbWavesEffect [class.active]="!one.isCollapsed">
+        <div class="row">
+          <div class="col">{{ 'CLAIM_FAQ_2' | translate }} </div>
+          <div class="col collapse-carot"> 
+            <i class="fas fa-caret-down" *ngIf="one.isCollapsed"></i>
+            <i class="fas fa-caret-up" *ngIf="!one.isCollapsed"></i>
+          </div>
         </div>
       </a>
-      <div class="margin-top mt8 row collapse-content" mdbCollapse #one="bs-collapse">
+      <div class="row collapse-content" mdbCollapse #one="bs-collapse">
         <div class="col">
             {{ 'CLAIM_FAQ_3' | translate }} 
         </div>
       </div>
-    </div>
+  
   </div>
 
-  <div class="row margin-bottom mb16">
-    <div class="col">
-      <a  class="waves-light mapfre link collapse-link row" (click)="two.toggle()" mdbWavesEffect [class.active]="!two.isCollapsed">
-        <div class="col">{{ 'CLAIM_FAQ_4' | translate }}  </div>
-        <div class="col collapse-carot"> 
-            <i class="fas fa-caret-down" *ngIf="two.isCollapsed"></i>
-            <i class="fas fa-caret-up" *ngIf="!two.isCollapsed"></i>
+  <div class="row margin-bottom mb8">
+   
+      <a  class="waves-light mapfre link collapse-link" (click)="two.toggle()" mdbWavesEffect [class.active]="!two.isCollapsed">
+        <div class="row">
+          <div class="col">{{ 'CLAIM_FAQ_4' | translate }}  </div>
+          <div class="col collapse-carot"> 
+              <i class="fas fa-caret-down" *ngIf="two.isCollapsed"></i>
+              <i class="fas fa-caret-up" *ngIf="!two.isCollapsed"></i>
+            </div>
           </div>
       </a>
-      <div class="margin-top mt8 row collapse-content" mdbCollapse #two="bs-collapse">
+      <div class="row collapse-content" mdbCollapse #two="bs-collapse">
         <div class="col"> 
             {{ 'CLAIM_FAQ_5' | translate }}  
         </div>
       </div>
-    </div>
+  
   </div>
 
-  <div class="row margin-bottom mb16">
-    <div class="col">
-      <a  class="waves-light mapfre link collapse-link row" (click)="three.toggle()" mdbWavesEffect [class.active]="!three.isCollapsed">
-        <div class="col">{{ 'CLAIM_FAQ_6' | translate }}</div>
-        <div class="col collapse-carot"> 
-          <i class="fas fa-caret-down" *ngIf="three.isCollapsed"></i>
-          <i class="fas fa-caret-up" *ngIf="!three.isCollapsed"></i>
+  <div class="row margin-bottom mb8">
+    
+      <a  class="waves-light mapfre link collapse-link" (click)="three.toggle()" mdbWavesEffect [class.active]="!three.isCollapsed">
+        <div class="row">
+          <div class="col">{{ 'CLAIM_FAQ_6' | translate }}</div>
+          <div class="col collapse-carot"> 
+            <i class="fas fa-caret-down" *ngIf="three.isCollapsed"></i>
+            <i class="fas fa-caret-up" *ngIf="!three.isCollapsed"></i>
+          </div>
         </div>
       </a>
-      <div class="margin-top mt8 row collapse-content" mdbCollapse #three="bs-collapse">
+      <div class="row collapse-content" mdbCollapse #three="bs-collapse">
         <div class="col"> 
             {{ 'CLAIM_FAQ_7' | translate }} 
           </div>
       </div>
-    </div>
+   
   </div>
 
-  <div class="row margin-bottom mb16">
-    <div class="col">
-      <a  class="waves-light mapfre link collapse-link row" (click)="four.toggle()" mdbWavesEffect [class.active]="!four.isCollapsed">
-        <div class="col">{{ 'CLAIM_FAQ_8' | translate }} </div>
-        <div class="col collapse-carot"> 
-          <i class="fas fa-caret-down" *ngIf="four.isCollapsed"></i>
-          <i class="fas fa-caret-up" *ngIf="!four.isCollapsed"></i>
+  <div class="row margin-bottom mb8">
+   
+      <a  class="waves-light mapfre link collapse-link" (click)="four.toggle()" mdbWavesEffect [class.active]="!four.isCollapsed">
+        <div class="row">
+          <div class="col">{{ 'CLAIM_FAQ_8' | translate }} </div>
+          <div class="col collapse-carot"> 
+            <i class="fas fa-caret-down" *ngIf="four.isCollapsed"></i>
+            <i class="fas fa-caret-up" *ngIf="!four.isCollapsed"></i>
+          </div>
         </div>
       </a>
-      <div class="margin-top mt8 row collapse-content" mdbCollapse #four="bs-collapse">
+      <div class="row collapse-content" mdbCollapse #four="bs-collapse">
         <div class="col"> 
             {{ 'CLAIM_FAQ_9' | translate }}  
           </div>
       </div>
-    </div>
+  
   </div>
 
-  <div class="row margin-bottom mb16">
-    <div class="col">
-      <a  class="waves-light mapfre link collapse-link row" (click)="five.toggle()" mdbWavesEffect [class.active]="!five.isCollapsed">
-        <div class="col">{{ 'CLAIM_FAQ_10' | translate }} </div>
-        <div class="col collapse-carot"> 
-          <i class="fas fa-caret-down" *ngIf="five.isCollapsed"></i>
-          <i class="fas fa-caret-up" *ngIf="!five.isCollapsed"></i>
+  <div class="row margin-bottom mb8">
+    
+      <a  class="waves-light mapfre link collapse-link" (click)="five.toggle()" mdbWavesEffect [class.active]="!five.isCollapsed">
+        <div class="row">
+          <div class="col">{{ 'CLAIM_FAQ_10' | translate }} </div>
+          <div class="col collapse-carot"> 
+            <i class="fas fa-caret-down" *ngIf="five.isCollapsed"></i>
+            <i class="fas fa-caret-up" *ngIf="!five.isCollapsed"></i>
+          </div>
         </div>
       </a>
-      <div class="margin-top mt8 row collapse-content" mdbCollapse #five="bs-collapse">
+      <div class="row collapse-content" mdbCollapse #five="bs-collapse">
         <div class="col"> 
             {{ 'CLAIM_FAQ_11' | translate }} 
           </div>
       </div>
-    </div>
+    
   </div>
 
-  <div class="row margin-bottom mb16">
-    <div class="col">
-      <a  class="waves-light mapfre link collapse-link row" (click)="six.toggle()" mdbWavesEffect [class.active]="!six.isCollapsed">
-        <div class="col">{{ 'CLAIM_FAQ_12' | translate }} </div>
-        <div class="col collapse-carot"> 
-          <i class="fas fa-caret-down" *ngIf="six.isCollapsed"></i>
-          <i class="fas fa-caret-up" *ngIf="!six.isCollapsed"></i>
+  <div class="row margin-bottom mb8">
+   
+      <a  class="waves-light mapfre link collapse-link" (click)="six.toggle()" mdbWavesEffect [class.active]="!six.isCollapsed">
+        <div class="row">
+          <div class="col">{{ 'CLAIM_FAQ_12' | translate }} </div>
+          <div class="col collapse-carot"> 
+            <i class="fas fa-caret-down" *ngIf="six.isCollapsed"></i>
+            <i class="fas fa-caret-up" *ngIf="!six.isCollapsed"></i>
+          </div>
         </div>
       </a>
-      <div class="margin-top mt8 row collapse-content" mdbCollapse #six="bs-collapse">
+      <div class="row collapse-content" mdbCollapse #six="bs-collapse">
         <div class="col"> 
             {{ 'CLAIM_FAQ_13' | translate }}
           </div>
       </div>
-    </div>
+    
   </div>
 
 </div>

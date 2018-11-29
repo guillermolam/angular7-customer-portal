@@ -7,6 +7,7 @@
           <a 
             routerLink="/my-insurance"
             routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
             title="My Insurance"
             mdbWavesEffect>
             <div class="nav-content nav-icon">
@@ -24,8 +25,9 @@
         </li>
         <li>
           <a 
-            routerLink="/claims"
+            routerLink="/claims/active"
             routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
             title="Claims"
             mdbWavesEffect>
             <div class="nav-content nav-icon">
@@ -45,6 +47,7 @@
           <a 
             routerLink="/information"
             routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
             title="Information"
             mdbWavesEffect>
             <div class="nav-content nav-icon">
@@ -64,6 +67,7 @@
           <a
             routerLink="/contact"
             routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
             title="Contact"
             mdbWavesEffect>
             <div class="nav-content nav-icon">

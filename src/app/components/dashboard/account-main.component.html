@@ -6,6 +6,8 @@
       <mapfre-alert></mapfre-alert>
       <router-outlet></router-outlet>
     </div>
-    <app-misc-column></app-misc-column>
+    <div class="col column-misc" *ngIf="reportClaim">
+      <app-misc-column ></app-misc-column>
+    </div>
   </div>
 </div>
