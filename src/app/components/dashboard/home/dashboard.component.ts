@@ -30,16 +30,19 @@ export class DashboardHomeComponent implements OnInit {
 
   // This will be removed
  
+  onClick(){
+    console.log('hello');
+    this.userInfoService.policyByEmail('testmfre@gmail.com').subscribe((response)=>{
+      console.log(response);
+    });
+  }
+
 
   ngOnInit() {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
 
-    console.log('hello');
-    this.userInfoService.policyByEmail('testmfre@gmail.com').subscribe((response)=>{
-      console.log(response);
-    });
-
+  
     this.userService.$user.subscribe(
       (user) => {
         if ( user != undefined ) {
