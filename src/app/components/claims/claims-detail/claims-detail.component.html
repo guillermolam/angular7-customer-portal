@@ -17,23 +17,21 @@
         <div class="row">
           <div class="col">
             <h2 class="title">
-                Information
-               
-                  <mapfre-tooltip
-                    additionalClasses="right float"
-                    [tooltipCopy]="'For `collision` losses, a surcharge may apply depending on who is responsible for the accident.'"
-                    [placementLocation]="'right'"
-                  >
-                  Surcharges may apply <svg-information-svg></svg-information-svg>
-                  </mapfre-tooltip>
-               
+                {{ 'INFORMATION' | translate }}
+                <mapfre-tooltip
+                  additionalClasses="right float"
+                  [tooltipCopy]="'For `collision` losses, a surcharge may apply depending on who is responsible for the accident.'"
+                  [placementLocation]="'right'"
+                >
+                {{ 'SURCHARGES_MAY_APPLY' | translate }} <svg-information-svg></svg-information-svg>
+                </mapfre-tooltip>
               </h2>
           </div>
         </div>
         <div class="claim-info">
           <div class="row margin-bottom mb16 margin-top mt8">
             <div class="col info-type">
-                Claimant:
+                {{ 'CLAIMANT' | translate }}:
             </div>
             <div class="col info-data">
               {{claim.details.claimant}}
@@ -41,7 +39,7 @@
           </div>
           <div class="row margin-bottom mb16">
             <div class="col info-type">
-                Payments to Date:
+                {{ 'PAYMENTS_TO_DATE' | translate }} Payments to Date:
             </div>
             <div class="col info-data">
                 {{claim.details.payments_to_date}}
@@ -49,7 +47,7 @@
           </div>
           <div class="row margin-bottom mb16"> 
             <div class="col info-type">
-                Location:
+                {{ 'LOCATION' | translate }}:
             </div>
             <div class="col info-data">
                 {{claim.details.location}}
@@ -64,7 +62,7 @@
           </div>
           <div class="row margin-bottom mb16">
             <div class="col info-type">
-                Description:
+                {{ 'DESCRIPTION' | translate }}:
             </div>
             <div class="col info-data">
                 {{claim.details.description}}
@@ -72,17 +70,17 @@
           </div>
           <div class="row margin-bottom mb16">
             <div class="col info-type">
-                Claim Adjuster:
+                {{ 'CLAIMANT_ADJUSTER' | translate }}:
               </div>
               <div class="col info-data">
                 <div>
-                    phone: <a href="tel:{{claim.details.claim_adjustter_number}}" class="mapfre link underline">{{claim.details.claim_adjustter_number}}</a>
+                    {{ 'PHONE' | translate }}: <a href="tel:{{claim.details.claim_adjustter_number}}" class="mapfre link underline">{{claim.details.claim_adjustter_number}}</a>
                 </div>
                 <div>
-                    email: <a href="mailto:{{claim.details.claim_adjustter_email}}" class="mapfre link underline">{{claim.details.claim_adjustter_email}}</a>
+                    {{ 'EMAIL' | translate }}: <a href="mailto:{{claim.details.claim_adjustter_email}}" class="mapfre link underline">{{claim.details.claim_adjustter_email}}</a>
                 </div>
                 <div>
-                    fax: {{claim.details.claim_adjustter_fax}}
+                    {{ 'FAX' | translate }}: {{claim.details.claim_adjustter_fax}}
                 </div>
               </div>
           </div>
@@ -92,22 +90,22 @@
           <div class="row">
             <div class="col">
               <h2 class="title no-border">
-                  Appraisal Information
+                  {{ 'APPRAISAL_INFORMATION' | translate }}
               </h2>
               <table mdbTable class="claims-table">
                 <thead class="lite-grey-color">
                   <tr class="row-content border-full grey-border">
                     <td>  
-                        Number
+                        {{ 'NUMBER' | translate }}
                     </td>
                     <td> 
-                        Appraiser
+                        {{ 'APPRAISER' | translate }}
                     </td>
                     <td> 
-                        Amount
+                        {{ 'AMOUNT' | translate }}
                     </td>
                     <td> 
-                        Status
+                        {{ 'STATUS' | translate }}
                     </td>
                   </tr>
                 </thead>
@@ -136,22 +134,22 @@
           <div class="row">
             <div class="col">
                 <h2 class="title no-border">
-                    Payment Information
+                    {{ 'PAYMENT_INFORMATION' | translate }}
                 </h2>
                 <table mdbTable class="claims-table">
                   <thead  class="lite-grey-color">
                     <tr class="row-content  border-full grey-border">
                       <td>
-                          Check
+                          {{ 'CHECK' | translate }}
                       </td>
                       <td>
-                          Date Paid
+                          {{ 'DATE_PAID' | translate }}
                       </td>
                       <td>
-                          Amount
+                          {{ 'AMOUNT' | translate }}
                       </td>
                       <td>
-                          Status
+                          {{ 'STATUS' | translate }}
                       </td>
                     </tr>
                   </thead>
