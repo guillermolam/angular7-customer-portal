@@ -1,7 +1,7 @@
-import { Component, OnInit, Input }     from "@angular/core";
-import { FormGroup }                    from "@angular/forms";
-import { HttpClient }                   from "@angular/common/http";
-import { Router }                       from "@angular/router";
+import { Component, OnInit, Input }     from '@angular/core';
+import { FormGroup }                    from '@angular/forms';
+import { HttpClient }                   from '@angular/common/http';
+import { Router }                       from '@angular/router';
 
 // --- Components | Services | Models --- //
 import { AlertService, FormBase, FormBaseControlService } from 'mapfre-design-library';
@@ -39,12 +39,31 @@ export class CreateAccountFormComponent implements OnInit {
         lastName:                   object.signUpLast_name,
         email:                      object.signUpEmail,
       };
-      this.userData.updateUser(this.user);
+     
     }
     else {
       this.user.policyDetails = numbers;
-      this.userData.updateUser(this.user);
     }
+    this.userData.placeUserInfoInStorage(this.user);
+    this.userData.updateUser(this.user);
+  }
+
+  fromTheBackButton(): void {
+    let localStorageUser;
+    this.userData.$user
+      .subscribe( (user: User) => {
+        if ( user != undefined ) {
+          localStorageUser = user;
+        }
+        else if ( localStorage.length != 0  ) {
+          localStorageUser = this.userData.getUserInfoInStorage();
+        }
+        this.signUpForm.controls.signUpFirst_name.setValue( localStorageUser.firstName || '' );
+        this.signUpForm.controls.signUpLast_name.setValue( localStorageUser.lastName || '' );
+        this.signUpForm.controls.signUpMI_name.setValue( localStorageUser.middleName || '' );
+        this.signUpForm.controls.signUpEmail.setValue( localStorageUser.email || '' );
+      }
+    );
   }
 
   register() {
@@ -76,6 +95,7 @@ export class CreateAccountFormComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.ipt.toFormGroup(this.inputs);
+    this.fromTheBackButton();
   }
 
 }
