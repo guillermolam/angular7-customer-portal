@@ -17,7 +17,6 @@ export class UserInfoService {
 
   getUserDocuments(policyNumber, user, accessToken): Observable<object> {
     const url = `${environment.backend_server_url}/policies/personal/${policyNumber}/documents`;
-
     return this.http.get(url);
   }
 

@@ -63,7 +63,7 @@ export class AuthenticationService {
   confirmPolicyAndAccount(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.backend_server_url}/accounts/${user.email}`,
+      url =                 `${environment.backend_server_url}/customers/accounts/${user.email}`,
       userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options)
@@ -76,7 +76,7 @@ export class AuthenticationService {
   createPassword(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.backend_server_url}/accounts/${user.email}`,
+      url =                 `${environment.backend_server_url}/customers/accounts/${user.email}`,
       userSendObject =      this.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.options);
@@ -166,7 +166,7 @@ export class AuthenticationService {
   }
 
   verifyAccountTokenVerification(token: string, email: string): Observable<object> {
-    const url =           `${environment.backend_server_url}/accounts?token=${token}&email=${email}`;
+    const url =           `${environment.backend_server_url}/customers/accounts?token=${token}&email=${email}`;
     return this.http.put(url, {}, this.options);
   }
 
@@ -174,7 +174,7 @@ export class AuthenticationService {
     const
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
-      url =             `${environment.backend_server_url}/policies/${policyNumber}`,
+      url =             `${environment.backend_server_url}/policies/personal/${policyNumber}`,
       userSendObject =  this.creatUserObject(user, 'personalpolicy')
     ;
     return this.http.put(url, userSendObject, this.options);
@@ -183,7 +183,7 @@ export class AuthenticationService {
   verifyUser(userObject): Observable<object> {
     const user =         userObject.$user.source.value,
         userSendObject = this.creatUserObject(user, 'verifyuser'),
-        url =          `${environment.backend_server_url}/accounts/${user.email}`;
+        url =          `${environment.backend_server_url}/customers/accounts/${user.email}`;
 
     return this.http
       .post(url, userSendObject, this.options)

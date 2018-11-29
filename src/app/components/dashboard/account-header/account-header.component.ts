@@ -33,9 +33,9 @@ export class AccountHeaderComponent implements OnInit {
 
   hideModalAction(event, activePath): void {
     const currentUrl = this.router.url;
-    if (event && activePath == currentUrl) {
+    // if (event && activePath == currentUrl) { ---what was this for?
       this.hideModalOnRoute = !this.hideModalOnRoute;
-    }
+    // }
   }
 
   logout() {

@@ -1,3 +1,4 @@
+import { AccountMainComponent } from './components/dashboard/account-main.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }     from '@angular/router';
 import { NgModule }                   from '@angular/core';
@@ -33,15 +34,16 @@ import { TestingComponent }           from './routes/testing/testing.component';
 import { WelcomeComponent }           from './routes/welcome/welcome.component';
 import { VerifyAccountComponent }     from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }        from './routes/wallet-card/wallet-card.component';
-import { PolicyDetailsComponent }     from './routes/my-insurance/policy-details/policy-details.component';
 import { ProfileSettingsComponent }   from './routes/profile-settings/profile-settings.component';
-import { BillingDetailsComponent }    from './routes/my-insurance/billing-details/billing-details.component';
-import { DocumentDetailsComponent }   from './routes/my-insurance/document-details/document-details.component';
 import { AddressChangeComponent }     from './routes/profile-settings/address-change/address-change.component';
 import { ContactComponent }           from './routes/contact/contact.component';
 import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
 import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
+import { DashboardHomeComponent } from './components/dashboard/home/dashboard.component';
+import { PolicyDetailsComponent } from './components/dashboard/details/details.component';
+import { BillingDetailsComponent } from './components/dashboard/billing/billing.component';
+import { DocumentDetailsComponent } from './components/dashboard/documents/documents.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -56,9 +58,9 @@ const appRoutes: Routes = [
   { path: 'walletcard', component: WalletCardComponent},
 
   //when logged in
-  { path: 'my-insurance',
+  { path: 'my-insurance', component: AccountMainComponent,
     children: [
-      { path: '',  component: DashboardComponent},
+      { path: '',  component: DashboardHomeComponent},
       { path: ':policyid',
         children: [
           {path: '', redirectTo: 'details', pathMatch: 'full' },

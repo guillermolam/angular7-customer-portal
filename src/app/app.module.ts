@@ -41,8 +41,6 @@ import { TestingComponent }                     from './routes/testing/testing.c
 import { VerifyAccountComponent }               from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }                  from './routes/wallet-card/wallet-card.component';
 import { WelcomeComponent }                     from './routes/welcome/welcome.component';
-import { PolicyDetailsComponent }               from './routes/my-insurance/policy-details/policy-details.component';
-
 // ----- Components ----- //
 import { LoginFormComponent }                   from './components/forms/dynamic-forms/login-form/login-form.component';
 import { CreatePasswordFormComponent }          from './components/forms/dynamic-forms/create-password-form/create-password-form.component';
@@ -66,16 +64,14 @@ import { OnboardingWalletBackComponent }        from './components/screens/walle
 import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
 import { MiscColumnComponent }                  from './components/dashboard/misc-column/misc-column.component';
-import { DetailsComponent }                     from './components/dashboard/details/details.component';
+import { PolicyDetailsComponent }                     from './components/dashboard/details/details.component';
 import { ProfileSettingsComponent } from './routes/profile-settings/profile-settings.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileMainComponent } from './components/profile/profile-main/profile-main.component';
 import { ProfilePhoneComponent } from './components/profile/profile-phone/profile-phone.component';
 import { ApartmentPipePipe } from './_helpers/_pipes/apartment-pipe.pipe';
-import { BillingComponent } from './components/dashboard/billing/billing.component';
-import { DocumentsComponent } from './components/dashboard/documents/documents.component';
-import { DocumentDetailsComponent } from './routes/my-insurance/document-details/document-details.component';
-import { BillingDetailsComponent } from './routes/my-insurance/billing-details/billing-details.component';
+import { BillingDetailsComponent } from './components/dashboard/billing/billing.component';
+import { DocumentDetailsComponent } from './components/dashboard/documents/documents.component';
 import { InformationComponent } from './routes/information/information.component';
 import { ClaimsComponent } from './routes/claims/claims.component';
 import { ContactComponent } from './routes/contact/contact.component';
@@ -113,6 +109,7 @@ import { NoClaimsComponent } from './components/claims/no-claims/no-claims.compo
 import { ClaimsReportComponent } from './components/claims/claims-report/claims-report.component';
 import { ClaimsHomeCarComponent } from './components/claims/claims-dashboard-car/claims-home-car.component';
 import { ClaimsHomePropertyComponent } from './components/claims/claims-dashboard-property/claims-home-property.component';
+import { StorageServiceObservablesService } from './_services/storage-service-observables/storage-service-observables.service';
 
 
 if (environment.production) {
@@ -165,14 +162,11 @@ export function tokenGetter() {
     OnboardingWalletModalComponent,
     PolicyDetailsComponent,
     MiscColumnComponent,
-    DetailsComponent,
     ProfileSettingsComponent,
     ProfileComponent,
     ProfileMainComponent,
     ProfilePhoneComponent,
     ApartmentPipePipe,
-    BillingComponent,
-    DocumentsComponent,
     DocumentDetailsComponent,
     BillingDetailsComponent,
     InformationComponent,
@@ -245,7 +239,8 @@ export function tokenGetter() {
     UserService,
     WalletCardService,  //provider for wallet card service
     ProfileSettingsRoutingService,
-    ProfileConfirmModalService
+    ProfileConfirmModalService,
+    StorageServiceObservablesService
   ],
   bootstrap: [AppComponent]
 })
