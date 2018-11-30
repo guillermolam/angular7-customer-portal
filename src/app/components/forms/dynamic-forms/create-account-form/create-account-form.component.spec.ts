@@ -50,6 +50,8 @@ describe('CreateAccountFormComponent', () => {
 
   beforeEach(() => {
     component = fixture.componentInstance;
+    //can do it better
+    spyOn(component, 'fromTheBackButton');
     fixture.detectChanges();
   });
 
@@ -60,11 +62,13 @@ describe('CreateAccountFormComponent', () => {
       signUpLast_name:    'last',
       signUpEmail:        'test@xyz.com'
     }
+    spyOn(userService,'placeUserInfoInStorage');
     spyOn(userService,'updateUser');
-    component.createUserObject(object,null)
+    component.createUserObject(object,null);
     tick();
     fixture.detectChanges();
     expect(userService.updateUser).toHaveBeenCalled();
+    expect(userService.placeUserInfoInStorage).toHaveBeenCalled();
     expect(component.user.firstName).toBe(object.signUpFirst_name);
     expect(component.user.lastName).toBe(object.signUpLast_name);
     expect(component.user.middleName).toBe(object.signUpMI_name);
@@ -88,12 +92,12 @@ describe('CreateAccountFormComponent', () => {
       status:                   null,
     }]
     spyOn(userService,'updateUser');
-    component.createUserObject(object,policyDetails)
+    spyOn(userService,'placeUserInfoInStorage');
+    component.createUserObject(object,policyDetails);
     tick();
     fixture.detectChanges();
     expect(userService.updateUser).toHaveBeenCalled();
-    expect(component.user.policyDetails).toEqual(policyDetails);
-   
+    expect(component.user.policyDetails).toEqual(policyDetails); 
   }));
 
 
@@ -114,6 +118,7 @@ describe('CreateAccountFormComponent', () => {
   }));
 
   it('should throw error and redirect to signup/emailinuse', fakeAsync(()=>{
+    spyOn(component,'createUserObject');
     spyOn(authService,'verifyUser').and.callFake(()=>{
       let obs =   Observable.create((observer: Observer<string>)=>{
         throw observer.error({status: 400 });
@@ -124,10 +129,12 @@ describe('CreateAccountFormComponent', () => {
     tick();
     fixture.detectChanges();
     expect(location.path()).toBe('/signup/emailinuse');
+    expect(component.createUserObject).toHaveBeenCalled();
   }));
 
 
   it('should throw error and redirect to signup/addpolicy', fakeAsync(()=>{
+    spyOn(component,'createUserObject');
     spyOn(authService,'verifyUser').and.callFake(()=>{
       let obs =   Observable.create((observer: Observer<string>)=>{
         throw observer.error({status: 403 });
@@ -138,6 +145,7 @@ describe('CreateAccountFormComponent', () => {
     tick();
     fixture.detectChanges();
     expect(location.path()).toBe('/signup/addpolicy');
+    expect(component.createUserObject).toHaveBeenCalled();
   }));
 
 });
