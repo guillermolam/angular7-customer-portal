@@ -44,6 +44,7 @@ import { DashboardHomeComponent } from './components/dashboard/home/dashboard.co
 import { PolicyDetailsComponent } from './components/dashboard/details/details.component';
 import { BillingDetailsComponent } from './components/dashboard/billing/billing.component';
 import { DocumentDetailsComponent } from './components/dashboard/documents/documents.component';
+import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
   { path: 'my-insurance', component: AccountMainComponent,
     children: [
       { path: '',  component: DashboardHomeComponent},
+      { path: 'link-policy',  component: LinkPolicyComponent},
       { path: ':policyid',
         children: [
           {path: '', redirectTo: 'details', pathMatch: 'full' },
@@ -68,7 +70,7 @@ const appRoutes: Routes = [
           { path: 'billing', component: BillingDetailsComponent },
           { path: 'documents', component: DocumentDetailsComponent },
         ]
-      }
+      },
     ]
   },
   { path: 'profile', component: ProfileSettingsComponent, children: [

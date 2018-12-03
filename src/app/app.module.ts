@@ -110,6 +110,7 @@ import { ClaimsReportComponent } from './components/claims/claims-report/claims-
 import { ClaimsHomeCarComponent } from './components/claims/claims-dashboard-car/claims-home-car.component';
 import { ClaimsHomePropertyComponent } from './components/claims/claims-dashboard-property/claims-home-property.component';
 import { StorageServiceObservablesService } from './_services/storage-service-observables/storage-service-observables.service';
+import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 
 
 if (environment.production) {
@@ -201,6 +202,7 @@ export function tokenGetter() {
     ClaimsReportComponent,
     ClaimsHomeCarComponent,
     ClaimsHomePropertyComponent,
+    LinkPolicyComponent,
 
   ],
   imports: [

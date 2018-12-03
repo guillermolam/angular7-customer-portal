@@ -14,7 +14,7 @@ import { TestingDataService }     from './../../_helpers/testing-data.service';
 })
 export class AccountMainComponent implements OnInit {
 
-  reportClaim: boolean = true;
+  reportClaim: boolean=true;
 
   constructor(
     private router:               Router
@@ -25,11 +25,16 @@ export class AccountMainComponent implements OnInit {
   ngOnInit(){
 
     this.router.events.subscribe((event)=>{
+      
       if(event instanceof NavigationEnd){
-        if(this.router.url === '/my-insurance'){
+        // console.log(event.url);
+        if(event.url === '/my-insurance'){
+          console.log(this.router.url + 'true');
           this.reportClaim = true;
         }else {
+          console.log(this.router.url + 'false');
           this.reportClaim = false;
+          console.log(this.reportClaim);
         }
       }
     });
