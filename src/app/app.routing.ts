@@ -1,4 +1,3 @@
-import { AccountMainComponent } from './components/dashboard/account-main.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }     from '@angular/router';
 import { NgModule }                   from '@angular/core';
@@ -28,8 +27,12 @@ import { DashboardHomeComponent }     from './components/dashboard/home/dashboar
 import { PolicyDetailsComponent }     from './components/dashboard/details/details.component';
 import { BillingDetailsComponent }    from './components/dashboard/billing/billing.component';
 import { DocumentDetailsComponent }   from './components/dashboard/documents/documents.component';
+import { AccountMainComponent }       from './components/dashboard/account-main.component';
+import { BillingMainComponent }       from './components/billing/billing-main.component';
+import { BillingNewpaymentComponent } from './components/billing/billing-newpayment/billing-newpayment.component';
 
 // ----- Routes ----- //
+import { BillingComponent }           from './routes/billing/billing.component';
 import { DashboardComponent }         from './routes/my-insurance/dashboard.component';
 import { ForgotPasswordComponent }    from './routes/forgot-password/forgot-password.component';
 import { CreateNewPasswordComponent } from './routes/create-new-password/create-new-password.component';
@@ -94,6 +97,12 @@ const appRoutes: Routes = [
       { path: 'details', component: ClaimsDetailComponent },
     ] }
   ] },
+
+  { path: 'billing', component: BillingComponent , children: [
+    { path: '', component: BillingMainComponent },
+    { path: 'new-payment/:policyid', component: BillingNewpaymentComponent}
+  ] },
+
   { path: 'information', component: InformationComponent,  children: [
     { path: '', component: InformationHomeComponent },
     { path: 'products', component: InformationProductsComponent },
@@ -104,9 +113,6 @@ const appRoutes: Routes = [
     { path: 'legal', component: InformationLegalComponent },
 
   ] },
-  { path: 'billing', component: DashboardComponent },
-  
-  { path: 'information', component: InformationComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'policy/add', component: DashboardComponent },
   { path: 'offline', component: DashboardComponent },

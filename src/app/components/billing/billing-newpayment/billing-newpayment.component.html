@@ -1,0 +1,30 @@
+<ng-container *ngIf="loading">
+  <mapfre-loading></mapfre-loading>
+</ng-container>
+  
+<ng-container *ngFor="let policy of user?.policyDetails">
+  <ng-container *ngIf="policy?.policynumber.policynumber == policyId && !loading">
+    <header class="margin-bottom mb16">
+      <div class="type-title">
+        <h1 class="title">
+          Make a Check Payment
+          <small>{{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }}</small>
+        </h1>
+      </div>
+    </header>
+  
+    <section class="row policy-details-content">
+      <div class="col-sm-12 col-md col1">
+  
+    
+        
+        
+      </div>
+  
+      <div class="col-sm-12 col-md col2">
+        
+
+      </div>
+    </section>
+  </ng-container>
+</ng-container>

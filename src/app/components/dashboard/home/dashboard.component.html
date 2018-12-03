@@ -1,5 +1,3 @@
-<button (click)="onClick()"> CLICK ME</button>
-
 <ng-container *ngFor="let policy of user?.policyDetails">
   
   <!-- Auto -->
@@ -87,9 +85,31 @@
                       <strong>{{policy?.nextDueAmount | currency}}</strong>
                     </div>
                     <div class="pay-now-button">
-                        <mapfre-button
-                        [additionalClasses]="'ghost primary xsmall'"
-                        [routerLink]="['/paynow']">{{ 'PAY_NOW' | translate}}</mapfre-button>
+                      <mapfre-modal 
+                        [modalOptions]="payNowModal">
+                        <div class="modal-body">
+                          <hr class="margin-bottom mb24 no-margin-top" />
+                          <div class="modal-body-content">
+                            <div class="row text-center margin-top mt16">
+                              <div class="col-md-6 col-sm-12">
+                                  <mapfre-link
+                                    [additionalClasses]="'ghost primary large btn'"
+                                    [url]="['/billing/new-payment/' +  policy?.policynumber.policynumber]">
+                                    {{ 'PAY_BY_CHECK' | translate}}
+                                  </mapfre-link>
+                              </div>
+                              <div class="col-md-6 col-sm-12">
+                                <mapfre-link
+                                  [additionalClasses]="'ghost primary large btn'"
+                                  [url]="'https://www.mapfreinsurance.com/b2cwebapp/view/billing?policyNumber=' + policy?.policynumber.policynumber + '&source=makePayment&selectedTabIdx=1&fragments=main&mode=embedded'"
+                                  target="_blank">
+                                  {{ 'PAY_BY_CREDIT_CARD' | translate}}
+                                </mapfre-link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </mapfre-modal>
                     </div>
                   </div>
                 </div>
@@ -189,10 +209,32 @@
                     <strong>${{policy?.nextDueAmount}}</strong>
                   </div>
                   <div class="pay-now-button">
-                      <mapfre-button
-                      [additionalClasses]="'ghost primary xsmall'"
-                      [routerLink]="['/paynow']">{{ 'PAY_NOW' | translate}}</mapfre-button>
-                  </div>
+                      <mapfre-modal 
+                        [modalOptions]="payNowModal">
+                        <div class="modal-body">
+                          <hr class="margin-bottom mb24 no-margin-top" />
+                          <div class="modal-body-content">
+                            <div class="row text-center margin-top mt16">
+                              <div class="col-md-6 col-sm-12">
+                                  <mapfre-link
+                                  [additionalClasses]="'ghost primary large btn'"
+                                  [url]="['/billing/new-payment/' +  policy?.policynumber.policynumber]">
+                                  {{ 'PAY_BY_CHECK' | translate}}
+                                </mapfre-link>
+                              </div>
+                              <div class="col-md-6 col-sm-12">
+                                <mapfre-link
+                                  [additionalClasses]="'ghost primary large btn'"
+                                  [url]="'https://www.mapfreinsurance.com/b2cwebapp/view/billing?policyNumber=' + policy?.policynumber.policynumber + '&source=makePayment&selectedTabIdx=1&fragments=main&mode=embedded'"
+                                  target="_blank">
+                                  {{ 'PAY_BY_CREDIT_CARD' | translate}}
+                                </mapfre-link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </mapfre-modal>
+                    </div>
                 </div>
               </div>
             </div>

@@ -20,11 +20,11 @@
             </div>
           </div>
           <div class="wallet-skip-button">
-            <mapfre-link
-              additionalClasses="white-link"
-              (click)="skipOnClick()">
+            <mapfre-button
+              additionalClasses="white-link link-button"
+              (click)="hideModalAction($event)">
               {{ 'WALLET_SKIP' | translate }}
-            </mapfre-link>
+            </mapfre-button>
           </div>
       </div>
       <div class="wallet wallet-back">
@@ -48,11 +48,11 @@
           </ng-container>
         </div>
         <div class="wallet-skip-button">
-          <mapfre-link
-            additionalClasses="blue-link"
-            (click)="skipOnClick()">
+          <mapfre-button
+            additionalClasses="blue-link  link-button"
+            (click)="hideModalAction($event)">
             {{ 'WALLET_SKIP' | translate }}
-          </mapfre-link>
+          </mapfre-button>
         </div>
       </div>
     </div>

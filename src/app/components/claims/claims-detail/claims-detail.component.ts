@@ -1,8 +1,7 @@
-import { Component, OnInit }  from '@angular/core';
-import { TestingDataService } from '../../../_helpers/testing-data.service';
-import { ActivatedRoute, Params,
-  Router }                    from '@angular/router';
-  import { DomSanitizer, SafeUrl }    from '@angular/platform-browser';
+import { Component, OnInit }      from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { DomSanitizer, SafeUrl }  from '@angular/platform-browser';
+import { TestingDataService }     from '../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-claims-detail',
@@ -14,9 +13,8 @@ export class ClaimsDetailComponent implements OnInit {
   claimid:                string;
   constructor(
     private testingData:  TestingDataService,
-    private activeRoute:      ActivatedRoute,
-    private sanitizer:      DomSanitizer,
-
+    private activeRoute:  ActivatedRoute,
+    private sanitizer:    DomSanitizer,
   ) { }
 
   getAddress(a): SafeUrl {
@@ -38,7 +36,6 @@ export class ClaimsDetailComponent implements OnInit {
       this.claimid =        params['claimid'];
     });
     this.claims = this.testingData.testDataClaims();
-    console.log('claims', this.claims);
   }
 
 }

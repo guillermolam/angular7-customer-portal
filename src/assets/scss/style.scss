@@ -116,15 +116,11 @@
   }
 }
 
-
-
 .center-on-page {
   @media (max-width: 991px) {
     margin: auto;
   }
 }
-
-
 
 .col.main-column {
   @media (max-width: 376px){
@@ -709,6 +705,23 @@
   }
 }
 
+.claim-link,
+.policy-link {
+  border: 2px solid $dark-blue;
+  
+  svg g {
+    @include transition(0.5s);
+  }
+
+  &:hover {
+    background: $white;
+
+    svg g {
+      fill: $dark-blue;
+    }
+  }
+}
+
 // ---- this will be placed in the design library
 // ---- and be used in the mapfre card
 .single-card-column {
@@ -937,6 +950,61 @@ h1.title-cta {
     td {
       font-size: 12px;
       padding: 8px !important;
+    }
+  }
+}
+
+.claims,
+.claim-detail,
+.billing,
+.policy {
+
+  h1.title {
+    color: $grey;
+    font-size: 24px;
+    line-height: normal;
+    padding-left: 8px;
+    margin-bottom: 0;
+    margin-top: -8px;
+
+    @media (max-width: 575px) {
+      font-size: 18px;
+      margin-top: 8px;
+    } 
+  }
+
+  h2.claim-id {
+    color: $med-gray;
+    font-size: 18px;
+    line-height: 32px;
+    margin-bottom: 0;
+
+    @media (max-width: 575px) {
+      font-size: 14px;
+      line-height: 24px;
+    } 
+  }
+
+  h2.title {
+    font-size: 18px;
+    line-height: 32px;
+    border-bottom: 2px solid $soft-grey;;
+    color: $grey;
+    text-align: left;
+
+    .small-subtitle { 
+      color: $dark-grey;
+      font-size: 11px;
+      line-height: 16px;
+    }
+
+    .svg-container {
+      float: left;
+      padding-right: 16px;
+
+      svg {
+        width: 24px;
+      }
     }
   }
 }

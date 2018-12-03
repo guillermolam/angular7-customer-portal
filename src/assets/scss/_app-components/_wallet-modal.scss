@@ -35,6 +35,11 @@
   height:                       667px;
   width:                        500px;
   box-shadow:                   1px -1px 10px 0px rgba(0,0,0,0.75); //use mixin
+  margin:                       auto;
+
+  @media (max-width: 500px ){
+    width: 100%;
+  }
 
   &.flipped {
     transform:                  rotatey(180deg); //use mixin
@@ -55,7 +60,11 @@
     text-align:                 center;
     height:                     667px;
     width:                      500px;
-    position:                   absolute
+    position:                   absolute;
+
+    @media (max-width: 500px ){
+      width: 100%;
+    }
   }
 
   .wallet-content {
@@ -152,7 +161,14 @@
   position:                    absolute;
   bottom:                      16px;
   left:                        50%;
-  margin-left:                 -50px;
+  margin-left:                 -83px;
+}
+
+.wallet-title {
+  color:                      $white;
+  font-size:                  24px;
+  line-height:                normal;
+  margin-bottom:              24px;
 }
 
 // --- Animation

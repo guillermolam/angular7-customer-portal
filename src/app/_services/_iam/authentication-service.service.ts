@@ -174,7 +174,7 @@ export class AuthenticationService {
     const
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
-      url =             `${environment.backend_server_url}/personal-policies/${policyNumber}`,
+      url =             `${environment.backend_server_url}/personal-policies/${policyNumber}/insureds/namevalidation`,
       userSendObject =  this.creatUserObject(user, 'personalpolicy')
     ;
     return this.http.put(url, userSendObject, this.options);
