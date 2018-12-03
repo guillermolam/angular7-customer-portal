@@ -1,0 +1,274 @@
+.card.mapfre.dashboard-policies {
+  padding-left:       0;
+  padding-right:      0;
+  padding-bottom:     0;
+
+  .policy-content {
+    h2 {
+      font-size: 18px;
+      padding: 0;
+      margin: 0;
+      border-bottom: thin solid #ccc;
+      margin-bottom: 24px;
+      line-height: 32px;
+
+      @media (max-width: 576px){
+        small {
+          font-size: 12px;
+        }
+      }
+
+      .col-6,
+      .col-8 {
+        &.title {
+          padding-left: 0;
+        }
+      }
+    }
+
+    @media (max-width:562px) { //375
+      h2 {
+        margin-bottom: 16px;
+      }
+
+      .policy-info-link a {
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .policy-row {
+        padding-bottom: 16px;
+      }
+
+    }
+  }
+
+
+  .policy-info {
+    line-height: 24px;
+  }
+
+  .policy-info-content {
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 75%;
+    margin-right: 8px;
+
+    @media (max-width: 515px) {
+      max-width: 60%;
+    }
+
+    @media (max-width: 375px) {
+      font-size: 12px;
+    }
+  }
+
+  .policy-info-link {
+    padding-right: 16px;
+  }
+
+  .policy-row {
+    padding-bottom: 24px;
+  }
+}
+
+.policy-info {
+  .date-amount {
+    width: auto;
+    float: left;
+
+    @media (max-width: 577px) {
+      float: none;
+    }
+  }
+
+  .pay-now-button {
+    float: left;
+    display: block;
+    margin-left: 16px;
+
+    @media (max-width: 577px) {
+      float: none;
+      margin-left: 34px;
+      margin-top: 12px;
+    }
+
+    @media (min-width:376px) and (max-width: 577px) {
+      margin-left: 34px;
+    }
+
+    @media (max-width:375px) {
+      margin-left: 26px;
+    }
+  }
+
+}
+
+@media (max-width: 562px) { //376
+  .card.mapfre.dashboard-policies .policy-background {
+    position: absolute;
+  }
+
+  .card.mapfre.dashboard-policies {
+    .policy-link {
+      font-size: 12px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+
+      i,
+      svg {
+        height: 8px;
+        width: 12px;
+      }
+    }
+
+    .policy-content {
+      h2 {
+        margin-left: 32px;
+        font-size: 16px;
+      }
+
+      .policy-info {
+        height: 16px;
+        line-height: 16px;
+      }
+
+      .policy-row {
+        font-size: 12px;
+      }
+
+      .pay-now {
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (min-width: 376px) and (max-width: 562px) {
+  .no-pay .policy-background {
+    .car,
+    .house {
+      background-size: auto 104px;
+      height: 106px;
+      width: 112px;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+@media (max-width: 375px) { 
+  .no-pay .policy-background {
+    .car,
+    .house {
+      max-width: 40px;
+      margin-top: 51px;
+    }
+  }
+}
+
+@media (max-width: 562px) { 
+  .no-pay {
+
+    .policy-background {
+      .car,
+      .house {
+        margin-top: 53px;
+      }
+    }
+    
+    .policy-content .policy-row{
+      padding-left: 72px;
+    }
+
+    .car,
+    .house {
+      background-size: auto 80px;
+      height: 80px;
+      width: 40px;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .pay {
+    .policy-background {
+      max-width: 72px;
+      margin-top: 48px;
+    }
+
+    .policy-content .policy-row{
+      padding-left: 100px;
+    }
+
+    .car,
+    .house {
+      background-size: auto 148px;
+      height: 148px;
+      width: 72px;
+    }
+  }
+}
+
+@media (min-width: 562px) { //376
+  .policy-content {
+    padding-left: 32px;
+  }
+
+  .no-pay {
+    .policy-background {
+      max-width: 88px;
+      padding: 0;
+      padding-left: 15px;
+    }
+
+    .car,
+    .house {
+      background-size: auto 178px;
+      height: 178px;
+      width: 88px;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .pay {
+    .policy-background {
+      max-width: 110px;
+      padding: 0;
+      padding-left: 15px;
+    }
+
+    .car,
+    .house {
+      background-size: auto 226px;
+      height: 226px;
+      width: 110px;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.policy-icon {
+  height: 24px;
+  width: 24px;
+  float: left;
+  margin-right: 8px;
+
+  @media (max-width:375px) {
+    height: 16px;
+    width: 16px;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+
+    @media (max-width:375px) {
+      vertical-align: top;
+    }
+
+    path {
+      fill: #ADAAAA;
+    }
+  }
+}

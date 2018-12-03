@@ -32,7 +32,7 @@ describe('WalletCardService', () => {
         expect(response).toEqual(arrayBuffer);
     });
 
-    const req = httpMock.expectOne(`${environment.backend_server_url}/accounts/wallet/${email}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/customers/accounts/wallet/${email}`);
     expect(req.request.method).toBe('GET');
     expect(req.request.body).toBeFalsy();
     expect(req.request.responseType).toBe('arraybuffer');

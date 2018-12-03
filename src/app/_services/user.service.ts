@@ -13,5 +13,12 @@ export class UserService {
   updateUser(user: User) {
     this.messageSource.next(user);
   }
-  
+
+  placeUserInfoInStorage(user: User) {
+    localStorage.setItem('createuserinfo', JSON.stringify(user) );
+  }
+
+  getUserInfoInStorage(): object {
+    return JSON.parse(localStorage.getItem( 'createuserinfo' )) ;
+  }
 }

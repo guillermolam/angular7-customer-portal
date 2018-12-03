@@ -29,7 +29,7 @@
       </div>
     </div>
     <ng-container *ngIf="type != 'details'">
-      <a [routerLink]="['/claims', claim.LOSS_NUMBER, 'details']" class="row claim-link waves-light"
+      <a [routerLink]="['/claims', claim.LOSS_NUMBER, 'details']" class="row d-block claim-link waves-light"
       mdbWavesEffect >
         <div class="col">
             {{ 'CLAIM_DETAILS' | translate }}&nbsp;<svg-arror-right-svg></svg-arror-right-svg>

@@ -79,7 +79,7 @@ import { ChangePhoneComponent } from './components/forms/dynamic-forms/profile-s
 import { ProfileCheckingAccountComponent } from './components/profile/profile-checking-account/profile-checking-account.component';
 import { CustomDateFormatPipe } from './_helpers/_pipes/custom-date-format.pipe';
 import { AddressChangeComponent } from './routes/profile-settings/address-change/address-change.component';
-import { ChangeAddressComponent } from './components/forms/dynamic-forms/profile-setings-forms/change-address/change-address.component';
+import { ChangeAddressComponent } from './components/forms/dynamic-forms/profile-settings-forms/change-address/change-address.component';
 import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
 import { ChangePasswordFormComponent } from './components/forms/dynamic-forms/change-password-form/change-password-form.component';
 import { ProfileEditEmailComponent } from './components/profile/profile-edit-email/profile-edit-email.component';
@@ -223,7 +223,8 @@ export function tokenGetter() {
     ReactiveFormsModule,
     RoutingModule,
     TranslateModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    MDBBootstrapModule.forRoot()
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [

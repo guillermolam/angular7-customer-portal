@@ -14,8 +14,7 @@
         </div>
       </div>
       <app-add-policy-form [inputs]="addPolicy" [userData]="user"></app-add-policy-form>
-      <hr class="margin-vertical mv24" />
-      <div class="row text-center">
+      <div class="row text-center margin-top mt16">
         <div class="col">
           <mapfre-modal 
             [modalOptions]="whereToFindModalOptions">
@@ -29,6 +28,19 @@
               </div>
             </div>
           </mapfre-modal>
+        </div>
+      </div>
+      <hr class="margin-vertical mv24" />
+      <div class="row text-center">
+        <div class="col">
+            <mapfre-button
+            [additionalClasses]="'flat link small'"
+            [customIcon]="'assets/img/icons/back-arrow.png'"
+            [iconClasses]="'align-middle'"
+            [routerLink]="['/signup']"
+            [showIconsCustom]="true"
+          >  {{ 'BACK' | translate }}
+          </mapfre-button>
         </div>
       </div>
     </div>

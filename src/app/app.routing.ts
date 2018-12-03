@@ -15,14 +15,15 @@ import { InformationMainComponent }   from './components/information/information
 import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
 import { ProfileMainComponent }       from './components/profile/profile-main/profile-main.component';
 import { InformationProductsComponent } from './components/information/information-products/information-products.component';
-import { InformationAboutComponent } from './components/information/information-about/information-about.component';
+import { InformationAboutComponent }  from './components/information/information-about/information-about.component';
 import { InformationDiscountsComponent } from './components/information/information-discounts/information-discounts.component';
 import { InformationRenewalComponent } from './components/information/information-renewal/information-renewal.component';
 import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
-import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
+import { InformationLegalComponent }  from './components/information/information-legal/information-legal.component';
 import { ClaimsDetailComponent }      from './components/claims/claims-detail/claims-detail.component';
 import { ClaimsHomeComponent }        from './components/claims/claims-dashboard-active/claims-home.component';
-import { ClaimsHomeClosedComponent } from './components/claims/claims-dashboard-closed/claims-home-closed.component';
+import { ClaimsHomeClosedComponent }  from './components/claims/claims-dashboard-closed/claims-home-closed.component';
+
 // ----- Routes ----- //
 import { DashboardComponent }         from './routes/my-insurance/dashboard.component';
 import { ForgotPasswordComponent }    from './routes/forgot-password/forgot-password.component';
