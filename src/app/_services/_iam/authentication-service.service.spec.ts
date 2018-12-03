@@ -211,7 +211,7 @@ describe('AuthenticationService', () => {
       expect(response).toEqual(policyResponse);
     });
 
-    const req = httpMock.expectOne(`${environment.backend_server_url}/personal-policies/${policyNumber}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/personal-policies/${policyNumber}/insureds/namevalidation`);
     expect(req.request.method).toBe('PUT');
     req.flush(policyResponse);
   }));
