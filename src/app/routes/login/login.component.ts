@@ -12,7 +12,7 @@ import { LoginService } from '../../_services/forms/login/login.service';
 export class LoginComponent  {
 
   inputs: any[];
- 
+
   constructor(service: LoginService, private router: Router) {
     this.inputs = service.getInputs();
   }

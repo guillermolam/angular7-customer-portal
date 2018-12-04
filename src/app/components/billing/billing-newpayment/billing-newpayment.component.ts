@@ -1,15 +1,10 @@
 import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { AlertService }             from 'mapfre-design-library';
-
-import { AuthenticationService }    from '../../../_services/_iam/authentication-service.service';
 import { User }                     from '../../../_models/user';
 import { UserService }              from './../../../_services/user.service';
 import { TestingDataService }       from './../../../_helpers/testing-data.service';
 import { UserInfoService }          from '../../../_services/_userinformation/user-info.service';
-
-//import { CheckingAccountService }   from './../../../_services/forms/profile-settings/checking-account.service';
-
 import { NewPaymentService }        from '../../../_services/forms/new-payment/new-payment.service';
 
 
@@ -21,22 +16,21 @@ import { NewPaymentService }        from '../../../_services/forms/new-payment/n
 })
 export class BillingNewpaymentComponent implements OnInit {
   alerton;
-  input:                    object;
-  inputs:                   any[];
-  loading:                  boolean = false;
-  legalCheckbox:            boolean = false;
-  policyId:                 number;
-  user:                     User;
-  showMessage:              boolean = false;
+  input:                            object;
+  inputs:                           any[];
+  loading:                          boolean = false;
+  legalCheckbox:                    boolean = false;
+  policyId:                         number;
+  user:                             User;
+  showMessage:                      boolean = false;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private alertService:   AlertService,
-    private authService:    AuthenticationService,
-    private service:        NewPaymentService,
-    private userService:    UserService,
-    private userInformation: UserInfoService,
-    private testingData:    TestingDataService
+    service:                        NewPaymentService,
+    private activatedRoute:         ActivatedRoute,
+    private alertService:           AlertService,
+    private userService:            UserService,
+    private userInformation:        UserInfoService,
+    private testingData:            TestingDataService
   ) {
     this.inputs = service.getInputs();
    }

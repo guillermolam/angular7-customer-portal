@@ -40,12 +40,7 @@
               <img src="assets/img/images/mapfre-card-logo-color.png" style="margin-left:-30px" />
             </div>
           </div>
-          <ng-container *ngIf="userData.policyDetails.length == 1">
-            <app-onboarding-wallet-back [userData]="userData"></app-onboarding-wallet-back>
-          </ng-container>
-          <ng-container *ngIf="userData?.policyDetails.length > 1">
-            <app-onboarding-wallet-back-list [userData]="userData"></app-onboarding-wallet-back-list>
-          </ng-container>
+          <app-onboarding-wallet-back [userData]="userData"></app-onboarding-wallet-back>
         </div>
         <div class="wallet-skip-button">
           <mapfre-button
