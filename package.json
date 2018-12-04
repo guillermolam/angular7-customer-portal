@@ -8,7 +8,7 @@
     "build-dev": "ng build --configuration=dev",
     "build": "ng build --configuration=production",
     "test": "ng test --watch=false --browsers Chrome",
-    "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox && ng build --configuration=dev",
+    "cibuild_test": "ng test --code-coverage --watch=false --browsers Chromium_no_sandbox",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cibuild": "ng test --code-coverage && ng build --configuration=dev --no-progress",

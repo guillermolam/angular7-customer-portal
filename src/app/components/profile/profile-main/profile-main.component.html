@@ -15,7 +15,7 @@
      <a 
      [routerLink]="['/profile','enter-password']"
      routerLinkActive="active"
-     class="btn btn-icon edit-icon-position" > 
+     class="edit-icon-position" > 
          <svg-edit-icon-svg></svg-edit-icon-svg>
      </a>
   </div>
@@ -23,11 +23,11 @@
   <div>
       <label class="account-settings no-margin-bottom">Email</label> 
       <div class="sub-title-copy">{{ 'john@gmail.com' }}
-      <div class="btn btn-icon edit-icon-position">
+      <div class="edit-icon-position">
         <a 
         [routerLink]="['/profile','verify-password']"
         routerLinkActive="active"
-        class="btn btn-icon edit-icon-position" > 
+        class="edit-icon-position" > 
             <svg-edit-icon-svg></svg-edit-icon-svg>
         </a>
       </div>
@@ -37,18 +37,18 @@
       <label class="account-settings no-margin-bottom margin-top mt16">Phone</label> 
       <div class="sub-title-copy"><em *ngIf="!user.phone;else phoneNumber">{{ 'Add more security to your account' }}</em>
         <ng-template #phoneNumber> {{ user.phone | formatPhone }}</ng-template>
-          <div class="btn btn-icon edit-icon-position">
+          <div class="edit-icon-position">
             <a *ngIf="!user.phone;else editPhone"
             [routerLink]="['/profile','add-phone']"
             routerLinkActive="active"
-            class="btn btn-icon edit-icon-position" > 
+            class="edit-icon-position" > 
                 <svg-add-icon-svg [color]="'#749806'"></svg-add-icon-svg>
             </a>
             <ng-template #editPhone>
             <a
             [routerLink]="['/profile','edit-phone']"
             routerLinkActive="active"
-            class="btn btn-icon edit-icon-position" > 
+            class="edit-icon-position" > 
                 <svg-edit-icon-svg></svg-edit-icon-svg>
             </a>
         </ng-template>
@@ -68,11 +68,11 @@
                 {{ user.checkingAccount.accountNumber | checkingAccount: 'account' }}
             </span>
         </ng-template>
-      <div class="btn edit-icon-position">
+      <div class="edit-icon-position">
             <a *ngIf="!user.checkingAccount.accountNumber;else editBank"
             [routerLink]="['/profile','add-checking-account']"
             routerLinkActive="active"
-            class="btn btn-icon edit-icon-position" > 
+            class="edit-icon-position" > 
                 <svg-add-icon-svg [color]="'#749806'"></svg-add-icon-svg>
             </a>
             <ng-template #editBank>

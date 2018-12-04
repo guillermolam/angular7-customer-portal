@@ -31,6 +31,7 @@ import { AccountMainComponent }       from './components/dashboard/account-main.
 import { BillingMainComponent }       from './components/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/billing/billing-newpayment/billing-newpayment.component';
 
+
 // ----- Routes ----- //
 import { BillingComponent }           from './routes/billing/billing.component';
 import { DashboardComponent }         from './routes/my-insurance/dashboard.component';
@@ -48,9 +49,9 @@ import { AddressChangeComponent }     from './routes/profile-settings/address-ch
 import { ContactComponent }           from './routes/contact/contact.component';
 import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
+import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'createpassword', component: CreateNewPasswordComponent },
   { path: 'login', component: LoginComponent },
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
   { path: 'my-insurance', component: AccountMainComponent,
     children: [
       { path: '',  component: DashboardHomeComponent},
+      { path: 'link-policy',  component: LinkPolicyComponent},
       { path: ':policyid',
         children: [
           {path: '', redirectTo: 'details', pathMatch: 'full' },
@@ -72,7 +74,7 @@ const appRoutes: Routes = [
           { path: 'billing', component: BillingDetailsComponent },
           { path: 'documents', component: DocumentDetailsComponent },
         ]
-      }
+      },
     ]
   },
   { path: 'profile', component: ProfileSettingsComponent, children: [
@@ -116,6 +118,7 @@ const appRoutes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'policy/add', component: DashboardComponent },
   { path: 'offline', component: DashboardComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: '**', redirectTo: '' } // otherwise redirect to home
 ];
 

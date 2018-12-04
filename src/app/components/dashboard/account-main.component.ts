@@ -8,15 +8,16 @@ import { Router, NavigationEnd }                 from '@angular/router';
 })
 export class AccountMainComponent implements OnInit {
 
-  reportClaim: boolean = true;
+  reportClaim: boolean=true;
 
   constructor( private router: Router ){}
 
   ngOnInit() {
 
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (this.router.url === '/my-insurance') {
+    this.router.events.subscribe((event)=>{
+      if(event instanceof NavigationEnd){
+        // console.log(event.url);
+        if(event.url === '/my-insurance'){
           this.reportClaim = true;
         }
         else {
@@ -24,6 +25,5 @@ export class AccountMainComponent implements OnInit {
         }
       }
     });
-    console.log(this.reportClaim )
   }
 }

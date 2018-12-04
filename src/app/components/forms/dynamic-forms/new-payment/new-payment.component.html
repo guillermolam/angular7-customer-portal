@@ -1,0 +1,79 @@
+<form 
+  [formGroup]="newPaymentForm" 
+  name="newPaymentForm"  
+  (ngSubmit)="newPaymentForm.valid && newPaymentForm()">
+  <section class="row radio-amount margin-top mt24">
+    <div class="col">
+      <h2 class="title margin-bottom mb16">Select amount</h2>
+      <div class="row">
+        <div class="col">
+          <div class="radio-label">
+            <input class="" type="radio" id="paymentAmount-minimum" name="paymentAmount" checked>
+            <label class="" for="paymentAmount-minimum">Minimum amount due</label>
+          </div>
+        </div>
+        <div class="col payment-amount">
+          <strong>$100.00</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="radio-label">
+            <input class="" type="radio" id="paymentAmount-max" name="paymentAmount">
+            <label class="" for="paymentAmount-max">Outstanding policy balance</label>
+          </div>
+        </div>
+        <div class="col payment-amount">
+          <strong>$400.00</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="radio-label">
+            <input class="" type="radio" id="paymentAmount-other" name="paymentAmount">
+            <label class="" for="paymentAmount-other">Other amount</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="row bank-inputs margin-top mt24">
+    <div class="col">
+      <h2 class="title">Checking account</h2>
+      <div *ngFor="let input of inputs" class="input">
+        <div class="row">
+          <div class="col">
+            <ng-container *ngIf="input.inputType != 'checkbox'">
+              <mapfre-validation [input]="input" [form]="newPaymentForm"></mapfre-validation>
+            </ng-container>
+            <ng-container *ngIf="input.inputType == 'checkbox'">
+              <input type="checkbox" id="store-checkbox" (change)="getCheckBoxValue($event)">
+              <label for="store-checkbox">{{ input.label | translate }}</label>            
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col">
+          <mapfre-button
+            [additionalClasses]="'basic primary large'"
+            [disabledValue]="newPaymentForm.valid" 
+            [routerLink]="['check']"
+          >{{ 'CONTINUE' | translate}}
+          </mapfre-button>
+
+        </div>
+      </div>
+      <div class="row text-center margin-bottom mb24">
+        <div class="col">
+          <mapfre-button
+            [additionalClasses]="'ghost secondary large'"
+            [disabledValue]="newPaymentForm.valid" 
+            [routerLink]="['check']">
+            {{ 'CANCEL' | translate}}
+          </mapfre-button>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

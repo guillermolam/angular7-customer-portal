@@ -115,6 +115,9 @@ import { ClaimsHomePropertyComponent } from './components/claims/claims-dashboar
 import { StorageServiceObservablesService } from './_services/storage-service-observables/storage-service-observables.service';
 import { BillingMainComponent } from './components/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/billing/billing-newpayment/billing-newpayment.component';
+import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
+import { PolicyDetailsService } from './_services/policy-details.service';
+
 
 if (environment.production) {
   enableProdMode();
@@ -208,6 +211,8 @@ export function tokenGetter() {
     BillingMainComponent,
     BillingComponent,
     BillingNewpaymentComponent,
+    LinkPolicyComponent,
+
 
   ],
   imports: [
@@ -247,6 +252,7 @@ export function tokenGetter() {
     WalletCardService,  //provider for wallet card service
     ProfileSettingsRoutingService,
     ProfileConfirmModalService,
+    PolicyDetailsService,
     StorageServiceObservablesService
   ],
   bootstrap: [AppComponent]

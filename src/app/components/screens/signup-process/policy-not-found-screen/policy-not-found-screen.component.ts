@@ -24,7 +24,7 @@ export class PolicyNotFoundScreenComponent implements OnInit {
 
   getObservableData(userData): void {
     this.policyHolderName =         `${userData.firstName} ${userData.middleName} ${userData.lastName}`;
-    this.policyNumber =             `${userData.policyDetails[0].policynumbers.policynumber}`;
+    this.policyNumber =             `${userData.policyDetails[0].policynumber.policynumber}`;
   }
 
   tryAgain(): void {

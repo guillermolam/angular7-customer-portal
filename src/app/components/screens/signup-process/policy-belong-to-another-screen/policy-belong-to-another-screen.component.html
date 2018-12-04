@@ -6,22 +6,22 @@
       </div>
       <hr>
       <div class="policy-info-content">
-        <div class="row" *ngFor="let pol of userData.policyDetails">
+        <div class="row">
           <div class="col">
             <div class="icon icon-container">
               <div class="svg">
-                <ng-container *ngIf="pol.policyType == 'auto' ">
+                <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'auto' ">
                   <svg-car-icon-svg></svg-car-icon-svg>
                 </ng-container>
-                <ng-container *ngIf="pol.policyType == 'home' ">
+                <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'home' ">
                   <svg-home-icon-svg></svg-home-icon-svg>
                 </ng-container>
               </div>
             </div>
             <div class="info-container">
               <ul>
-                <li>{{ userData.accountType | translate }} {{ pol.policyType | translate }}:&nbsp;<strong>{{ pol.policynumbers.policynumber }}</strong></li>
-                <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ pol.effDate }}</strong></li>
+                <li>{{ "Personal" | translate }} {{ policyDetails.policyType | translate }}:&nbsp;<strong>{{ policyDetails.policynumber.policynumber }}</strong></li>
+                <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyDetails.effDate | date:'shortDate' }}</strong></li>
               </ul>
             </div>
           </div>
