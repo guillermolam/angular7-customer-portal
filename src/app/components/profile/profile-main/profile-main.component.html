@@ -15,19 +15,22 @@
      <a 
      [routerLink]="['/profile','enter-password']"
      routerLinkActive="active"
-     class="edit-icon-position" > 
+     class="float-right" > 
+
+
          <svg-edit-icon-svg></svg-edit-icon-svg>
      </a>
   </div>
   <hr class="hr-stretch"/>
   <div>
-      <label class="account-settings no-margin-bottom">Email</label> 
-      <div class="sub-title-copy">{{ 'john@gmail.com' }}
-      <div class="edit-icon-position">
+    <label class="account-settings no-margin-bottom">Email</label> 
+    <div class="sub-title-copy row">
+      <div class="col">{{ 'john@gmail.com' }}</div>
+      <div class="col">
         <a 
         [routerLink]="['/profile','verify-password']"
         routerLinkActive="active"
-        class="edit-icon-position" > 
+        class="float-right" > 
             <svg-edit-icon-svg></svg-edit-icon-svg>
         </a>
       </div>
@@ -35,20 +38,21 @@
   </div>
   <div>
       <label class="account-settings no-margin-bottom margin-top mt16">Phone</label> 
-      <div class="sub-title-copy"><em *ngIf="!user.phone;else phoneNumber">{{ 'Add more security to your account' }}</em>
-        <ng-template #phoneNumber> {{ user.phone | formatPhone }}</ng-template>
-          <div class="edit-icon-position">
+      <div class="sub-title-copy row">
+        <div class="col"><em *ngIf="!user?.phone;else phoneNumber">{{ 'Add more security to your account' }}</em></div>
+        <ng-template #phoneNumber> {{ user?.phone | formatPhone }}</ng-template>
+          <div class="col">
             <a *ngIf="!user.phone;else editPhone"
             [routerLink]="['/profile','add-phone']"
             routerLinkActive="active"
-            class="edit-icon-position" > 
+            class="float-right" > 
                 <svg-add-icon-svg [color]="'#749806'"></svg-add-icon-svg>
             </a>
             <ng-template #editPhone>
             <a
             [routerLink]="['/profile','edit-phone']"
             routerLinkActive="active"
-            class="edit-icon-position" > 
+            class="float-right" > 
                 <svg-edit-icon-svg></svg-edit-icon-svg>
             </a>
         </ng-template>
@@ -58,41 +62,51 @@
   <hr class="hr-stretch"/>
   <div>
       <label class="account-settings no-margin-bottom"> Checking Account Information</label> 
-      <div class="sub-title-copy">
-        <em *ngIf="!user.checkingAccount.accountNumber;else bankName">
-          {{ 'Save time and effort in your payments' }}
-        </em>
-        <ng-template #bankName> 
+      <div class="sub-title-copy row">
+        <div class="col" *ngIf="!user.checkingAccount.accountNumber;else bankName">
+          <em>
+            {{ 'Save time and effort in your payments' }}
+          </em>
+        </div>
+        <ng-template #bankName>
+          <div class="col">
             {{ 'Checking account' | translate }} 
             <span class="profile-account-number">
                 {{ user.checkingAccount.accountNumber | checkingAccount: 'account' }}
             </span>
+          </div>
         </ng-template>
-      <div class="edit-icon-position">
-            <a *ngIf="!user.checkingAccount.accountNumber;else editBank"
+
+        <div class="col">
+          <a *ngIf="!user.checkingAccount.accountNumber;else editBank"
             [routerLink]="['/profile','add-checking-account']"
             routerLinkActive="active"
-            class="edit-icon-position" > 
-                <svg-add-icon-svg [color]="'#749806'"></svg-add-icon-svg>
-            </a>
-            <ng-template #editBank>
-            <a 
-            [routerLink]="['/profile','edit-checking-account']"
-            routerLinkActive="active"
-            > 
-                <div class="bank-account-edit display-inline">
-                    <svg-edit-icon-svg></svg-edit-icon-svg>
-                </div>
-            </a>
+            class="float-right" > 
+              <svg-add-icon-svg [color]="'#749806'"></svg-add-icon-svg>
+          </a>
+          
+          <ng-template #editBank>
+
             <a 
             (click)="onRemoveAccount()"
             routerLinkActive="active"
+            class="float-right" 
             > 
-                <div class="bank-account-remove display-inline">
-                    <svg-add-icon-svg [color]="'#BE0F0F'"></svg-add-icon-svg>
-                </div>
+              <div class="bank-account-remove display-inline">
+                <svg-add-icon-svg [color]="'#BE0F0F'"></svg-add-icon-svg>
+              </div>
             </a>
-        </ng-template>
+            
+            <a 
+            [routerLink]="['/profile','edit-checking-account']"
+            routerLinkActive="active"
+            class="float-right" 
+            > 
+              <div class="bank-account-edit display-inline">
+                <svg-edit-icon-svg></svg-edit-icon-svg>
+              </div>
+            </a>
+          </ng-template>
         </div>
       </div>
   </div>

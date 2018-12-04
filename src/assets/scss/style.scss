@@ -374,12 +374,10 @@
   background-image: url('./assets/img/images/house_bg.png');
 }
 
-.policy-details,
-.contact {
+.details {
   header {
     display: table;
     position: relative;
-    left: -24px;
   }
 
   h2 {
@@ -394,7 +392,6 @@
   }
 
   .policy-details-content {
-    
     @media (min-width: 1200px) {
       padding: 0 24px;
     }
@@ -447,7 +444,7 @@
 
   .policy-background {
     display: table-cell;
-    max-width: 63px;
+    max-width: 42px;
     position: relative;
 
     @media (max-width: 575px) {
@@ -462,9 +459,9 @@
       background-repeat: no-repeat;
 
       @media (max-width: 575px) {
-        height: 32px;
+        height: 72px;
         width: 45px;
-        background-size: auto 32px;
+        background-size: auto 71px;
       }
     }
   }
@@ -945,6 +942,12 @@ h1.title-cta {
   color: $med-gray;
 }
 
+.radio-label {
+  label {
+    margin-left: 16px;
+  }
+}
+
 .table {
   @media (max-width:520px) {
     td {
@@ -954,11 +957,8 @@ h1.title-cta {
   }
 }
 
-.claims,
-.claim-detail,
-.billing,
-.policy {
 
+.details {
   h1.title {
     color: $grey;
     font-size: 24px;

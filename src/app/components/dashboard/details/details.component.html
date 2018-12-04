@@ -7,7 +7,7 @@
     <ng-container *ngIf="policy?.policyType == 'AUTO'">
       <mapfre-card 
         [singleCard]="false"
-        [additionalClasses]="'policy-details auto'">
+        [additionalClasses]="'policy-details auto details'">
         <header class="margin-bottom mb16">
           <div class="policy-background">
             <div class="car"></div>
@@ -334,7 +334,7 @@
     <ng-container *ngIf="policy?.policyType == 'HOME'">
       <mapfre-card 
         [singleCard]="false"
-        [additionalClasses]="'policy-details property'">
+        [additionalClasses]="'policy-details property details'">
         <header class="margin-bottom mb16">
             <div class="policy-background">
               <div class="house"></div>

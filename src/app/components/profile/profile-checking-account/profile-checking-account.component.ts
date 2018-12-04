@@ -1,7 +1,7 @@
-import { ChangeAddressService } from './../../../_services/forms/change-address/change-address.service';
+import { Component, OnInit }      from '@angular/core';
+import { User }                   from 'mapfre-design-library';
 import { CheckingAccountService } from './../../../_services/forms/profile-settings/checking-account.service';
-import { Component, OnInit } from '@angular/core';
-import { User } from 'mapfre-design-library';
+
 
 @Component({
   selector: 'app-profile-checking-account',
@@ -11,7 +11,7 @@ import { User } from 'mapfre-design-library';
 })
 export class ProfileCheckingAccountComponent implements OnInit {
 
-  checkingAccountForm : any[];
+  checkingAccountForm: any[];
 
   constructor(
     private checkingAccountService: CheckingAccountService

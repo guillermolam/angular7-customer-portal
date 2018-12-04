@@ -7,15 +7,21 @@ import { User }                     from '../../../_models/user';
 import { UserService }              from './../../../_services/user.service';
 import { TestingDataService }       from './../../../_helpers/testing-data.service';
 import { UserInfoService }          from '../../../_services/_userinformation/user-info.service';
+import { CheckingAccountService } from './../../../_services/forms/profile-settings/checking-account.service';
+
+//import { NewPaymentService }        from '../../../_services/forms/new-payment/new-payment.service';
+
 
 @Component({
-  selector: 'app-billing-newpayment',
-  templateUrl: './billing-newpayment.component.html',
-  styleUrls: ['./billing-newpayment.component.scss']
+  selector:     'app-billing-newpayment',
+  templateUrl:  './billing-newpayment.component.html',
+  styleUrls:    ['./billing-newpayment.component.scss'],
+  providers:    [ CheckingAccountService ]
 })
 export class BillingNewpaymentComponent implements OnInit {
   alerton;
   input:                    object;
+  inputs:                   any[];
   loading:                  boolean = false;
   legalCheckbox:            boolean = false;
   policyId:                 number;
@@ -26,11 +32,14 @@ export class BillingNewpaymentComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private alertService:   AlertService,
     private authService:    AuthenticationService,
+    private service:        CheckingAccountService,
     private userService:    UserService,
     private userInformation: UserInfoService,
     private testingData:    TestingDataService
   ) {
+    this.inputs = service.getInputs();
    }
+
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {

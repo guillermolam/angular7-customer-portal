@@ -8,22 +8,18 @@
       <div class="type-title">
         <h1 class="title">
           Make a Check Payment
-          <small>{{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }}</small>
         </h1>
+        <div>{{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }}</div>
       </div>
     </header>
   
     <section class="row policy-details-content">
-      <div class="col-sm-12 col-md col1">
-  
-    
-        
-        
+      <div class="col col1">
+       <app-new-payment-form [inputs]="inputs"></app-new-payment-form> 
       </div>
-  
-      <div class="col-sm-12 col-md col2">
-        
 
+      <div class="col col2">
+        <app-billing-sidebar></app-billing-sidebar>
       </div>
     </section>
   </ng-container>

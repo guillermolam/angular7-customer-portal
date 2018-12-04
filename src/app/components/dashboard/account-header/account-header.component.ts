@@ -17,7 +17,7 @@ export class AccountHeaderComponent implements OnInit {
     private authService:          AuthenticationService
   ) {
     this.headerAccountModalOptions = new ModalOptions({
-      additionalClasses:          'account',
+      additionalClasses:          'account modal-small',
       additionalButtonClasses:    'header-flat account',
       animatePosition:            'top',
       buttonCopy:                 'Account',

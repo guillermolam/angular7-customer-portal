@@ -117,7 +117,8 @@ import { BillingMainComponent } from './components/billing/billing-main.componen
 import { BillingNewpaymentComponent } from './components/billing/billing-newpayment/billing-newpayment.component';
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 import { PolicyDetailsService } from './_services/policy-details.service';
-
+import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
+import { BillingSidebarComponent } from './components/billing/billing-sidebar/billing-sidebar.component';
 
 if (environment.production) {
   enableProdMode();
@@ -212,7 +213,8 @@ export function tokenGetter() {
     BillingComponent,
     BillingNewpaymentComponent,
     LinkPolicyComponent,
-
+    NewPaymentComponent,
+    BillingSidebarComponent,
 
   ],
   imports: [
