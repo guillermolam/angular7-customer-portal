@@ -35,7 +35,7 @@ export class AddPolicyComponent implements OnInit {
         .verifyPolicy(this.userService)
         .subscribe(
           (data) => {
-            this.router.navigate(['signup', 'createpassword']);
+            this.router.navigate(['signup', 'policybelongstoanother']);
           },
           (err) => {
             if (err.status === 404) {
@@ -48,7 +48,7 @@ export class AddPolicyComponent implements OnInit {
             }
             else if (err.status === 409){
               // conflict - 409 - if the policy belongs to another
-              this.router.navigate(['signup', 'policybelongstoanother']);
+              this.router.navigate(['signup', 'notfound']);
             }
           }
         )
