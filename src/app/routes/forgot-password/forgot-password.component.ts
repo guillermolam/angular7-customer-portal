@@ -24,7 +24,7 @@ export class ForgotPasswordComponent implements OnInit  {
   }
   
   getEmailFromParamater(): void{
-    this.activatedRoute.queryParams
+    this.activatedRoute.params
       .subscribe(params => {
         this.emailPrefillParamater = params['emailPrefill'] || '';
       }

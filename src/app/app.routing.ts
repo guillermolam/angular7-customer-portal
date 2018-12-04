@@ -48,7 +48,7 @@ import { DocumentDetailsComponent } from './components/dashboard/documents/docum
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 
 const appRoutes: Routes = [
-  { path: 'forgotpassword', component: ForgotPasswordComponent },
+  { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword', component: CreateNewPasswordComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
