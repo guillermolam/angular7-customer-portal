@@ -111,7 +111,7 @@ export class CreatePasswordFormComponent implements OnInit {
               this.router.navigate(['my-insurance']);
             },
             (err) => {
-              this.alertService.success('Login has failed', true);
+              this.alertService.error('Login has failed', true);
               this.router.navigate(['login']);
             });
         },

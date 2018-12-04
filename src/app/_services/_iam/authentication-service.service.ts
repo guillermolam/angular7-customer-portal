@@ -143,7 +143,7 @@ export class AuthenticationService {
   }
 
   tokenVerification(token: string, email: string): Observable<object> {
-    const url =           `${environment.backend_server_url}/identity/users/${email}?token=${token}`;
+    const url =           `${environment.backend_server_url}/identity/users/token-validation/${email}?token=${token}`;
     return this.http.post(url, {}, this.options);
   }
 
