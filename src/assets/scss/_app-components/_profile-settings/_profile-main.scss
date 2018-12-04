@@ -17,9 +17,9 @@
 .btn.mapfre.basic{
   &.profile-remove-account-button{
     background: $white;
-    border: 0.1rem solid  $corprate-red;
+    border: 0.1rem solid  $mapfre-red;
     font-size: small;
-    color:  $corprate-red;
+    color:  $mapfre-red;
   }
 
   &.cancel{
@@ -37,27 +37,6 @@
     .hr-stretch{
         margin-right: -1.5rem;
         margin-left:  -1.5rem;
-    }
-}
-
-@media (min-width: 992px) {
-    
-    .edit-icon-position{
-        float:right;
-        right: 0;
-        padding: 0;
-        border: none;
-        // margin-right:5rem;
-    }
-}
-
-@media (max-width:991px){
-    .edit-icon-position{
-        position: absolute;
-        right: 0;
-        padding: 0 1.5rem;
-        border: none;
-        margin:0;
     }
 }
 

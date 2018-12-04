@@ -41,15 +41,6 @@ export class DashboardHomeComponent implements OnInit {
     this.hideOrShow = !this.hideOrShow;
   }
 
-  // This will be removed
-
-  onClick(){
-    console.log('hello');
-    this.userInfoService.policyByEmail('testmfre@gmail.com').subscribe((response) => {
-      console.log(response);
-    });
-  }
-
   ngOnInit() {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.

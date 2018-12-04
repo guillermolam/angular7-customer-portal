@@ -7,16 +7,17 @@ import { User }                     from '../../../_models/user';
 import { UserService }              from './../../../_services/user.service';
 import { TestingDataService }       from './../../../_helpers/testing-data.service';
 import { UserInfoService }          from '../../../_services/_userinformation/user-info.service';
-import { CheckingAccountService } from './../../../_services/forms/profile-settings/checking-account.service';
 
-//import { NewPaymentService }        from '../../../_services/forms/new-payment/new-payment.service';
+//import { CheckingAccountService }   from './../../../_services/forms/profile-settings/checking-account.service';
+
+import { NewPaymentService }        from '../../../_services/forms/new-payment/new-payment.service';
 
 
 @Component({
   selector:     'app-billing-newpayment',
   templateUrl:  './billing-newpayment.component.html',
   styleUrls:    ['./billing-newpayment.component.scss'],
-  providers:    [ CheckingAccountService ]
+  providers:    [ NewPaymentService ]
 })
 export class BillingNewpaymentComponent implements OnInit {
   alerton;
@@ -32,7 +33,7 @@ export class BillingNewpaymentComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private alertService:   AlertService,
     private authService:    AuthenticationService,
-    private service:        CheckingAccountService,
+    private service:        NewPaymentService,
     private userService:    UserService,
     private userInformation: UserInfoService,
     private testingData:    TestingDataService

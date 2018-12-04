@@ -100,12 +100,12 @@
                                   </mapfre-link>
                               </div>
                               <div class="col-md-6 col-sm-12">
-                                <mapfre-link
-                                  [additionalClasses]="'ghost primary large btn'"
-                                  [url]="'https://www.mapfreinsurance.com/b2cwebapp/view/billing?policyNumber=' + policy?.policynumber.policynumber + '&source=makePayment&selectedTabIdx=1&fragments=main&mode=embedded'"
-                                  target="_blank">
-                                  {{ 'PAY_BY_CREDIT_CARD' | translate}}
-                                </mapfre-link>
+                                 <a class="mapfre link ghost primary large btn" target="_blank" 
+                                  [href]="'https://www.mapfreinsurance.com/b2cwebapp/view/billing?policyNumber=' + policy?.policynumber.policynumber + '&source=makePayment&selectedTabIdx=1&fragments=main&mode=embedded'">
+                                  <span class="link-content"> 
+                                      {{ 'PAY_BY_CREDIT_CARD' | translate}}
+                                  </span>
+                                </a>
                               </div>
                             </div>
                           </div>
