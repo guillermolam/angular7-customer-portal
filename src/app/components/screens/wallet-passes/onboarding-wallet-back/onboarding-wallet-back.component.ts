@@ -24,7 +24,7 @@ export class OnboardingWalletBackComponent implements OnInit {
   downloadCard(user): void {
     console.log(user)
     this.walletCardService
-      .generatePkPass('testMfre@gmail.com')
+      .generatePkPass('testmc@test.com')
       .subscribe(
         (success) => {
           console.log("Successfully Download of Card");
