@@ -22,10 +22,11 @@ export class OnboardingWalletBackComponent implements OnInit {
   }
 
   downloadCard(user): void {
+    console.log(user)
     this.walletCardService
-      .generatePkPass(user.email)
+      .generatePkPass('testMfre@gmail.com')
       .subscribe(
-        success => {
+        (success) => {
           console.log("Successfully Download of Card");
           this.createCookie(365, 'download');
           //close the modal
