@@ -16,9 +16,5 @@ export class LoginComponent  {
   constructor(service: LoginService, private router: Router) {
     this.inputs = service.getInputs();
   }
-   
-  redirectToForgotPassword(){
-    this.router.navigate(['/forgotpassword','email@xyz.com']);
-  }
 
 }
