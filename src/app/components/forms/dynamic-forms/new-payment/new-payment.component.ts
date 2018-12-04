@@ -12,13 +12,14 @@ import { User }                       from '../../../../_models/user';
 @Component({
   selector: 'app-new-payment-form',
   templateUrl: './new-payment.component.html',
-  styleUrls: ['./new-payment.component.scss']
+  styleUrls: ['./new-payment.component.scss'],
+  providers: [ FormBaseControlService ]
 })
 export class NewPaymentComponent implements OnInit {
 
   @Input()  inputs:                   FormBase<any>[] = [];
             loading:                  boolean = false;
-            newPaymentForm:           FormGroup;
+           // newPaymentForm:           FormGroup;
             user:                     User = {};
 
   constructor(
@@ -35,7 +36,7 @@ export class NewPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.newPaymentForm = this.ipt.toFormGroup(this.inputs);
+  //  this.newPaymentForm = this.ipt.toFormGroup(this.inputs);
   }
 
 }
