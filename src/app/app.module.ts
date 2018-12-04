@@ -46,10 +46,10 @@ import { LoginFormComponent }                   from './components/forms/dynamic
 import { CreatePasswordFormComponent }          from './components/forms/dynamic-forms/create-password-form/create-password-form.component';
 import { SendEmailFormComponent }               from './components/forms/dynamic-forms/send-email-form/send-email-form.component';
 import { EmailConfirmationComponent }           from './components/screens/email-confirmation/email-confirmation.component';
-//import { ForgotPasswordNondynamicComponent }    from './components/forms/non-dynamic-forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
+import { ForgotPasswordNondynamicComponent }    from './components/forms/non-dynamic-forms/forgot-password-nondynamic/forgot-password-nondynamic.component';
 import { CreateNewPasswordSetComponent }        from './components/screens/create-new-password/create-new-password-set/create-new-password-set.component';
 import { CreateNewPasswordExpiredComponent }    from './components/screens/create-new-password/create-new-password-expired/create-new-password-expired.component';
-//import { ForgotPasswordTooManyComponent }       from './components/screens/create-new-password/forgot-password-too-many/forgot-password-too-many.component';
+import { ForgotPasswordTooManyComponent }       from './components/screens/create-new-password/forgot-password-too-many/forgot-password-too-many.component';
 import { CreateAccountFormComponent }           from './components/forms/dynamic-forms/create-account-form/create-account-form.component';
 import { AddPolicyComponent }                   from './components/forms/dynamic-forms/add-policy/add-policy.component';
 import { EmailUseScreenComponent }              from './components/screens/signup-process/email-use-screen/email-use-screen.component';
@@ -137,13 +137,13 @@ export function tokenGetter() {
     LoginFormComponent,
     TestingComponent,
     CreatePasswordFormComponent,
-   // ForgotPasswordNondynamicComponent,
+    ForgotPasswordNondynamicComponent,
     SendEmailFormComponent,
     EmailConfirmationComponent,
     CreateNewPasswordComponent,
     CreateNewPasswordSetComponent,
     CreateNewPasswordExpiredComponent,
-    //ForgotPasswordTooManyComponent,
+    ForgotPasswordTooManyComponent,
     CreateAccountFormComponent,
     SignupProcessComponent,
     AddPolicyComponent,
