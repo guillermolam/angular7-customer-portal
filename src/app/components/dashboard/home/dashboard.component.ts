@@ -1,6 +1,7 @@
-import { UserInfoService } from './../../../_services/_userinformation/user-info.service';
 import { Component, OnInit }      from '@angular/core';
 import { Router }                 from '@angular/router';
+import { ModalOptions }           from 'mapfre-design-library';
+import { UserInfoService }        from './../../../_services/_userinformation/user-info.service';
 import { User }                   from '../../../_models/user';
 import { UserService }            from '../../../_services/user.service';
 import { AuthenticationService }  from '../../../_services/_iam/authentication-service.service';
@@ -14,6 +15,7 @@ import { StorageServiceObservablesService } from '../../../_services/storage-ser
 })
 export class DashboardHomeComponent implements OnInit {
   hideOrShow:                     boolean = false;
+  payNowModal:                    ModalOptions;
   user:                           User;
 
   constructor(
@@ -24,26 +26,24 @@ export class DashboardHomeComponent implements OnInit {
     private userInfoService:      UserInfoService,
     private storageService:       StorageServiceObservablesService
   ) {
+    this.payNowModal =  new ModalOptions({
+      additionalButtonClasses:        'ghost primary small pay-now-modal-button',
+      additionalClasses:              'pay-now-modal',
+      buttonCopy:                     'PAY_NOW',
+      modalId:                        'payNow',
+      modalTranslateCopy:             'MODAL_MAKE_A_PAYMENT',
+      size:                           'modal-medium',
+      typeOfModal:                    'default'
+    });
   }
 
   showMore(e): void {
     this.hideOrShow = !this.hideOrShow;
   }
 
-  // This will be removed
- 
-  onClick(){
-    console.log('hello');
-    this.userInfoService.policyByEmail('testmfre@gmail.com').subscribe((response)=>{
-      console.log(response);
-    });
-  }
-
-
   ngOnInit() {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
-  
     this.userService.$user.subscribe(
       (user) => {
         if ( user != undefined ) {

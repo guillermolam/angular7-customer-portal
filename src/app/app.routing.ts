@@ -1,4 +1,3 @@
-import { AccountMainComponent } from './components/dashboard/account-main.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }     from '@angular/router';
 import { NgModule }                   from '@angular/core';
@@ -23,8 +22,18 @@ import { InformationLegalComponent }  from './components/information/information
 import { ClaimsDetailComponent }      from './components/claims/claims-detail/claims-detail.component';
 import { ClaimsHomeComponent }        from './components/claims/claims-dashboard-active/claims-home.component';
 import { ClaimsHomeClosedComponent }  from './components/claims/claims-dashboard-closed/claims-home-closed.component';
+import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
+import { DashboardHomeComponent }     from './components/dashboard/home/dashboard.component';
+import { PolicyDetailsComponent }     from './components/dashboard/details/details.component';
+import { BillingDetailsComponent }    from './components/dashboard/billing/billing.component';
+import { DocumentDetailsComponent }   from './components/dashboard/documents/documents.component';
+import { AccountMainComponent }       from './components/dashboard/account-main.component';
+import { BillingMainComponent }       from './components/billing/billing-main.component';
+import { BillingNewpaymentComponent } from './components/billing/billing-newpayment/billing-newpayment.component';
+
 
 // ----- Routes ----- //
+import { BillingComponent }           from './routes/billing/billing.component';
 import { DashboardComponent }         from './routes/my-insurance/dashboard.component';
 import { ForgotPasswordComponent }    from './routes/forgot-password/forgot-password.component';
 import { CreateNewPasswordComponent } from './routes/create-new-password/create-new-password.component';
@@ -40,11 +49,6 @@ import { AddressChangeComponent }     from './routes/profile-settings/address-ch
 import { ContactComponent }           from './routes/contact/contact.component';
 import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
-import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
-import { DashboardHomeComponent } from './components/dashboard/home/dashboard.component';
-import { PolicyDetailsComponent } from './components/dashboard/details/details.component';
-import { BillingDetailsComponent } from './components/dashboard/billing/billing.component';
-import { DocumentDetailsComponent } from './components/dashboard/documents/documents.component';
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 
 const appRoutes: Routes = [
@@ -96,6 +100,12 @@ const appRoutes: Routes = [
       { path: 'details', component: ClaimsDetailComponent },
     ] }
   ] },
+
+  { path: 'billing', component: BillingComponent , children: [
+    { path: '', component: BillingMainComponent },
+    { path: 'new-payment/:policyid', component: BillingNewpaymentComponent}
+  ] },
+
   { path: 'information', component: InformationComponent,  children: [
     { path: '', component: InformationHomeComponent },
     { path: 'products', component: InformationProductsComponent },
@@ -106,9 +116,6 @@ const appRoutes: Routes = [
     { path: 'legal', component: InformationLegalComponent },
 
   ] },
-  { path: 'billing', component: DashboardComponent },
-  
-  { path: 'information', component: InformationComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'policy/add', component: DashboardComponent },
   { path: 'offline', component: DashboardComponent },

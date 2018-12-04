@@ -41,6 +41,13 @@ import { TestingComponent }                     from './routes/testing/testing.c
 import { VerifyAccountComponent }               from './routes/verify-account/verify-account.component';
 import { WalletCardComponent }                  from './routes/wallet-card/wallet-card.component';
 import { WelcomeComponent }                     from './routes/welcome/welcome.component';
+import { BillingComponent }                     from './routes/billing/billing.component';
+import { InformationComponent }                 from './routes/information/information.component';
+import { ClaimsComponent }                      from './routes/claims/claims.component';
+import { ContactComponent }                     from './routes/contact/contact.component';
+import { ProfileSettingsComponent }             from './routes/profile-settings/profile-settings.component';
+import { AddressChangeComponent }               from './routes/profile-settings/address-change/address-change.component';
+
 // ----- Components ----- //
 import { LoginFormComponent }                   from './components/forms/dynamic-forms/login-form/login-form.component';
 import { CreatePasswordFormComponent }          from './components/forms/dynamic-forms/create-password-form/create-password-form.component';
@@ -64,21 +71,17 @@ import { OnboardingWalletBackComponent }        from './components/screens/walle
 import { OnboardingWalletBackListComponent }    from './components/screens/wallet-passes/onboarding-wallet-back-list/onboarding-wallet-back-list.component';
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
 import { MiscColumnComponent }                  from './components/dashboard/misc-column/misc-column.component';
-import { PolicyDetailsComponent }                     from './components/dashboard/details/details.component';
-import { ProfileSettingsComponent } from './routes/profile-settings/profile-settings.component';
+import { PolicyDetailsComponent }               from './components/dashboard/details/details.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileMainComponent } from './components/profile/profile-main/profile-main.component';
 import { ProfilePhoneComponent } from './components/profile/profile-phone/profile-phone.component';
 import { ApartmentPipePipe } from './_helpers/_pipes/apartment-pipe.pipe';
 import { BillingDetailsComponent } from './components/dashboard/billing/billing.component';
 import { DocumentDetailsComponent } from './components/dashboard/documents/documents.component';
-import { InformationComponent } from './routes/information/information.component';
-import { ClaimsComponent } from './routes/claims/claims.component';
-import { ContactComponent } from './routes/contact/contact.component';
+
 import { ChangePhoneComponent } from './components/forms/dynamic-forms/profile-settings-forms/change-phone/change-phone.component';
 import { ProfileCheckingAccountComponent } from './components/profile/profile-checking-account/profile-checking-account.component';
 import { CustomDateFormatPipe } from './_helpers/_pipes/custom-date-format.pipe';
-import { AddressChangeComponent } from './routes/profile-settings/address-change/address-change.component';
 import { ChangeAddressComponent } from './components/forms/dynamic-forms/profile-settings-forms/change-address/change-address.component';
 import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
 import { ChangePasswordFormComponent } from './components/forms/dynamic-forms/change-password-form/change-password-form.component';
@@ -110,8 +113,12 @@ import { ClaimsReportComponent } from './components/claims/claims-report/claims-
 import { ClaimsHomeCarComponent } from './components/claims/claims-dashboard-car/claims-home-car.component';
 import { ClaimsHomePropertyComponent } from './components/claims/claims-dashboard-property/claims-home-property.component';
 import { StorageServiceObservablesService } from './_services/storage-service-observables/storage-service-observables.service';
+import { BillingMainComponent } from './components/billing/billing-main.component';
+import { BillingNewpaymentComponent } from './components/billing/billing-newpayment/billing-newpayment.component';
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 import { PolicyDetailsService } from './_services/policy-details.service';
+import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
+import { BillingSidebarComponent } from './components/billing/billing-sidebar/billing-sidebar.component';
 
 if (environment.production) {
   enableProdMode();
@@ -202,7 +209,12 @@ export function tokenGetter() {
     ClaimsReportComponent,
     ClaimsHomeCarComponent,
     ClaimsHomePropertyComponent,
+    BillingMainComponent,
+    BillingComponent,
+    BillingNewpaymentComponent,
     LinkPolicyComponent,
+    NewPaymentComponent,
+    BillingSidebarComponent,
 
   ],
   imports: [

@@ -1,7 +1,7 @@
-import { ChangeAddressService } from './../change-address/change-address.service';
-import { Injectable } from '@angular/core';
-import { FormBase, TextBox } from 'mapfre-design-library';
-import { FakeAccountSettings } from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
+import { Injectable }               from '@angular/core';
+import { FormBase, TextBox }        from 'mapfre-design-library';
+import { ChangeAddressService }     from './../change-address/change-address.service';
+import { FakeAccountSettings }      from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 
 @Injectable()
 export class CheckingAccountService {
@@ -19,9 +19,7 @@ export class CheckingAccountService {
     // mailingAddress: "17 Lothian Road, Brighton, MA",
     // apartment: ""
 
-      this.checkingAccount = FakeAccountSettings.user.checkingAccount;
-    
-
+    this.checkingAccount = FakeAccountSettings.user.checkingAccount;
 
     const inputs: FormBase<any>[] = [
       new TextBox({
@@ -31,7 +29,7 @@ export class CheckingAccountService {
         key:                'bankAccountHolder',
         label:              "Bank account holder's name",
         required:           true,
-        type:               'text',
+        type:               'text', 
         validationMessageError: 'Please enter valid name'
       }),
       new TextBox({
@@ -65,7 +63,7 @@ export class CheckingAccountService {
         )
     ];
 
-    return inputs; 
+    return inputs;
   }
 
 }

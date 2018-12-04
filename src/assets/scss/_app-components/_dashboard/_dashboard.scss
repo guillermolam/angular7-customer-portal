@@ -272,3 +272,12 @@
     }
   }
 }
+.btn.pay-now-modal-button {
+  margin-top: -5px;
+}
+
+.pay-now-modal {
+  .modal-body-content .btn.large {
+    font-size: 15px;
+  }
+}

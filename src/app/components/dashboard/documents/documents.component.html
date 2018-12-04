@@ -61,11 +61,7 @@
                           <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
                         </div>
                         <div class="col col-right">
-                          <mapfre-button
-                            [additionalClasses]="'ghost primary xsmall full'"
-                            (click)="downloadWalletCard(user.email, policyId)">
-                              {{'DOWNLOAD' | translate}}
-                          </mapfre-button>
+                          <app-onboarding-wallet-modal [userData]="user"></app-onboarding-wallet-modal>
                         </div>
                       </div>
                     </th>
