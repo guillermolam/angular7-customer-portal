@@ -17,7 +17,12 @@
     </div>
   </div>
 </div>
-<div *ngIf="userData.addPolicyAttempts <= 2">
+<div>
+  <div>
+    <mapfre-info-divs>
+      <em>{{ 'NOTFOUND_IF_YOU_PURCHASE' | translate }}</em> 
+    </mapfre-info-divs>
+  </div>
   <div class="text-center margin-bottom mb24">
     <mapfre-link
       [additionalClasses]="'small-link horizontal-space'"
@@ -25,14 +30,6 @@
     >
       {{ 'EDIT_POLICY_INFO' | translate }}
     </mapfre-link>
-  </div>
-  <div class="text-center">
-    <mapfre-button 
-      [additionalClasses]="'basic primary large'"
-      (click)="tryAgain()"
-    >
-      {{ 'TRY_AGAIN' | translate }}
-    </mapfre-button>
   </div>
 </div>
 <div *ngIf="userData.addPolicyAttempts >= 3">
