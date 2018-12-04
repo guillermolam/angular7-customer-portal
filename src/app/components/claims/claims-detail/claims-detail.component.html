@@ -1,6 +1,6 @@
 <ng-container *ngFor="let claim of claims">
   <ng-container *ngIf="claim.LOSS_NUMBER == claimid">
-    <header class="row margin-bottom mb16">
+    <header class="row margin-bottom mb16 w-100" >
       <div class="col">
         <ng-container *ngIf="claim.policytype == 'auto' ">
             <app-claims-home-car [claim]="claim" type="details"></app-claims-home-car>
