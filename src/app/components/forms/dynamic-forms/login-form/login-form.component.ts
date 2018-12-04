@@ -84,7 +84,7 @@ export class LoginFormComponent implements OnInit {
           emailPattern = this.regExHelper.strictEmailPattern;
 
     this.emailPrefillOnBlur = emailPattern.test(email) ? email : '';
-    this.router.navigate(['/forgotpassword'],  { queryParams: { emailPrefill: this.emailPrefillOnBlur } });
+    this.router.navigate(['/forgotpassword',  this.emailPrefillOnBlur]);
   }
 
   putCookie(): void {
