@@ -7,6 +7,7 @@ import { AuthenticationService }        from '../../../../_services/_iam/authent
 import { PolicyDetails }                from '../../../../_models/policy-details';
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';
+import { PolicyDetailsService } from '../../../../_services/policy-details.service';
 
 @Component({
   selector: 'app-policy-belong-to-another-screen',
@@ -16,7 +17,7 @@ import { User }                         from '../../../../_models/user';
 export class PolicyBelongToAnotherScreenComponent implements OnInit {
   @Input()  userData:               User;
             policyDate:             string;
-            policyDetail:           PolicyDetails[];
+            policyDetails:           any = {};
             policyNumber:           string;
             user:                   User = {};
 
@@ -24,36 +25,44 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
     private alertService:           AlertService,
     private authService:            AuthenticationService,
     private router:                 Router,
-    private userService:            UserService
+    private userService:            UserService,
+    private policyService:          PolicyDetailsService
   ) { }
 
   confirmPolicy(): void {
-    this.authService
-      .confirmPolicyAndAccount(this.user)
-      .subscribe(
-        (data) => {
+    // this.authService
+    //   .confirmPolicyAndAccount(this.userService)
+    //   .subscribe(
+    //     (data) => {
+    //       console.log(data);
           this.router.navigate(['/signup', 'createpassword']);
-        },
-        (err) => {
-          this.alertService.error('There was an issue');
-        }
-      );
+  //       },
+  //       (err) => {
+  //         this.alertService.error('There was an issue');
+  //       }
+  //     );
   }
 
-  createUserObject(formValue): void {
-    this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
-    this.user = {
-      firstName:                    formValue.editFirst_name,
-      middleName:                   formValue.editMI_name,
-      lastName:                     formValue.editLast_name,
-      email:                        formValue.editEmail,
-      policyDetails:                this.policyDetail
-    };
-    this.userService.updateUser(this.user);
-  }
+  // createUserObject(formValue): void {
+  //   this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
+  //   this.user = {
+  //     firstName:                    formValue.editFirst_name,
+  //     middleName:                   formValue.editMI_name,
+  //     lastName:                     formValue.editLast_name,
+  //     email:                        formValue.editEmail,
+  //     policyDetails:                this.policyDetail
+  //   };
+  //   this.userService.updateUser(this.user);
+  // }
 
   ngOnInit() {
 
+    //new code
+    this.policyService.$policyDetails.subscribe((details)=>{
+      this.policyDetails = details;
+      console.log(details);
+    });
+    
   }
 
 }

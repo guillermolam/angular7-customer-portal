@@ -6,6 +6,7 @@ import { FormBase , FormBaseControlService }  from 'mapfre-design-library';
 // --- Components | Services | Models --- //
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
 import { UserService }                from '../../../../_services/user.service';
+import { PolicyDetailsService }       from '../../../../_services/policy-details.service';
 import { User }                       from '../../../../_models/user';
 
 @Component({
@@ -25,7 +26,8 @@ export class AddPolicyComponent implements OnInit {
     private authService:              AuthenticationService,
     private ipt:                      FormBaseControlService,
     private router:                   Router,
-    private userService:              UserService
+    private userService:              UserService,
+    private policyService:            PolicyDetailsService
   ) { }
 
   addPolicy(): void {
@@ -34,8 +36,10 @@ export class AddPolicyComponent implements OnInit {
       this.authService
         .verifyPolicy(this.userService)
         .subscribe(
-          (data) => {
-            this.router.navigate(['signup', 'policybelongstoanother']);
+          (response) => {
+            this.policyService.updatePolicyDetails(response); //new code
+            this.router.navigate(['signup', 'policybelongstoanother']); 
+            // this.router.navigate(['signup', 'createpassword']);
           },
           (err) => {
             if (err.status === 404) {
@@ -49,6 +53,7 @@ export class AddPolicyComponent implements OnInit {
             else if (err.status === 409){
               // conflict - 409 - if the policy belongs to another
               this.router.navigate(['signup', 'notfound']);
+              // this.router.navigate(['signup', 'policybelongstoanother']);
             }
           }
         )
