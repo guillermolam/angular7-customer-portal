@@ -38,7 +38,7 @@ export class AddPolicyComponent implements OnInit {
         .subscribe(
           (response) => {
             this.policyService.updatePolicyDetails(response); //new code
-            this.router.navigate(['signup', 'policybelongstoanother']); 
+            this.router.navigate(['signup', 'policybelongstoanother']);
             // this.router.navigate(['signup', 'createpassword']);
           },
           (err) => {
