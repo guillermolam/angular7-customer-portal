@@ -5,6 +5,7 @@ import { User }                   from '../../../_models/user';
 import { UserService }            from '../../../_services/user.service';
 import { AuthenticationService }  from '../../../_services/_iam/authentication-service.service';
 import { TestingDataService }     from './../../../_helpers/testing-data.service';
+import { StorageServiceObservablesService } from '../../../_services/storage-service-observables/storage-service-observables.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -20,7 +21,8 @@ export class DashboardHomeComponent implements OnInit {
     private router:               Router,
     private userService:          UserService,
     private testingData:          TestingDataService,
-    private userInfoService:      UserInfoService
+    private userInfoService:      UserInfoService,
+    private storageService:       StorageServiceObservablesService
   ) {
   }
 
@@ -41,7 +43,6 @@ export class DashboardHomeComponent implements OnInit {
   ngOnInit() {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
-
   
     this.userService.$user.subscribe(
       (user) => {
@@ -75,5 +76,14 @@ export class DashboardHomeComponent implements OnInit {
         }
       }
     );
+
+
+    this.userInfoService.policyByEmail(this.storageService.getUserFromStorage()).subscribe((response)=>{
+      console.log(response);
+    });
+
+    this.userInfoService.getCurrentBillByPolicy('BBWQKQ').subscribe((response)=>{
+      console.log(response);
+    });
   }
 }

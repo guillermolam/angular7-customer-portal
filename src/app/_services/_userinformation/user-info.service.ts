@@ -11,6 +11,8 @@ import { User }               from '../../_models/user';
 })
 export class UserInfoService {
 
+  billingURL: string = 'https://mdv-doctest:8086'; ///will be removed
+
   httpOptions: any = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -32,4 +34,11 @@ export class UserInfoService {
     const url = `${environment.backend_server_url}/personal-policies/${email}`;
     return this.http.get(url);
   }
+
+  getCurrentBillByPolicy(policyNumber): Observable<any>{
+    const url = `${this.billingURL}/billing/${policyNumber}/currentbill`; ///change
+    return this.http.get(url);
+  }
+
+
 }
