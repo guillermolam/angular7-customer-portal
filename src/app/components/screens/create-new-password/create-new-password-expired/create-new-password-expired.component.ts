@@ -12,7 +12,7 @@ export class CreateNewPasswordExpiredComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
 
   getEmailFromParamater(): void{
-    this.activatedRoute.queryParams
+    this.activatedRoute.params
       .subscribe(params => {
         this.emailPrefillParamater = params['emailPrefill'] || '';
       }

@@ -52,13 +52,14 @@ import { InformationComponent }       from './routes/information/information.com
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 
 const appRoutes: Routes = [
-  { path: 'forgotpassword', component: ForgotPasswordComponent },
+  { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword', component: CreateNewPasswordComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signup/:parm', component: SignupProcessComponent},
   { path: 'testing', component: TestingComponent },
-  { path: 'verifyaccount', component: VerifyAccountComponent, canActivate: [VerifyUserGuard] },
+  { path: 'verifyaccount', component: VerifyAccountComponent},
+  // { path: 'verifyaccount', component: VerifyAccountComponent, canActivate: [VerifyUserGuard] },
   { path: 'welcome', component: WelcomeComponent },
   { path: 'walletcard', component: WalletCardComponent},
 

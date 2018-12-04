@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 import { LoginService } from '../../_services/forms/login/login.service';
@@ -12,9 +13,12 @@ export class LoginComponent  {
 
   inputs: any[];
  
-  constructor(service: LoginService) {
+  constructor(service: LoginService, private router: Router) {
     this.inputs = service.getInputs();
   }
    
+  redirectToForgotPassword(){
+    this.router.navigate(['/forgotpassword','email@xyz.com']);
+  }
 
 }
