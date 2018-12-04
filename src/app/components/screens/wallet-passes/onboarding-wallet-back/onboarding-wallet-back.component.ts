@@ -29,6 +29,8 @@ export class OnboardingWalletBackComponent implements OnInit {
         (success) => {
           console.log("Successfully Download of Card");
           this.createCookie(365, 'download');
+          const blob = new Blob([success]);
+          saveAs(blob, 'policy.pkpass');
           //close the modal
           //
         },

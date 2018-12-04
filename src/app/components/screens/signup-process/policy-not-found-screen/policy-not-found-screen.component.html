@@ -23,13 +23,21 @@
       <em>{{ 'NOTFOUND_IF_YOU_PURCHASE' | translate }}</em> 
     </mapfre-info-divs>
   </div>
-  <div class="text-center margin-bottom mb24">
+  <div class="text-center margin-vertical mv24">
     <mapfre-link
       [additionalClasses]="'small-link horizontal-space'"
       [routerLink]="['/signup','editpolicy']"
     >
       {{ 'EDIT_POLICY_INFO' | translate }}
     </mapfre-link>
+  </div>
+  <div>
+    <mapfre-button 
+      [additionalClasses]="'basic primary large'"
+      [routerLink]="['/signup','addpolicy']"
+    >
+      {{ 'TRY_AGAIN_WITH_A_DIFFERENT' | translate }}
+    </mapfre-button>
   </div>
 </div>
 <div *ngIf="userData.addPolicyAttempts >= 3">
