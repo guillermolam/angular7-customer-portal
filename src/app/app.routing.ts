@@ -48,7 +48,6 @@ import { DocumentDetailsComponent } from './components/dashboard/documents/docum
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'createpassword', component: CreateNewPasswordComponent },
   { path: 'login', component: LoginComponent },
@@ -112,6 +111,7 @@ const appRoutes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'policy/add', component: DashboardComponent },
   { path: 'offline', component: DashboardComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: '**', redirectTo: '' } // otherwise redirect to home
 ];
 
