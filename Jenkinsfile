@@ -7,8 +7,8 @@ pipeline{
 				sh 'rm -rf dist'
 				sh "npm install"
 				sh "tslint --project tsconfig.json 'src/app/**/*.ts' -e 'src/app/**/*spec.ts'"
-				// sh "npm run build-dev"
-				sh "ng build"
+				sh "npm run build-dev"
+				// sh "ng build"
 			}
 		}
 		
