@@ -54,7 +54,8 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signup/:parm', component: SignupProcessComponent},
   { path: 'testing', component: TestingComponent },
-  { path: 'verifyaccount', component: VerifyAccountComponent, canActivate: [VerifyUserGuard] },
+  { path: 'verifyaccount', component: VerifyAccountComponent},
+  // { path: 'verifyaccount', component: VerifyAccountComponent, canActivate: [VerifyUserGuard] },
   { path: 'welcome', component: WelcomeComponent },
   { path: 'walletcard', component: WalletCardComponent},
 
