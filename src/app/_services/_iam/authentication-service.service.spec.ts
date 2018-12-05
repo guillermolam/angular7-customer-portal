@@ -177,7 +177,7 @@ describe('AuthenticationService', () => {
         expect(response.status).toBe(200);
     });
 
-    const req = httpMock.expectOne(`${environment.backend_server_url}/identity/users/${email}?token=${token}`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/identity/users/token-validation/${email}?token=${token}`);
     expect(req.request.method).toBe('POST');
     req.flush(new HttpResponse<number>({status: 200}));
   }));

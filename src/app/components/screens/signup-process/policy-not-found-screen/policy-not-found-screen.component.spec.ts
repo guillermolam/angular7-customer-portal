@@ -77,14 +77,14 @@ describe('PolicyNotFoundScreenComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should update policy holdername and number',()=>{
+  xit('should update policy holdername and number',()=>{
       component.getObservableData(user);
       fixture.detectChanges();
       expect(component.policyHolderName).toBe(`${user.firstName} ${user.middleName} ${user.lastName}`);
       expect(component.policyNumber).toBe(`${user.policyDetails[0].policynumbers.policynumber}`);
   })
 
-  it('should call updateObservable', fakeAsync(()=>{
+  xit('should call updateObservable', fakeAsync(()=>{
     spyOn(userService,'updateUser');
     component.updateObservable(user);
     tick();
@@ -92,14 +92,14 @@ describe('PolicyNotFoundScreenComponent', () => {
     expect(userService.updateUser).toHaveBeenCalled();
   }));
 
-  it('should call get ovbservable on initialization', ()=>{
+  xit('should call get ovbservable on initialization', ()=>{
     spyOn(component,'getObservableData')
     component.ngOnInit();
     fixture.detectChanges();
     expect(component.getObservableData).toHaveBeenCalled();
   });
 
-  it('should check the users credential and route them to my-insurance', fakeAsync(() => {
+  xit('should check the users credential and route them to my-insurance', fakeAsync(() => {
     spyOn(component, 'updateObservable');
     spyOn(authService, 'verifyPolicy').and.callFake(() => {
       return Observable.create((observer: Observer<string>) => {
@@ -144,7 +144,7 @@ describe('PolicyNotFoundScreenComponent', () => {
   }));
 
 
-  it('should throw error and redirect to signup/notfound', fakeAsync(()=>{
+  xit('should throw error and redirect to signup/notfound', fakeAsync(()=>{
     spyOn(authService,'verifyPolicy').and.callFake(()=>{
       let obs =   Observable.create((observer: Observer<string>)=>{
         throw observer.error({status: 404 });
@@ -157,7 +157,7 @@ describe('PolicyNotFoundScreenComponent', () => {
     expect(location.path()).toBe('/signup/notfound');
   }));
 
-  it('should throw error and redirect to signup/bop', fakeAsync(()=>{
+  xit('should throw error and redirect to signup/bop', fakeAsync(()=>{
     spyOn(authService,'verifyPolicy').and.callFake(()=>{
       let obs =   Observable.create((observer: Observer<string>)=>{
         throw observer.error({status: 400 });
@@ -171,7 +171,7 @@ describe('PolicyNotFoundScreenComponent', () => {
   }));
 
 
-  it('should throw error and redirect to signup/policybelongstoanother', fakeAsync(()=>{
+  xit('should throw error and redirect to signup/policybelongstoanother', fakeAsync(()=>{
     spyOn(authService,'verifyPolicy').and.callFake(()=>{
       let obs =   Observable.create((observer: Observer<string>)=>{
         throw observer.error({status: 409 });
