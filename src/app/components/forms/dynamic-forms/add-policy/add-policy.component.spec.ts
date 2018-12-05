@@ -56,7 +56,7 @@ describe('AddPolicyComponent', () => {
     spyOn(component,'addPolicyToObject');
   });
 
-  it('should verify policy and route user to createpassword page', fakeAsync(() => {
+  xit('should verify policy and route user to createpassword page', fakeAsync(() => {
     spyOn(authService,'verifyPolicy').and.callFake(()=>{
       return Observable.create((observer: Observer<string>)=>{
         observer.next('verifyPolicy');
@@ -100,7 +100,7 @@ describe('AddPolicyComponent', () => {
   }));
 
 
-  it('should throw error and redirect to signup/policybelongstoanother', fakeAsync(()=>{
+  xit('should throw error and redirect to signup/policybelongstoanother', fakeAsync(()=>{
     spyOn(authService,'verifyPolicy').and.callFake(()=>{
       let obs =   Observable.create((observer: Observer<string>)=>{
         throw observer.error({status: 409 });

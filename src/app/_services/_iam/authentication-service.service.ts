@@ -166,7 +166,7 @@ export class AuthenticationService {
   }
 
   verifyAccountTokenVerification(token: string, email: string): Observable<object> {
-    const url =           `https://mdv-doctest:8083/customers/accounts?token=${token}&email=${email}`;
+    const url =           `${environment.backend_server_url}/customers/accounts?token=${token}&email=${email}`;
     return this.http.put(url, {}, this.options);
   }
 
