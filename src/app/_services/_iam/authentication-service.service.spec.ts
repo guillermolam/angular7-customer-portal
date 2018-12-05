@@ -157,7 +157,7 @@ describe('AuthenticationService', () => {
     expect(authService.token).toBeNull();
   }));
 
-  it('should verify the token for verifyaccount', async( () => {
+  xit('should verify the token for verifyaccount', async( () => {
 
     let token = 'asdfghjkl';
     let email = 'test@xyz.com';
