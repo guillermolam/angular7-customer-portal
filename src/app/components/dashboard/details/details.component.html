@@ -8,7 +8,7 @@
       <mapfre-card 
         [singleCard]="false"
         [additionalClasses]="'policy-details auto details'">
-        <header class="margin-bottom mb16">
+        <header class="margin-bottom mb16 no-margins-hug hug-header">
           <div class="policy-background">
             <div class="car"></div>
           </div>
@@ -21,31 +21,7 @@
           </div>
         </header>
       
-        <nav class="policy-details-nav margin-bottom mb40">
-          <div class="accordian-navigation">
-            <ul>
-              <li routerLinkActive="active">
-                <a 
-                  class="underline"
-                  routerLink="/my-insurance/{{policyId}}/details" 
-                  title="Policy Details"
-                >{{'DETAILS' | translate}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a
-                    routerLink="/my-insurance/{{policyId}}/billing"
-                    title="Policy Billing"
-                  >{{'BILLING' | translate}}</a>
-              </li>
-              <li routerLinkActive="active">
-                  <a
-                    routerLink="/my-insurance/{{policyId}}/documents"
-                    title="Policy Documents"
-                  >{{'DOCUMENTS' | translate}}</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
       
         <section class="row policy-details-content">
           <div class="col-sm-12 col-md col1">
@@ -89,7 +65,7 @@
                   {{ 'ODOMETER_UPDATE' | translate }}<strong>{{ 'NEW_DISCOUNTS' | translate}}</strong>.
                 </p>
                
-                <form [formGroup]="updateMileage" class="update-mileage">
+                <form [formGroup]="updateMileage" class="update-mileage no-padding">
                   <div class="margin-bottom mb24">
                     
                     <div class="mapfre-input vehicle" *ngFor="let vehicle of policy?.vehicle; let i = index; let last = last; let first = first">
@@ -335,7 +311,7 @@
       <mapfre-card 
         [singleCard]="false"
         [additionalClasses]="'policy-details property details'">
-        <header class="margin-bottom mb16">
+        <header class="margin-bottom mb16 no-margins-hug hug-header">
             <div class="policy-background">
               <div class="house"></div>
             </div>
@@ -348,33 +324,8 @@
             </div>
           </header>
         
-          <nav class="policy-details-nav margin-bottom mb40">
-              <div class="accordian-navigation">
-                <ul>
-                  <li routerLinkActive="active">
-                    <a 
-                      class="underline"
-                      routerLink="/my-insurance/{{policyId}}/details" 
-                      title="Policy Details"
-                    >{{'DETAILS' | translate}}</a>
-                  </li>
-                  <li routerLinkActive="active">
-                      <a
-                        routerLink="/my-insurance/{{policyId}}/billing"
-                        title="Policy Billing"
-                      >{{'BILLING' | translate}}</a>
-                  </li>
-                  <li routerLinkActive="active">
-                      <a
-                        routerLink="/my-insurance/{{policyId}}/documents"
-                        title="Policy Documents"
-                      >{{'DOCUMENTS' | translate}}</a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
+        <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
           
-      
         <section class="row policy-details-content">
           <div class="col-sm-12 col-md col1">
             

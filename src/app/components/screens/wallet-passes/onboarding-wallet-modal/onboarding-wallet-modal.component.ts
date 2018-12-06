@@ -19,6 +19,7 @@ export class OnboardingWalletModalComponent implements OnInit {
   ) { 
     this.walletDownloadModalOptions = new ModalOptions({
       additionalButtonClasses:              'ghost primary xsmall full',
+      additionalClasses:                    'modal-dialog center-on-page wallet-popup modal-medium',
       animatePosition:                      'bottom',
       buttonCopy:                           'DOWNLOAD',
       modalId:                              'helpModal',

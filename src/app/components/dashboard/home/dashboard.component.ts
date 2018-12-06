@@ -28,7 +28,7 @@ export class DashboardHomeComponent implements OnInit {
   ) {
     this.payNowModal =  new ModalOptions({
       additionalButtonClasses:        'ghost primary small pay-now-modal-button',
-      additionalClasses:              'pay-now-modal',
+      additionalClasses:              'pay-now-modal  modal-medium modal-dialog center-on-page',
       buttonCopy:                     'PAY_NOW',
       modalId:                        'payNow',
       modalTranslateCopy:             'MODAL_MAKE_A_PAYMENT',
@@ -78,12 +78,18 @@ export class DashboardHomeComponent implements OnInit {
     );
 
 
-    this.userInfoService.policyByEmail(this.storageService.getUserFromStorage()).subscribe((response)=>{
-      console.log(response);
-    });
+    this.userInfoService
+      .policyByEmail(this.storageService.getUserFromStorage())
+      .subscribe((response) => {
+        console.log(response);
+      }
+    );
 
-    this.userInfoService.getCurrentBillByPolicy('BBWQKQ').subscribe((response)=>{
-      console.log(response);
-    });
+    this.userInfoService
+      .getCurrentBillByPolicy('BBWQKQ')
+      .subscribe((response) => {
+        console.log(response);
+      }
+    );
   }
 }

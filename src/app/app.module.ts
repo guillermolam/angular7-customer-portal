@@ -119,6 +119,7 @@ import { LinkPolicyComponent } from './components/dashboard-add-policy/link-poli
 import { PolicyDetailsService } from './_services/policy-details.service';
 import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
 import { BillingSidebarComponent } from './components/billing/billing-sidebar/billing-sidebar.component';
+import { DashboardNavComponent } from './components/dashboard/dashboard-nav/dashboard-nav.component';
 
 if (environment.production) {
   enableProdMode();
@@ -215,6 +216,7 @@ export function tokenGetter() {
     LinkPolicyComponent,
     NewPaymentComponent,
     BillingSidebarComponent,
+    DashboardNavComponent,
 
   ],
   imports: [

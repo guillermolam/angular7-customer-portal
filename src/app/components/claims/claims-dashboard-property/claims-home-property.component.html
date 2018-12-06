@@ -1,43 +1,33 @@
-<div class="row claim" [ngClass]="{'margin-bottom mb32': type != 'details'}">
-  <div class="col">
-    <div class="row property" [ngClass]="{'margin-bottom mb16': type != 'details'}">
-      <div class="policy-background col">
-          <div class="house"></div>
+<div class="claim home row no-margins-hug" [ngClass]="{ 'hug-header': type == 'details', 'hug-content': type != 'details' }">
+  <div class="col-12 no-padding">
+    <div class="policy-background float-left">
+        <div class="house"></div>
+    </div>
+    <div>
+      <h2 class="claim-id">{{ claim.LOSS_DESC }} - <strong>#{{ claim.LOSS_NUMBER }}</strong></h2>
+      <div class="policy-id">
+          {{ claim.policytype }} - 
+          <ng-container *ngIf="type != 'details'">
+              {{ claim.policyid }}
+          </ng-container>
+          <ng-container *ngIf="type == 'details'">
+              <a [routerLink]="['/my-insurance', claim.policyid, 'details']"><strong>{{ claim.policyid }}</strong></a>
+          </ng-container>
       </div>
-      <div class="col"> 
-          <div class="row">
-            <div class="col"> 
-                <h2 class="claim-id">{{ claim.LOSS_DESC }} - <strong>#{{ claim.LOSS_NUMBER }}</strong></h2>
-            </div>
-          </div>
-          <div class="row policy-id">
-            <div class="col">
-                {{ claim.policytype }} - 
-                <ng-container *ngIf="type != 'details'">
-                    {{ claim.policyid }}
-                </ng-container>
-                <ng-container *ngIf="type == 'details'">
-                    <a [routerLink]="['/my-insurance', claim.policyid, 'details']"><strong>{{ claim.policyid }}</strong></a>
-                </ng-container>
-            </div>
-          </div>
-          <div class="row date-loss">
-            <div class="col">
-                {{ 'DATE_OF_LOSS' | translate }}: {{ claim.LOSS_DATE }}
-            </div>
-          </div>
-        </div>
+      <div class="date-loss">
+          {{ 'DATE_OF_LOSS' | translate }}: {{ claim.LOSS_DATE }}
       </div>
-      <ng-container *ngIf="type != 'details'">
-        <a [routerLink]="['/claims', claim.LOSS_NUMBER, 'details']" class="row d-block claim-link waves-light"
-        mdbWavesEffect >
-          <div class="col">
-            {{ 'CLAIM_DETAILS' | translate }}&nbsp;<svg-arror-right-svg></svg-arror-right-svg>
-          </div>
-        </a>
-      </ng-container>
-      <ng-container *ngIf="type == 'details'">
-          <hr class="bottom-border" />
-      </ng-container>
+    </div>
   </div>
+  <ng-container *ngIf="type != 'details'">
+    <div class="col-12  no-padding">
+      <a [routerLink]="['/claims', claim.LOSS_NUMBER, 'details']" class="d-block claim-link waves-light margin-bottom mb32 margin-top mt16 padding-right pr16"
+    mdbWavesEffect >
+        {{ 'CLAIM_DETAILS' | translate }}&nbsp;<svg-arror-right-svg></svg-arror-right-svg>
+      </a>  
+    </div>
+  </ng-container>
+  <ng-container *ngIf="type == 'details'">
+    <hr class="margin-top mb16 col-12  no-padding" />
+  </ng-container>
 </div>

@@ -43,7 +43,6 @@
     }
   }
 
-
   .policy-info {
     line-height: 24px;
   }
@@ -73,6 +72,11 @@
   }
 }
 
+.info {
+  color: #737373;
+  font-size: 12px;
+  line-height: 16px;
+}
 .policy-info {
   .date-amount {
     width: auto;
@@ -102,7 +106,43 @@
       margin-left: 26px;
     }
   }
+}
 
+.policy-link {
+  padding: 8px;
+  padding-right: 16px;
+}
+
+.update-mileage {
+  @media (min-width: 768px) {
+    width: 296px;
+  }
+
+  .legal {
+    color:  #4c4c4c;
+  }
+
+  .checkbox {
+    input {
+      float: left;
+      margin-left: 2px;
+    }
+
+    label {
+      margin-left: 12px;
+      margin-top: -5px;
+     
+      float: left;
+
+      @media (min-width: 768px) {
+        width: 260px;
+      }
+
+      @media (max-width: 402px) {
+        width: 260px;
+      }
+    }
+  }
 }
 
 @media (max-width: 562px) { //376
