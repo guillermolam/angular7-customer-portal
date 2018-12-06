@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CookieService }            from 'ngx-cookie-service';
 import { User }                     from '../../../../_models/user';
 import { AuthenticationService }    from '../../../../_services/_iam/authentication-service.service';
-import { CookieService } from 'ngx-cookie-service';
-import { WalletCardService } from '../../../../_services/_iam/wallet-card.service';
+import { WalletCardService }        from '../../../../_services/_iam/wallet-card.service';
 
 @Component({
   selector: 'app-onboarding-wallet-back',
@@ -12,7 +12,7 @@ import { WalletCardService } from '../../../../_services/_iam/wallet-card.servic
 export class OnboardingWalletBackComponent implements OnInit {
   @Input() userData:                   User;
 
-  constructor(  
+  constructor(
     private walletCardService:        WalletCardService,
     private cookieService:            CookieService
     ) { }
@@ -22,25 +22,25 @@ export class OnboardingWalletBackComponent implements OnInit {
   }
 
   downloadCard(user): void {
-    console.log(user)
     this.walletCardService
-      .generatePkPass('testmc@test.com')
+      .generatePkPass(user.email)
       .subscribe(
         (success) => {
-          console.log("Successfully Download of Card");
+          console.log('Successfully Download of Card');
           this.createCookie(365, 'download');
           const blob = new Blob([success]);
           saveAs(blob, 'policy.pkpass');
           //close the modal
           //
         },
-        err => {
-          console.log("ERR Download of Card");
+        (err) => {
+          console.log('ERR Download of Card');
         }
       )
-  }
-  ngOnInit() {
+    ;
   }
 
+  ngOnInit() {
+  }
 
 }

@@ -563,4 +563,20 @@ export class TestingDataService {
     ];
     
   }
+
+  testDataBilling(): any {
+    return {
+
+    }
+  }
+
+  testDataChecking(): any {
+    return [{
+      accountName: 'Test Name',
+      bankRoutingNumber: '123456789',
+      accountNumber: '11111111111111111',
+      mailingAddress: '1078 Boylston Street, Boston, MA, USA',
+      apartment: '123'
+    }];
+  }
 }
