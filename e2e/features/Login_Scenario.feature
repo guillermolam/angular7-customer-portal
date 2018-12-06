@@ -69,8 +69,8 @@ Feature: Verifying the functionality of Login to the application.
   @test
   Scenario: Verifying the functionality of Login with Remember me feature.
     Then Verify The Login Page.
-    When I enter "glam@mapfreusa.com" in email field.
-    When I enter "test@hello2018" in password field.
+    When I enter "onlyfore2e@test.com" in email field.
+    When I enter "Test@123" in password field.
     When I click on remember me toggle.
     When Click on Submit Button.
     Then Navigate to Dashboard.
