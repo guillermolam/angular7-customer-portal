@@ -95,7 +95,7 @@
                               <div class="col-md-6 col-sm-12">
                                   <mapfre-link
                                     [additionalClasses]="'ghost primary large btn'"
-                                    [url]="['/billing/new-payment/' +  policy?.policynumber.policynumber]">
+                                    [routerLink]="['/billing/new-payment/' +  policy?.policynumber.policynumber]">
                                     {{ 'PAY_BY_CHECK' | translate}}
                                   </mapfre-link>
                               </div>
@@ -219,7 +219,7 @@
                               <div class="col-md-6 col-sm-12">
                                   <mapfre-link
                                   [additionalClasses]="'ghost primary large btn'"
-                                  [url]="['/billing/new-payment/' +  policy?.policynumber.policynumber]">
+                                  [routerLink]="['/billing/new-payment/' +  policy?.policynumber.policynumber]">
                                   {{ 'PAY_BY_CHECK' | translate}}
                                 </mapfre-link>
                               </div>

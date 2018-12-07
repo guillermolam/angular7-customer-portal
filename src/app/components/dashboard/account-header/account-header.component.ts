@@ -17,14 +17,14 @@ export class AccountHeaderComponent implements OnInit {
     private authService:          AuthenticationService
   ) {
     this.headerAccountModalOptions = new ModalOptions({
-      additionalClasses:          'account modal-small',
+      additionalClasses:          'account modal-small modal-dialog', 
       additionalButtonClasses:    'header-flat account',
       animatePosition:            'top',
-      buttonCopy:                 'Account',
+      buttonCopy:                 'ACCOUNT',
       modalId:                    'accountModal',
       iconClasses:                'far fa-user-circle',
       iconFamily:                 'font-awesome',
-      modalTranslateCopy:         'Account',
+      modalTranslateCopy:         'ACCOUNT',
       typeOfModal:                'header',
       screenReader:               true,
       showIcons:                  true,

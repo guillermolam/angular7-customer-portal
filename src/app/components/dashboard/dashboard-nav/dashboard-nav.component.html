@@ -1,0 +1,25 @@
+<nav class="policy-details-nav margin-bottom mb40 row no-margins-hug hug-header">
+    <div class="w-100 tab-navigation">
+      <ul class="w-100 pl-0 d-table">
+        <li routerLinkActive="active" class="width w-33">
+          <a 
+            class="underline"
+            routerLink="/my-insurance/{{policyId}}/details" 
+            title="Policy Details"
+          >{{'DETAILS' | translate}}</a>
+        </li>
+        <li routerLinkActive="active"  class="width w-33">
+            <a
+              routerLink="/my-insurance/{{policyId}}/billing"
+              title="Policy Billing"
+            >{{'BILLING' | translate}}</a>
+        </li>
+        <li routerLinkActive="active"  class="width w-33">
+            <a
+              routerLink="/my-insurance/{{policyId}}/documents"
+              title="Policy Documents"
+            >{{'DOCUMENTS' | translate}}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

@@ -1,13 +1,13 @@
-<nav class="row hug-border-on-mobile claim-details-nav margin-bottom mb40">
-  <div class="col accordian-navigation">
-    <ul>
-      <li routerLinkActive="active">
+<nav class="row claim-details-nav margin-bottom mb40 no-margins-hug hug-content">
+  <div class="w-100 tab-navigation">
+    <ul class="w-100 pl-0 d-table">
+      <li routerLinkActive="active" class="w-50">
         <a 
           [routerLink]="['/claims/active']" 
           title="Active Claims"
         >{{'ACTIVE' | translate}}</a>
       </li>
-      <li routerLinkActive="active">
+      <li routerLinkActive="active" class="w-50">
           <a
             [routerLink]="['/claims/closed']"
             title="Closed Claims"

@@ -1,5 +1,10 @@
 @import '_app-components/all';
 
+h1.title-cta {
+  font-size: 24px;
+  line-height: normal;
+}
+
 .account {
   @media (min-width: 992px) {
     margin-left:        65px;
@@ -89,8 +94,78 @@
   }
 }
 
+.agent-info {
+  .col-description {
+    max-width: 57px;
+    padding-right: 0;
+  }
+
+  .col-info {
+    padding-left: 8px;
+  }
+
+  .agent-name {
+    color: #4C4C4C;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+  }
+
+  .policy-info {
+    color: #7E7E7E;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .agent-address {
+    color: #4C4C4C;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .agent-phone,
+  .agent-email {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .agent-email {
+
+  }
+}
+
 .auto .policy-background .svg-container svg {
   margin-left: 13px;
+}
+
+.car {
+  background-image: url('./assets/img/images/car_background.png');
+}
+
+.house {
+  background-image: url('./assets/img/images/house_bg.png');
+}
+
+.claim-link,
+.policy-link {
+  background: #006580;
+  color: $white;
+  display: block;
+  text-align: right;
+  font-weight: bold;
+  border: 2px solid $dark-blue;
+  
+  svg g {
+    @include transition(0.5s);
+  }
+
+  &:hover {
+    background: $white;
+
+    svg g {
+      fill: $dark-blue;
+    }
+  }
 }
 
 .col.one-column {
@@ -333,54 +408,72 @@
   }
 }
 
-.iphonex {
-  padding-bottom: 32px;
-}
-
-.loggedin-footer {
-  @media (max-width: 992px) {
-    padding-bottom: 50px;
-  }
-}
-
-.mapfre-content.loggedin ~ .footer-copyright {
-  background: #749806;
-
-  @media (min-width: 992px) {
-    padding: 56px;
-  }
-}
-
-.navbar .container.loggedin {
-  padding-left:         0;
-}
-
-.show-more-button {
-  cursor: pointer;
-}
-
-.show-more-detail {
-  overflow: auto;
-  display: block;
-  white-space: normal;
-}
-
-
-.car {
-  background-image: url('./assets/img/images/car_background.png');
-}
-
-.house {
-  background-image: url('./assets/img/images/house_bg.png');
-}
-
 .details {
   header {
-    display: table;
-    position: relative;
+   // margin-left: -24px;
+  }
+
+  h1.title {
+    color: $grey;
+    font-size: 24px;
+    line-height: normal;
+    padding-left: 8px;
+    margin-bottom: 0;
+    margin-top: -8px;
+
+    @media (max-width: 575px) {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    small {
+      font-size: 16px;
+      padding-left: 16px;
+
+      @media (max-width: 575px) {
+        font-size: 12px;
+        padding-left: 8px;
+      }
+    }
   }
 
   h2 {
+    &.title {
+      font-size: 18px;
+      line-height: 32px;
+      border-bottom: 2px solid $soft-grey;
+      color: $grey;
+      text-align: left;
+      padding-bottom: 10px;
+  
+      .small-subtitle { 
+        color: $dark-grey;
+        font-size: 11px;
+        line-height: 16px;
+      }
+  
+      .svg-container {
+        float: left;
+        padding-right: 16px;
+  
+        svg {
+          width: 24px;
+        }
+      }
+    }
+
+    &.claim-id {
+      color: $med-gray;
+      font-size: 18px;
+      line-height: 32px;
+      margin-bottom: 0;
+  
+      @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 24px;
+      } 
+    }
+    
     .svg-container {
       float: left;
       padding-right: 16px;
@@ -389,6 +482,13 @@
         width: 24px;
       }
     }
+  }
+
+  h3.title {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 
   .policy-details-content {
@@ -414,6 +514,7 @@
       padding-right: 16px;
     }
   }
+
   .col2 {
     @media (min-width: 1200px) {
       padding-left: 40px;
@@ -475,25 +576,6 @@
     margin: 0;
   }
 
-  h1.title {
-    font-size: 24px;
-    line-height: 40px;
-
-    @media (max-width: 575px) {
-      font-size: 14px;
-    }
-
-    small {
-      font-size: 16px;
-      padding-left: 16px;
-
-      @media (max-width: 575px) {
-        font-size: 12px;
-        padding-left: 8px;
-      }
-    }
-  }
-
   .mapfre-card-download-button {
     .col-right {
       @media (max-width: 394px) {
@@ -531,27 +613,6 @@
       color: #4c4c4c;
       border-bottom-color: #c4c4c4;
     }
-  }
-
-  h2.title {
-    font-size: 18px;
-    line-height: 32px;
-    border-bottom: 2px solid #EAE9E9;;
-    color: #adaaaa;
-    padding-bottom: 10px;
-
-    .small-subtitle { 
-      color: #7E7E7E;
-      font-size: 11px;
-      line-height: 16px;
-    }
-  }
-
-  h3.title {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
   }
 
   .address {
@@ -600,63 +661,53 @@
   }
 }
 
-.policy-details-nav {
-  margin-left: -10px;
-  margin-right: -40px;
+#gmap_canvas {
+  max-width: 600px;
+  width: 100%;
 }
 
-.section-description {
-  color: #737373;
-  font-size: 12px;
-  line-height: 16px;
+.image-max-width {
+  max-width: 100%;
+  padding: 32px;
 }
 
-.accordian-navigation {
-  ul {
-    display: table;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    margin: 0 -15px;
-
-    li {
-      display: table-cell;
-      border-bottom: 2px solid #C4C4C4;
-      width: 33%;
-      
-      a{
-        display: block;
-        text-align: center;
-        color: #4C4C4C;
-        padding-top: 8px;
-        padding-bottom: 8px;
-
-        &:hover {
-          background:     #F7F7F7;
-        }
-      }
-
-      &.active {
-        border-bottom: 4px solid #006580;
-
-        a {
-          color: #006580;
-          text-shadow: 1px 0 0 #006580;
-        }
-       
-      }
-    }
+.input-control.disabled {
+  .btn.mapfre.ghost.primary:disabled {
+    border-color: #c6db80;
+    color: #C6DB81 !important;
+    background: transparent !important;
   }
 }
 
-.hide {
-  @include transition(1s);
-  display: none;
+.iphonex {
+  padding-bottom: 32px;
 }
 
-.show {
-  @include transition(1s);
-  display: block;
+.legal {
+  color: #ADAAAA;
+  font-size: 12px;
+  font-family: 'Inter UI', sans-serif;
+  font-weight: normal;
+  text-align: left;
+  line-height: 16px;
+}
+
+.loggedin-footer {
+  @media (max-width: 992px) {
+    padding-bottom: 50px;
+  }
+}
+
+.mapfre-content.loggedin ~ .footer-copyright {
+  background: #749806;
+
+  @media (min-width: 992px) {
+    padding: 56px;
+  }
+}
+
+.navbar .container.loggedin {
+  padding-left:         0;
 }
 
 .no-documents .col {
@@ -672,130 +723,36 @@
   }
 }
 
-.legal {
-  color: #ADAAAA;
+.no-margins-hug {
+  &.hug-content {
+    @media (min-width: 1200px) {
+      margin-left: -24px;
+      margin-right: -40px;
+    }
+  }
+
+  &.hug-header {
+    @media (min-width: 1200px) {
+      margin-left: -24px;
+      margin-right: -24px;
+    }
+  }
+}
+
+.show-more-button {
+  cursor: pointer;
+}
+
+.show-more-detail {
+  overflow: auto;
+  display: block;
+  white-space: normal;
+}
+
+.section-description {
+  color: #737373;
   font-size: 12px;
-  font-family: 'Inter UI', sans-serif;
-  font-weight: normal;
-  text-align: left;
   line-height: 16px;
-}
-
-#gmap_canvas {
-  max-width: 600px;
-  width: 100%;
-}
-
-.title-case {
-  text-transform: capitalize;
-}
-
-.input-control.disabled {
-  .btn.mapfre.ghost.primary:disabled {
-    border-color: #c6db80;
-    color: #C6DB81 !important;
-    background: transparent !important;
-  }
-
-  .form-control.disabled {
-
-  }
-}
-
-.claim-link,
-.policy-link {
-  border: 2px solid $dark-blue;
-  
-  svg g {
-    @include transition(0.5s);
-  }
-
-  &:hover {
-    background: $white;
-
-    svg g {
-      fill: $dark-blue;
-    }
-  }
-}
-
-// ---- this will be placed in the design library
-// ---- and be used in the mapfre card
-.single-card-column {
-  max-width: 446px;
-  margin: auto;
-
-  .btn.large {
-    max-width: 240px;
-    margin: auto;
-
-    @media (max-width: 529px) {
-      max-width: 100%;
-    }
-  }
-
-  .first-input {
-    @media (max-width: 529px) {
-      width: 100%;
-      float: none;
-    }
-  }
-  
-  .custom-radio {
-    @media (max-width: 529px) {
-
-    }
-  }
-
-  .custom-control-inline {
-    width: 80px;
-  }
-
-  .custom-control {
-    padding-left: 10px;
-  }
-
-  // ---- radio buttons these will need to be placed in the design- library
-
-  input[type="radio"] {
-    &:before {
-      top: -1px;
-      left: -12px;
-    }
-
-    &:after {
-      left: -10px;
-      top: 1px;
-    }
-  }
-
-  .custom-control-label {
-    padding-left: 8px;
-  }
-
-}
-
-  // ---- alert updates these will need to be placed in the design- library
-.mapfre.alert {
-  .a-cont {
-    display: table;
-  }
-
-  .col {
-    padding: 0;
-  }
-
-  .icon {
-    padding-right: 0;
-    padding-left: 8px;
-    width: 40px;
-  }
-
-  .m {
-    display: table-cell;
-    padding-left: 8px;
-    vertical-align: middle;
-  }
 }
 
 .social {
@@ -816,108 +773,38 @@
   }
 }
 
-.info {
-  color: #737373;
-  font-size: 12px;
-  line-height: 16px;
-}
+.tab-navigation {
+  ul {
+    li {
+      display: table-cell;
+      border-bottom: 2px solid #C4C4C4;
+      
+      a {
+        display: block;
+        text-align: center;
+        color: #4C4C4C;
+        padding-top: 8px;
+        padding-bottom: 8px;
 
-.agent-info {
-  .col-description {
-    max-width: 57px;
-    padding-right: 0;
-  }
-
-  .col-info {
-    padding-left: 8px;
-  }
-
-  .agent-name {
-    color: #4C4C4C;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 24px;
-  }
-
-  .policy-info {
-    color: #7E7E7E;
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-  .agent-address {
-    color: #4C4C4C;
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-  .agent-phone,
-  .agent-email {
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-  .agent-email {
-
-  }
-}
-
-.update-mileage {
- 
-  padding: 0;
-
-  @media (min-width: 768px) {
-    width: 296px;
-  }
-
-  .legal {
-    color:  #4c4c4c;
-  }
-
-  .checkbox {
-    input {
-      float: left;
-      margin-left: 2px;
-    }
-
-    label {
-      margin-left: 12px;
-      margin-top: -5px;
-     
-      float: left;
-
-      @media (min-width: 768px) {
-        width: 270px;
+        &:hover {
+          background:     #F7F7F7;
+        }
       }
 
-      @media (max-width: 402px) {
-        width: 270px;
+      &.active {
+        border-bottom: 4px solid #006580;
+
+        a {
+          color: #006580;
+          text-shadow: 1px 0 0 #006580;
+        }
       }
     }
   }
 }
-.policy-link {
-  padding: 8px;
-  padding-right: 16px;
-}
 
-.policy-link,
-.claim-link {
-  background: #006580;
-  color: #fff;
-  display: block;
-  text-align: right;
-  font-weight: bold;
-}
-
-.image-max-width {
-  max-width: 100%;
-  padding: 32px;
-}
-
-h1.title-cta {
-  font-size: 24px;
-  line-height: normal;
+.title-case {
+  text-transform: capitalize;
 }
 
 /* general should be moved to the general area */
@@ -957,54 +844,3 @@ h1.title-cta {
   }
 }
 
-
-.details {
-  h1.title {
-    color: $grey;
-    font-size: 24px;
-    line-height: normal;
-    padding-left: 8px;
-    margin-bottom: 0;
-    margin-top: -8px;
-
-    @media (max-width: 575px) {
-      font-size: 18px;
-      margin-top: 8px;
-    } 
-  }
-
-  h2.claim-id {
-    color: $med-gray;
-    font-size: 18px;
-    line-height: 32px;
-    margin-bottom: 0;
-
-    @media (max-width: 575px) {
-      font-size: 14px;
-      line-height: 24px;
-    } 
-  }
-
-  h2.title {
-    font-size: 18px;
-    line-height: 32px;
-    border-bottom: 2px solid $soft-grey;;
-    color: $grey;
-    text-align: left;
-
-    .small-subtitle { 
-      color: $dark-grey;
-      font-size: 11px;
-      line-height: 16px;
-    }
-
-    .svg-container {
-      float: left;
-      padding-right: 16px;
-
-      svg {
-        width: 24px;
-      }
-    }
-  }
-}
