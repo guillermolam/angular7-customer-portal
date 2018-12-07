@@ -64,7 +64,11 @@ const appRoutes: Routes = [
   { path: 'walletcard', component: WalletCardComponent},
 
   //when logged in
-  { path: 'my-insurance', component: AccountMainComponent,
+{ path: '', component: AccountMainComponent, canActivate: [AuthGuard],
+  children: [
+  { path: '', redirectTo: 'my-insurance', pathMatch: 'full'},
+  { path: 'login', redirectTo: 'my-insurance' },
+  { path: 'my-insurance',
     children: [
       { path: '',  component: DashboardHomeComponent},
       { path: 'link-policy',  component: LinkPolicyComponent},
@@ -77,7 +81,23 @@ const appRoutes: Routes = [
         ]
       },
     ]
-  },
+  }
+]
+},
+  // { path: 'my-insurance',
+  //   children: [
+  //     { path: '',  component: DashboardHomeComponent},
+  //     { path: 'link-policy',  component: LinkPolicyComponent},
+  //     { path: ':policyid',
+  //       children: [
+  //         {path: '', redirectTo: 'details', pathMatch: 'full' },
+  //         { path: 'details', component: PolicyDetailsComponent },
+  //         { path: 'billing', component: BillingDetailsComponent },
+  //         { path: 'documents', component: DocumentDetailsComponent },
+  //       ]
+  //     },
+  //   ]
+  // },
   { path: 'profile', component: ProfileSettingsComponent, children: [
     { path: '', component: ProfileMainComponent },
     { path: 'edit-phone', component: ProfilePhoneComponent},

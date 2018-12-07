@@ -7,6 +7,7 @@ import { UserService }            from '../../../_services/user.service';
 import { AuthenticationService }  from '../../../_services/_iam/authentication-service.service';
 import { TestingDataService }     from './../../../_helpers/testing-data.service';
 import { StorageServiceObservablesService } from '../../../_services/storage-service-observables/storage-service-observables.service';
+import { PolicyDetailsService } from '../../../_services/policy-details.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -17,6 +18,8 @@ export class DashboardHomeComponent implements OnInit {
   hideOrShow:                     boolean = false;
   payNowModal:                    ModalOptions;
   user:                           User;
+  policyResponse: any;
+  billingResponse: any;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -24,7 +27,8 @@ export class DashboardHomeComponent implements OnInit {
     private userService:          UserService,
     private testingData:          TestingDataService,
     private userInfoService:      UserInfoService,
-    private storageService:       StorageServiceObservablesService
+    private storageService:       StorageServiceObservablesService,
+    private policyDetailsService:        PolicyDetailsService
   ) {
     this.payNowModal =  new ModalOptions({
       additionalButtonClasses:        'ghost primary small pay-now-modal-button',
@@ -78,12 +82,15 @@ export class DashboardHomeComponent implements OnInit {
     );
 
 
-    this.userInfoService.policyByEmail(this.storageService.getUserFromStorage()).subscribe((response)=>{
-      console.log(response);
+    this.userInfoService.policyByEmail('');
+
+    this.policyDetailsService.$policyDetails.subscribe((response) =>{
+      this.policyResponse = JSON.stringify(response);
     });
 
     this.userInfoService.getCurrentBillByPolicy('BBWQKQ').subscribe((response)=>{
       console.log(response);
+      this.billingResponse = response;
     });
   }
 }

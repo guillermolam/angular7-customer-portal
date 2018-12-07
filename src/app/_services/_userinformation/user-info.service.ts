@@ -5,6 +5,7 @@ import { Observable }         from 'rxjs';
 import { catchError, map }    from 'rxjs/operators';
 import { environment }        from '../../../environments/environment';//change it to environment later
 import { User }               from '../../_models/user';
+import { PolicyDetailsService } from '../policy-details.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class UserInfoService {
   }
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private policyDetailsService: PolicyDetailsService
   ) { }
 
   getUserDocuments(policyNumber, user, accessToken): Observable<object> {
@@ -30,15 +32,16 @@ export class UserInfoService {
     return this.http.get(url);
   }
 
-  policyByEmail(email): Observable<object> {
-    const url = `${environment.backend_server_url}/personal-policies/${email}`;
-    return this.http.get(url);
+  policyByEmail(email) {
+    const url = `${environment.backend_server_url}/personal-policies/testmfre@gmail.com`;
+    this.http.get(url).subscribe((response)=>{
+      this.policyDetailsService.updatePolicyDetails(response);
+    });
   }
 
-  getCurrentBillByPolicy(policyNumber): Observable<any>{
+  getCurrentBillByPolicy(policyNumber): Observable<object> {
     const url = `${this.billingURL}/billing/${policyNumber}/currentbill`; ///change
     return this.http.get(url);
   }
-
 
 }
