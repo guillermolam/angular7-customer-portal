@@ -1,5 +1,5 @@
-import { ProfileConfirmModalService } from '../../../_services/profile-settings/profile-confirm-modal.service';
-import { FakeAccountSettings } from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
+import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
+import { FakeAccountSettings } from '../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { ModalOptions } from 'mapfre-design-library';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';

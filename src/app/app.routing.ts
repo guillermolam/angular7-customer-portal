@@ -6,23 +6,23 @@ import { SignUpGuard }                from './_guards/signup.guard';
 import { VerifyUserGuard }            from './_guards/verify-user.guard';
 
 // --- components ---- //
-import { ProfileEditEmailComponent }  from './components/profile/profile-edit-email/profile-edit-email.component';
-import { ProfileCheckingAccountComponent } from './components/profile/profile-checking-account/profile-checking-account.component';
-import { ProfilePhoneComponent }      from './components/profile/profile-phone/profile-phone.component';
-import { InformationHomeComponent }   from './components/information/information-home/information-home.component';
-import { InformationMainComponent }   from './components/information/information-main.component';
-import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
-import { ProfileMainComponent }       from './components/profile/profile-main/profile-main.component';
-import { InformationProductsComponent } from './components/information/information-products/information-products.component';
-import { InformationAboutComponent }  from './components/information/information-about/information-about.component';
-import { InformationDiscountsComponent } from './components/information/information-discounts/information-discounts.component';
-import { InformationRenewalComponent } from './components/information/information-renewal/information-renewal.component';
-import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
-import { InformationLegalComponent }  from './components/information/information-legal/information-legal.component';
+import { ProfileEditEmailComponent }  from './components/dashboard/loggedin-content/profile/profile-edit-email/profile-edit-email.component';
+import { ProfileCheckingAccountComponent } from './components/dashboard/loggedin-content/profile/profile-checking-account/profile-checking-account.component';
+import { ProfilePhoneComponent }      from './components/dashboard/loggedin-content/profile/profile-phone/profile-phone.component';
+import { InformationHomeComponent }   from './components/dashboard/loggedin-content/information/information-home/information-home.component';
+import { InformationMainComponent }   from './components/dashboard/loggedin-content/information/information-main.component';
+import { ProfileEditPasswordComponent } from './components/dashboard/loggedin-content/profile/profile-edit-password/profile-edit-password.component';
+import { ProfileMainComponent }       from './components/dashboard/loggedin-content/profile/profile-main/profile-main.component';
+import { InformationProductsComponent } from './components/dashboard/loggedin-content/information/information-products/information-products.component';
+import { InformationAboutComponent }  from './components/dashboard/loggedin-content/information/information-about/information-about.component';
+import { InformationDiscountsComponent } from './components/dashboard/loggedin-content/information/information-discounts/information-discounts.component';
+import { InformationRenewalComponent } from './components/dashboard/loggedin-content/information/information-renewal/information-renewal.component';
+import { InformationCancelComponent } from './components/dashboard/loggedin-content/information/information-cancel/information-cancel.component';
+import { InformationLegalComponent }  from './components/dashboard/loggedin-content/information/information-legal/information-legal.component';
 import { ClaimsDetailComponent }      from './components/dashboard/loggedin-content/claims/claims-detail/claims-detail.component';
 import { ClaimsHomeComponent }        from './components/dashboard/loggedin-content/claims/claims-dashboard-active/claims-home.component';
 import { ClaimsHomeClosedComponent }  from './components/dashboard/loggedin-content/claims/claims-dashboard-closed/claims-home-closed.component';
-import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
+import { ProfileEmailConfirmComponent } from './components/dashboard/loggedin-content/profile/profile-email-confirm/profile-email-confirm.component';
 import { PolicyDetailsComponent }     from './components/dashboard/loggedin-content/my-insurance/details/details.component';
 import { BillingDetailsComponent }    from './components/dashboard/loggedin-content/my-insurance/billing/billing.component';
 import { DocumentDetailsComponent }   from './components/dashboard/loggedin-content/my-insurance/documents/documents.component';
@@ -50,6 +50,7 @@ import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
+import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
 
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
@@ -66,38 +67,22 @@ const appRoutes: Routes = [
   //when logged in
 { path: '', component: DashboardMainComponent, canActivate: [AuthGuard],
   children: [
-  { path: '', redirectTo: 'my-insurance', pathMatch: 'full'},
-  { path: 'login', redirectTo: 'my-insurance' },
-  { path: 'my-insurance', component: MyInsuranceComponent,
+  { path: '', component: LoggedinContentComponent, children: [
+    { path: 'login', redirectTo: 'my-insurance' },
+    { path: 'my-insurance', component: MyInsuranceComponent,
     children: [
       // { path: '',  component: MyInsuranceComponent},
       { path: 'link-policy',  component: LinkPolicyComponent},
       { path: ':policyid',
         children: [
-          {path: '', redirectTo: 'details', pathMatch: 'full' },
+          { path: '', redirectTo: 'details', pathMatch: 'full' },
           { path: 'details', component: PolicyDetailsComponent },
           { path: 'billing', component: BillingDetailsComponent },
           { path: 'documents', component: DocumentDetailsComponent },
         ]
       },
     ]
-  }
-]
-},
-  // { path: 'my-insurance',
-  //   children: [
-  //     { path: '',  component: DashboardHomeComponent},
-  //     { path: 'link-policy',  component: LinkPolicyComponent},
-  //     { path: ':policyid',
-  //       children: [
-  //         {path: '', redirectTo: 'details', pathMatch: 'full' },
-  //         { path: 'details', component: PolicyDetailsComponent },
-  //         { path: 'billing', component: BillingDetailsComponent },
-  //         { path: 'documents', component: DocumentDetailsComponent },
-  //       ]
-  //     },
-  //   ]
-  // },
+  },
   { path: 'profile', component: ProfileSettingsComponent, children: [
     { path: '', component: ProfileMainComponent },
     { path: 'edit-phone', component: ProfilePhoneComponent},
@@ -120,12 +105,10 @@ const appRoutes: Routes = [
       { path: 'details', component: ClaimsDetailComponent },
     ] }
   ] },
-
   { path: 'billing', component: BillingComponent , children: [
     { path: '', component: BillingMainComponent },
     { path: 'new-payment/:policyid', component: BillingNewpaymentComponent}
   ] },
-
   { path: 'information', component: InformationComponent,  children: [
     { path: '', component: InformationHomeComponent },
     { path: 'products', component: InformationProductsComponent },
@@ -134,9 +117,24 @@ const appRoutes: Routes = [
     { path: 'renewal', component: InformationRenewalComponent },
     { path: 'cancel', component: InformationCancelComponent },
     { path: 'legal', component: InformationLegalComponent },
-
-  ] },
-  { path: 'contact', component: ContactComponent },
+  ]},
+  { path: 'contact', component: ContactComponent }
+]}]
+},
+  // { path: 'my-insurance',
+  //   children: [
+  //     { path: '',  component: DashboardHomeComponent},
+  //     { path: 'link-policy',  component: LinkPolicyComponent},
+  //     { path: ':policyid',
+  //       children: [
+  //         {path: '', redirectTo: 'details', pathMatch: 'full' },
+  //         { path: 'details', component: PolicyDetailsComponent },
+  //         { path: 'billing', component: BillingDetailsComponent },
+  //         { path: 'documents', component: DocumentDetailsComponent },
+  //       ]
+  //     },
+  //   ]
+  // },
   { path: 'policy/add', component: DashboardComponent },
   { path: 'offline', component: DashboardComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full'},

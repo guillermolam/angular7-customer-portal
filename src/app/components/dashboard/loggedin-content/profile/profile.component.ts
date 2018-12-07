@@ -1,6 +1,6 @@
 import { AlertService } from 'mapfre-design-library';
 import { Location } from '@angular/common';
-import { ProfileSettingsRoutingService } from '../../_services/profile-settings/profile-settings-routing.service';
+import { ProfileSettingsRoutingService } from '../../../../_services/profile-settings/profile-settings-routing.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
 

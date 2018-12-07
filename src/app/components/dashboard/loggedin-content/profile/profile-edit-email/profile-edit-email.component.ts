@@ -1,8 +1,8 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { EditPasswordService } from '../../../_services/forms/profile-settings/edit-password.service';
+import { EditPasswordService } from '../../../../../_services/forms/profile-settings/edit-password.service';
 import { User } from 'mapfre-design-library';
-import { EditEmailService } from '../../../_services/forms/profile-settings/edit-email.service';
+import { EditEmailService } from '../../../../../_services/forms/profile-settings/edit-email.service';
 
 @Component({
   selector: 'app-profile-edit-email',

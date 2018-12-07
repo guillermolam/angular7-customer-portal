@@ -1,9 +1,9 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'mapfre-design-library';
-import { UserService } from '../../../_services/user.service';
-import { EditPasswordService } from '../../../_services/forms/profile-settings/edit-password.service';
-import { CreateNewPasswordFormService } from '../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
+import { UserService } from '../../../../../_services/user.service';
+import { EditPasswordService } from '../../../../../_services/forms/profile-settings/edit-password.service';
+import { CreateNewPasswordFormService } from '../../../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
 
 @Component({
   selector: 'app-profile-edit-password',

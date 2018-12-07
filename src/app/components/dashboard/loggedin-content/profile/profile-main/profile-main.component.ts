@@ -1,6 +1,6 @@
-import { FakeAccountSettings } from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
+import { FakeAccountSettings } from '../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { Component, OnInit } from '@angular/core';
-import { ProfileConfirmModalService } from '../../../_services/profile-settings/profile-confirm-modal.service';
+import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
 
 @Component({
   selector: 'app-profile-main',

@@ -1,6 +1,6 @@
 import { Component, OnInit }      from '@angular/core';
 import { User }                   from 'mapfre-design-library';
-import { CheckingAccountService } from '../../../_services/forms/profile-settings/checking-account.service';
+import { CheckingAccountService } from '../../../../../_services/forms/profile-settings/checking-account.service';
 
 
 @Component({

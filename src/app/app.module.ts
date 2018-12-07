@@ -29,7 +29,6 @@ import { UserService }                          from './_services/user.service';
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
 // ----- Account ----- //
 import { DashboardMainComponent }                 from './components/dashboard/dashboard-main.component';
-import { AccountHeaderComponent }               from './components/dashboard/account-header/account-header.component';
 import { SidenavComponent }                     from './components/dashboard/sidenav/sidenav.component';
 // ----- Routes ----- //
 import { CreateNewPasswordComponent }           from './routes/create-new-password/create-new-password.component';
@@ -73,35 +72,35 @@ import { OnboardingWalletBackListComponent }    from './components/screens/walle
 import { OnboardingWalletModalComponent }       from './components/screens/wallet-passes/onboarding-wallet-modal/onboarding-wallet-modal.component';
 import { MiscColumnComponent }                  from './components/dashboard/misc-column/misc-column.component';
 import { PolicyDetailsComponent }               from './components/dashboard/loggedin-content/my-insurance/details/details.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { ProfileMainComponent } from './components/profile/profile-main/profile-main.component';
-import { ProfilePhoneComponent } from './components/profile/profile-phone/profile-phone.component';
+import { ProfileComponent } from './components/dashboard/loggedin-content/profile/profile.component';
+import { ProfileMainComponent } from './components/dashboard/loggedin-content/profile/profile-main/profile-main.component';
+import { ProfilePhoneComponent } from './components/dashboard/loggedin-content/profile/profile-phone/profile-phone.component';
 import { ApartmentPipePipe } from './_helpers/_pipes/apartment-pipe.pipe';
 import { BillingDetailsComponent } from './components/dashboard/loggedin-content/my-insurance/billing/billing.component';
 import { DocumentDetailsComponent } from './components/dashboard/loggedin-content/my-insurance/documents/documents.component';
 
 import { ChangePhoneComponent } from './components/forms/dynamic-forms/profile-settings-forms/change-phone/change-phone.component';
-import { ProfileCheckingAccountComponent } from './components/profile/profile-checking-account/profile-checking-account.component';
+import { ProfileCheckingAccountComponent } from './components/dashboard/loggedin-content/profile/profile-checking-account/profile-checking-account.component';
 import { CustomDateFormatPipe } from './_helpers/_pipes/custom-date-format.pipe';
 import { ChangeAddressComponent } from './components/forms/dynamic-forms/profile-settings-forms/change-address/change-address.component';
-import { ProfileEditPasswordComponent } from './components/profile/profile-edit-password/profile-edit-password.component';
+import { ProfileEditPasswordComponent } from './components/dashboard/loggedin-content/profile/profile-edit-password/profile-edit-password.component';
 import { ChangePasswordFormComponent } from './components/forms/dynamic-forms/change-password-form/change-password-form.component';
-import { ProfileEditEmailComponent } from './components/profile/profile-edit-email/profile-edit-email.component';
+import { ProfileEditEmailComponent } from './components/dashboard/loggedin-content/profile/profile-edit-email/profile-edit-email.component';
 import { CheckingAccountFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/checking-account-form/checking-account-form.component';
-import { InformationMainComponent } from './components/information/information-main.component';
-import { InformationHomeComponent } from './components/information/information-home/information-home.component';
-import { InformationProductsComponent } from './components/information/information-products/information-products.component';
-import { InformationAboutComponent } from './components/information/information-about/information-about.component';
-import { InformationDiscountsComponent } from './components/information/information-discounts/information-discounts.component';
-import { InformationRenewalComponent } from './components/information/information-renewal/information-renewal.component';
-import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
-import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
+import { InformationMainComponent } from './components/dashboard/loggedin-content/information/information-main.component';
+import { InformationHomeComponent } from './components/dashboard/loggedin-content/information/information-home/information-home.component';
+import { InformationProductsComponent } from './components/dashboard/loggedin-content/information/information-products/information-products.component';
+import { InformationAboutComponent } from './components/dashboard/loggedin-content/information/information-about/information-about.component';
+import { InformationDiscountsComponent } from './components/dashboard/loggedin-content/information/information-discounts/information-discounts.component';
+import { InformationRenewalComponent } from './components/dashboard/loggedin-content/information/information-renewal/information-renewal.component';
+import { InformationCancelComponent } from './components/dashboard/loggedin-content/information/information-cancel/information-cancel.component';
+import { InformationLegalComponent } from './components/dashboard/loggedin-content/information/information-legal/information-legal.component';
 import { ContactScreenComponent } from './components/screens/contact-screen/contact-screen.component';
 import { EditEmailFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/edit-email-form/edit-email-form.component';
-import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
+import { ProfileEmailConfirmComponent } from './components/dashboard/loggedin-content/profile/profile-email-confirm/profile-email-confirm.component';
 import { ProfileSettingsRoutingService } from './_services/profile-settings/profile-settings-routing.service';
 import { ProfileConfirmModalService } from './_services/profile-settings/profile-confirm-modal.service';
-import { ProfileConfirmModalComponent } from './components/profile/profile-confirm-modal/profile-confirm-modal.component';
+import { ProfileConfirmModalComponent } from './components/dashboard/loggedin-content/profile/profile-confirm-modal/profile-confirm-modal.component';
 import { ClaimsHomeComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-active/claims-home.component';
 import { ClaimsWrapperComponent } from './components/dashboard/loggedin-content/claims/claims.component';
 import { ClaimsDetailComponent } from './components/dashboard/loggedin-content/claims/claims-detail/claims-detail.component';
@@ -139,7 +138,6 @@ export function tokenGetter() {
     ContactScreenComponent,
     AppComponent,
     DashboardMainComponent,
-    AccountHeaderComponent,
     DashboardComponent,
     ForgotPasswordComponent,
     LoginComponent,
