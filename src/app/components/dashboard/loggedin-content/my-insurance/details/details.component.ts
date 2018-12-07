@@ -4,12 +4,12 @@ import { FormGroup, FormControl }   from '@angular/forms';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { AlertService }             from 'mapfre-design-library';
 
-import { AuthenticationService }    from '../../../_services/_iam/authentication-service.service';
-import { User }                     from '../../../_models/user';
-import { UserService }              from '../../../_services/user.service';
-import { TestingDataService }       from '../../../_helpers/testing-data.service';
-import { WalletCardService }        from '../../../_services/_iam/wallet-card.service';
-import { UserInfoService }          from '../../../_services/_userinformation/user-info.service';
+import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
+import { User }                     from '../../../../../_models/user';
+import { UserService }              from '../../../../../_services/user.service';
+import { TestingDataService }       from '../../../../../_helpers/testing-data.service';
+import { WalletCardService }        from '../../../../../_services/_iam/wallet-card.service';
+import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 
 @Component({
   selector: 'app-policy-details-screen',

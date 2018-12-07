@@ -1,7 +1,7 @@
 import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl }  from '@angular/platform-browser';
-import { TestingDataService }     from '../../../_helpers/testing-data.service';
+import { TestingDataService }     from '../../../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-claims-detail',

@@ -19,16 +19,16 @@ import { InformationDiscountsComponent } from './components/information/informat
 import { InformationRenewalComponent } from './components/information/information-renewal/information-renewal.component';
 import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
 import { InformationLegalComponent }  from './components/information/information-legal/information-legal.component';
-import { ClaimsDetailComponent }      from './components/claims/claims-detail/claims-detail.component';
-import { ClaimsHomeComponent }        from './components/claims/claims-dashboard-active/claims-home.component';
-import { ClaimsHomeClosedComponent }  from './components/claims/claims-dashboard-closed/claims-home-closed.component';
+import { ClaimsDetailComponent }      from './components/dashboard/loggedin-content/claims/claims-detail/claims-detail.component';
+import { ClaimsHomeComponent }        from './components/dashboard/loggedin-content/claims/claims-dashboard-active/claims-home.component';
+import { ClaimsHomeClosedComponent }  from './components/dashboard/loggedin-content/claims/claims-dashboard-closed/claims-home-closed.component';
 import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
-import { PolicyDetailsComponent }     from './components/dashboard/details/details.component';
-import { BillingDetailsComponent }    from './components/dashboard/billing/billing.component';
-import { DocumentDetailsComponent }   from './components/dashboard/documents/documents.component';
+import { PolicyDetailsComponent }     from './components/dashboard/loggedin-content/my-insurance/details/details.component';
+import { BillingDetailsComponent }    from './components/dashboard/loggedin-content/my-insurance/billing/billing.component';
+import { DocumentDetailsComponent }   from './components/dashboard/loggedin-content/my-insurance/documents/documents.component';
 import { DashboardMainComponent }       from './components/dashboard/dashboard-main.component';
-import { BillingMainComponent }       from './components/billing/billing-main.component';
-import { BillingNewpaymentComponent } from './components/billing/billing-newpayment/billing-newpayment.component';
+import { BillingMainComponent }       from './components/dashboard/loggedin-content/billing/billing-main.component';
+import { BillingNewpaymentComponent } from './components/dashboard/loggedin-content/billing/billing-newpayment/billing-newpayment.component';
 
 
 // ----- Routes ----- //
@@ -49,7 +49,7 @@ import { ContactComponent }           from './routes/contact/contact.component';
 import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
-import { MyInsuranceComponent } from './components/dashboard/loggedin-account-header/my-insurance/my-insurance.component';
+import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
 
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },

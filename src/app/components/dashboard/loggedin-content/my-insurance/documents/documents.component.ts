@@ -1,4 +1,4 @@
-import { TestingDataService } from '../../../_helpers/testing-data.service';
+import { TestingDataService } from '../../../../../_helpers/testing-data.service';
 
 import { MdbTablePaginationComponent, MdbTableService } from 'angular-bootstrap-md';
 import { Component, OnInit,
@@ -7,11 +7,11 @@ import { Component, OnInit,
 import { ActivatedRoute, Params,
   Router }                          from '@angular/router';
 
-import { AuthenticationService }    from '../../../_services/_iam/authentication-service.service';
-import { User }                     from '../../../_models/user';
-import { UserService }              from '../../../_services/user.service';
-import { UserInfoService }          from '../../../_services/_userinformation/user-info.service';
-import { WalletCardService }        from '../../../_services/_iam/wallet-card.service';
+import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
+import { User }                     from '../../../../../_models/user';
+import { UserService }              from '../../../../../_services/user.service';
+import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
+import { WalletCardService }        from '../../../../../_services/_iam/wallet-card.service';
 
 @Component({
   selector: 'app-documents',

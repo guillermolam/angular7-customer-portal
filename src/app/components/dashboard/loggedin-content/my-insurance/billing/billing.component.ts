@@ -1,12 +1,12 @@
-import { TestingDataService } from '../../../_helpers/testing-data.service';
+import { TestingDataService } from '../../../../../_helpers/testing-data.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Component, OnInit }        from '@angular/core';
 import { FormGroup, FormControl }   from '@angular/forms';
 import { ActivatedRoute, Params }   from '@angular/router';
 
-import { AuthenticationService }    from '../../../_services/_iam/authentication-service.service';
-import { User }                     from '../../../_models/user';
-import { UserService }              from '../../../_services/user.service';
+import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
+import { User }                     from '../../../../../_models/user';
+import { UserService }              from '../../../../../_services/user.service';
 
 
 @Component({
