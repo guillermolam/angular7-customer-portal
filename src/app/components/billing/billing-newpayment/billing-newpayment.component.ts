@@ -2,8 +2,8 @@ import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { AlertService }             from 'mapfre-design-library';
 import { User }                     from '../../../_models/user';
-import { UserService }              from './../../../_services/user.service';
-import { TestingDataService }       from './../../../_helpers/testing-data.service';
+import { UserService }              from '../../../_services/user.service';
+import { TestingDataService }       from '../../../_helpers/testing-data.service';
 import { UserInfoService }          from '../../../_services/_userinformation/user-info.service';
 import { NewPaymentService }        from '../../../_services/forms/new-payment/new-payment.service';
 

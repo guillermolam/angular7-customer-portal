@@ -5,11 +5,11 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { AlertService, RegExHelper,
   FormBase, FormBaseControlService }  from 'mapfre-design-library';
 // --- Components | Services | Models --- //
-import { BillingService }             from './../../../../_services/_iam/billing-service.service';
+import { BillingService }             from '../../../../_services/_iam/billing-service.service';
 import { UserService }                from '../../../../_services/user.service';
 import { User }                       from '../../../../_models/user';
 
-import { TestingDataService }         from './../../../../_helpers/testing-data.service';
+import { TestingDataService }         from '../../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-new-payment-form',

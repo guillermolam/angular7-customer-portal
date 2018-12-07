@@ -1,6 +1,6 @@
 import { Injectable }               from '@angular/core';
 import { FormBase, TextBox }        from 'mapfre-design-library';
-import { ChangeAddressService }     from './../change-address/change-address.service';
+import { ChangeAddressService }     from '../change-address/change-address.service';
 import { FakeAccountSettings }      from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 
 @Injectable()

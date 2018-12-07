@@ -5,7 +5,7 @@ import { Observable }         from 'rxjs/Observable';
 import { catchError, map }    from 'rxjs/operators';
 import { environment }        from '../../../environments/environment';
 
-import { TestingService }     from './../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service';
+import { TestingService }     from '../../_helpers/_testing-helpers/_services/_testing-helpers/testing.service';
 
 @Injectable({
   providedIn: 'root'

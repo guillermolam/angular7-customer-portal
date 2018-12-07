@@ -7,11 +7,11 @@ import { TranslateModule }          from '@ngx-translate/core';
 import { FormBase, ModalOptions }   from 'mapfre-design-library';
 import { ActivatedRoute }           from '@angular/router';
 import { Observable, Observer, of } from 'rxjs';
-import { FakeAccountResponse }      from './../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
-import { AddPolicyService }         from './../../../_services/forms/create-account/add-policy.service';
-import { EditPolicyService }        from './../../../_services/forms/create-account/edit-policy.service';
-import { CreateNewPasswordFormService } from './../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
-import { UserService }              from './../../../_services/user.service';
+import { FakeAccountResponse }      from '../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
+import { AddPolicyService }         from '../../../_services/forms/create-account/add-policy.service';
+import { EditPolicyService }        from '../../../_services/forms/create-account/edit-policy.service';
+import { CreateNewPasswordFormService } from '../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
+import { UserService }              from '../../../_services/user.service';
 import { SignupProcessComponent }   from './signup-process.component';
 import { User }                     from '../../../_models/user';
 

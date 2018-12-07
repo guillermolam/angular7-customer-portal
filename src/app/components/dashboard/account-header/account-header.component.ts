@@ -1,4 +1,4 @@
-import { AuthenticationService } from './../../../_services/_iam/authentication-service.service';
+import { AuthenticationService } from '../../../_services/_iam/authentication-service.service';
 import { Component, OnInit }      from '@angular/core';
 import { Router }                 from '@angular/router';
 import { ModalOptions }           from 'mapfre-design-library';

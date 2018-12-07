@@ -1,7 +1,7 @@
 import { Component, OnInit }      from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TestingDataService }     from './../../_helpers/testing-data.service';
-import { UserService }            from './../../_services/user.service';
+import { TestingDataService }     from '../../_helpers/testing-data.service';
+import { UserService }            from '../../_services/user.service';
 
 @Component({
   selector: 'app-claims-wrapper',

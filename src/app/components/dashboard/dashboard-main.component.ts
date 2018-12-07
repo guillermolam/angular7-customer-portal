@@ -2,11 +2,11 @@ import { Component, OnInit }      from '@angular/core';
 import { Router, NavigationEnd }                 from '@angular/router';
 
 @Component({
-  selector: 'app-account-main',
-  templateUrl: './account-main.component.html',
-  styleUrls: ['./account-main.component.scss']
+  selector: 'app-dashboard-main',
+  templateUrl: './dashboard-main.component.html',
+  styleUrls: ['./dashboard-main.component.scss']
 })
-export class AccountMainComponent implements OnInit {
+export class DashboardMainComponent implements OnInit {
 
   reportClaim: boolean=true;
 

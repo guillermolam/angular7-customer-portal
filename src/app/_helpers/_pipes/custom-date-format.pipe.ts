@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform }  from '@angular/core';
 import { DatePipe }             from '@angular/common';
 
-import { Constants }            from './../../_models/constants';
+import { Constants }            from '../../_models/constants';
 
 @Pipe({
   name: 'customDateFormat'

@@ -1,6 +1,6 @@
-import { FakeAccountSettings } from './../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
+import { FakeAccountSettings } from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { ActivatedRoute } from '@angular/router';
-import { EditPhoneService } from './../../../_services/forms/profile-settings/edit-phone.service';
+import { EditPhoneService } from '../../../_services/forms/profile-settings/edit-phone.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

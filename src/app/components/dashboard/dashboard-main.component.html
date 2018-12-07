@@ -1,9 +1,8 @@
-<app-account-header></app-account-header>
+<app-loggedin-account-header></app-loggedin-account-header>
 <div class="mapfre-content container loggedin container-fluid">
   <div class="row">
-    <app-sidenav></app-sidenav>
+    <app-loggedin-sidenav></app-loggedin-sidenav>
     <div class="col main-column">
-      <mapfre-alert></mapfre-alert>
       <router-outlet></router-outlet>
     </div>
     <div class="col column-misc" *ngIf="reportClaim">

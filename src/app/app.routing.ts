@@ -23,11 +23,10 @@ import { ClaimsDetailComponent }      from './components/claims/claims-detail/cl
 import { ClaimsHomeComponent }        from './components/claims/claims-dashboard-active/claims-home.component';
 import { ClaimsHomeClosedComponent }  from './components/claims/claims-dashboard-closed/claims-home-closed.component';
 import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
-import { DashboardHomeComponent }     from './components/dashboard/home/dashboard.component';
 import { PolicyDetailsComponent }     from './components/dashboard/details/details.component';
 import { BillingDetailsComponent }    from './components/dashboard/billing/billing.component';
 import { DocumentDetailsComponent }   from './components/dashboard/documents/documents.component';
-import { AccountMainComponent }       from './components/dashboard/account-main.component';
+import { DashboardMainComponent }       from './components/dashboard/dashboard-main.component';
 import { BillingMainComponent }       from './components/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/billing/billing-newpayment/billing-newpayment.component';
 
@@ -50,6 +49,7 @@ import { ContactComponent }           from './routes/contact/contact.component';
 import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
+import { MyInsuranceComponent } from './components/dashboard/loggedin-account-header/my-insurance/my-insurance.component';
 
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
@@ -64,13 +64,13 @@ const appRoutes: Routes = [
   { path: 'walletcard', component: WalletCardComponent},
 
   //when logged in
-{ path: '', component: AccountMainComponent, canActivate: [AuthGuard],
+{ path: '', component: DashboardMainComponent, canActivate: [AuthGuard],
   children: [
   { path: '', redirectTo: 'my-insurance', pathMatch: 'full'},
   { path: 'login', redirectTo: 'my-insurance' },
-  { path: 'my-insurance',
+  { path: 'my-insurance', component: MyInsuranceComponent,
     children: [
-      { path: '',  component: DashboardHomeComponent},
+      // { path: '',  component: MyInsuranceComponent},
       { path: 'link-policy',  component: LinkPolicyComponent},
       { path: ':policyid',
         children: [

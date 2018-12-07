@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { TestingDataService } from './../../../_helpers/testing-data.service';
+import { TestingDataService } from '../../../_helpers/testing-data.service';
 
 
 @Component({

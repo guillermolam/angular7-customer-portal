@@ -7,7 +7,7 @@ import { async, ComponentFixture,
   TestBed, fakeAsync, tick }        from '@angular/core/testing';
 import { of }                       from 'rxjs';
 import { FormBase }                 from 'mapfre-design-library';
-import { EmailFormService }         from './../../_services/forms/forgot-password/email-form/email-form.service';
+import { EmailFormService }         from '../../_services/forms/forgot-password/email-form/email-form.service';
 import { ForgotPasswordComponent }  from './forgot-password.component';
 
 class MockEmailFormService extends EmailFormService{

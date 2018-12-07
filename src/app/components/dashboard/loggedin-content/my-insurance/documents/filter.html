@@ -1,0 +1,37 @@
+<!-- please do not remove this file-->
+<div class="row margin-bottom mb16">
+    <div class="filters col">
+      <h1 class="title">{{filterName}}</h1>
+    </div>
+    <div class="col">
+        <div class="dropdown" mdbDropdown>
+            <button mdbDropdownToggle type="button" mdbBtn color="primary" class="dropdown-toggle waves-light"
+              mdbWavesEffect>
+              Dropdown
+            </button>
+          
+            <div class="dropdown-menu">
+              <h6 class="dropdown-header">Dropdown header</h6>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+      <select (change)="onSelectFilter($event.target.value)" class="browser-default custom-select">
+        <option [value]="'all-doc'">All Documents</option>
+        <option [value]="'renew'">Renewals</option>
+        <option [value]="'end'">Endorsments</option>
+        <option [value]="'misc'">Miscellaneous</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- pagenation -->
+  <tfoot class="grey lighten-5 w-100 footer" [class.hide]="documents.length <= 10">
+      <tr>
+        <td colspan="4" class="footer-page">
+          <mdb-table-pagination (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)">
+          </mdb-table-pagination>
+        </td>
+      </tr>
+    </tfoot>

@@ -1,4 +1,4 @@
-import { FakeAccountSettings } from './../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
+import { FakeAccountSettings } from '../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBase, FormBaseControlService, AlertService } from 'mapfre-design-library';
 import { FormGroup } from '@angular/forms';

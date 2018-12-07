@@ -1,4 +1,4 @@
-import { EmailPasswordFormService } from './../email-password-form/email-password-form.service';
+import { EmailPasswordFormService } from '../email-password-form/email-password-form.service';
 import { TestBed } from '@angular/core/testing';
 
 import { EditEmailService } from './edit-email.service';

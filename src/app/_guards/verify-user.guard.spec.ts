@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, ActivatedRoute,
 import { Observable , of }                               from 'rxjs';
 import { TestBed, async, fakeAsync, tick }          from '@angular/core/testing';
 import { VerifyUserGuard }                          from './verify-user.guard';
-import { UserService }                              from './../_services/user.service';
+import { UserService }                              from '../_services/user.service';
 
 describe('AuthGuard', () => {
 

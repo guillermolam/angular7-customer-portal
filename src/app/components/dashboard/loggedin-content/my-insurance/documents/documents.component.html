@@ -1,0 +1,104 @@
+<ng-container *ngFor="let policy of user?.policyDetails">
+  <ng-container *ngIf="policy?.policynumber.policynumber == policyId">
+
+    <mapfre-card 
+      [singleCard]="false"
+      [additionalClasses]="'policy-details documents details ' + policy?.policyType">
+      <header class="margin-bottom mb16">
+        <div class="policy-background">
+          <div class="car" *ngIf="policy?.policyType == 'AUTO'"></div>
+          <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
+        </div>
+        <div class="type-title">
+            <h1 class="title">
+                {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
+              <small><span class="green-color">{{policy?.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy?.expDate | customDateFormat }}
+              </span></small>
+            </h1>
+          </div>
+        </header>
+
+        <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
+
+      <ng-container *ngIf="loading">
+          <mapfre-loading></mapfre-loading>
+        </ng-container>
+
+      <ng-template [ngIf]="showDocuments && !loading" >
+        <section class="row documents-content"> 
+          <div class="col">
+            <div>
+              
+              <table mdbTable class="documents-table">
+                <thead>
+                  <tr class="download-mapfrecard">
+                    <th colspan="4"  scope="col">
+                      <div class="row mapfre-card-download-button ">
+                        <div class="col col-left">
+                          <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
+                        </div>
+                        <div class="col col-right">
+                          <app-onboarding-wallet-modal [userData]="user"></app-onboarding-wallet-modal>
+                        </div>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <tr class="row row-content" 
+                    *ngFor="let doc of documents; let i = index" 
+                    (click)="asALink(doc.documentId)" >
+                      <td class="col  col-type" scope="row">
+                        <div *ngIf="doc.type == 'HONBEND' " class="circle-with-type"> E </div>
+                        <div *ngIf="doc.type == 'HONB-END' " class="circle-with-type"> E </div>
+                        <div *ngIf="doc.type == 'NEW' " class="circle-with-type"> N </div>
+                        <div *ngIf="doc.type == 'HOREN' " class="circle-with-type"> R </div>
+                        <div *ngIf="doc.type == 'ENDORSE' " class="circle-with-type"> E </div>
+                        <div *ngIf="doc.type == 'INSPECT' " class="circle-with-type"> I </div>
+                        <div *ngIf="doc.type == 'RENEWAL' " class="circle-with-type"> R </div>
+                        <div *ngIf="doc.type == 'MISC' " class="circle-with-type"> M </div>
+                        <div *ngIf="doc.type == 'OTAREINI' " class="circle-with-type"> R </div>
+                        <div *ngIf="doc.type == 'OTASNCDI' " class="circle-with-type"> C </div>
+                        <div *ngIf="doc.type == 'OTASNCDM' " class="circle-with-type"> C </div>
+                        <div *ngIf="doc.type == 'OTAREINM' " class="circle-with-type"> R </div>
+                        <div *ngIf="doc.type == 'URQ' " class="circle-with-type"> U </div>
+                        <div *ngIf="doc.type == 'WMMISC' " class="circle-with-type"> M </div>
+                        <div *ngIf="doc.type == 'INVOICE' " class="circle-with-type"> I </div>
+                        <div *ngIf="doc.type == 'Unknown' " class="circle-with-type"> ? </div>
+                      </td>
+                      <td class="col col-name">{{doc.description}}</td>
+                      <td class="col col-date">{{doc.transactionDate | date}}</td>
+                      <td class="col col-view">view <i class="fas fa-angle-right"></i> </td>
+                  </tr>
+                </tbody>
+                
+              </table>
+            </div>
+          </div>
+        </section>
+      </ng-template>
+
+      <ng-template [ngIf]="showNoDocuments && !loading">
+        <section class="row documents-content no-documents"> 
+          <div class="col">
+              <div class="row mapfre-card-download-button ">
+                  <div class="col col-left">
+                    <img src="/assets/img/images/mapfre-card-logo-color.png" width="177"> 
+                  </div>
+                  <div class="col col-right">
+                      <app-onboarding-wallet-modal [userData]="user"></app-onboarding-wallet-modal>
+                  </div>
+                </div>
+            <div>
+              <img src="./assets/img/images/no-documents.png">
+              <h1 class="title"> No Documents available yet </h1>
+              <p> Your documents tab will list the available Coverage Selection Pages and allowyou to view, print, and save them. </p>
+            </div>
+          </div>
+        </section>
+      </ng-template>
+
+    </mapfre-card>
+
+  </ng-container>
+</ng-container>

@@ -2,7 +2,7 @@
 import { Component, OnInit }          from '@angular/core';
 import { ActivatedRoute, Router,
   Params }                            from '@angular/router';
-import { ChangeAddressService }       from './../../../_services/forms/change-address/change-address.service';
+import { ChangeAddressService }       from '../../../_services/forms/change-address/change-address.service';
 
 @Component({
   selector: 'app-address-change',

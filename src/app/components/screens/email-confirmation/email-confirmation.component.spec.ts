@@ -1,5 +1,5 @@
 import { Observable, Observer } from 'rxjs';
-import { AuthenticationService } from './../../../_services/_iam/authentication-service.service';
+import { AuthenticationService } from '../../../_services/_iam/authentication-service.service';
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 
 import { EmailConfirmationComponent } from './email-confirmation.component';

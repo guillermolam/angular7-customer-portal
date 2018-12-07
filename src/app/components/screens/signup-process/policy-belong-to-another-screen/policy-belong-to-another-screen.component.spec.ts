@@ -1,9 +1,9 @@
 import { AlertService } from 'mapfre-design-library';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { SignupProcessComponent } from './../../../../routes/signup/signup-process/signup-process.component';
-import { AuthenticationService } from './../../../../_services/_iam/authentication-service.service';
-import { UserService } from './../../../../_services/user.service';
+import { SignupProcessComponent } from '../../../../routes/signup/signup-process/signup-process.component';
+import { AuthenticationService } from '../../../../_services/_iam/authentication-service.service';
+import { UserService } from '../../../../_services/user.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TranslateModule } from '@ngx-translate/core';

@@ -1,20 +1,20 @@
 import { Component, OnInit }      from '@angular/core';
 import { Router }                 from '@angular/router';
 import { ModalOptions }           from 'mapfre-design-library';
-import { UserInfoService }        from './../../../_services/_userinformation/user-info.service';
-import { User }                   from '../../../_models/user';
-import { UserService }            from '../../../_services/user.service';
-import { AuthenticationService }  from '../../../_services/_iam/authentication-service.service';
-import { TestingDataService }     from './../../../_helpers/testing-data.service';
-import { StorageServiceObservablesService } from '../../../_services/storage-service-observables/storage-service-observables.service';
-import { PolicyDetailsService } from '../../../_services/policy-details.service';
+import { UserInfoService }        from '../../../../_services/_userinformation/user-info.service';
+import { User }                   from '../../../../_models/user';
+import { UserService }            from '../../../../_services/user.service';
+import { AuthenticationService }  from '../../../../_services/_iam/authentication-service.service';
+import { TestingDataService }     from '../../../../_helpers/testing-data.service';
+import { StorageServiceObservablesService } from '../../../../_services/storage-service-observables/storage-service-observables.service';
+import { PolicyDetailsService } from '../../../../_services/policy-details.service';
 
 @Component({
-  selector: 'app-dashboard-home',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-my-insurance',
+  templateUrl: './my-insurance.component.html',
+  styleUrls: ['./my-insurance.component.scss']
 })
-export class DashboardHomeComponent implements OnInit {
+export class MyInsuranceComponent implements OnInit {
   hideOrShow:                     boolean = false;
   payNowModal:                    ModalOptions;
   user:                           User;

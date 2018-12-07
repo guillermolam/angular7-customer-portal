@@ -1,4 +1,4 @@
-import { ProfileSettingsRoutingService } from './../../../../_services/profile-settings/profile-settings-routing.service';
+import { ProfileSettingsRoutingService } from '../../../../_services/profile-settings/profile-settings-routing.service';
 import { Component, EventEmitter,
   OnInit, Input, Output }             from '@angular/core';
 import { FormGroup }                  from '@angular/forms';

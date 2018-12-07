@@ -1,5 +1,5 @@
 
-import { SignupComponent } from './../routes/signup/signup.component';
+import { SignupComponent } from '../routes/signup/signup.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed, async, fakeAsync, tick }     from '@angular/core/testing';
 

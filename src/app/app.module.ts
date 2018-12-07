@@ -1,3 +1,4 @@
+import { MyInsuranceComponent } from './components/dashboard/loggedin-account-header/my-insurance/my-insurance.component';
 // --- Design Library --- //
 import { MapfreDesignLibraryModule }            from 'mapfre-design-library';
 import { MDBBootstrapModule }                   from 'angular-bootstrap-md';
@@ -27,7 +28,7 @@ import { JwtInterceptor }                       from './_helpers/jwt.interceptor
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
 // ----- Account ----- //
-import { AccountMainComponent }                 from './components/dashboard/account-main.component';
+import { DashboardMainComponent }                 from './components/dashboard/dashboard-main.component';
 import { AccountHeaderComponent }               from './components/dashboard/account-header/account-header.component';
 import { SidenavComponent }                     from './components/dashboard/sidenav/sidenav.component';
 // ----- Routes ----- //
@@ -95,7 +96,6 @@ import { InformationDiscountsComponent } from './components/information/informat
 import { InformationRenewalComponent } from './components/information/information-renewal/information-renewal.component';
 import { InformationCancelComponent } from './components/information/information-cancel/information-cancel.component';
 import { InformationLegalComponent } from './components/information/information-legal/information-legal.component';
-import { DashboardHomeComponent } from './components/dashboard/home/dashboard.component';
 import { ContactScreenComponent } from './components/screens/contact-screen/contact-screen.component';
 import { EditEmailFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/edit-email-form/edit-email-form.component';
 import { ProfileEmailConfirmComponent } from './components/profile/profile-email-confirm/profile-email-confirm.component';
@@ -120,6 +120,9 @@ import { PolicyDetailsService } from './_services/policy-details.service';
 import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
 import { BillingSidebarComponent } from './components/billing/billing-sidebar/billing-sidebar.component';
 import { DashboardNavComponent } from './components/dashboard/dashboard-nav/dashboard-nav.component';
+import { LoggedinAccountHeaderComponent } from './components/dashboard/loggedin-account-header/loggedin-account-header.component';
+import { LoggedinSidenavComponent } from './components/dashboard/loggedin-sidenav/loggedin-sidenav.component';
+import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
 
 if (environment.production) {
   enableProdMode();
@@ -132,10 +135,10 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     ClaimsWrapperComponent,
+    MyInsuranceComponent,
     ContactScreenComponent,
-    DashboardHomeComponent,
     AppComponent,
-    AccountMainComponent,
+    DashboardMainComponent,
     AccountHeaderComponent,
     DashboardComponent,
     ForgotPasswordComponent,
@@ -217,6 +220,9 @@ export function tokenGetter() {
     NewPaymentComponent,
     BillingSidebarComponent,
     DashboardNavComponent,
+    LoggedinAccountHeaderComponent,
+    LoggedinSidenavComponent,
+    LoggedinContentComponent,
 
   ],
   imports: [

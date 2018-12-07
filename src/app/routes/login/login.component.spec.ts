@@ -5,7 +5,7 @@ import { async, ComponentFixture,
   TestBed }                         from '@angular/core/testing';
 import { TranslateModule }          from '@ngx-translate/core';
 import { FormBase }                 from 'mapfre-design-library';
-import { LoginService }             from './../../_services/forms/login/login.service';
+import { LoginService }             from '../../_services/forms/login/login.service';
 import { LoginComponent }           from './login.component';
 
 class MockLoginService extends LoginService{

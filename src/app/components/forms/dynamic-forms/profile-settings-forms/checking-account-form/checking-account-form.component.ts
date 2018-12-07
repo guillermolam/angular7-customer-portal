@@ -1,4 +1,4 @@
-import { ProfileConfirmModalService } from './../../../../../_services/profile-settings/profile-confirm-modal.service';
+import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CheckingAccountService } from '../../../../../_services/forms/profile-settings/checking-account.service';
