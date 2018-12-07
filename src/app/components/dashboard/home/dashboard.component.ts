@@ -82,7 +82,6 @@ export class DashboardHomeComponent implements OnInit {
     );
 
 
-<<<<<<< HEAD
     this.userInfoService.policyByEmail('');
 
     this.policyDetailsService.$policyDetails.subscribe((response) =>{
@@ -93,20 +92,5 @@ export class DashboardHomeComponent implements OnInit {
       console.log(response);
       this.billingResponse = response;
     });
-=======
-    this.userInfoService
-      .policyByEmail(this.storageService.getUserFromStorage())
-      .subscribe((response) => {
-        console.log(response);
-      }
-    );
-
-    this.userInfoService
-      .getCurrentBillByPolicy('BBWQKQ')
-      .subscribe((response) => {
-        console.log(response);
-      }
-    );
->>>>>>> 6ac15ee92a2a0fbf90bcb07d0853052db26dae3d
   }
 }
