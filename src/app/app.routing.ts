@@ -51,6 +51,7 @@ import { InformationComponent }       from './routes/information/information.com
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
 import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
+import { MyInsuranceMainComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
 
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
@@ -71,7 +72,7 @@ const appRoutes: Routes = [
     { path: 'login', redirectTo: 'my-insurance' },
     { path: 'my-insurance', component: MyInsuranceComponent,
     children: [
-      // { path: '',  component: MyInsuranceComponent},
+      { path: '',  component: MyInsuranceMainComponent, pathMatch: 'full' },
       { path: 'link-policy',  component: LinkPolicyComponent},
       { path: ':policyid',
         children: [

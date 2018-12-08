@@ -122,6 +122,7 @@ import { DashboardNavComponent } from './components/dashboard/dashboard-nav/dash
 import { LoggedinAccountHeaderComponent } from './components/dashboard/loggedin-account-header/loggedin-account-header.component';
 import { LoggedinSidenavComponent } from './components/dashboard/loggedin-sidenav/loggedin-sidenav.component';
 import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
+import { MyInsuranceMainComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
 
 if (environment.production) {
   enableProdMode();
@@ -221,6 +222,7 @@ export function tokenGetter() {
     LoggedinAccountHeaderComponent,
     LoggedinSidenavComponent,
     LoggedinContentComponent,
+    MyInsuranceMainComponent,
 
   ],
   imports: [

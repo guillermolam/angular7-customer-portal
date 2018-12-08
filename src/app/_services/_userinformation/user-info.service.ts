@@ -34,9 +34,10 @@ export class UserInfoService {
 
   policyByEmail(email) {
     const url = `${environment.backend_server_url}/personal-policies/testmfre@gmail.com`;
-    this.http.get(url).subscribe((response)=>{
-      this.policyDetailsService.updatePolicyDetails(response);
-    });
+    return this.http.get(url);
+    // this.http.get(url).subscribe((response)=>{
+    //   this.policyDetailsService.updatePolicyDetails(response);
+    // });
   }
 
   getCurrentBillByPolicy(policyNumber): Observable<object> {
