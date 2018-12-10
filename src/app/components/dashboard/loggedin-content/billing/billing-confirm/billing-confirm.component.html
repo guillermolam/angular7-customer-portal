@@ -7,7 +7,7 @@
       <header class="margin-bottom mb16">
         <div class="type-title">
           <h1 class="title">
-            Make a Check Payment
+            {{ 'MAKE_A_CHECK_PAYMENT' | translate }}
           </h1>
           <div class="margin-left ml8">
             {{ policy?.policyType | translate}} &mdash; <strong>{{ policy?.policynumber.policynumber }}</strong>
@@ -19,15 +19,15 @@
         <ng-container *ngFor="let bill of billing?.billingInfo">
           <div class="col col1 no-padding-left">
             <h2 class="title">
-              Review payment 
+              {{ 'REVIEW_PAYMENT' | translate }}
               <mapfre-button additionalClasses="link-button normal-link float-right no-border no-padding no-margin" [routerLink]="['/billing/'+ policy?.policynumber.policynumber +'/new-payment']">
-                Edit <svg-edit-icon-svg></svg-edit-icon-svg>  
+                {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
               </mapfre-button>
             </h2>
             <div class="payment-confirmation">
               <div class="row margin-top mt24 margin-bottom mb16 ">
                 <div class="col">
-                    Payment Amount
+                    {{ 'PAYMENT_AMOUNT' | translate }}
                 </div>
                 <div class="col text-right">
                   <strong>${{billing.amount}}</strong>
@@ -35,7 +35,7 @@
               </div>
               <div class="row  margin-bottom mb16">
                 <div class="col">
-                    Bank Account Number
+                    {{ 'BANK_ACCOUNT_NUMBER' | translate }}
                 </div>
                 <div class="col text-right">
                     <strong>{{bill.accountNumber}}</strong>
@@ -43,7 +43,7 @@
               </div>
               <div class="row margin-bottom mb16">
                 <div class="col">
-                    Check Number
+                    {{ 'CHECK_NUMBER' | translate }}
                 </div>
                 <div class="col text-right">
                   <ng-container *ngIf="bill?.checkNumber == ''">
@@ -56,7 +56,7 @@
               </div>
               <div class="row margin-bottom mb16">
                 <div class="col">
-                    Routing Number
+                  {{ 'ROUTING_NUMBER' | translate }}
                 </div>
                 <div class="col text-right">
                     <strong>{{bill.bankRoutingNumber}}</strong>
@@ -64,7 +64,7 @@
               </div>
               <div class="row margin-bottom mb16">
                 <div class="col">
-                Holder Name
+                    {{ 'HOLDER_NAME' | translate }}
                 </div>
                 <div class="col text-right">
                     <strong>{{bill.accountName}}</strong>
@@ -72,7 +72,7 @@
               </div>
               <div class="row">
                 <div class="col">
-                    Mailing Address
+                    {{ 'MAILING_ADDRESS' | translate }}
                 </div>
                 <div class="col text-right">
                     <strong>{{bill.mailingAddress}}</strong>
@@ -93,13 +93,13 @@
                 <mapfre-button
                   [additionalClasses]="'ghost secondary small'"
                   [routerLink]="['/my-insurance']">
-                  {{ 'CANCEL' | translate}}
+                  {{ 'CANCEL' | translate }}
                 </mapfre-button>
               </div>
             </div>
             <div class="row legal margin-top mt24">
               <div class="col">
-                  By submitting this payment online, you are authorizing The Commerce Insurance Company (part of MAPFRE Group) to print a check from your account with the information given above. You are also certifying that you are authorized to allow this payment from the account.
+                  {{ 'PAYMENT_LEGAL' | translate }}
               </div>
             </div>
           </div>

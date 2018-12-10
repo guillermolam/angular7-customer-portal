@@ -31,6 +31,10 @@ import { DashboardMainComponent }     from './components/dashboard/dashboard-mai
 import { BillingMainComponent }       from './components/dashboard/loggedin-content/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/dashboard/loggedin-content/billing/billing-newpayment/billing-newpayment.component';
 import { BillingConfirmComponent }    from './components/dashboard/loggedin-content/billing//billing-confirm/billing-confirm.component';
+import { LinkPolicyComponent }        from './components/dashboard/loggedin-content/my-insurance/add-policy/link-policy/link-policy.component';
+import { MyInsuranceComponent }       from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
+import { LoggedinContentComponent }   from './components/dashboard/loggedin-content/loggedin-content.component';
+import { MyInsuranceMainComponent }   from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
 
 // ----- Routes ----- //
 import { BillingComponent }           from './routes/billing/billing.component';
@@ -49,10 +53,6 @@ import { AddressChangeComponent }     from './routes/profile-settings/address-ch
 import { ContactComponent }           from './routes/contact/contact.component';
 import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
-import { LinkPolicyComponent }        from './components/dashboard-add-policy/link-policy/link-policy.component';
-import { MyInsuranceComponent }       from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
-import { LoggedinContentComponent }   from './components/dashboard/loggedin-content/loggedin-content.component';
-import { MyInsuranceMainComponent }   from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
 
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },

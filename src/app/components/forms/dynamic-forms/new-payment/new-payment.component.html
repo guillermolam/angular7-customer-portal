@@ -5,12 +5,12 @@
   
   <section class="row radio-amount"  [formGroup]="newPaymentRadioForm">
     <div class="col">
-      <h2 class="title margin-bottom mb16">Select amount</h2>
+      <h2 class="title margin-bottom mb16">{{ 'SELECT_AMOUNT' | translate }}</h2>
       <div class="row">
         <div class="col">
           <div class="radio-label padding-left pl4">
             <input class="" type="radio" id="paymentAmount-minimum" name="paymentAmount" checked formControlName="paymentAmount" value="100" required="true" (change)="OnChangeShowCustomAmountField('min')">
-            <label class="" for="paymentAmount-minimum">Minimum amount due</label>
+            <label class="" for="paymentAmount-minimum">{{ 'MINIMUM_AMOUNT_DUE' | translate }}</label>
           </div>
         </div>
         <div class="col payment-amount text-right">
@@ -21,7 +21,7 @@
         <div class="col">
           <div class="radio-label padding-left pl4">
             <input class="" type="radio" id="paymentAmount-max" name="paymentAmount" formControlName="paymentAmount" value="400" required="true" (change)="OnChangeShowCustomAmountField('max')">
-            <label class="" for="paymentAmount-max">Outstanding policy balance</label>
+            <label class="" for="paymentAmount-max">{{ 'OUTSTANDING_POLICY_BALANCE' | translate }}</label>
           </div>
         </div>
         <div class="col payment-amount text-right">
@@ -40,7 +40,7 @@
               value="other" 
               required="true"
               (change)="OnChangeShowCustomAmountField('other')">
-            <label class="" for="paymentAmount-other">Other amount</label>
+            <label class="" for="paymentAmount-other">{{ 'OTHER_AMOUNT' | translate }}</label>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@
               [mdbValidate]="false"
               mdbInputDirective
               />
-            <mapfre-label forInput= "otherAmount">Enter Amount</mapfre-label>
+            <mapfre-label forInput= "otherAmount">{{ 'ENTER_AMOUNT' | translate }}</mapfre-label>
           </div>
         </div>
       </div>
@@ -65,9 +65,9 @@
   <section class="row bank-inputs margin-top mt24">
     <div class="col">
       <h2 class="title">
-        Checking account
+          {{ 'CHECKING_ACCOUNT' | translate }}
         <mapfre-button additionalClasses="link-button normal-link float-right no-border no-padding no-margin" (click)="OnClickEditButton($event)">
-          Edit <svg-edit-icon-svg></svg-edit-icon-svg>  
+          {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
         </mapfre-button>
       </h2>
 
@@ -77,7 +77,7 @@
             <ng-container *ngIf="input.inputType == 'checkbox'">
               <div class="margin-vertical mv8">
                 <input class="single-checkbox" id="store-checkbox"  type="checkbox" [formControlName]="input?.key">
-                <label class="margin-left ml16" for="store-checkbox">{{input.label}}</label>
+                <label class="margin-left ml16" for="store-checkbox">{{input.label | translate }}</label>
               </div>
             </ng-container>
             <ng-container *ngIf="input.inputType != 'checkbox'">
@@ -91,12 +91,12 @@
         <div class="checking-info margin-top mt24">
           <div class="row  margin-bottom mb8">
             <div class="col">
-              Account Holder: <strong>{{checkingInfo[0].accountName}}</strong>
+              {{ 'ACCOUNT_HOLDER' | translate}}: <strong>{{checkingInfo[0].accountName}}</strong>
             </div>
           </div>
           <div class="row margin-bottom mb24">
             <div class="col">
-              Account Number: <strong>{{checkingInfo[0].accountNumber}}</strong>
+                {{ 'ACCOUNT_NUMBER' | translate}}: <strong>{{checkingInfo[0].accountNumber}}</strong>
             </div>
           </div>
         </div>
@@ -112,7 +112,7 @@
                 [mdbValidate]="false"
                 mdbInputDirective
                 />
-              <mapfre-label forInput= "checkingNumberAmount">Check Number (optional)</mapfre-label>
+              <mapfre-label forInput= "checkingNumberAmount">{{ 'CHECK_NUMBER' | translate }}</mapfre-label>
             </div>
           </div>
         </div>

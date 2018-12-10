@@ -115,7 +115,7 @@ import { ClaimsHomePropertyComponent } from './components/dashboard/loggedin-con
 import { StorageServiceObservablesService } from './_services/storage-service-observables/storage-service-observables.service';
 import { BillingMainComponent } from './components/dashboard/loggedin-content/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/dashboard/loggedin-content/billing/billing-newpayment/billing-newpayment.component';
-import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
+import { LinkPolicyComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/link-policy/link-policy.component';
 import { PolicyDetailsService } from './_services/policy-details.service';
 import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
 import { BillingSidebarComponent } from './components/dashboard/loggedin-content/billing/billing-sidebar/billing-sidebar.component';
