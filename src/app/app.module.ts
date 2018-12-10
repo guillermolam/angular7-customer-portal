@@ -1,3 +1,4 @@
+import { PolicyDocumentsDataService } from './_services/my-insurance/data-services/policy-documents-data.service';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
 // --- Design Library --- //
 import { MapfreDesignLibraryModule }            from 'mapfre-design-library';
@@ -116,18 +117,17 @@ import { StorageServiceObservablesService } from './_services/storage-service-ob
 import { BillingMainComponent } from './components/dashboard/loggedin-content/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/dashboard/loggedin-content/billing/billing-newpayment/billing-newpayment.component';
 import { LinkPolicyComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/link-policy/link-policy.component';
-import { PolicyDetailsService } from './_services/policy-details.service';
 import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
 import { BillingSidebarComponent } from './components/dashboard/loggedin-content/billing/billing-sidebar/billing-sidebar.component';
 import { DashboardNavComponent } from './components/dashboard/dashboard-nav/dashboard-nav.component';
-
 import { LoggedinAccountHeaderComponent } from './components/dashboard/loggedin-account-header/loggedin-account-header.component';
 import { LoggedinSidenavComponent } from './components/dashboard/loggedin-sidenav/loggedin-sidenav.component';
 import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
 import { MyInsuranceMainComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
 import { NewPaymentNoCheckingComponent } from './components/forms/dynamic-forms/new-payment-no-checking/new-payment-no-checking.component';
 import { BillingConfirmComponent } from './components/dashboard/loggedin-content/billing/billing-confirm/billing-confirm.component';
-
+import { PolicyDataService } from './_services/my-insurance/data-services/policy-data.service';
+import { PolicyDetailsService } from './_services/my-insurance/policy-details.service';
 
 if (environment.production) {
   enableProdMode();
@@ -271,7 +271,10 @@ export function tokenGetter() {
     ProfileConfirmModalService,
     PolicyDetailsService,
     StorageServiceObservablesService,
-    BillingObservableService
+    BillingObservableService,
+    PolicyDataService,
+    PolicyDocumentsDataService
+
   ],
   bootstrap: [AppComponent]
 })
