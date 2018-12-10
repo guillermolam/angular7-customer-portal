@@ -5,7 +5,7 @@ import { Observable }         from 'rxjs';
 import { catchError, map }    from 'rxjs/operators';
 import { environment }        from '../../../environments/environment';//change it to environment later
 import { User }               from '../../_models/user';
-import { PolicyDetailsService } from '../policy-details.service';
+import { PolicyDetailsService } from '../my-insurance/policy-details.service';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,7 @@ export class UserInfoService {
   }
 
   getCurrentBillByPolicy(policyNumber): Observable<object> {
-    const url = `${this.billingURL}/billing/${policyNumber}/currentbill`; ///change
+    const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`; ///change
     return this.http.get(url);
   }
 

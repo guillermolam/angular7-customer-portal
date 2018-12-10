@@ -1,3 +1,4 @@
+import { PolicyDocumentsDataService } from './_services/my-insurance/data-services/policy-documents-data.service';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
 // --- Design Library --- //
 import { MapfreDesignLibraryModule }            from 'mapfre-design-library';
@@ -115,7 +116,7 @@ import { StorageServiceObservablesService } from './_services/storage-service-ob
 import { BillingMainComponent } from './components/dashboard/loggedin-content/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/dashboard/loggedin-content/billing/billing-newpayment/billing-newpayment.component';
 import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
-import { PolicyDetailsService } from './_services/policy-details.service';
+import { PolicyDetailsService } from './_services/my-insurance/policy-details.service';
 import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
 import { BillingSidebarComponent } from './components/dashboard/loggedin-content/billing/billing-sidebar/billing-sidebar.component';
 import { DashboardNavComponent } from './components/dashboard/dashboard-nav/dashboard-nav.component';
@@ -123,6 +124,7 @@ import { LoggedinAccountHeaderComponent } from './components/dashboard/loggedin-
 import { LoggedinSidenavComponent } from './components/dashboard/loggedin-sidenav/loggedin-sidenav.component';
 import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
 import { MyInsuranceMainComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
+import { PolicyDataService } from './_services/my-insurance/data-services/policy-data.service';
 
 if (environment.production) {
   enableProdMode();
@@ -263,7 +265,9 @@ export function tokenGetter() {
     ProfileSettingsRoutingService,
     ProfileConfirmModalService,
     PolicyDetailsService,
-    StorageServiceObservablesService
+    StorageServiceObservablesService,
+    PolicyDataService,
+    PolicyDocumentsDataService
   ],
   bootstrap: [AppComponent]
 })

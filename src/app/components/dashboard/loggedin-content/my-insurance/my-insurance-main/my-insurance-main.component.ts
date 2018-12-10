@@ -7,7 +7,7 @@ import { UserService }            from '../../../../../_services/user.service';
 import { AuthenticationService }  from '../../../../../_services/_iam/authentication-service.service';
 import { TestingDataService }     from '../../../../../_helpers/testing-data.service';
 import { StorageServiceObservablesService } from '../../../../../_services/storage-service-observables/storage-service-observables.service';
-import { PolicyDetailsService } from '../../../../../_services/policy-details.service';
+// import { PolicyDetailsService } from '../../../../../_services/my-insurance/policy-details.service';
 
 @Component({
   selector: 'app-my-insurance-main',
@@ -28,7 +28,7 @@ export class MyInsuranceMainComponent implements OnInit {
     private testingData:          TestingDataService,
     private userInfoService:      UserInfoService,
     private storageService:       StorageServiceObservablesService,
-    private policyDetailsService:        PolicyDetailsService
+    // private policyDetailsService:        PolicyDetailsService
   ) {
     this.payNowModal =  new ModalOptions({
       additionalButtonClasses:        'ghost primary small pay-now-modal-button',
@@ -84,9 +84,10 @@ export class MyInsuranceMainComponent implements OnInit {
 
     this.userInfoService.policyByEmail('');
 
-    this.policyDetailsService.$policyDetails.subscribe((response) =>{
-      this.policyResponse = JSON.stringify(response);
-    });
+    // this.policyDetailsService.$policyDetails.subscribe((response) =>{
+    //   console.log(response);
+    //   this.policyResponse = JSON.stringify(response);
+    // });
 
     this.userInfoService.getCurrentBillByPolicy('BBWQKQ').subscribe((response)=>{
       console.log(response);

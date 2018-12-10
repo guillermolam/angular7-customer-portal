@@ -7,7 +7,7 @@ import { AuthenticationService }        from '../../../../_services/_iam/authent
 import { PolicyDetails }                from '../../../../_models/policy-details';
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';
-import { PolicyDetailsService } from '../../../../_services/policy-details.service';
+// import { PolicyDetailsService } from '../../../../_services/my-insurance/policy-details.service';
 
 @Component({
   selector: 'app-policy-belong-to-another-screen',
@@ -26,7 +26,7 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
     private authService:            AuthenticationService,
     private router:                 Router,
     private userService:            UserService,
-    private policyService:          PolicyDetailsService
+    // private policyService:          PolicyDetailsService
   ) { }
 
   confirmPolicy(): void {
@@ -58,10 +58,10 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
   ngOnInit() {
 
     //new code
-    this.policyService.$policyDetails.subscribe((details)=>{
-      this.policyDetails = details;
-      console.log(details);
-    });
+    // this.policyService.$policyDetails.subscribe((details)=>{
+    //   this.policyDetails = details;
+    //   console.log(details);
+    // });
     
   }
 

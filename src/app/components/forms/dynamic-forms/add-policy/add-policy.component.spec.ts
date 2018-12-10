@@ -17,7 +17,7 @@ import { AddPolicyComponent }           from './add-policy.component';
 import { UserService }                  from '../../../../_services/user.service';
 import { SignupProcessComponent }       from '../../../../routes/signup/signup-process/signup-process.component';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
-import { PolicyDetailsService } from '../../../../_services/policy-details.service';
+import { PolicyDetailsService } from '../../../../_services/my-insurance/policy-details.service';
 
 describe('AddPolicyComponent', () => {
   let component: AddPolicyComponent;

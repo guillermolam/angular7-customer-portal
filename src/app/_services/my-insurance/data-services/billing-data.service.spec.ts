@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BillingService } from './billing-service.service';
+import { BillingDataService } from './billing-data.service';
 
-describe('BillingService', () => {
+describe('BillingDataService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BillingService = TestBed.get(BillingService);
+    const service: BillingDataService = TestBed.get(BillingDataService);
     expect(service).toBeTruthy();
   });
 });

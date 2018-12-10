@@ -2,7 +2,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class PolicyDetailsService {
+export class PolicyDataService {
 
   //can do it better --use interface
   policyDetails:                      any;
