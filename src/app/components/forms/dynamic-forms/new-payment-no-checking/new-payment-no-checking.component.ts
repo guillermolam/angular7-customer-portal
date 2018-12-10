@@ -47,10 +47,10 @@ export class NewPaymentNoCheckingComponent implements OnInit {
     let radioAmount;
 
     if (this.newPaymentRadioForm.controls['paymentAmount'].value == 'other' ) {
-      radioAmount = this.newPaymentRadioForm.controls['otherAmount'].value;
+      radioAmount =                 this.newPaymentRadioForm.controls['otherAmount'].value;
     }
     else {
-      radioAmount = this.newPaymentRadioForm.controls['paymentAmount'].value;
+      radioAmount =                 this.newPaymentRadioForm.controls['paymentAmount'].value;
     }
 
     const bill: Billing = {
@@ -66,13 +66,21 @@ export class NewPaymentNoCheckingComponent implements OnInit {
       policyId:                     this.policyId
     };
 
-    if( this.newPaymentForm.controls['newPayment_accountNumber'].value != this.newPaymentForm.controls['newPayment_confirmAccountNumber'].value ) {
+    if ( this.newPaymentForm.controls['newPayment_storeInformation'] ) {
+      this.saveCheckingInformation(bill.billingInfo);
+    }
+
+    if ( this.newPaymentForm.controls['newPayment_accountNumber'].value != this.newPaymentForm.controls['newPayment_confirmAccountNumber'].value ) {
       this.alertService.error('Account Number and Confirm Account Number are not the same');
     }
     else {
       this.billingObservableService.updateBilling(bill);
       this.router.navigate(['/billing', this.policyId, 'confirm' ]);
     }
+  }
+
+  saveCheckingInformation(account): void {
+    console.log('saveCheckingInformation', account);
   }
 
   ngOnInit() {
