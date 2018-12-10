@@ -30,7 +30,7 @@ import { DocumentDetailsComponent }   from './components/dashboard/documents/doc
 import { AccountMainComponent }       from './components/dashboard/account-main.component';
 import { BillingMainComponent }       from './components/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/billing/billing-newpayment/billing-newpayment.component';
-
+import { BillingConfirmComponent } from './components/billing/billing-confirm/billing-confirm.component';
 
 // ----- Routes ----- //
 import { BillingComponent }           from './routes/billing/billing.component';
@@ -96,14 +96,18 @@ const appRoutes: Routes = [
     { path: 'active', component: ClaimsHomeComponent },
     { path: 'closed', component: ClaimsHomeClosedComponent },
     { path: ':claimid', children: [
-      {path: '', redirectTo: 'details', pathMatch: 'full'},
+      { path: '', redirectTo: 'details', pathMatch: 'full'},
       { path: 'details', component: ClaimsDetailComponent },
     ] }
   ] },
 
   { path: 'billing', component: BillingComponent , children: [
     { path: '', component: BillingMainComponent },
-    { path: 'new-payment/:policyid', component: BillingNewpaymentComponent}
+    { path: ':policyid', children: [
+      { path: '', redirectTo: 'new-payment', pathMatch: 'full'},
+      { path: 'new-payment', component: BillingNewpaymentComponent},
+      { path: 'confirm', component: BillingConfirmComponent }
+    ] }
   ] },
 
   { path: 'information', component: InformationComponent,  children: [

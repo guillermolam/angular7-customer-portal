@@ -26,6 +26,7 @@ import { AuthGuard }                            from './_guards/auth.guard';
 import { JwtInterceptor }                       from './_helpers/jwt.interceptor';
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
+import { BillingObservableService }             from './_services/billing.service';
 // ----- Account ----- //
 import { AccountMainComponent }                 from './components/dashboard/account-main.component';
 import { AccountHeaderComponent }               from './components/dashboard/account-header/account-header.component';
@@ -120,6 +121,8 @@ import { PolicyDetailsService } from './_services/policy-details.service';
 import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
 import { BillingSidebarComponent } from './components/billing/billing-sidebar/billing-sidebar.component';
 import { DashboardNavComponent } from './components/dashboard/dashboard-nav/dashboard-nav.component';
+import { NewPaymentNoCheckingComponent } from './components/forms/dynamic-forms/new-payment-no-checking/new-payment-no-checking.component';
+import { BillingConfirmComponent } from './components/billing/billing-confirm/billing-confirm.component';
 
 if (environment.production) {
   enableProdMode();
@@ -131,6 +134,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
+    NewPaymentNoCheckingComponent,
     ClaimsWrapperComponent,
     ContactScreenComponent,
     DashboardHomeComponent,
@@ -217,6 +221,7 @@ export function tokenGetter() {
     NewPaymentComponent,
     BillingSidebarComponent,
     DashboardNavComponent,
+    BillingConfirmComponent,
 
   ],
   imports: [
@@ -257,7 +262,8 @@ export function tokenGetter() {
     ProfileSettingsRoutingService,
     ProfileConfirmModalService,
     PolicyDetailsService,
-    StorageServiceObservablesService
+    StorageServiceObservablesService,
+    BillingObservableService
   ],
   bootstrap: [AppComponent]
 })
