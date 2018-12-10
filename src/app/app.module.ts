@@ -27,6 +27,7 @@ import { AuthGuard }                            from './_guards/auth.guard';
 import { JwtInterceptor }                       from './_helpers/jwt.interceptor';
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
+import { BillingObservableService }             from './_services/billing.service';
 // ----- Account ----- //
 import { DashboardMainComponent }                 from './components/dashboard/dashboard-main.component';
 import { SidenavComponent }                     from './components/dashboard/sidenav/sidenav.component';
@@ -119,10 +120,14 @@ import { PolicyDetailsService } from './_services/policy-details.service';
 import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
 import { BillingSidebarComponent } from './components/dashboard/loggedin-content/billing/billing-sidebar/billing-sidebar.component';
 import { DashboardNavComponent } from './components/dashboard/dashboard-nav/dashboard-nav.component';
+
 import { LoggedinAccountHeaderComponent } from './components/dashboard/loggedin-account-header/loggedin-account-header.component';
 import { LoggedinSidenavComponent } from './components/dashboard/loggedin-sidenav/loggedin-sidenav.component';
 import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
 import { MyInsuranceMainComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
+import { NewPaymentNoCheckingComponent } from './components/forms/dynamic-forms/new-payment-no-checking/new-payment-no-checking.component';
+import { BillingConfirmComponent } from './components/billing/billing-confirm/billing-confirm.component';
+
 
 if (environment.production) {
   enableProdMode();
@@ -134,6 +139,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
+    NewPaymentNoCheckingComponent,
     ClaimsWrapperComponent,
     MyInsuranceComponent,
     ContactScreenComponent,
@@ -223,6 +229,7 @@ export function tokenGetter() {
     LoggedinSidenavComponent,
     LoggedinContentComponent,
     MyInsuranceMainComponent,
+    BillingConfirmComponent,
 
   ],
   imports: [
@@ -263,7 +270,8 @@ export function tokenGetter() {
     ProfileSettingsRoutingService,
     ProfileConfirmModalService,
     PolicyDetailsService,
-    StorageServiceObservablesService
+    StorageServiceObservablesService,
+    BillingObservableService
   ],
   bootstrap: [AppComponent]
 })
