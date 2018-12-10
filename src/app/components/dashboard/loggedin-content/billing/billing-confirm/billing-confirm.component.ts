@@ -1,13 +1,12 @@
-
-
 import { Component, OnInit }                from '@angular/core';
 import { Router, Params, ActivatedRoute}    from '@angular/router';
 import { AlertService }                     from 'mapfre-design-library';
-import { BillingService }                   from './../../../_services/_iam/billing-service.service';
-import { BillingObservableService }         from './../../../_services/billing.service';
-import { Billing }                          from './../../../_models/billing';
-import { User }                             from './../../../_models/user';
-import { UserService }                      from './../../../_services/user.service';
+
+import { BillingService }                   from './../../../../../_services/_iam/billing-service.service';
+import { BillingObservableService }         from './../../../../../_services/billing.service';
+import { Billing }                          from './../../../../../_models/billing';
+import { User }                             from './../../../../../_models/user';
+import { UserService }                      from './../../../../../_services/user.service';
 
 @Component({
   selector: 'app-billing-confirm',

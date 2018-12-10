@@ -126,7 +126,7 @@ import { LoggedinSidenavComponent } from './components/dashboard/loggedin-sidena
 import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
 import { MyInsuranceMainComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
 import { NewPaymentNoCheckingComponent } from './components/forms/dynamic-forms/new-payment-no-checking/new-payment-no-checking.component';
-import { BillingConfirmComponent } from './components/billing/billing-confirm/billing-confirm.component';
+import { BillingConfirmComponent } from './components/dashboard/loggedin-content/billing/billing-confirm/billing-confirm.component';
 
 
 if (environment.production) {

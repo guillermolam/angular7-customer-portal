@@ -1,20 +1,12 @@
 import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { AlertService }             from 'mapfre-design-library';
-<<<<<<< HEAD:src/app/components/dashboard/loggedin-content/billing/billing-newpayment/billing-newpayment.component.ts
-import { User }                     from '../../../../../_models/user';
-import { UserService }              from '../../../../../_services/user.service';
-import { TestingDataService }       from '../../../../../_helpers/testing-data.service';
-import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 import { NewPaymentService }        from '../../../../../_services/forms/new-payment/new-payment.service';
-=======
-import { NewPaymentService }        from '../../../_services/forms/new-payment/new-payment.service';
-import { User }                     from '../../../_models/user';
-import { UserService }              from './../../../_services/user.service';
-import { UserInfoService }          from '../../../_services/_userinformation/user-info.service';
+import { User }                     from '../../../../../_models/user';
+import { UserService }              from './../../../../../_services/user.service';
+import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 
-import { TestingDataService }       from './../../../_helpers/testing-data.service';
->>>>>>> billing:src/app/components/billing/billing-newpayment/billing-newpayment.component.ts
+import { TestingDataService }       from './../../../../../_helpers/testing-data.service';
 
 
 @Component({
