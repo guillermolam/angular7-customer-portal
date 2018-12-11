@@ -372,7 +372,6 @@ export class TestingDataService {
           transactionDate: '02/20/2002',
           description: 'Endorsement Documents'
         }
-        
       ];
     }
     else {
@@ -570,13 +569,20 @@ export class TestingDataService {
     }
   }
 
-  testDataChecking(): any {
-    return [{
-      accountName: 'Test Name',
-      bankRoutingNumber: '123456789',
-      accountNumber: '11111111111111111',
-      mailingAddress: '1078 Boylston Street, Boston, MA, USA',
-      apartment: '123'
-    }];
+  testDataChecking(policyID): any {
+    let object;
+    if ( policyID == 'QJN952') {
+      object = false;
+    }
+    else {
+      object = [{
+        accountName: 'Test Name',
+        bankRoutingNumber: '123456789',
+        accountNumber: '11111111111111111',
+        mailingAddress: '1078 Boylston Street, Boston, MA, USA',
+        apartment: '123'
+      }];
+    }
+    return object;
   }
 }

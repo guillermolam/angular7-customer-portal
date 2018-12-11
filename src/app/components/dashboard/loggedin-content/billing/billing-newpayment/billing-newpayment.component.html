@@ -9,15 +9,20 @@
         <h1 class="title">
           Make a Check Payment
         </h1>
-        <div>{{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }}</div>
+        <div class="margin-left ml8">{{ policy?.policyType | translate}} &mdash; <strong>{{ policy?.policynumber.policynumber }}</strong></div>
       </div>
     </header>
-  
+
     <section class="row policy-details-content">
       <div class="col col1">
-       <app-new-payment-form [inputs]="inputs"></app-new-payment-form> 
+        <ng-container *ngIf="checkingInfo">
+          <app-new-payment-form [inputs]="inputs" [userData]="checkingInfo">
+          </app-new-payment-form>  
+        </ng-container>
+        <ng-container *ngIf="!checkingInfo">
+          <app-new-payment-no-checking-form [inputs]="inputs"></app-new-payment-no-checking-form> 
+        </ng-container>
       </div>
-
       <div class="col col2">
         <app-billing-sidebar></app-billing-sidebar>
       </div>

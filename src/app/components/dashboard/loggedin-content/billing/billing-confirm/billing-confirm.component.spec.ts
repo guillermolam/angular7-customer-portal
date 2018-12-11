@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LinkPolicyComponent } from './link-policy.component';
+import { BillingConfirmComponent } from './billing-confirm.component';
 
-describe('LinkPolicyComponent', () => {
-  let component: LinkPolicyComponent;
-  let fixture: ComponentFixture<LinkPolicyComponent>;
+describe('BillingConfirmComponent', () => {
+  let component: BillingConfirmComponent;
+  let fixture: ComponentFixture<BillingConfirmComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LinkPolicyComponent ]
+      declarations: [ BillingConfirmComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LinkPolicyComponent);
+    fixture = TestBed.createComponent(BillingConfirmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

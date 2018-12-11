@@ -1,11 +1,12 @@
 import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { AlertService }             from 'mapfre-design-library';
-import { User }                     from '../../../../../_models/user';
-import { UserService }              from '../../../../../_services/user.service';
-import { TestingDataService }       from '../../../../../_helpers/testing-data.service';
-import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 import { NewPaymentService }        from '../../../../../_services/forms/new-payment/new-payment.service';
+import { User }                     from '../../../../../_models/user';
+import { UserService }              from './../../../../../_services/user.service';
+import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
+
+import { TestingDataService }       from './../../../../../_helpers/testing-data.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { NewPaymentService }        from '../../../../../_services/forms/new-pay
 })
 export class BillingNewpaymentComponent implements OnInit {
   alerton;
+  checkingInfo:                     object;
   input:                            object;
   inputs:                           any[];
   loading:                          boolean = false;
@@ -35,12 +37,13 @@ export class BillingNewpaymentComponent implements OnInit {
     this.inputs = service.getInputs();
    }
 
-
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
     });
 
+    this.checkingInfo = this.testingData.testDataChecking(this.policyId);
+    this.loading = false;
     this.userService.$user.subscribe(
       (user) => {
         if ( user != undefined ) {
@@ -74,13 +77,13 @@ export class BillingNewpaymentComponent implements OnInit {
             ;
           }
           else {
-            this.loading = false;
             this.user = this.testingData.testDatafunction();
             this.userService.updateUser(this.user);
+            this.loading = false;
           }
         }
       }
     );
   }
-
+  
 }

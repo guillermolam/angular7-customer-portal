@@ -6,6 +6,7 @@ import { SignUpGuard }                from './_guards/signup.guard';
 import { VerifyUserGuard }            from './_guards/verify-user.guard';
 
 // --- components ---- //
+
 import { ProfileEditEmailComponent }  from './components/dashboard/loggedin-content/profile/profile-edit-email/profile-edit-email.component';
 import { ProfileCheckingAccountComponent } from './components/dashboard/loggedin-content/profile/profile-checking-account/profile-checking-account.component';
 import { ProfilePhoneComponent }      from './components/dashboard/loggedin-content/profile/profile-phone/profile-phone.component';
@@ -26,10 +27,14 @@ import { ProfileEmailConfirmComponent } from './components/dashboard/loggedin-co
 import { PolicyDetailsComponent }     from './components/dashboard/loggedin-content/my-insurance/details/details.component';
 import { BillingDetailsComponent }    from './components/dashboard/loggedin-content/my-insurance/billing/billing.component';
 import { DocumentDetailsComponent }   from './components/dashboard/loggedin-content/my-insurance/documents/documents.component';
-import { DashboardMainComponent }       from './components/dashboard/dashboard-main.component';
+import { DashboardMainComponent }     from './components/dashboard/dashboard-main.component';
 import { BillingMainComponent }       from './components/dashboard/loggedin-content/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/dashboard/loggedin-content/billing/billing-newpayment/billing-newpayment.component';
-
+import { BillingConfirmComponent }    from './components/dashboard/loggedin-content/billing//billing-confirm/billing-confirm.component';
+import { LinkPolicyComponent }        from './components/dashboard/loggedin-content/my-insurance/add-policy/link-policy/link-policy.component';
+import { MyInsuranceComponent }       from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
+import { LoggedinContentComponent }   from './components/dashboard/loggedin-content/loggedin-content.component';
+import { MyInsuranceMainComponent }   from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
 
 // ----- Routes ----- //
 import { BillingComponent }           from './routes/billing/billing.component';
@@ -48,10 +53,6 @@ import { AddressChangeComponent }     from './routes/profile-settings/address-ch
 import { ContactComponent }           from './routes/contact/contact.component';
 import { ClaimsComponent }            from './routes/claims/claims.component';
 import { InformationComponent }       from './routes/information/information.component';
-import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
-import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
-import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
-import { MyInsuranceMainComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
 
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
@@ -66,7 +67,7 @@ const appRoutes: Routes = [
   { path: 'walletcard', component: WalletCardComponent},
 
   //when logged in
-{ path: '', component: DashboardMainComponent, canActivate: [AuthGuard],
+{ path: '', component: DashboardMainComponent, //canActivate: [AuthGuard],
   children: [
   { path: '', component: LoggedinContentComponent, children: [
     { path: 'login', redirectTo: 'my-insurance' },
@@ -102,13 +103,17 @@ const appRoutes: Routes = [
     { path: 'active', component: ClaimsHomeComponent },
     { path: 'closed', component: ClaimsHomeClosedComponent },
     { path: ':claimid', children: [
-      {path: '', redirectTo: 'details', pathMatch: 'full'},
+      { path: '', redirectTo: 'details', pathMatch: 'full'},
       { path: 'details', component: ClaimsDetailComponent },
     ] }
   ] },
   { path: 'billing', component: BillingComponent , children: [
     { path: '', component: BillingMainComponent },
-    { path: 'new-payment/:policyid', component: BillingNewpaymentComponent}
+    { path: ':policyid', children: [
+      { path: '', redirectTo: 'new-payment', pathMatch: 'full'},
+      { path: 'new-payment', component: BillingNewpaymentComponent},
+      { path: 'confirm', component: BillingConfirmComponent }
+    ] }
   ] },
   { path: 'information', component: InformationComponent,  children: [
     { path: '', component: InformationHomeComponent },

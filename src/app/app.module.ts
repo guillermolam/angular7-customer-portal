@@ -28,6 +28,7 @@ import { AuthGuard }                            from './_guards/auth.guard';
 import { JwtInterceptor }                       from './_helpers/jwt.interceptor';
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
+import { BillingObservableService }             from './_services/billing.service';
 // ----- Account ----- //
 import { DashboardMainComponent }                 from './components/dashboard/dashboard-main.component';
 import { SidenavComponent }                     from './components/dashboard/sidenav/sidenav.component';
@@ -115,8 +116,7 @@ import { ClaimsHomePropertyComponent } from './components/dashboard/loggedin-con
 import { StorageServiceObservablesService } from './_services/storage-service-observables/storage-service-observables.service';
 import { BillingMainComponent } from './components/dashboard/loggedin-content/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/dashboard/loggedin-content/billing/billing-newpayment/billing-newpayment.component';
-import { LinkPolicyComponent } from './components/dashboard-add-policy/link-policy/link-policy.component';
-import { PolicyDetailsService } from './_services/my-insurance/policy-details.service';
+import { LinkPolicyComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/link-policy/link-policy.component';
 import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
 import { BillingSidebarComponent } from './components/dashboard/loggedin-content/billing/billing-sidebar/billing-sidebar.component';
 import { DashboardNavComponent } from './components/dashboard/dashboard-nav/dashboard-nav.component';
@@ -124,7 +124,10 @@ import { LoggedinAccountHeaderComponent } from './components/dashboard/loggedin-
 import { LoggedinSidenavComponent } from './components/dashboard/loggedin-sidenav/loggedin-sidenav.component';
 import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
 import { MyInsuranceMainComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
+import { NewPaymentNoCheckingComponent } from './components/forms/dynamic-forms/new-payment-no-checking/new-payment-no-checking.component';
+import { BillingConfirmComponent } from './components/dashboard/loggedin-content/billing/billing-confirm/billing-confirm.component';
 import { PolicyDataService } from './_services/my-insurance/data-services/policy-data.service';
+import { PolicyDetailsService } from './_services/my-insurance/policy-details.service';
 
 if (environment.production) {
   enableProdMode();
@@ -136,6 +139,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
+    NewPaymentNoCheckingComponent,
     ClaimsWrapperComponent,
     MyInsuranceComponent,
     ContactScreenComponent,
@@ -225,6 +229,7 @@ export function tokenGetter() {
     LoggedinSidenavComponent,
     LoggedinContentComponent,
     MyInsuranceMainComponent,
+    BillingConfirmComponent,
 
   ],
   imports: [
@@ -266,8 +271,10 @@ export function tokenGetter() {
     ProfileConfirmModalService,
     PolicyDetailsService,
     StorageServiceObservablesService,
+    BillingObservableService,
     PolicyDataService,
     PolicyDocumentsDataService
+
   ],
   bootstrap: [AppComponent]
 })

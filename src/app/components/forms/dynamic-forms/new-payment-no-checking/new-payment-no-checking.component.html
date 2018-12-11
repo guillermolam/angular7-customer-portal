@@ -1,7 +1,7 @@
 <form 
   [formGroup]="newPaymentForm" 
   name="newPaymentForm"  
-  (ngSubmit)="newPaymentRadioForm.valid && newPaymentFormSubmit()">
+  (ngSubmit)="newPaymentForm.valid && newPaymentRadioForm.valid && newPaymentFormSubmit()">
   
   <section class="row radio-amount"  [formGroup]="newPaymentRadioForm">
     <div class="col">
@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="col payment-amount text-right">
-          <strong>$100.00</strong>
+          <strong> $100  </strong>
         </div>
       </div>
       <div class="row">
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="col payment-amount text-right">
-          <strong>$400.00</strong>
+          <strong> $400 </strong>
         </div>
       </div>
       <div class="row">
@@ -65,64 +65,28 @@
   <section class="row bank-inputs margin-top mt24">
     <div class="col">
       <h2 class="title">
-          {{ 'CHECKING_ACCOUNT' | translate }}
-        <mapfre-button additionalClasses="link-button normal-link float-right no-border no-padding no-margin" (click)="OnClickEditButton($event)">
-          {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
-        </mapfre-button>
+        {{ 'CHECKING_ACCOUNT' | translate }}
       </h2>
 
-      <ng-container *ngIf="editAccount">
-        <div class="checking-form margin-top mt16">
-          <div *ngFor="let input of inputs" class="input" [ngClass]="{ 'first-input': input?.inputType == 'address' }">
-            <ng-container *ngIf="input.inputType == 'checkbox'">
-              <div class="margin-vertical mv8">
-                <input class="single-checkbox" id="store-checkbox"  type="checkbox" [formControlName]="input?.key">
-                <label class="margin-left ml16" for="store-checkbox">{{input.label | translate }}</label>
-              </div>
-            </ng-container>
-            <ng-container *ngIf="input.inputType != 'checkbox'">
-              <mapfre-validation [input]="input" [form]="newPaymentForm"></mapfre-validation>
-            </ng-container>
-          </div>
-        </div>
-      </ng-container>
-
-      <ng-container *ngIf="!editAccount ">
-        <div class="checking-info margin-top mt24">
-          <div class="row  margin-bottom mb8">
-            <div class="col">
-              {{ 'ACCOUNT_HOLDER' | translate}}: <strong>{{checkingInfo[0].accountName}}</strong>
+      <div class="checking-form margin-top mt16">
+        <div *ngFor="let input of inputs" class="input" [ngClass]="{ 'first-input': input?.inputType == 'address' }">
+          <ng-container *ngIf="input.inputType == 'checkbox'">
+            <div class="margin-vertical mv8">
+              <input class="single-checkbox" id="store-checkbox"  type="checkbox" [formControlName]="input?.key">
+              <label class="margin-left ml16" for="store-checkbox">{{ input.label | translate }}</label>
             </div>
-          </div>
-          <div class="row margin-bottom mb24">
-            <div class="col">
-                {{ 'ACCOUNT_NUMBER' | translate}}: <strong>{{checkingInfo[0].accountNumber}}</strong>
-            </div>
-          </div>
+          </ng-container>
+          <ng-container *ngIf="input.inputType != 'checkbox'">
+            <mapfre-validation [input]="input" [form]="newPaymentForm"></mapfre-validation>
+          </ng-container>
         </div>
-        <div class="row" [formGroup]="newPaymentRadioForm">
-          <div class="col input-content">
-            <div class= "input-field mapfre">
-              <input 
-                class="w-50"
-                formControlName="checkingNumberAmount"
-                id="checkingNumberAmount"
-                name="checkingNumberAmount"
-                type="tel"
-                [mdbValidate]="false"
-                mdbInputDirective
-                />
-              <mapfre-label forInput= "checkingNumberAmount">{{ 'CHECK_NUMBER' | translate }}</mapfre-label>
-            </div>
-          </div>
-        </div>
-      </ng-container>
-
+      </div>
+      
       <div class="row text-center margin-top mt32">
         <div class="col">
           <mapfre-button
             [additionalClasses]="'basic primary large w-75 center-button'"
-            [disabledValue]="newPaymentRadioForm.valid" 
+            [disabledValue]="newPaymentForm.valid && newPaymentRadioForm.valid" 
             [inputType]="'submit'"
             [translateValue]="'CONTINUE' | translate">
           </mapfre-button>

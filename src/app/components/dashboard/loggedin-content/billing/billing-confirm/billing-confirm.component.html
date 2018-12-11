@@ -1,0 +1,112 @@
+<ng-container *ngIf="loading">
+    <mapfre-loading></mapfre-loading>
+  </ng-container>
+    
+  <ng-container *ngFor="let policy of user?.policyDetails">
+    <ng-container *ngIf="policy?.policynumber.policynumber == policyId && !loading">
+      <header class="margin-bottom mb16">
+        <div class="type-title">
+          <h1 class="title">
+            {{ 'MAKE_A_CHECK_PAYMENT' | translate }}
+          </h1>
+          <div class="margin-left ml8">
+            {{ policy?.policyType | translate}} &mdash; <strong>{{ policy?.policynumber.policynumber }}</strong>
+          </div>
+        </div>
+      </header>
+  
+      <section class="row policy-details-content" >
+        <ng-container *ngFor="let bill of billing?.billingInfo">
+          <div class="col col1 no-padding-left">
+            <h2 class="title">
+              {{ 'REVIEW_PAYMENT' | translate }}
+              <mapfre-button additionalClasses="link-button normal-link float-right no-border no-padding no-margin" [routerLink]="['/billing/'+ policy?.policynumber.policynumber +'/new-payment']">
+                {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
+              </mapfre-button>
+            </h2>
+            <div class="payment-confirmation">
+              <div class="row margin-top mt24 margin-bottom mb16 ">
+                <div class="col">
+                    {{ 'PAYMENT_AMOUNT' | translate }}
+                </div>
+                <div class="col text-right">
+                  <strong>${{billing.amount}}</strong>
+                </div>
+              </div>
+              <div class="row  margin-bottom mb16">
+                <div class="col">
+                    {{ 'BANK_ACCOUNT_NUMBER' | translate }}
+                </div>
+                <div class="col text-right">
+                    <strong>{{bill.accountNumber}}</strong>
+                </div>
+              </div>
+              <div class="row margin-bottom mb16">
+                <div class="col">
+                    {{ 'CHECK_NUMBER' | translate }}
+                </div>
+                <div class="col text-right">
+                  <ng-container *ngIf="bill?.checkNumber == ''">
+                      <strong>N/A</strong>
+                  </ng-container>
+                  <ng-container *ngIf="bill?.checkNumber != '' ">
+                      <strong>{{bill?.checkNumber}}</strong>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="row margin-bottom mb16">
+                <div class="col">
+                  {{ 'ROUTING_NUMBER' | translate }}
+                </div>
+                <div class="col text-right">
+                    <strong>{{bill.bankRoutingNumber}}</strong>
+                </div>
+              </div>
+              <div class="row margin-bottom mb16">
+                <div class="col">
+                    {{ 'HOLDER_NAME' | translate }}
+                </div>
+                <div class="col text-right">
+                    <strong>{{bill.accountName}}</strong>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                    {{ 'MAILING_ADDRESS' | translate }}
+                </div>
+                <div class="col text-right">
+                    <strong>{{bill.mailingAddress}}</strong>
+                  </div>
+              </div>
+            </div>
+            <div class="row text-center margin-top mt32">
+              <div class="col">
+                <mapfre-button
+                  [additionalClasses]="'basic primary large w-75 center-button'"
+                  (click)='sendPayment()'>
+                  {{ 'CONFIRM_PAYMENT' | translate}}
+                </mapfre-button>
+              </div>
+            </div>
+            <div class="row text-center margin-bottom mb24 margin-top mt16">
+              <div class="col">
+                <mapfre-button
+                  [additionalClasses]="'ghost secondary small'"
+                  [routerLink]="['/my-insurance']">
+                  {{ 'CANCEL' | translate }}
+                </mapfre-button>
+              </div>
+            </div>
+            <div class="row legal margin-top mt24">
+              <div class="col">
+                  {{ 'PAYMENT_LEGAL' | translate }}
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <div class="col col2">
+          <app-billing-sidebar></app-billing-sidebar>
+        </div>
+      </section>
+    </ng-container>
+  </ng-container>
