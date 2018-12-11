@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class BillingDataService {
 
-  constructor() { }
+  billingDetails:                      any;
+  private details =     new BehaviorSubject<any>(this.billingDetails);
+  $billingDetails =                     this.details.asObservable();
+
+  constructor() {}
+
+  updateBillingDetails(currentBill: any) {
+    this.details.next(currentBill);
+  }
 }

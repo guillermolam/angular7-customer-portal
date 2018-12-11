@@ -26,7 +26,7 @@ describe('PolicyDataService', () => {
     httpMock.verify();
   });
 
-  fit('should update the observable for policy by email', fakeAsync(() => {
+  it('should update the observable for policy by email', fakeAsync(() => {
     const email = 'testmfre@gmail.com';
     spyOn(policyDataService, 'updatePolicyDetails');
     policyDetailsService.getPolicyDetailsByEmail(email);
@@ -37,7 +37,7 @@ describe('PolicyDataService', () => {
     expect(policyDataService.updatePolicyDetails).toHaveBeenCalled();
   }));
 
-  fit('should update the observable for documents by policy number', fakeAsync(() => {
+  it('should update the observable for documents by policy number', fakeAsync(() => {
     const policyNumber = 'BBWQKQ';
     spyOn(policyDataService, 'updatePolicyDetails');
     policyDetailsService.getDocumentsByPolicy(policyNumber);
