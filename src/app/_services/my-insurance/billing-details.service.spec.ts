@@ -26,7 +26,7 @@ describe('BillingDetailsService', () => {
     spyOn(billingDataService, 'updateBillingDetails');
     billingDetailsService.getCurrentBillByPolicy(policyNumber);
     tick();
-    const req = httpMock.expectOne(`${billingDetailsService.billingURL}/billing/${policyNumber}/currentbill`);
+    const req = httpMock.expectOne(`${environment.backend_server_url}/billing/${policyNumber}/currentbill`);
     expect(req.request.method).toBe('GET');
     req.flush('data');
     expect(billingDataService.updateBillingDetails).toHaveBeenCalled();

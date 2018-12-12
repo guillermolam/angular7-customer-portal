@@ -1,5 +1,11 @@
+import { BillingDataService } from './../../_services/my-insurance/data-services/billing-data.service';
+import { PolicyDetailsService } from './../../_services/my-insurance/policy-details.service';
+import { BillingDetailsService } from './../../_services/my-insurance/billing-details.service';
+import { UserService } from './../../_services/user.service';
+import { StorageServiceObservablesService } from './../../_services/storage-service-observables/storage-service-observables.service';
 import { Component, OnInit }      from '@angular/core';
 import { Router, NavigationEnd }                 from '@angular/router';
+import { PolicyDataService } from '../../_services/my-insurance/data-services/policy-data.service';
 
 @Component({
   selector: 'app-dashboard-main',
@@ -10,7 +16,11 @@ export class DashboardMainComponent implements OnInit {
 
   reportClaim: boolean=true;
 
-  constructor( private router: Router ){}
+  constructor( 
+    private router: Router,
+    private policyDetailsService: PolicyDetailsService,
+    private userService: UserService,
+    private storageService: StorageServiceObservablesService ){}
 
   ngOnInit() {
 
@@ -25,5 +35,10 @@ export class DashboardMainComponent implements OnInit {
         }
       }
     });
+
+    this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe(()=>{
+
+    });
+
   }
 }

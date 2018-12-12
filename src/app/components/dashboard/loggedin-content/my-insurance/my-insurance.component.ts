@@ -26,7 +26,7 @@ export class MyInsuranceComponent implements OnInit {
     private router:               Router,
     private userService:          UserService,
     private testingData:          TestingDataService,
-    private userInfoService:      UserInfoService,
+    // private userInfoService:      UserInfoService,
     private storageService:       StorageServiceObservablesService,
     // private policyDetailsService:        PolicyDetailsService
   ) {
@@ -82,7 +82,7 @@ export class MyInsuranceComponent implements OnInit {
     );
 
 
-    this.userInfoService.policyByEmail('');
+    // this.userInfoService.policyByEmail('');
 
     // this.policyDetailsService.$policyDetails.subscribe((response) =>{
     //   this.policyResponse = JSON.stringify(response);

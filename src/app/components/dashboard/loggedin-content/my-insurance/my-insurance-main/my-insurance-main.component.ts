@@ -7,6 +7,8 @@ import { UserService }            from '../../../../../_services/user.service';
 import { AuthenticationService }  from '../../../../../_services/_iam/authentication-service.service';
 import { TestingDataService }     from '../../../../../_helpers/testing-data.service';
 import { StorageServiceObservablesService } from '../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { PolicyDataService } from '../../../../../_services/my-insurance/data-services/policy-data.service';
+import { BillingDataService } from '../../../../../_services/my-insurance/data-services/billing-data.service';
 // import { PolicyDetailsService } from '../../../../../_services/my-insurance/policy-details.service';
 
 @Component({
@@ -18,14 +20,16 @@ export class MyInsuranceMainComponent implements OnInit {
   hideOrShow:                     boolean = false;
   payNowModal:                    ModalOptions;
   user:                           User;
-  policyResponse: any;
+  policyResponse:  any;
   billingResponse: any;
 
   constructor(
     private authenticationService: AuthenticationService,
     private router:               Router,
     private userService:          UserService,
+    private billingDataService:   BillingDataService,
     private testingData:          TestingDataService,
+    private policyDataService:    PolicyDataService,
     private userInfoService:      UserInfoService,
     private storageService:       StorageServiceObservablesService,
     // private policyDetailsService:        PolicyDetailsService
@@ -81,17 +85,15 @@ export class MyInsuranceMainComponent implements OnInit {
       }
     );
 
-
-    this.userInfoService.policyByEmail('');
-
-    // this.policyDetailsService.$policyDetails.subscribe((response) =>{
-    //   console.log(response);
-    //   this.policyResponse = JSON.stringify(response);
-    // });
-
-    this.userInfoService.getCurrentBillByPolicy('BBWQKQ').subscribe((response)=>{
-      console.log(response);
-      this.billingResponse = response;
+    this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
+      console.log(policyResponse);
+      this.policyResponse = policyResponse;
     });
+
+    this.billingDataService.$billingDetails.subscribe((billingResponse)=>{
+      console.log(billingResponse);
+     this.billingResponse = billingResponse;
+    });
+
   }
 }
