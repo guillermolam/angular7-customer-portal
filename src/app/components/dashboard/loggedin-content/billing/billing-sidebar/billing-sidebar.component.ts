@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillingSidebarComponent implements OnInit {
 
+  policy: any;
+
   constructor() { }
 
   ngOnInit() {

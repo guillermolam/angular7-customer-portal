@@ -17,6 +17,7 @@ export class BillingConfirmComponent implements OnInit {
   billing:                                any;
   policyId:                               string;
   user:                                   User;
+  loading:                                any;
 
   constructor(
     private activatedRoute:               ActivatedRoute,
