@@ -1,12 +1,11 @@
-import { TestingDataService } from '../../../../../_helpers/testing-data.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer }             from '@angular/platform-browser';
 import { Component, OnInit }        from '@angular/core';
-import { FormGroup, FormControl }   from '@angular/forms';
 import { ActivatedRoute, Params }   from '@angular/router';
 
 import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
 import { User }                     from '../../../../../_models/user';
 import { UserService }              from '../../../../../_services/user.service';
+import { TestingDataService }       from '../../../../../_helpers/testing-data.service';
 
 
 @Component({
@@ -15,7 +14,8 @@ import { UserService }              from '../../../../../_services/user.service'
   styleUrls: ['./billing.component.scss']
 })
 export class BillingDetailsComponent implements OnInit {
-
+  schedualOrHistory:        boolean = true;
+  checkBillingVar:          boolean = false;
   policyId:                 number;
   user:                     User;
 
@@ -28,6 +28,22 @@ export class BillingDetailsComponent implements OnInit {
     private testingData:    TestingDataService
   ) { }
 
+  checkBilling(): boolean {
+    return false;
+  }
+
+  pendingChecks(): boolean {
+    return false;
+  }
+
+  switchHistories(type): void {
+    if (type == 'schedual') {
+      this.schedualOrHistory = true;
+    }
+    else {
+      this.schedualOrHistory = false;
+    }
+  }
 
   ngOnInit() {
     // When logging in go a verify user

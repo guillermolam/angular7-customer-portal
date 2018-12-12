@@ -499,7 +499,7 @@ h1.title-cta {
 
   .col1,
   .col2 {
-    @media (max-width: 767px) {
+    @media (max-width: 1199px) {
       padding: 0;
     }
 
@@ -526,7 +526,7 @@ h1.title-cta {
     }
    
     @media (min-width: 768px) {   
-      max-width: 310px;
+      max-width: 290px;
       border-left: 2px solid #EAE9E9;
     }
   }
@@ -732,10 +732,16 @@ h1.title-cta {
   }
 
   &.hug-header {
-    @media (min-width: 1200px) {
-      margin-left: -24px;
-      margin-right: -24px;
-    }
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+}
+
+.no-payment-svg {
+  width: 66px;
+
+ svg {
+    max-width: 50px;
   }
 }
 
@@ -821,8 +827,12 @@ h1.title-cta {
   }
 }
 
-.no-border {
-  border: none !important;
+.font-medium {
+  font-size: 18px;
+}
+
+.font-small {
+  font-size: 10px;
 }
 
 .lite-grey-color {
@@ -833,9 +843,35 @@ h1.title-cta {
   color: $med-gray;
 }
 
+.mapfre.link.basic.primary {
+  span {
+    color: $white;
+  }
+}
+
+.no-border {
+  border: none !important;
+}
+
+.no-border-bottom {
+  border-bottom: none !important;
+}
+
+.no-border-top {
+  border-top: none !important;
+} 
+
+.no-border-left {
+  border-left: none !important;
+}
+
+.no-border-right {
+  border-right: none !important;
+}
+
 .radio-label {
   label {
-    margin-left: 16px;
+    margin-left: $global-one-rem;
   }
 }
 
@@ -846,5 +882,21 @@ h1.title-cta {
       padding: 8px !important;
     }
   }
+
+  td {
+    @media (min-width: 1200px) {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+   
+  }
 }
 
+table td {
+  font-weight: 400;
+}
+
+.tab-accordian-navigation {
+  margin-bottom: -1px;
+  width: 100.25%;
+}

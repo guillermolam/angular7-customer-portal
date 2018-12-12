@@ -363,10 +363,10 @@
                     {{ 'APARTMENT' | translate}}: <strong> {{ policy?.property[0].address.streetName }}</strong>
                   </div>
                 </div>
-                              
-                <iframe height="168" id="gmap_canvas" 
-                  [src]="getAddress([policy?.property[0].address.streetName, policy?.property[0].address.city, policy?.property[0].address.state, policy?.property[0].address.zipCode.code ])" 
-                  frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <div id="map-container" class="z-depth-1-half" style="height: 150px">
+                  <iframe [src]="getAddress([policy?.property[0].address.streetName, policy?.property[0].address.city, policy?.property[0].address.state, policy?.property[0].address.zipCode.code ])" 
+                  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="w-100"></iframe>
+                </div>
               </div>
             </div>
       

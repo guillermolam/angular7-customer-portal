@@ -4,7 +4,7 @@
     <mapfre-card 
       [singleCard]="false"
       [additionalClasses]="'policy-details documents details ' + policy?.policyType">
-      <header class="margin-bottom mb16">
+      <header class="margin-bottom mb16 no-margins-hug hug-header">
         <div class="policy-background">
           <div class="car" *ngIf="policy?.policyType == 'AUTO'"></div>
           <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
@@ -91,7 +91,7 @@
                 </div>
             <div>
               <img src="./assets/img/images/no-documents.png">
-              <h1 class="title"> No Documents available yet </h1>
+              <h1 class="title margin-vertical mv16"> No Documents available yet </h1>
               <p> Your documents tab will list the available Coverage Selection Pages and allowyou to view, print, and save them. </p>
             </div>
           </div>

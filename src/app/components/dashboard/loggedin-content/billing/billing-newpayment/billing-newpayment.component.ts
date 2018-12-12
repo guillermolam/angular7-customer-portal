@@ -8,7 +8,6 @@ import { UserInfoService }          from '../../../../../_services/_userinformat
 
 import { TestingDataService }       from './../../../../../_helpers/testing-data.service';
 
-
 @Component({
   selector:     'app-billing-newpayment',
   templateUrl:  './billing-newpayment.component.html',

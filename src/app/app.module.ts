@@ -119,7 +119,7 @@ import { BillingNewpaymentComponent } from './components/dashboard/loggedin-cont
 import { LinkPolicyComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/link-policy/link-policy.component';
 import { NewPaymentComponent } from './components/forms/dynamic-forms/new-payment/new-payment.component';
 import { BillingSidebarComponent } from './components/dashboard/loggedin-content/billing/billing-sidebar/billing-sidebar.component';
-import { DashboardNavComponent } from './components/dashboard/dashboard-nav/dashboard-nav.component';
+import { DashboardNavComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-nav/dashboard-nav.component';
 import { LoggedinAccountHeaderComponent } from './components/dashboard/loggedin-account-header/loggedin-account-header.component';
 import { LoggedinSidenavComponent } from './components/dashboard/loggedin-sidenav/loggedin-sidenav.component';
 import { LoggedinContentComponent } from './components/dashboard/loggedin-content/loggedin-content.component';
@@ -128,6 +128,7 @@ import { NewPaymentNoCheckingComponent } from './components/forms/dynamic-forms/
 import { BillingConfirmComponent } from './components/dashboard/loggedin-content/billing/billing-confirm/billing-confirm.component';
 import { PolicyDataService } from './_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService } from './_services/my-insurance/policy-details.service';
+import { ContactBillingRepFormComponent } from './components/forms/dynamic-forms/contact-billing-rep-form/contact-billing-rep-form.component';
 
 if (environment.production) {
   enableProdMode();
@@ -230,6 +231,7 @@ export function tokenGetter() {
     LoggedinContentComponent,
     MyInsuranceMainComponent,
     BillingConfirmComponent,
+    ContactBillingRepFormComponent,
 
   ],
   imports: [
