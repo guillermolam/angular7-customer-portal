@@ -53,9 +53,10 @@
           </div>
           <div class="row margin-bottom mb16">
             <div class="col">
-                <iframe height="168" id="gmap_canvas" 
-                [src]="getAddress(claim.details.location)" 
-                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+              <div id="map-container" class="z-depth-1-half" style="height: 150px">
+                <iframe [src]="getAddress(claim.details.location)"
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="w-100"></iframe>
+              </div> 
             </div>
           </div>
           <div class="row margin-bottom mb16">

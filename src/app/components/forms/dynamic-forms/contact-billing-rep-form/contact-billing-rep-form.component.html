@@ -1,0 +1,42 @@
+<form
+  class=""
+  name="contactBillingRepForm"
+  [formGroup]="contactBillingRepForm"
+  (ngSubmit)="contactBillingRepForm.valid && sendMessage()">
+  <div class="row">
+    <div class="col">
+      <div class="inputs">
+        <mapfre-validation 
+          [input]="inputs[0]" 
+          [form]="contactBillingRepForm">
+        </mapfre-validation>
+      </div>
+    </div>
+  </div>
+  <div class="row  margin-top mt16">
+      <div class="col">
+        <mapfre-validation 
+          [input]="inputs[1]" 
+          [form]="contactBillingRepForm">
+        </mapfre-validation>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col  mx-auto text-center">
+      <mapfre-button
+        additionalClasses="basic primary mx-auto padding-vertical pv16 medium"
+        [disabledValue]="contactBillingRepForm.valid" 
+        [inputType]="'submit'"
+        [translateValue]="'SUBMIT' | translate"
+        ></mapfre-button>
+    </div>
+  </div>
+  <div class="row margin-top mt8 text-center">
+    <div class="col">
+      <mapfre-button
+        additionalClasses="ghost secondary w-50 padding-vertical pv8"
+      >  {{ 'CANCEL' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
+</form>

@@ -18,7 +18,7 @@
     </h2>
 
     <ng-container *ngIf="!policy?.policyFlags.isEft">
-        <p>{{ 'ENROLL_NOW_COPY' | translate}}</p>
+        <p class="text-center">{{ 'ENROLL_NOW_COPY' | translate}}</p>
         <div class="paperless row">
           <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 row">
             <div class="col paperless-icon">
@@ -46,9 +46,9 @@
               <strong>{{ 'AMOUNT_TO_SAVE' | translate}}</strong>
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-6">
+          <div class="col-lg-12 col-md-12 col-sm-6"> 
             <mapfre-button
-              [additionalClasses]="'basic primary full small'">
+              [additionalClasses]="'basic primary full small mx-auto'">
               {{ 'ENROLL_NOW' | translate}}
             </mapfre-button>
           </div>
@@ -84,7 +84,7 @@
           </div>
           <div class="col-lg-12 col-md-12 col-sm-6">
               <mapfre-button
-                [additionalClasses]="'ghost primary full small'"
+                [additionalClasses]="'ghost primary full small mx-auto'"
                 [routerLink]="['/paperless']">
                 {{ 'PAPERLESS_SETTINGS' | translate}}
               </mapfre-button>
@@ -104,10 +104,29 @@
       <div class="image-container">
         <img src="./assets/img/images/undraw_questions_75e0.png" class="image-max-width" />
       </div>
-      <p class="margin-top mt16">
-          {{ 'QUESTIONS_ABOUT_POLICY' | translate }}
+      <p class="margin-top mt16 no-margin-bottom">
+        {{ 'QUESTIONS_ABOUT_POLICY' | translate }}
       </p>
-      <a href="tel:1-800-922-8276">{{ 'CONTACT_BILLING_REP' | translate }}</a> 
+      <mapfre-modal 
+        [modalOptions]="billingRepModal"
+        [hideModal]="hideModal">
+        <div class="modal-body no-margin-top margin-bottom mb24">
+          <hr class="no-margin-bottom no-margin-top">
+          <div class="margin-bottom mb8 margin-top mt16">
+            <strong>{{ 'MODAL_POLICY_NUMBER' | translate }}</strong> ABC123
+          </div>
+          <div class="margin-bottom mb8 ">
+            <strong>{{ 'MODAL_BILL_REP' | translate }}</strong> Bob Smith Boston Billing Co. <a href="tel:555-555-5555">(555) 555-5555</a>
+          </div>
+          <div class="contact-form margin-bottom mb24">
+            <app-contact-billing-rep-form [inputs]="inputs"></app-contact-billing-rep-form>
+          </div>
+          <mapfre-info-divs>
+            <p class="margin-bottom mb8">{{ 'BILLING_PAR_ONE' | translate }}</p>
+            <p>{{ 'BILLING_PAR_TWO' | translate }}</p>
+          </mapfre-info-divs>
+        </div>
+      </mapfre-modal>
     </div>
   </div>
 </div>

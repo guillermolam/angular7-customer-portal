@@ -15,6 +15,7 @@ import { UserService }                      from './../../../../../_services/use
 })
 export class BillingConfirmComponent implements OnInit {
   billing:                                any;
+  loading:                                boolean;
   policyId:                               string;
   user:                                   User;
   loading:                                any;

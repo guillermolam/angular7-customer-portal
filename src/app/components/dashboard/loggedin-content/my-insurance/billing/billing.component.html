@@ -3,28 +3,215 @@
       <mapfre-card 
         [singleCard]="false"
         [additionalClasses]="'policy-details billing details ' + policy?.policyType">
-        <header class="margin-bottom mb16">
+        <header class="margin-bottom mb16 no-margins-hug hug-header">
           <div class="policy-background">
             <div class="car" *ngIf="policy?.policyType == 'AUTO'"></div>
             <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
           </div>
           <div class="type-title">
-              <h1 class="title">
-                  {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
-                <small><span class="green-color">{{policy?.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy?.expDate | date:'shortDate' }}
-                </span></small>
-              </h1>
-            </div>
-          </header>
-
-          <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
+            <h1 class="title">
+                {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
+              <small><span class="green-color">{{policy?.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy?.expDate | date:'shortDate' }}
+              </span></small>
+            </h1>
+          </div>
+        </header>
+        <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
         
-
-      <section class="row documents-content no-documents"> 
-        <div class="col">
-          billing 
-        </div>
-      </section>
+        <section class="row"> 
+          <div class="col col1 col-md-8 margin-bottom mb24">
+            <div class="row">
+              <div class="col">
+                 <h2 class="title" [ngClass]="{'no-border': !checkBilling()}">
+                  {{ 'BILLING_OVERVIEW' | translate }}
+                </h2>
+                <table mdbTable class="claims-table" *ngIf="!checkBilling()">
+                  <thead class="lite-grey-color">
+                    <tr class="row-content border-full grey-border">
+                      <td>  
+                          {{ 'CUSTOMER_BALANCE' | translate }}
+                      </td>
+                      <td> 
+                          {{ 'DUE_DATE' | translate }}
+                      </td>
+                      <td> 
+                          {{ 'AMOUNT' | translate }}
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody class="med-grey-color">
+                    <tr class="row-content border-full grey-border  no-border-bottom">
+                      <td>
+                        <strong>$100</strong>
+                      </td>
+                      <td>
+                          <strong>11/15/2018</strong>
+                      </td>
+                      <td>
+                          <strong>$100</strong>
+                      </td>
+                    </tr>
+                    <tr class="border-full grey-border no-border-top">
+                      <td colspan="3" class="text-center no-border-top">
+                        <mapfre-link
+                          [additionalClasses]="'basic primary large btn width w75'"
+                          [routerLink]="['/billing/' +  policy?.policynumber.policynumber + '/new-payment/']">
+                          {{ 'PAY_BY_CHECK' | translate}}
+                        </mapfre-link>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="margin-top mt16 d-table w-100" *ngIf="checkBilling()">
+                  <div class="no-payment-svg d-table-cell padding pr16">
+                    <svg-check-icon-svg></svg-check-icon-svg> 
+                  </div>
+                  <div class="green-color font-medium d-table-cell align-middle">
+                    {{ 'NO_PAYMENTS' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row  margin-top mt40">
+              <div class="col">
+                <table mdbTable class="claims-table">
+                  <thead class="">
+                    <tr class="no-padding no-border">
+                      <td colspan="2" class="no-padding no-border">
+                        <nav class="tab-accordian-navigation">
+                          <div class="tab-navigation">
+                            <ul class="w-100 pl-0 d-table no-margin">
+                              <li [ngClass]="{'active': schedualOrHistory }" class="width w-50">
+                                <a (click)="switchHistories('schedual')">{{'SCHEDULED_PAYMENTS' | translate}}</a>
+                              </li>
+                              <li [ngClass]="{'active': !schedualOrHistory }" class="width w-50">
+                                  <a (click)="switchHistories('history')">{{'HISTORY' | translate}}</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </nav>
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody class="med-grey-color" *ngIf="schedualOrHistory">
+                    <tr class="row-content border-full grey-border lite-grey-color">
+                      <td>  
+                          {{ 'AMOUNT' | translate }}
+                      </td>
+                      <td class="text-right"> 
+                          {{ 'DATE' | translate }}
+                      </td>
+                    </tr>
+                    <tr class="row-content border-full grey-border">
+                      <td>
+                        <strong>$100</strong>
+                      </td>
+                      <td class="text-right"> 
+                          <strong>11/15/2018</strong>
+                      </td>
+                    </tr>
+                    <tr class="row-content border-full grey-border">
+                      <td>
+                        <strong>$100</strong>
+                      </td>
+                      <td class="text-right"> 
+                          <strong>11/15/2018</strong>
+                      </td>
+                    </tr>
+                    <tr class="row-content border-full grey-border">
+                      <td>
+                        <strong>$100</strong>
+                      </td>
+                      <td class="text-right"> 
+                          <strong>11/15/2018</strong>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody class="med-grey-color" *ngIf="!schedualOrHistory">
+                    <tr class="row-content border-full grey-border lite-grey-color">
+                      <td>  
+                          {{ 'AMOUNT' | translate }}
+                      </td>
+                      <td class="text-right"> 
+                          {{ 'DATE' | translate }}
+                      </td>
+                    </tr>
+                    <tr class="row-content border-full grey-border">
+                      <td>
+                        <strong>$100</strong>
+                      </td>
+                      <td class="text-right"> 
+                        <strong>07/11/2015</strong>
+                      </td>
+                    </tr>
+                    <tr class="row-content border-full grey-border">
+                      <td>
+                        <strong>$100</strong>
+                      </td>
+                      <td class="text-right"> 
+                        <strong>07/11/2015</strong>
+                      </td>
+                    </tr>
+                    <tr class="row-content border-full grey-border">
+                      <td>
+                        <strong>$100</strong>
+                      </td>
+                      <td class="text-right"> 
+                        <strong>07/11/2015</strong>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col col2 col-md-4">
+            <div class="margin-bottom mb32" *ngIf="pendingChecks()">
+              <h2 class="title no-border">
+                {{ 'PENDING_CHECKS' | translate }}
+              </h2>
+              <table mdbTable class="claims-table">
+                <thead class="lite-grey-color">
+                  <tr class="row-content border-full grey-border">
+                    <td>  
+                        {{ 'AMOUNT' | translate }}
+                    </td>
+                    <td class="text-right"> 
+                        {{ 'DATE' | translate }}
+                    </td>
+                  </tr>
+                </thead>
+                <tbody class="med-grey-color">
+                  <tr class="row-content border-full grey-border">
+                    <td class="font-small">
+                      <strong>$100</strong>
+                    </td>
+                    <td class="text-right font-small"> 
+                        <strong>11/15/2018</strong>
+                    </td>
+                  </tr>
+                  <tr class="row-content border-full grey-border">
+                    <td class="font-small">
+                      <strong>$100</strong>
+                    </td>
+                    <td class="text-right font-small"> 
+                        <strong>11/15/2018</strong>
+                    </td>
+                  </tr>
+                  <tr class="row-content border-full grey-border">
+                    <td class="font-small">
+                      <strong>$100</strong>
+                    </td>
+                    <td class="text-right font-small"> 
+                        <strong>11/15/2018</strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <app-billing-sidebar [policy]="policy"></app-billing-sidebar>
+          </div>
+        </section>
     </mapfre-card>
   </ng-container>
 </ng-container>
