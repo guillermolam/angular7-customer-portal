@@ -2,9 +2,9 @@
   <mapfre-loading></mapfre-loading>
 </ng-container>
 
-<ng-container *ngFor="let policy of user?.policyDetails">
-  <ng-container *ngIf="policy?.policynumber.policynumber == policyId && !loading">
-    <ng-container *ngIf="policy?.policyType == 'AUTO'">
+<ng-container *ngFor="let policy of policyDetails">
+  <ng-container *ngIf="policy.policynumber.policynumber == policyId && !loading">
+    <ng-container *ngIf="policy.policyType == 'AUTO'">
       <mapfre-card 
         [singleCard]="false"
         [additionalClasses]="'policy-details auto details'">
@@ -14,8 +14,8 @@
           </div>
           <div class="type-title">
             <h1 class="title">
-                {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
-              <small><span class="green-color">{{policy?.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy?.expDate | customDateFormat }}
+                {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
+              <small><span class="green-color">{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}
               </span></small>
             </h1>
           </div>
@@ -41,7 +41,7 @@
                     <svg-holder-mono-color-svg></svg-holder-mono-color-svg> {{ 'POLICY_HOLDER' | translate }}
                   </h2>
                   <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
-                  <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insurer; let i = index">
+                  <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
                     <div class="col">
                       <strong>{{ holder['Insurer Name'] }}</strong>
                     </div>
@@ -68,7 +68,7 @@
                 <form [formGroup]="updateMileage" class="update-mileage no-padding">
                   <div class="margin-bottom mb24">
                     
-                    <div class="mapfre-input vehicle" *ngFor="let vehicle of policy?.vehicle; let i = index; let last = last; let first = first">
+                    <div class="mapfre-input vehicle" *ngFor="let vehicle of policy.vehicle; let i = index; let last = last; let first = first">
                       
                       <div id="id{{i}}" [ngClass]="{'margin-top mt24': i != 0}">
                         
@@ -150,10 +150,10 @@
                   {{ 'YOUR_AGENT' | translate }}
                 </h2>
                 <strong>
-                  {{ policy?.agent.agentName }}
+                  {{ policy.agent.agentName }}
                 </strong>
-                <p class="title-case">{{ policy?.agent.address.streetName  }} {{ policy?.agent.address.city }} {{ policy?.agent.address.state }} {{ policy?.agent.address.zipCode.code }}</p>
-                <p>{{'PHONE' | translate }}: <a href="tel:{{ policy?.agent.agentPhone.number }}" class="underline"> {{ policy?.agent.agentPhone.number }}</a></p>
+                <p class="title-case">{{ policy.agent.address.streetName  }} {{ policy.agent.address.city }} {{ policy.agent.address.state }} {{ policy.agent.address.zipCode.code }}</p>
+                <p>{{'PHONE' | translate }}: <a href="tel:{{ policy.agent.agentPhone.number }}" class="underline"> {{ policy.agent.agentPhone.number }}</a></p>
               </div>
             </div>
       
@@ -176,7 +176,7 @@
                   {{ 'PAPERLESS' | translate}}
                 </h2>
 
-                <ng-container *ngIf="!policy?.policyFlags.isEft">
+                <ng-container *ngIf="!policy.policyFlags.isEft">
                     <p>{{ 'ENROLL_NOW_COPY' | translate}}</p>
                     <div class="paperless row">
                       <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 row">
@@ -213,7 +213,7 @@
                       </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="policy?.policyFlags.isEft">
+                <ng-container *ngIf="policy.policyFlags.isEft">
                     <div class="paperless row">
                       <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 row">
                         <div class="col paperless-icon">
@@ -279,7 +279,7 @@
                     <div class="row"><div class="col"><strong> {{ 'MAILING' | translate}}</strong></div></div>
                     <div class="row">
                       <div class="col address-copy">
-                          *policy holder address*
+                          {{ policy.insured[0].mailingAddress.streetName }}  {{ policy.insured[0].mailingAddress.city }}  {{ policy.insured[0].mailingAddress.state }}  {{ policy.insured[0].mailingAddress.zipCode.code }}
                       </div>
                       <div class="col edit-address">
                           <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
@@ -291,7 +291,8 @@
                   <div class="row"><div class="col"><strong> {{ 'RESIDENTIAL' | translate}}</strong></div></div>
                   <div class="row">
                     <div class="col address-copy">
-                        {{ 'SAME_AS_MAILING' | translate}}
+                      {{ policy.insured[0].resedentialAddress.streetName }}  {{ policy.insured[0].resedentialAddress.city }}  {{ policy.insured[0].resedentialAddress.state }}  {{ policy.insured[0].resedentialAddress.zipCode.code }} 
+                        <!-- {{ 'SAME_AS_MAILING' | translate}} -->
                     </div>
                     <div class="col edit-address">
                         <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
@@ -307,7 +308,7 @@
       </mapfre-card>
     </ng-container>
    
-    <ng-container *ngIf="policy?.policyType == 'HOME'">
+    <ng-container *ngIf="policy.policyType == 'HOME'">
       <mapfre-card 
         [singleCard]="false"
         [additionalClasses]="'policy-details property details'">
@@ -317,8 +318,8 @@
             </div>
             <div class="type-title">
               <h1 class="title">
-                  {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
-                <small><span class="green-color">{{policy?.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy?.expDate | date:'shortDate' }}
+                  {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
+                <small><span class="green-color">{{policy.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy.expDate | date:'shortDate' }}
                 </span></small>
               </h1>
             </div>
@@ -335,7 +336,7 @@
                       <svg-holder-mono-color-svg></svg-holder-mono-color-svg> {{ 'POLICY_HOLDER' | translate }}
                     </h2>
                     
-                    <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insurer; let i = index">
+                    <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
                       <div class="col">
                         <strong>{{ holder['Insurer Name'] }}</strong>
                       </div>
@@ -357,16 +358,22 @@
                 </h2>
                 <div class="margin-bottom mb16">
                   <div>
-                    <strong>{{ policy?.property[0].address.streetName }}  {{ policy?.property[0].address.city }}  {{ policy?.property[0].address.state }}  {{ policy?.property[0].address.zipCode.code }}</strong>
+                    <strong>
+                      {{ 'property address' }}
+                      <!-- {{ policy.property[0].address.streetName }}  {{ policy.property[0].address.city }}  {{ policy.property[0].address.state }}  {{ policy.property[0].address.zipCode.code }} -->
+                    </strong>
                   </div>
                   <div>
-                    {{ 'APARTMENT' | translate}}: <strong> {{ policy?.property[0].address.streetName }}</strong>
+                      {{ 'property address' }}
+                    <!-- {{ 'APARTMENT' | translate}}: <strong> {{ policy.property[0].address.streetName }}</strong> -->
                   </div>
                 </div>
-                <div id="map-container" class="z-depth-1-half" style="height: 150px">
-                  <iframe [src]="getAddress([policy?.property[0].address.streetName, policy?.property[0].address.city, policy?.property[0].address.state, policy?.property[0].address.zipCode.code ])" 
-                  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="w-100"></iframe>
-                </div>
+                              
+                <iframe height="168" id="gmap_canvas" 
+                [src]="getAddress(['MA', 'USA'])" 
+                  frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                  <!-- [src]="getAddress([policy.property[0].address.streetName, policy.property[0].address.city, policy.property[0].address.state, policy.property[0].address.zipCode.code ])"  -->
+                </iframe>
               </div>
             </div>
       
@@ -392,10 +399,10 @@
                       {{ 'YOUR_AGENT' | translate }}
                     </h2>
                     <strong>
-                      {{ policy?.agent.agentName }}
+                      {{ policy.agent.agentName }}
                     </strong>
-                    <p class="title-case">{{ policy?.agent.address.streetName  }} {{ policy?.agent.address.city }} {{ policy?.agent.address.state }} {{ policy?.agent.address.zipCode.code }}</p>
-                    <p>{{'PHONE' | translate }}: <a href="tel:{{ policy?.agent.agentPhone.number }}" class="underline"> {{ policy?.agent.agentPhone.number }}</a></p>
+                    <p class="title-case">{{ policy.agent.address.streetName  }} {{ policy.agent.address.city }} {{ policy.agent.address.state }} {{ policy.agent.address.zipCode.code }}</p>
+                    <p>{{'PHONE' | translate }}: <a href="tel:{{ policy.agent.agentPhone.number }}" class="underline"> {{ policy.agent.agentPhone.number }}</a></p>
                   </div>
                 </div>
           
@@ -418,7 +425,7 @@
                       {{ 'PAPERLESS' | translate}}
                     </h2>
     
-                    <ng-container *ngIf="!policy?.policyFlags.isEft">
+                    <ng-container *ngIf="!policy.policyFlags.isEft">
                         <p>{{ 'PAPERLESS_PARTIAL' | translate}}</p>
                         <div class="paperless row">
                           <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 row">
@@ -455,7 +462,7 @@
                           </div>
                         </div>
                     </ng-container>
-                    <ng-container *ngIf="policy?.policyFlags.isEft">
+                    <ng-container *ngIf="policy.policyFlags.isEft">
                         <div class="paperless row">
                           <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 row">
                             <div class="col paperless-icon">
@@ -515,7 +522,7 @@
                         <div class="row"><div class="col"><strong> {{ 'MAILING' | translate}}</strong></div></div>
                         <div class="row">
                           <div class="col address-copy">
-                              *policy holder address*
+                              {{ policy.insured[0].mailingAddress.streetName }}  {{ policy.insured[0].mailingAddress.city }}  {{ policy.insured[0].mailingAddress.state }}  {{ policy.insured[0].mailingAddress.zipCode.code }}
                           </div>
                           <div class="col edit-address">
                               <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>

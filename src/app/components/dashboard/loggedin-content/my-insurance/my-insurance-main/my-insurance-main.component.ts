@@ -85,14 +85,14 @@ export class MyInsuranceMainComponent implements OnInit {
       }
     );
 
-    this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
-      console.log(policyResponse);
-      this.policyResponse = policyResponse;
-    });
+    // this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
+    //   console.log(policyResponse);
+    //   this.policyResponse = policyResponse;
+    // });
 
-    this.billingDataService.$billingDetails.subscribe((billingResponse)=>{
+    this.billingDataService.$billingDetails.subscribe((billingResponse) => {
       console.log(billingResponse);
-     this.billingResponse = billingResponse;
+      this.billingResponse = billingResponse;
     });
 
   }

@@ -9,7 +9,8 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class PolicyDetailsService {
 
-  private billingDataAll: any[] = [];
+  private policyBillingDataAll: any[] = [];
+  private backendUrl : string = 'https://mdv-doctest:8084';
 
   constructor(
     private http: HttpClient,
@@ -19,21 +20,31 @@ export class PolicyDetailsService {
   ) { }
 
   getPolicyDetailsByEmail(email: string){
+    // const url = `${this.backendUrl}/personal-policies/${email}`;
     const url = `${environment.backend_server_url}/personal-policies/${email}`;
     return this.http.get(url).pipe(map((policyResponse: any[]) => {
-      this.policyDataService.updatePolicyDetails(policyResponse);
+      // this.policyDataService.updatePolicyDetails(policyResponse);
       policyResponse.forEach((policy) => {
         this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber).subscribe((billingResponse: any[]) => {
-          this.billingDataAll.push(...billingResponse);
+          this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}})]);
         });
       });
-      this.billingDataService.updateBillingDetails(this.billingDataAll);
+      this.billingDataService.updateBillingDetails(this.policyBillingDataAll);
       // return this.billingDataAll;
     }));
   }
 
   getDocumentsByPolicy(policyNumber: string){
+    // const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;
     const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/documents`;
+    this.http.get(url).subscribe((response) => {
+      this.policyDataService.updatePolicyDetails(response);
+    });
+  }
+
+  getDocumentById(documentId: string){
+    // const url = `${this.backendUrl}/personal-policies/document/${documentId}`;
+    const url = `${environment.backend_server_url}/personal-policies/document/{documentId}`;
     this.http.get(url).subscribe((response) => {
       this.policyDataService.updatePolicyDetails(response);
     });

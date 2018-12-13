@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
 import { DomSanitizer, SafeUrl }    from '@angular/platform-browser';
 import { Component, OnInit }        from '@angular/core';
 import { FormGroup, FormControl }   from '@angular/forms';
@@ -29,6 +31,8 @@ export class PolicyDetailsComponent implements OnInit {
   });
   vehicles:                 object;
 
+  policyDetails: any;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private alertService:   AlertService,
@@ -37,7 +41,8 @@ export class PolicyDetailsComponent implements OnInit {
     private sanitizer:      DomSanitizer,
     private walletCardService: WalletCardService,
     private userInformation: UserInfoService,
-    private testingData:    TestingDataService
+    private testingData:    TestingDataService,
+    private billingDataService: BillingDataService
   ) {
    }
 
@@ -102,53 +107,57 @@ export class PolicyDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
+      this.billingDataService.$billingDetails.pipe(map((policies: any[]) => {
+        return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+      })).subscribe((policy) => {
+        this.policyDetails = policy;
+      });
     });
 
-    this.userService.$user.subscribe(
-      (user) => {
-        if ( user != undefined ) {
-          this.user = user ;
-        }
-        else {
-          this.loading = true;
-          if (localStorage.getItem('access_token')) {
-            // If a user comes straight to the page turn on loading
-            this.loading = true;
-            // That way we can gather the information
-            this.userInformation
-              .policyByEmail(this.user.email)
-              .subscribe(
-                (info: any) => {
-                  console.log(info);
-                  this.user = {
-                    firstName: info[0].insurer['firstName'],
-                    middleName: info[0].insurer['middleName'],
-                    lastName: info[0].insurer['lastName'],
-                    policyDetails: info
-                  };
-                  this.userService.updateUser(this.user);
-                  this.loading = false;
-                },
-                (err) => {
-                  this.loading = false;
-                  console.log('login success but verifyuser err', err);
-                }
-              )
-            ;
-          }
-          else {
-            this.loading = false;
-            this.user = this.testingData.testDatafunction();
-            this.userService.updateUser(this.user);
-          }
-        }
-      }
-    );
+    // this.userService.$user.subscribe(
+    //   (user) => {
+    //     if ( user != undefined ) {
+    //       this.user = user ;
+    //     }
+    //     else {
+    //       this.loading = true;
+    //       if (localStorage.getItem('access_token')) {
+    //         // If a user comes straight to the page turn on loading
+    //         this.loading = true;
+    //         // That way we can gather the information
+    //         this.userInformation
+    //           .policyByEmail(this.user.email)
+    //           .subscribe(
+    //             (info: any) => {
+    //               console.log(info);
+    //               this.user = {
+    //                 firstName: info[0].insurer['firstName'],
+    //                 middleName: info[0].insurer['middleName'],
+    //                 lastName: info[0].insurer['lastName'],
+    //                 policyDetails: info
+    //               };
+    //               this.userService.updateUser(this.user);
+    //               this.loading = false;
+    //             },
+    //             (err) => {
+    //               this.loading = false;
+    //               console.log('login success but verifyuser err', err);
+    //             }
+    //           )
+    //         ;
+    //       }
+    //       else {
+    //         this.loading = false;
+    //         this.user = this.testingData.testDatafunction();
+    //         this.userService.updateUser(this.user);
+    //       }
+    //     }
+    //   }
+    // );
   }
 }

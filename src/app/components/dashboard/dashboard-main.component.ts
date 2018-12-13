@@ -36,9 +36,7 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
-    this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe(()=>{
-
-    });
+    this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe();
 
   }
 }

@@ -70,7 +70,7 @@ const appRoutes: Routes = [
 { path: '', component: DashboardMainComponent, canActivate: [AuthGuard],
   children: [
   { path: '', component: LoggedinContentComponent, children: [
-    { path: 'login', redirectTo: 'my-insurance' },
+    { path: '', redirectTo: 'my-insurance', pathMatch: 'full' },
     { path: 'my-insurance', component: MyInsuranceComponent,
     children: [
       { path: '',  component: MyInsuranceMainComponent, pathMatch: 'full' },
