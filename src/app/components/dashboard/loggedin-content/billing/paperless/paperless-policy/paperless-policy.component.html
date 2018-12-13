@@ -1,0 +1,73 @@
+<p class="no-margin">e-Policy allows you to view your documents online anytime.</p>
+<p class="no-margin">You will receive an email notification whenever a new document is available.</p>
+<p class="no-margin"><strong>Combine with e-PAY or e-BILL to get our Paperless Discount!.</strong></p>
+
+<h2 class="title no-border margin-top mt32">
+  Policies Elegible
+</h2>
+<table mdbTable class="claims-table">
+  <tbody class="med-grey-color">
+    <tr class="row-content border-full grey-border auto enroll padding-vertical pv8">
+      <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image"><img src="./assets/img/images/car_background.png" width="20" /></td>
+      <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8">Auto &ndash; ABC123 </td>
+      <td class="no-padding green-text padding-vertical pv8 align-middle">07.01.18 to 06.31.19</td>
+      <td class="padding-vertical pv8 enroll-button align-middle">
+        <mapfre-button 
+          additionalClasses="no-margin float-right btn mapfre waves-light primary ghost small w-50"
+          (click)="enroll()">
+          {{ 'ENROLL' | translate }}
+        </mapfre-button>
+      </td>
+    </tr>
+    <tr class="row-content border-full grey-border auto enrolled padding-vertical pv8">
+      <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image"><img src="./assets/img/images/car_background.png" width="20" /></td>
+      <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8">Auto &ndash; ABC123 </td>
+      <td class="no-padding green-text padding-vertical pv8 align-middle">07.01.18 to 06.31.19</td>
+      <td class="padding-vertical pv8 enroll-button align-middle">
+          <a class="red-text float-right align-middle"><i class="far fa-times-circle"></i></a>
+          <div class="green-text float-right align-middle"><svg-check-icon-svg></svg-check-icon-svg> <span>Enrolled</span></div>
+      </td>
+    </tr>
+    <tr class="row-content border-full grey-border property enroll padding-vertical pv8">
+        <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image"><img src="./assets/img/images/house_bg.png" width="20" /></td>
+        <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8">Home &ndash; ABC123 </td>
+        <td class="no-padding green-text padding-vertical pv8 align-middle">07.01.18 to 06.31.19</td>
+        <td class="padding-vertical pv8 enroll-button align-middle">
+          <mapfre-button 
+            additionalClasses="no-margin float-right btn mapfre waves-light primary ghost small w-50"
+            (click)="enroll()">
+            {{ 'ENROLL' | translate }}
+          </mapfre-button>
+        </td>
+      </tr>
+      <tr class="row-content border-full grey-border property enrolled padding-vertical pv8">
+        <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image"><img src="./assets/img/images/house_bg.png" width="20" /></td>
+        <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8">Home &ndash; ABC123 </td>
+        <td class="no-padding green-text padding-vertical pv8 align-middle">07.01.18 to 06.31.19</td>
+        <td class="padding-vertical pv8 enroll-button align-middle">
+            <a class="red-text float-right align-middle"><i class="far fa-times-circle"></i></a>
+            <div class="green-text float-right align-middle"><svg-check-icon-svg></svg-check-icon-svg> <span>Enrolled</span></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+
+<div class="row margin-top mt32">
+  <div class="col">
+    <mapfre-button
+      [additionalClasses]="'flat link small'"
+      [customIcon]="'./assets/img/icons/back-arrow.png'"
+      [iconClasses]="'align-middle'"
+      [routerLink]="['/billing/paperless']"
+      [showIconsCustom]="true">  
+      {{ 'BACK' | translate }}
+    </mapfre-button>
+  </div>
+  <div class="col">
+    <mapfre-button 
+      additionalClasses="primary basic large  float-right"
+      [routerLink]="['e-policy']">
+      {{ 'CONTINUE' | translate }}
+    </mapfre-button>
+  </div>
+</div>

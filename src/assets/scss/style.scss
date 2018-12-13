@@ -175,6 +175,14 @@ h1.title-cta {
   }
 }
 
+.col1-image {
+  max-width: 177px;
+
+  img {
+    width: 144px;
+  }
+}
+
 .container {
   &.loggedin {
     max-width:        1190px;

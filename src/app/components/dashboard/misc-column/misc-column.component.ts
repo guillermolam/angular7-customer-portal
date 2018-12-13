@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-misc-column',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./misc-column.component.scss']
 })
 export class MiscColumnComponent implements OnInit {
-
+  @Input() paperless: boolean = false;
   constructor() { }
 
   ngOnInit() {

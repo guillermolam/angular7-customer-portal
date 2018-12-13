@@ -12,11 +12,11 @@ export class BillingSidebarComponent implements OnInit {
   @Input() policy;
            billingRepModal:               ModalOptions;
            inputs:                        any[];
-           hideModal;
+           hideModal:                     boolean;
 
   constructor(
     service:                              ContactBillingRepService
-  ) { 
+  ) {
     this.inputs = service.getInputs();
     this.billingRepModal = new ModalOptions({
       additionalButtonClasses:            'link primary xsmall full',
@@ -27,6 +27,15 @@ export class BillingSidebarComponent implements OnInit {
       modalTranslateCopy:                 'MODAL_BILLING_REP_HELP_TITLE',
       onLoad:                             false
     });
+  }
+
+  hideModalOnCanel(event): void {
+    this.hideModal = !this.hideModal;
+    setTimeout(() => {
+      this.hideModal = !this.hideModal;
+    },
+      500
+    );
   }
 
   ngOnInit() {

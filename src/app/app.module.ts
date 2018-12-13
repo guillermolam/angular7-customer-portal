@@ -29,9 +29,16 @@ import { JwtInterceptor }                       from './_helpers/jwt.interceptor
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
 import { BillingObservableService }             from './_services/billing.service';
+import { ApartmentPipePipe }                    from './_helpers/_pipes/apartment-pipe.pipe';
+import { CustomDateFormatPipe }                 from './_helpers/_pipes/custom-date-format.pipe';
+import { ProfileSettingsRoutingService }        from './_services/profile-settings/profile-settings-routing.service';
+import { ProfileConfirmModalService }           from './_services/profile-settings/profile-confirm-modal.service';
+import { StorageServiceObservablesService }     from './_services/storage-service-observables/storage-service-observables.service';
+import { PolicyDataService }                    from './_services/my-insurance/data-services/policy-data.service';
+import { PolicyDetailsService }                 from './_services/my-insurance/policy-details.service';
+
 // ----- Account ----- //
 import { DashboardMainComponent }                 from './components/dashboard/dashboard-main.component';
-import { SidenavComponent }                     from './components/dashboard/sidenav/sidenav.component';
 // ----- Routes ----- //
 import { CreateNewPasswordComponent }           from './routes/create-new-password/create-new-password.component';
 import { DashboardComponent }                   from './routes/my-insurance/dashboard.component';
@@ -77,13 +84,10 @@ import { PolicyDetailsComponent }               from './components/dashboard/log
 import { ProfileComponent } from './components/dashboard/loggedin-content/profile/profile.component';
 import { ProfileMainComponent } from './components/dashboard/loggedin-content/profile/profile-main/profile-main.component';
 import { ProfilePhoneComponent } from './components/dashboard/loggedin-content/profile/profile-phone/profile-phone.component';
-import { ApartmentPipePipe } from './_helpers/_pipes/apartment-pipe.pipe';
 import { BillingDetailsComponent } from './components/dashboard/loggedin-content/my-insurance/billing/billing.component';
 import { DocumentDetailsComponent } from './components/dashboard/loggedin-content/my-insurance/documents/documents.component';
-
 import { ChangePhoneComponent } from './components/forms/dynamic-forms/profile-settings-forms/change-phone/change-phone.component';
 import { ProfileCheckingAccountComponent } from './components/dashboard/loggedin-content/profile/profile-checking-account/profile-checking-account.component';
-import { CustomDateFormatPipe } from './_helpers/_pipes/custom-date-format.pipe';
 import { ChangeAddressComponent } from './components/forms/dynamic-forms/profile-settings-forms/change-address/change-address.component';
 import { ProfileEditPasswordComponent } from './components/dashboard/loggedin-content/profile/profile-edit-password/profile-edit-password.component';
 import { ChangePasswordFormComponent } from './components/forms/dynamic-forms/change-password-form/change-password-form.component';
@@ -100,8 +104,6 @@ import { InformationLegalComponent } from './components/dashboard/loggedin-conte
 import { ContactScreenComponent } from './components/screens/contact-screen/contact-screen.component';
 import { EditEmailFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/edit-email-form/edit-email-form.component';
 import { ProfileEmailConfirmComponent } from './components/dashboard/loggedin-content/profile/profile-email-confirm/profile-email-confirm.component';
-import { ProfileSettingsRoutingService } from './_services/profile-settings/profile-settings-routing.service';
-import { ProfileConfirmModalService } from './_services/profile-settings/profile-confirm-modal.service';
 import { ProfileConfirmModalComponent } from './components/dashboard/loggedin-content/profile/profile-confirm-modal/profile-confirm-modal.component';
 import { ClaimsHomeComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-active/claims-home.component';
 import { ClaimsWrapperComponent } from './components/dashboard/loggedin-content/claims/claims.component';
@@ -113,7 +115,6 @@ import { NoClaimsComponent } from './components/dashboard/loggedin-content/claim
 import { ClaimsReportComponent } from './components/dashboard/loggedin-content/claims/claims-report/claims-report.component';
 import { ClaimsHomeCarComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-car/claims-home-car.component';
 import { ClaimsHomePropertyComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-property/claims-home-property.component';
-import { StorageServiceObservablesService } from './_services/storage-service-observables/storage-service-observables.service';
 import { BillingMainComponent } from './components/dashboard/loggedin-content/billing/billing-main.component';
 import { BillingNewpaymentComponent } from './components/dashboard/loggedin-content/billing/billing-newpayment/billing-newpayment.component';
 import { LinkPolicyComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/link-policy/link-policy.component';
@@ -126,9 +127,14 @@ import { LoggedinContentComponent } from './components/dashboard/loggedin-conten
 import { MyInsuranceMainComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
 import { NewPaymentNoCheckingComponent } from './components/forms/dynamic-forms/new-payment-no-checking/new-payment-no-checking.component';
 import { BillingConfirmComponent } from './components/dashboard/loggedin-content/billing/billing-confirm/billing-confirm.component';
-import { PolicyDataService } from './_services/my-insurance/data-services/policy-data.service';
-import { PolicyDetailsService } from './_services/my-insurance/policy-details.service';
 import { ContactBillingRepFormComponent } from './components/forms/dynamic-forms/contact-billing-rep-form/contact-billing-rep-form.component';
+import { PaperlessComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless.component';
+import { PaperlessMiscComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-misc/paperless-misc.component';
+import { PaperlessBillComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-bill/paperless-bill.component';
+import { PaperlessPayComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/paperless-pay.component';
+import { PaperlessPolicyComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-policy/paperless-policy.component';
+import { ClaimsMiscComponent } from './components/dashboard/loggedin-content/claims/claims-misc/claims-misc.component';
+import { PaperlessFirstTimeComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-time/paperless-time.component';
 
 if (environment.production) {
   enableProdMode();
@@ -149,7 +155,6 @@ export function tokenGetter() {
     DashboardComponent,
     ForgotPasswordComponent,
     LoginComponent,
-    SidenavComponent,
     SignupComponent,
     LoginFormComponent,
     TestingComponent,
@@ -232,6 +237,13 @@ export function tokenGetter() {
     MyInsuranceMainComponent,
     BillingConfirmComponent,
     ContactBillingRepFormComponent,
+    PaperlessComponent,
+    PaperlessMiscComponent,
+    PaperlessBillComponent,
+    PaperlessPayComponent,
+    PaperlessPolicyComponent,
+    ClaimsMiscComponent,
+    PaperlessFirstTimeComponent,
 
   ],
   imports: [

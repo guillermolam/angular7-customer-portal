@@ -61,9 +61,6 @@ export class BillingConfirmComponent implements OnInit {
         this.billing =                     billing;
         console.log('billing', billing, typeof billing)
     });
-  
-
-    
   }
 
 }

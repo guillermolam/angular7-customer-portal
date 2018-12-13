@@ -1,11 +1,11 @@
-import { BillingDataService } from './../../_services/my-insurance/data-services/billing-data.service';
-import { PolicyDetailsService } from './../../_services/my-insurance/policy-details.service';
-import { BillingDetailsService } from './../../_services/my-insurance/billing-details.service';
-import { UserService } from './../../_services/user.service';
-import { StorageServiceObservablesService } from './../../_services/storage-service-observables/storage-service-observables.service';
-import { Component, OnInit }      from '@angular/core';
-import { Router, NavigationEnd }                 from '@angular/router';
-import { PolicyDataService } from '../../_services/my-insurance/data-services/policy-data.service';
+import { Component, OnInit }                  from '@angular/core';
+import { Router, NavigationEnd }              from '@angular/router';
+import { PolicyDataService }                  from '../../_services/my-insurance/data-services/policy-data.service';
+import { BillingDataService }                 from './../../_services/my-insurance/data-services/billing-data.service';
+import { PolicyDetailsService }               from './../../_services/my-insurance/policy-details.service';
+import { BillingDetailsService }              from './../../_services/my-insurance/billing-details.service';
+import { UserService }                        from './../../_services/user.service';
+import { StorageServiceObservablesService }   from './../../_services/storage-service-observables/storage-service-observables.service';
 
 @Component({
   selector: 'app-dashboard-main',
@@ -14,9 +14,9 @@ import { PolicyDataService } from '../../_services/my-insurance/data-services/po
 })
 export class DashboardMainComponent implements OnInit {
 
-  reportClaim: boolean=true;
+  reportClaim: boolean = true;
 
-  constructor( 
+  constructor(
     private router: Router,
     private policyDetailsService: PolicyDetailsService,
     private userService: UserService,
@@ -24,10 +24,10 @@ export class DashboardMainComponent implements OnInit {
 
   ngOnInit() {
 
-    this.router.events.subscribe((event)=>{
-      if(event instanceof NavigationEnd){
+    this.router.events.subscribe((event) => {
+      if ( event instanceof NavigationEnd ) {
         // console.log(event.url);
-        if(event.url === '/my-insurance'){
+        if ( event.url === '/my-insurance' ) {
           this.reportClaim = true;
         }
         else {
@@ -36,9 +36,10 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
-    this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe(()=>{
-
-    });
+    this.policyDetailsService
+      .getPolicyDetailsByEmail(
+        this.storageService.getUserFromStorage()
+      ).subscribe( () => { });
 
   }
 }
