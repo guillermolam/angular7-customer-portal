@@ -1,6 +1,6 @@
 import { HttpClient }         from '@angular/common/http';
 import { Injectable }         from '@angular/core';
-import { of, throwError }     from 'rxjs';
+import { of, throwError, pipe }     from 'rxjs';
 import { Observable }         from 'rxjs/Observable';
 import { catchError, map }    from 'rxjs/operators';
 import { environment }        from '../../../environments/environment';
@@ -192,6 +192,17 @@ export class AuthenticationService {
         catchError( (error) => throwError(error))
       )
     ;
+  }
+
+  verifyPolicyLink(userObject): Observable<boolean>{ 
+    const user =            userObject.$user.source.value;
+    const policyNumber =    user.policyDetails[0].policynumber.policynumber;
+    const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/links`;
+
+    return this.http.get(url).pipe(
+      map(()=> true),
+      catchError(()=> throwError(false)
+      ));
   }
 
 }
