@@ -43,7 +43,7 @@
                   <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
                   <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
                     <div class="col">
-                      <strong>{{ holder['Insurer Name'] }}</strong>
+                      <strong>{{ holder['Insured Name'] }}</strong>
                     </div>
                     
                     <div class="col" *ngIf="i == 0">
@@ -338,7 +338,7 @@
                     
                     <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
                       <div class="col">
-                        <strong>{{ holder['Insurer Name'] }}</strong>
+                        <strong>{{ holder['Insured Name'] }}</strong>
                       </div>
                       
                       <div class="col" *ngIf="i == 0">
