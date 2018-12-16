@@ -12,6 +12,7 @@ import { UserService }              from '../../../../../_services/user.service'
 import { TestingDataService }       from '../../../../../_helpers/testing-data.service';
 import { WalletCardService }        from '../../../../../_services/_iam/wallet-card.service';
 import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
+import * as isEqual from 'lodash.isequal';
 
 @Component({
   selector: 'app-policy-details-screen',
@@ -32,6 +33,8 @@ export class PolicyDetailsComponent implements OnInit {
   vehicles:                 object;
 
   policyDetails: any;
+  sameMailingAddress: boolean;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -116,6 +119,7 @@ export class PolicyDetailsComponent implements OnInit {
         return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
       })).subscribe((policy) => {
         this.policyDetails = policy;
+        this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
       });
     });
 

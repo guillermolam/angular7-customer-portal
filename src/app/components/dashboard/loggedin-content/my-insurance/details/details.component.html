@@ -279,7 +279,7 @@
                     <div class="row"><div class="col"><strong> {{ 'MAILING' | translate}}</strong></div></div>
                     <div class="row">
                       <div class="col address-copy">
-                          {{ policy.insured[0].mailingAddress.streetName }}  {{ policy.insured[0].mailingAddress.city }}  {{ policy.insured[0].mailingAddress.state }}  {{ policy.insured[0].mailingAddress.zipCode.code }}
+                          {{ policy.mailingAddress.streetName }}  {{ policy.mailingAddress.city }}  {{ policy.mailingAddress.state }}  {{ policy.mailingAddress.zipCode.code }}
                       </div>
                       <div class="col edit-address">
                           <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
@@ -290,10 +290,16 @@
                 <div class="residential-add margin-bottom mb16 address">
                   <div class="row"><div class="col"><strong> {{ 'RESIDENTIAL' | translate}}</strong></div></div>
                   <div class="row">
-                    <div class="col address-copy">
-                      {{ policy.insured[0].resedentialAddress.streetName }}  {{ policy.insured[0].resedentialAddress.city }}  {{ policy.insured[0].resedentialAddress.state }}  {{ policy.insured[0].resedentialAddress.zipCode.code }} 
-                        <!-- {{ 'SAME_AS_MAILING' | translate}} -->
-                    </div>
+                      <div class="col address-copy" *ngIf="!sameMailingAddress; else sameAsMailing">
+                          {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }} 
+                            <!-- {{ 'SAME_AS_MAILING' | translate}} -->
+                        </div>
+                        <ng-template #sameAsMailing> 
+                            <div class="col address-copy">
+                                <!-- {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }}  -->
+                                  {{ 'SAME_AS_MAILING' | translate}}
+                              </div>
+                        </ng-template>
                     <div class="col edit-address">
                         <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
                     </div>
@@ -522,7 +528,7 @@
                         <div class="row"><div class="col"><strong> {{ 'MAILING' | translate}}</strong></div></div>
                         <div class="row">
                           <div class="col address-copy">
-                              {{ policy.insured[0].mailingAddress.streetName }}  {{ policy.insured[0].mailingAddress.city }}  {{ policy.insured[0].mailingAddress.state }}  {{ policy.insured[0].mailingAddress.zipCode.code }}
+                              {{ policy.mailingAddress.streetName }}  {{ policy.mailingAddress.city }}  {{ policy.mailingAddress.state }}  {{ policy.mailingAddress.zipCode.code }}
                           </div>
                           <div class="col edit-address">
                               <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
@@ -534,9 +540,16 @@
                     <div class="residential-add margin-bottom mb16 address">
                       <div class="row"><div class="col"><strong> {{ 'RESIDENTIAL' | translate}}</strong></div></div>
                       <div class="row">
-                        <div class="col address-copy">
-                            {{ 'SAME_AS_MAILING' | translate}}
-                        </div>
+                          <div class="col address-copy" *ngIf="!sameMailingAddress; else sameAsMailing">
+                              {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }} 
+                                <!-- {{ 'SAME_AS_MAILING' | translate}} -->
+                            </div>
+                            <ng-template #sameAsMailing> 
+                                <div class="col address-copy">
+                                    <!-- {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }}  -->
+                                      {{ 'SAME_AS_MAILING' | translate}}
+                                  </div>
+                            </ng-template>
                         <div class="col edit-address">
                             <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
                         </div>
