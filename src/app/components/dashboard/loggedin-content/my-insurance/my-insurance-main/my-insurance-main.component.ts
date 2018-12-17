@@ -91,7 +91,7 @@ export class MyInsuranceMainComponent implements OnInit {
     // });
 
     this.billingDataService.$billingDetails.subscribe((billingResponse) => {
-      // console.log(billingResponse);
+      console.log(billingResponse);
       this.billingResponse = billingResponse;
     });
 

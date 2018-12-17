@@ -47,7 +47,7 @@
                 <tbody> 
                   <tr class="row row-content" 
                     *ngFor="let doc of policy.documentsDetails; let i = index" 
-                    (click)="asALink(doc.documentId)" >
+                    (click)="onDownloadDocument(doc.documentId, policy.policynumber.policynumber, doc.type)" >
                       <td class="col  col-type" scope="row">
                         <div *ngIf="doc.type == 'HONBEND' " class="circle-with-type"> E </div>
                         <div *ngIf="doc.type == 'HONB-END' " class="circle-with-type"> E </div>
@@ -68,7 +68,7 @@
                       </td>
                       <td class="col col-name">{{doc.description}}</td>
                       <td class="col col-date">{{doc.transactionDate | date}}</td>
-                      <td class="col col-view">view <i class="fas fa-angle-right"></i> </td>
+                      <td class="col col-view">VIEW <i class="fas fa-angle-right"></i> </td>
                   </tr>
                 </tbody>
                 

@@ -136,7 +136,7 @@ export class PolicyDetailsComponent implements OnInit {
         // console.log(this.policyDetails);
         // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
       }
-    }
+    })
       // this.billingDataService.$billingDetails
       // .pipe(map((policies: any[]) => {
       //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);

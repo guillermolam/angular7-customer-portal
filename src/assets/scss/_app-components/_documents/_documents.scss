@@ -12,11 +12,18 @@
         margin: 0;
       }
     }
+
+    td{
+      padding: 0.75rem;
+    }
+
   }
   
   &.table thead th {
     border: thin solid #ccc;
   }
+
+  
 
   .row-content {
     border-bottom: thin solid #ccc;

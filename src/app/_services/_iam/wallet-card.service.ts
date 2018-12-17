@@ -14,6 +14,7 @@ export class WalletCardService {
     const options = {
         responseType:               'arraybuffer' as 'json'
     };
+    // const url: string =           `https://mdv-doctest:8084/customers/accounts/wallet/${email}`;
     const url: string =           `${environment.backend_server_url}/customers/accounts/wallet/${email}`;
     return this.http.get(url, options);
   }

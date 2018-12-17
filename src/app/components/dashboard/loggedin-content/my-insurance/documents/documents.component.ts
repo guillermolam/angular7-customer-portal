@@ -14,6 +14,7 @@ import { UserInfoService }          from '../../../../../_services/_userinformat
 import { WalletCardService }        from '../../../../../_services/_iam/wallet-card.service';
 import { PolicyDetailsService }    from './../../../../../_services/my-insurance/policy-details.service';
 import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
+import { saveAs }             from 'file-saver';
 
 @Component({
   selector: 'app-documents',
@@ -194,7 +195,7 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
       .subscribe((policy) => {
         this.policyDetails = policy;
         // console.log(this.policyDetails);
-      }
+      })
     });
 
 
@@ -226,4 +227,17 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
 
   }
 
+  // constructor(
+  //   private walletCardService: WalletCardService,
+  //   private route: ActivatedRoute
+  // ) { }
+
+  onDownloadDocument(documentId: string, policyNumber, documentType) {
+      this.policyDetailsService
+      .getDocumentById(documentId)
+      .subscribe((byteArray) => {
+        const blob = new Blob([byteArray], {type: "application/pdf"});
+        saveAs(blob, `document-${policyNumber}-${documentType}.pdf`);
+      });
+  }
 }
