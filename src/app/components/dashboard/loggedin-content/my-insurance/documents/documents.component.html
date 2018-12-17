@@ -1,18 +1,18 @@
-<ng-container *ngFor="let policy of user?.policyDetails">
-  <ng-container *ngIf="policy?.policynumber.policynumber == policyId">
+<ng-container *ngFor="let policy of policyDetails">
+  <ng-container *ngIf="policy.policynumber.policynumber == policyId">
 
     <mapfre-card 
       [singleCard]="false"
-      [additionalClasses]="'policy-details documents details ' + policy?.policyType">
+      [additionalClasses]="'policy-details documents details ' + policy.policyType">
       <header class="margin-bottom mb16 no-margins-hug hug-header">
         <div class="policy-background">
-          <div class="car" *ngIf="policy?.policyType == 'AUTO'"></div>
-          <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
+          <div class="car" *ngIf="policy.policyType == 'AUTO'"></div>
+          <div class="house" *ngIf="policy.policyType == 'HOME'"></div>
         </div>
         <div class="type-title">
             <h1 class="title">
-                {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
-              <small><span class="green-color">{{policy?.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy?.expDate | customDateFormat }}
+                {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
+              <small><span class="green-color">{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}
               </span></small>
             </h1>
           </div>
@@ -24,7 +24,7 @@
           <mapfre-loading></mapfre-loading>
         </ng-container>
 
-      <ng-template [ngIf]="showDocuments && !loading" >
+      <ng-template [ngIf]="showDocuments(policy)" >
         <section class="row documents-content"> 
           <div class="col">
             <div>
@@ -46,7 +46,7 @@
                 </thead>
                 <tbody> 
                   <tr class="row row-content" 
-                    *ngFor="let doc of documents; let i = index" 
+                    *ngFor="let doc of policy.documentsDetails; let i = index" 
                     (click)="asALink(doc.documentId)" >
                       <td class="col  col-type" scope="row">
                         <div *ngIf="doc.type == 'HONBEND' " class="circle-with-type"> E </div>
@@ -78,7 +78,7 @@
         </section>
       </ng-template>
 
-      <ng-template [ngIf]="showNoDocuments && !loading">
+      <ng-template [ngIf]="!showDocuments(policy)">
         <section class="row documents-content no-documents"> 
           <div class="col">
               <div class="row mapfre-card-download-button ">

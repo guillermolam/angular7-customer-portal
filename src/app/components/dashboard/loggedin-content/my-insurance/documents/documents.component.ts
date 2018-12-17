@@ -1,5 +1,5 @@
 import { TestingDataService } from '../../../../../_helpers/testing-data.service';
-
+import { map } from 'rxjs/operators';
 import { MdbTablePaginationComponent, MdbTableService } from 'angular-bootstrap-md';
 import { Component, OnInit,
   ViewChild, HostListener,
@@ -12,6 +12,8 @@ import { User }                     from '../../../../../_models/user';
 import { UserService }              from '../../../../../_services/user.service';
 import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 import { WalletCardService }        from '../../../../../_services/_iam/wallet-card.service';
+import { PolicyDetailsService }    from './../../../../../_services/my-insurance/policy-details.service';
+import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
 
 @Component({
   selector: 'app-documents',
@@ -30,8 +32,10 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   policyId:                 number;
   previous:                 any = [];
   showNoDocuments:          boolean = false;
-  showDocuments:            boolean = false;
+  // showDocuments:            boolean = false;
   user:                     User;
+
+  policyDetails: any;
 
   /**
    * 
@@ -51,7 +55,9 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
     private cdRef:          ChangeDetectorRef,
     private walletCardService: WalletCardService,
     private userInformation: UserInfoService,
-    private testingData:    TestingDataService
+    private policyDetailsService:  PolicyDetailsService,
+    private testingData:    TestingDataService,
+    private billingDataService: BillingDataService
     ) {}
 
   asALink(url): void {
@@ -74,38 +80,38 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
 
   getUserData(parm): void {
     this.loading = true;
-    this.userService.$user.subscribe(
-      (user) => {
-        if ( user != undefined ) {
-          this.user = user ;
-        }
-        else {
-          if (localStorage.getItem('access_token')) {
-            this.userInformation
-            .policyByEmail(this.user)
-            .subscribe(
-              (info: any) => {
-                console.log(info);
-                this.user = {
-                  firstName: info[0].insurer['firstName'],
-                  middleName: info[0].insurer['middleName'],
-                  lastName: info[0].insurer['lastName'],
-                  policyDetails: info
-                };
-                this.userService.updateUser(this.user);
-              },
-              (err) => {
-                console.log('login success but verifyuser err', err);
-              }
-            );
-          }
-          else {
-            this.user = this.testingData.testDatafunction();
-            this.userService.updateUser(this.user);
-          }
-        }
-      }
-    );
+    // this.userService.$user.subscribe(
+    //   (user) => {
+    //     if ( user != undefined ) {
+    //       this.user = user ;
+    //     }
+    //     else {
+    //       if (localStorage.getItem('access_token')) {
+    //         this.userInformation
+    //         .policyByEmail(this.user)
+    //         .subscribe(
+    //           (info: any) => {
+    //             console.log(info);
+    //             this.user = {
+    //               firstName: info[0].insurer['firstName'],
+    //               middleName: info[0].insurer['middleName'],
+    //               lastName: info[0].insurer['lastName'],
+    //               policyDetails: info
+    //             };
+    //             this.userService.updateUser(this.user);
+    //           },
+    //           (err) => {
+    //             console.log('login success but verifyuser err', err);
+    //           }
+    //         );
+    //       }
+    //       else {
+    //         this.user = this.testingData.testDatafunction();
+    //         this.userService.updateUser(this.user);
+    //       }
+    //     }
+    //   }
+    // );
     
     /*
       this.userInformation
@@ -159,6 +165,12 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
     this.lastItemIndex = data.last;
   }
 
+
+  showDocuments(policyResponse): boolean{
+    return policyResponse.documentsDetails.length !== 0;
+  }
+
+
   ngAfterViewInit() {
    /*  
     * Please leave this in, this is for pagenation and maybe used later
@@ -178,23 +190,39 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
     // We will need this once the new endpoints are set.
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
+      this.billingDataService.$billingDetails
+      .subscribe((policy) => {
+        this.policyDetails = policy;
+        // console.log(this.policyDetails);
+      }
     });
 
-    this.getUserData(this.policyId);
 
-    if ( this.testingData.testDataDocuments(this.policyId) ) {
-      this.documents = this.testingData.testDataDocuments(this.policyId);
-      this.loading = false;
-      this.showDocuments = true;
-    // --- please do not remove this is for pagenation that maybe used later
-    // this.tableService.setDataSource(this.documents);
-    // this.documents = this.tableService.getDataSource();
-    // this.previous = this.tableService.getDataSource();
-    }
-    else {
-      this.loading = false;
-      this.showNoDocuments = true;
-    }
+    this.userService.$user.subscribe(
+        (user) => {
+          // if ( user != undefined ) {
+            this.user = user ;
+            console.log(this.user);
+          // }
+        });
+    // this.billingDataService.
+
+
+    // this.getUserData(this.policyId);
+
+    // if ( this.testingData.testDataDocuments(this.policyId) ) {
+    //   this.documents = this.testingData.testDataDocuments(this.policyId);
+    //   this.loading = false;
+    //   this.showDocuments = true;
+    // // --- please do not remove this is for pagenation that maybe used later
+    // // this.tableService.setDataSource(this.documents);
+    // // this.documents = this.tableService.getDataSource();
+    // // this.previous = this.tableService.getDataSource();
+    // }
+    // else {
+    //   this.loading = false;
+    //   this.showNoDocuments = true;
+    // }
 
   }
 

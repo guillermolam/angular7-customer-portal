@@ -3,7 +3,7 @@ import { BillingDataService } from './../../../../../_services/my-insurance/data
 import { DomSanitizer, SafeUrl }    from '@angular/platform-browser';
 import { Component, OnInit }        from '@angular/core';
 import { FormGroup, FormControl }   from '@angular/forms';
-import { ActivatedRoute, Params }   from '@angular/router';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
 import { AlertService }             from 'mapfre-design-library';
 
 import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
@@ -12,6 +12,7 @@ import { UserService }              from '../../../../../_services/user.service'
 import { TestingDataService }       from '../../../../../_helpers/testing-data.service';
 import { WalletCardService }        from '../../../../../_services/_iam/wallet-card.service';
 import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
+import { BillingDetailsService }    from './../../../../../_services/my-insurance/billing-details.service';
 import * as isEqual from 'lodash.isequal';
 
 @Component({
@@ -38,6 +39,7 @@ export class PolicyDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router:         Router,
     private alertService:   AlertService,
     private authService:    AuthenticationService,
     private userService:    UserService,
@@ -45,7 +47,8 @@ export class PolicyDetailsComponent implements OnInit {
     private walletCardService: WalletCardService,
     private userInformation: UserInfoService,
     private testingData:    TestingDataService,
-    private billingDataService: BillingDataService
+    private billingDataService: BillingDataService,
+    private billingDetailsService: BillingDetailsService
   ) {
    }
 
@@ -109,19 +112,62 @@ export class PolicyDetailsComponent implements OnInit {
     this.showMessage = e;
   }
 
+
+  isAddressEqual(policyDetail){
+    return isEqual(policyDetail.mailingAddress, policyDetail.residentialAddress);
+  }
+
   ngOnInit() {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-      this.billingDataService.$billingDetails.pipe(map((policies: any[]) => {
-        return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
-      })).subscribe((policy) => {
-        this.policyDetails = policy;
-        this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
-      });
+      this.billingDataService.$billingDetails
+    // .pipe(map((policies: any[]) => {
+    //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+    // }))
+    .subscribe((billingResponse: any[]) => {
+      if(billingResponse){
+        this.policyDetails = billingResponse;
+        // .map((policies: any[]) => {
+        //     return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+        // });
+        // console.log(this.policyDetails);
+        // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
+      }
+    }
+      // this.billingDataService.$billingDetails
+      // .pipe(map((policies: any[]) => {
+      //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+      // }))
+      // .subscribe((policy) => {
+      //   this.policyDetails = policy;
+      //   this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
+      // },
+      // err => {
+      //   this.router.navigate(['/my-insurance']);
+      // };
     });
+
+    // this.billingDataService.$billingDetails
+    // // .pipe(map((policies: any[]) => {
+    // //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+    // // }))
+    // .subscribe((billingResponse: any[]) => {
+    //   if(billingResponse){
+    //     this.policyDetails = billingResponse.filter((policy) => policy.policynumber.policynumber === 'BBQXMB');
+    //     console.log(this.policyDetails);
+    //     // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
+    //   }
+    // }
+
+
+    // this.billingDataService.$billingDetails.subscribe((billingResponse) => {
+    //   console.log(billingResponse);
+    //   this.policyDetails = billingResponse;
+    // });
+
 
     // this.userService.$user.subscribe(
     //   (user) => {

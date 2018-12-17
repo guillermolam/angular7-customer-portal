@@ -3,7 +3,7 @@
 </ng-container>
 
 <ng-container *ngFor="let policy of policyDetails">
-  <ng-container *ngIf="policy.policynumber.policynumber == policyId && !loading">
+  <ng-container *ngIf="policy.policynumber.policynumber == policyId">
     <ng-container *ngIf="policy.policyType == 'AUTO'">
       <mapfre-card 
         [singleCard]="false"
@@ -46,10 +46,10 @@
                       <strong>{{ holder['Insured Name'] }}</strong>
                     </div>
                     
-                    <div class="col" *ngIf="i == 0">
+                    <div class="col" *ngIf="holder.isPrimaryInsured">
                       <small>{{ 'PRIMARY' | translate }}</small>
                     </div>
-                    <div class="col" *ngIf="i != 0">
+                    <div class="col" *ngIf="!holder.isPrimaryInsured">
                         <small>{{ 'SECONDARY' | translate }}</small>
                     </div>
                   </div>
@@ -79,7 +79,7 @@
                           <div class="col input-field mapfre">
                             <input 
                               mdbInputDirective 
-                              value="{{vehicle?.mileage}}" 
+                              value="{{vehicle?.odometerReading}}" 
                               type="number" 
                               [id]="'form-input'+i" 
                               class="form-control" 
@@ -290,7 +290,7 @@
                 <div class="residential-add margin-bottom mb16 address">
                   <div class="row"><div class="col"><strong> {{ 'RESIDENTIAL' | translate}}</strong></div></div>
                   <div class="row">
-                      <div class="col address-copy" *ngIf="!sameMailingAddress; else sameAsMailing">
+                      <div class="col address-copy" *ngIf="!isAddressEqual(policy); else sameAsMailing">
                           {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }} 
                             <!-- {{ 'SAME_AS_MAILING' | translate}} -->
                         </div>
@@ -540,7 +540,7 @@
                     <div class="residential-add margin-bottom mb16 address">
                       <div class="row"><div class="col"><strong> {{ 'RESIDENTIAL' | translate}}</strong></div></div>
                       <div class="row">
-                          <div class="col address-copy" *ngIf="!sameMailingAddress; else sameAsMailing">
+                          <div class="col address-copy" *ngIf="!isAddressEqual(policy); else sameAsMailing">
                               {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }} 
                                 <!-- {{ 'SAME_AS_MAILING' | translate}} -->
                             </div>

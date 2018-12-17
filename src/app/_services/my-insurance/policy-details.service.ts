@@ -26,7 +26,10 @@ export class PolicyDetailsService {
       // this.policyDataService.updatePolicyDetails(policyResponse);
       policyResponse.forEach((policy) => {
         this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber).subscribe((billingResponse: any[]) => {
-          this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}})]);
+          this.getDocumentsByPolicy(policy.policynumber.policynumber).subscribe((documentsResponse: any[]) => {
+            this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}}, {documentsDetails: documentsResponse})]);
+          });
+          // this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}})]);
         });
       });
       this.billingDataService.updateBillingDetails(this.policyBillingDataAll);
@@ -37,14 +40,15 @@ export class PolicyDetailsService {
   getDocumentsByPolicy(policyNumber: string){
     // const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;
     const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/documents`;
-    this.http.get(url).subscribe((response) => {
-      this.policyDataService.updatePolicyDetails(response);
-    });
+    return this.http.get(url);
+    // .subscribe((response) => {
+    //   this.policyDataService.updatePolicyDetails(response);
+    // });
   }
 
   getDocumentById(documentId: string){
     // const url = `${this.backendUrl}/personal-policies/document/${documentId}`;
-    const url = `${environment.backend_server_url}/personal-policies/document/{documentId}`;
+    const url = `${environment.backend_server_url}/personal-policies/document/${documentId}`;
     this.http.get(url).subscribe((response) => {
       this.policyDataService.updatePolicyDetails(response);
     });
