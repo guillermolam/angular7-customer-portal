@@ -65,7 +65,7 @@ export class PolicyDetailsService {
 
   getDocumentById(documentId: string){
     const options = {
-      responseType: 'arraybuffer' as 'json'
+      responseType:  'arraybuffer' as 'json'
     };
     // const url = `${this.backendUrl}/personal-policies/document/${documentId}`;
     const url = `${environment.backend_server_url}/personal-policies/document/${documentId}`;

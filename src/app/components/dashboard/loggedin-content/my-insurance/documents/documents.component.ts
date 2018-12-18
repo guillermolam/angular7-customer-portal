@@ -235,8 +235,8 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   onDownloadDocument(documentId: string, policyNumber, documentType) {
       this.policyDetailsService
       .getDocumentById(documentId)
-      .subscribe((byteArray) => {
-        const blob = new Blob([byteArray], {type: "application/pdf"});
+      .subscribe((byteArray: any[]) => {
+        const blob = new Blob([byteArray]);
         saveAs(blob, `document-${policyNumber}-${documentType}.pdf`);
       });
   }
