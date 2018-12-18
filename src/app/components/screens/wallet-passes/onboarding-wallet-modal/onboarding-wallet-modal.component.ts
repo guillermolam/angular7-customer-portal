@@ -9,7 +9,7 @@ import { User }                             from '../../../../_models/user';
   styleUrls: ['./onboarding-wallet-modal.component.scss']
 })
 export class OnboardingWalletModalComponent implements OnInit {
-    @Input() userData:                      User;
+    @Input() policyNumber:                      string;
              hideModal:                     boolean = false;
              onClickEventWalletPass:        boolean = false;
              walletDownloadModalOptions:    ModalOptions;

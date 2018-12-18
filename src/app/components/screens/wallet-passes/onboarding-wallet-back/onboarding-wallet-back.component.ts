@@ -10,7 +10,7 @@ import { WalletCardService }        from '../../../../_services/_iam/wallet-card
   styleUrls: ['./onboarding-wallet-back.component.scss']
 })
 export class OnboardingWalletBackComponent implements OnInit {
-  @Input() userData:                   User;
+  @Input() policyNumber:                   string;
 
   constructor(
     private walletCardService:        WalletCardService,
@@ -21,15 +21,15 @@ export class OnboardingWalletBackComponent implements OnInit {
     this.cookieService.set('walletcard', type, time);
   }
 
-  downloadCard(user): void {
+  downloadCard(policyNumber): void {
     this.walletCardService
-      .generatePkPass(user.email)
+      .generatePkPass(policyNumber)
       .subscribe(
         (success) => {
           console.log('Successfully Download of Card');
           this.createCookie(365, 'download');
           const blob = new Blob([success]);
-          saveAs(blob, 'policy.pkpass');
+          saveAs(blob, `${policyNumber}.pkpass`);
           //close the modal
           //
         },

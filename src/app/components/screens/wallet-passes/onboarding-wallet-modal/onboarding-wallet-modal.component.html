@@ -1,7 +1,7 @@
 <mapfre-modal 
   [modalOptions]="walletDownloadModalOptions"
   [hideModal]="hideModal"
-  [ngClass]="{'hide': !userData }">
+  [ngClass]="{'hide': !policyNumber }">
     <div 
       class="modal-body no-margin-bottom wallet-card"
       [ngClass]="{ 'flipped': onClickEventWalletPass }"
@@ -40,7 +40,7 @@
               <img src="assets/img/images/mapfre-card-logo-color.png" style="margin-left:-30px" />
             </div>
           </div>
-          <app-onboarding-wallet-back [userData]="userData"></app-onboarding-wallet-back>
+          <app-onboarding-wallet-back [policyNumber]="policyNumber"></app-onboarding-wallet-back>
         </div>
         <div class="wallet-skip-button">
           <mapfre-button
