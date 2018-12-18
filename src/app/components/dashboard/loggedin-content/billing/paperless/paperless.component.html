@@ -1,15 +1,8 @@
 <div class="row">
   <div class="col">
     <h2 class="title">
-      {{ 'PAPERLESS' | translate }}
-    </h2>
-    <div class="row margin-top mt24">
-      <div class="col col1-image">
-          <img src="./assets/img/images/paperless.png" alt="Paperless trees" />
-      </div>
-      <div class="col">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+      {{ 'PAPERLESS' | translate }} {{ paperlessPage | titlecase }}
+    </h2> 
+    <router-outlet (activate)="checkPaperlessPage()"></router-outlet>
   </div>
 </div>

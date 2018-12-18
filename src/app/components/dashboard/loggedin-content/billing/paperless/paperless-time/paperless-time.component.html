@@ -1,10 +1,247 @@
-<p>Going paperless expedites the delivery of your documents and the posting of your payments as well as helps the environment!</p>
-<p>No matter where you are, your billing and policy information is available through your online account. </p>
-<p class="green-text">Comine e-POLICY & e-PAY & e-BILL<strong>and save up to 3%!</strong></p>
-<div>
-  <mapfre-button 
-    additionalClasses="primary basic w-50 padding-top padding-bottom pb16 pt16"
-    [routerLink]="['e-policy']">
-    Let's Enroll
-  </mapfre-button>
+
+<div class="row margin-top mt24">
+  <div class="col-md col1-image">
+      <img src="./assets/img/images/paperless.png" alt="Paperless trees" />
+  </div>
+  <div class="col-md">
+    <p>Going paperless expedites the delivery of your documents and the posting of your payments as well as helps the environment!</p>
+    <p>No matter where you are, your billing and policy information is available through your online account. </p>
+    <p class="green-text">Comine e-POLICY & e-PAY & e-BILL <strong>and save up to 3%!</strong></p>
+    
+    <ng-container *ngIf="!firstTime">
+      <div>
+        <mapfre-button 
+          additionalClasses="primary basic w-50 padding-top padding-bottom pb16 pt16"
+          [routerLink]="['e-policy']">
+          Let's Enroll
+        </mapfre-button>
+      </div>
+    </ng-container>
+  </div>
 </div>
+
+<div class="row margin-top mt24"  *ngIf="firstTime">
+  <div class="col">
+    <ng-container>
+      <div>
+        <h2 class="title no-border no-padding-bottom">e-Policy</h2>
+        <div class="margin-bottom mb8">View your policy documents online.</div>
+        <table mdbTable class="paperless-table margin-bottom mb24">
+          <tbody class="med-grey-color">
+            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user.policyDetails">
+              <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
+                <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
+                <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
+              </td>
+              <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8 width w-20">{{ pdetail.policyType }} &ndash; {{ pdetail.policynumber.policynumber }} </td>
+              <td class="no-padding green-text padding-vertical pv8 align-middle">{{ pdetail.effDate | date:'shortDate' }} to {{ pdetail.expDate | date:'shortDate' }}</td>
+              <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEdf">
+                <mapfre-modal 
+                  [modalOptions]="endEnrollOptionsModal"
+                  [hideModal]="hideModal"
+                  (hideModalOutput)="resetHideModal($event)">
+                  <div class="modal-body">
+                    <hr class="margin-bottom mb24 no-margin-top" />
+                    <div class="margin-bottom mb24">
+                        Are you sure you want to remove policy <strong>{{ pdetail.policynumber.policynumber }}</strong> from e-Policy?
+                    </div>
+                    <div class="mx-auto text-center">
+                        <mapfre-button 
+                          additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50"
+                          (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-policy')">
+                          REMOVE FROM E-POLICY
+                        </mapfre-button>
+                        <mapfre-button 
+                          additionalClasses="ghost secondary padding-vertical pv16  w-50"
+                          (click)="hideModalAction($event)">
+                          CANCEL
+                        </mapfre-button>
+                    </div>
+                  </div>
+                </mapfre-modal>
+                <div class="float-right align-middle enrolled-icon"><svg-check-icon-svg></svg-check-icon-svg> <span class="green-text">Enrolled</span></div>
+              </td>
+    
+              <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="!pdetail.policyFlags.isEdf">
+                <mapfre-modal 
+                  [modalOptions]="enrollOptionsModal"
+                  [hideModal]="hideModal"
+                  (hideModalOutput)="resetHideModal($event)">
+                  <div class="modal-body">
+                    <hr class="margin-bottom mb24 no-margin-top" />
+                    <div class="margin-bottom mb24">
+                        Are you sure you want to remove policy <strong>{{ pdetail.policynumber.policynumber }}</strong> from e-Bill?
+                    </div>
+                    <div class="mx-auto text-center">
+                        <mapfre-button 
+                          additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50"
+                          (click)="enroll(pdetail.policynumber.policynumber, 'e-bill')">
+                          Confirm Enrollment
+                        </mapfre-button>
+                        <mapfre-button 
+                          additionalClasses="ghost secondary padding-vertical pv16  w-50"
+                          (click)="hideModalAction($event)">
+                          CANCEL
+                        </mapfre-button>
+                    </div>
+                  </div>
+                </mapfre-modal>
+              </td>
+            </tr>
+      
+          </tbody>
+        </table>
+    
+      </div>
+      
+      <div>
+        <h2 class="title no-border no-padding-bottom">e-Pay</h2>
+        <div class="margin-bottom mb8">Set Autopay - (Electronic Funds Transfer EFT) and forget about payments.</div>
+        <table mdbTable class="paperless-table margin-bottom mb24">
+          <tbody class="med-grey-color">
+            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user.policyDetails">
+              <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
+                <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
+                <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
+              </td>
+              <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8  width w-20">{{ pdetail.policyType }} &ndash; {{ pdetail.policynumber.policynumber }} </td>
+              <td class="no-padding green-text padding-vertical pv8 align-middle">{{ pdetail.effDate | date:'shortDate' }} to {{ pdetail.expDate | date:'shortDate' }}</td>
+              
+              <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEft">
+                <mapfre-modal 
+                  [modalOptions]="endEnrollOptionsModal"
+                  [hideModal]="hideModal"
+                  (hideModalOutput)="resetHideModal($event)">
+                  <div class="modal-body">
+                    <hr class="margin-bottom mb24 no-margin-top" />
+                    <div class="margin-bottom mb24">
+                        Are you sure you want to remove policy <strong>{{ pdetail.policynumber.policynumber }}</strong> from e-Pay?
+                    </div>
+                    <div class="mx-auto text-center">
+                        <mapfre-button 
+                          additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50"
+                          (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-pay')">
+                          REMOVE FROM E-Pay
+                        </mapfre-button>
+                        <mapfre-button 
+                          additionalClasses="ghost secondary padding-vertical pv16  w-50"
+                          (click)="hideModalAction($event)">
+                          CANCEL
+                        </mapfre-button>
+                    </div>
+                  </div>
+                </mapfre-modal>
+                <a class="blue-text float-right align-middle edit-icon" routerLink=""><svg-edit-icon-svg></svg-edit-icon-svg></a>
+                <div class="float-right align-middle enrolled-icon"><svg-check-icon-svg></svg-check-icon-svg> <span class="green-text">Enrolled</span></div>
+              </td> 
+    
+              <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="!pdetail.policyFlags.isEft">
+                <mapfre-modal 
+                  [modalOptions]="enrollOptionsModal"
+                  [hideModal]="hideModal"
+                  (hideModalOutput)="resetHideModal($event)">
+                  <div class="modal-body">
+                    <hr class="margin-bottom mb24 no-margin-top" />
+                    <div class="margin-bottom mb24">
+                        Are you sure you want to remove policy <strong>{{ pdetail.policynumber.policynumber }}</strong> from e-Bill?
+                    </div>
+                    <div class="mx-auto text-center">
+                        <mapfre-button 
+                          additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50"
+                          (click)="enroll(pdetail.policynumber.policynumber, 'e-bill')">
+                          Confirm Enrollment
+                        </mapfre-button>
+                        <mapfre-button 
+                          additionalClasses="ghost secondary padding-vertical pv16  w-50"
+                          (click)="hideModalAction($event)">
+                          CANCEL
+                        </mapfre-button>
+                    </div>
+                  </div>
+                </mapfre-modal>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div *ngIf="!allEPay">
+        <h2 class="title no-border no-padding-bottom">e-Bill</h2>
+        <div class="margin-bottom mb8">View your bills online (past & present) for those policies not enrolled in e-PAY.</div>
+        <table mdbTable class="paperless-table margin-bottom mb24">
+          <tbody class="med-grey-color">
+             <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user.policyDetails">
+              <ng-container  *ngIf="!anyEPay(pdetail)">
+                <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
+                    <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
+                    <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
+                  </td>
+                  <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8  width w-20">{{ pdetail.policyType }} &ndash; {{ pdetail.policynumber.policynumber }} </td>
+                  <td class="no-padding green-text padding-vertical pv8 align-middle">{{ pdetail.effDate | date:'shortDate' }} to {{ pdetail.expDate | date:'shortDate' }}</td>
+                  
+                  <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEbill">
+                    <mapfre-modal 
+                      [modalOptions]="endEnrollOptionsModal"
+                      [hideModal]="hideModal"
+                      (hideModalOutput)="resetHideModal($event)">
+                      <div class="modal-body">
+                        <hr class="margin-bottom mb24 no-margin-top" />
+                        <div class="margin-bottom mb24">
+                            Are you sure you want to remove policy <strong>{{ pdetail.policynumber.policynumber }}</strong> from e-Bill?
+                        </div>
+                        <div class="mx-auto text-center">
+                            <mapfre-button 
+                              additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50"
+                              (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-bill')">
+                              REMOVE FROM E-Bill
+                            </mapfre-button>
+                            <mapfre-button 
+                              additionalClasses="ghost secondary padding-vertical pv16  w-50"
+                              (click)="hideModalAction($event)">
+                              CANCEL
+                            </mapfre-button>
+                        </div>
+                      </div>
+                    </mapfre-modal>
+                    <div class="float-right align-middle enrolled-icon"><svg-check-icon-svg></svg-check-icon-svg> <span class="green-text">Enrolled</span></div>
+                  </td>
+        
+                  <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="!pdetail.policyFlags.isEbill">
+                    <mapfre-modal 
+                      [modalOptions]="enrollOptionsModal"
+                      [hideModal]="hideModal"
+                      (hideModalOutput)="resetHideModal($event)">
+                      <div class="modal-body">
+                        <hr class="margin-bottom mb24 no-margin-top" />
+                        <div class="margin-bottom mb24">
+                            Are you sure you want to remove policy <strong>{{ pdetail.policynumber.policynumber }}</strong> from e-Bill?
+                        </div>
+                        <div class="mx-auto text-center">
+                            <mapfre-button 
+                              additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50"
+                              (click)="enroll(pdetail.policynumber.policynumber, 'e-bill')">
+                              Confirm Enrollment
+                            </mapfre-button>
+                            <mapfre-button 
+                              additionalClasses="ghost secondary padding-vertical pv16  w-50"
+                              (click)="hideModalAction($event)">
+                              CANCEL
+                            </mapfre-button>
+                        </div>
+                      </div>
+                    </mapfre-modal>
+                  </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+
+
+
+

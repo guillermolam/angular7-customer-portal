@@ -50,11 +50,11 @@ export class TestingDataService {
           ],
           policyStatus: 'INACTIVE',
           policyFlags: {
-            isEft: false,
+            isEft: true,
             isEftEligi: false,
-            isEbillElig: false,
+            isEbillElig: true,
             isEdfElig: false,
-            isEbill: false,
+            isEbill: true,
             isEdf: false
           },
           policyType: 'AUTO',
@@ -115,12 +115,12 @@ export class TestingDataService {
           ],
           policyStatus: 'ACTIVE',
           policyFlags: {
-            isEft: true,
-            isEftEligi: false,
-            isEbillElig: false,
-            isEdfElig: false,
-            isEbill: false,
-            isEdf: false
+            isEft: false,
+            isEftEligi: true,
+            isEbillElig: true,
+            isEdfElig: true,
+            isEbill: true,
+            isEdf: true
           },
           policyType: 'AUTO',
           vehicle: [
@@ -166,7 +166,7 @@ export class TestingDataService {
           ],
           policyStatus: 'INACTIVE',
           policyFlags: {
-              isEft: false,
+              isEft: true,
               isEftEligi: false,
               isEbillElig: false,
               isEdfElig: false,
@@ -224,7 +224,7 @@ export class TestingDataService {
         ],
         policyStatus: 'INACTIVE',
         policyFlags: {
-            isEft: false,
+            isEft: true,
             isEftEligi: false,
             isEbillElig: false,
             isEdfElig: false,
