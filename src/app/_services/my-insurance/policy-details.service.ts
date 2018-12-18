@@ -80,7 +80,7 @@ export class PolicyDetailsService {
   }
 
 
-  updateMileageById(vehicleId){
+  updateMileageById(email,policyNumber,vehicleId, odometerReading){
     // const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
     const url = `${environment.backend_server_url}/personal-policies/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
     return this.http.post(url);
