@@ -28,12 +28,12 @@ export class JwtInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request).pipe(catchError((error) => {
+    return next.handle(request).pipe(catchError((e) => {
       // console.log(error);
-      if(error.status == 401 || error.status == 500){
+      if((e.status == 401 || e.status == 500) && (e.error.error === 'Invalid Request')){
         this.router.navigate(['/login']);
       }
-      return of(error);
+      return of(e);
     }) as any)
   }
 }
