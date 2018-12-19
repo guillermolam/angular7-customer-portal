@@ -1,3 +1,70 @@
-<p>
-  validate-policy-rights works!
-</p>
+<mapfre-card 
+    [singleCard]="false"
+    [additionalClasses]="'policy-details'"> 
+    <div class="single-card-column policy-card">
+        <div class="row text-center">
+            <div class="col">
+              <div class="header-icon full-icon">
+                <svg-policy-error-svg></svg-policy-error-svg>
+              </div>
+              <h1 class="title-copy">{{ 'POLICY_FOUND' | translate }}</h1> 
+            </div>
+          </div>
+<div class="row margin-vertical mv16">
+    <div class="col">
+      <div class="policy-info-card">
+        <div class="policy-info-title text-center">
+          {{ 'POLICYBELONGS_INFO_TITLE' | translate }}
+        </div>
+        <hr>
+        <div class="policy-info-content">
+          <div class="row">
+            <div class="col">
+              <div class="icon icon-container">
+                <div class="svg">
+                  <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'auto' ">
+                    <svg-car-icon-svg></svg-car-icon-svg>
+                  </ng-container>
+                  <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'home' ">
+                    <svg-home-icon-svg></svg-home-icon-svg>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="info-container">
+                <ul>
+                  <li>{{ "Personal" | translate }} {{ policyDetails.policyType | translate }}:&nbsp;<strong>{{ policyDetails.policynumber.policynumber }}</strong></li>
+                  <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyDetails.effDate | date:'shortDate' }}</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row margin-top mt24">
+    <div class="col">
+      <div class="legal">
+        {{ 'POLICYBELONGS_LEGAL' | translate }}
+      </div>
+    </div>
+  </div>
+  <div class="row margin-vertical mv24">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'basic primary large'"
+        (click)="confirmPolicy()"
+      >{{ 'I_AM_AUTHORIZED' | translate }}</mapfre-button> 
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'ghost secondary small'"
+        [routerLink]="['/my-insurance', 'link-policy']"
+      >{{ 'CANCEL' | translate }}</mapfre-button>
+    </div>
+  </div>
+  </div>
+  </mapfre-card>
+  

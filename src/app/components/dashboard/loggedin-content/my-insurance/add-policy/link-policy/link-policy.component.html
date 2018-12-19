@@ -1,7 +1,7 @@
 <mapfre-card 
     [singleCard]="false"
-    [additionalClasses]="'policy-details'">
-    
+    [additionalClasses]="'policy-details'"> 
+    <div class="single-card-column policy-card">
     <div class="row text-center">
       <div class="col">
         <div class="header-icon full-icon">
@@ -10,16 +10,14 @@
         <h1 class="title-copy">{{ 'ADD_NEW_POLICY_TITLE' | translate }}</h1> 
       </div>
     </div>
-    <!-- <app-add-policy-form [inputs]="addPolicy" [userData]="user"></app-add-policy-form> -->
+    <app-add-policy-form [inputs]="linkPolicy" [userData]="user"></app-add-policy-form>
   
-    <div class="row text-center">
+    <div class="row text-center margin-top mt24">
       <div class="col">
           <mapfre-button
           [additionalClasses]="'flat link small'"
-          [customIcon]="'assets/img/icons/back-arrow.png'"
           [iconClasses]="'align-middle'"
           [routerLink]="['/my-insurance']"
-          [showIconsCustom]="true"
         >  {{ 'CANCEL' | translate }}
         </mapfre-button>
       </div>
@@ -27,7 +25,7 @@
     <hr class="margin-vertical mv24" />
     <div class="row text-center margin-top mt16">
         <div class="col">
-          <!-- <mapfre-modal 
+          <mapfre-modal 
             [modalOptions]="whereToFindModalOptions">
             <div class="modal-body no-padding-top">
               <hr class="margin-bottom mb24" />
@@ -38,8 +36,8 @@
                 <img src="./assets/img/images/where-can-i-find-my-policy-number.png">
               </div>
             </div>
-          </mapfre-modal> -->
+          </mapfre-modal>
         </div>
       </div>
-
+    </div>
 </mapfre-card>

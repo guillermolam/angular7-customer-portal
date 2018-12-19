@@ -1,3 +1,37 @@
-<p>
-  edit-policy-details works!
-</p>
+<mapfre-card 
+    [singleCard]="false"
+    [additionalClasses]="'policy-details'"> 
+    <div class="single-card-column policy-card">
+<div class="row text-center">
+    <div class="col">
+      <div class="header-icon full-icon">
+        <svg-policy-error-svg></svg-policy-error-svg>
+      </div>
+      <h1 class="title-copy">{{ 'EDIT_POLICY' | translate }}</h1> 
+    </div>
+  </div>
+  <div class="row text-center margin-bottom mb16 sub-title-copy">
+    <div class="col">
+      {{ 'EDITPOLICY_REVIEW_POLICY' | translate }}
+    </div>
+  </div>
+  <app-edit-policy-form [inputs]="editPolicyDetails" [userData]="user"></app-edit-policy-form>
+  <hr class="margin-vertical mv24" />
+  <div class="row text-center margin-top mt16">
+      <div class="col">
+        <mapfre-modal 
+          [modalOptions]="whereToFindModalOptions">
+          <div class="modal-body no-padding-top">
+            <hr class="margin-bottom mb24" />
+            <div class="margin-bottom mb8">
+              {{ 'POLICY_DOCUMENT' | translate}}
+            </div>
+            <div class="margin-bottom mb24">
+              <img src="./assets/img/images/where-can-i-find-my-policy-number.png">
+            </div>
+          </div>
+        </mapfre-modal>
+      </div>
+    </div>
+  </div>
+  </mapfre-card>

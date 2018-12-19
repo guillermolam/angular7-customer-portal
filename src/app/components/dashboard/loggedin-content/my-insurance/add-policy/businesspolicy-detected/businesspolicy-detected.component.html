@@ -1,3 +1,33 @@
-<p>
-  businesspolicy-detected works!
-</p>
+<mapfre-card 
+    [singleCard]="false"
+    [additionalClasses]="'policy-details'"> 
+    <div class="single-card-column policy-card">
+<div class="row text-center">
+    <div class="col">
+      <div class="header-icon full-icon">
+        <svg-policy-error-svg></svg-policy-error-svg>
+      </div>
+      <h1 class="title-copy">{{ 'BUSINESS_POLICY_DETECTED' | translate }}</h1> 
+    </div>
+  </div>
+<div class="sub-title-copy text-center margin-bottom mb16">
+    {{ 'SERVICE_NOT_AVAILABLE' | translate }}
+  </div>
+  <div class="margin-vertical mv24">
+    <mapfre-info-divs> 
+        {{ 'BUSINESS_POLICY_DETECTED_INFO' | translate }}
+    </mapfre-info-divs>
+  </div>
+  <hr class="margin-vertical mv24">
+  <div class="text-center">
+    <mapfre-button
+      [additionalClasses]="'flat link small'"
+      [customIcon]="'../../../../../assets/img/icons/back-arrow.png'"
+      [iconClasses]="'align-middle'"
+      [routerLink]="['/my-insurance','link-policy']"
+      [showIconsCustom]="true">  
+      {{ 'BACK' | translate }}
+    </mapfre-button>
+  </div>
+  </div>
+  </mapfre-card>

@@ -30,30 +30,30 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
   ) { }
 
   confirmPolicy(): void {
-    // this.authService
-    //   .confirmPolicyAndAccount(this.userService)
-    //   .subscribe(
-    //     (data) => {
-    //       console.log(data);
+    this.authService
+      .confirmPolicyAndAccount(this.userService)
+      .subscribe(
+        (data) => {
+          console.log(data);
           this.router.navigate(['/signup', 'createpassword']);
-  //       },
-  //       (err) => {
-  //         this.alertService.error('There was an issue');
-  //       }
-  //     );
+        },
+        (err) => {
+          this.alertService.error('There was an issue');
+        }
+      );
   }
 
-  // createUserObject(formValue): void {
-  //   this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
-  //   this.user = {
-  //     firstName:                    formValue.editFirst_name,
-  //     middleName:                   formValue.editMI_name,
-  //     lastName:                     formValue.editLast_name,
-  //     email:                        formValue.editEmail,
-  //     policyDetails:                this.policyDetail
-  //   };
-  //   this.userService.updateUser(this.user);
-  // }
+  createUserObject(formValue): void {
+    this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
+    this.user = {
+      firstName:                    formValue.editFirst_name,
+      middleName:                   formValue.editMI_name,
+      lastName:                     formValue.editLast_name,
+      email:                        formValue.editEmail,
+      policyDetails:                this.policyDetail
+    };
+    this.userService.updateUser(this.user);
+  }
 
   ngOnInit() {
 

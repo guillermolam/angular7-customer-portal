@@ -35,6 +35,12 @@ import { LinkPolicyComponent }        from './components/dashboard/loggedin-cont
 import { MyInsuranceComponent }       from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
 import { LoggedinContentComponent }   from './components/dashboard/loggedin-content/loggedin-content.component';
 import { MyInsuranceMainComponent }   from './components/dashboard/loggedin-content/my-insurance/my-insurance-main/my-insurance-main.component';
+import { PolicyNotFoundComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-not-found/policy-not-found.component';
+import { EditPolicyDetailsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/edit-policy-details/edit-policy-details.component';
+import { ValidatePolicyRightsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/validate-policy-rights/validate-policy-rights.component';
+import { PolicyInProcessComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-in-process/policy-in-process.component';
+import { BusinesspolicyDetectedComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/businesspolicy-detected/businesspolicy-detected.component';
+
 
 // ----- Routes ----- //
 import { BillingComponent }           from './routes/billing/billing.component';
@@ -75,6 +81,11 @@ const appRoutes: Routes = [
     children: [
       { path: '',  component: MyInsuranceMainComponent, pathMatch: 'full' },
       { path: 'link-policy',  component: LinkPolicyComponent},
+      { path: 'business-policy-not-supported',  component: BusinesspolicyDetectedComponent},
+      { path: 'policy-not-found',  component: PolicyNotFoundComponent},
+      { path: 'edit-policy-details',  component: EditPolicyDetailsComponent},
+      { path: 'policy-in-process',  component: PolicyInProcessComponent},
+      { path: 'validate-policy-rights',  component: ValidatePolicyRightsComponent},
       { path: ':policyid',
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },

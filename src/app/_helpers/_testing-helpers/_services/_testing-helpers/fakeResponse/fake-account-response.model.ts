@@ -1,9 +1,9 @@
 export class FakeAccountResponse {
     private static user = {
-        addPolicyAttempts:          3,
-        firstName: 'tesing',
-        middleName: 'testing',
-        lastName: 'testing',
+        addPolicyAttempts:          2,
+        firstName: 'Conrad',
+        middleName: '',
+        lastName: 'Gagne',
         email: 'user@policies.com',
         password: 'test@2018',
         policyDetails: [{
