@@ -47,7 +47,6 @@ export class PolicyDetailsService {
       // });
       // return this.billingDataAll;
     })
-    
     this.billingDataService.updateBillingDetails(this.policyBillingDataAll);
   })
   );
@@ -73,7 +72,6 @@ export class PolicyDetailsService {
   }
 
   getVehicleByPolicy(policyNumber){
-  
     // const url = `${this.backendUrl}/personal-policies/${policyNumber}/vehicles`;
     const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/vehicles`;
     return this.http.get(url);
