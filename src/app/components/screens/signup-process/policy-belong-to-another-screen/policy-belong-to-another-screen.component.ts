@@ -7,7 +7,6 @@ import { AuthenticationService }        from '../../../../_services/_iam/authent
 import { PolicyDetails }                from '../../../../_models/policy-details';
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';
-// import { PolicyDetailsService } from '../../../../_services/my-insurance/policy-details.service';
 
 @Component({
   selector: 'app-policy-belong-to-another-screen',
@@ -17,7 +16,7 @@ import { User }                         from '../../../../_models/user';
 export class PolicyBelongToAnotherScreenComponent implements OnInit {
   @Input()  userData:               User;
             policyDate:             string;
-            policyDetails:           any = {};
+            policyDetail:           PolicyDetails[];
             policyNumber:           string;
             user:                   User = {};
 
@@ -25,16 +24,14 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
     private alertService:           AlertService,
     private authService:            AuthenticationService,
     private router:                 Router,
-    private userService:            UserService,
-    // private policyService:          PolicyDetailsService
+    private userService:            UserService
   ) { }
 
   confirmPolicy(): void {
     this.authService
-      .confirmPolicyAndAccount(this.userService)
+      .confirmPolicyAndAccount(this.user)
       .subscribe(
         (data) => {
-          console.log(data);
           this.router.navigate(['/signup', 'createpassword']);
         },
         (err) => {
@@ -44,25 +41,19 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
   }
 
   createUserObject(formValue): void {
-    this.policyDetails =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
+    this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
     this.user = {
       firstName:                    formValue.editFirst_name,
       middleName:                   formValue.editMI_name,
       lastName:                     formValue.editLast_name,
       email:                        formValue.editEmail,
-      policyDetails:                this.policyDetails
+      policyDetails:                this.policyDetail
     };
     this.userService.updateUser(this.user);
   }
 
   ngOnInit() {
 
-    //new code
-    // this.policyService.$policyDetails.subscribe((details)=>{
-    //   this.policyDetails = details;
-    //   console.log(details);
-    // });
-    
   }
 
 }
