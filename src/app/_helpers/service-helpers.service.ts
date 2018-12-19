@@ -1,13 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable }   from '@angular/core';
+import { HttpHeaders }  from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceHelpersService {
-  public  options:            object = { headers :
-    {'Content-Type': 'application/json' }
+  public  options:            object = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+      'Content-Type':         'application/json;charset=utf-8'
+    })
   };
-  
+
   constructor() { }
 
   creatUserObject(items, db): object {

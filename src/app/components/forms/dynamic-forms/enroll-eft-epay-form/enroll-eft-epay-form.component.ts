@@ -5,10 +5,10 @@ import { ActivatedRoute, Router,
   Params }                            from '@angular/router';
 import { AlertService,
   FormBase, FormBaseControlService }  from 'mapfre-design-library';
-  import { Billing }                  from './../../../../_models/billing';
+import { Billing }                    from './../../../../_models/billing';
 import { BillingObservableService }   from './../../../../_services/billing.service';
+import {  }                           from './../../../../_services/billing.service';
 import { PaperlessService }           from '../../../../_services/_iam/paperless.service';
-
 
 @Component({
   selector: 'app-enroll-eft-epay-form',
@@ -33,7 +33,11 @@ export class EnrollEftEpayFormComponent implements OnInit {
   ) { }
 
   checkForPrefillData(): void {
+    //this.
 
+   // this.enrollInEft.setValue(
+
+    //)
   }
 
   enroll() {
@@ -74,6 +78,7 @@ export class EnrollEftEpayFormComponent implements OnInit {
     this.enrollAccountType =            new FormGroup({
       bankType:                         new FormControl(''),
     });
+    this.checkForPrefillData();
   }
 
 }

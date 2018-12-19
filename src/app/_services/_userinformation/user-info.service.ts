@@ -1,11 +1,12 @@
-import { HttpClient, HttpHeaders }         from '@angular/common/http';
+import { HttpClient }         from '@angular/common/http';
 import { Injectable }         from '@angular/core';
 import { of, throwError }     from 'rxjs';
 import { Observable }         from 'rxjs';
 import { catchError, map }    from 'rxjs/operators';
 import { environment }        from '../../../environments/environment';//change it to environment later
-import { User }               from '../../_models/user';
+import { ServiceHelpersService } from '../../_helpers/service-helpers.service';
 import { PolicyDetailsService } from '../my-insurance/policy-details.service';
+import { User }               from '../../_models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,31 +14,19 @@ import { PolicyDetailsService } from '../my-insurance/policy-details.service';
 export class UserInfoService {
 
   billingURL: string = 'https://mdv-doctest:8086'; ///will be removed
-
-  httpOptions: any = {
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
-      'Content-Type': 'application/json;charset=utf-8'
-    })
-  }
+  httpOptions;
 
   constructor(
     private http: HttpClient,
+    private serviceHelpers: ServiceHelpersService,
     private policyDetailsService: PolicyDetailsService
-  ) { }
-
-  getUserDocuments(policyNumber, user, accessToken): Observable<object> {
-    const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/documents`;
-    return this.http.get(url);
+  ) {
+    this.httpOptions = serviceHelpers.options; 
   }
 
-  policyByEmail(email) {
-    const url = `${environment.backend_server_url}/personal-policies/testmfre@gmail.com`;
+  getBankAccountInfo(user): Observable<object> {
+    const url = `${environment.backend_server_url}`;
     return this.http.get(url);
-    // this.http.get(url).subscribe((response)=>{
-    //   this.policyDetailsService.updatePolicyDetails(response);
-    // });
   }
 
   getCurrentBillByPolicy(policyNumber): Observable<object> {
@@ -45,4 +34,21 @@ export class UserInfoService {
     return this.http.get(url);
   }
 
+  getUserDocuments(policyNumber, user, accessToken): Observable<object> {
+    const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/documents`;
+    return this.http.get(url);
+  }
+
+  sendBankAccountInfo(bankInfo): Observable<any> {
+    const url = `${environment.backend_server_url}`;
+    return this.http.put(url, bankInfo, this.httpOptions);
+  }
+
+  policyByEmail(email: string = 'testmfre@gmail.com') {
+    const url = `${environment.backend_server_url}/personal-policies/${email}`;
+    return this.http.get(url);
+    // this.http.get(url).subscribe((response)=>{
+    //   this.policyDetailsService.updatePolicyDetails(response);
+    // });
+  }
 }

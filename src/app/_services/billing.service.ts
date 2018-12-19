@@ -16,8 +16,6 @@ export class BillingObservableService {
   }
 
   clearBilling(): void {
-
+    this.messageSource.next(this.billing);
   }
-
 }
-
