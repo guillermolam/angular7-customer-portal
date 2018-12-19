@@ -5,13 +5,17 @@
         <a 
           [routerLink]="['/claims/active']" 
           title="Active Claims"
-        >{{'ACTIVE' | translate}}</a>
+          class=" waves-effect waves-red" mdbWavesEffect>
+          {{'ACTIVE' | translate}}
+        </a>
       </li>
       <li routerLinkActive="active" class="w-50">
           <a
             [routerLink]="['/claims/closed']"
             title="Closed Claims"
-          >{{'CLOSED' | translate}}</a>
+            class=" waves-effect waves-red" mdbWavesEffect>
+            {{'CLOSED' | translate}}
+          </a>
       </li>
     </ul>
   </div>

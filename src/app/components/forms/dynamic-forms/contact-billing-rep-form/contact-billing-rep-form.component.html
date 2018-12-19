@@ -24,7 +24,7 @@
   <div class="row">
     <div class="col  mx-auto text-center">
       <mapfre-button
-        additionalClasses="basic primary mx-auto padding-vertical pv16 medium"
+        additionalClasses="basic primary mx-auto padding-vertical pv16 medium  waves-effect waves-light"
         [disabledValue]="contactBillingRepForm.valid" 
         [inputType]="'submit'"
         [translateValue]="'SUBMIT' | translate"
@@ -34,7 +34,7 @@
   <div class="row margin-top mt8 text-center">
     <div class="col">
       <mapfre-button
-        additionalClasses="ghost secondary w-50 padding-vertical pv8"
+        additionalClasses="ghost secondary w-50 padding-vertical pv8  waves-effect"
         (click)="hideModalAction($event)"
       >  {{ 'CANCEL' | translate }}
       </mapfre-button>

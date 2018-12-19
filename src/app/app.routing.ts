@@ -40,6 +40,8 @@ import { PaperlessPayComponent }          from './components/dashboard/loggedin-
 import { PaperlessPolicyComponent }       from './components/dashboard/loggedin-content/billing/paperless/paperless-policy/paperless-policy.component';
 import { PaperlessComponent }             from './components/dashboard/loggedin-content/billing/paperless/paperless.component';
 import { PaperlessFirstTimeComponent }    from './components/dashboard/loggedin-content/billing/paperless/paperless-time/paperless-time.component';
+import { PaperlessPayEnrollComponent }    from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/enroll/enroll.component';
+import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
 
 // ----- Routes ----- //
 import { BillingComponent }               from './routes/billing/billing.component';
@@ -112,7 +114,11 @@ const appRoutes: Routes = [
     { path: 'paperless',                  component: PaperlessComponent, children: [
       { path: '',                         component: PaperlessFirstTimeComponent  },
       { path: 'e-bill',                   component: PaperlessBillComponent },
-      { path: 'e-pay',                    component: PaperlessPayComponent },
+      { path: 'e-pay',                    children : [
+        { path: '',                       component: PaperlessPayComponent },
+        { path: ':policyid/enroll',       component: PaperlessPayEnrollComponent },
+        { path: ':policyid/confirm',      component: PaperlessPayConfirmComponent}
+      ] },
       { path: 'e-policy',                 component: PaperlessPolicyComponent },
     ] },
     { path: ':policyid',                  children: [

@@ -50,12 +50,12 @@ export class TestingDataService {
           ],
           policyStatus: 'INACTIVE',
           policyFlags: {
-            isEft: true,
+            isEft: 'enrollment-pending',
             isEftEligi: false,
             isEbillElig: true,
             isEdfElig: false,
-            isEbill: true,
-            isEdf: false
+            isEbill: 'enrollment-pending',
+            isEdf: 'enrollment-pending'
           },
           policyType: 'AUTO',
           vehicle: [
@@ -229,7 +229,7 @@ export class TestingDataService {
             isEbillElig: false,
             isEdfElig: false,
             isEbill: false,
-            isEdf: false
+            isEdf: 'removal-pending'
         },
         property: [
             {

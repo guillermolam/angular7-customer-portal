@@ -1,0 +1,35 @@
+<div class="single-card-column">
+  <div class="row text-center">
+    <div class="col"> 
+      <div class="header-icon full-icon">
+        <svg-bank-svg></svg-bank-svg>
+      </div>
+      <div>
+        <h1 class="title-copy">e-Pay enrollment</h1>
+        <div>Add your Checking or Savings Account to enroll your policy in auto EFT</div>
+      </div>        
+    </div>
+  </div>
+  <app-enroll-eft-epay-form [inputs]="inputs"></app-enroll-eft-epay-form>
+  <div class="row margin-vertical mv16 text-center">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'flat link small mx-auto waves-effect'"
+        [customIcon]="'./assets/img/icons/back-arrow.png'"
+        [iconClasses]="'align-middle'"
+        [routerLink]="['/billing/paperless']"
+        [showIconsCustom]="true">  
+        {{ 'BACK' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
+</div>
+
+<div class="margin-vertical mv32 text-center disclaimer">
+  <hr />
+  <span class="legal">
+      I authorize and request the Commerce Insurance Company (Commerce) to debit my bank account as payments on this policy or its replacement become due. If a debit is dishonored, the bank will not have any liability, even if the dishonored payment causes the cancellation of my insurance policy. I will be charged the applicable return transaction fee when payments are dishonored. This authority is to remain in full force until I have chosen to remove my policy from the EFT Bill Plan through the account management System or until Commerce has received written notice from me of its termination, in such time and manner as to afford Commerce a reasonable time to act upon it. I may not designate the account of my agent, broker or assigned risk producer from premium withdrawals. Commerce reserves the right to deny or cancel my enrollment in the EFT Bill Plan or deny the bank account I designate for withdrawals.
+  </span>
+</div>
+
+

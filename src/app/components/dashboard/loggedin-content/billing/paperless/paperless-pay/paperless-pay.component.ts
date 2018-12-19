@@ -1,6 +1,7 @@
-import { Component, OnInit, OnChanges }        from '@angular/core';
-import { ModalOptions }             from 'mapfre-design-library';
-import { PaperlessService }         from './../../../../../../_services/paperless.service';
+import { Component, OnInit,
+  OnChanges }                       from '@angular/core';
+import { AlertService, ModalOptions } from 'mapfre-design-library';
+import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
 
@@ -10,12 +11,13 @@ import { UserService }              from '../../../../../../_services/user.servi
   styleUrls: ['./paperless-pay.component.scss']
 })
 export class PaperlessPayComponent implements OnInit, OnChanges {
-  allEPay:                          boolean = false;
   endEnrollOptionsModal:            ModalOptions;
   enrollOptionsModal:               ModalOptions;
+  hideModal:                        boolean = false;
   user:                             User;
 
   constructor(
+    private alertService:           AlertService,
     private paperlessService:       PaperlessService,
     private userService:            UserService
   ) { 
@@ -41,32 +43,31 @@ export class PaperlessPayComponent implements OnInit, OnChanges {
     });
   }
 
-  allEPayMethod(): void {
-    let all = false;
-
-    for (let policyDetails of this.user['policyDetails']) {
-      const policyFlags = policyDetails['policyFlags'];
-      if ( !policyFlags.isEft ) {
-        all = false;
-        break;
-      }
-      else {
-        all = true;
-      }
-    }
-
-    this.allEPay = all;
-    console.log('this.allEPay', this.allEPay);
+  allEPayMethod(): boolean {
+    return this.paperlessService.allEPayMethod();
   }
 
    cancellEnroll(policyid): void {
     this.paperlessService
-    .cancelPaperlessEPay(policyid);
+    .cancelPaperlessEPay(policyid)
+    .subscribe(
+      (success) => {
+        this.alertService.error(`You have canceled e-Pay. It may take up to 2 days to process.`);
+      },
+      (e) => {
+        this.alertService.error(`There was a problem processing your request. Try again later`);
+
+      });
   }
 
-  enroll(policyid): void {
-    this.paperlessService
-    .enrollPaperlessEPay(policyid);
+  hideModalAction(event): void {
+    if (event) {
+      this.hideModal = !this.hideModal;
+    }
+  }
+
+  resetHideModal(event): void {
+    this.hideModal = !this.hideModal;
   }
 
   ngOnInit() {

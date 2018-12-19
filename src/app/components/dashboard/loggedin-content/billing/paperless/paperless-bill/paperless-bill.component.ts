@@ -1,6 +1,6 @@
 import { Component, OnInit }        from '@angular/core';
-import { ModalOptions }             from 'mapfre-design-library';
-import { PaperlessService }         from './../../../../../../_services/paperless.service';
+import { AlertService, ModalOptions } from 'mapfre-design-library';
+import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
 
@@ -12,9 +12,11 @@ import { UserService }              from '../../../../../../_services/user.servi
 export class PaperlessBillComponent implements OnInit {
   endEnrollOptionsModal:            ModalOptions;
   enrollOptionsModal:               ModalOptions;
+  hideModal:                        boolean = false;
   user:                             User;
 
   constructor(
+    private alertService:           AlertService, 
     private paperlessService:       PaperlessService,
     private userService:            UserService
   ) { 
@@ -42,13 +44,40 @@ export class PaperlessBillComponent implements OnInit {
 
    cancellEnroll(policyid): void {
     this.paperlessService
-      .cancelPaperlessEBill(policyid);
+      .cancelPaperlessEBill(policyid)
+      .subscribe(
+        (success) => {
+          this.alertService.error(`You have canceled EBill. It may take up to 2 days to process.`);
+        },
+        (e) => {
+          this.alertService.error(`There was a problem processing your request. Try again later`);
+
+        });
   }
 
   enroll(policyid): void {
     this.paperlessService
-      .enrollPaperlessEBill(policyid);
+      .enrollPaperlessEBill(policyid)
+      .subscribe(
+        (success) => {
+          this.alertService.success(`You have enrolled in e-Bill. It may take up to 2 days to process.`);
+        },
+        (e) => {
+          this.alertService.error(`There was a problem processing your request. Try again later`);
+
+        });
   }
+
+  hideModalAction(event): void {
+    if (event) {
+      this.hideModal = !this.hideModal;
+    }
+  }
+
+  resetHideModal(event): void {
+    this.hideModal = !this.hideModal;
+  }
+
 
   ngOnInit() {
     this.userService.$user.subscribe( (user) => {

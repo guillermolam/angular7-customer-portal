@@ -21,7 +21,7 @@
             <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8  width w-20">{{ pdetail.policyType }} &ndash; {{ pdetail.policynumber.policynumber }} </td>
             <td class="no-padding green-text padding-vertical pv8 align-middle">{{ pdetail.effDate | date:'shortDate' }} to {{ pdetail.expDate | date:'shortDate' }}</td>
             
-            <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEbill">
+            <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEbill == true">
               <mapfre-modal 
                 [modalOptions]="endEnrollOptionsModal"
                 [hideModal]="hideModal"
@@ -33,8 +33,8 @@
                   </div>
                   <div class="mx-auto text-center">
                       <mapfre-button 
-                        additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50"
-                        (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-bill')">
+                        additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
+                        (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-bill'); hideModalAction($event)">
                         REMOVE FROM E-Bill
                       </mapfre-button>
                       <mapfre-button 
@@ -47,8 +47,13 @@
               </mapfre-modal>
               <div class="float-right align-middle enrolled-icon"><svg-check-icon-svg></svg-check-icon-svg> <span class="green-text">Enrolled</span></div>
             </td>
-  
-            <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="!pdetail.policyFlags.isEbill">
+            <td class="padding-vertical pv8 enroll-button align-middle pending" *ngIf="pdetail.policyFlags.isEbill == 'enrollment-pending'">
+                <i class="fas fa-info-circle margin-right mr8"></i> <span>Pending enrollment</span>
+              </td>
+              <td class="padding-vertical pv8 enroll-button align-middle pending" *ngIf="pdetail.policyFlags.isEbill == 'removal-pending'">
+                  <i class="fas fa-info-circle margin-right mr8"></i> <span>Pending removal</span>
+                </td>
+            <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEbill == false">
               <mapfre-modal 
                 [modalOptions]="enrollOptionsModal"
                 [hideModal]="hideModal"
@@ -60,12 +65,12 @@
                   </div>
                   <div class="mx-auto text-center">
                       <mapfre-button 
-                        additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50"
-                        (click)="enroll(pdetail.policynumber.policynumber, 'e-bill')">
+                        additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
+                        (click)="enroll(pdetail.policynumber.policynumber, 'e-bill'); hideModalAction($event)">
                         Confirm Enrollment
                       </mapfre-button>
                       <mapfre-button 
-                        additionalClasses="ghost secondary padding-vertical pv16  w-50"
+                        additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
                         (click)="hideModalAction($event)">
                         CANCEL
                       </mapfre-button>
@@ -94,7 +99,7 @@
     <div class="row margin-top mt32">
       <div class="col">
         <mapfre-button
-          [additionalClasses]="'flat link small'"
+          [additionalClasses]="'flat link small waves-effect'"
           [customIcon]="'./assets/img/icons/back-arrow.png'"
           [iconClasses]="'align-middle'"
           [routerLink]="['/billing/paperless/e-pay']"
@@ -104,7 +109,7 @@
       </div>
       <div class="col">
         <mapfre-button 
-          additionalClasses="primary basic w-75 padding-top padding-bottom pt8 pb8 float-right no-margin"
+          additionalClasses="primary basic w-75 padding-top padding-bottom pt8 pb8 float-right no-margin waves-effect"
           [routerLink]="['/billing/paperless']">
           {{ 'FINISH' | translate }}
         </mapfre-button>

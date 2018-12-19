@@ -1,3 +1,4 @@
+import { PaperlessService } from './../../../_services/_iam/paperless.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -6,8 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./misc-column.component.scss']
 })
 export class MiscColumnComponent implements OnInit {
-  @Input() paperless: boolean = false;
-  constructor() { }
+
+  constructor(
+    private paperlessService: PaperlessService
+  ) { }
+
+  firstTime(): boolean {
+    return this.paperlessService.allEPayMethod();
+  }
 
   ngOnInit() {
   }

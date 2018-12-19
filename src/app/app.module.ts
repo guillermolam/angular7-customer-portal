@@ -135,7 +135,10 @@ import { PaperlessPayComponent } from './components/dashboard/loggedin-content/b
 import { PaperlessPolicyComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-policy/paperless-policy.component';
 import { ClaimsMiscComponent } from './components/dashboard/loggedin-content/claims/claims-misc/claims-misc.component';
 import { PaperlessFirstTimeComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-time/paperless-time.component';
-
+import { PaperlessPayEnrollComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/enroll/enroll.component';
+import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enroll-eft-epay-form/enroll-eft-epay-form.component';
+import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
+ 
 if (environment.production) {
   enableProdMode();
 }
@@ -244,6 +247,9 @@ export function tokenGetter() {
     PaperlessPolicyComponent,
     ClaimsMiscComponent,
     PaperlessFirstTimeComponent,
+    PaperlessPayEnrollComponent,
+    EnrollEftEpayFormComponent,
+    PaperlessPayConfirmComponent,
 
   ],
   imports: [

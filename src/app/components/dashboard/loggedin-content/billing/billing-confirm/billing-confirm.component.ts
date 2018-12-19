@@ -30,7 +30,7 @@ export class BillingConfirmComponent implements OnInit {
 
   sendPayment(): void {
     this.billingService
-      .payBillByCheck(this.billing)
+      .payBillByCheck(this.billing, this.user)
       .subscribe( (response) => {
         this.billingObservableService.clearBilling();
         this.alertService.success('you paid your bill', true);
@@ -53,13 +53,11 @@ export class BillingConfirmComponent implements OnInit {
     this.userService.$user.subscribe(
       (user) => {
         this.user =                   user;
-        console.log('user', user, typeof user)
     });
 
     this.billingObservableService.$billing.subscribe( 
       (billing) => {
         this.billing =                     billing;
-        console.log('billing', billing, typeof billing)
     });
   }
 
