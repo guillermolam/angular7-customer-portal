@@ -44,13 +44,13 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
   }
 
   createUserObject(formValue): void {
-    this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
+    this.policyDetails =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
     this.user = {
       firstName:                    formValue.editFirst_name,
       middleName:                   formValue.editMI_name,
       lastName:                     formValue.editLast_name,
       email:                        formValue.editEmail,
-      policyDetails:                this.policyDetail
+      policyDetails:                this.policyDetails
     };
     this.userService.updateUser(this.user);
   }
