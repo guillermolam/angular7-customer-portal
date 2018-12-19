@@ -13,16 +13,8 @@
         [additionalClasses]="'basic primary large'"
         [disabledValue]="editPolicyForm.valid" 
         [inputType]="'submit'"
-        [translateValue]="'EDIT_POLICY' | translate"
+        [translateValue]="'CONFIRM' | translate"
       ></mapfre-button>
     </div>
   </div>
-  <div class="row text-center margin-top mt24">
-      <div class="col">
-        <mapfre-button
-          [additionalClasses]="'secondary ghost small'"
-          [routerLink]="['/signup', 'notfound']"
-        >{{ 'CANCEL' | translate }}</mapfre-button>
-      </div>
-    </div>
 </form>

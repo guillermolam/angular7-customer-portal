@@ -16,6 +16,14 @@
     </div>
   </div>
   <app-edit-policy-form [inputs]="editPolicyDetails" [userData]="user"></app-edit-policy-form>
+  <div class="row text-center margin-top mt24">
+      <div class="col">
+        <mapfre-button
+          [additionalClasses]="'secondary ghost small'"
+          [routerLink]="['/my-insurance', 'link-policy']"
+        >{{ 'CANCEL' | translate }}</mapfre-button>
+      </div>
+    </div>
   <hr class="margin-vertical mv24" />
   <div class="row text-center margin-top mt16">
       <div class="col">

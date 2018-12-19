@@ -27,19 +27,21 @@ private userService:            UserService,
 // private policyService:          PolicyDetailsService
 ) { }
 
-confirmPolicy(): void {
-this.authService
-.confirmPolicyAndAccount(this.userService)
-.subscribe(
-(data) => {
-console.log(data);
-this.alertService.success('Policy added successfully');
+confirmPolicy(): void {  
+this.alertService.success('Policy added successfully', true);
 this.router.navigate(['/my-insurance']);
-},
-(err) => {
-this.alertService.error('There was an issue');
-}
-);
+// this.authService
+// .confirmPolicyAndAccount(this.userService)
+// .subscribe(
+// (data) => {
+// console.log(data);
+// this.alertService.success('Policy added successfully');
+// this.router.navigate(['/my-insurance']);
+// },
+// (err) => {
+// this.alertService.error('There was an issue');
+// }
+// );
 }
 
 createUserObject(formValue): void {

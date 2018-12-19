@@ -44,8 +44,11 @@ export class EditPolicyComponent implements OnInit {
   }
 
   editPolicy(): void {
-    this.createUserObject(this.editPolicyForm.value);
-    this.authService
+    if(this.router.url==='/my-insurance/edit-policy-details'){
+      this.router.navigate(['/my-insurance','validate-policy-rights']);
+    }else {
+      this.createUserObject(this.editPolicyForm.value);
+      this.authService
       .verifyPolicy(this.userService)
       .subscribe(
         (data) => {
@@ -67,6 +70,8 @@ export class EditPolicyComponent implements OnInit {
         }
       )
     ;
+    } 
+    
   }
 
   prefillData(prefillData): void {

@@ -31,7 +31,17 @@ export class AddPolicyComponent implements OnInit {
   ) { }
 
   addPolicy(): void {
-    this.addPolicyToObject(this.userData);
+    if(this.router.url==='/my-insurance/link-policy'){
+      /*
+       */
+      if(this.addPolicyForm.controls.addPolicy.value === '800000')
+      this.router.navigate(['/my-insurance','business-policy-not-supported']);
+      else if (this.addPolicyForm.controls.addPolicy.value === '123456')
+      this.router.navigate(['/my-insurance','validate-policy-rights']);
+      else if (this.addPolicyForm.controls.addPolicy.value === '111111')
+      this.router.navigate(['/my-insurance','policy-not-found']);
+    }else {
+      this.addPolicyToObject(this.userData);
     if (this.legalCheckbox) {
       this.authService
         .verifyPolicy(this.userService)
@@ -63,6 +73,7 @@ export class AddPolicyComponent implements OnInit {
           }
         )
       ;
+    }
     }
   }
 
