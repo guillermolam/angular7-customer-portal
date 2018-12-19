@@ -43,6 +43,11 @@ import { PaperlessComponent }             from './components/dashboard/loggedin-
 import { PaperlessFirstTimeComponent }    from './components/dashboard/loggedin-content/billing/paperless/paperless-time/paperless-time.component';
 import { PaperlessPayEnrollComponent }    from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/enroll/enroll.component';
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
+import { PolicyNotFoundComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-not-found/policy-not-found.component';
+import { EditPolicyDetailsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/edit-policy-details/edit-policy-details.component';
+import { ValidatePolicyRightsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/validate-policy-rights/validate-policy-rights.component';
+import { PolicyInProcessComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-in-process/policy-in-process.component';
+import { BusinesspolicyDetectedComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/businesspolicy-detected/businesspolicy-detected.component';
 
 
 // ----- Routes ----- //
