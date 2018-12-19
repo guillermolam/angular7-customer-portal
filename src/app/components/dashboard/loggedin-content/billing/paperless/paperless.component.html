@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col">
+    <h2 class="title" *ngIf="!checkEnrollment">
+      {{ 'PAPERLESS' | translate }} {{ paperlessPage | titlecase }}
+    </h2> 
+    <router-outlet (activate)="checkPaperlessPage()"></router-outlet>
+  </div>
+</div>

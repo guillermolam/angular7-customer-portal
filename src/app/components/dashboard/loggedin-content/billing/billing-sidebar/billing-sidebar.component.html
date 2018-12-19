@@ -48,7 +48,8 @@
           </div>
           <div class="col-lg-12 col-md-12 col-sm-6"> 
             <mapfre-button
-              [additionalClasses]="'basic primary full small mx-auto'">
+              [additionalClasses]="'basic primary full small mx-auto  waves-effect'"
+              [routerLink]="['/billing', 'paperless']">
               {{ 'ENROLL_NOW' | translate}}
             </mapfre-button>
           </div>
@@ -84,8 +85,8 @@
           </div>
           <div class="col-lg-12 col-md-12 col-sm-6">
               <mapfre-button
-                [additionalClasses]="'ghost primary full small mx-auto'"
-                [routerLink]="['/paperless']">
+                [additionalClasses]="'ghost primary full small mx-auto  waves-effect'"
+                [routerLink]="['/billing/paperless']">
                 {{ 'PAPERLESS_SETTINGS' | translate}}
               </mapfre-button>
             </div>
@@ -119,7 +120,7 @@
             <strong>{{ 'MODAL_BILL_REP' | translate }}</strong> Bob Smith Boston Billing Co. <a href="tel:555-555-5555">(555) 555-5555</a>
           </div>
           <div class="contact-form margin-bottom mb24">
-            <app-contact-billing-rep-form [inputs]="inputs"></app-contact-billing-rep-form>
+            <app-contact-billing-rep-form [inputs]="inputs" (hideModalOutput)="hideModalOnCanel($event)"></app-contact-billing-rep-form>
           </div>
           <mapfre-info-divs>
             <p class="margin-bottom mb8">{{ 'BILLING_PAR_ONE' | translate }}</p>

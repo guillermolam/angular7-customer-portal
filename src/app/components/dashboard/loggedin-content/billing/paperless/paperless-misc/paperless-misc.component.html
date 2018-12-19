@@ -1,0 +1,34 @@
+<mapfre-card 
+  [singleCard]="false" 
+  [additionalClasses]="'paperless-sidebar misc-content'">
+  <div class="">
+    <div class="icon-title">
+      <div class="alarm svg-container float-left">
+          <img src="./assets/img/images/paperless.png" />
+      </div>
+      <div class="float-left paperless-copy">
+        <div class="grey-color small-font">
+          {{ 'ENROLL_IN_OUR_PAPERLESS_PLAN' | translate }}
+        </div>
+        <div class="green-text">
+          {{ 'AND_SAVE_UP_TO_3%' | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div class="paperless-desktop misc-desktop float-right">
+      <mapfre-link 
+        routerLink="/billing/paperless">
+        {{ 'PAPERLESS_SETTINGS' | translate }}
+        <i class="fas fa-angle-right"></i>
+      </mapfre-link>
+    </div>
+
+    <div class="paperless-mobile misc-mobile float-right margin-right mr16">
+      <a class="mapfre link">
+        <span>{{ 'SETTINGS' | translate }}</span>
+        <i class="fas fa-angle-right"></i>
+      </a>
+    </div>
+  </div>
+</mapfre-card>

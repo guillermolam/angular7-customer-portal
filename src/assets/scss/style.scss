@@ -175,6 +175,14 @@ h1.title-cta {
   }
 }
 
+.col1-image {
+  max-width: 177px;
+
+  img {
+    width: 144px;
+  }
+}
+
 .container {
   &.loggedin {
     max-width:        1190px;
@@ -229,6 +237,12 @@ h1.title-cta {
   @media (max-width: 376px){ 
     overflow: hidden;
   }
+}
+
+.custom-select {
+  border-radius: 0;
+  border: none;
+  border-bottom: 0.125rem solid #737373;
 }
 
 .dashboard-navigation {
@@ -899,4 +913,68 @@ table td {
 .tab-accordian-navigation {
   margin-bottom: -1px;
   width: 100.25%;
+}
+
+.pill-box {
+  .pill {
+    float: left;
+
+    .pill-label {
+      cursor: pointer;
+      font-size: 12px;
+      border: thin solid;
+      background-color: transparent;
+    }
+
+    .pill-radio {
+      position: absolute;
+      left: -200%;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+    }
+
+    &.pill-left {
+      .pill-label {
+        border-radius: 20px 0 0 20px;
+      }
+    }
+
+    &.pill-right {
+      .pill-label {
+        border-radius:0 20px 20px 0;
+      }
+    }
+
+    &.pill-middle {
+      .pill-label {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+      }
+    }
+  }
+
+  &.mapfre {
+    .pill .pill-label {
+      color: #737373;
+      border-color: #006580;
+    }
+
+    .pill-radio:checked +.pill-label {
+      color: $white;
+      background-color: #006580;
+    }
+  }
+
+}
+
+.pending {
+  font-style: italic;
+  color: #737373;
+  text-align: right;
+
+  i {
+    font-size: 16px;
+  }
 }

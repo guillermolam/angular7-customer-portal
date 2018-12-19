@@ -1,72 +1,34 @@
-import { HttpClient }         from '@angular/common/http';
-import { Injectable }         from '@angular/core';
-import { of, throwError, pipe }     from 'rxjs';
-import { Observable }         from 'rxjs/Observable';
-import { catchError, map }    from 'rxjs/operators';
-import { environment }        from '../../../environments/environment';
-import { User }               from '../../_models/user';
+
+import { HttpClient }             from '@angular/common/http';
+import { Injectable }             from '@angular/core';
+import { of, throwError }         from 'rxjs';
+import { Observable }             from 'rxjs/Observable';
+import { catchError, map }        from 'rxjs/operators';
+import { environment }            from '../../../environments/environment';
+import { ServiceHelpersService }  from '../../_helpers/service-helpers.service';
+import { User }                   from '../../_models/user';
+
 
 @Injectable()
 export class AuthenticationService {
   public token:               string;
-  private options:            object = { headers :
-    {'Content-Type': 'application/json' }
-  };
 
   constructor(
     private http:             HttpClient,
+    private serviceHelpers:   ServiceHelpersService
   ) {
     // set token if saved in local storage
     const currentUser =       JSON.parse(localStorage.getItem('currentUser'));
     this.token =              currentUser && currentUser.token;
   }
 
-  creatUserObject(items, db): object {
-    const pn = items.policyDetails === undefined ? '' : items.policyDetails[0].policynumber.policynumber ,
-          pword = items.password || null;
-    let obj;
-    if ( db == 'createaccount' ) {
-      obj =  {
-        customer: {
-          firstName:        items.firstName,
-          middleName:       items.middleName,
-          lastName:         items.lastName,
-          email:            items.email
-        },
-        policynumbers: [{
-            policynumber:   pn
-        }],
-        credentials: {
-          email:            items.email,
-          password:         pword
-        }
-      };
-    }
-    else if (db == 'personalpolicy') {
-      obj = {
-        firstName:          items.firstName,
-        middleName:         items.middleName,
-        lastName:           items.lastName
-      };
-    }
-    else if (db == 'verifyuser') {
-      obj = {
-        firstName:          items.firstName,
-        middleName:         items.middleName,
-        lastName:           items.lastName,
-        email:              items.email
-      };
-    }
-    return obj;
-  }
-
   confirmPolicyAndAccount(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
       url =                 `${environment.backend_server_url}/customers/accounts/${user.email}`,
-      userSendObject =      this.creatUserObject(user, 'createaccount')
+      userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
     ;
-    return this.http.put(url, userSendObject, this.options)
+    return this.http.put(url, userSendObject, this.serviceHelpers.options)
       .pipe(
         map((response) => response ),
         catchError((err) => of(err))
@@ -77,9 +39,9 @@ export class AuthenticationService {
     const
       user =                userObject.$user.source.value,
       url =                 `${environment.backend_server_url}/customers/accounts/${user.email}`,
-      userSendObject =      this.creatUserObject(user, 'createaccount')
+      userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
     ;
-    return this.http.put(url, userSendObject, this.options);
+    return this.http.put(url, userSendObject, this.serviceHelpers.options);
   }
 
   forgotPasswordSendEmailId(userEmail: string): Observable<any> {
@@ -93,8 +55,6 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    //const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
-    //      client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d',
     const urlpartone =      `${environment.backend_auth_server_url}/`,
           urlparttwo =      `grant_type=password&username=${username}&password=${password}`,
           url = urlpartone + urlparttwo;
@@ -121,21 +81,6 @@ export class AuthenticationService {
         catchError( (error) => throwError('Invalid email/password combination'))
       );
   }
-   /*oringal params -- do not get rid of for the moment
-     .post<any>(url, {}, {
-        params : {
-          grant_type: 'password',
-          username: username,
-          password: password,
-          client_id:'7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
-          client_secret: 'aeb8f080-98b7-488d-bd10-8d26fedeef2d',
-          scope: 'oob'
-        },
-        headers : {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      })
-      */
 
   logout(): void {
     this.token =        null;
@@ -144,7 +89,7 @@ export class AuthenticationService {
 
   tokenVerification(token: string, email: string): Observable<object> {
     const url =           `${environment.backend_server_url}/identity/users/token-validation/${email}?token=${token}`;
-    return this.http.post(url, {}, this.options);
+    return this.http.post(url, {}, this.serviceHelpers.options);
   }
 
   updateMileage(user: User, mileage: number) {
@@ -167,7 +112,7 @@ export class AuthenticationService {
 
   verifyAccountTokenVerification(token: string, email: string): Observable<object> {
     const url =           `${environment.backend_server_url}/customers/accounts/?token=${token}&email=${email}`;
-    return this.http.put(url, {}, this.options);
+    return this.http.put(url, {}, this.serviceHelpers.options);
   }
 
   verifyPolicy(userObject): Observable<object> {
@@ -175,18 +120,18 @@ export class AuthenticationService {
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
       url =             `${environment.backend_server_url}/personal-policies/${policyNumber}/insureds/namevalidation`,
-      userSendObject =  this.creatUserObject(user, 'personalpolicy')
+      userSendObject =  this.serviceHelpers.creatUserObject(user, 'personalpolicy')
     ;
     return this.http.put(url, userSendObject);
   }
 
   verifyUser(userObject): Observable<object> {
     const user =         userObject.$user.source.value,
-        userSendObject = this.creatUserObject(user, 'verifyuser'),
+        userSendObject = this.serviceHelpers.creatUserObject(user, 'verifyuser'),
         url =          `${environment.backend_server_url}/customers/accounts/${user.email}`;
 
     return this.http
-      .post(url, userSendObject, this.options)
+      .post(url, userSendObject, this.serviceHelpers.options)
       .pipe(
         map((info: any) => info),
         catchError( (error) => throwError(error))

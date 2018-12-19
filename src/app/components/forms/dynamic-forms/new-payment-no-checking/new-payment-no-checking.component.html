@@ -85,7 +85,7 @@
       <div class="row text-center margin-top mt32">
         <div class="col">
           <mapfre-button
-            [additionalClasses]="'basic primary large w-75 center-button'"
+            [additionalClasses]="'basic primary large w-75 center-button  waves-effect waves-light'"
             [disabledValue]="newPaymentForm.valid && newPaymentRadioForm.valid" 
             [inputType]="'submit'"
             [translateValue]="'CONTINUE' | translate">
@@ -95,7 +95,7 @@
       <div class="row text-center margin-bottom mb24 margin-top mt16">
         <div class="col">
           <mapfre-button
-            [additionalClasses]="'ghost secondary small'"
+            [additionalClasses]="'ghost secondary small  waves-effect'"
             [routerLink]="['/my-insurance']">
             {{ 'CANCEL' | translate}}
           </mapfre-button>

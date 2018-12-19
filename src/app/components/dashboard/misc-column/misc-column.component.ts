@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { PaperlessService } from './../../../_services/_iam/paperless.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-misc-column',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MiscColumnComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private paperlessService: PaperlessService
+  ) { }
+
+  firstTime(): boolean {
+    return this.paperlessService.allEPayMethod();
+  }
 
   ngOnInit() {
   }

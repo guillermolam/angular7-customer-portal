@@ -1,0 +1,73 @@
+.col1-image {
+  @media (max-width: 767px ) {
+    text-align: center;
+    margin-bottom: 16px;
+    max-width: 100% !important;
+  }
+}
+
+.paperless-table {
+
+}
+
+.enroll-button {
+  width: 193px;
+
+  .fa-check-circle {
+    font-size: $global-one-rem;
+  }
+
+  .fa-times-circle {
+    font-size: 24px;
+    margin-left: 16px;
+  }
+
+  .edit-icon .svg-container svg {
+    width: 21px;
+    float: right;
+  }
+  .btn.mapfre {
+    @media (max-width: 516px) {
+      font-size: 10px;
+    }
+  }
+}
+
+.enrolled-icon {
+  margin-right: 8px;
+  width: 80px;
+
+  @media (max-width: 516px) {
+    width: 67px;
+  }
+  
+  .svg-container svg {
+    width: 16px;
+    float: left;
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-top: 4px;
+  }
+}
+
+.policy-type-id {
+  width: 125px;
+  font-size: 14px;
+}
+
+.type-image {
+  width: 20px;
+} 
+
+@media (max-width: 519px) {
+  .table td.type-image {
+    padding-left: 0 !important;
+  }
+}
+
+@media (max-width: 355px) {
+  .table td.policy-type-id {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}

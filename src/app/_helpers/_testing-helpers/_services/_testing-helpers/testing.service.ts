@@ -11,17 +11,19 @@ export class TestingService {
 
   public testingResponses(testData): Observable<object> {
     // testData.policyNumber == 800000
-    if (testData.email == 'glam@mapfreusa.com') {
+    if (testData.email == 'glam@mapfreusa.com' || testData.enrollInEft_accountName == 'Error') {
       return this.http.post<object>('https://httpstat.us/404', testData, {
         headers : {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'http://localhost:4200'
         }
       });
     }
     else {
       return this.http.post<object>('https://httpstat.us/202', testData, {
         headers : {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'http://localhost:4200'
         }
       });
     }

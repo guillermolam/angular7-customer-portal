@@ -20,7 +20,7 @@
           <div class="col col1 no-padding-left">
             <h2 class="title">
               {{ 'REVIEW_PAYMENT' | translate }}
-              <mapfre-button additionalClasses="link-button normal-link float-right no-border no-padding no-margin" [routerLink]="['/billing/'+ policy?.policynumber.policynumber +'/new-payment']">
+              <mapfre-button additionalClasses="link-button normal-link float-right no-border no-padding no-margin waves-effect" [routerLink]="['/billing/'+ policy?.policynumber.policynumber +'/new-payment']">
                 {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
               </mapfre-button>
             </h2>
@@ -82,7 +82,7 @@
             <div class="row text-center margin-top mt32">
               <div class="col">
                 <mapfre-button
-                  [additionalClasses]="'basic primary large w-75 center-button'"
+                  [additionalClasses]="'basic primary large w-75 center-button  waves-effect'"
                   (click)='sendPayment()'>
                   {{ 'CONFIRM_PAYMENT' | translate}}
                 </mapfre-button>
@@ -91,7 +91,7 @@
             <div class="row text-center margin-bottom mb24 margin-top mt16">
               <div class="col">
                 <mapfre-button
-                  [additionalClasses]="'ghost secondary small'"
+                  [additionalClasses]="'ghost secondary small  waves-effect'"
                   [routerLink]="['/my-insurance']">
                   {{ 'CANCEL' | translate }}
                 </mapfre-button>

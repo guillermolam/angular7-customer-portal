@@ -1,4 +1,5 @@
-import { Component, OnInit, Input }       from '@angular/core';
+import { Component, OnInit, 
+  Input, EventEmitter, Output }           from '@angular/core';
 import { FormBaseControlService, FormBase, 
   AlertService }                          from 'mapfre-design-library';
 import { FormGroup }                      from '@angular/forms';
@@ -12,8 +13,10 @@ import { Router, ActivatedRoute }         from '@angular/router';
 })
 export class ContactBillingRepFormComponent implements OnInit {
   @Input()  inputs:                     FormBase<any>[] = [];
+  @Output() hideModalOutput:            EventEmitter<boolean> = new EventEmitter();
             contactBillingRepForm:      FormGroup;
             forgotPassword:             boolean = false;
+            hideModal:                  boolean = false;
             whereInTheProcess:          string;
 
   constructor(
@@ -22,6 +25,13 @@ export class ContactBillingRepFormComponent implements OnInit {
     private alertService:               AlertService,
     private activatedRoute:             ActivatedRoute
   ) { }
+
+  hideModalAction(event): void {
+    if (event) {
+      this.hideModal = !this.hideModal;
+      this.hideModalOutput.emit(this.hideModal);
+    }
+  }
 
   sendMessage(): void {
     const message = this.contactBillingRepForm.value;

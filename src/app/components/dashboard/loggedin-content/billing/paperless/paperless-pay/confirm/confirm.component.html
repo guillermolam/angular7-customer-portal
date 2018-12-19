@@ -1,0 +1,40 @@
+<div class="single-card-column">
+  <div class="row text-center">
+    <div class="col"> 
+      <div class="header-icon full-icon">
+        <svg-bank-svg></svg-bank-svg>
+      </div>
+      <div>
+        <h1 class="title-copy">e-Pay enrollment</h1>
+      </div>        
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>
+          Your Policy is now enrolled in e-PAY
+      </p>
+      <p>
+          Your Autopay deduction schedule will be mailed to you 2 weeks prior to your first deduction. Your account will reflect your updates within 1 to 2 business days. <strong>The estimated deduction may not include any increase or decrease in premiums due to the removal of discounts or policy changes.</strong>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <p>Account Holder: <strong> {{ billingInfo?.billingInfo[0].accountName }} </strong></p>
+        <p>Routing/ABA Number: <strong> {{ billingInfo?.billingInfo[0].bankRoutingNumber }} </strong></p>
+        <p>Account Number: <strong> {{ billingInfo?.billingInfo[0].accountNumber }} </strong></p>
+        <p>Type of Account: <strong> {{ billingInfo?.billingInfo[0].accountType.bankType }} </strong></p>
+        <p>Monthly Deduction Date: <strong>  {{ billingInfo?.deductionDate }}</strong></p>
+    </div>
+  </div>
+  <div class="row margin-vertical mv16 text-center">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'basic primary large mx-auto waves-effect'"
+        [routerLink]="['/billing/paperless']">  
+        {{ 'Continue' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
+</div>
