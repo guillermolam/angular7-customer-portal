@@ -14,7 +14,7 @@ import { PolicyDataService } from '../../_services/my-insurance/data-services/po
 })
 export class DashboardMainComponent implements OnInit {
 
-  reportClaim: boolean=true;
+  reportClaim: boolean;
 
   constructor( 
     private router: Router,
@@ -23,6 +23,10 @@ export class DashboardMainComponent implements OnInit {
     private storageService: StorageServiceObservablesService ){}
 
   ngOnInit() {
+
+    if (this.router.url==='/my-insurance'){
+      this.reportClaim = true;
+    }
 
     this.router.events.subscribe((event)=>{
       if(event instanceof NavigationEnd){

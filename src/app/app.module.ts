@@ -129,6 +129,11 @@ import { BillingConfirmComponent } from './components/dashboard/loggedin-content
 import { PolicyDataService } from './_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService } from './_services/my-insurance/policy-details.service';
 import { ContactBillingRepFormComponent } from './components/forms/dynamic-forms/contact-billing-rep-form/contact-billing-rep-form.component';
+import { BusinesspolicyDetectedComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/businesspolicy-detected/businesspolicy-detected.component';
+import { PolicyNotFoundComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-not-found/policy-not-found.component';
+import { EditPolicyDetailsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/edit-policy-details/edit-policy-details.component';
+import { PolicyInProcessComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-in-process/policy-in-process.component';
+import { ValidatePolicyRightsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/validate-policy-rights/validate-policy-rights.component';
 
 if (environment.production) {
   enableProdMode();
@@ -232,6 +237,11 @@ export function tokenGetter() {
     MyInsuranceMainComponent,
     BillingConfirmComponent,
     ContactBillingRepFormComponent,
+    BusinesspolicyDetectedComponent,
+    PolicyNotFoundComponent,
+    EditPolicyDetailsComponent,
+    PolicyInProcessComponent,
+    ValidatePolicyRightsComponent,
 
   ],
   imports: [

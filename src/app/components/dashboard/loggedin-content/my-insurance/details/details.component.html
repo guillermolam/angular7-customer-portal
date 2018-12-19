@@ -12,11 +12,17 @@
           <div class="policy-background">
             <div class="car"></div>
           </div>
+
           <div class="type-title">
             <h1 class="title">
                 {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
-              <small><span class="green-color">{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}
-              </span></small>
+              <small>
+              <span 
+              [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 
+                'red-color': policy.policyStatus !== 'ACTIVE' }">
+                        <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
+              </span>
+            </small>
             </h1>
           </div>
         </header>
@@ -323,12 +329,17 @@
               <div class="house"></div>
             </div>
             <div class="type-title">
-              <h1 class="title">
-                  {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
-                <small><span class="green-color">{{policy.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy.expDate | date:'shortDate' }}
-                </span></small>
-              </h1>
-            </div>
+                <h1 class="title">
+                    {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
+                  <small>
+                  <span 
+                  [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 
+                    'red-color': policy.policyStatus !== 'ACTIVE' }">
+                            <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
+                  </span>
+                </small>
+                </h1>
+              </div>
           </header>
         
         <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
