@@ -27,9 +27,9 @@ export class CheckingAccountService {
         inputType:          'text',
         value:               this.checkingAccount.accountHolderName,
         key:                'bankAccountHolder',
-        label:              "Bank account holder's name",
+        label:              'Bank account holder\'s name',
         required:           true,
-        type:               'text', 
+        type:               'text',
         validationMessageError: 'Please enter valid name'
       }),
       new TextBox({
@@ -37,8 +37,8 @@ export class CheckingAccountService {
         inputType:          'bank',
         key:                'bankAccountRoutingNumber',
         label:              'Bank routing number',
-        maxLength: 9,
-        minLength: 9,
+        maxLength:          9,
+        minLength:          9,
         required:           true,
         type:               'tel',
         value:              this.checkingAccount.routingNumber,
