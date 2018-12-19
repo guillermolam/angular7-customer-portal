@@ -14,7 +14,8 @@ import { TestingDataService }                 from '../../_helpers/testing-data.
   styleUrls: ['./dashboard-main.component.scss']
 })
 export class DashboardMainComponent implements OnInit {
-  reportClaim: boolean;
+  loading:                                    boolean = false;
+  reportClaim:                                boolean;
 
   constructor(
     private router:                           Router,
@@ -24,7 +25,7 @@ export class DashboardMainComponent implements OnInit {
     private testingData:                      TestingDataService ){}
 
   ngOnInit() {
-
+    this.loading = true;
     if (this.router.url === '/my-insurance') {
       this.reportClaim = true;
     }
@@ -42,13 +43,23 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
-    this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe();
-
     this.policyDetailsService
-      .getPolicyDetailsByEmail(
-        this.storageService.getUserFromStorage()
-      ).subscribe( () => { },
+      .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
+      .subscribe(
+        () => { this.loading = false; }
       );
-    //this.userService.updateUser( this.testingData.testDatafunction() );
+
+   // this.policyDetailsService
+   //   .getPolicyDetailsByEmail(
+   //     this.storageService.getUserFromStorage()
+   //   ).subscribe( () => { },
+   //   );
+   //this.userService.updateUser( this.testingData.testDatafunction() );
+
+   //this.userService.$user.subscribe(
+   //  (user) => { 
+   //    console.log(user)
+   //    this.loading = false; }
+   //);
   }
 }
