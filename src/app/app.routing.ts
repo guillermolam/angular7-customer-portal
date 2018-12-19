@@ -75,21 +75,29 @@ const appRoutes: Routes = [
   { path: 'walletcard',                   component: WalletCardComponent},
 
 // when logged in
-  { path: '',                             component: DashboardMainComponent, //canActivate: [AuthGuard],
+{ path: '', component: DashboardMainComponent, canActivate: [AuthGuard],
+children: [
+{ path: '', component: LoggedinContentComponent, children: [
+  { path: '', redirectTo: 'my-insurance', pathMatch: 'full' },
+  { path: 'my-insurance', component: MyInsuranceComponent,
   children: [
-
-    { path: '',                           component: LoggedinContentComponent, children: [
-      { path: 'login',                    redirectTo: 'my-insurance' },
-      { path: 'my-insurance',             component: MyInsuranceComponent, children: [
-        { path: '',                       component: MyInsuranceMainComponent, pathMatch: 'full' },
-        { path: 'link-policy',            component: LinkPolicyComponent},
-        { path: ':policyid',              children: [
-            { path: '',                   redirectTo: 'details', pathMatch: 'full' },
-            { path: 'details',            component: PolicyDetailsComponent },
-            { path: 'billing',            component: BillingDetailsComponent },
-            { path: 'documents',          component: DocumentDetailsComponent },
-        ]},
-  ]},
+    { path: '',  component: MyInsuranceMainComponent, pathMatch: 'full' },
+    { path: 'link-policy',  component: LinkPolicyComponent},
+    { path: 'business-policy-not-supported',  component: BusinesspolicyDetectedComponent},
+    { path: 'policy-not-found',  component: PolicyNotFoundComponent},
+    { path: 'edit-policy-details',  component: EditPolicyDetailsComponent},
+    { path: 'policy-in-process',  component: PolicyInProcessComponent},
+    { path: 'validate-policy-rights',  component: ValidatePolicyRightsComponent},
+    { path: ':policyid',
+      children: [
+        { path: '', redirectTo: 'details', pathMatch: 'full' },
+        { path: 'details', component: PolicyDetailsComponent },
+        { path: 'billing', component: BillingDetailsComponent },
+        { path: 'documents', component: DocumentDetailsComponent },
+      ]
+    },
+  ]
+},
   { path: 'profile',                      component: ProfileSettingsComponent, children: [
     { path: '',                           component: ProfileMainComponent },
     { path: 'edit-phone',                 component: ProfilePhoneComponent},
