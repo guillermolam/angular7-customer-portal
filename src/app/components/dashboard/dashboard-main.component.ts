@@ -48,18 +48,5 @@ export class DashboardMainComponent implements OnInit {
       .subscribe(
         () => { this.loading = false; }
       );
-
-   // this.policyDetailsService
-   //   .getPolicyDetailsByEmail(
-   //     this.storageService.getUserFromStorage()
-   //   ).subscribe( () => { },
-   //   );
-   //this.userService.updateUser( this.testingData.testDatafunction() );
-
-   //this.userService.$user.subscribe(
-   //  (user) => { 
-   //    console.log(user)
-   //    this.loading = false; }
-   //);
   }
 }
