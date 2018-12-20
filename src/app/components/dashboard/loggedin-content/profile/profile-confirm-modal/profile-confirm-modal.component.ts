@@ -22,7 +22,7 @@ export class ProfileConfirmModalComponent implements OnInit {
   ) { 
 
     this.profileAccountModalOptions = new ModalOptions({
-      // additionalClasses:          'account',
+      additionalClasses:              'modal-small modal-dialog center-on-page confirm-modal',
       // additionalButtonClasses:    'header-flat account',
       animatePosition:            'top',
       onLoad: true,

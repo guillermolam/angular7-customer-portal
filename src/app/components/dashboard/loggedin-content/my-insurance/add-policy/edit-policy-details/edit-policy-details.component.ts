@@ -25,6 +25,7 @@ export class EditPolicyDetailsComponent implements OnInit {
   ) {
     this.editPolicyDetails = editPolicyService.getInputs();
     this.whereToFindModalOptions = new ModalOptions({
+      additionalClasses:              'modal-small modal-dialog center-on-page',
       additionalButtonClasses:        'flat link-button normal-link small',
       animatePosition:                'bottom',
       buttonCopy:                     'MODAL_WHERE_CAN_I_LINK',

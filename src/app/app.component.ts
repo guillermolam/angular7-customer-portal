@@ -41,6 +41,9 @@ export class AppComponent {
       this.router.isActive(rs[8], null) ) {
       return 'loggedin-footer';
     }
+    else {
+      return 'footer';
+    }
   }
 
   findLanguage(): void {
