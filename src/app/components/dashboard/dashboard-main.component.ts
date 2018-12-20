@@ -47,9 +47,11 @@ export class DashboardMainComponent implements OnInit {
 
     this.policyDataService.$policyDetails.subscribe(
       (success) => {
+        this.loading = false;
       },
       (err) => {
         this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe();
+        this.loading = false;
       },
     );
    // this.policyDetailsService
