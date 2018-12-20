@@ -707,8 +707,14 @@ h1.title-cta {
 }
 
 .loggedin-footer {
-  @media (max-width: 992px) {
-    padding-bottom: 50px;
+  @media (max-width: 991px) {
+    padding-bottom: 74px;
+  }
+
+  @media (min-width: 992px) {
+    .footer-copyright {
+      padding-left: 256px;
+    }
   }
 }
 
