@@ -7,6 +7,8 @@ import { UserService }              from './../../../../../_services/user.servic
 import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 
 import { TestingDataService }       from './../../../../../_helpers/testing-data.service';
+import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
+
 
 @Component({
   selector:     'app-billing-newpayment',
@@ -24,6 +26,7 @@ export class BillingNewpaymentComponent implements OnInit {
   policyId:                         number;
   user:                             User;
   showMessage:                      boolean = false;
+  policyDetails: any;
 
   constructor(
     service:                        NewPaymentService,
@@ -31,7 +34,8 @@ export class BillingNewpaymentComponent implements OnInit {
     private alertService:           AlertService,
     private userService:            UserService,
     private userInformation:        UserInfoService,
-    private testingData:            TestingDataService
+    private testingData:            TestingDataService,
+    private billingDataService: BillingDataService,
   ) {
     this.inputs = service.getInputs();
    }
@@ -39,7 +43,21 @@ export class BillingNewpaymentComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-    });
+      this.billingDataService.$billingDetails
+    // .pipe(map((policies: any[]) => {
+    //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+    // }))
+    .subscribe((billingResponse: any[]) => {
+      if(billingResponse){
+        this.policyDetails = billingResponse;
+        // .map((policies: any[]) => {
+        //     return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+        // });
+        // console.log(this.policyDetails);
+        // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
+      }
+  })
+})
 
     this.checkingInfo = this.testingData.testDataChecking(this.policyId);
     this.loading = false;
