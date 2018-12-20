@@ -1,11 +1,12 @@
 import { Component, OnInit }                  from '@angular/core';
 import { Router, NavigationEnd }              from '@angular/router';
-import { PolicyDataService }                  from '../../_services/my-insurance/data-services/policy-data.service';
 import { BillingDataService }                 from './../../_services/my-insurance/data-services/billing-data.service';
-import { PolicyDetailsService }               from './../../_services/my-insurance/policy-details.service';
 import { BillingDetailsService }              from './../../_services/my-insurance/billing-details.service';
-import { UserService }                        from './../../_services/user.service';
+import { PolicyDataService }                  from '../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDetailsService }               from './../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }   from './../../_services/storage-service-observables/storage-service-observables.service';
+import { UserService }                        from './../../_services/user.service';
+
 import { TestingDataService }                 from '../../_helpers/testing-data.service';
 
 @Component({
@@ -18,11 +19,13 @@ export class DashboardMainComponent implements OnInit {
   reportClaim:                                boolean;
 
   constructor(
-    private router:                           Router,
+    private policyDataService:                PolicyDataService,
     private policyDetailsService:             PolicyDetailsService,
-    private userService:                      UserService,
+    private router:                           Router,
     private storageService:                   StorageServiceObservablesService,
-    private testingData:                      TestingDataService ){}
+    private userService:                      UserService,
+
+    private testingData:                      TestingDataService ) {}
 
   ngOnInit() {
     this.loading = true;
@@ -32,7 +35,6 @@ export class DashboardMainComponent implements OnInit {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-
         // console.log(event.url);
         if ( event.url === '/my-insurance' ) {
           this.reportClaim =                true;
@@ -43,9 +45,15 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
-    this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe();
-
-    this.loading = false;
+    this.policyDataService.$policyDetails.subscribe(
+      (success) => {
+        this.loading = false;
+      },
+      (err) => {
+        this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe();
+        this.loading = false;
+      },
+    );
    // this.policyDetailsService
    //   .getPolicyDetailsByEmail(
    //     this.storageService.getUserFromStorage()

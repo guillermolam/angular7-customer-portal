@@ -16,7 +16,16 @@ export class StorageServiceObservablesService {
   // }
 
   getUserFromStorage(){
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    // for development and testing
+    let currentUser;
+    if (JSON.parse(localStorage.getItem('currentUser'))) {
+      currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    }
+    else {
+      currentUser = { username: 'testmfr@gmail.com'};
+    }
     this.userEmail = currentUser.username;
     return this.userEmail;
   }
