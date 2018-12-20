@@ -65,6 +65,9 @@ export class LoginFormComponent implements OnInit {
               redirectURl = `/my-insurance`;
             }
             this.alertService.success('Successful Login', true);
+            this.authenticationService.getUserDetailsByEmail(this.user.email).subscribe((userResponse)=>{
+              this.userService.updateUser(userResponse);
+            });
             this.router.navigate([`/my-insurance`]);
           },
           (err) => {
