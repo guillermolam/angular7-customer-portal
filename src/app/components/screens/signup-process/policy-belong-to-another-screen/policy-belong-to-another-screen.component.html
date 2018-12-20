@@ -1,55 +1,56 @@
 <div class="row margin-bottom mb16">
-  <div class="col">
-    <div class="policy-info-card">
-      <div class="policy-info-title text-center">
-        {{ 'POLICYBELONGS_INFO_TITLE' | translate }}
-      </div>
-      <hr>
-      <div class="policy-info-content">
-        <div class="row">
-          <div class="col">
-            <div class="icon icon-container">
-              <div class="svg">
-                <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'auto' ">
-                  <svg-car-icon-svg></svg-car-icon-svg>
-                </ng-container>
-                <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'home' ">
-                  <svg-home-icon-svg></svg-home-icon-svg>
-                </ng-container>
+    <div class="col">
+      <div class="policy-info-card">
+        <div class="policy-info-title text-center">
+          {{ 'POLICYBELONGS_INFO_TITLE' | translate }}
+        </div>
+        <hr>
+        <div class="policy-info-content">
+          <div class="row">
+            <div class="col">
+              <div class="icon icon-container">
+                <div class="svg">
+                  <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'auto' ">
+                    <svg-car-icon-svg></svg-car-icon-svg>
+                  </ng-container>
+                  <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'home' ">
+                    <svg-home-icon-svg></svg-home-icon-svg>
+                  </ng-container>
+                </div>
               </div>
-            </div>
-            <div class="info-container">
-              <ul>
-                <li>{{ "Personal" | translate }} {{ policyDetails.policyType | translate }}:&nbsp;<strong>{{ policyDetails.policynumber.policynumber }}</strong></li>
-                <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyDetails.effDate | date:'shortDate' }}</strong></li>
-              </ul>
+              <div class="info-container">
+                <ul>
+                  <li>{{ "Personal" | translate }} {{ policyDetails.policyType | translate }}:&nbsp;<strong>{{ policyDetails.policynumber.policynumber }}</strong></li>
+                  <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyDetails.effDate | date:'shortDate' }}</strong></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="row margin-top mt24">
-  <div class="col">
-    <div class="legal">
-      {{ 'POLICYBELONGS_LEGAL' | translate }}
+  <div class="row margin-top mt24">
+    <div class="col">
+      <div class="legal">
+        {{ 'POLICYBELONGS_LEGAL' | translate }}
+      </div>
     </div>
   </div>
-</div>
-<div class="row margin-vertical mv24">
-  <div class="col">
-    <mapfre-button
-      [additionalClasses]="'basic primary large waves-effect waves-light'"
-      (click)="confirmPolicy()"
-    >{{ 'POLICYBELONGS_AUTHORIZED' | translate }}</mapfre-button> 
+  <div class="row margin-vertical mv24">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'basic primary large'"
+        (click)="confirmPolicy()"
+      >{{ 'POLICYBELONGS_AUTHORIZED' | translate }}</mapfre-button> 
+    </div>
   </div>
-</div>
-<div class="row text-center">
-  <div class="col">
-    <mapfre-button
-      [additionalClasses]="'ghost secondary small waves-effect'"
-      [routerLink]="['/signup', 'addpolicy']"
-    >{{ 'CANCEL' | translate }}</mapfre-button>
+  <div class="row text-center">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'ghost secondary small'"
+        [routerLink]="['/signup', 'addpolicy']"
+      >{{ 'CANCEL' | translate }}</mapfre-button>
+    </div>
   </div>
-</div>
+  
