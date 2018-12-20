@@ -2,14 +2,14 @@
   <mapfre-loading></mapfre-loading>
 </ng-container>
   
-<ng-container *ngFor="let policy of user?.policyDetails">
-  <ng-container *ngIf="policy?.policynumber.policynumber == policyId && !loading">
+<ng-container *ngFor="let policy of policyDetails">
+  <ng-container *ngIf="policy.policynumber.policynumber == policyId && !loading">
     <header class="margin-bottom mb16">
       <div class="type-title">
         <h1 class="title">
           Make a Check Payment
         </h1>
-        <div class="margin-left ml8">{{ policy?.policyType | translate}} &mdash; <strong>{{ policy?.policynumber.policynumber }}</strong></div>
+        <div class="margin-left ml8">{{ policy.policyType | translate}} &mdash; <strong>{{ policy.policynumber.policynumber }}</strong></div>
       </div>
     </header>
 
