@@ -1,3 +1,4 @@
+import { PolicyDetailsService } from './../../../../_services/my-insurance/policy-details.service';
 // import { Component, OnInit, Input }     from '@angular/core';
 // import { Router }                       from '@angular/router';
 // import { AlertService }                 from 'mapfre-design-library';
@@ -71,7 +72,7 @@ import { AuthenticationService }        from '../../../../_services/_iam/authent
 import { PolicyDetails }                from '../../../../_models/policy-details';
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';
-import { PolicyDataService } from '../../../../_services/my-insurance/data-services/policy-data.service';
+
 
 @Component({
   selector: 'app-policy-belong-to-another-screen',
@@ -81,16 +82,17 @@ import { PolicyDataService } from '../../../../_services/my-insurance/data-servi
 export class PolicyBelongToAnotherScreenComponent implements OnInit {
   @Input()  userData:               User;
             policyDate:             string;
-            policyDetails:           any = {};
+            policyDetails:           any;
             policyNumber:           string;
             user:                   User = {};
+            
 
   constructor(
     private alertService:           AlertService,
     private authService:            AuthenticationService,
     private router:                 Router,
     private userService:            UserService,
-    private policyService:          PolicyDataService
+    private policyService:          PolicyDetailsService
   ) { }
 
   confirmPolicy(): void {
@@ -121,8 +123,10 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
 
   ngOnInit() {
 
+    this.policyNumber = `${this.userData.policyDetails[0].policynumber.policynumber}`;
+
     //new code
-    this.policyService.$policyDetails.subscribe((details)=>{
+    this.policyService.getPolicyDetailsByNumber(this.policyNumber).subscribe((details)=>{
       this.policyDetails = details;
       console.log(details);
     });

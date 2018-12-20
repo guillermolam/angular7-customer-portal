@@ -54,6 +54,13 @@ export class AuthenticationService {
     });
   }
 
+
+  getUserDetailsByEmail(email){
+    const url =  `${environment.backend_auth_server_url}/identity/users/${email}`;
+    return this.http.get(url);
+  }
+
+
   login(username: string, password: string) {
     const urlpartone =      `${environment.backend_auth_server_url}/`,
           urlparttwo =      `grant_type=password&username=${username}&password=${password}`,

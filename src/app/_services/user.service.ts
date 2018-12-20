@@ -4,8 +4,8 @@ import { User }               from '../_models/user';
 
 @Injectable()
 export class UserService {
-  user:                      User;
-  private messageSource =    new BehaviorSubject<User>(this.user);
+  user:                      any;
+  private messageSource =    new BehaviorSubject<any>(this.user);
   $user =                    this.messageSource.asObservable();
 
   constructor() {}
@@ -14,11 +14,11 @@ export class UserService {
     return JSON.parse(localStorage.getItem( 'createuserinfo' )) ;
   }
 
-  placeUserInfoInStorage(user: User) {
+  placeUserInfoInStorage(user: any) {
     localStorage.setItem('createuserinfo', JSON.stringify(user) );
   }
 
-  updateUser(user: User) {
+  updateUser(user: any) {
     this.messageSource.next(user);
   }
 }

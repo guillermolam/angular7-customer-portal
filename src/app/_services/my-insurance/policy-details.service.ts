@@ -85,4 +85,11 @@ export class PolicyDetailsService {
 
   }
 
+
+  getPolicyDetailsByNumber(policyNumber){
+     // const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
+    const url = `${environment.backend_server_url}/personal-policies/?policynumber=${policyNumber}`;    
+    return this.http.get(url);
+  }
+
 }
