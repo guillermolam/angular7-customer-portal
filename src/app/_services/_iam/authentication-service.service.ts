@@ -101,8 +101,7 @@ export class AuthenticationService {
     const url =           `${environment.backend_server_url}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : {
-        newPassword:    user.password,
-        token:          userToken
+        newPassword:    user.password
       },
       headers : {
         'Content-Type': 'application/json'
