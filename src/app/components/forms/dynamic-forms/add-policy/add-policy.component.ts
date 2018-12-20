@@ -32,8 +32,10 @@ export class AddPolicyComponent implements OnInit {
 
   addPolicy(): void {
     if(this.router.url==='/my-insurance/link-policy'){
-      /*
-       */
+      
+      this.userService.$user.subscribe((userData)=>{
+        console.log(userData);
+      })
       if(this.addPolicyForm.controls.addPolicy.value === '800000')
       this.router.navigate(['/my-insurance','business-policy-not-supported']);
       else if (this.addPolicyForm.controls.addPolicy.value === '123456')
