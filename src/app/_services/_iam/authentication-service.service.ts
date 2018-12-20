@@ -98,7 +98,7 @@ export class AuthenticationService {
   }
 
   updatePassword(user: User, userToken: string) {
-    console.log('update-password-authservice' + user +'---->'+ user.password);
+    // console.log('update-password-authservice' + user +'---->'+ user.password);
     const url =           `${environment.backend_server_url}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : {

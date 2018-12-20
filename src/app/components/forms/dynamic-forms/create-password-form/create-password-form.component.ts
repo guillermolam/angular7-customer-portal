@@ -104,16 +104,16 @@ export class CreatePasswordFormComponent implements OnInit {
       .updatePassword (this.user, this.token)
       .subscribe (
         (data) => {
-          // this.authenticationService
-          //   .login(this.user.email, this.user.password)
-          //   .subscribe((succ) => {
-          //     this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
-          //     this.router.navigate(['my-insurance']);
-          //   },
-          //   (err) => {
-          //     this.alertService.error('Login has failed', true);
-          //     this.router.navigate(['login']);
-          //   });
+          this.authenticationService
+            .login(this.user.email, this.user.password)
+            .subscribe((succ) => {
+              this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
+              this.router.navigate(['my-insurance']);
+            },
+            (err) => {
+              this.alertService.error('Login has failed', true);
+              this.router.navigate(['login']);
+            });
         },
         (error) => {
           this.confirmationOfPasswordCreation.emit( false );
