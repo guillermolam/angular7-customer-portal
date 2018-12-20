@@ -11,7 +11,7 @@ import { Observable, forkJoin, of } from 'rxjs';
 export class PolicyDetailsService {
 
   private policyBillingDataAll: any[] = [];
-  private backendUrl : string = 'https://mdv-doctest:8084';
+  private backendUrl: string = 'https://mdv-doctest:8084';
 
   constructor(
     private http: HttpClient,
@@ -20,7 +20,7 @@ export class PolicyDetailsService {
     private billingDataService: BillingDataService
   ) { }
 
-  getPolicyDetailsByEmail(email: string){
+  getPolicyDetailsByEmail(email: string = 'testmfr@gmail.com'){
     // const url = `${this.backendUrl}/personal-policies/${email}`;
     const url = `${environment.backend_server_url}/personal-policies/${email}`;
     return this.http.get(url).pipe(map((policyResponse: any[]) => {

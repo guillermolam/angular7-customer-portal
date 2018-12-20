@@ -1,4 +1,5 @@
 import { Component, OnInit }              from '@angular/core';
+import { Location }                       from '@angular/common';
 import { ActivatedRoute, Params }         from '@angular/router';
 import { ModalOptions }                   from 'mapfre-design-library';
 import { AddPolicyService }               from '../../../_services/forms/create-account/add-policy.service';
@@ -13,19 +14,20 @@ import { UserService }                    from '../../../_services/user.service'
   styleUrls: ['./signup-process.component.scss']
 })
 export class SignupProcessComponent implements OnInit {
-  addPolicy:                           any[];
-  createNewPassword:                   any[];
-  editPolicyInfo:                      any[];
-  user:                                User  = {};
-  whereInTheProcess:                   string;
-  whereToFindModalOptions:             ModalOptions;
+  addPolicy:                            any[];
+  createNewPassword:                    any[];
+  editPolicyInfo:                       any[];
+  user:                                 User  = {};
+  whereInTheProcess:                    string;
+  whereToFindModalOptions:              ModalOptions;
 
   constructor(
-    private activatedRoute:            ActivatedRoute,
-    private userService:               UserService,
-    editPolicyService:                 EditPolicyService,
-    passwordService:                   CreateNewPasswordFormService,
-    policyService:                     AddPolicyService,
+    private activatedRoute:             ActivatedRoute,
+    private location:                   Location,
+    private userService:                UserService,
+    editPolicyService:                  EditPolicyService,
+    passwordService:                    CreateNewPasswordFormService,
+    policyService:                      AddPolicyService,
   ) {
     this.addPolicy = policyService.getInputs();
     this.createNewPassword = passwordService.getInputs();
@@ -38,6 +40,10 @@ export class SignupProcessComponent implements OnInit {
       modalTranslateCopy:             'MODAL_WHERE_CAN_I_TITLE',
       typeOfModal:                    'default',
     });
+  }
+
+  goBackAPage() {
+    this.location.back();
   }
 
   ngOnInit() {

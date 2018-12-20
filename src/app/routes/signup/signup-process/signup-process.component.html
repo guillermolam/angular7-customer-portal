@@ -33,11 +33,11 @@
       <hr class="margin-vertical mv24" />
       <div class="row text-center">
         <div class="col">
-            <mapfre-button
+          <mapfre-button
             [additionalClasses]="'flat link small'"
             [customIcon]="'assets/img/icons/back-arrow.png'"
             [iconClasses]="'align-middle'"
-            [routerLink]="['/signup']"
+            (click)="goBackAPage()"
             [showIconsCustom]="true"
           >  {{ 'BACK' | translate }}
           </mapfre-button>
@@ -55,6 +55,16 @@
         </div>
       </div>
       <app-bop-screen></app-bop-screen>
+      <div class="text-center">
+        <mapfre-button
+          [additionalClasses]="'flat link small waves-effect'"
+          [customIcon]="'../../../../../assets/img/icons/back-arrow.png'"
+          [iconClasses]="'align-middle'"
+          (click)="goBackAPage()"
+          [showIconsCustom]="true">  
+          {{ 'BACK' | translate }}
+        </mapfre-button>
+      </div>
     </div>
 
     <div *ngSwitchCase="'createpassword'">
@@ -73,7 +83,7 @@
             [additionalClasses]="'flat link small'"
             [customIcon]="'assets/img/icons/back-arrow.png'"
             [iconClasses]="'align-middle'"
-            [routerLink]="['/signup']"
+            click)="goBackAPage()"
             [showIconsCustom]="true"
           >  {{ 'BACK' | translate }}
           </mapfre-button>
