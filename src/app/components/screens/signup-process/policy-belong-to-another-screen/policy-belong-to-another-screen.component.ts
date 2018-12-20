@@ -82,7 +82,7 @@ import { User }                         from '../../../../_models/user';
 export class PolicyBelongToAnotherScreenComponent implements OnInit {
   @Input()  userData:               User;
             policyDate:             string;
-            policyDetails:           any = {};
+            policyDetails:           any;
             policyNumber:           string;
             user:                   User = {};
             
