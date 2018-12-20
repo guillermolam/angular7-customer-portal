@@ -55,7 +55,7 @@ export class EditPolicyComponent implements OnInit {
           this.router.navigate(['signup', 'createpassword']);
         },
         (err) => {
-          if (err.status === 404) {
+          if (err.status === 409) {
             // Policy is not found
             this.router.navigate(['signup', 'notfound']);
           }
@@ -63,7 +63,7 @@ export class EditPolicyComponent implements OnInit {
             // bad requrest - 400 - Biz Policy
             this.router.navigate(['signup', 'bop']);
           }
-          else if (err.status === 409) {
+          else if (err.status === 404) {
             // conflict - 409 - if the policy belongs to another
             this.router.navigate(['signup', 'policybelongstoanother']);
           }

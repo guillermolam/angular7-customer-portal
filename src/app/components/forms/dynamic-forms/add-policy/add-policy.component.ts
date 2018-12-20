@@ -48,27 +48,22 @@ export class AddPolicyComponent implements OnInit {
         .subscribe(
           (response) => {
             this.policyService.updatePolicyDetails(response); //new code
-            this.authService.verifyPolicyLink(this.userService).subscribe(()=>{
-              this.router.navigate(['signup', 'policybelongstoanother']);
-            },
-            (err)=>{
+            // policy not linked and exists in as400
               this.router.navigate(['signup', 'createpassword']);
-            })
-              // this.router.navigate(['signup', 'createpassword']);
           },
           (err) => {
-            if (err.status === 404) {
-              // Policy is not found
+            if (err.status === 409) {
+              // Conflict, Policy is not found and name validation fails
               this.router.navigate(['signup', 'notfound']);
             }
             else if (err.status === 400) {
               // bad requrest - 400 - Biz Policy
               this.router.navigate(['signup', 'bop']);
             }
-            else if (err.status === 409){
-              // conflict - 409 - if the policy belongs to another
-              this.router.navigate(['signup', 'notfound']);
-              // this.router.navigate(['signup', 'policybelongstoanother']);
+            else if (err.status === 404){
+              // 404 - if the policy belongs to another account
+              // this.router.navigate(['signup', 'notfound']);
+              this.router.navigate(['signup', 'policybelongstoanother']);
             }
           }
         )
