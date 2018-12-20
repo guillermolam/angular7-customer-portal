@@ -117,6 +117,11 @@ export class PolicyDetailsComponent implements OnInit {
     return isEqual(policyDetail.mailingAddress, policyDetail.residentialAddress);
   }
 
+
+  updateMileageById(email,policyNumber,vehicleId, odometerReading){
+    
+  }
+
   ngOnInit() {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.

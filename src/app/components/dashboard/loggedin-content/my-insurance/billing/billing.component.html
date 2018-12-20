@@ -1,17 +1,17 @@
-<ng-container *ngFor="let policy of user?.policyDetails">
-    <ng-container *ngIf="policy?.policynumber.policynumber == policyId">
+<ng-container *ngFor="let policy of policyDetails">
+    <ng-container *ngIf="policy.policynumber.policynumber == policyId">
       <mapfre-card 
         [singleCard]="false"
-        [additionalClasses]="'policy-details billing details ' + policy?.policyType">
+        [additionalClasses]="'policy-details billing details ' + policy.policyType">
         <header class="margin-bottom mb16 no-margins-hug hug-header">
           <div class="policy-background">
-            <div class="car" *ngIf="policy?.policyType == 'AUTO'"></div>
-            <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
+            <div class="car" *ngIf="policy.policyType == 'AUTO'"></div>
+            <div class="house" *ngIf="policy.policyType == 'HOME'"></div>
           </div>
           <div class="type-title">
             <h1 class="title">
-                {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
-              <small><span class="green-color">{{policy?.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy?.expDate | date:'shortDate' }}
+                {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
+              <small><span class="green-color">{{policy.effDate | date:'shortDate' }} {{ 'TO' |translate }} {{policy.expDate | date:'shortDate' }}
               </span></small>
             </h1>
           </div>
@@ -55,7 +55,7 @@
                       <td colspan="3" class="text-center no-border-top">
                         <mapfre-link
                           [additionalClasses]="'basic primary large btn width w75'"
-                          [routerLink]="['/billing/' +  policy?.policynumber.policynumber + '/new-payment/']">
+                          [routerLink]="['/billing/' +  policy.policynumber.policynumber + '/new-payment/']">
                           {{ 'PAY_BY_CHECK' | translate}}
                         </mapfre-link>
                       </td>
