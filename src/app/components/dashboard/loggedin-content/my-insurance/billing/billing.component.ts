@@ -67,8 +67,8 @@ export class BillingDetailsComponent implements OnInit {
         // console.log(this.policyDetails);
         // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
       }
-    })
-  }
+  })
+})
 
   //   this.userService.$user.subscribe(
   //     (user) => {
