@@ -4,6 +4,8 @@ import { Router  }                  from '@angular/router';
 import { AuthenticationService }    from '../../../../_services/_iam/authentication-service.service';
 import { UserService }              from '../../../../_services/user.service';
 import { User }                     from '../../../../_models/user';
+import { PolicyDataService } from '../../../../_services/my-insurance/data-services/policy-data.service';
+
 
 @Component({
   selector: 'app-policy-not-found-screen',
@@ -19,7 +21,9 @@ export class PolicyNotFoundScreenComponent implements OnInit {
   constructor(
     private authService:            AuthenticationService,
     private router:                 Router,
-    private userService:            UserService
+    private userService:            UserService,
+    private policyService:          PolicyDataService
+
   ) { }
 
   getObservableData(userData): void {
@@ -68,10 +72,22 @@ export class PolicyNotFoundScreenComponent implements OnInit {
 
   updateObservable(userData): void {
     userData.addPolicyAttempts = userData.addPolicyAttempts + 1;
-    this.userService.updateUser(userData);
+    this.userData = userData;
   }
 
   ngOnInit() {
+    this.userService.$user.subscribe((user)=>{
+      if (!user.addPolicyAttempts)
+      user.addPolicyAttempts = 0;
+      console.log(user);
+      this.updateObservable(user);
+    })
+
+    // this.policyService.$policyDetails.subscribe((details)=>{
+    //   this.policyDetails = details;
+    //   console.log(details);
+    //   // this.policyHolderName = this.policyDetails.
+    // });
     this.getObservableData(this.userData);
   }
 
