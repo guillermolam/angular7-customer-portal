@@ -17,7 +17,7 @@ export class LoggedinAccountHeaderComponent implements OnInit {
     private authService:          AuthenticationService
   ) {
     this.headerAccountModalOptions = new ModalOptions({
-      additionalClasses:          'account modal-small modal-dialog', 
+      additionalClasses:          'account modal-small help',
       additionalButtonClasses:    'header-flat account',
       animatePosition:            'top',
       buttonCopy:                 'ACCOUNT',
