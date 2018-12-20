@@ -1,4 +1,4 @@
-import { Component, OnInit }                  from '@angular/core';
+import { Component, OnInit, AfterViewInit }                  from '@angular/core';
 import { Router, NavigationEnd }              from '@angular/router';
 import { BillingDataService }                 from './../../_services/my-insurance/data-services/billing-data.service';
 import { BillingDetailsService }              from './../../_services/my-insurance/billing-details.service';
@@ -14,7 +14,7 @@ import { TestingDataService }                 from '../../_helpers/testing-data.
   templateUrl: './dashboard-main.component.html',
   styleUrls: ['./dashboard-main.component.scss']
 })
-export class DashboardMainComponent implements OnInit {
+export class DashboardMainComponent implements OnInit, AfterViewInit {
   loading:                                    boolean = false;
   reportClaim:                                boolean;
 
@@ -69,4 +69,10 @@ export class DashboardMainComponent implements OnInit {
    //);
 
   }
+
+  
+  ngAfterViewInit(){
+    this.loading = false;
+  }
+
 }
