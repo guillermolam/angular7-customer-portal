@@ -32,6 +32,9 @@ export class DashboardMainComponent implements OnInit {
     if (this.router.url === '/my-insurance') {
       this.reportClaim = true;
     }
+    else {
+      this.reportClaim = false;
+    }
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -47,11 +50,14 @@ export class DashboardMainComponent implements OnInit {
 
     this.policyDataService.$policyDetails.subscribe(
       (success) => {
+        console.log('dashboard-main', success);
         this.loading = false;
       },
       (err) => {
-        this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe();
-        this.loading = false;
+        this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe(
+          () => this.loading = false
+        );
+       
       },
     );
    // this.policyDetailsService

@@ -52,12 +52,12 @@ export class EditPolicyComponent implements OnInit {
       .verifyPolicy(this.userService)
       .subscribe(
         (data) => {
-          this.router.navigate(['signup', 'createpassword']);
+          this.router.navigate(['signup', 'create-password']);
         },
         (err) => {
           if (err.status === 409) {
             // Policy is not found
-            this.router.navigate(['signup', 'notfound']);
+            this.router.navigate(['signup', 'not-found']);
           }
           else if (err.status === 400) {
             // bad requrest - 400 - Biz Policy
@@ -65,7 +65,7 @@ export class EditPolicyComponent implements OnInit {
           }
           else if (err.status === 404) {
             // conflict - 409 - if the policy belongs to another
-            this.router.navigate(['signup', 'policybelongstoanother']);
+            this.router.navigate(['signup', 'policy-belongs-to-another']);
           }
         }
       )

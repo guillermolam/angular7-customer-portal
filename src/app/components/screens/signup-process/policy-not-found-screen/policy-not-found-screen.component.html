@@ -26,7 +26,7 @@
   <div class="text-center margin-vertical mv24" *ngIf="userData.addPolicyAttempts <= 2">
     <mapfre-link
       [additionalClasses]="'small-link horizontal-space'"
-      [routerLink]="['/signup','editpolicy']"
+      [routerLink]="['/signup','edit-policy']"
     >
       {{ 'EDIT_POLICY_INFO' | translate }}
     </mapfre-link>
@@ -34,7 +34,7 @@
   <div>
     <mapfre-button 
       [additionalClasses]="'basic primary large waves-effect waves-light'"
-      [routerLink]="['/signup','addpolicy']"
+      [routerLink]="['/signup','add-policy']"
     >
       {{ 'TRY_AGAIN_WITH_A_DIFFERENT' | translate }}
     </mapfre-button>
@@ -49,7 +49,7 @@
   <div class="text-center margin-top mt24 ">
     <mapfre-button 
       [additionalClasses]="'basic primary large waves-effect waves-light'"
-      [routerLink]="['/signup','addpolicy']"
+      [routerLink]="['/signup','add-policy']"
     >
       {{ 'TRY_AGAIN_WITH_A_DIFFERENT' | translate }}
     </mapfre-button>
