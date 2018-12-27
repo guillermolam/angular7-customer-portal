@@ -17,8 +17,8 @@ export class BillingDetailsService {
   ) {}
 
   getCurrentBillByPolicy(policyNumber: string){
-    // const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
-    const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`;
+    const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
+    // const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`;
     return this.http.get(url);
     // .pipe(map((billingResponse)=>{
     //   return billingResponse;

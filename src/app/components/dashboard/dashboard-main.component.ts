@@ -14,7 +14,7 @@ import { TestingDataService }                 from '../../_helpers/testing-data.
   templateUrl: './dashboard-main.component.html',
   styleUrls: ['./dashboard-main.component.scss']
 })
-export class DashboardMainComponent implements OnInit, AfterViewInit {
+export class DashboardMainComponent implements OnInit {
   loading:                                    boolean = false;
   reportClaim:                                boolean;
 
@@ -57,7 +57,9 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
    this.policyDetailsService
      .getPolicyDetailsByEmail(
        this.storageService.getUserFromStorage()
-     ).subscribe( () => { },
+     ).subscribe( () => { 
+      this.loading = false;
+     },
      );
    
    // this.userService.updateUser( this.testingData.testDatafunction() );
@@ -71,8 +73,8 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
   }
 
   
-  ngAfterViewInit(){
-    this.loading = false;
-  }
+  // ngAfterViewInit(){
+  //   this.loading = false;
+  // }
 
 }
