@@ -6,7 +6,7 @@ import { PolicyDataService }                  from '../../_services/my-insurance
 import { PolicyDetailsService }               from './../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }   from './../../_services/storage-service-observables/storage-service-observables.service';
 import { UserService }                        from './../../_services/user.service';
-
+import { AuthenticationService } from './../../_services/_iam/authentication-service.service';
 import { TestingDataService }                 from '../../_helpers/testing-data.service';
 
 @Component({
@@ -17,6 +17,7 @@ import { TestingDataService }                 from '../../_helpers/testing-data.
 export class DashboardMainComponent implements OnInit {
   loading:                                    boolean = false;
   reportClaim:                                boolean;
+  showAlert:                                  boolean;
 
   constructor(
     private policyDataService:                PolicyDataService,
@@ -24,13 +25,16 @@ export class DashboardMainComponent implements OnInit {
     private router:                           Router,
     private storageService:                   StorageServiceObservablesService,
     private userService:                      UserService,
+    private authenticationService:            AuthenticationService,
+    private testingData:                      TestingDataService) {
 
-    private testingData:                      TestingDataService ) {}
+    }
 
   ngOnInit() {
     this.loading = true;
     if (this.router.url === '/my-insurance') {
       this.reportClaim = true;
+      this.showAlert   = true;
     }
 
     this.router.events.subscribe((event) => {
@@ -38,9 +42,12 @@ export class DashboardMainComponent implements OnInit {
         // console.log(event.url);
         if ( event.url === '/my-insurance' ) {
           this.reportClaim =                true;
+          this.showAlert =                  true;
         }
         else {
           this.reportClaim =                false;
+          this.showAlert =                  false;
+
         }
       }
     });
@@ -61,6 +68,11 @@ export class DashboardMainComponent implements OnInit {
       this.loading = false;
      },
      );
+
+    this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage()).subscribe((userResponse)=>{
+      console.log(userResponse)
+      this.userService.updateUser(userResponse);
+    });
    
    // this.userService.updateUser( this.testingData.testDatafunction() );
 

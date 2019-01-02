@@ -31,6 +31,7 @@ export class ChangePasswordFormComponent implements OnInit {
     this.whereInTheProcess =  this.activatedRoute.snapshot.routeConfig.path;
     const passwd = this.changePasswordForm.controls.changePassword.value;
     this.authenticateUserService.authenticateCurrentPassword(passwd).subscribe((response) => {
+      console.log(response);
       if (this.whereInTheProcess == 'enter-password') {
         this.router.navigate(['/profile','edit-password']);
       }
@@ -39,6 +40,7 @@ export class ChangePasswordFormComponent implements OnInit {
       }
     },
     (error)=>{
+      console.log(error);
       this.forgotPassword = true;
       this.alertService.error('INVALID_CHANGE_PASSWORD');
     });
