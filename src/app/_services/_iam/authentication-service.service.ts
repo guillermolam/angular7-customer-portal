@@ -1,7 +1,8 @@
+import { BankAccountService } from './../profile-settings/bank-account.service';
 
 import { HttpClient }             from '@angular/common/http';
 import { Injectable }             from '@angular/core';
-import { of, throwError }         from 'rxjs';
+import { of, throwError, forkJoin }         from 'rxjs';
 import { Observable }             from 'rxjs/Observable';
 import { catchError, map }        from 'rxjs/operators';
 import { environment }            from '../../../environments/environment';
@@ -15,7 +16,8 @@ export class AuthenticationService {
 
   constructor(
     private http:             HttpClient,
-    private serviceHelpers:   ServiceHelpersService
+    private serviceHelpers:   ServiceHelpersService,
+    private bankAccountService: BankAccountService
   ) {
     // set token if saved in local storage
     const currentUser =       JSON.parse(localStorage.getItem('currentUser'));
@@ -57,8 +59,12 @@ export class AuthenticationService {
 
   getUserDetailsByEmail(email){
     const url =  `https://mdv-doctest:8082/identity/users/${email}`;
-    return this.http.get(url);
+    return forkJoin(
+          this.http.get(url),
+          this.bankAccountService.getBankAccountByEmail(email)
+          );
   }
+  
 
 
   login(username: string, password: string) {

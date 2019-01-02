@@ -69,10 +69,18 @@ export class DashboardMainComponent implements OnInit {
      },
      );
 
-    this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage()).subscribe((userResponse)=>{
-      console.log(userResponse)
-      this.userService.updateUser(userResponse);
-    });
+    this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
+    .subscribe(([userResponse,accountResponse])=>{
+      this.userService.updateUser([
+       {userDetails: {...userResponse}},
+       {bankAccountDetails:  {...accountResponse}}
+      ]);
+     });
+    
+    // .subscribe((userResponse)=>{
+    //   console.log(userResponse);
+    //   this.userService.updateUser(userResponse);
+    // });
    
    // this.userService.updateUser( this.testingData.testDatafunction() );
 
