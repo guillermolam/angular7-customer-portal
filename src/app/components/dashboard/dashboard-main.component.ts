@@ -66,15 +66,16 @@ export class DashboardMainComponent implements OnInit {
        this.storageService.getUserFromStorage()
      ).subscribe( () => { 
       this.loading = false;
-     },
+     }
      );
 
     this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
     .subscribe(([userResponse,accountResponse])=>{
-      this.userService.updateUser([
-       {userDetails: {...userResponse}},
-       {bankAccountDetails:  {...accountResponse}}
-      ]);
+      this.userService.updateUser(
+       [{
+         userDetails: {...userResponse},
+         bankAccountDetails:  {...accountResponse}}]
+      );
      });
     
     // .subscribe((userResponse)=>{
