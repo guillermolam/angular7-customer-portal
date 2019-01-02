@@ -1,14 +1,19 @@
+import { UserService } from './../../user.service';
 import { Injectable }               from '@angular/core';
 import { FormBase, TextBox }        from 'mapfre-design-library';
 import { ChangeAddressService }     from '../change-address/change-address.service';
 import { FakeAccountSettings }      from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class CheckingAccountService {
 
   checkingAccount: any;
 
-  constructor(private changeAddressService: ChangeAddressService) { }
+  constructor(
+    private changeAddressService: ChangeAddressService,
+    private userService:          UserService
+    ) { }
 
   getInputs(){
 
@@ -19,13 +24,35 @@ export class CheckingAccountService {
     // mailingAddress: "17 Lothian Road, Brighton, MA",
     // apartment: ""
 
-    this.checkingAccount = FakeAccountSettings.user.checkingAccount;
 
-    const inputs: FormBase<any>[] = [
+
+  //   {
+  //     "accountHolderName": "test",
+  //     "routingNumber": {
+  //         "digits": "265473812"
+  //     },
+  //     "accountNumber":  {
+  //         "digits": "168444192727"
+  //     },
+  //     "accountType": "CHECKING",
+  //     "mailingAddress":
+  //         {
+  //             "streetName": "abc street",
+  //             "city": "BOSTON",
+  //             "state": "MASSACHUSETTS",
+  //             "zipCode": {
+  //                 "code": "02720"
+  //             }
+  //         }
+  // }
+
+   return this.userService.$user.pipe(map((userResponse)=>{
+      this.checkingAccount = userResponse[0].bankAccountDetails;
+      const inputs: FormBase<any>[] = [
       new TextBox({
         additionalClasses:  'form-control profile-input-border',
         inputType:          'text',
-        value:               this.checkingAccount.accountHolderName,
+        value:               this.checkAccountDetails(this.checkingAccount)? '': this.checkingAccount.accountHolderName ,
         key:                'bankAccountHolder',
         label:              'Bank account holder\'s name',
         required:           true,
@@ -41,7 +68,7 @@ export class CheckingAccountService {
         minLength:          9,
         required:           true,
         type:               'tel',
-        value:              this.checkingAccount.routingNumber,
+        value:              this.checkAccountDetails(this.checkingAccount)? '': this.checkingAccount.routingNumber.digits,
         validationMessageError: 'Please enter valid routing number'
       }),
       new TextBox({
@@ -53,17 +80,27 @@ export class CheckingAccountService {
         minLength: 4,
         required:           true,
         type:               'tel',
-        value:              this.checkingAccount.accountNumber,
+        value:              this.checkAccountDetails(this.checkingAccount)? '': this.checkingAccount.accountNumber.digits,        
         validationMessageError: 'Please enter valid account number'
       }),
       ...this.changeAddressService.getInputs(
         'profile-input-border checking-account-address',
-        this.checkingAccount.mailingAddress,
-        this.checkingAccount.apartment
+        this.checkAccountDetails(this.checkingAccount)? '': `${this.checkingAccount.mailingAddress.streetName} ${this.checkingAccount.mailingAddress.city} ${this.checkingAccount.mailingAddress.state} ${this.checkingAccount.mailingAddress.zipCode.code}`,
+        this.checkAccountDetails(this.checkingAccount)? '': `${this.checkingAccount.mailingAddress.apartmentNumber}`
         )
     ];
 
     return inputs;
+    }))
   }
+
+  checkAccountDetails(accountDetails){
+    if(accountDetails.accountHolderName){
+      return false;
+    }else{
+      return accountDetails;
+    }
+  }
+
 
 }
