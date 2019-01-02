@@ -1,3 +1,5 @@
+import { StorageServiceObservablesService } from './../storage-service-observables/storage-service-observables.service';
+import { BankAccountService } from './bank-account.service';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +17,9 @@ export class ProfileConfirmModalService {
   $removeAccount=                  this.removeAccount.asObservable();
 
   constructor(
-    private router: Router
+    private router: Router,
+    private bankAccountService: BankAccountService,
+    private storageService: StorageServiceObservablesService
   ) { }
 
   onCheckDirty(inputForm: FormGroup){
@@ -30,7 +34,7 @@ export class ProfileConfirmModalService {
     this.removeAccount.next(false);
     this.hideModalOnRoute = !this.hideModalOnRoute;
     if(removeAccount==='remove'){
-      FakeAccountSettings.user.checkingAccount = {};
+      this.bankAccountService.deleteBankAccount(this.storageService.getUserFromStorage());
     }
     return this.hideModalOnRoute;
   }
