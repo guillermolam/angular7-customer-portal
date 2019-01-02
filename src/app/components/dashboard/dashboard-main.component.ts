@@ -43,6 +43,9 @@ export class DashboardMainComponent implements OnInit {
         if ( event.url === '/my-insurance' ) {
           this.reportClaim =                true;
           this.showAlert =                  true;
+        } else if ( event.url === '/my-insurance/profile' ) {
+          this.reportClaim =                false;
+          this.showAlert =                  true;
         }
         else {
           this.reportClaim =                false;
