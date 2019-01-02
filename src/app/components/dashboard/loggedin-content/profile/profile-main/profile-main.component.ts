@@ -1,3 +1,4 @@
+import { UserService } from './../../../../../_services/user.service';
 import { FakeAccountSettings } from '../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { Component, OnInit } from '@angular/core';
 import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
@@ -14,7 +15,8 @@ export class ProfileMainComponent implements OnInit {
   
 
   constructor(
-    private profileConfirmModalService: ProfileConfirmModalService
+    private profileConfirmModalService: ProfileConfirmModalService,
+    private userService: UserService
   ) { }
 
   onRemoveAccount(){
@@ -22,9 +24,14 @@ export class ProfileMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    FakeAccountSettings.getUserData().subscribe((user)=>{
-      this.user = user;
+    this.userService.$user.subscribe((userResponse)=>{
+      console.log(userResponse);
+      this.user = userResponse[0];
     });
+
+    // FakeAccountSettings.getUserData().subscribe((user)=>{
+    //   this.user = user;
+    // });
     this.profileConfirmModalService.$removeAccount.subscribe((removeAccount)=>{
       this.confirmModal = removeAccount;
     })

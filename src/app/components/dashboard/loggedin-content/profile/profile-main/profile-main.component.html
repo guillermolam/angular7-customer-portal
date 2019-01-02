@@ -6,7 +6,7 @@
               <svg-account-profile-svg></svg-account-profile-svg>  
           </div>
           <h1 class="title-copy">{{ 'My account' | translate }}</h1>
-          <div class="sub-title-copy">{{ 'Thomas A. Anderson' }}</div>
+          <div class="sub-title-copy">{{ user.userDetails.firstName }}{{ user.userDetails.middleName }}{{ user.userDetails.lastName }}</div>
       </div>
   </div>
   <hr class="hr-stretch"/>
@@ -25,7 +25,7 @@
   <div>
     <label class="account-settings no-margin-bottom">Email</label> 
     <div class="sub-title-copy row">
-      <div class="col">{{ 'john@gmail.com' }}</div>
+      <div class="col">{{ user.userDetails.email.address }}</div>
       <div class="col">
         <a 
         [routerLink]="['/profile','verify-password']"
@@ -39,10 +39,10 @@
   <div>
       <label class="account-settings no-margin-bottom margin-top mt16">Phone</label> 
       <div class="sub-title-copy row">
-        <div class="col"><em *ngIf="!user?.phone;else phoneNumber">{{ 'Add more security to your account' }}</em></div>
-        <ng-template #phoneNumber> {{ user?.phone | formatPhone }}</ng-template>
+        <div class="col"><em *ngIf="!user.userDetails.phone.number;else phoneNumber">{{ 'Add more security to your account' }}</em></div>
+        <ng-template #phoneNumber> {{ user.userDetails.phone.number | formatPhone }}</ng-template>
           <div class="col">
-            <a *ngIf="!user.phone;else editPhone"
+            <a *ngIf="!user.userDetails.phone.number;else editPhone"
             [routerLink]="['/profile','add-phone']"
             routerLinkActive="active"
             class="float-right" > 
@@ -63,7 +63,7 @@
   <div>
       <label class="account-settings no-margin-bottom"> Checking Account Information</label> 
       <div class="sub-title-copy row">
-        <div class="col" *ngIf="!user.checkingAccount.accountNumber;else bankName">
+        <div class="col" *ngIf="!user.bankAccountDetails.accountNumber;else bankName">
           <em>
             {{ 'Save time and effort in your payments' }}
           </em>
@@ -72,13 +72,13 @@
           <div class="col">
             {{ 'Checking account' | translate }} 
             <span class="profile-account-number">
-                {{ user.checkingAccount.accountNumber | checkingAccount: 'account' }}
+                {{ user.bankAccountDetails.accountNumber.digits | checkingAccount: 'account' }}
             </span>
           </div>
         </ng-template>
 
         <div class="col">
-          <a *ngIf="!user.checkingAccount.accountNumber;else editBank"
+          <a *ngIf="!user.bankAccountDetails.accountNumber;else editBank"
             [routerLink]="['/profile','add-checking-account']"
             routerLinkActive="active"
             class="float-right" > 
