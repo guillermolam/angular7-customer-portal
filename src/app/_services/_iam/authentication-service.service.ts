@@ -112,7 +112,8 @@ export class AuthenticationService {
 
   updatePassword(user: User) {
     // console.log('update-password-authservice' + user +'---->'+ user.password);
-    const url =           `${environment.backend_server_url}/identity/users/password/${user.email}`;
+    const url =           `https://mdv-doctest:8082/identity/users/password/${user.email}`;
+    // const url =           `${environment.backend_server_url}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : {
         newPassword:    user.password
