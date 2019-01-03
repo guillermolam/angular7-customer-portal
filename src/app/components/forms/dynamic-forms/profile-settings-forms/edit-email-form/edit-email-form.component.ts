@@ -1,8 +1,10 @@
+
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBase, FormBaseControlService,AlertService } from 'mapfre-design-library';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
+import { ChangeProfileEmailService } from '../../../../../_services/profile-settings/change-profile-email.service';
 
 @Component({
   selector: 'app-edit-email-form',
@@ -20,7 +22,8 @@ constructor(
   private ipt:                      FormBaseControlService,
   private alertService:             AlertService,
   private router:                   Router,
-  private profileConfirmModalService: ProfileConfirmModalService
+  private profileConfirmModalService: ProfileConfirmModalService,
+  private changeProfileEmailService: ChangeProfileEmailService
   ) { }
 
 ngOnInit() {
@@ -29,14 +32,16 @@ ngOnInit() {
 }
 
 onChangeEmail(){
-    if(this.editEmailForm.controls.changeEmail.value === 'john@gmail.com'){
+
+    const email = this.editEmailForm.controls.changeEmail.value;
+
+    this.changeProfileEmailService.checkIfEmailExists(email).subscribe((response)=>{
+      this.router.navigate(['/profile','email-confirmation']);
+    },
+    (err)=>{
       this.alertService.error('Email is already in use');
-      setTimeout(()=>{
-        this.alertService.clear();
-      },3000);
-    }else {
-      this.router.navigate(['/profile','email-confirmation'],);
-    }
+    })
+
   }
 
 
