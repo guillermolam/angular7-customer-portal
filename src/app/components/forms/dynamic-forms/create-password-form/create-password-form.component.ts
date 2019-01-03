@@ -40,7 +40,7 @@ export class CreatePasswordFormComponent implements OnInit {
     private router:                 Router,
     private userService:            UserService,
     private profileSettingsRoutingService: ProfileSettingsRoutingService,
-    private profileConfirmModalService: ProfileConfirmModalService
+    private profileConfirmModalService: ProfileConfirmModalService,
   ) {}
 
   createNewPassword(): void {
@@ -94,14 +94,18 @@ export class CreatePasswordFormComponent implements OnInit {
 
   updatePassword(): void {
     this.user.password =              this.createPasswordForm.value.createPassword;
-    this.user.email =                 this.email;
+    this.user.email =                 this.email || ;
     if(this.whereInTheProcess==='edit-password'){
+      this.authenticationService
+      .updatePassword(this.user)
+      .subscribe((data) => {
       this.profileSettingsRoutingService.setChangePasswordAlert(true);
       this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
       this.router.navigate(['/profile']);
+      })
     }else {
     this.authenticationService
-      .updatePassword (this.user, this.token)
+      .updatePassword (this.user)
       .subscribe (
         (data) => {
           this.authenticationService
