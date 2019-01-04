@@ -1,3 +1,5 @@
+import { StorageServiceObservablesService } from './../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { BankAccountService } from './../../../../../_services/profile-settings/bank-account.service';
 import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
@@ -21,7 +23,9 @@ export class CheckingAccountFormComponent implements OnInit {
     private ipt:                      FormBaseControlService,
     private router:                   Router,
     private alertService:             AlertService,
-    private profileConfirmModalService: ProfileConfirmModalService
+    private profileConfirmModalService: ProfileConfirmModalService,
+    private bankAccountService: BankAccountService,
+    private storageService: StorageServiceObservablesService
     ) { }
 
   ngOnInit() {
@@ -29,13 +33,15 @@ export class CheckingAccountFormComponent implements OnInit {
   }
 
   onSubmitAccountDetails(){
-    this.alertService.success('Checking account information succesfully updated',true);
-    FakeAccountSettings.user.checkingAccount.accountHolderName = this.checkingAccountForm.controls.bankAccountHolder.value;
-    FakeAccountSettings.user.checkingAccount.routingNumber = this.checkingAccountForm.controls.bankAccountRoutingNumber.value;
-    FakeAccountSettings.user.checkingAccount.accountNumber = this.checkingAccountForm.controls.bankAccountNumber.value;
-    FakeAccountSettings.user.checkingAccount.mailingAddress = this.checkingAccountForm.controls.changeAddress.value;
-    FakeAccountSettings.user.checkingAccount.apartment = this.checkingAccountForm.controls.changeAddressAPT.value;
-    this.router.navigate(['/profile']);
+
+    const bankAccountDetails = this.createBankAccountObject();
+    const email = this.storageService.getUserFromStorage();
+    this.bankAccountService.addBankAccount(email,bankAccountDetails).subscribe((response)=>{
+      this.alertService.success('Checking account information succesfully updated',true);
+      this.router.navigate(['/profile']);
+    }, (err)=>{
+      //to do
+    })
   }
 
   onCheckDirty(){
@@ -47,6 +53,58 @@ export class CheckingAccountFormComponent implements OnInit {
     if(this.confirmModal===false){
       this.router.navigate(['/profile']);
     }
+  }
+
+
+  createBankAccountObject(){
+    //   {
+      //     "accountHolderName": "test",
+      //     "routingNumber": {
+      //         "digits": "265473812"
+      //     },
+      //     "accountNumber":  {
+      //         "digits": "168444192727"
+      //     },
+      //     "accountType": "CHECKING",
+      //     "mailingAddress":
+      //         {
+      //             "streetName": "abc street blah blah bllah",
+      //             "city": "",
+      //             "state": "",
+      //             "zipCode": {
+      //                 "code": "02720"
+      //             }
+      //         }
+      // }
+      let bankAccount: any = {};
+      bankAccount = {
+        accountHolderName: this.checkingAccountForm.controls.bankAccountHolder.value,
+        routingNumber: {
+          digits: this.checkingAccountForm.controls.bankAccountRoutingNumber.value
+        },
+        accountNumber: {
+          digits: this.checkingAccountForm.controls.bankAccountNumber.value
+        },
+        accountType: 'CHECKING',
+        mailingAddress:
+              {
+                  streetName: this.checkingAccountForm.controls.changeAddress.value,
+                  city: "",
+                  state: "",
+                  zipCode: {
+                      code: "02720"
+                  }
+              }
+
+      };
+
+      return bankAccount;
+      // bankAccount.accountHolderName = this.checkingAccountForm.controls.bankAccountHolder.value;
+      // bankAccount.routingNumber = this.checkingAccountForm.controls.bankAccountRoutingNumber.value;
+      // bankAccount.accountNumber = this.checkingAccountForm.controls.bankAccountNumber.value;
+      // bankAccount.mailingAddress.streetName = this.checkingAccountForm.controls.changeAddress.value;
+      // bankAccount.accountType = 'CHECKING';
+      // bankAccount.apartment = this.checkingAccountForm.controls.changeAddressAPT.value;
   }
 
 }
