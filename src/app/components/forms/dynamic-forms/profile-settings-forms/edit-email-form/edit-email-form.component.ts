@@ -36,10 +36,11 @@ onChangeEmail(){
     const email = this.editEmailForm.controls.changeEmail.value;
 
     this.changeProfileEmailService.checkIfEmailExists(email).subscribe((response)=>{
-      this.router.navigate(['/profile','email-confirmation']);
+      this.alertService.error('Email is already in use');
     },
     (err)=>{
-      this.alertService.error('Email is already in use');
+      console.log(err.status);
+      this.router.navigate(['/profile','email-confirmation']);
     })
 
   }
