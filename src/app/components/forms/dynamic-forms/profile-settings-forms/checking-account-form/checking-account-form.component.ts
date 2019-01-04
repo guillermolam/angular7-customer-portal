@@ -6,7 +6,6 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CheckingAccountService } from '../../../../../_services/forms/profile-settings/checking-account.service';
 import { FormBase, FormBaseControlService, AlertService } from 'mapfre-design-library';
 import { Router } from '@angular/router';
-import { FakeAccountSettings } from '../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 
 @Component({
   selector: 'app-checking-account-form',
@@ -57,25 +56,7 @@ export class CheckingAccountFormComponent implements OnInit {
 
 
   createBankAccountObject(){
-    //   {
-      //     "accountHolderName": "test",
-      //     "routingNumber": {
-      //         "digits": "265473812"
-      //     },
-      //     "accountNumber":  {
-      //         "digits": "168444192727"
-      //     },
-      //     "accountType": "CHECKING",
-      //     "mailingAddress":
-      //         {
-      //             "streetName": "abc street blah blah bllah",
-      //             "city": "",
-      //             "state": "",
-      //             "zipCode": {
-      //                 "code": "02720"
-      //             }
-      //         }
-      // }
+
       let bankAccount: any = {};
       bankAccount = {
         accountHolderName: this.checkingAccountForm.controls.bankAccountHolder.value,
@@ -90,7 +71,7 @@ export class CheckingAccountFormComponent implements OnInit {
               {
                   streetName: this.checkingAccountForm.controls.changeAddress.value,
                   city: "",
-                  state: "",
+                  state: "UNKNOWN",
                   zipCode: {
                       code: "02720"
                   }
