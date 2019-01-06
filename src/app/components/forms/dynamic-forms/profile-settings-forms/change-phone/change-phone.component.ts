@@ -6,6 +6,8 @@ import { FormBase, FormBaseControlService, AlertService } from 'mapfre-design-li
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
+import { AuthenticationService } from '../../../../../_services/_iam/authentication-service.service';
+import { UserService }                        from '../../../../../_services/user.service';
 
 @Component({
   selector: 'app-change-phone',
@@ -25,7 +27,9 @@ constructor(
   private alertService:             AlertService,
   private profileConfirmModalService: ProfileConfirmModalService,
   private changePhoneService: ChangePhoneService,
-  private storageService: StorageServiceObservablesService
+  private storageService: StorageServiceObservablesService,
+  private authenticationService:            AuthenticationService,
+  private userService:               UserService
   ) { }
 
 ngOnInit() {
@@ -37,11 +41,19 @@ onSubmitPhoneDetails(){
 
   this.phoneNumber = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");
   this.changePhoneService.addUpdatePhone(this.storageService.getUserFromStorage(), this.phoneNumber).subscribe((response)=>{  
+    this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
+    .subscribe(([userResponse,accountResponse])=>{
+      this.userService.updateUser(
+       [{
+         userDetails: {...userResponse},
+         bankAccountDetails:  {...accountResponse}}]
+      );
+    });
+  
     this.alertService.success('Phone number succesfully updated',true);
     // FakeAccountSettings.user.phone = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");
     this.router.navigate(['/profile']);
   });
-  
 }
 
 onCheckDirty(){
