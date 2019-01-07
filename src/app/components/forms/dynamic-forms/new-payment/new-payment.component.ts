@@ -7,6 +7,7 @@ import { AlertService, RegExHelper,
 // --- Components | Services | Models --- //
 import { BillingObservableService }   from '../../../../_services/billing.service';
 import { Billing }                    from '../../../../_models/billing';
+import { UserService } from './../../../../_services/user.service';
 
 @Component({
   selector: 'app-new-payment-form',
@@ -32,6 +33,7 @@ export class NewPaymentComponent implements OnInit {
     private billingObservableService: BillingObservableService,
     private ipt:                      FormBaseControlService,
     private router:                   Router,
+    private userService: UserService
   ) {
   }
 
@@ -62,11 +64,11 @@ export class NewPaymentComponent implements OnInit {
 
     const bill: Billing = {
       billingInfo: [{
-        accountName:                this.checkingInfo[0].accountName,
-        accountNumber:              this.checkingInfo[0].accountNumber,
-        bankRoutingNumber:          this.checkingInfo[0].bankRoutingNumber,
-        mailingAddress:             this.checkingInfo[0].mailingAddress,
-        apartment:                  this.checkingInfo[0].appartment || '',
+        accountName:                this.checkingInfo.accountName,
+        accountNumber:              this.checkingInfo.accountNumber,
+        bankRoutingNumber:          this.checkingInfo.bankRoutingNumber,
+        mailingAddress:             this.checkingInfo.mailingAddress,
+        apartment:                  this.checkingInfo.appartment || '',
         checkNumber:                this.newPaymentRadioForm.controls['checkingNumberAmount'].value || ''
       }],
       amount:                       radioAmount,
@@ -79,13 +81,16 @@ export class NewPaymentComponent implements OnInit {
   }
 
   setValues(checkingInfo: object): void {
+    console.log(checkingInfo);
     this.newPaymentForm.patchValue({
-      newPayment_accountName:         checkingInfo[0].accountName,
-      newPayment_routingNumber:       checkingInfo[0].bankRoutingNumber,
-      newPayment_accountNumber:       checkingInfo[0].accountNumber,
-      newPayment_confirmAccountNumber: checkingInfo[0].accountNumber,
-      newPayment_mailingAddress:      checkingInfo[0].mailingAddress,
-      newPayment_aptNumber:           checkingInfo[0].appartment || ''
+      newPayment_accountName:         checkingInfo.bankAccountDetails.accountHolderName,
+      newPayment_routingNumber:       checkingInfo.bankAccountDetails.routingNumber.digits,
+      newPayment_accountNumber:       checkingInfo.bankAccountDetails.accountNumber.digits,
+      newPayment_confirmAccountNumber: checkingInfo.bankAccountDetails.accountNumber.digits,
+      newPayment_mailingAddress:      checkingInfo.bankAccountDetails.mailingAddress.streetName + ' ' +
+                                      checkingInfo.bankAccountDetails.mailingAddress.city + ' ' +
+                                      checkingInfo.bankAccountDetails.mailingAddress.state,
+      newPayment_aptNumber:           checkingInfo.bankAccountDetails.mailingAddress.apartment || ''
     });
   }
 
@@ -101,7 +106,12 @@ export class NewPaymentComponent implements OnInit {
       otherAmount:                    new FormControl()
     });
 
-    this.checkingInfo = this.userData;
-    this.setValues(this.checkingInfo);
+    // this.checkingInfo = this.userData.bankAccountDetails;
+   
+    this.userService.$user.subscribe((userResponse)=>{
+      this.checkingInfo = userResponse[0];
+      this.setValues(userResponse[0]);
+    })
+
   }
 }

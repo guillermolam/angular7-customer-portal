@@ -43,19 +43,26 @@ export class BillingNewpaymentComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.userService.$user.subscribe((userResponse)=>{
+      // if(userResponse){
+      this.checkingInfo = userResponse;
+        console.log(this.checkingInfo);
+      // }
+    })
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-      forkJoin(
-        this.billingDataService.$billingDetails,
-        this.userService.$user
-      )
+      // forkJoin(
+        this.billingDataService.$billingDetails
+        // this.userService.$user
+      // )
      
     // .pipe(map((policies: any[]) => {
     //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
     // }))
-    .subscribe(([billingResponse,userResponse]) => {
+    .subscribe((billingResponse) => {
         this.policyDetails = billingResponse;
-        this.checkingInfo = userResponse.bankAccountDetails;
+        // this.checkingInfo = userResponse.bankAccountDetails;
+        // console.log(this.policyDetails);
         // .map((policies: any[]) => {
         //     return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
         // });
