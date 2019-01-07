@@ -1,7 +1,8 @@
+import { BankAccountService } from './../profile-settings/bank-account.service';
 
 import { HttpClient }             from '@angular/common/http';
 import { Injectable }             from '@angular/core';
-import { of, throwError }         from 'rxjs';
+import { of, throwError, forkJoin }         from 'rxjs';
 import { Observable }             from 'rxjs/Observable';
 import { catchError, map }        from 'rxjs/operators';
 import { environment }            from '../../../environments/environment';
@@ -15,7 +16,8 @@ export class AuthenticationService {
 
   constructor(
     private http:             HttpClient,
-    private serviceHelpers:   ServiceHelpersService
+    private serviceHelpers:   ServiceHelpersService,
+    private bankAccountService: BankAccountService
   ) {
     // set token if saved in local storage
     const currentUser =       JSON.parse(localStorage.getItem('currentUser'));
@@ -54,12 +56,13 @@ export class AuthenticationService {
     });
   }
 
-
-  getUserDetailsByEmail(email){
+  getUserDetailsByEmail(email) {
     const url =  `https://mdv-doctest:8082/identity/users/${email}`;
-    return this.http.get(url);
+    return forkJoin(
+          this.http.get(url),
+          this.bankAccountService.getBankAccountByEmail(email)
+          );
   }
-
 
   login(username: string, password: string) {
     const urlpartone =      `${environment.backend_auth_server_url}/`,
@@ -104,9 +107,10 @@ export class AuthenticationService {
     return this.http.get(url, {});
   }
 
-  updatePassword(user: User, userToken: string) {
+  updatePassword(user: User) {
     // console.log('update-password-authservice' + user +'---->'+ user.password);
-    const url =           `${environment.backend_server_url}/identity/users/password/${user.email}`;
+    const url =           `https://mdv-doctest:8082/identity/users/password/${user.email}`;
+    // const url =           `${environment.backend_server_url}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : {
         newPassword:    user.password

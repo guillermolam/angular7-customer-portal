@@ -3,6 +3,7 @@
   <div class="row">
     <app-loggedin-sidenav></app-loggedin-sidenav>
     <div class="col main-column">
+      <mapfre-alert *ngIf='showAlert'></mapfre-alert>
       <router-outlet></router-outlet>
       <ng-container *ngIf="loading">
         <mapfre-loading></mapfre-loading>

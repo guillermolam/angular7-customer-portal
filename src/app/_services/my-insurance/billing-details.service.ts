@@ -17,8 +17,8 @@ export class BillingDetailsService {
   ) {}
 
   getCurrentBillByPolicy(policyNumber: string){
-    // const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
-    const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`;
+    const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
+    // const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`;
     return this.http.get(url);
     // .pipe(map((billingResponse)=>{
     //   return billingResponse;
@@ -29,5 +29,17 @@ export class BillingDetailsService {
     // });
   }
 
+
+  getScheduledBillsByPolicy(policyNumber: string){
+    const url = `${this.billingURL}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    // const url = `${environment.backend_server_url}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    return this.http.get(url);
+  }
+
+  getHistoryBillsByPolicy(policyNumber: string){
+    const url = `${this.billingURL}/billing/history-bills?policyNumber=${policyNumber}`;
+    // const url = `${environment.backend_server_url}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    return this.http.get(url);
+  }
 
 }

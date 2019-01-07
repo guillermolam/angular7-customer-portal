@@ -1,3 +1,4 @@
+import { AuthenticateUserService } from './../../../../_services/profile-settings/authenticate-user.service';
 import { Component, OnInit, Input }       from '@angular/core';
 import { FormBaseControlService, FormBase, 
   AlertService }                          from 'mapfre-design-library';
@@ -21,25 +22,28 @@ export class ChangePasswordFormComponent implements OnInit {
     private ipt:                        FormBaseControlService,
     private router:                     Router,
     private alertService:               AlertService,
-    private activatedRoute:             ActivatedRoute
+    private activatedRoute:             ActivatedRoute,
+    private authenticateUserService: AuthenticateUserService
   ) { }
 
   onConfirmChange(){
   // console.log(this.changePasswordForm.controls.changePassword.value);
     this.whereInTheProcess =  this.activatedRoute.snapshot.routeConfig.path;
     const passwd = this.changePasswordForm.controls.changePassword.value;
-    if (this.changePasswordForm.controls.changePassword.value === 'password' ) {
+    this.authenticateUserService.authenticateCurrentPassword(passwd).subscribe((response) => {
+      console.log(response);
       if (this.whereInTheProcess == 'enter-password') {
         this.router.navigate(['/profile','edit-password']);
       }
       else if (this.whereInTheProcess == 'verify-password') {
         this.router.navigate(['/profile','edit-email']);
       }
-    }
-    else {
+    },
+    (error)=>{
+      console.log(error);
       this.forgotPassword = true;
       this.alertService.error('INVALID_CHANGE_PASSWORD');
-    }
+    });
   }
 
   ngOnInit() {

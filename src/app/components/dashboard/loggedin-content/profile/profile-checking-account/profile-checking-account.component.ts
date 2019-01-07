@@ -14,11 +14,14 @@ export class ProfileCheckingAccountComponent implements OnInit {
   checkingAccountForm: any[];
 
   constructor(
-    private checkingAccountService: CheckingAccountService
+    private checkingAccountService: CheckingAccountService,
     ) { }
 
   ngOnInit() {
-    this.checkingAccountForm = this.checkingAccountService.getInputs();
+
+    this.checkingAccountService.getInputs().subscribe((inputsResponse)=>{
+      this.checkingAccountForm = inputsResponse;
+    })
   }
 
   onCheckDirty(){

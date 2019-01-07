@@ -13,19 +13,16 @@ export class ProfilePhoneComponent implements OnInit {
 
   accountPhoneForm: any[];
   whereInTheProcess: string;
-  phoneNumber: string;
-  user: any;
 
   constructor(
     private editPhoneService: EditPhoneService,
     private activatedRoute: ActivatedRoute
   ) { }
 
-  ngOnInit() {
-    FakeAccountSettings.getUserData().subscribe((user)=>{
-      this.phoneNumber = user.phone;
-    })
-    this.accountPhoneForm = this.editPhoneService.getInputs();
+  ngOnInit() {    
+    this.editPhoneService.getInputs().subscribe((eidtPhoneResponse)=>{
+      this.accountPhoneForm = eidtPhoneResponse;
+    });
     this.whereInTheProcess = this.activatedRoute.snapshot.routeConfig.path;
   }
 }

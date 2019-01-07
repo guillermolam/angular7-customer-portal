@@ -1,9 +1,13 @@
+import { StorageServiceObservablesService } from './../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { ChangePhoneService } from './../../../../../_services/profile-settings/change-phone.service';
 import { FakeAccountSettings } from '../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBase, FormBaseControlService, AlertService } from 'mapfre-design-library';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
+import { AuthenticationService } from '../../../../../_services/_iam/authentication-service.service';
+import { UserService }                        from '../../../../../_services/user.service';
 
 @Component({
   selector: 'app-change-phone',
@@ -21,7 +25,11 @@ constructor(
   private ipt:                      FormBaseControlService,
   private router:                   Router,
   private alertService:             AlertService,
-  private profileConfirmModalService: ProfileConfirmModalService
+  private profileConfirmModalService: ProfileConfirmModalService,
+  private changePhoneService: ChangePhoneService,
+  private storageService: StorageServiceObservablesService,
+  private authenticationService:            AuthenticationService,
+  private userService:               UserService
   ) { }
 
 ngOnInit() {
@@ -30,9 +38,22 @@ ngOnInit() {
 }
 
 onSubmitPhoneDetails(){
-  this.alertService.success('Phone number succesfully updated',true);
-  FakeAccountSettings.user.phone = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");
-  this.router.navigate(['/profile']);
+
+  this.phoneNumber = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");
+  this.changePhoneService.addUpdatePhone(this.storageService.getUserFromStorage(), this.phoneNumber).subscribe((response)=>{  
+    this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
+    .subscribe(([userResponse,accountResponse])=>{
+      this.userService.updateUser(
+       [{
+         userDetails: {...userResponse},
+         bankAccountDetails:  {...accountResponse}}]
+      );
+    });
+  
+    this.alertService.success('Phone number succesfully updated',true);
+    // FakeAccountSettings.user.phone = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");
+    this.router.navigate(['/profile']);
+  });
 }
 
 onCheckDirty(){
