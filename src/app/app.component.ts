@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router }     from '@angular/router';
-import { Component, enableProdMode }  from '@angular/core';
+import { Component, enableProdMode, OnInit }  from '@angular/core';
 import { TranslateService }           from '@ngx-translate/core';
 import * as _                         from 'underscore';
 import { Language }                   from 'mapfre-design-library';
@@ -9,7 +9,7 @@ import { Language }                   from 'mapfre-design-library';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title:                    string = 'Mapfre Insurance';
   checkThisRoute:           boolean = false;
 
@@ -55,7 +55,7 @@ export class AppComponent {
       lang.toUpperCase()
     ;
 
-    _.each(self._languages['lang'], function(val, index	){
+    _.each(self._languages['lang'], (val, index	) => {
       self.translate.setTranslation(val['identifier'], val['sentences']);
     });
     self.translate.setDefaultLang('EN');

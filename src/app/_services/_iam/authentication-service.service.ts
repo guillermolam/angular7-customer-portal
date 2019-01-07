@@ -56,16 +56,13 @@ export class AuthenticationService {
     });
   }
 
-
-  getUserDetailsByEmail(email){
+  getUserDetailsByEmail(email) {
     const url =  `https://mdv-doctest:8082/identity/users/${email}`;
     return forkJoin(
           this.http.get(url),
           this.bankAccountService.getBankAccountByEmail(email)
           );
   }
-  
-
 
   login(username: string, password: string) {
     const urlpartone =      `${environment.backend_auth_server_url}/`,

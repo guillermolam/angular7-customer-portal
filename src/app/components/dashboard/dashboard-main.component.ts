@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit }                  from '@angular/core';
+import { Component, OnInit, AfterViewInit }   from '@angular/core';
 import { Router, NavigationEnd }              from '@angular/router';
 import { BillingDataService }                 from './../../_services/my-insurance/data-services/billing-data.service';
 import { BillingDetailsService }              from './../../_services/my-insurance/billing-details.service';
@@ -36,6 +36,9 @@ export class DashboardMainComponent implements OnInit {
       this.reportClaim = true;
       this.showAlert   = true;
     }
+    else {
+      this.reportClaim = false;
+    }
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -55,6 +58,7 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
+
     // this.policyDataService.$policyDetails.subscribe(
     //   (success) => {
     //     this.loading = false;
@@ -64,28 +68,26 @@ export class DashboardMainComponent implements OnInit {
     //     this.loading = false;
     //   },
     // );
-   this.policyDetailsService
+    this.policyDetailsService
      .getPolicyDetailsByEmail(
        this.storageService.getUserFromStorage()
      ).subscribe( () => { 
       this.loading = false;
-     }
-     );
+     });
 
     this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
-    .subscribe(([userResponse,accountResponse])=>{
+    .subscribe(([userResponse,accountResponse]) => {
       this.userService.updateUser(
        [{
          userDetails: {...userResponse},
          bankAccountDetails:  {...accountResponse}}]
       );
      });
-    
+
     // .subscribe((userResponse)=>{
     //   console.log(userResponse);
     //   this.userService.updateUser(userResponse);
     // });
-   
    // this.userService.updateUser( this.testingData.testDatafunction() );
 
    // this.userService.$user.subscribe(
@@ -96,7 +98,6 @@ export class DashboardMainComponent implements OnInit {
 
   }
 
-  
   // ngAfterViewInit(){
   //   this.loading = false;
   // }

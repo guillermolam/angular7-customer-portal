@@ -4,7 +4,7 @@
   <mapfre-alert></mapfre-alert>
   <ng-container [ngSwitch]="whereInTheProcess">
 
-    <div *ngSwitchCase="'addpolicy'">
+    <div *ngSwitchCase="'add-policy'">
       <div class="row text-center">
         <div class="col">
           <div class="header-icon full-icon">
@@ -30,19 +30,19 @@
           </mapfre-modal>
         </div>
       </div>
-      <hr class="margin-vertical mv24" />
-      <div class="row text-center">
-        <div class="col">
-          <mapfre-button
-            [additionalClasses]="'flat link small'"
-            [customIcon]="'assets/img/icons/back-arrow.png'"
-            [iconClasses]="'align-middle'"
-            (click)="goBackAPage()"
-            [showIconsCustom]="true"
-          >  {{ 'BACK' | translate }}
-          </mapfre-button>
+        <hr class="margin-vertical mv24" />
+        <div class="row text-center">
+          <div class="col">
+            <mapfre-button
+              [additionalClasses]="'flat link small w-100'"
+              [customIcon]="'assets/img/icons/back-arrow.png'"
+              [iconClasses]="'align-middle'"
+              [routerLink]="['/signup']"
+              [showIconsCustom]="true"
+            >  {{ 'BACK' | translate }}
+            </mapfre-button>
+          </div>
         </div>
-      </div>
     </div>
 
     <div *ngSwitchCase="'bop'">
@@ -57,7 +57,7 @@
       <app-bop-screen></app-bop-screen>
       <div class="text-center">
         <mapfre-button
-          [additionalClasses]="'flat link small waves-effect'"
+          [additionalClasses]="'flat link small w-100'"
           [customIcon]="'../../../../../assets/img/icons/back-arrow.png'"
           [iconClasses]="'align-middle'"
           (click)="goBackAPage()"
@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <div *ngSwitchCase="'createpassword'">
+    <div *ngSwitchCase="'create-password'">
       <div class="row text-center">
         <div class="col">
           <div class="header-icon">
@@ -80,7 +80,7 @@
       <div class="row margin-top mt24 text-center">
         <div class="col">
           <mapfre-button
-            [additionalClasses]="'flat link small'"
+            [additionalClasses]="'flat link small w-100'"
             [customIcon]="'assets/img/icons/back-arrow.png'"
             [iconClasses]="'align-middle'"
             (click)="goBackAPage()"
@@ -91,7 +91,7 @@
       </div>
     </div>
 
-    <div *ngSwitchCase="'editpolicy'">
+    <div *ngSwitchCase="'edit-policy'">
       <div class="row text-center">
         <div class="col">
           <div class="header-icon full-icon">
@@ -110,7 +110,7 @@
           <div class="col">
             <mapfre-button
               [additionalClasses]="'secondary ghost small'"
-              [routerLink]="['/signup', 'addpolicy']"
+              [routerLink]="['/signup', 'add-policy']"
             >{{ 'CANCEL' | translate }}</mapfre-button>
           </div>
         </div>
@@ -133,7 +133,7 @@
       </div>
     </div>
 
-    <div *ngSwitchCase="'emailinuse'">
+    <div *ngSwitchCase="'email-in-use'">
       <div class="row text-center">
         <div class="col">
           <div class="header-icon full-icon">
@@ -144,7 +144,7 @@
       <app-email-use-screen [userData]="user"></app-email-use-screen>
     </div>
 
-    <div *ngSwitchCase="'notfound'">
+    <div *ngSwitchCase="'not-found'">
       <div class="row text-center">
         <div class="col">
           <div class="header-icon full-icon">
@@ -154,9 +154,17 @@
         </div>
       </div>
       <app-policy-not-found-screen [userData]="user"></app-policy-not-found-screen>
+      <div class="row text-center">
+        <div class="col">
+          <mapfre-button
+            [additionalClasses]="'ghost secondary small'"
+            [routerLink]="['/login']"
+          >{{ 'CANCEL' | translate }}</mapfre-button>
+        </div>
+      </div>
     </div>
 
-    <div *ngSwitchCase="'policybelongstoanother'">
+    <div *ngSwitchCase="'policy-belongs-to-another'">
       <div class="row text-center">
         <div class="col">
           <div class="header-icon full-icon">
