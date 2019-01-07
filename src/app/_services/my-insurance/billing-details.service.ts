@@ -30,4 +30,16 @@ export class BillingDetailsService {
   }
 
 
+  getScheduledBillsByPolicy(policyNumber: string){
+    const url = `${this.billingURL}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    // const url = `${environment.backend_server_url}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    return this.http.get(url);
+  }
+
+  getHistoryBillsByPolicy(policyNumber: string){
+    const url = `${this.billingURL}/billing/history-bills?policyNumber=${policyNumber}`;
+    // const url = `${environment.backend_server_url}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    return this.http.get(url);
+  }
+
 }
