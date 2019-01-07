@@ -8,6 +8,7 @@ import { UserInfoService }          from '../../../../../_services/_userinformat
 
 import { TestingDataService }       from './../../../../../_helpers/testing-data.service';
 import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class BillingNewpaymentComponent implements OnInit {
     private userInformation:        UserInfoService,
     private testingData:            TestingDataService,
     private billingDataService: BillingDataService,
+    
   ) {
     this.inputs = service.getInputs();
    }
@@ -43,64 +45,28 @@ export class BillingNewpaymentComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-      this.billingDataService.$billingDetails
+      forkJoin(
+        this.billingDataService.$billingDetails,
+        this.userService.$user
+      )
+     
     // .pipe(map((policies: any[]) => {
     //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
     // }))
-    .subscribe((billingResponse: any[]) => {
-      if(billingResponse){
+    .subscribe(([billingResponse,userResponse]) => {
         this.policyDetails = billingResponse;
+        this.checkingInfo = userResponse.bankAccountDetails;
         // .map((policies: any[]) => {
         //     return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
         // });
         // console.log(this.policyDetails);
         // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
-      }
+      
   })
 })
 
-    this.checkingInfo = this.testingData.testDataChecking(this.policyId);
-    this.loading = false;
-    this.userService.$user.subscribe(
-      (user) => {
-        if ( user != undefined ) {
-          this.user = user ;
-        }
-        else {
-          this.loading = true;
-          if (localStorage.getItem('access_token')) {
-            // If a user comes straight to the page turn on loading
-            this.loading = true;
-            // That way we can gather the information
-            this.userInformation
-              .policyByEmail(this.user.email)
-              .subscribe(
-                (info: any) => {
-                  console.log(info);
-                  this.user = {
-                    firstName: info[0].insurer['firstName'],
-                    middleName: info[0].insurer['middleName'],
-                    lastName: info[0].insurer['lastName'],
-                    policyDetails: info
-                  };
-                  this.userService.updateUser(this.user);
-                  this.loading = false;
-                },
-                (err) => {
-                  this.loading = false;
-                  console.log('login success but verifyuser err', err);
-                }
-              )
-            ;
-          }
-          else {
-            this.user = this.testingData.testDatafunction();
-            this.userService.updateUser(this.user);
-            this.loading = false;
-          }
-        }
-      }
-    );
+   
+   
   }
   
 }
