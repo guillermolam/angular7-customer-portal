@@ -1,3 +1,4 @@
+import { BillingDataService } from './../../../../_services/my-insurance/data-services/billing-data.service';
 // --- Angular ---//
 import { Component, Input, OnInit }   from '@angular/core';
 import { FormGroup, FormControl }     from '@angular/forms';
@@ -18,10 +19,10 @@ import { UserService } from './../../../../_services/user.service';
 export class NewPaymentComponent implements OnInit {
 
   @Input()  inputs:                   FormBase<any>[] = [];
-  @Input()  userData:                 object;
             editAccount:              boolean = false;
             showCustomAmount:         boolean = false;
-            checkingInfo;
+            policyDetails:          any;
+            checkingInfo: any;
             loading:                  boolean = false;
             newPaymentForm:           FormGroup;
             newPaymentRadioForm:      FormGroup;
@@ -33,7 +34,8 @@ export class NewPaymentComponent implements OnInit {
     private billingObservableService: BillingObservableService,
     private ipt:                      FormBaseControlService,
     private router:                   Router,
-    private userService: UserService
+    private userService: UserService,
+    private billingDataService: BillingDataService
   ) {
   }
 
@@ -80,8 +82,8 @@ export class NewPaymentComponent implements OnInit {
     this.router.navigate(['/billing', this.policyId, 'confirm' ]);
   }
 
-  setValues(checkingInfo: object): void {
-    console.log(checkingInfo);
+  setValues(checkingInfo: any): void {
+    // console.log(checkingInfo);
     this.newPaymentForm.patchValue({
       newPayment_accountName:         checkingInfo.bankAccountDetails.accountHolderName,
       newPayment_routingNumber:       checkingInfo.bankAccountDetails.routingNumber.digits,
@@ -95,8 +97,19 @@ export class NewPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.userService.$user.subscribe((userResponse)=>{
+      this.checkingInfo = userResponse[0];
+      this.setValues(userResponse[0]);
+    });
+
+   
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId =                 params['policyid'];
+      this.billingDataService.$billingDetails.subscribe((billingResponse: any[])=>{
+        this.policyDetails = billingResponse.filter(response => response.policynumber.policynumber);
+      });
     });
 
     this.newPaymentForm =             this.ipt.toFormGroup(this.inputs);
@@ -108,10 +121,7 @@ export class NewPaymentComponent implements OnInit {
 
     // this.checkingInfo = this.userData.bankAccountDetails;
    
-    this.userService.$user.subscribe((userResponse)=>{
-      this.checkingInfo = userResponse[0];
-      this.setValues(userResponse[0]);
-    })
+    
 
   }
 }
