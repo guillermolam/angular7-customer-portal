@@ -31,15 +31,17 @@ export class PolicyDetailsService {
           this.getDocumentsByPolicy(policy.policynumber.policynumber),
           this.getVehicleByPolicy(policy.policynumber.policynumber),
           this.billingDetailsService.getHistoryBillsByPolicy(policy.policynumber.policynumber),
-          this.billingDetailsService.getScheduledBillsByPolicy(policy.policynumber.policynumber)
-      ).subscribe(([billingResponse,documentsResponse, vehicleResponse, historyResponse, scheduledBills])=>{
+          this.billingDetailsService.getScheduledBillsByPolicy(policy.policynumber.policynumber),
+          this.billingDetailsService.getPendingChecksByPolicy(policy.policynumber.policynumber)
+      ).subscribe(([billingResponse,documentsResponse, vehicleResponse, historyResponse, scheduledBills, pendingCheckPayments])=>{
        this.policyBillingDataAll.push(...[Object.assign(
          policy, 
         {billingDetails: {...billingResponse}}, 
         {documentsDetails: documentsResponse},
         {vehicleDetails: vehicleResponse},
         {billingHistory: historyResponse},
-        {scheduledBills: scheduledBills }
+        {scheduledBills: scheduledBills },
+        {pendingCheckPayments: pendingCheckPayments}
         )]);
       });
       //   this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber).subscribe((billingResponse: any[]) => {
