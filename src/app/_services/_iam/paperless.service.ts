@@ -31,16 +31,16 @@ export class PaperlessService {
       userData = data;
     });
 
-    for (let policyDetails of userData['policyDetails']) {
-      const policyFlags = policyDetails['policyFlags'];
-      if ( policyFlags.isEft == false ) {
-        all = false;
-        break;
-      }
-      else {
-        all = true;
-      }
-    }
+    // for (let policyDetails of userData['policyDetails']) {
+    //   const policyFlags = policyDetails['policyFlags'];
+    //   if ( policyFlags.isEft == false ) {
+    //     all = false;
+    //     break;
+    //   }
+    //   else {
+    //     all = true;
+    //   }
+    // }
 
     return all;
   }

@@ -47,6 +47,7 @@ export class PolicyDetailsService {
       // });
       // return this.billingDataAll;
     })
+    console.log(this.policyBillingDataAll);
     this.billingDataService.updateBillingDetails(this.policyBillingDataAll);
   })
   );
