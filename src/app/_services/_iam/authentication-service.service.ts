@@ -56,7 +56,7 @@ export class AuthenticationService {
 
 
   getUserDetailsByEmail(email){
-    const url =  `${environment.backend_auth_server_url}/identity/users/${email}`;
+    const url =  `https://mdv-doctest:8082/identity/users/${email}`;
     return this.http.get(url);
   }
 
