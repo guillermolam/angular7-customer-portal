@@ -1,11 +1,11 @@
 import { BillingDataService } from './data-services/billing-data.service';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { BillingDetailsService } from './billing-details.service';
 import { PolicyDataService } from './data-services/policy-data.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Observable, forkJoin, of } from 'rxjs';
+import { Observable, forkJoin, of, throwError } from 'rxjs';
 
 @Injectable()
 export class PolicyDetailsService {
@@ -32,6 +32,9 @@ export class PolicyDetailsService {
           this.getVehicleByPolicy(policy.policynumber.policynumber),
           this.billingDetailsService.getHistoryBillsByPolicy(policy.policynumber.policynumber),
           this.billingDetailsService.getScheduledBillsByPolicy(policy.policynumber.policynumber),
+          // .pipe(
+          //   map(res => res),
+          //   catchError((error)=> throwError(error.status))),
           this.billingDetailsService.getPendingChecksByPolicy(policy.policynumber.policynumber)
       ).subscribe(([billingResponse,documentsResponse, vehicleResponse, historyResponse, scheduledBills, pendingCheckPayments])=>{
        this.policyBillingDataAll.push(...[Object.assign(
