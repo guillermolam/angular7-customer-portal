@@ -6,7 +6,7 @@ import { FormBase , FormBaseControlService }  from 'mapfre-design-library';
 // --- Components | Services | Models --- //
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
 import { UserService }                from '../../../../_services/user.service';
-import { PolicyDataService }       from '../../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDataService }          from '../../../../_services/my-insurance/data-services/policy-data.service';
 import { User }                       from '../../../../_models/user';
 
 @Component({

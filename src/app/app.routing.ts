@@ -22,7 +22,7 @@ import { InformationRenewalComponent }    from './components/dashboard/loggedin-
 import { InformationCancelComponent }     from './components/dashboard/loggedin-content/information/information-cancel/information-cancel.component';
 import { InformationLegalComponent }      from './components/dashboard/loggedin-content/information/information-legal/information-legal.component';
 import { ClaimsDetailComponent }          from './components/dashboard/loggedin-content/claims/claims-detail/claims-detail.component';
-import { ClaimsHomeComponent }            from './components/dashboard/loggedin-content/claims/claims-dashboard-active/claims-home.component';
+import { ClaimsHomeComponent }            from './components/dashboard/loggedin-content/claims/claims-dashboard-home/claims-home.component';
 import { ClaimsHomeClosedComponent }      from './components/dashboard/loggedin-content/claims/claims-dashboard-closed/claims-home-closed.component';
 import { ProfileEmailConfirmComponent }   from './components/dashboard/loggedin-content/profile/profile-email-confirm/profile-email-confirm.component';
 import { PolicyDetailsComponent }         from './components/dashboard/loggedin-content/my-insurance/details/details.component';
@@ -42,11 +42,11 @@ import { PaperlessPolicyComponent }       from './components/dashboard/loggedin-
 import { PaperlessComponent }             from './components/dashboard/loggedin-content/billing/paperless/paperless.component';
 import { PaperlessFirstTimeComponent }    from './components/dashboard/loggedin-content/billing/paperless/paperless-time/paperless-time.component';
 import { PaperlessPayEnrollComponent }    from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/enroll/enroll.component';
-import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
-import { PolicyNotFoundComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-not-found/policy-not-found.component';
-import { EditPolicyDetailsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/edit-policy-details/edit-policy-details.component';
-import { ValidatePolicyRightsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/validate-policy-rights/validate-policy-rights.component';
-import { PolicyInProcessComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-in-process/policy-in-process.component';
+import { PaperlessPayConfirmComponent }   from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
+import { PolicyNotFoundComponent }        from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-not-found/policy-not-found.component';
+import { EditPolicyDetailsComponent }     from './components/dashboard/loggedin-content/my-insurance/add-policy/edit-policy-details/edit-policy-details.component';
+import { ValidatePolicyRightsComponent }  from './components/dashboard/loggedin-content/my-insurance/add-policy/validate-policy-rights/validate-policy-rights.component';
+import { PolicyInProcessComponent }       from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-in-process/policy-in-process.component';
 import { BusinesspolicyDetectedComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/businesspolicy-detected/businesspolicy-detected.component';
 
 
@@ -82,7 +82,7 @@ const appRoutes: Routes = [
   { path: 'walletcard',                   component: WalletCardComponent},
 
 // when logged in
-{ path: '', component: DashboardMainComponent, canActivate: [AuthGuard],
+{ path: '', component: DashboardMainComponent, //canActivate: [AuthGuard],
 children: [
 { path: '',                               component: LoggedinContentComponent, children: [
   { path: '',                             redirectTo: 'my-insurance', pathMatch: 'full' },
@@ -119,9 +119,7 @@ children: [
     { path: 'email-confirmation' ,        component: ProfileEmailConfirmComponent}
   ] },
   { path: 'claims',                       component: ClaimsComponent, children: [
-    { path: '',                           redirectTo: 'active', pathMatch: 'full' },
-    { path: 'active',                     component: ClaimsHomeComponent },
-    { path: 'closed',                     component: ClaimsHomeClosedComponent },
+    { path: '',                            component: ClaimsHomeComponent },
     { path: ':claimid',                   children: [
       { path: '',                         redirectTo: 'details', pathMatch: 'full'},
       { path: 'details',                  component: ClaimsDetailComponent },

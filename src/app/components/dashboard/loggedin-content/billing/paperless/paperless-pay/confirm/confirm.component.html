@@ -5,27 +5,27 @@
         <svg-bank-svg></svg-bank-svg>
       </div>
       <div>
-        <h1 class="title-copy">e-Pay enrollment</h1>
-      </div>        
+          <h1 class="title-copy">{{ 'EPAY_ENROLL_TITLE' | translate }}</h1>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <p>
-          Your Policy is now enrolled in e-PAY
+        {{ 'EPAY_CONFIRM_ONE' | translate }}
       </p>
       <p>
-          Your Autopay deduction schedule will be mailed to you 2 weeks prior to your first deduction. Your account will reflect your updates within 1 to 2 business days. <strong>The estimated deduction may not include any increase or decrease in premiums due to the removal of discounts or policy changes.</strong>
+          {{ 'EPAY_CONFIRM_TWO' | translate }}<strong>{{ 'EPAY_CONFIRM_TWO_STRONG' | translate }}</strong>
       </p>
     </div>
   </div>
   <div class="row">
     <div class="col">
-        <p>Account Holder: <strong> {{ billingInfo?.billingInfo[0].accountName }} </strong></p>
-        <p>Routing/ABA Number: <strong> {{ billingInfo?.billingInfo[0].bankRoutingNumber }} </strong></p>
-        <p>Account Number: <strong> {{ billingInfo?.billingInfo[0].accountNumber }} </strong></p>
-        <p>Type of Account: <strong> {{ billingInfo?.billingInfo[0].accountType }} </strong></p>
-        <p>Monthly Deduction Date: <strong>  {{ billingInfo?.deductionDate }}</strong></p>
+        <p>{{ 'ACCOUNT_HOLDER' | translate }}: <strong> {{ billingInfo?.billingInfo[0].accountName }} </strong></p>
+        <p>{{ 'ROUTING/AB' | translate }}: <strong> {{ billingInfo?.billingInfo[0].bankRoutingNumber }} </strong></p>
+        <p>{{ 'ACCOUNT_NUMBER' | translate }}: <strong> {{ billingInfo?.billingInfo[0].accountNumber }} </strong></p>
+        <p>{{ 'TYPE_OF_ACCOUNT' | translate }}: <strong> {{ billingInfo?.billingInfo[0].accountType }} </strong></p>
+        <p>{{ 'MONTHLY_DEDUCTION_DATE' | translate }}: <strong>  {{ billingInfo?.deductionDate }}</strong></p>
     </div>
   </div>
   <div class="row margin-vertical mv16 text-center">
@@ -33,7 +33,7 @@
       <mapfre-button
         [additionalClasses]="'basic primary large mx-auto waves-effect'"
         [routerLink]="['/billing/paperless']">  
-        {{ 'Continue' | translate }}
+        {{ 'CONTINUE' | translate }}
       </mapfre-button>
     </div>
   </div>

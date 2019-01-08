@@ -22,7 +22,7 @@ export class PaperlessPolicyComponent implements OnInit {
   ) {
     this.endEnrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium cancel-enroll modal-dialog',
-      additionalButtonClasses:      'red-text float-right align-middle no-padding no-margin',
+      additionalButtonClasses:      'red-text float-right align-middle flat no-padding no-margin',
       animatePosition:              'top',
       buttonCopy:                   'MODAL_E-POLICY-REMOVAL_TITLE',
       modalId:                      'endEnrollModal',
@@ -34,7 +34,7 @@ export class PaperlessPolicyComponent implements OnInit {
     });
     this.enrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium enroll modal-dialog',
-      additionalButtonClasses:      'no-margin float-right btn mapfre waves-light primary ghost w-100',
+      additionalButtonClasses:      'no-margin float-right btn mapfre waves-light primary ghost',
       animatePosition:              'top',
       buttonCopy:                   'ENROLL',
       modalId:                      'enrollModal',

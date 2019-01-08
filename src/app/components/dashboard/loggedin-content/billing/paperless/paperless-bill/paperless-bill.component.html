@@ -3,25 +3,25 @@
       <img src="./assets/img/images/paperless.png" alt="Paperless trees" />
   </div>
   <div class="col-md">
-    <p class="no-margin">e-Pay or Autopay is our Electronic Funds Transfer (EFT) payment option.</p>
-    <p class="no-margin">It is automatically done for you each month.</p>
-    <p class="no-margin"><strong>Combine with e-POLICY to get our Paperless Discount!</strong></p>
+    <p class="no-margin"> {{ 'EBILL_ONE' | translate }}</p>
+    <p class="no-margin"> {{ 'EBILL_TWO' | translate }}</p>
+    <p class="no-margin"><strong> {{ 'EBILL_THREE' | translate }}</strong></p>
 
     <h2 class="title no-border margin-top mt32">
-      Policies Elegible
+        {{ 'POLICIES_ELEGIBLE' | translate }}
     </h2>
     <table mdbTable class="paperless-table">
       <tbody class="med-grey-color">
-        <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user.policyDetails">
+        <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user">
         
           <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
               <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
               <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
             </td>
             <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8  width w-20">{{ pdetail.policyType }} &ndash; {{ pdetail.policynumber.policynumber }} </td>
-            <td class="no-padding green-text padding-vertical pv8 align-middle">{{ pdetail.effDate | date:'shortDate' }} to {{ pdetail.expDate | date:'shortDate' }}</td>
+            <td class="no-padding green-text padding-vertical pv8 align-middle">{{ pdetail.effDate | date:'shortDate' }} {{ 'TO' | translate }} {{ pdetail.expDate | date:'shortDate' }}</td>
             
-            <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEbill == true">
+            <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEbill == 'ENROLLED'">
               <mapfre-modal 
                 [modalOptions]="endEnrollOptionsModal"
                 [hideModal]="hideModal"
@@ -29,31 +29,32 @@
                 <div class="modal-body">
                   <hr class="margin-bottom mb24 no-margin-top" />
                   <div class="margin-bottom mb24">
-                      Are you sure you want to remove policy <strong>{{ pdetail.policynumber.policynumber }}</strong> from e-Bill?
+                      {{ 'ARE_YOU_SURE_YOU_WANT_TO_REMOVE_POLICY' | translate }} <strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'FROM_E-BILL' | translate }}
                   </div>
-                  <div class="mx-auto text-center">
+                  <div class="mx-auto text-c
+                  enter">
                       <mapfre-button 
                         additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
                         (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-bill'); hideModalAction($event)">
-                        REMOVE FROM E-Bill
+                        {{ 'REMOVE_FROM_E-BILL' | translate }}
                       </mapfre-button>
                       <mapfre-button 
                         additionalClasses="ghost secondary padding-vertical pv16  w-50"
                         (click)="hideModalAction($event)">
-                        CANCEL
+                        {{ 'CANCEL' | translate }}
                       </mapfre-button>
                   </div>
                 </div>
               </mapfre-modal>
-              <div class="float-right align-middle enrolled-icon"><svg-check-icon-svg></svg-check-icon-svg> <span class="green-text">Enrolled</span></div>
+              <div class="float-right align-middle enrolled-icon"><svg-check-icon-svg></svg-check-icon-svg> <span class="green-text">{{ 'ENROLLED_TEXT' | translate }}</span></div>
             </td>
-            <td class="padding-vertical pv8 enroll-button align-middle pending" *ngIf="pdetail.policyFlags.isEbill == 'enrollment-pending'">
-                <i class="fas fa-info-circle margin-right mr8"></i> <span>Pending enrollment</span>
+            <td class="padding-vertical pv8 enroll-button align-middle pending" *ngIf="pdetail.policyFlags.isEbill == 'ENROLLMENT-PENDING'">
+                <i class="fas fa-info-circle margin-right mr8"></i> <span>{{ 'PENDING_ENROLLMENT' | translate }}</span>
               </td>
-              <td class="padding-vertical pv8 enroll-button align-middle pending" *ngIf="pdetail.policyFlags.isEbill == 'removal-pending'">
-                  <i class="fas fa-info-circle margin-right mr8"></i> <span>Pending removal</span>
+              <td class="padding-vertical pv8 enroll-button align-middle pending" *ngIf="pdetail.policyFlags.isEbill == 'UNENROLLMENT-PENDING'">
+                  <i class="fas fa-info-circle margin-right mr8"></i> <span>{{ 'PENDING_REMOVAL' | translate }}</span>
                 </td>
-            <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEbill == false">
+            <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEbill == 'UNENROLLED'">
               <mapfre-modal 
                 [modalOptions]="enrollOptionsModal"
                 [hideModal]="hideModal"
@@ -61,18 +62,18 @@
                 <div class="modal-body">
                   <hr class="margin-bottom mb24 no-margin-top" />
                   <div class="margin-bottom mb24">
-                      Are you sure you want to remove policy <strong>{{ pdetail.policynumber.policynumber }}</strong> from e-Bill?
+                      {{ 'ARE_YOU_SURE_YOU_WANT_TO_REMOVE_POLICY' | translate }}<strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'FROM_E-BILL' | translate }}
                   </div>
                   <div class="mx-auto text-center">
                       <mapfre-button 
                         additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
                         (click)="enroll(pdetail.policynumber.policynumber, 'e-bill'); hideModalAction($event)">
-                        Confirm Enrollment
+                        {{ 'CONFIRM_ENROLLMENT' | translate }}
                       </mapfre-button>
                       <mapfre-button 
                         additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
                         (click)="hideModalAction($event)">
-                        CANCEL
+                        {{ 'CANCEL' | translate }}
                       </mapfre-button>
                   </div>
                 </div>
@@ -83,15 +84,15 @@
     </table>
 
     <h2 class="title margin-top mt32">
-      Enroll to send e-Bill
+      {{ 'ENROLL_TO_SEND_EBILL' | translate }}
     </h2>
     <div class="row margin-top mt16">
       <div class="col">
-        {{ 'EMAIL' | translate }}: &nbsp;&nbsp; <strong>test@test.com</strong>
+        {{ 'EMAIL' | translate }}: &nbsp;&nbsp; <strong>{{ 'test-email' }}</strong>
       </div>
       <div class="col text-right">
         <a class="mapfre link edit-link float-right" [routerLink]="['/profile','verify-password']"> 
-          <span class="float-left margin-right mr8">update </span> <span class="float-left"><svg-edit-icon-svg></svg-edit-icon-svg></span>
+          <span class="float-left margin-right mr8">{{ 'EMAIL' | translate }} </span> <span class="float-left"><svg-edit-icon-svg></svg-edit-icon-svg></span>
         </a>
       </div>
     </div>

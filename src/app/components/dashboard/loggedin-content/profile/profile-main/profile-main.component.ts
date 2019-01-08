@@ -9,10 +9,8 @@ import { ProfileConfirmModalService } from '../../../../../_services/profile-set
   styleUrls: ['./profile-main.component.scss']
 })
 export class ProfileMainComponent implements OnInit {
-
   user: any = {};
   confirmModal: boolean;
-  
 
   constructor(
     private profileConfirmModalService: ProfileConfirmModalService,
@@ -20,19 +18,18 @@ export class ProfileMainComponent implements OnInit {
   ) { }
 
   onRemoveAccount(){
-    this.confirmModal = true; 
+    this.confirmModal = true;
   }
 
   ngOnInit() {
-    this.userService.$user.subscribe((userResponse)=>{
+    this.userService.$user
+    .subscribe( (userResponse) => {
       console.log(userResponse);
-      this.user = userResponse[0];
+      this.user = userResponse;
     });
 
-    // FakeAccountSettings.getUserData().subscribe((user)=>{
-    //   this.user = user;
-    // });
-    this.profileConfirmModalService.$removeAccount.subscribe((removeAccount)=>{
+    this.profileConfirmModalService.$removeAccount
+    .subscribe( (removeAccount) => {
       this.confirmModal = removeAccount;
     })
   }

@@ -105,7 +105,7 @@ import { ContactScreenComponent } from './components/screens/contact-screen/cont
 import { EditEmailFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/edit-email-form/edit-email-form.component';
 import { ProfileEmailConfirmComponent } from './components/dashboard/loggedin-content/profile/profile-email-confirm/profile-email-confirm.component';
 import { ProfileConfirmModalComponent } from './components/dashboard/loggedin-content/profile/profile-confirm-modal/profile-confirm-modal.component';
-import { ClaimsHomeComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-active/claims-home.component';
+import { ClaimsHomeComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-home/claims-home.component';
 import { ClaimsWrapperComponent } from './components/dashboard/loggedin-content/claims/claims.component';
 import { ClaimsDetailComponent } from './components/dashboard/loggedin-content/claims/claims-detail/claims-detail.component';
 import { ClaimsHomeClosedComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-closed/claims-home-closed.component';

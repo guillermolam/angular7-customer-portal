@@ -31,20 +31,17 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   filterName:               string = 'All Documents';
   loading:                  boolean = false;
   policyId:                 number;
+  policyDetails:            any;
   previous:                 any = [];
   showNoDocuments:          boolean = false;
-  // showDocuments:            boolean = false;
   user:                     User;
 
-  policyDetails: any;
-
   /**
-   * 
+   *
    *  Information ----
    *  Many of these elements in here will become it's own component
-   *  However I don't have the time at the moment
-   *  to create a stand a lone version.
-   * 
+   *  However I don't have the time at the moment to create a stand a lone version.
+   *
    */
 
   constructor(
@@ -79,57 +76,13 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
     ;
   }
 
-  getUserData(parm): void {
-    this.loading = true;
-    // this.userService.$user.subscribe(
-    //   (user) => {
-    //     if ( user != undefined ) {
-    //       this.user = user ;
-    //     }
-    //     else {
-    //       if (localStorage.getItem('access_token')) {
-    //         this.userInformation
-    //         .policyByEmail(this.user)
-    //         .subscribe(
-    //           (info: any) => {
-    //             console.log(info);
-    //             this.user = {
-    //               firstName: info[0].insurer['firstName'],
-    //               middleName: info[0].insurer['middleName'],
-    //               lastName: info[0].insurer['lastName'],
-    //               policyDetails: info
-    //             };
-    //             this.userService.updateUser(this.user);
-    //           },
-    //           (err) => {
-    //             console.log('login success but verifyuser err', err);
-    //           }
-    //         );
-    //       }
-    //       else {
-    //         this.user = this.testingData.testDatafunction();
-    //         this.userService.updateUser(this.user);
-    //       }
-    //     }
-    //   }
-    // );
-    
-    /*
-      this.userInformation
-      .getUserDocuments(parm, this.user, localStorage.getItem('access-token'))
-      .subscribe(
-        (success) => {
-          this.documents = success;
-          this.loading = false;
-          this.showDocuments = true;
-        },
-        (err) => {
-          this.loading = false;
-          this.showNoDocuments = true;
-        }
-      )
-    ;*/
-
+  onDownloadDocument(documentId: string, policyNumber, documentType) {
+    this.policyDetailsService
+    .getDocumentById(documentId)
+    .subscribe((byteArray: BlobPart) => {
+      const blob = new Blob([byteArray], {type: "application/pdf"});
+      saveAs(blob, `document-${policyNumber}-${documentType}.pdf`);
+    });
   }
 
   onSelectFilter(filterName): void {
@@ -186,58 +139,27 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   }
 
   ngOnInit() {
-
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
+    this.loading = true;
+
+    this.userService.$user
+    .subscribe( (user) => {
+      this.user = user;
+    });
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
       this.billingDataService.$billingDetails
-      .subscribe((policy) => {
-        this.policyDetails = policy;
-        // console.log(this.policyDetails);
-      })
-    });
-
-
-    this.userService.$user.subscribe(
-        (user) => {
-          // if ( user != undefined ) {
-            this.user = user ;
-            console.log(this.user);
-          // }
-        });
-    // this.billingDataService.
-
-
-    // this.getUserData(this.policyId);
-
-    // if ( this.testingData.testDataDocuments(this.policyId) ) {
-    //   this.documents = this.testingData.testDataDocuments(this.policyId);
-    //   this.loading = false;
-    //   this.showDocuments = true;
-    // // --- please do not remove this is for pagenation that maybe used later
-    // // this.tableService.setDataSource(this.documents);
-    // // this.documents = this.tableService.getDataSource();
-    // // this.previous = this.tableService.getDataSource();
-    // }
-    // else {
-    //   this.loading = false;
-    //   this.showNoDocuments = true;
-    // }
-
-  }
-
-  // constructor(
-  //   private walletCardService: WalletCardService,
-  //   private route: ActivatedRoute
-  // ) { }
-
-  onDownloadDocument(documentId: string, policyNumber, documentType) {
-      this.policyDetailsService
-      .getDocumentById(documentId)
-      .subscribe((byteArray: BlobPart) => {
-        const blob = new Blob([byteArray], {type: "application/pdf"});
-        saveAs(blob, `document-${policyNumber}-${documentType}.pdf`);
+      .subscribe((billingResponse: any[]) => {
+        if(billingResponse !== undefined){
+        this.policyDetails = billingResponse;
+         }
+        else {
+          this.policyDetails = this.user;
+        }
       });
+    });
+    this.loading = false;
   }
 }

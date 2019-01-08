@@ -514,7 +514,7 @@ h1.title-cta {
   .col1,
   .col2 {
     @media (max-width: 1199px) {
-      padding: 0;
+      padding: 6px;
     }
 
   }
@@ -539,9 +539,14 @@ h1.title-cta {
       padding-right: 8px;
     }
    
-    @media (min-width: 768px) {   
+    @media (min-width: 768px) {
       max-width: 290px;
       border-left: 2px solid #EAE9E9;
+    }
+    @media (max-width: 767px) {
+      &.col {
+        flex-basis: auto;
+      }
     }
   }
 
@@ -562,9 +567,7 @@ h1.title-cta {
     max-width: 42px;
     position: relative;
 
-    @media (max-width: 575px) {
-      max-width: 32px;
-    }
+   
 
     .car,
     .house {
@@ -689,7 +692,7 @@ h1.title-cta {
   .btn.mapfre.ghost.primary:disabled {
     border-color: #c6db80;
     color: #C6DB81 !important;
-    background: transparent !important;
+    background: $transparent !important;
   }
 }
 
@@ -803,41 +806,12 @@ h1.title-cta {
   }
 }
 
-.tab-navigation {
-  ul {
-    li {
-      display: table-cell;
-      border-bottom: 2px solid #C4C4C4;
-      
-      a {
-        display: block;
-        text-align: center;
-        color: #4C4C4C;
-        padding-top: 8px;
-        padding-bottom: 8px;
 
-        &:hover {
-          background:     #F7F7F7;
-        }
-      }
-
-      &.active {
-        border-bottom: 4px solid #006580;
-
-        a {
-          color: #006580;
-          text-shadow: 1px 0 0 #006580;
-        }
-      }
-    }
-  }
-}
 
 .title-case {
   text-transform: capitalize;
 }
 
-/* general should be moved to the general area */
 
 .border-full {
   border: thin solid;
@@ -845,134 +819,6 @@ h1.title-cta {
   &.grey-border {
     border-color: $soft-grey;
   }
-}
-
-.font-medium {
-  font-size: 18px;
-}
-
-.font-small {
-  font-size: 10px;
-}
-
-.lite-grey-color {
-  color: $grey;
-}
-
-.med-grey-color {
-  color: $med-gray;
-}
-
-.mapfre.link.basic.primary {
-  span {
-    color: $white;
-  }
-}
-
-.no-border {
-  border: none !important;
-}
-
-.no-border-bottom {
-  border-bottom: none !important;
-}
-
-.no-border-top {
-  border-top: none !important;
-} 
-
-.no-border-left {
-  border-left: none !important;
-}
-
-.no-border-right {
-  border-right: none !important;
-}
-
-.radio-label {
-  label {
-    margin-left: $global-one-rem;
-  }
-}
-
-.table {
-  @media (max-width:520px) {
-    td {
-      font-size: 12px;
-      padding: 8px !important;
-    }
-  }
-
-  td {
-    @media (min-width: 1200px) {
-      padding-left: 32px;
-      padding-right: 32px;
-    }
-   
-  }
-}
-
-table td {
-  font-weight: 400;
-}
-
-.tab-accordian-navigation {
-  margin-bottom: -1px;
-  width: 100.25%;
-}
-
-.pill-box {
-  .pill {
-    float: left;
-
-    .pill-label {
-      cursor: pointer;
-      font-size: 12px;
-      border: thin solid;
-      background-color: transparent;
-    }
-
-    .pill-radio {
-      position: absolute;
-      left: -200%;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-
-    }
-
-    &.pill-left {
-      .pill-label {
-        border-radius: 20px 0 0 20px;
-      }
-    }
-
-    &.pill-right {
-      .pill-label {
-        border-radius:0 20px 20px 0;
-      }
-    }
-
-    &.pill-middle {
-      .pill-label {
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-      }
-    }
-  }
-
-  &.mapfre {
-    .pill .pill-label {
-      color: #737373;
-      border-color: #006580;
-    }
-
-    .pill-radio:checked +.pill-label {
-      color: $white;
-      background-color: #006580;
-    }
-  }
-
 }
 
 .pending {

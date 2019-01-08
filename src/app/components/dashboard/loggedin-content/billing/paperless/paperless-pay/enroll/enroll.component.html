@@ -5,9 +5,9 @@
         <svg-bank-svg></svg-bank-svg>
       </div>
       <div>
-        <h1 class="title-copy">e-Pay enrollment</h1>
-        <div>Add your Checking or Savings Account to enroll your policy in auto EFT</div>
-      </div>        
+        <h1 class="title-copy"> {{ 'EPAY_ENROLL_TITLE' | translate }}</h1>
+        <div>{{ 'EPAY_ENROLL_PARA' | translate }}</div>
+      </div>
     </div>
   </div>
   <app-enroll-eft-epay-form [inputs]="inputs"></app-enroll-eft-epay-form>
@@ -28,7 +28,7 @@
 <div class="margin-vertical mv32 text-center disclaimer">
   <hr />
   <span class="legal">
-      I authorize and request the Commerce Insurance Company (Commerce) to debit my bank account as payments on this policy or its replacement become due. If a debit is dishonored, the bank will not have any liability, even if the dishonored payment causes the cancellation of my insurance policy. I will be charged the applicable return transaction fee when payments are dishonored. This authority is to remain in full force until I have chosen to remove my policy from the EFT Bill Plan through the account management System or until Commerce has received written notice from me of its termination, in such time and manner as to afford Commerce a reasonable time to act upon it. I may not designate the account of my agent, broker or assigned risk producer from premium withdrawals. Commerce reserves the right to deny or cancel my enrollment in the EFT Bill Plan or deny the bank account I designate for withdrawals.
+      {{ 'EPAY_ENROLL_LEGAL' | translate }}
   </span>
 </div>
 

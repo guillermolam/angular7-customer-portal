@@ -214,5 +214,21 @@ export class PolicyDetailsComponent implements OnInit {
     //     }
     //   }
     // );
+    this.userService.$user
+    .subscribe( (user) => {
+      this.user = user;
+    });
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.policyId = params['policyid'];
+      this.billingDataService.$billingDetails
+      .subscribe((billingResponse: any[]) => {
+        if(billingResponse !== undefined){
+        this.policyDetails = billingResponse;
+         }
+        else {
+          this.policyDetails = this.user;
+        }
+      });
+    });
   }
 }

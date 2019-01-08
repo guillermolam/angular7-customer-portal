@@ -19,7 +19,7 @@ import { BillingDataService } from '../../../../../_services/my-insurance/data-s
 export class MyInsuranceMainComponent implements OnInit {
   hideOrShow:                     boolean = false;
   payNowModal:                    ModalOptions;
-  user:                           User;
+  user:                           any;
   policyResponse:  any;
   billingResponse: any;
 
@@ -90,9 +90,21 @@ export class MyInsuranceMainComponent implements OnInit {
     //   this.policyResponse = policyResponse;
     // });
 
-    this.billingDataService.$billingDetails.subscribe((billingResponse) => {
-      console.log(billingResponse);
-      this.billingResponse = billingResponse;
+    this.userService.$user
+    .subscribe( (user) => {
+      this.user = user;
+    });
+
+    this.billingDataService.$billingDetails
+    .subscribe( (billingResponse) => {
+      console.log('response', billingResponse);
+      if( billingResponse === undefined){
+        this.billingResponse = this.user;
+      }
+      else {
+        this.billingResponse = billingResponse;
+      }
+      console.log('billing',  this.billingResponse)
     });
 
   }

@@ -7,7 +7,7 @@ import { UserService }              from './../../../../../_services/user.servic
 import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 
 import { TestingDataService }       from './../../../../../_helpers/testing-data.service';
-import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
+import { BillingDataService }       from './../../../../../_services/my-insurance/data-services/billing-data.service';
 
 
 @Component({
@@ -35,7 +35,7 @@ export class BillingNewpaymentComponent implements OnInit {
     private userService:            UserService,
     private userInformation:        UserInfoService,
     private testingData:            TestingDataService,
-    private billingDataService: BillingDataService,
+    private billingDataService:     BillingDataService,
   ) {
     this.inputs = service.getInputs();
    }
@@ -47,60 +47,30 @@ export class BillingNewpaymentComponent implements OnInit {
     // .pipe(map((policies: any[]) => {
     //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
     // }))
-    .subscribe((billingResponse: any[]) => {
-      if(billingResponse){
-        this.policyDetails = billingResponse;
-        // .map((policies: any[]) => {
-        //     return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
-        // });
-        // console.log(this.policyDetails);
-        // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
-      }
-  })
-})
-
-    this.checkingInfo = this.testingData.testDataChecking(this.policyId);
-    this.loading = false;
-    this.userService.$user.subscribe(
-      (user) => {
-        if ( user != undefined ) {
-          this.user = user ;
+      .subscribe((billingResponse: any[]) => {
+        if (billingResponse) {
+          this.policyDetails = billingResponse;
+          // .map((policies: any[]) => {
+          //     return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+          // });
+          // console.log(this.policyDetails);
+          // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
         }
         else {
-          this.loading = true;
-          if (localStorage.getItem('access_token')) {
-            // If a user comes straight to the page turn on loading
-            this.loading = true;
-            // That way we can gather the information
-            this.userInformation
-              .policyByEmail(this.user.email)
-              .subscribe(
-                (info: any) => {
-                  console.log(info);
-                  this.user = {
-                    firstName: info[0].insurer['firstName'],
-                    middleName: info[0].insurer['middleName'],
-                    lastName: info[0].insurer['lastName'],
-                    policyDetails: info
-                  };
-                  this.userService.updateUser(this.user);
-                  this.loading = false;
-                },
-                (err) => {
-                  this.loading = false;
-                  console.log('login success but verifyuser err', err);
-                }
-              )
-            ;
-          }
-          else {
-            this.user = this.testingData.testDatafunction();
-            this.userService.updateUser(this.user);
-            this.loading = false;
-          }
+          /* this will need to be removed for production */
+          this.checkingInfo = this.testingData.testDataChecking(this.policyId);
+          console.log('checking info', this.checkingInfo);
+          this.userService.$user
+          .subscribe(
+            (user) => {
+              if ( user != undefined ) {
+                this.policyDetails = user ;
+              }
+            }
+          );
         }
-      }
-    );
+        this.loading = false;
+      });
+    });
   }
-  
 }

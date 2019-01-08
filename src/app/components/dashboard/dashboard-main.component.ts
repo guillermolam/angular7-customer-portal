@@ -18,6 +18,7 @@ export class DashboardMainComponent implements OnInit {
   loading:                                    boolean = false;
   reportClaim:                                boolean;
   showAlert:                                  boolean;
+  testAlert:                                  any;
 
   constructor(
     private policyDataService:                PolicyDataService,
@@ -58,7 +59,6 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
-
     // this.policyDataService.$policyDetails.subscribe(
     //   (success) => {
     //     this.loading = false;
@@ -68,21 +68,36 @@ export class DashboardMainComponent implements OnInit {
     //     this.loading = false;
     //   },
     // );
+
     this.policyDetailsService
      .getPolicyDetailsByEmail(
        this.storageService.getUserFromStorage()
-     ).subscribe( () => { 
-      this.loading = false;
-     });
+     )
+     .subscribe( () =>
+      {
+        this.loading = false;
+      },
+        (err) => {
+          this.loading = false;
+          this.userService.updateUser( this.testingData.testDatafunction() )
+        }
+     );
 
-    this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
-    .subscribe(([userResponse,accountResponse]) => {
-      this.userService.updateUser(
-       [{
-         userDetails: {...userResponse},
-         bankAccountDetails:  {...accountResponse}}]
-      );
-     });
+    this.authenticationService
+      .getUserDetailsByEmail(this.storageService.getUserFromStorage())
+      .subscribe(([userResponse, accountResponse]) => {
+        this.userService.updateUser(
+        [{
+          userDetails: {...userResponse},
+          bankAccountDetails:  {...accountResponse}}]
+        );
+      },
+      (err) => {
+        this.loading = false;
+        this.userService.updateUser( this.testingData.testDatafunction() );
+        this.userService.$user.subscribe((t) => { this.testAlert = t.testData });
+      })
+    ;
 
     // .subscribe((userResponse)=>{
     //   console.log(userResponse);
@@ -94,7 +109,7 @@ export class DashboardMainComponent implements OnInit {
    //  (user) => { 
    //    console.log(user)
    //    this.loading = false; }
-   //);
+   // );
 
   }
 

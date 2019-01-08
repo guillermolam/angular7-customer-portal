@@ -23,23 +23,23 @@ export class PaperlessPayComponent implements OnInit, OnChanges {
   ) { 
     this.endEnrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium cancel-enroll modal-dialog',
-      additionalButtonClasses:      'red-text float-right align-middle no-padding no-margin',
+      additionalButtonClasses:      'red-text float-right align-middle no-padding  flat no-margin',
       animatePosition:              'top',
       buttonCopy:                   'MODAL_E-POLICY-REMOVAL_TITLE',
       modalId:                      'endEnrollModal',
       howManyIconsUsed:             1,
       iconClasses:                  'far fa-times-circle',
-      modalTranslateCopy:           'MODAL_E-POLICY-REMOVAL_TITLE',
+      modalTranslateCopy:           'MODAL_E-PAY-REMOVAL_TITLE',
       screenReader:                 true,
       showIcons:                    true,
     });
     this.enrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium enroll modal-dialog',
-      additionalButtonClasses:      'no-margin float-right btn mapfre waves-light primary ghost w-100',
+      additionalButtonClasses:      'no-margin float-right btn mapfre waves-light primary ghost',
       animatePosition:              'top',
       buttonCopy:                   'ENROLL',
       modalId:                      'enrollModal',
-      modalTranslateCopy:           'MODAL_E-POLICY-ENROLL_TITLE',
+      modalTranslateCopy:           'MODAL_E-PAY-ENROLL_TITLE',
     });
   }
 
