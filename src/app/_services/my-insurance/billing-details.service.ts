@@ -42,4 +42,13 @@ export class BillingDetailsService {
     return this.http.get(url);
   }
 
+
+  getPendingChecksByPolicy(policyNumber: string){
+    const url = `${this.billingURL}/billing/${policyNumber}/unprocessedpayment`;
+    // const url = `${environment.backend_server_url}/billing/${policyNumber}/unprocessedpayment`;
+    return this.http.get(url);
+  }
+
+  
+
 }

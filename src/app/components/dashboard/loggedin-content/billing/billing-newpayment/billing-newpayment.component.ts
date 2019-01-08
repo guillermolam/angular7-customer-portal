@@ -7,7 +7,12 @@ import { UserService }              from './../../../../../_services/user.servic
 import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 
 import { TestingDataService }       from './../../../../../_helpers/testing-data.service';
+<<<<<<< HEAD
 import { BillingDataService }       from './../../../../../_services/my-insurance/data-services/billing-data.service';
+=======
+import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
+import { forkJoin } from 'rxjs';
+>>>>>>> 0e169155446aaa585fad02109f1eeb0c0a702cfc
 
 
 @Component({
@@ -36,25 +41,24 @@ export class BillingNewpaymentComponent implements OnInit {
     private userInformation:        UserInfoService,
     private testingData:            TestingDataService,
     private billingDataService:     BillingDataService,
+
   ) {
     this.inputs = service.getInputs();
    }
 
   ngOnInit() {
+    this.userService.$user.subscribe((userResponse)=>{
+      // if(userResponse){
+      this.checkingInfo = userResponse;
+        console.log(this.checkingInfo);
+      // }
+    })
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
       this.billingDataService.$billingDetails
-    // .pipe(map((policies: any[]) => {
-    //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
-    // }))
       .subscribe((billingResponse: any[]) => {
         if (billingResponse) {
           this.policyDetails = billingResponse;
-          // .map((policies: any[]) => {
-          //     return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
-          // });
-          // console.log(this.policyDetails);
-          // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
         }
         else {
           /* this will need to be removed for production */
@@ -72,5 +76,6 @@ export class BillingNewpaymentComponent implements OnInit {
         this.loading = false;
       });
     });
+
   }
 }
