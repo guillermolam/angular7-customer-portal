@@ -64,19 +64,48 @@ export class NewPaymentComponent implements OnInit {
       radioAmount = this.newPaymentRadioForm.controls['paymentAmount'].value;
     }
 
-    const bill: Billing = {
+
+    // {
+    //   "bankAccount": {
+    //     "accountHolderName": "test",
+    //     "routingNumber": {
+    //       "digits": "265473812"
+    //     },
+    //     "accountNumber":  {
+    //       "digits": "168444192727"
+    //     },
+    //     "accountType":"CHECKING",
+    //     "mailingAddress":
+    //       {
+    //         "streetName": "abc street",
+    //         "city": "BOSTON",
+    //         "state": "MASSACHUSETTS",
+    //         "zipCode": {
+    //           "code": "02720"
+    //         }
+    //       }
+    //     },
+    //     "checkNumber": "890",
+    //     "paymentAmount": "10.00F"
+    // }
+
+    const bill: any = {
       billingInfo: [{
-        accountName:                this.checkingInfo.accountName,
-        accountNumber:              this.checkingInfo.accountNumber,
-        bankRoutingNumber:          this.checkingInfo.bankRoutingNumber,
-        mailingAddress:             this.checkingInfo.mailingAddress,
-        apartment:                  this.checkingInfo.appartment || '',
+        accountName:                this.checkingInfo.bankAccountDetails.accountHolderName,
+        accountNumber:              this.checkingInfo.bankAccountDetails.accountNumber.digits,
+        bankRoutingNumber:          this.checkingInfo.bankAccountDetails.routingNumber.digits,
+        mailingAddress:              this.checkingInfo.bankAccountDetails.mailingAddress.streetName + ' ' +
+                                    this.checkingInfo.bankAccountDetails.mailingAddress.city + ' ' +
+                                    this.checkingInfo.bankAccountDetails.mailingAddress.state,
+        apartment:                  this.checkingInfo.bankAccountDetails.mailingAddress.apartment || '',
         checkNumber:                this.newPaymentRadioForm.controls['checkingNumberAmount'].value || ''
       }],
       amount:                       radioAmount,
       policyId:                     this.policyId
 
     };
+
+    console.log(bill);
 
     this.billingObservableService.updateBilling(bill);
     this.router.navigate(['/billing', this.policyId, 'confirm' ]);
@@ -98,17 +127,14 @@ export class NewPaymentComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userService.$user.subscribe((userResponse)=>{
-      this.checkingInfo = userResponse[0];
-      this.setValues(userResponse[0]);
-    });
-
+   
    
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId =                 params['policyid'];
       this.billingDataService.$billingDetails.subscribe((billingResponse: any[])=>{
-        this.policyDetails = billingResponse.filter(response => response.policynumber.policynumber);
+        this.policyDetails = billingResponse.filter(response => response.policynumber.policynumber === this.policyId);
+        console.log(this.policyDetails)
       });
     });
 
@@ -121,6 +147,11 @@ export class NewPaymentComponent implements OnInit {
 
     // this.checkingInfo = this.userData.bankAccountDetails;
    
+    this.userService.$user.subscribe((userResponse)=>{
+      this.checkingInfo = userResponse[0];
+      this.setValues(userResponse[0]);
+    });
+
     
 
   }

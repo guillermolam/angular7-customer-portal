@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="col payment-amount text-right">
-          <strong>{{ '' }}</strong>
+          <strong>${{ policyDetails[0].billingDetails[0].minAmountDue }}</strong>
         </div>
       </div>
       <div class="row">
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="col payment-amount text-right">
-          <strong>$400.00</strong>
+          <strong>${{ policyDetails[0].billingDetails.outstandingbalance }}</strong>
         </div>
       </div>
       <div class="row">
