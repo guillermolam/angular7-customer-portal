@@ -5,25 +5,23 @@
           <div class="header-icon full-icon">
               <svg-account-profile-svg></svg-account-profile-svg>  
           </div>
-          <h1 class="title-copy">{{ 'My account' | translate }}</h1>
+          <h1 class="title-copy">{{ 'PROFILE_MAIN_ONE' | translate }}</h1>
           <div class="sub-title-copy">{{ user.userDetails.firstName }}{{ user.userDetails.middleName }}{{ user.userDetails.lastName }}</div>
       </div>
   </div>
   <hr class="hr-stretch"/>
   <div class="profile-flex">
-     <label class="account-settings no-margin-bottom">Change Password</label>
+     <label class="account-settings no-margin-bottom">{{ 'PROFILE_MAIN_TWO' | translate }}</label>
      <a 
      [routerLink]="['/profile','enter-password']"
      routerLinkActive="active"
      class="float-right" > 
-
-
-         <svg-edit-icon-svg></svg-edit-icon-svg>
+      <svg-edit-icon-svg></svg-edit-icon-svg>
      </a>
   </div>
   <hr class="hr-stretch"/>
   <div>
-    <label class="account-settings no-margin-bottom">Email</label> 
+    <label class="account-settings no-margin-bottom">{{ 'EMAIL' | translate }}</label> 
     <div class="sub-title-copy row">
       <div class="col">{{ user.userDetails.email.address }}</div>
       <div class="col">
@@ -37,9 +35,9 @@
   </div>
   </div>
   <div>
-      <label class="account-settings no-margin-bottom margin-top mt16">Phone</label> 
+      <label class="account-settings no-margin-bottom margin-top mt16">{{ 'PHONE' | translate }}</label> 
       <div class="sub-title-copy row">
-        <div class="col"><em *ngIf="!user.userDetails.phone.number;else phoneNumber">{{ 'Add more security to your account' }}</em></div>
+        <div class="col"><em *ngIf="!user.userDetails.phone.number;else phoneNumber">{{ 'PROFILE_MAIN_THREE' | translate }}</em></div>
         <ng-template #phoneNumber> {{ user.userDetails.phone.number | formatPhone }}</ng-template>
           <div class="col">
             <a *ngIf="!user.userDetails.phone.number;else editPhone"
@@ -61,16 +59,16 @@
   </div>
   <hr class="hr-stretch"/>
   <div>
-      <label class="account-settings no-margin-bottom"> Checking Account Information</label> 
+      <label class="account-settings no-margin-bottom">{{ 'PROFILE_MAIN_FOUR' | translate }}</label> 
       <div class="sub-title-copy row">
         <div class="col" *ngIf="!user.bankAccountDetails.accountNumber;else bankName">
           <em>
-            {{ 'Save time and effort in your payments' }}
+            {{ 'PROFILE_MAIN_FIVE' | translate }}
           </em>
         </div>
         <ng-template #bankName>
           <div class="col">
-            {{ 'Checking account' | translate }} 
+            {{ 'PROFILE_MAIN_SIX' | translate }} 
             <span class="profile-account-number">
                 {{ user.bankAccountDetails.accountNumber.digits | checkingAccount: 'account' }}
             </span>

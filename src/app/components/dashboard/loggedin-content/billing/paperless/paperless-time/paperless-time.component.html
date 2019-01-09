@@ -8,7 +8,7 @@
     <p>{{ 'PAPERLESS_TWO' | translate }} </p>
     <p class="green-text">{{ 'PAPERLESS_THREE' | translate }} <strong>{{ 'PAPERLESS_THREE-STRONG' | translate}}</strong></p>
     
-    <ng-container *ngIf="!firstTime">
+    <ng-container *ngIf="firstTime">
       <div>
         <mapfre-button 
           additionalClasses="primary basic w-50 padding-top padding-bottom pb16 pt16 waves-effect"
@@ -75,7 +75,7 @@
                   <div class="modal-body">
                     <hr class="margin-bottom mb24 no-margin-top" />
                     <div class="margin-bottom mb24">
-                        {{ 'ARE_YOU_SURE_YOU_WANT_TO_REMOVE_POLICY' | translate }} <strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'FROM_E-BILL' | translate }}
+                        {{ 'PLEASE_CONFIRM_YOUR_REQUEST_TO_ENROLL_POLICY' | translate }} <strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'IN_E-BILL' | translate }}
                     </div>
                     <div class="mx-auto text-center">
                         <mapfre-button 
@@ -213,7 +213,7 @@
                       <div class="modal-body">
                         <hr class="margin-bottom mb24 no-margin-top" />
                         <div class="margin-bottom mb24">
-                            {{ 'ARE_YOU_SURE_YOU_WANT_TO_REMOVE_POLICY' | translate }} <strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'FROM_E-BILL' | translate }}
+                            {{ 'PLEASE_CONFIRM_YOUR_REQUEST_TO_ENROLL_POLICY' | translate }} <strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'IN_E-BILL' | translate }}
                         </div>
                         <div class="mx-auto text-center">
                             <mapfre-button 

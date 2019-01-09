@@ -19,7 +19,7 @@ export class SignupProcessComponent implements OnInit {
   addPolicy:                            any[];
   createNewPassword:                    any[];
   editPolicyInfo:                       any[];
-  previousUrl;                             
+  previousUrl;
   user:                                 User  = {};
   whereInTheProcess:                    string;
   whereToFindModalOptions:              ModalOptions;
@@ -38,7 +38,7 @@ export class SignupProcessComponent implements OnInit {
     this.editPolicyInfo = editPolicyService.getInputs();
     this.whereToFindModalOptions = new ModalOptions({
       additionalClasses:              'modal-small center-on-page modal-dialog', 
-      additionalButtonClasses:        'padding-vertical pv8 flat blue-text normal-link font-weight normal-text w-100 text-capitalize font-size small-font',
+      additionalButtonClasses:        'padding-vertical pv4 link-button blue-link normal-link w-100 text-capitalize small underline',
       animatePosition:                'bottom',
       buttonCopy:                     'MODAL_WHERE_CAN_I_LINK',
       modalId:                        'helpModal',
