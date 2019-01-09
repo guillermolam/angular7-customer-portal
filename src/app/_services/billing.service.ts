@@ -5,13 +5,13 @@ import { Billing }            from '../_models/billing';
 
 @Injectable()
 export class BillingObservableService {
-  billing:                   Billing;
+  billing:                   any;
   private messageSource =    new BehaviorSubject<Billing>(this.billing);
   $billing =                 this.messageSource.asObservable();
 
   constructor() {}
 
-  updateBilling(billing: Billing) {
+  updateBilling(billing: any) {
     this.messageSource.next(billing);
   }
 

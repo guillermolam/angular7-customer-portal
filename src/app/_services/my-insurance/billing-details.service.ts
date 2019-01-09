@@ -49,6 +49,11 @@ export class BillingDetailsService {
     return this.http.get(url);
   }
 
-  
+  makeECheckPayment(billingData, email, policyNumber){
+    const url = `${this.billingURL}/billing/${email}/${policyNumber}`;
+    // const url = `${environment.backend_server_url}/billing/${email}/${policyNumber}`;
+    return this.http.post(url,billingData);
+
+  }
 
 }

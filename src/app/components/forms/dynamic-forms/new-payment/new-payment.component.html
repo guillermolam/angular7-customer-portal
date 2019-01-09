@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col">
           <div class="radio-label padding-left pl4">
-            <input class="" type="radio" id="paymentAmount-minimum" name="paymentAmount" checked formControlName="paymentAmount" value="100" required="true" (change)="OnChangeShowCustomAmountField('min')">
+            <input class="" type="radio" id="paymentAmount-minimum" name="paymentAmount" checked formControlName="paymentAmount" [value]="policyDetails[0].billingDetails[0].minAmountDue " required="true" (change)="OnChangeShowCustomAmountField('min')">
             <label class="" for="paymentAmount-minimum">{{ 'MINIMUM_AMOUNT_DUE' | translate }}</label>
           </div>
         </div>
@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col">
           <div class="radio-label padding-left pl4">
-            <input class="" type="radio" id="paymentAmount-max" name="paymentAmount" formControlName="paymentAmount" value="400" required="true" (change)="OnChangeShowCustomAmountField('max')">
+            <input class="" type="radio" id="paymentAmount-max" name="paymentAmount" formControlName="paymentAmount" [value]="policyDetails[0].billingDetails.outstandingbalance || 0" required="true" (change)="OnChangeShowCustomAmountField('max')">
             <label class="" for="paymentAmount-max">{{ 'OUTSTANDING_POLICY_BALANCE' | translate }}</label>
           </div>
         </div>
@@ -100,19 +100,19 @@
             </div>
           </div>
         </div>
-        <div class="row" [formGroup]="newPaymentRadioForm">
+        <div class="row" [formGroup]="newPaymentForm">
           <div class="col input-content">
             <div class= "input-field mapfre">
               <input 
                 class="w-50"
-                formControlName="checkingNumberAmount"
-                id="checkingNumberAmount"
-                name="checkingNumberAmount"
+                formControlName="newPayment_checkNumber"
+                id="newPayment_checkNumber"
+                name="newPayment_checkNumber"
                 type="tel"
                 [mdbValidate]="false"
                 mdbInputDirective
                 />
-              <mapfre-label forInput= "checkingNumberAmount">{{ 'CHECK_NUMBER' | translate }}</mapfre-label>
+              <mapfre-label forInput= "newPayment_checkNumber">{{ 'CHECK_NUMBER' | translate }}</mapfre-label>
             </div>
           </div>
         </div>
