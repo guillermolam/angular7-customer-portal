@@ -63,7 +63,7 @@
     position:                   absolute;
 
     @media (max-width: 500px ){
-      width: 100%;
+      width:                    100%;
     }
   }
 
@@ -151,7 +151,7 @@
   perspective:                  800; //use mixin
 
   .modal-content {
-    background:                 transparent;
+    background:                 $transparent;
     box-shadow:                 none !important;
     border:                     none;
   }
@@ -174,19 +174,19 @@
 // --- Animation
 @keyframes displayNone {
   0% {
-    visibility: visible;
+    visibility:               visible;
   }
   100% {
-    visibility: hidden;
+    visibility:               hidden;
   }
 }
 
 @keyframes showFront {
   0% {
-    visibility: hidden;
+    visibility:               hidden;
   }
   100% {
-    visibility: visible;
+    visibility:               visible;
   }
 }
 

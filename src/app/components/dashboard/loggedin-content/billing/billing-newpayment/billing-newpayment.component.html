@@ -1,13 +1,13 @@
 <ng-container *ngIf="loading">
   <mapfre-loading></mapfre-loading>
 </ng-container>
-  
+
 <ng-container *ngFor="let policy of policyDetails">
   <ng-container *ngIf="policy.policynumber.policynumber == policyId && !loading">
     <header class="margin-bottom mb16">
       <div class="type-title">
         <h1 class="title">
-          Make a Check Payment
+            {{ 'MAKE_A_CHECK_PAYMENT' | translate }}
         </h1>
         <div class="margin-left ml8">{{ policy.policyType | translate}} &mdash; <strong>{{ policy.policynumber.policynumber }}</strong></div>
       </div>
@@ -16,8 +16,7 @@
     <section class="row policy-details-content">
       <div class="col col1">
         <ng-container *ngIf="checkingInfo">
-          <app-new-payment-form [inputs]="inputs" [userData]="checkingInfo">
-          </app-new-payment-form>  
+          <app-new-payment-form [inputs]="inputs" [userData]="checkingInfo"></app-new-payment-form>  
         </ng-container>
         <ng-container *ngIf="!checkingInfo">
           <app-new-payment-no-checking-form [inputs]="inputs"></app-new-payment-no-checking-form> 

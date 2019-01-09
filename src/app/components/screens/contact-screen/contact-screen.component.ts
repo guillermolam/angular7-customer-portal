@@ -7,7 +7,7 @@ import { User }                   from '../../../_models/user';
   styleUrls: ['./contact-screen.component.scss']
 })
 export class ContactScreenComponent implements OnInit {
-  @Input() user:                           User;
+  @Input() user:                           any;
 
   constructor(
   ) { }

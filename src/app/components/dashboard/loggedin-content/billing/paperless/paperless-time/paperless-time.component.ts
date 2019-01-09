@@ -1,5 +1,5 @@
 import { Component, OnInit }        from '@angular/core';
-import { AlertService, ModalOptions }             from 'mapfre-design-library';
+import { AlertService, ModalOptions } from 'mapfre-design-library';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
@@ -23,23 +23,23 @@ export class PaperlessFirstTimeComponent implements OnInit {
   ) {
     this.endEnrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium cancel-enroll modal-dialog',
-      additionalButtonClasses:      'red-text float-right align-middle no-padding no-margin',
+      additionalButtonClasses:      'red-text float-right align-middle flat no-padding no-margin flat',
       animatePosition:              'top',
-      buttonCopy:                   'MODAL_E-POLICY-REMOVAL_TITLE',
+      buttonCopy:                   'MODAL_REMOVAL_TITLE',
       modalId:                      'endEnrollModal',
       howManyIconsUsed:             1,
       iconClasses:                  'far fa-times-circle',
-      modalTranslateCopy:           'MODAL_E-POLICY-REMOVAL_TITLE',
+      modalTranslateCopy:           'MODAL_REMOVAL_TITLE',
       screenReader:                 true,
       showIcons:                    true,
     });
     this.enrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium enroll modal-dialog',
-      additionalButtonClasses:      'no-margin float-right btn mapfre waves-light primary ghost w-100',
+      additionalButtonClasses:      'no-margin float-right btn mapfre waves-light primary ghost ',
       animatePosition:              'top',
       buttonCopy:                   'ENROLL',
       modalId:                      'enrollModal',
-      modalTranslateCopy:           'MODAL_E-POLICY-ENROLL_TITLE',
+      modalTranslateCopy:           'MODAL_ENROLL_TITLE',
     });
    }
 
@@ -123,29 +123,28 @@ export class PaperlessFirstTimeComponent implements OnInit {
   }
 
   firstTimeCheck(): void {
-    let firstTime,
-        userData;
+    let firstTime;
 
     this.userService.$user.subscribe( (data) => {
-      userData = data;
+      console.log('userData', data);
+      if(data !== undefined) {
+        for ( let policyDetails of data ) {
+          const policyFlags = policyDetails['policyFlags'];
+          if ( !policyFlags.isEbill && !policyFlags.isEbillElig  &&
+              !policyFlags.isEdf  && !policyFlags.isEdfElig  &&
+              !policyFlags.isEft  && !policyFlags.isEftEligi  )
+          {
+            firstTime = false;
+          }
+          else {
+            firstTime = true;
+            break;
+          }
+        }
+        this.firstTime = firstTime;
+      }
     });
-    for( let policyDetails of userData['policyDetails'] ) {
-      const policyFlags = policyDetails['policyFlags'];
-      if ( !policyFlags.isEbill && !policyFlags.isEbillElig  &&
-          !policyFlags.isEdf  && !policyFlags.isEdfElig  &&
-          !policyFlags.isEft  && !policyFlags.isEftEligi  )
-      {
-        firstTime = false;
-      }
-      else {
-        firstTime = true;
-        break;
-      }
-    }
-    firstTime = true;
-    this.firstTime = firstTime;
   }
-
 
   hideModalAction(event): void {
     if (event) {
@@ -164,8 +163,6 @@ export class PaperlessFirstTimeComponent implements OnInit {
 
     this.firstTimeCheck();
     this.allEPayMethod();
-
-    console.log(this.user)
   }
 
 }

@@ -7,9 +7,8 @@ import { UserService }              from './../../../../../_services/user.servic
 import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 
 import { TestingDataService }       from './../../../../../_helpers/testing-data.service';
-import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
-import { forkJoin } from 'rxjs';
-
+import { BillingDataService }       from './../../../../../_services/my-insurance/data-services/billing-data.service';
+import { forkJoin }                 from 'rxjs';
 
 @Component({
   selector:     'app-billing-newpayment',
@@ -36,8 +35,8 @@ export class BillingNewpaymentComponent implements OnInit {
     private userService:            UserService,
     private userInformation:        UserInfoService,
     private testingData:            TestingDataService,
-    private billingDataService: BillingDataService,
-    
+    private billingDataService:     BillingDataService,
+
   ) {
     this.inputs = service.getInputs();
    }
@@ -46,34 +45,42 @@ export class BillingNewpaymentComponent implements OnInit {
     this.userService.$user.subscribe((userResponse)=>{
       // if(userResponse){
       this.checkingInfo = userResponse;
-        console.log(this.checkingInfo);
+      console.log(this.checkingInfo);
       // }
     })
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
       // forkJoin(
-        this.billingDataService.$billingDetails
-        // this.userService.$user
+      this.billingDataService.$billingDetails
+      // this.userService.$user
       // )
-     
-    // .pipe(map((policies: any[]) => {
-    //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
-    // }))
-    .subscribe((billingResponse) => {
-        this.policyDetails = billingResponse;
-        // this.checkingInfo = userResponse.bankAccountDetails;
-        // console.log(this.policyDetails);
-        // .map((policies: any[]) => {
-        //     return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
-        // });
-        // console.log(this.policyDetails);
-        // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
-      
-  })
-})
-
-   
-   
+      // .pipe(map((policies: any[]) => {
+      //   return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+      // }))
+      .subscribe((billingResponse: any[]) => {
+        if (billingResponse) {
+          this.policyDetails = billingResponse;
+          // .map((policies: any[]) => {
+          //     return policies.filter((policy) => policy.policynumber.policynumber === this.policyId);
+          // });
+          // console.log(this.policyDetails);
+          // this.sameMailingAddress = isEqual(this.policyDetails[0].mailingAddress, this.policyDetails[0].residentialAddress);
+        }
+        else {
+          /* this will need to be removed for production */
+          this.checkingInfo = this.testingData.testDataChecking(this.policyId);
+          console.log('checking info', this.checkingInfo);
+          this.userService.$user
+          .subscribe(
+            (user) => {
+              if ( user != undefined ) {
+                this.policyDetails = user ;
+              }
+            }
+          );
+        }
+        this.loading = false;
+      });
+    });
   }
-  
 }
