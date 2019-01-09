@@ -2,7 +2,7 @@
     <mapfre-loading></mapfre-loading>
   </ng-container>
     
-  <ng-container *ngFor="let policy of user?.policyDetails">
+  <ng-container *ngFor="let policy of policyDetails">
     <ng-container *ngIf="policy?.policynumber.policynumber == policyId && !loading">
       <header class="margin-bottom mb16">
         <div class="type-title">
@@ -14,9 +14,7 @@
           </div>
         </div>
       </header>
-  
       <section class="row policy-details-content" >
-        <ng-container *ngFor="let bill of billing?.billingInfo">
           <div class="col col1 no-padding-left">
             <h2 class="title">
               {{ 'REVIEW_PAYMENT' | translate }}
@@ -30,7 +28,7 @@
                     {{ 'PAYMENT_AMOUNT' | translate }}
                 </div>
                 <div class="col text-right">
-                  <strong>${{billing.amount}}</strong>
+                  <strong>${{billing.paymentAmount}}</strong>
                 </div>
               </div>
               <div class="row  margin-bottom mb16">
@@ -38,7 +36,7 @@
                     {{ 'BANK_ACCOUNT_NUMBER' | translate }}
                 </div>
                 <div class="col text-right">
-                    <strong>{{bill.accountNumber}}</strong>
+                    <strong>{{billing.bankAccount.accountNumber.digits}}</strong>
                 </div>
               </div>
               <div class="row margin-bottom mb16">
@@ -46,11 +44,11 @@
                     {{ 'CHECK_NUMBER' | translate }}
                 </div>
                 <div class="col text-right">
-                  <ng-container *ngIf="bill?.checkNumber == ''">
+                  <ng-container *ngIf="billing.checkNumber == ''">
                       <strong>N/A</strong>
                   </ng-container>
-                  <ng-container *ngIf="bill?.checkNumber != '' ">
-                      <strong>{{bill?.checkNumber}}</strong>
+                  <ng-container *ngIf="billing.checkNumber != '' ">
+                      <strong>{{billing.checkNumber}}</strong>
                   </ng-container>
                 </div>
               </div>
@@ -59,7 +57,7 @@
                   {{ 'ROUTING_NUMBER' | translate }}
                 </div>
                 <div class="col text-right">
-                    <strong>{{bill.bankRoutingNumber}}</strong>
+                    <strong>{{billing.bankAccount.routingNumber.digits}}</strong>
                 </div>
               </div>
               <div class="row margin-bottom mb16">
@@ -67,7 +65,7 @@
                     {{ 'HOLDER_NAME' | translate }}
                 </div>
                 <div class="col text-right">
-                    <strong>{{bill.accountName}}</strong>
+                    <strong>{{billing.bankAccount.accountHolderName}}</strong>
                 </div>
               </div>
               <div class="row">
@@ -75,7 +73,7 @@
                     {{ 'MAILING_ADDRESS' | translate }}
                 </div>
                 <div class="col text-right">
-                    <strong>{{bill.mailingAddress}}</strong>
+                    <strong>{{billing.bankAccount.mailingAddress.streetName}} {{ billing.bankAccount.mailingAddress.city }} {{ billing.bankAccount.mailingAddress.state }} {{ billing.bankAccount.mailingAddress.zipCode.code }}</strong>
                   </div>
               </div>
             </div>
@@ -103,7 +101,6 @@
               </div>
             </div>
           </div>
-        </ng-container>
         <div class="col col2">
           <app-billing-sidebar></app-billing-sidebar>
         </div>
