@@ -58,7 +58,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
     return payOrBill;
   }
 
-  cancel(policyid, email, where): void {
+  cancel(policyid, where, email): void {
     if ( where == 'e-policy' ) {
       this.paperlessService
       .cancelPaperlessEPolicy(policyid, email)
@@ -100,7 +100,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
   }
 
-  enroll(policyid, email, where): void {
+  enroll(policyid, where, email): void {
     if ( where == 'e-policy' ) {
       this.paperlessService
       .enrollPaperlessEPolicy(policyid, email)
