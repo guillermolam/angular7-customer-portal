@@ -437,7 +437,8 @@ h1.title-cta {
 
     @media (max-width: 575px) {
       font-size: 14px;
-      margin-top: 8px;
+      margin-top: 0px;
+      line-height: 24px;
     }
 
     small {
@@ -509,6 +510,11 @@ h1.title-cta {
     @media (min-width: 1200px) {
       padding: 0 24px;
     }
+    &.mobile-margin.mt40.margin-top {
+      @media (max-width: 767px) {
+        margin-top: 24px !important;
+      }
+    }
   }
 
   .col1,
@@ -523,7 +529,7 @@ h1.title-cta {
     @media (min-width: 1200px) {
       padding-right: 40px;
     }
-    @media (min-width:768px) and (max-width: 1199px) {
+    @media (min-width: 768px) and (max-width: 1199px) {
       padding-left: 8px;
       padding-right: 16px;
     }
@@ -575,9 +581,9 @@ h1.title-cta {
       background-repeat: no-repeat;
 
       @media (max-width: 575px) {
-        height: 72px;
-        width: 45px;
-        background-size: auto 71px;
+        height: 45px;
+        width: 21px;
+        background-size: auto 45px;
       }
     }
   }

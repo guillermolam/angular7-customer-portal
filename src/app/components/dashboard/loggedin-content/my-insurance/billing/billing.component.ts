@@ -52,7 +52,7 @@ export class BillingDetailsComponent implements OnInit {
   ngOnInit() {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
-    
+
     this.userService.$user
     .subscribe( (user) => {
       this.user = user;
@@ -62,7 +62,7 @@ export class BillingDetailsComponent implements OnInit {
       this.policyId = params['policyid'];
       this.billingDataService.$billingDetails
       .subscribe((billingResponse: any[]) => {
-        if(billingResponse !== undefined){
+        if (billingResponse !== undefined) {
           this.policyDetails = billingResponse;
         }
         else {
