@@ -67,9 +67,12 @@ export class PaperlessFirstTimeComponent implements OnInit {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
           this.hideModal = !this.hideModal;
         },
-        (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
-
+        (error) => {
+          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.hideModal = !this.hideModal;
+        },
+        () => {
+          this.alertService.error(`test`);
         });
     }
     else if ( where == 'e-pay' ) {
@@ -80,10 +83,13 @@ export class PaperlessFirstTimeComponent implements OnInit {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
           this.hideModal = !this.hideModal;
         },
-        (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
-
-        });
+        (error) => {
+          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.hideModal = !this.hideModal;
+        },
+          () => {
+            this.alertService.error(`test`);
+          });
     }
     else if ( where == 'e-bill' ) {
       this.paperlessService
@@ -93,9 +99,13 @@ export class PaperlessFirstTimeComponent implements OnInit {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
           this.hideModal = !this.hideModal;
         },
-        (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
+        (error) => {
+          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.hideModal = !this.hideModal;
 
+        },
+        () => {
+          this.alertService.error(`test`);
         });
     }
   }
