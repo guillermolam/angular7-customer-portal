@@ -15,12 +15,12 @@
 
     <section class="row policy-details-content">
       <div class="col col1">
-        <ng-container *ngIf="checkingInfo">
-          <app-new-payment-form [inputs]="inputs" [userData]="checkingInfo"></app-new-payment-form>  
+        <ng-container *ngIf="checkingInfo.bankAccountDetails.accountHolderName; else noAccount">
+          <app-new-payment-form [inputs]="inputs"></app-new-payment-form>  
         </ng-container>
-        <ng-container *ngIf="!checkingInfo">
+        <ng-template #noAccount>
           <app-new-payment-no-checking-form [inputs]="inputs"></app-new-payment-no-checking-form> 
-        </ng-container>
+        </ng-template>
       </div>
       <div class="col col2">
         <app-billing-sidebar [policy]="policy"></app-billing-sidebar>

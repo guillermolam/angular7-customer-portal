@@ -66,12 +66,14 @@
     <div class="col">
       <h2 class="title">
           {{ 'CHECKING_ACCOUNT' | translate }}
-        <mapfre-button additionalClasses="link-button normal-link float-right no-border no-padding no-margin  waves-effect" (click)="OnClickEditButton($event)">
-          {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
-        </mapfre-button>
+          <ng-container *ngIf="checkingInfo.bankAccountDetails.accountHolderName">
+              <mapfre-button additionalClasses="link-button normal-link float-right no-border no-padding no-margin  waves-effect" (click)="OnClickEditButton($event)">
+                  {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
+              </mapfre-button>
+          </ng-container>
       </h2>
 
-      <ng-container *ngIf="editAccount">
+      <ng-container *ngIf="editAccount || !checkingInfo.bankAccountDetails.accountHolderName">
         <div class="checking-form margin-top mt16">
           <div *ngFor="let input of inputs" class="input" [ngClass]="{ 'first-input': input?.inputType == 'address' }">
             <ng-container *ngIf="input.inputType == 'checkbox'">
@@ -87,7 +89,7 @@
         </div>
       </ng-container>
 
-      <ng-container *ngIf="!editAccount ">
+      <ng-container *ngIf="checkingInfo.bankAccountDetails.accountHolderName && !editAccount ">
         <div class="checking-info margin-top mt24">
           <div class="row  margin-bottom mb8">
             <div class="col">

@@ -25,7 +25,7 @@ export class ProfileMainComponent implements OnInit {
     this.userService.$user
     .subscribe( (userResponse) => {
       console.log(userResponse);
-      this.user = userResponse;
+      this.user = userResponse[0];
     });
 
     this.profileConfirmModalService.$removeAccount

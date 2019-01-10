@@ -6,13 +6,15 @@ import { FormBase, TextBox }   from 'mapfre-design-library';
 })
 export class ChangeAddressService {
   getInputs(classes?:string, address?:string, apartment?:string) {
+
+    console.log(address);
     const inputs: FormBase<any>[] = [
       new TextBox({
         additionalClasses: `form-control ${classes}`,
         inputType: 'address',
         key: 'changeAddress',
         label: 'ADDRESS',
-        value: address,
+        value: 'address',
         required: true,
         minLength: 1,
         maxLength: 150,

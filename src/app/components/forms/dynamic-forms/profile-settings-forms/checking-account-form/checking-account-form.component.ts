@@ -4,7 +4,7 @@ import { ProfileConfirmModalService } from '../../../../../_services/profile-set
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CheckingAccountService } from '../../../../../_services/forms/profile-settings/checking-account.service';
-import { FormBase, FormBaseControlService, AlertService } from 'mapfre-design-library';
+import { FormBase, FormBaseControlService, AlertService,GetGooglePlaceService } from 'mapfre-design-library';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,6 +17,7 @@ export class CheckingAccountFormComponent implements OnInit {
   @Input() inputs: FormBase<any>[] = [];
            checkingAccountForm: FormGroup;
            confirmModal:        boolean;
+           mailingAddress: any;
 
   constructor(
     private ipt:                      FormBaseControlService,
@@ -24,11 +25,15 @@ export class CheckingAccountFormComponent implements OnInit {
     private alertService:             AlertService,
     private profileConfirmModalService: ProfileConfirmModalService,
     private bankAccountService: BankAccountService,
-    private storageService: StorageServiceObservablesService
+    private storageService: StorageServiceObservablesService,
+    private getGooglePlaceService : GetGooglePlaceService
     ) { }
 
   ngOnInit() {
     this.checkingAccountForm = this.ipt.toFormGroup(this.inputs);
+    this.getGooglePlaceService.$address.subscribe((address)=>{
+      this.mailingAddress = address;
+    })
   }
 
   onSubmitAccountDetails(){
@@ -67,15 +72,7 @@ export class CheckingAccountFormComponent implements OnInit {
           digits: this.checkingAccountForm.controls.bankAccountNumber.value
         },
         accountType: 'CHECKING',
-        mailingAddress:
-              {
-                  streetName: this.checkingAccountForm.controls.changeAddress.value,
-                  city: "",
-                  state: "UNKNOWN",
-                  zipCode: {
-                      code: "02720"
-                  }
-              }
+        mailingAddress: this.mailingAddress
 
       };
 

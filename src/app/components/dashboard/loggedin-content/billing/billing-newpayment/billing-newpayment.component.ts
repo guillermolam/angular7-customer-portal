@@ -18,7 +18,7 @@ import { forkJoin }                 from 'rxjs';
 })
 export class BillingNewpaymentComponent implements OnInit {
   alerton;
-  checkingInfo:                     object;
+  checkingInfo:                     any;
   input:                            object;
   inputs:                           any[];
   loading:                          boolean = false;
@@ -44,7 +44,7 @@ export class BillingNewpaymentComponent implements OnInit {
   ngOnInit() {
     this.userService.$user.subscribe((userResponse)=>{
       // if(userResponse){
-      this.checkingInfo = userResponse;
+      this.checkingInfo = userResponse[0];
       console.log(this.checkingInfo);
       // }
     })

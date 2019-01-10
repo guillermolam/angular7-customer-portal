@@ -48,6 +48,7 @@ export class CheckingAccountService {
 
    return this.userService.$user.pipe(map((userResponse)=>{
       this.checkingAccount = userResponse[0].bankAccountDetails;
+      
       const inputs: FormBase<any>[] = [
       new TextBox({
         additionalClasses:  'form-control profile-input-border',
@@ -95,7 +96,9 @@ export class CheckingAccountService {
   }
 
   checkAccountDetails(accountDetails){
+    
     if(accountDetails.accountHolderName){
+      console.log(accountDetails)
       return false;
     }else{
       return accountDetails;
