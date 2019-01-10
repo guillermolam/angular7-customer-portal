@@ -75,14 +75,14 @@
           {{ 'BACK' | translate }}
         </mapfre-button>
       </div>
-      <div class="col" *ngIf="!allEPayMethod()">
+      <div class="col" *ngIf="!allEPayMethod(user)">
         <mapfre-button 
           additionalClasses="primary basic large  float-right waves-effect"
           [routerLink]="['/billing/paperless/e-bill']">
           {{ 'CONTINUE' | translate }}
         </mapfre-button>
       </div>
-      <div class="col" *ngIf="allEPayMethod()">
+      <div class="col" *ngIf="allEPayMethod(user)">
         <mapfre-button 
           additionalClasses="primary basic large  float-right waves-effect"
           [routerLink]="['/billing/paperless']">
