@@ -7,9 +7,10 @@ import { HttpHeaders }  from '@angular/common/http';
 export class ServiceHelpersService {
   public  options:            object = {
     headers: new HttpHeaders({
-     // 'Access-Control-Allow-Origin': '*',
-     // 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
-      'Content-Type':         'application/json;charset=utf-8'
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+      'Access-Control-Allow-Headers': 'authorization',
+      'Content-Type':         'application/json;charset=utf-8',
     })
   };
 
