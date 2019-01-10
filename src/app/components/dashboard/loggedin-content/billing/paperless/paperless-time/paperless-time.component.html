@@ -48,7 +48,7 @@
                     <div class="mx-auto text-center">
                         <mapfre-button 
                           additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                          (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-policy'); hideModalAction($event)">
+                          (click)="cancel(pdetail.policynumber.policynumber, 'e-policy'); hideModalAction($event)">
                           {{ 'REMOVE_FROM_E-POLICY' | translate }}
                         </mapfre-button>
                         <mapfre-button 
@@ -93,10 +93,8 @@
                 </mapfre-modal>
               </td>
             </tr>
-      
           </tbody>
         </table>
-    
       </div>
       
       <div>
@@ -125,7 +123,7 @@
                     <div class="mx-auto text-center">
                         <mapfre-button 
                           additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                          (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-pay'); hideModalAction($event)">
+                          (click)="cancel(pdetail.policynumber.policynumber, 'e-pay'); hideModalAction($event)">
                           {{ 'REMOVE_FROM_E-PAY' | translate }}
                         </mapfre-button>
                         <mapfre-button 
@@ -186,7 +184,7 @@
                         <div class="mx-auto text-center">
                             <mapfre-button 
                               additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                              (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-bill'); hideModalAction($event)">
+                              (click)="cancel(pdetail.policynumber.policynumber, 'e-bill'); hideModalAction($event)">
                               {{ 'REMOVE_FROM_E-BILL' | translate }}
                             </mapfre-button>
                             <mapfre-button 

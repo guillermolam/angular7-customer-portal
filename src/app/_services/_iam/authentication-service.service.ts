@@ -1,10 +1,10 @@
-import { BankAccountService } from './../profile-settings/bank-account.service';
-
 import { HttpClient }             from '@angular/common/http';
 import { Injectable }             from '@angular/core';
-import { of, throwError, forkJoin }         from 'rxjs';
+import { of, throwError,
+  forkJoin }                      from 'rxjs';
 import { Observable }             from 'rxjs/Observable';
 import { catchError, map }        from 'rxjs/operators';
+import { BankAccountService }     from './../profile-settings/bank-account.service';
 import { environment }            from '../../../environments/environment';
 import { ServiceHelpersService }  from '../../_helpers/service-helpers.service';
 import { User }                   from '../../_models/user';

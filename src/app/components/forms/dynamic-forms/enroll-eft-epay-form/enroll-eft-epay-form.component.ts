@@ -40,7 +40,8 @@ export class EnrollEftEpayFormComponent implements OnInit {
     //)
   }
 
-  enroll() {
+  enroll(e) {
+    const email = e;
     if( this.enrollInEft.controls['enrollInEft_accountNumber'].value !=  this.enrollInEft.controls['enrollInEft_confirmAccountNumber'].value) {
       this.alertService.error('Account number and Confirmation are not the same');
       return;
@@ -58,8 +59,9 @@ export class EnrollEftEpayFormComponent implements OnInit {
     };
 
     console.log('enrollForm', enrollForm);
+    
     this.paperlessService
-      .enrollPaperlessEPay( this.policyId, enrollForm )
+      .enrollPaperlessEPay( this.policyId, enrollForm, email )
       .subscribe( (success) => {
         this.billingObservableService.updateBilling(enrollForm);
         this.router.navigate(['/billing/paperless/e-pay/' + this.policyId + '/confirm']);

@@ -95,7 +95,7 @@ export class DashboardMainComponent implements OnInit {
       (err) => {
         this.loading = false;
         this.userService.updateUser( this.testingData.testDatafunction() );
-        this.userService.$user.subscribe((t) => { this.testAlert = t.testData });
+        this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
       })
     ;
 
