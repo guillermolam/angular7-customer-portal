@@ -65,6 +65,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
         (e) => {
           this.alertService.error(`There was a problem processing your request. Try again later`);
@@ -77,6 +78,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
         (e) => {
           this.alertService.error(`There was a problem processing your request. Try again later`);
@@ -89,6 +91,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
         (e) => {
           this.alertService.error(`There was a problem processing your request. Try again later`);
@@ -104,6 +107,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
         (e) => {
           this.alertService.error(`There was a problem processing your request. Try again later`);
@@ -115,6 +119,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
         (e) => {
           this.alertService.error(`There was a problem processing your request. Try again later`);

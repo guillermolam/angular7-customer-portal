@@ -1,7 +1,7 @@
 <form 
   [formGroup]="enrollInEft" 
   name="enrollInEft"  
-  (ngSubmit)="enrollInEft.valid && enrollAccountType.valid && enroll()">
+  (ngSubmit)="enrollInEft.valid && enrollAccountType.valid && enroll(user.email.address)">
   
   <div class="row margin-vertical mv8">
     <div class="col text-center">
