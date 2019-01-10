@@ -599,6 +599,15 @@ export class TestingDataService {
 
   testingDataFull(): any {
     return [{
+      "email": {
+        "address": "testmfre@gmail.com"
+      },
+      "firstName": "DEFAULT",
+      "lastName": "DEFAULT",
+      "address": null,
+      "phone": {
+          "number": "9999119987"
+      },
       "testData":"THIS IS TEST DATA IT SHOULD NOT BE AVAILABLE IN PRODUCTION",
       "policynumber": {
         "policynumber": "QJN952"

@@ -42,9 +42,9 @@ export class PaperlessPolicyComponent implements OnInit {
     });
   }
 
-   cancellEnroll(policyid): void {
+   cancellEnroll(policyid, email): void {
     this.paperlessService
-    .cancelPaperlessEPolicy(policyid)
+    .cancelPaperlessEPolicy(policyid, email)
     .subscribe(
       (success) => {
         this.alertService.error(`You have canceled e-policy. It may take up to 2 days to process.`);
@@ -55,9 +55,9 @@ export class PaperlessPolicyComponent implements OnInit {
       });
   }
 
-  enroll(policyid): void {
+  enroll(policyid, email): void {
     this.paperlessService
-    .enrollPaperlessEPolicy(policyid)
+    .enrollPaperlessEPolicy(policyid, email)
     .subscribe(
       (success) => {
         this.alertService.success(`You have enrolled in e-policy. It may take up to 2 days to process.`);

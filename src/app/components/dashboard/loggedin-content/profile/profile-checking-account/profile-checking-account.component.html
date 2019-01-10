@@ -5,7 +5,7 @@
             <svg-bank-svg></svg-bank-svg>
         </div>
         <div>
-            <h1 class="title-copy">{{ 'Save checking account' | translate }}</h1>
+            <h1 class="title-copy">{{ 'PROFILE_CHECKING_ACCOUNT_SAVE' | translate }}</h1>
         </div>        
     </div>
 </div>
@@ -16,7 +16,7 @@
     <div class="col">
       <mapfre-button
         (click)="onCheckDirty()"
-        [additionalClasses]="'flat link small  waves-effect'"
+        additionalClasses="link-button small blue-link"
         [customIcon]="'assets/img/icons/back-arrow.png'"
         [iconClasses]="'align-middle'"
         [routerLink]="['/profile']"
@@ -26,9 +26,9 @@
     </div>
   </div> -->
 </div>
-    <div class="margin-vertical mv32 text-center sub-title-copy checking-account-bottom">
-        <hr />
-        <em>
-            {{ 'Updating your stored checking account will not update any information about your checking accounts on our e-Bill site.' | translate}}
-        </em>
-    </div>
+<div class="margin-vertical mv32 text-center sub-title-copy checking-account-bottom">
+  <hr />
+  <em>
+      {{ 'PROFILE_CHECKING_ACCOUNT' | translate}}
+  </em>
+</div>

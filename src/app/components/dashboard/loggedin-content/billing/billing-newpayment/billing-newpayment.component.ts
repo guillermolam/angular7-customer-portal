@@ -26,7 +26,7 @@ export class BillingNewpaymentComponent implements OnInit {
   policyId:                         number;
   user:                             User;
   showMessage:                      boolean = false;
-  policyDetails: any;
+  policyDetails:                    any;
 
   constructor(
     service:                        NewPaymentService,
@@ -47,7 +47,8 @@ export class BillingNewpaymentComponent implements OnInit {
       this.checkingInfo = userResponse[0];
       console.log(this.checkingInfo);
       // }
-    })
+    });
+    
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
       // forkJoin(

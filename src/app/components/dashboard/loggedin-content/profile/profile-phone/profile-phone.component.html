@@ -5,10 +5,10 @@
             <svg-phone-svg></svg-phone-svg>
         </div>
         <div *ngIf="whereInTheProcess==='edit-phone';else addPhone">
-            <h1 class="title-copy">{{ 'Change phone number' | translate }}</h1>
+            <h1 class="title-copy">{{ 'PROFILE_PHONE_ONE' | translate }}</h1>
         </div>
         <ng-template #addPhone>
-            <h1 class="title-copy">{{ 'Add phone number' | translate }}</h1>
+            <h1 class="title-copy">{{ 'PROFILE_PHONE_TWO' | translate }}</h1>
         </ng-template>
         
     </div>

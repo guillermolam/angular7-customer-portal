@@ -4,10 +4,10 @@ import { FormGroup, FormControl }      from '@angular/forms';
 import { ActivatedRoute, Router,
   Params }                            from '@angular/router';
 import { AlertService,
-  FormBase, FormBaseControlService }  from 'mapfre-design-library';
+  FormBase, FormBaseControlService, User }  from 'mapfre-design-library';
+import { UserService }                from './../../../../_services/user.service';
 import { Billing }                    from './../../../../_models/billing';
 import { BillingObservableService }   from './../../../../_services/billing.service';
-import {  }                           from './../../../../_services/billing.service';
 import { PaperlessService }           from '../../../../_services/_iam/paperless.service';
 
 @Component({
@@ -22,6 +22,7 @@ export class EnrollEftEpayFormComponent implements OnInit {
             enrollAccountType:        FormGroup;
             loading:                  boolean = false;
             policyId:                 string;
+            user;
 
   constructor(
     private activatedRoute:           ActivatedRoute,
@@ -29,7 +30,8 @@ export class EnrollEftEpayFormComponent implements OnInit {
     private billingObservableService: BillingObservableService,
     private ipt:                      FormBaseControlService,
     private router:                   Router,
-    private paperlessService:         PaperlessService
+    private paperlessService:         PaperlessService,
+    private userService:              UserService
   ) { }
 
   checkForPrefillData(): void {
@@ -41,6 +43,7 @@ export class EnrollEftEpayFormComponent implements OnInit {
   }
 
   enroll() {
+    const email = this.user.email.address;
     if( this.enrollInEft.controls['enrollInEft_accountNumber'].value !=  this.enrollInEft.controls['enrollInEft_confirmAccountNumber'].value) {
       this.alertService.error('Account number and Confirmation are not the same');
       return;
@@ -58,8 +61,9 @@ export class EnrollEftEpayFormComponent implements OnInit {
     };
 
     console.log('enrollForm', enrollForm);
+    
     this.paperlessService
-      .enrollPaperlessEPay( this.policyId, enrollForm )
+      .enrollPaperlessEPay( this.policyId, enrollForm, email )
       .subscribe( (success) => {
         this.billingObservableService.updateBilling(enrollForm);
         this.router.navigate(['/billing/paperless/e-pay/' + this.policyId + '/confirm']);
@@ -78,6 +82,9 @@ export class EnrollEftEpayFormComponent implements OnInit {
     this.enrollAccountType =            new FormGroup({
       bankType:                         new FormControl(''),
     });
+    this.userService.$user.subscribe(
+      (user) => { this.user = user; }
+    )
     this.checkForPrefillData();
   }
 

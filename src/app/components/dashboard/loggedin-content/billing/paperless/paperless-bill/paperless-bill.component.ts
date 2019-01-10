@@ -42,9 +42,9 @@ export class PaperlessBillComponent implements OnInit {
     });
   }
 
-   cancellEnroll(policyid): void {
+   cancellEnroll(policyid, email): void {
     this.paperlessService
-      .cancelPaperlessEBill(policyid)
+      .cancelPaperlessEBill(policyid, email)
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled EBill. It may take up to 2 days to process.`);
@@ -55,9 +55,9 @@ export class PaperlessBillComponent implements OnInit {
         });
   }
 
-  enroll(policyid): void {
+  enroll(policyid, email): void {
     this.paperlessService
-      .enrollPaperlessEBill(policyid)
+      .enrollPaperlessEBill(policyid, email)
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in e-Bill. It may take up to 2 days to process.`);

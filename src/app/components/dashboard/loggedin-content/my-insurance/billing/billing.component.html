@@ -10,84 +10,87 @@
           </div>
           <div class="type-title">
             <h1 class="title">
-                {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
-              <small><span class="green-color">{{policy.effDate |  date:'MM/dd/yy' }} {{ 'TO' |translate }} {{policy.expDate |  date:'MM/dd/yy' }}
-              </span></small>
+              {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
+              <small>
+              <span [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 
+                'red-color': policy.policyStatus === 'INACTIVE' }">
+                <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
+              </span>
+            </small>
             </h1>
           </div>
         </header>
         <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
-        
-        <section class="row"> 
+        <section class="row margin-top mt40 mobile-margin"> 
           <div class="col col1 col-md-8 margin-bottom mb24">
             <div class="row">
               <div class="col">
-                  <div class="policy-icon">
-                      <svg-money-mono-color-svg></svg-money-mono-color-svg>
-                    </div>
-                 <h2 class="title" [ngClass]="{'no-border': !checkBilling()}">
-                  {{ 'BILLING_OVERVIEW' | translate }}
+                <div class="policy-icon">
+                  <svg-money-mono-color-svg></svg-money-mono-color-svg>
+                </div>
+                <h2 class="title" [ngClass]="{'no-border': !checkBilling()}">
+                {{ 'BILLING_OVERVIEW' | translate }}
                 </h2>
                 <ng-container *ngIf="!policy.billingDetails[0] || (policy.billingDetails[0] && policy.billingDetails[0].outstandingbalance == 0); else currentBalance">
-                    <div class="margin-top mt16 d-table w-100">
-                        <div class="no-payment-svg d-table-cell padding pr16">
-                          <svg-check-icon-svg></svg-check-icon-svg> 
-                        </div>
-                        <div class="green-color font-medium d-table-cell align-middle">
-                          {{ 'NO_PAYMENTS' | translate }}
-                        </div>
-                      </div>
-                  </ng-container>
-                  <!-- <ng-template #currentBalance> -->
-                      <table mdbTable class="claims-table">
-                          <thead class="lite-grey-color">
-                            <tr class="row-content border-full grey-border">
-                              <td>  
-                                  {{ 'CUSTOMER_BALANCE' | translate }}
-                              </td>
-                              <td> 
-                                  {{ 'DUE_DATE' | translate }}
-                              </td>
-                              <td> 
-                                  {{ 'AMOUNT' | translate }}
-                              </td>
-                            </tr>
-                          </thead>
-                          <tbody class="med-grey-color">
-                            <tr class="row-content border-full grey-border  no-border-bottom">
-                              <td>
-                                <strong>{{ policy.billingDetails[0].outstandingbalance }}</strong>
-                              </td>
-                              <td>
-                                  <strong>{{ policy.billingDetails[0].paymentDueDate |   date:'MM/dd/yy' }}</strong>
-                              </td>
-                              <td>
-                                  <strong>{{ policy.billingDetails[0].minAmountDue }}</strong>
-                              </td>
-                            </tr>
-                            <tr class="border-full grey-border no-border-top">
-                              <td colspan="3" class="text-center no-border-top">
-                                <mapfre-link
-                                  [additionalClasses]="'basic primary large btn width w75'"
-                                  [routerLink]="['/billing/' +  policy.policynumber.policynumber + '/new-payment/']">
-                                  {{ 'PAY_BY_CHECK' | translate}}
-                                </mapfre-link>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                  <!-- </ng-template> -->
+                  <div class="margin-top mt16 d-table w-100">
+                    <div class="no-payment-svg d-table-cell padding pr16">
+                      <svg-check-icon-svg></svg-check-icon-svg> 
+                    </div>
+                    <div class="green-color font-medium d-table-cell align-middle">
+                      {{ 'NO_PAYMENTS' | translate }}
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-template #currentBalance> 
+                  <table mdbTable class="claims-table">
+                    <thead class="lite-grey-color">
+                      <tr class="row-content border-full grey-border">
+                        <td>  
+                            {{ 'CUSTOMER_BALANCE' | translate }}
+                        </td>
+                        <td> 
+                            {{ 'DUE_DATE' | translate }}
+                        </td>
+                        <td> 
+                            {{ 'AMOUNT' | translate }}
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody class="med-grey-color">
+                      <tr class="row-content border-full grey-border  no-border-bottom">
+                        <td>
+                          <strong>{{ policy.billingDetails[0].outstandingbalance }}</strong>
+                        </td>
+                        <td>
+                            <strong>{{ policy.billingDetails[0].paymentDueDate |   date:'MM/dd/yy' }}</strong>
+                        </td>
+                        <td>
+                            <strong>{{ policy.billingDetails[0].minAmountDue }}</strong>
+                        </td>
+                      </tr>
+                      <tr class="border-full grey-border no-border-top">
+                        <td colspan="3" class="text-center no-border-top">
+                          <mapfre-link
+                            [additionalClasses]="'basic primary large btn width w75'"
+                            [routerLink]="['/billing/' +  policy.policynumber.policynumber + '/new-payment/']">
+                            {{ 'PAY_BY_CHECK' | translate}}
+                          </mapfre-link>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </ng-template>
               </div>
             </div>
             <div class="row  margin-top mt40">
                 <div class="col">
             <ng-container *ngIf="!policy.billingDetails[0] || (policy.billingDetails[0] && policy.billingDetails[0].outstandingbalance == 0); else showSchedule">
-                <div class="policy-icon">
-                    <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
-                </div>
+              <div class="policy-icon">
+                  <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
+              </div>
               <h2 class="title" [ngClass]="{'no-border': !checkBilling()}">
-                    {{ 'PAYMENT_HISTORY' | translate }}
-                  </h2>
+                {{ 'PAYMENT_HISTORY' | translate }}
+              </h2>
             </ng-container>
                 <table mdbTable class="claims-table">
                     <ng-template #showSchedule>
@@ -174,14 +177,14 @@
                 </thead>
                 <tbody class="med-grey-color">
                   <ng-container *ngFor="let pendingCheckPayment of policy.pendingCheckPayments ">
-                      <tr class="row-content border-full grey-border">
-                          <td>
-                            <strong>${{ pendingCheckPayment.paymentAmount }}</strong>
-                          </td>
-                          <td class="text-right"> 
-                              <strong>{{ pendingCheckPayment.paymentDateTime | date:'MM/dd/yy'}}</strong>
-                          </td>
-                        </tr>
+                    <tr class="row-content border-full grey-border">
+                      <td>
+                        <strong>${{ pendingCheckPayment.paymentAmount }}</strong>
+                      </td>
+                      <td class="text-right"> 
+                          <strong>{{ pendingCheckPayment.paymentDateTime | date:'MM/dd/yy'}}</strong>
+                      </td>
+                    </tr>
                   </ng-container>
                 </tbody>
               </table>

@@ -67,7 +67,7 @@
     <div class="row margin-top mt32">
       <div class="col">
         <mapfre-button
-          [additionalClasses]="'flat link small waves-effect'"
+          additionalClasses="link-button small blue-link"
           [customIcon]="'./assets/img/icons/back-arrow.png'"
           [iconClasses]="'align-middle'"
           [routerLink]="['/billing/paperless/e-policy']"
@@ -75,14 +75,14 @@
           {{ 'BACK' | translate }}
         </mapfre-button>
       </div>
-      <div class="col" *ngIf="!allEPayMethod()">
+      <div class="col" *ngIf="!allEPayMethod(user)">
         <mapfre-button 
           additionalClasses="primary basic large  float-right waves-effect"
           [routerLink]="['/billing/paperless/e-bill']">
           {{ 'CONTINUE' | translate }}
         </mapfre-button>
       </div>
-      <div class="col" *ngIf="allEPayMethod()">
+      <div class="col" *ngIf="allEPayMethod(user)">
         <mapfre-button 
           additionalClasses="primary basic large  float-right waves-effect"
           [routerLink]="['/billing/paperless']">

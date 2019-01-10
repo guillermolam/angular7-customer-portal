@@ -4,12 +4,12 @@
       <div class="header-icon">
         <svg-validate-svg></svg-validate-svg>
       </div>  
-          <h1 class="title-copy">{{ 'Check your email' | translate }}</h1> 
+          <h1 class="title-copy">{{ 'PROFILE_EMAIL_CONF_ONE' | translate }}</h1> 
           <div class="sub-title-copy">
-           {{ 'We sent you an email please' | translate }} 
+           {{ 'PROFILE_EMAIL_CONF_TWO' | translate }} 
           </div>
           <div class="sub-title-copy">
-              {{ 'validate it to confirm.' | translate }} 
+              {{ 'PROFILE_EMAIL_CONF_THREE' | translate }} 
              </div>
     </div>
   </div>
@@ -17,10 +17,10 @@
   <div class="row text-center">
       <div class="col">
   <div class=account-settings>
-      {{ 'Didn’t receive the email?' | translate }}
+      {{ 'PROFILE_EMAIL_CONF_FOUR' | translate }}
   </div>
   <div class="sub-title-copy">
-      {{ 'Check your spam for a message with the subject:' | translate }} 
+      {{ 'PROFILE_EMAIL_CONF_FIVE' | translate }} 
       <div class=account-settings>
           {{ '[MAPFRE Insurance - IMPORTANT - Confirm your new email address]' | translate }}
       </div>
@@ -28,13 +28,13 @@
   <div class="margin-top mt24 margin-bottom mb8">
       <mapfre-link
       (click)="sendEmail()"
-      [additionalClasses]="'blue-link'"
+      additionalClasses="blue-link"
       >
       <div class="svg-container display-inline svg">
           <svg-email-icon-svg></svg-email-icon-svg>
       </div>
       <div class="svg-container display-inline">
-          {{ 'Send email again' | translate }}
+          {{ 'SEND_EMAIL_AGAIN' | translate }}
       </div>
     </mapfre-link>
   </div>
@@ -44,7 +44,7 @@
   <div class="row margin-top mt24 text-center">
       <div class="col">
         <mapfre-button
-          [additionalClasses]="'flat link small  waves-effect'"
+          additionalClasses="link-button small blue-link"
           [customIcon]="'assets/img/icons/back-arrow.png'"
           [iconClasses]="'align-middle'"
           [routerLink]="['/profile']"

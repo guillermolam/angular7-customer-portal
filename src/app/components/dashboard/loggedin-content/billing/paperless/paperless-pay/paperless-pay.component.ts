@@ -1,5 +1,5 @@
 import { Component, OnInit,
-  OnChanges }                       from '@angular/core';
+  OnChanges, Input }                from '@angular/core';
 import { AlertService, ModalOptions } from 'mapfre-design-library';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
 import { User }                     from './../../../../../../_models/user';
@@ -11,6 +11,7 @@ import { UserService }              from '../../../../../../_services/user.servi
   styleUrls: ['./paperless-pay.component.scss']
 })
 export class PaperlessPayComponent implements OnInit, OnChanges {
+  @Input() userData;
   endEnrollOptionsModal:            ModalOptions;
   enrollOptionsModal:               ModalOptions;
   hideModal:                        boolean = false;
@@ -43,13 +44,13 @@ export class PaperlessPayComponent implements OnInit, OnChanges {
     });
   }
 
-  allEPayMethod(): boolean {
-    return this.paperlessService.allEPayMethod();
+  allEPayMethod(userData): boolean {
+    return this.paperlessService.checkIfEnrolledInEPay(userData);
   }
 
-   cancellEnroll(policyid): void {
+   cancellEnroll(policyid, email): void {
     this.paperlessService
-    .cancelPaperlessEPay(policyid)
+    .cancelPaperlessEPay(policyid, email)
     .subscribe(
       (success) => {
         this.alertService.error(`You have canceled e-Pay. It may take up to 2 days to process.`);
@@ -74,11 +75,11 @@ export class PaperlessPayComponent implements OnInit, OnChanges {
     this.userService.$user.subscribe( (user) => {
       this.user = user;
     });
-    this.allEPayMethod();
+    this.allEPayMethod(this.user);
   }
 
   ngOnChanges(): void {
-    this.allEPayMethod();
+    this.allEPayMethod(this.user);
   }
 
 }

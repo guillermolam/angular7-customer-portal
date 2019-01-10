@@ -43,8 +43,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
     });
    }
 
-  allEPayMethod(): boolean {
-    return this.paperlessService.allEPayMethod();
+  allEPayMethod(userData): boolean {
+    return this.paperlessService.checkIfEnrolledInEPay(userData);
   }
 
   anyEPay( policyDetail ): boolean {
@@ -58,10 +58,10 @@ export class PaperlessFirstTimeComponent implements OnInit {
     return payOrBill;
   }
 
-  cancellEnroll(policyid, where): void {
+  cancel(policyid, email, where): void {
     if ( where == 'e-policy' ) {
       this.paperlessService
-      .cancelPaperlessEPolicy(policyid)
+      .cancelPaperlessEPolicy(policyid, email)
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
@@ -73,7 +73,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
     else if ( where == 'e-pay' ) {
       this.paperlessService
-      .cancelPaperlessEPay(policyid)
+      .cancelPaperlessEPay(policyid, email)
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
@@ -85,7 +85,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
     else if ( where == 'e-bill' ) {
       this.paperlessService
-      .cancelPaperlessEBill(policyid)
+      .cancelPaperlessEBill(policyid, email)
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
@@ -97,10 +97,10 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
   }
 
-  enroll(policyid, where): void {
+  enroll(policyid, email, where): void {
     if ( where == 'e-policy' ) {
       this.paperlessService
-      .enrollPaperlessEPolicy(policyid)
+      .enrollPaperlessEPolicy(policyid, email)
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
@@ -111,7 +111,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
     else if ( where == 'e-bill' ) {
       this.paperlessService
-      .enrollPaperlessEBill(policyid)
+      .enrollPaperlessEBill(policyid, email)
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
@@ -162,7 +162,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
     });
 
     this.firstTimeCheck();
-    this.allEPayMethod();
+    this.allEPayMethod(this.user);
   }
 
 }
