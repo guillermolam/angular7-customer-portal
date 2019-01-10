@@ -39,7 +39,8 @@ export class PaperlessService {
 
   // --- unenroll methods
 
-  cancelPaperlessEPolicy( policyid, email ) {
+  cancelPaperlessEPolicy( policyid, email ): Observable<any> {
+    console.log( 'cancel e-policy', policyid, email );
     const url = `${this.personalPolicy}/${email}/${policyid}/paperless-unenrollment`;
 
     return this.http.post(url, {}, this.serviceHelpers.options )
@@ -50,7 +51,8 @@ export class PaperlessService {
     ;
   }
 
-  cancelPaperlessEPay( policyid, email ) {
+  cancelPaperlessEPay( policyid, email ): Observable<any> {
+    console.log( 'cancel e-pay', policyid, email );
     const url = `${this.billing}/${email}/${policyid}/unenroll-eft`;
     return this.http.post(url, {}, this.serviceHelpers.options )
       .pipe(
@@ -60,7 +62,8 @@ export class PaperlessService {
     ;
   }
 
-  cancelPaperlessEBill( policyid, email ) {
+  cancelPaperlessEBill( policyid, email ): Observable<any> {
+    console.log( 'cancel e-bill', policyid, email );
     const url = `${this.personalPolicy}/${email}/${policyid}/unebill-enrollment`;
     return this.http.post(url, {}, this.serviceHelpers.options )
       .pipe(
@@ -72,7 +75,8 @@ export class PaperlessService {
 
   // --- enroll methods
 
-  enrollPaperlessEPolicy( policyid, email ) {
+  enrollPaperlessEPolicy( policyid, email ): Observable<any> {
+    console.log( 'enroll e-policy', policyid, email );
     const url = `${this.personalPolicy}/${email}/${policyid}/paperless-enrollment`;
 
     return this.http.post(url, {}, this.serviceHelpers.options )
@@ -83,7 +87,8 @@ export class PaperlessService {
     ;
   }
 
-  enrollPaperlessEPay( policyid, formData, email ) {
+  enrollPaperlessEPay( policyid, formData, email ): Observable<any> {
+    console.log( 'enroll e-pay', policyid, email );
     const url = `${this.billing}/${email}/${policyid}/enroll-eft`;
     return this.http.post(url, formData, this.serviceHelpers.options )
       .pipe(
@@ -93,7 +98,8 @@ export class PaperlessService {
     ;
   }
 
-  enrollPaperlessEBill( policyid, email ) {
+  enrollPaperlessEBill( policyid, email ): Observable<any> {
+    console.log( 'enroll e-bill', policyid, email );
     const url = `${this.personalPolicy}/${email}/${policyid}/ebill-enrollment`;
     return this.http.post(url, {}, this.serviceHelpers.options )
       .pipe(
