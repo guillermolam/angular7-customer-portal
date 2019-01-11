@@ -19,6 +19,7 @@ export class DashboardMainComponent implements OnInit {
   reportClaim:                                boolean;
   showAlert:                                  boolean;
   testAlert:                                  any;
+  policyInfo;
   userInfo;
 
   constructor(
@@ -60,66 +61,28 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
-    // this.policyDataService.$policyDetails.subscribe(
-    //   (success) => {
-    //     this.loading = false;
-    //   },
-    //   (err) => {
-    //     this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe();
-    //     this.loading = false;
-    //   },
-    // );
-
     this.policyDetailsService
-     .getPolicyDetailsByEmail(
-       this.storageService.getUserFromStorage()
-     )
-     .subscribe( () =>
-      {
+     .getPolicyDetailsByEmail( this.storageService.getUserFromStorage() )
+     .subscribe( (s) => {
         this.loading = false;
+        this.policyInfo = s;
       },
-        (err) => {
-          this.loading = false;
-          this.userService.updateUser( this.testingData.testDatafunction() )
-        }
-     );
+    );
 
     this.authenticationService
       .getUserDetailsByEmail(this.storageService.getUserFromStorage())
       .subscribe(([userResponse, accountResponse]) => {
         this.userInfo =  [{
           userDetails: {...userResponse},
-          bankAccountDetails:  {...accountResponse}}];
-
-        this.userService.updateUser(
-          this.userInfo
-        );
-      },
-      (err) => {
-        this.loading = false;
-        this.userService.updateUser( this.testingData.testDatafunction() );
-        this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
+          bankAccountDetails:  {...accountResponse},
+          policyDetails: {...this.policyInfo} }
+        ];
+        
+        this.userService.updateUser(this.userInfo);
       })
     ;
 
-    console.log(' this.userInfo',  this.userInfo)
-
-    // .subscribe((userResponse)=>{
-    //   console.log(userResponse);
-    //   this.userService.updateUser(userResponse);
-    // });
-   // this.userService.updateUser( this.testingData.testDatafunction() );
-
-   // this.userService.$user.subscribe(
-   //  (user) => { 
-   //    console.log(user)
-   //    this.loading = false; }
-   // );
-
-  }
-
-  // ngAfterViewInit(){
-  //   this.loading = false;
-  // }
+    console.log(' this.userInfo',  this.userInfo );
+    }
 
 }
