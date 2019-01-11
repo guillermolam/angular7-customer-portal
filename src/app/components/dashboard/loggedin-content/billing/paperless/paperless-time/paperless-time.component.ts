@@ -1,6 +1,8 @@
 import { Component, OnInit }        from '@angular/core';
 import { AlertService, ModalOptions } from 'mapfre-design-library';
+import { BillingDataService }       from './../../../../../../_services/my-insurance/data-services/billing-data.service';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
+import { StorageServiceObservablesService }   from '../../../../../../_services/storage-service-observables/storage-service-observables.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
 
@@ -10,15 +12,19 @@ import { UserService }              from '../../../../../../_services/user.servi
   styleUrls: ['./paperless-time.component.scss']
 })
 export class PaperlessFirstTimeComponent implements OnInit {
+  emailaddress:                     string;
   endEnrollOptionsModal:            ModalOptions;
   enrollOptionsModal:               ModalOptions;
-  firstTime:                        boolean;
-  hideModal:                        boolean = false;
-  user:                             User;
+  firstTime:                        boolean = false;
+  hideModal:                        boolean;
+  loading:                          boolean = true;
+  user:                             any;
 
   constructor(
-    private alertService:           AlertService, 
+    private alertService:           AlertService,
+    private billingDataService:     BillingDataService,
     private paperlessService:       PaperlessService,
+    private storageService:         StorageServiceObservablesService,
     private userService:            UserService
   ) {
     this.endEnrollOptionsModal = new ModalOptions({
@@ -58,17 +64,21 @@ export class PaperlessFirstTimeComponent implements OnInit {
     return payOrBill;
   }
 
-  cancel(policyid, email, where): void {
+  cancel(policyid, where, email): void {
     if ( where == 'e-policy' ) {
       this.paperlessService
       .cancelPaperlessEPolicy(policyid, email)
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
-        (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
-
+        (error) => {
+          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.hideModal = !this.hideModal;
+        },
+        () => {
+          this.alertService.error(`test`);
         });
     }
     else if ( where == 'e-pay' ) {
@@ -77,11 +87,15 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
-        (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
-
-        });
+        (error) => {
+          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.hideModal = !this.hideModal;
+        },
+          () => {
+            this.alertService.error(`test`);
+          });
     }
     else if ( where == 'e-bill' ) {
       this.paperlessService
@@ -89,21 +103,27 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
-        (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
+        (error) => {
+          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.hideModal = !this.hideModal;
 
+        },
+        () => {
+          this.alertService.error(`test`);
         });
     }
   }
 
-  enroll(policyid, email, where): void {
+  enroll(policyid, where, email): void {
     if ( where == 'e-policy' ) {
       this.paperlessService
       .enrollPaperlessEPolicy(policyid, email)
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
         (e) => {
           this.alertService.error(`There was a problem processing your request. Try again later`);
@@ -115,6 +135,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
+          this.hideModal = !this.hideModal;
         },
         (e) => {
           this.alertService.error(`There was a problem processing your request. Try again later`);
@@ -122,28 +143,28 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
   }
 
-  firstTimeCheck(): void {
-    let firstTime;
-
-    this.userService.$user.subscribe( (data) => {
-      console.log('userData', data);
-      if(data !== undefined) {
-        for ( let policyDetails of data ) {
-          const policyFlags = policyDetails['policyFlags'];
-          if ( !policyFlags.isEbill && !policyFlags.isEbillElig  &&
-              !policyFlags.isEdf  && !policyFlags.isEdfElig  &&
-              !policyFlags.isEft  && !policyFlags.isEftEligi  )
-          {
-            firstTime = false;
-          }
-          else {
-            firstTime = true;
-            break;
-          }
-        }
-        this.firstTime = firstTime;
+  firstTimeCheck(data): void {
+    let firstTime, firstTimeArray = [];
+    console.log('data', data)
+    for ( let policyDetails of data ) {
+      const policyFlags = policyDetails.policyFlags;
+      if ( policyFlags.isEbill != 'UNENROLLED' && policyFlags.isEbillElig != 'UNENROLLED'  &&
+          policyFlags.isEdf != 'UNENROLLED'  && policyFlags.isEdfElig != 'UNENROLLED'  &&
+          policyFlags.isEft != 'UNENROLLED'  && policyFlags.isEftEligi != 'UNENROLLED'  )
+      {
+        firstTimeArray.push(false);
+        firstTime = false;
       }
-    });
+      else {
+        firstTimeArray.push(true);
+        firstTime = true;
+        break;
+      }
+    }
+
+
+
+    this.firstTime = false;
   }
 
   hideModalAction(event): void {
@@ -157,12 +178,27 @@ export class PaperlessFirstTimeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.$user.subscribe( (user) => {
-      this.user = user;
+    this.loading = true;
+    this.emailaddress = this.storageService.getUserFromStorage();
+    this.billingDataService.$billingDetails
+    .subscribe( (billingResponse) => {
+      console.log('billingDataService', billingResponse);
+      if ( billingResponse === undefined) {
+        this.userService.$user.subscribe( (user) => {
+          this.user = user;
+          
+        });
+      }
+      else {
+        this.user = billingResponse;
+      }
+      console.log('this.user', this.user);
+      this.firstTimeCheck(this.user);
+      this.allEPayMethod(this.user);
+      this.loading = false;
     });
-
-    this.firstTimeCheck();
-    this.allEPayMethod(this.user);
+    this.loading = false;
+    console.log('firstTime', this.firstTime);
   }
 
 }
