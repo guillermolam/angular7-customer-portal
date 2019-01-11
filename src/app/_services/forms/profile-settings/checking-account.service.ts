@@ -1,6 +1,6 @@
 import { UserService } from './../../user.service';
 import { Injectable }               from '@angular/core';
-import { FormBase, TextBox }        from 'mapfre-design-library';
+import { FormBase, TextBox, GetGooglePlaceService }        from 'mapfre-design-library';
 import { ChangeAddressService }     from '../change-address/change-address.service';
 import { FakeAccountSettings }      from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { map } from 'rxjs/operators';
@@ -12,7 +12,8 @@ export class CheckingAccountService {
 
   constructor(
     private changeAddressService: ChangeAddressService,
-    private userService:          UserService
+    private userService:          UserService,
+    private getGooglePlaceService:  GetGooglePlaceService
     ) { }
 
   getInputs(){
@@ -47,8 +48,14 @@ export class CheckingAccountService {
   // }
 
    return this.userService.$user.pipe(map((userResponse)=>{
+      let streetAddress: any = [];
       this.checkingAccount = userResponse[0].bankAccountDetails;
-      
+      if(userResponse[0].bankAccountDetails.accountHolderName){
+        // console.log('present');
+        this.getGooglePlaceService.updateAddress(this.checkingAccount.mailingAddress);
+        streetAddress = this.checkingAccount.mailingAddress.streetName.split('|');
+      }
+
       const inputs: FormBase<any>[] = [
       new TextBox({
         additionalClasses:  'form-control profile-input-border',
@@ -86,8 +93,8 @@ export class CheckingAccountService {
       }),
       ...this.changeAddressService.getInputs(
         'profile-input-border checking-account-address',
-        this.checkAccountDetails(this.checkingAccount)? '': `${this.checkingAccount.mailingAddress.streetName} ${this.checkingAccount.mailingAddress.city} ${this.checkingAccount.mailingAddress.state} ${this.checkingAccount.mailingAddress.zipCode.code}`,
-        this.checkAccountDetails(this.checkingAccount)? '': `${this.checkingAccount.mailingAddress.apartmentNumber}`
+        this.checkAccountDetails(this.checkingAccount)? '': `${streetAddress[0]}, ${this.checkingAccount.mailingAddress.city}, ${this.checkingAccount.mailingAddress.state} ${this.checkingAccount.mailingAddress.zipCode.code}`,
+        this.checkAccountDetails(this.checkingAccount)? '': `${streetAddress[1] || ''}`
         )
     ];
 
@@ -98,7 +105,6 @@ export class CheckingAccountService {
   checkAccountDetails(accountDetails){
     
     if(accountDetails.accountHolderName){
-      console.log(accountDetails)
       return false;
     }else{
       return accountDetails;

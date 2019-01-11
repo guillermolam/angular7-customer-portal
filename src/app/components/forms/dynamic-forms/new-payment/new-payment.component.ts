@@ -107,8 +107,8 @@ export class NewPaymentComponent implements OnInit {
     //   amount:                       radioAmount,
     //   policyId:                     this.policyId
     // };
-
-    this.mailingAddress['streetName'] = this.mailingAddress['streetName'] + ' aptno ' + (this.newPaymentForm.controls.newPayment_aptNumber.value || '');
+    if(this.newPaymentForm.controls.newPayment_aptNumber.value)
+    this.mailingAddress['streetName'] = this.mailingAddress['streetName'] + '|' + (this.newPaymentForm.controls.newPayment_aptNumber.value || '');
 
 
     this.getGooglePlaceService.updateAddress(this.mailingAddress);
@@ -140,8 +140,10 @@ export class NewPaymentComponent implements OnInit {
   setValues(checkingInfo: any): void {
     // console.log(checkingInfo);
 
+    const apartmentNo = checkingInfo.bankAccountDetails.mailingAddress.streetName.split('|');
+
     const address = {
-            "streetName": checkingInfo.bankAccountDetails.mailingAddress.streetName,
+            "streetName": apartmentNo[0],
             "city": checkingInfo.bankAccountDetails.mailingAddress.city,
             "state": checkingInfo.bankAccountDetails.mailingAddress.state,
             "zipCode": {
@@ -149,7 +151,7 @@ export class NewPaymentComponent implements OnInit {
             }
           }
 
-    const apartmentNo = checkingInfo.bankAccountDetails.mailingAddress.streetName.split('aptno');
+    
 
     this.newPaymentForm.patchValue({
       newPayment_accountName:         checkingInfo.bankAccountDetails.accountHolderName,
