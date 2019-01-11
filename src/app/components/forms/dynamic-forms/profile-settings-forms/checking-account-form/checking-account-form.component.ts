@@ -6,6 +6,8 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CheckingAccountService } from '../../../../../_services/forms/profile-settings/checking-account.service';
 import { FormBase, FormBaseControlService, AlertService,GetGooglePlaceService } from 'mapfre-design-library';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../../../../_services/_iam/authentication-service.service';
+import { UserService }                        from '../../../../../_services/user.service';
 
 @Component({
   selector: 'app-checking-account-form',
@@ -26,7 +28,9 @@ export class CheckingAccountFormComponent implements OnInit {
     private profileConfirmModalService: ProfileConfirmModalService,
     private bankAccountService: BankAccountService,
     private storageService: StorageServiceObservablesService,
-    private getGooglePlaceService : GetGooglePlaceService
+    private getGooglePlaceService : GetGooglePlaceService,
+    private authenticationService:            AuthenticationService,
+    private userService:               UserService
     ) { }
 
   ngOnInit() {
@@ -41,6 +45,15 @@ export class CheckingAccountFormComponent implements OnInit {
     const bankAccountDetails = this.createBankAccountObject();
     const email = this.storageService.getUserFromStorage();
     this.bankAccountService.addBankAccount(email,bankAccountDetails).subscribe((response)=>{
+      this.authenticationService
+      .getUserDetailsByEmail(this.storageService.getUserFromStorage())
+      .subscribe(([userResponse, accountResponse]) => {
+        this.userService.updateUser(
+        [{
+          userDetails: {...userResponse},
+          bankAccountDetails:  {...accountResponse}}]
+        );
+      }
       this.alertService.success('Checking account information succesfully updated',true);
       this.router.navigate(['/profile']);
     }, (err)=>{
@@ -63,6 +76,9 @@ export class CheckingAccountFormComponent implements OnInit {
   createBankAccountObject(){
 
       let bankAccount: any = {};
+      if(this.checkingAccountForm.controls.changeAddressAPT.value){
+        this.mailingAddress.streetName = this.mailingAddress.streetName.split('|')[0] + '|' + this.checkingAccountForm.controls.changeAddressAPT.value; 
+      }
       bankAccount = {
         accountHolderName: this.checkingAccountForm.controls.bankAccountHolder.value,
         routingNumber: {

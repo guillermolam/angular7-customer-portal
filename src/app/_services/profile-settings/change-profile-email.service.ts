@@ -10,11 +10,14 @@ export class ChangeProfileEmailService {
     private http:             HttpClient,
   ) { }
 
-  checkIfEmailExists(email){
-   const url = `https://mdv-doctest:8082/identity/users/change-email?email=${email}`
-   // const url = `${environment.backend_server_url}/identity/users/authenticate`;
-
-    return this.http.get(url);
+  checkIfEmailExists(oldEmail, newEmail){
+   const url = `https://mdv-doctest:8087/identity/users/change-email?email=${oldEmail}`
+   // const url = `${environment.backend_server_url}/identity/users/change-email?email=${oldEmail}`;
+    const body = {
+        email: newEmail,
+        password:""
+      }
+    return this.http.put(url, body);
 
   }
 

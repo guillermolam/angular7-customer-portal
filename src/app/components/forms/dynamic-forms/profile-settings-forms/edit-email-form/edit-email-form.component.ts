@@ -5,6 +5,8 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
 import { ChangeProfileEmailService } from '../../../../../_services/profile-settings/change-profile-email.service';
+import { StorageServiceObservablesService } from '../../../../../_services/storage-service-observables/storage-service-observables.service';
+
 
 @Component({
   selector: 'app-edit-email-form',
@@ -23,7 +25,8 @@ constructor(
   private alertService:             AlertService,
   private router:                   Router,
   private profileConfirmModalService: ProfileConfirmModalService,
-  private changeProfileEmailService: ChangeProfileEmailService
+  private changeProfileEmailService: ChangeProfileEmailService,
+  private storageService: StorageServiceObservablesService
   ) { }
 
 ngOnInit() {
@@ -33,14 +36,14 @@ ngOnInit() {
 
 onChangeEmail(){
 
-    const email = this.editEmailForm.controls.changeEmail.value;
-
-    this.changeProfileEmailService.checkIfEmailExists(email).subscribe((response)=>{
-      this.alertService.error('Email is already in use');
+    const newEmail = this.editEmailForm.controls.changeEmail.value;
+    const oldEmail = this.storageService.getUserFromStorage();
+    this.changeProfileEmailService.checkIfEmailExists(oldEmail, newEmail).subscribe((response)=>{
+      this.router.navigate(['/profile','email-confirmation']);
     },
     (err)=>{
       console.log(err.status);
-      this.router.navigate(['/profile','email-confirmation']);
+      this.alertService.error('Email is already in use');
     })
 
   }
