@@ -13,7 +13,7 @@ import { UserService }              from '../../../../../../_services/user.servi
 export class PaperlessFirstTimeComponent implements OnInit {
   endEnrollOptionsModal:            ModalOptions;
   enrollOptionsModal:               ModalOptions;
-  firstTime:                        boolean;
+  firstTime:                        boolean = false;
   hideModal:                        boolean = false;
   user:                             User;
 
@@ -139,28 +139,22 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
   }
 
-  firstTimeCheck(): void {
+  firstTimeCheck(userData): void {
     let firstTime;
-
-    this.userService.$user.subscribe( (data) => {
-      console.log('userData', data);
-      if(data !== undefined) {
-        for ( let policyDetails of data ) {
-          const policyFlags = policyDetails['policyFlags'];
-          if ( !policyFlags.isEbill && !policyFlags.isEbillElig  &&
-              !policyFlags.isEdf  && !policyFlags.isEdfElig  &&
-              !policyFlags.isEft  && !policyFlags.isEftEligi  )
-          {
-            firstTime = false;
-          }
-          else {
-            firstTime = true;
-            break;
-          }
-        }
-        this.firstTime = firstTime;
+    for ( let policyDetails of userData ) {
+      const policyFlags = policyDetails['policyFlags'];
+      if ( !policyFlags.isEbill && !policyFlags.isEbillElig  &&
+          !policyFlags.isEdf  && !policyFlags.isEdfElig  &&
+          !policyFlags.isEft  && !policyFlags.isEftEligi  )
+      {
+        firstTime = false;
       }
-    });
+      else {
+        firstTime = true;
+        break;
+      }
+    }
+    this.firstTime = firstTime;
   }
 
   hideModalAction(event): void {
@@ -189,7 +183,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       }
     });
 
-    this.firstTimeCheck();
+    this.firstTimeCheck(this.user);
     this.allEPayMethod(this.user);
   }
 
