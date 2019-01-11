@@ -64,7 +64,6 @@ export class DashboardMainComponent implements OnInit {
     this.policyDetailsService
      .getPolicyDetailsByEmail( this.storageService.getUserFromStorage() )
      .subscribe( (s) => {
-        this.loading = false;
         this.policyInfo = s;
       },
     );
@@ -77,11 +76,10 @@ export class DashboardMainComponent implements OnInit {
           bankAccountDetails:  {...accountResponse},
           policyDetails: {...this.policyInfo} }
         ];
-        
         this.userService.updateUser(this.userInfo);
       })
     ;
-
+    this.loading = false;
     console.log(' this.userInfo',  this.userInfo );
     }
 
