@@ -19,8 +19,6 @@ export class DashboardMainComponent implements OnInit {
   reportClaim:                                boolean;
   showAlert:                                  boolean;
   testAlert:                                  any;
-  policyInfo;
-  userInfo;
 
   constructor(
     private policyDataService:                PolicyDataService,
@@ -61,26 +59,44 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
+    // this.policyDataService.$policyDetails.subscribe(
+    //   (success) => {
+    //     this.loading = false;
+    //   },
+    //   (err) => {
+    //     this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe();
+    //     this.loading = false;
+    //   },
+    // );
+
     this.policyDetailsService
-     .getPolicyDetailsByEmail( this.storageService.getUserFromStorage() )
-     .subscribe( (s) => {
-        this.policyInfo = s;
-      },
-    );
+      .getPolicyDetailsByEmail(
+        this.storageService.getUserFromStorage()
+      )
+      .subscribe(
+        () => { this.loading = false; },
+        (err) => {
+          this.loading = false;
+          this.userService.updateUser( this.testingData.testDatafunction() )
+        }
+     );
 
     this.authenticationService
       .getUserDetailsByEmail(this.storageService.getUserFromStorage())
       .subscribe(([userResponse, accountResponse]) => {
-        this.userInfo =  [{
+        this.userService.updateUser(
+        [{
           userDetails: {...userResponse},
-          bankAccountDetails:  {...accountResponse},
-          policyDetails: {...this.policyInfo} }
-        ];
-        this.userService.updateUser(this.userInfo);
+          bankAccountDetails:  {...accountResponse}}]
+        );
+      },
+      (err) => {
+        this.loading = false;
+        this.userService.updateUser( this.testingData.testDatafunction() );
+        this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
       })
     ;
-    this.loading = false;
-    console.log(' this.userInfo',  this.userInfo );
-    }
+
+  }
 
 }

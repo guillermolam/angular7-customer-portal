@@ -2,7 +2,7 @@ import { Component, OnInit }        from '@angular/core';
 import { AlertService, ModalOptions } from 'mapfre-design-library';
 import { BillingDataService }       from './../../../../../../_services/my-insurance/data-services/billing-data.service';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
-import { StorageServiceObservablesService }   from '../../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { PolicyDetailsService }     from '../../../../../../_services/my-insurance/policy-details.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
 
@@ -18,13 +18,14 @@ export class PaperlessFirstTimeComponent implements OnInit {
   firstTime:                        boolean = false;
   hideModal:                        boolean;
   loading:                          boolean = true;
+  policyInfo:                       any;
   user:                             any;
 
   constructor(
     private alertService:           AlertService,
     private billingDataService:     BillingDataService,
     private paperlessService:       PaperlessService,
-    private storageService:         StorageServiceObservablesService,
+    private policyDetailsService:   PolicyDetailsService,
     private userService:            UserService
   ) {
     this.endEnrollOptionsModal = new ModalOptions({
@@ -71,14 +72,12 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.reQueryPolicyDetailService(email);
           this.hideModal = !this.hideModal;
         },
         (error) => {
           this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
           this.hideModal = !this.hideModal;
-        },
-        () => {
-          this.alertService.error(`test`);
         });
     }
     else if ( where == 'e-pay' ) {
@@ -87,15 +86,13 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.reQueryPolicyDetailService(email);
           this.hideModal = !this.hideModal;
         },
         (error) => {
           this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
           this.hideModal = !this.hideModal;
-        },
-          () => {
-            this.alertService.error(`test`);
-          });
+        });
     }
     else if ( where == 'e-bill' ) {
       this.paperlessService
@@ -103,15 +100,12 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.reQueryPolicyDetailService(email);
           this.hideModal = !this.hideModal;
         },
         (error) => {
           this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
           this.hideModal = !this.hideModal;
-
-        },
-        () => {
-          this.alertService.error(`test`);
         });
     }
   }
@@ -123,7 +117,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
-          this.hideModal = !this.hideModal;
+          this.reQueryPolicyDetailService(email);
+          this.hideModal =          !this.hideModal;
         },
         (e) => {
           this.alertService.error(`There was a problem processing your request. Try again later`);
@@ -135,10 +130,12 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
-          this.hideModal = !this.hideModal;
+          this.reQueryPolicyDetailService(email);
+          this.hideModal =            !this.hideModal;
         },
         (e) => {
           this.alertService.error(`There was a problem processing your request. Try again later`);
+          this.hideModal =          !this.hideModal;
         });
     }
   }
@@ -177,28 +174,28 @@ export class PaperlessFirstTimeComponent implements OnInit {
     this.hideModal = !this.hideModal;
   }
 
+  reQueryPolicyDetailService(email): void {
+    this.policyDetailsService
+      .getPolicyDetailsByEmail( email )
+      .subscribe( () => { this.loading = false; });
+  }
+
   ngOnInit() {
     this.loading = true;
-    this.emailaddress = this.storageService.getUserFromStorage();
+
+    this.userService.$user
+    .subscribe( (userInfo) => {
+      this.emailaddress = userInfo.userDetails.email.address;
+    });
+
     this.billingDataService.$billingDetails
-    .subscribe( (billingResponse) => {
-      console.log('billingDataService', billingResponse);
-      if ( billingResponse === undefined) {
-        this.userService.$user.subscribe( (user) => {
-          this.user = user;
-          
-        });
-      }
-      else {
-        this.user = billingResponse;
-      }
-      console.log('this.user', this.user);
+    .subscribe( (policyInfo) => {
+      this.policyInfo = policyInfo;
       this.firstTimeCheck(this.user);
       this.allEPayMethod(this.user);
-      this.loading = false;
     });
+
     this.loading = false;
-    console.log('firstTime', this.firstTime);
   }
 
 }
