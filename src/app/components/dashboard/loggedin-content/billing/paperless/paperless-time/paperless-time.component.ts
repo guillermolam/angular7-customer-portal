@@ -144,9 +144,9 @@ export class PaperlessFirstTimeComponent implements OnInit {
     console.log('data', data)
     for ( let policyDetails of data ) {
       const policyFlags = policyDetails.policyFlags;
-      if ( !policyFlags.isEbill && !policyFlags.isEbillElig  &&
-          !policyFlags.isEdf  && !policyFlags.isEdfElig  &&
-          !policyFlags.isEft  && !policyFlags.isEftEligi  )
+      if ( policyFlags.isEbill != 'UNENROLLED' && policyFlags.isEbillElig != 'UNENROLLED'  &&
+          policyFlags.isEdf != 'UNENROLLED'  && policyFlags.isEdfElig != 'UNENROLLED'  &&
+          policyFlags.isEft != 'UNENROLLED'  && policyFlags.isEftEligi != 'UNENROLLED'  )
       {
         firstTime = false;
       }
