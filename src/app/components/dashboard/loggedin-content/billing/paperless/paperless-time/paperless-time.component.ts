@@ -1,5 +1,6 @@
 import { Component, OnInit }        from '@angular/core';
 import { AlertService, ModalOptions } from 'mapfre-design-library';
+import { BillingDataService }       from './../../../../../../_services/my-insurance/data-services/billing-data.service';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
@@ -17,7 +18,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
   user:                             User;
 
   constructor(
-    private alertService:           AlertService, 
+    private alertService:           AlertService,
+    private billingDataService:     BillingDataService,
     private paperlessService:       PaperlessService,
     private userService:            UserService
   ) {
@@ -174,6 +176,17 @@ export class PaperlessFirstTimeComponent implements OnInit {
   ngOnInit() {
     this.userService.$user.subscribe( (user) => {
       this.user = user;
+    });
+
+    this.billingDataService.$billingDetails
+    .subscribe( (billingResponse) => {
+      console.log('billingDataService', billingResponse);
+      if ( billingResponse === undefined) {
+        this.user = this.user;
+      }
+      else {
+        this.user = billingResponse;
+      }
     });
 
     this.firstTimeCheck();

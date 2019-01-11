@@ -97,14 +97,13 @@ export class MyInsuranceMainComponent implements OnInit {
 
     this.billingDataService.$billingDetails
     .subscribe( (billingResponse) => {
-      console.log('response', billingResponse);
-      if( billingResponse === undefined){
+      console.log('billingDataService', billingResponse);
+      if ( billingResponse === undefined) {
         this.billingResponse = this.user;
       }
       else {
         this.billingResponse = billingResponse;
       }
-      console.log('billing',  this.billingResponse)
     });
 
   }
