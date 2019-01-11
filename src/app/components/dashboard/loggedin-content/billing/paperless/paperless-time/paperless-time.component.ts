@@ -2,6 +2,7 @@ import { Component, OnInit }        from '@angular/core';
 import { AlertService, ModalOptions } from 'mapfre-design-library';
 import { BillingDataService }       from './../../../../../../_services/my-insurance/data-services/billing-data.service';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
+import { StorageServiceObservablesService }   from '../../../../../../_services/storage-service-observables/storage-service-observables.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
 
@@ -11,6 +12,7 @@ import { UserService }              from '../../../../../../_services/user.servi
   styleUrls: ['./paperless-time.component.scss']
 })
 export class PaperlessFirstTimeComponent implements OnInit {
+  emailaddress:                     string;
   endEnrollOptionsModal:            ModalOptions;
   enrollOptionsModal:               ModalOptions;
   firstTime:                        boolean = false;
@@ -22,6 +24,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
     private alertService:           AlertService,
     private billingDataService:     BillingDataService,
     private paperlessService:       PaperlessService,
+    private storageService:         StorageServiceObservablesService,
     private userService:            UserService
   ) {
     this.endEnrollOptionsModal = new ModalOptions({
@@ -176,6 +179,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
+    this.emailaddress = this.storageService.getUserFromStorage();
     this.billingDataService.$billingDetails
     .subscribe( (billingResponse) => {
       console.log('billingDataService', billingResponse);

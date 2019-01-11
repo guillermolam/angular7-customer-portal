@@ -51,7 +51,7 @@
                     <div class="mx-auto text-center">
                         <mapfre-button 
                           additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                          (click)="cancel(pdetail.policynumber.policynumber, 'e-policy', pdetail.email.address)">
+                          (click)="cancel(pdetail.policynumber.policynumber, 'e-policy', emailaddress)">
                           {{ 'REMOVE_FROM_E-POLICY' | translate }}
                         </mapfre-button>
                         <mapfre-button 
@@ -83,7 +83,7 @@
                     <div class="mx-auto text-center">
                         <mapfre-button 
                           additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                          (click)="enroll(pdetail.policynumber.policynumber, 'e-policy', pdetail.email.address)">
+                          (click)="enroll(pdetail.policynumber.policynumber, 'e-policy', emailaddress)">
                           {{ 'CONFIRM_ENROLLMENT' | translate }}
                         </mapfre-button>
                         <mapfre-button 
@@ -126,7 +126,7 @@
                     <div class="mx-auto text-center">
                         <mapfre-button 
                           additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                          (click)="cancel(pdetail.policynumber.policynumber, 'e-pay', pdetail.email.address)">
+                          (click)="cancel(pdetail.policynumber.policynumber, 'e-pay', emailaddress)">
                           {{ 'REMOVE_FROM_E-PAY' | translate }}
                         </mapfre-button>
                         <mapfre-button 
@@ -187,7 +187,7 @@
                         <div class="mx-auto text-center">
                             <mapfre-button 
                               additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                              (click)="cancel(pdetail.policynumber.policynumber, 'e-bill', pdetail.email.address)">
+                              (click)="cancel(pdetail.policynumber.policynumber, 'e-bill', emailaddress)">
                               {{ 'REMOVE_FROM_E-BILL' | translate }}
                             </mapfre-button>
                             <mapfre-button 
