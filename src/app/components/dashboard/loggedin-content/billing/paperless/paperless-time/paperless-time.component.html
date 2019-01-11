@@ -139,7 +139,7 @@
     
               <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEft == 'UNENROLLED'">
                 <mapfre-button 
-                  additionalClasses="no-margin float-right btn mapfre waves-light primary ghost w-100 waves-effect"
+                  additionalClasses="no-margin float-right btn mapfre waves-light primary ghost waves-effect"
                  [routerLink]="[ '/billing/paperless/e-pay/' + pdetail.policynumber.policynumber + '/enroll']">
                   {{ 'ENROLL' | translate }}
                 </mapfre-button>

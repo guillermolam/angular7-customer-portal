@@ -14,8 +14,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
   endEnrollOptionsModal:            ModalOptions;
   enrollOptionsModal:               ModalOptions;
   firstTime:                        boolean = false;
-  hideModal:                        boolean = false;
-  user:                             User;
+  hideModal:                        boolean;
+  user:                             any;
 
   constructor(
     private alertService:           AlertService,
@@ -139,10 +139,11 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
   }
 
-  firstTimeCheck(userData): void {
+  firstTimeCheck(data): void {
     let firstTime;
-    for ( let policyDetails of userData ) {
-      const policyFlags = policyDetails['policyFlags'];
+    console.log('data', data)
+    for ( let policyDetails of data ) {
+      const policyFlags = policyDetails.policyFlags;
       if ( !policyFlags.isEbill && !policyFlags.isEbillElig  &&
           !policyFlags.isEdf  && !policyFlags.isEdfElig  &&
           !policyFlags.isEft  && !policyFlags.isEftEligi  )
@@ -181,10 +182,12 @@ export class PaperlessFirstTimeComponent implements OnInit {
       else {
         this.user = billingResponse;
       }
+      console.log('this.user', this.user);
+      this.firstTimeCheck(this.user);
+      this.allEPayMethod(this.user);
     });
 
-    this.firstTimeCheck(this.user);
-    this.allEPayMethod(this.user);
+    console.log('firstTime', this.firstTime);
   }
 
 }
