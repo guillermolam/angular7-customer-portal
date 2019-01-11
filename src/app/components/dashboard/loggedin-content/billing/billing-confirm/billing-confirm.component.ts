@@ -7,8 +7,8 @@ import { BillingObservableService }         from './../../../../../_services/bil
 import { Billing }                          from './../../../../../_models/billing';
 import { User }                             from './../../../../../_models/user';
 import { UserService }                      from './../../../../../_services/user.service';
-import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
-import { BillingDetailsService } from './../../../../../_services/my-insurance/billing-details.service';
+import { BillingDataService }               from './../../../../../_services/my-insurance/data-services/billing-data.service';
+import { BillingDetailsService }            from './../../../../../_services/my-insurance/billing-details.service';
 
 
 @Component({
@@ -28,10 +28,10 @@ export class BillingConfirmComponent implements OnInit {
     private alertService:                 AlertService,
     private billingService:               BillingService,
     private billingObservableService:     BillingObservableService,
+    private billingDataService:           BillingDataService,
+    private billingDetailsService:        BillingDetailsService,
     private router:                       Router,
     private userService:                  UserService,
-    private billingDataService: BillingDataService,
-    private billingDetailsService: BillingDetailsService
   ) { }
 
   sendPayment(): void {
@@ -55,19 +55,18 @@ export class BillingConfirmComponent implements OnInit {
       (params: Params) => {
         this.policyId =                 params['policyid'];
         this.billingDataService.$billingDetails.subscribe((billingResponse) => {
-        this.policyDetails = billingResponse;
+        this.policyDetails =            billingResponse;
     });
     });
 
     this.userService.$user.subscribe(
       (user) => {
-        this.user =                   user;
-        console.log(this.user);
+        this.user =                     user;
     });
 
     this.billingObservableService.$billing.subscribe( 
       (billing) => {
-        this.billing =                     billing;
+        this.billing =                  billing;
     });
   }
 

@@ -12,6 +12,7 @@ export class BillingObservableService {
   constructor() {}
 
   updateBilling(billing: any) {
+    console.log('billing observable', billing);
     this.messageSource.next(billing);
   }
 

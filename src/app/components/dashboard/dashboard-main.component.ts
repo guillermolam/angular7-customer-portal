@@ -19,7 +19,6 @@ export class DashboardMainComponent implements OnInit {
   reportClaim:                                boolean;
   showAlert:                                  boolean;
   testAlert:                                  any;
-  userInfo;
 
   constructor(
     private policyDataService:                PolicyDataService,
@@ -71,28 +70,24 @@ export class DashboardMainComponent implements OnInit {
     // );
 
     this.policyDetailsService
-     .getPolicyDetailsByEmail(
-       this.storageService.getUserFromStorage()
-     )
-     .subscribe( () =>
-      {
-        this.loading = false;
-      },
+      .getPolicyDetailsByEmail(
+        this.storageService.getUserFromStorage()
+      )
+      .subscribe(
+        () => { this.loading = false; },
         (err) => {
           this.loading = false;
-          this.userService.updateUser( this.testingData.testDatafunction() )
+          this.userService.updateUser( this.testingData.testDatafunction() );
         }
      );
 
     this.authenticationService
       .getUserDetailsByEmail(this.storageService.getUserFromStorage())
       .subscribe(([userResponse, accountResponse]) => {
-        this.userInfo =  [{
-          userDetails: {...userResponse},
-          bankAccountDetails:  {...accountResponse}}];
-
         this.userService.updateUser(
-          this.userInfo
+        [{
+          userDetails: {...userResponse},
+          bankAccountDetails:  {...accountResponse}}]
         );
       },
       (err) => {
@@ -102,24 +97,6 @@ export class DashboardMainComponent implements OnInit {
       })
     ;
 
-    console.log(' this.userInfo',  this.userInfo)
-
-    // .subscribe((userResponse)=>{
-    //   console.log(userResponse);
-    //   this.userService.updateUser(userResponse);
-    // });
-   // this.userService.updateUser( this.testingData.testDatafunction() );
-
-   // this.userService.$user.subscribe(
-   //  (user) => { 
-   //    console.log(user)
-   //    this.loading = false; }
-   // );
-
   }
-
-  // ngAfterViewInit(){
-  //   this.loading = false;
-  // }
 
 }

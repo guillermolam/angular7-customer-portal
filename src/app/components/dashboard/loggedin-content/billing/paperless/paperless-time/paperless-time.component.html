@@ -31,7 +31,7 @@
         <div class="margin-bottom mb8">{{ 'PAPERLESS_SIX' | translate }}</div>
         <table mdbTable class="paperless-table margin-bottom mb24">
           <tbody class="med-grey-color">
-            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user">
+            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of policyInfo">
               <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
                 <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
                 <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
@@ -105,7 +105,7 @@
         <div class="margin-bottom mb8">{{ 'PAPERLESS_EIGHT' | translate }}</div>
         <table mdbTable class="paperless-table margin-bottom mb24">
           <tbody class="med-grey-color">
-            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user">
+            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of policyInfo">
               <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
                 <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
                 <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
@@ -165,7 +165,7 @@
         <div class="margin-bottom mb8">{{ 'PAPERLESS_SEVEN' | translate }}</div>
         <table mdbTable class="paperless-table margin-bottom mb24">
           <tbody class="med-grey-color">
-             <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user">
+             <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of policyInfo">
               
                 <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
                     <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />

@@ -69,7 +69,6 @@ export class CheckingAccountFormComponent implements OnInit {
       }, (err)=>{
         //to do
       })
-
     // }
   }
 
