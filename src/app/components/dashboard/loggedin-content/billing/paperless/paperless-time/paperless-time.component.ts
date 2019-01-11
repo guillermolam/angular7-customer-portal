@@ -169,15 +169,13 @@ export class PaperlessFirstTimeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.$user.subscribe( (user) => {
-      this.user = user;
-    });
-
     this.billingDataService.$billingDetails
     .subscribe( (billingResponse) => {
       console.log('billingDataService', billingResponse);
       if ( billingResponse === undefined) {
-        this.user = this.user;
+        this.userService.$user.subscribe( (user) => {
+          this.user = user;
+        });
       }
       else {
         this.user = billingResponse;
