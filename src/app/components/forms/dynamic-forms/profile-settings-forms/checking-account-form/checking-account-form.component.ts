@@ -53,7 +53,8 @@ export class CheckingAccountFormComponent implements OnInit {
           userDetails: {...userResponse},
           bankAccountDetails:  {...accountResponse}}]
         );
-      }
+      })
+      
       this.alertService.success('Checking account information succesfully updated',true);
       this.router.navigate(['/profile']);
     }, (err)=>{
