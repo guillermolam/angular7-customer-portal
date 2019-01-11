@@ -15,6 +15,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
   enrollOptionsModal:               ModalOptions;
   firstTime:                        boolean = false;
   hideModal:                        boolean;
+  loading:                          boolean = true;
   user:                             any;
 
   constructor(
@@ -140,7 +141,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
   }
 
   firstTimeCheck(data): void {
-    let firstTime;
+    let firstTime, firstTimeArray = [];
     console.log('data', data)
     for ( let policyDetails of data ) {
       const policyFlags = policyDetails.policyFlags;
@@ -148,14 +149,19 @@ export class PaperlessFirstTimeComponent implements OnInit {
           policyFlags.isEdf != 'UNENROLLED'  && policyFlags.isEdfElig != 'UNENROLLED'  &&
           policyFlags.isEft != 'UNENROLLED'  && policyFlags.isEftEligi != 'UNENROLLED'  )
       {
+        firstTimeArray.push(false);
         firstTime = false;
       }
       else {
+        firstTimeArray.push(true);
         firstTime = true;
         break;
       }
     }
-    this.firstTime = firstTime;
+
+
+
+    this.firstTime = false;
   }
 
   hideModalAction(event): void {
@@ -169,12 +175,14 @@ export class PaperlessFirstTimeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.billingDataService.$billingDetails
     .subscribe( (billingResponse) => {
       console.log('billingDataService', billingResponse);
       if ( billingResponse === undefined) {
         this.userService.$user.subscribe( (user) => {
           this.user = user;
+          
         });
       }
       else {
@@ -183,8 +191,9 @@ export class PaperlessFirstTimeComponent implements OnInit {
       console.log('this.user', this.user);
       this.firstTimeCheck(this.user);
       this.allEPayMethod(this.user);
+      this.loading = false;
     });
-
+    this.loading = false;
     console.log('firstTime', this.firstTime);
   }
 
