@@ -19,6 +19,7 @@ export class DashboardMainComponent implements OnInit {
   reportClaim:                                boolean;
   showAlert:                                  boolean;
   testAlert:                                  any;
+  userInfo;
 
   constructor(
     private policyDataService:                PolicyDataService,
@@ -86,10 +87,12 @@ export class DashboardMainComponent implements OnInit {
     this.authenticationService
       .getUserDetailsByEmail(this.storageService.getUserFromStorage())
       .subscribe(([userResponse, accountResponse]) => {
-        this.userService.updateUser(
-        [{
+        this.userInfo =  [{
           userDetails: {...userResponse},
-          bankAccountDetails:  {...accountResponse}}]
+          bankAccountDetails:  {...accountResponse}}];
+
+        this.userService.updateUser(
+          this.userInfo
         );
       },
       (err) => {
@@ -98,6 +101,8 @@ export class DashboardMainComponent implements OnInit {
         this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
       })
     ;
+
+    console.log(' this.userInfo',  this.userInfo)
 
     // .subscribe((userResponse)=>{
     //   console.log(userResponse);
