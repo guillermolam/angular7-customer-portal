@@ -36,31 +36,32 @@ export class PolicyDetailsService {
           //   map(res => res),
           //   catchError((error)=> throwError(error.status))),
           this.billingDetailsService.getPendingChecksByPolicy(policy.policynumber.policynumber)
-      ).subscribe(([billingResponse,documentsResponse, vehicleResponse, historyResponse, scheduledBills, pendingCheckPayments])=>{
-       this.policyBillingDataAll.push(...[Object.assign(
-         policy, 
-        {billingDetails: {...billingResponse}}, 
-        {documentsDetails: documentsResponse},
-        {vehicleDetails: vehicleResponse},
-        {billingHistory: historyResponse},
-        {scheduledBills: scheduledBills },
-        {pendingCheckPayments: pendingCheckPayments}
-        )]);
-      });
-      //   this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber).subscribe((billingResponse: any[]) => {
-      //     this.getDocumentsByPolicy(policy.policynumber.policynumber).subscribe((documentsResponse: any[]) => {
-      //       this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}}, {documentsDetails: documentsResponse})]);
-      //     });
-      //     // this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}})]);
-      //   });
-      // });
-      // return this.billingDataAll;
+        )
+        .subscribe(([billingResponse,documentsResponse, vehicleResponse, historyResponse, scheduledBills, pendingCheckPayments])=>{
+          this.policyBillingDataAll.push(...[Object.assign(
+            policy, 
+            { billingDetails: {...billingResponse}},
+            { documentsDetails: documentsResponse},
+            { vehicleDetails: vehicleResponse},
+            { billingHistory: historyResponse},
+            { scheduledBills: scheduledBills },
+            { pendingCheckPayments: pendingCheckPayments }
+            )]);
+        });
+        //   this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber).subscribe((billingResponse: any[]) => {
+        //     this.getDocumentsByPolicy(policy.policynumber.policynumber).subscribe((documentsResponse: any[]) => {
+        //       this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}}, {documentsDetails: documentsResponse})]);
+        //     });
+        //     // this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}})]);
+        //   });
+        // });
+        // return this.billingDataAll;
+      })
+      console.log('getPolicyDetailsByEmail', this.policyBillingDataAll);
+      this.billingDataService.updateBillingDetails(this.policyBillingDataAll); // will need to be changed to a policyDataService
     })
-    console.log(this.policyBillingDataAll);
-    this.billingDataService.updateBillingDetails(this.policyBillingDataAll);
-  })
   );
-  }
+}
 
 
   getDocumentsByPolicy(policyNumber: string){

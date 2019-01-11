@@ -185,6 +185,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
 
     this.userService.$user
     .subscribe( (userInfo) => {
+      console.log(userInfo);
       this.emailaddress = userInfo.userDetails.email.address;
     });
 

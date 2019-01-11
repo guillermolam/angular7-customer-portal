@@ -77,7 +77,7 @@ export class DashboardMainComponent implements OnInit {
         () => { this.loading = false; },
         (err) => {
           this.loading = false;
-          this.userService.updateUser( this.testingData.testDatafunction() )
+          this.userService.updateUser( this.testingData.testDatafunction() );
         }
      );
 

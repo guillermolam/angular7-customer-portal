@@ -66,7 +66,5 @@ export class MyInsuranceMainComponent implements OnInit {
       this.billingResponse = billingResponse;
     });
 
-    console.log('main insurance user', this.user, 'main insurance billing', this.billingResponse);
-
   }
 }
