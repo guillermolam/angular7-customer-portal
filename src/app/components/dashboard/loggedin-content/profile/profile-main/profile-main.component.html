@@ -6,7 +6,7 @@
               <svg-account-profile-svg></svg-account-profile-svg>  
           </div>
           <h1 class="title-copy">{{ 'PROFILE_MAIN_ONE' | translate }}</h1>
-          <div class="sub-title-copy">{{ user.userDetails.firstName }}{{ user.userDetails.middleName }}{{ user.userDetails.lastName }}</div>
+          <div class="sub-title-copy">{{ user.userDetails.firstName }} {{ user.userDetails.middleName? user.userDetails.middleName.substr(0,1)+'.' : '' }} {{ user.userDetails.lastName }}</div>
       </div>
   </div>
   <hr class="hr-stretch"/>

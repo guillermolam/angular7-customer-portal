@@ -37,28 +37,40 @@ export class CheckingAccountFormComponent implements OnInit {
     this.checkingAccountForm = this.ipt.toFormGroup(this.inputs);
     this.getGooglePlaceService.$address.subscribe((address)=>{
       this.mailingAddress = address;
-    })
+    });
   }
 
   onSubmitAccountDetails(){
+    // Do not remove for future use
+    // let validateAddress: boolean = true;
+    // console.log(this.mailingAddress);
+    // if(this.checkingAccountForm.controls.changeAddress.dirty){
+    //   let address = this.checkingAccountForm.controls.changeAddress.value.split(',');
+    //   validateAddress = address[0] === this.mailingAddress.streetName.split('|')[0] && address[1].trim() === this.mailingAddress.city.trim();
+    // }
+    // console.log(address[0] + " "+ this.mailingAddress.streetName.split('|')[0] "&&" address[1].trim() === this.mailingAddress.city.trim());
+    // if(!validateAddress){
+    //   this.alertService.error('Please select address from dropdown',false);
+    // }else {
+      const bankAccountDetails = this.createBankAccountObject();
+      const email = this.storageService.getUserFromStorage();
+      this.bankAccountService.addBankAccount(email,bankAccountDetails).subscribe((response)=>{
+        this.authenticationService
+        .getUserDetailsByEmail(this.storageService.getUserFromStorage())
+        .subscribe(([userResponse, accountResponse]) => {
+          this.userService.updateUser(
+          [{
+            userDetails: {...userResponse},
+            bankAccountDetails:  {...accountResponse}}]
+          );
+        })
+        this.alertService.success('Checking account information succesfully updated',true);
+        this.router.navigate(['/profile']);
+      }, (err)=>{
+        //to do
+      })
 
-    const bankAccountDetails = this.createBankAccountObject();
-    const email = this.storageService.getUserFromStorage();
-    this.bankAccountService.addBankAccount(email,bankAccountDetails).subscribe((response)=>{
-      this.authenticationService
-      .getUserDetailsByEmail(this.storageService.getUserFromStorage())
-      .subscribe(([userResponse, accountResponse]) => {
-        this.userService.updateUser(
-        [{
-          userDetails: {...userResponse},
-          bankAccountDetails:  {...accountResponse}}]
-        );
-      }
-      this.alertService.success('Checking account information succesfully updated',true);
-      this.router.navigate(['/profile']);
-    }, (err)=>{
-      //to do
-    })
+    // }
   }
 
   onCheckDirty(){
@@ -78,6 +90,8 @@ export class CheckingAccountFormComponent implements OnInit {
       let bankAccount: any = {};
       if(this.checkingAccountForm.controls.changeAddressAPT.value){
         this.mailingAddress.streetName = this.mailingAddress.streetName.split('|')[0] + '|' + this.checkingAccountForm.controls.changeAddressAPT.value; 
+      }else {
+        this.mailingAddress.streetName = this.mailingAddress.streetName.split('|')[0];
       }
       bankAccount = {
         accountHolderName: this.checkingAccountForm.controls.bankAccountHolder.value,

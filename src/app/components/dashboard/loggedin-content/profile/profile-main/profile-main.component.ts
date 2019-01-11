@@ -22,6 +22,9 @@ export class ProfileMainComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    console.log('called');
+
     this.userService.$user
     .subscribe( (userResponse) => {
       console.log(userResponse);
