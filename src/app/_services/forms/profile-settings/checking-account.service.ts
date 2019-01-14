@@ -49,8 +49,8 @@ export class CheckingAccountService {
 
    return this.userService.$user.pipe(map((userResponse)=>{
       let streetAddress: any = [];
-      this.checkingAccount = userResponse[0].bankAccountDetails;
-      if(userResponse[0].bankAccountDetails.accountHolderName){
+      this.checkingAccount = userResponse.bankAccountDetails;
+      if(this.checkingAccount.accountHolderName){
         // console.log('present');
         this.getGooglePlaceService.updateAddress(this.checkingAccount.mailingAddress);
         streetAddress = this.checkingAccount.mailingAddress.streetName.split('|');

@@ -44,9 +44,9 @@ onSubmitPhoneDetails(){
     this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
     .subscribe(([userResponse,accountResponse])=>{
       this.userService.updateUser(
-       [{
+       {
          userDetails: {...userResponse},
-         bankAccountDetails:  {...accountResponse}}]
+         bankAccountDetails:  {...accountResponse}}
       );
     });
   

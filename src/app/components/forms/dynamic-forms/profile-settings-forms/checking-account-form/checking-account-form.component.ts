@@ -59,9 +59,10 @@ export class CheckingAccountFormComponent implements OnInit {
         .getUserDetailsByEmail(this.storageService.getUserFromStorage())
         .subscribe(([userResponse, accountResponse]) => {
           this.userService.updateUser(
-          [{
+          {
             userDetails: {...userResponse},
-            bankAccountDetails:  {...accountResponse}}]
+            bankAccountDetails:  {...accountResponse}
+          }
           );
         })
         this.alertService.success('Checking account information succesfully updated',true);
