@@ -12,6 +12,7 @@ export class ChangePhoneService {
 
   addUpdatePhone(email,phoneNumber){
     const url = `https://mdv-doctest:8083/customers/accounts/change-phone?email=${email}&phone=${phoneNumber}`;
+    // const url = `${environment.backend_server_url}/customers/accounts/change-phone?email=${email}&phone=${phoneNumber}`;
     return this.http.put(url,{});
   }
 

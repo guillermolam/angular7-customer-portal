@@ -22,10 +22,13 @@ export class ProfileMainComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    console.log('called');
+
     this.userService.$user
     .subscribe( (userResponse) => {
       console.log(userResponse);
-      this.user = userResponse[0];
+      this.user = userResponse;
     });
 
     this.profileConfirmModalService.$removeAccount

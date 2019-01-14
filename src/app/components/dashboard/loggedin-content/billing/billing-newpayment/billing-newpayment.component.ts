@@ -43,7 +43,7 @@ export class BillingNewpaymentComponent implements OnInit {
 
   ngOnInit() {
     this.userService.$user.subscribe((userResponse) => {
-      this.checkingInfo = userResponse[0];
+      this.checkingInfo = userResponse;
     });
 
     this.activatedRoute.params.subscribe((params: Params) => {

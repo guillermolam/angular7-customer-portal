@@ -144,6 +144,7 @@ import { PaperlessFirstTimeComponent } from './components/dashboard/loggedin-con
 import { PaperlessPayEnrollComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/enroll/enroll.component';
 import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enroll-eft-epay-form/enroll-eft-epay-form.component';
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
+import { ChangeEmailComponent } from './routes/profile-settings/change-email/change-email.component';
  
 if (environment.production) {
   enableProdMode();
@@ -263,6 +264,7 @@ export function tokenGetter() {
     PaperlessPayEnrollComponent,
     EnrollEftEpayFormComponent,
     PaperlessPayConfirmComponent,
+    ChangeEmailComponent,
 
 
   ],

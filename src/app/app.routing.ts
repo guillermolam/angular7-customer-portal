@@ -1,3 +1,4 @@
+import { ChangeEmailComponent } from './routes/profile-settings/change-email/change-email.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }         from '@angular/router';
 import { NgModule }                       from '@angular/core';
@@ -48,7 +49,7 @@ import { EditPolicyDetailsComponent }     from './components/dashboard/loggedin-
 import { ValidatePolicyRightsComponent }  from './components/dashboard/loggedin-content/my-insurance/add-policy/validate-policy-rights/validate-policy-rights.component';
 import { PolicyInProcessComponent }       from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-in-process/policy-in-process.component';
 import { BusinesspolicyDetectedComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/businesspolicy-detected/businesspolicy-detected.component';
-
+import { PolicyBelongToAnotherScreenComponent } from './components/screens/signup-process/policy-belong-to-another-screen/policy-belong-to-another-screen.component';
 
 // ----- Routes ----- //
 import { BillingComponent }               from './routes/billing/billing.component';
@@ -80,7 +81,7 @@ const appRoutes: Routes = [
 },
   { path: 'welcome',                      component: WelcomeComponent },
   { path: 'walletcard',                   component: WalletCardComponent},
-
+  { path: 'profile/change-email',         component: ChangeEmailComponent},
 // when logged in
 { path: '', component: DashboardMainComponent, //canActivate: [AuthGuard],
 children: [
@@ -94,7 +95,8 @@ children: [
     { path: 'policy-not-found',           component: PolicyNotFoundComponent},
     { path: 'edit-policy-details',        component: EditPolicyDetailsComponent},
     { path: 'policy-in-process',          component: PolicyInProcessComponent},
-    { path: 'validate-policy-rights',     component: ValidatePolicyRightsComponent},
+    // { path: 'validate-policy-rights',     component: ValidatePolicyRightsComponent},
+    { path: 'validate-policy-rights',     component: PolicyBelongToAnotherScreenComponent},
     { path: ':policyid',
       children: [
         { path: '',                       redirectTo: 'details', pathMatch: 'full' },

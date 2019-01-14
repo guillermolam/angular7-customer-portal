@@ -73,7 +73,7 @@
                     {{ 'MAILING_ADDRESS' | translate }}
                 </div>
                 <div class="col text-right">
-                    <strong>{{billing.bankAccount.mailingAddress.streetName}} {{ billing.bankAccount.mailingAddress.city }} {{ billing.bankAccount.mailingAddress.state }} {{ billing.bankAccount.mailingAddress.zipCode.code }}</strong>
+                    <strong>{{billing.bankAccount.mailingAddress.streetName.replace('|',', APT ')}} {{ billing.bankAccount.mailingAddress.city }}, {{ billing.bankAccount.mailingAddress.state }}, {{ billing.bankAccount.mailingAddress.zipCode.code }}</strong>
                   </div>
               </div>
             </div>
