@@ -356,7 +356,8 @@
                 <div class="margin-bottom mb16">
                   <div>
                     <strong>
-                      {{ 'property address' }}
+                      <!-- {{ 'property address' }} -->
+                      {{ policy.property[0].address.streetName }}, {{ policy.property[0].address.city }}, {{ policy.property[0].address.state }}, {{ policy.property[0].address.zipCode.code }}
                       <!-- {{ policy.property[0].address.streetName }}  {{ policy.property[0].address.city }}  {{ policy.property[0].address.state }}  {{ policy.property[0].address.zipCode.code }} -->
                     </strong>
                   </div>
@@ -367,7 +368,7 @@
                 </div>
                               
                 <iframe height="168" id="gmap_canvas" 
-                [src]="getAddress(['MA', 'USA'])" 
+                [src]="getAddress([policy.property[0].address.streetName, policy.property[0].address.city, policy.property[0].address.state, policy.property[0].address.zipCode.code])" 
                   frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
                   <!-- [src]="getAddress([policy.property[0].address.streetName, policy.property[0].address.city, policy.property[0].address.state, policy.property[0].address.zipCode.code ])"  -->
                 </iframe>

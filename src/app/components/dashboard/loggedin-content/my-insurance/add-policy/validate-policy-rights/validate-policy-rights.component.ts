@@ -28,32 +28,36 @@ private userService:            UserService,
 ) { }
 
 confirmPolicy(): void {  
-this.alertService.success('Policy added successfully', true);
-this.router.navigate(['/my-insurance']);
-// this.authService
-// .confirmPolicyAndAccount(this.userService)
-// .subscribe(
-// (data) => {
-// console.log(data);
-// this.alertService.success('Policy added successfully');
+// this.alertService.success('Policy added successfully', true);
 // this.router.navigate(['/my-insurance']);
-// },
-// (err) => {
-// this.alertService.error('There was an issue');
-// }
-// );
+this.authService
+.confirmPolicyAndAccount(this.userService)
+.subscribe(
+(data) => {
+console.log(data);
+this.alertService.success('Policy added successfully');
+this.router.navigate(['/my-insurance']);
+},
+(err) => {
+this.alertService.error('There was an issue');
+}
+);
 }
 
 createUserObject(formValue): void {
 this.policyDetails =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
-this.user = {
-firstName:                    formValue.editFirst_name,
-middleName:                   formValue.editMI_name,
-lastName:                     formValue.editLast_name,
-email:                        formValue.editEmail,
-policyDetails:                this.policyDetails
-};
-this.userService.updateUser(this.user);
+
+this.userService.$user.subscribe((user)=>{
+  this.user = {
+    firstName:                    user.firstName,
+    middleName:                   user.middleName,
+    lastName:                     user.lastName,
+    email:                        user.email.address,
+    policyDetails:                this.policyDetails
+    };
+  this.userService.updateUser(this.user);
+});
+
 }
 
 ngOnInit() {
@@ -64,7 +68,7 @@ ngOnInit() {
 //   console.log(details);
 // });
 
-this.policyDetails = FakePolicyResponse.getPolicyDetails();
+// this.policyDetails = FakePolicyResponse.getPolicyDetails();
 
 }
 

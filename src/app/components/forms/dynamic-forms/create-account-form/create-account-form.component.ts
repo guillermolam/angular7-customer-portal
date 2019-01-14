@@ -69,28 +69,28 @@ export class CreateAccountFormComponent implements OnInit {
   register() {
     this.loading = true;
     this.createUserObject(this.signUpForm.value, null);
-  /*  if (this.userData) {
-      this.authService.verifyUser(this.userData)
-      .subscribe(
-        (result) => {
-          this.createUserObject(this.userData, result);
-          this.router.navigate(['signup', 'create-password' ]);
-        },
-        (err) => {
-          if (err.status === 400) {
-            // --- Email is already in use
-            this.router.navigate(['signup', 'email-in-use' ]);
-          }
-          else if (err.status === 403) {
-            // --- If the user does not have any policies
-            this.router.navigate(['signup', 'add-policy' ]);
-          }
-          else {
-            console.log(err);
-          }
-        }
-      );
-    }*/
+    // if (this.userData) {
+    //   this.authService.verifyUser(this.userData)
+    //   .subscribe(
+    //     (result) => {
+    //       this.createUserObject(this.userData, result);
+    //       this.router.navigate(['signup', 'create-password' ]);
+    //     },
+    //     (err) => {
+    //       if (err.status === 400) {
+    //         // --- Email is already in use
+    //         this.router.navigate(['signup', 'email-in-use' ]);
+    //       }
+    //       else if (err.status === 403) {
+    //         // --- If the user does not have any policies
+    //         this.router.navigate(['signup', 'add-policy' ]);
+    //       }
+    //       else {
+    //         console.log(err);
+    //       }
+    //     }
+    //   );
+    // }
     this.router.navigate(['signup', 'add-policy' ]);
   }
 

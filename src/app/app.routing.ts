@@ -48,7 +48,7 @@ import { EditPolicyDetailsComponent }     from './components/dashboard/loggedin-
 import { ValidatePolicyRightsComponent }  from './components/dashboard/loggedin-content/my-insurance/add-policy/validate-policy-rights/validate-policy-rights.component';
 import { PolicyInProcessComponent }       from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-in-process/policy-in-process.component';
 import { BusinesspolicyDetectedComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/businesspolicy-detected/businesspolicy-detected.component';
-
+import { PolicyBelongToAnotherScreenComponent } from './components/screens/signup-process/policy-belong-to-another-screen/policy-belong-to-another-screen.component';
 
 // ----- Routes ----- //
 import { BillingComponent }               from './routes/billing/billing.component';
@@ -94,7 +94,8 @@ children: [
     { path: 'policy-not-found',           component: PolicyNotFoundComponent},
     { path: 'edit-policy-details',        component: EditPolicyDetailsComponent},
     { path: 'policy-in-process',          component: PolicyInProcessComponent},
-    { path: 'validate-policy-rights',     component: ValidatePolicyRightsComponent},
+    // { path: 'validate-policy-rights',     component: ValidatePolicyRightsComponent},
+    { path: 'validate-policy-rights',     component: PolicyBelongToAnotherScreenComponent},
     { path: ':policyid',
       children: [
         { path: '',                       redirectTo: 'details', pathMatch: 'full' },
