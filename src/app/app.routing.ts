@@ -1,3 +1,4 @@
+import { ChangeEmailComponent } from './routes/profile-settings/change-email/change-email.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }         from '@angular/router';
 import { NgModule }                       from '@angular/core';
@@ -80,7 +81,7 @@ const appRoutes: Routes = [
 },
   { path: 'welcome',                      component: WelcomeComponent },
   { path: 'walletcard',                   component: WalletCardComponent},
-
+  { path: 'profile/change-email',         component: ChangeEmailComponent},
 // when logged in
 { path: '', component: DashboardMainComponent, //canActivate: [AuthGuard],
 children: [
