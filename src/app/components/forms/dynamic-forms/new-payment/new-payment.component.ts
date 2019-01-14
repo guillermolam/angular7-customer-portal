@@ -194,8 +194,8 @@ export class NewPaymentComponent implements OnInit {
     });
    
     this.userService.$user.subscribe((userResponse)=>{
-      this.checkingInfo = userResponse[0];
-      this.setValues(userResponse[0]);
+      this.checkingInfo = userResponse;
+      this.setValues(userResponse);
     });
 
     
