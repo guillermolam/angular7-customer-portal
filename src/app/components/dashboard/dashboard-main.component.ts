@@ -6,7 +6,7 @@ import { PolicyDataService }                  from '../../_services/my-insurance
 import { PolicyDetailsService }               from './../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }   from './../../_services/storage-service-observables/storage-service-observables.service';
 import { UserService }                        from './../../_services/user.service';
-import { AuthenticationService } from './../../_services/_iam/authentication-service.service';
+import { AuthenticationService }              from './../../_services/_iam/authentication-service.service';
 import { TestingDataService }                 from '../../_helpers/testing-data.service';
 
 @Component({
@@ -21,12 +21,14 @@ export class DashboardMainComponent implements OnInit {
   testAlert:                                  any;
 
   constructor(
+    private authenticationService:            AuthenticationService,
+    private billingDataService:               BillingDataService,
     private policyDataService:                PolicyDataService,
     private policyDetailsService:             PolicyDetailsService,
     private router:                           Router,
     private storageService:                   StorageServiceObservablesService,
     private userService:                      UserService,
-    private authenticationService:            AuthenticationService,
+    
     private testingData:                      TestingDataService) {
 
     }
@@ -59,16 +61,6 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
-    // this.policyDataService.$policyDetails.subscribe(
-    //   (success) => {
-    //     this.loading = false;
-    //   },
-    //   (err) => {
-    //     this.policyDetailsService.getPolicyDetailsByEmail(this.storageService.getUserFromStorage()).subscribe();
-    //     this.loading = false;
-    //   },
-    // );
-
     this.policyDetailsService
       .getPolicyDetailsByEmail(
         this.storageService.getUserFromStorage()
@@ -77,7 +69,7 @@ export class DashboardMainComponent implements OnInit {
         () => { this.loading = false; },
         (err) => {
           this.loading = false;
-          this.userService.updateUser( this.testingData.testDatafunction() );
+          this.billingDataService.updateBillingDetails( this.testingData.testDatafunction() );
         }
      );
 
@@ -92,7 +84,11 @@ export class DashboardMainComponent implements OnInit {
       },
       (err) => {
         this.loading = false;
-        this.userService.updateUser( this.testingData.testDatafunction() );
+        let ui = [{
+          userDetails: this.testingData.testUserInfo(),
+          bankAccountDetails: this.testingData.testBankingInfo()
+        }];
+        this.userService.updateUser( ui );
         this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
       })
     ;

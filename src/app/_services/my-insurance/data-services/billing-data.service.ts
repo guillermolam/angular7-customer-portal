@@ -13,6 +13,7 @@ export class BillingDataService {
   constructor() {}
 
   updateBillingDetails(currentBill: any) {
+    console.log('BillingDataService', currentBill);
     this.details.next(currentBill);
   }
 }

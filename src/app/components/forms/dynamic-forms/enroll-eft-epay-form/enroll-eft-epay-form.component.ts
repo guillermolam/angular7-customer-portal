@@ -18,11 +18,12 @@ import { PaperlessService }           from '../../../../_services/_iam/paperless
 })
 export class EnrollEftEpayFormComponent implements OnInit {
   @Input()  inputs:                   FormBase<any>[] = [];
+  @Input()  userData:                 any;
             enrollInEft:              FormGroup;
             enrollAccountType:        FormGroup;
+            accountType:              string;
             loading:                  boolean = false;
             policyId:                 string;
-            user;
 
   constructor(
     private activatedRoute:           ActivatedRoute,
@@ -34,16 +35,21 @@ export class EnrollEftEpayFormComponent implements OnInit {
     private userService:              UserService
   ) { }
 
-  checkForPrefillData(): void {
-    //this.
+  checkForPrefillData(eftData): void {
+    const bankDetails = eftData[0].bankAccountDetails || '';
+    if (bankDetails != '') {
+      this.enrollInEft.patchValue({
+        enrollInEft_accountName:      bankDetails.accountHolderName,
+        enrollInEft_accountNumber:    bankDetails.accountNumber.digits,
+        enrollInEft_routingNumber:    bankDetails.routingNumber.digits,
+        enrollInEft_confirmAccountNumber: bankDetails.accountNumber.digits
+      });
 
-   // this.enrollInEft.setValue(
-
-    //)
+      this.enrollAccountType.controls['bankType'].setValue(bankDetails.accountType);
+    }
   }
 
-  enroll() {
-    const email = this.user.email.address;
+  enroll(email) {
     if( this.enrollInEft.controls['enrollInEft_accountNumber'].value !=  this.enrollInEft.controls['enrollInEft_confirmAccountNumber'].value) {
       this.alertService.error('Account number and Confirmation are not the same');
       return;
@@ -53,27 +59,28 @@ export class EnrollEftEpayFormComponent implements OnInit {
       billingInfo: [{
         accountName:                this.enrollInEft.controls['enrollInEft_accountName'].value,
         accountNumber:              this.enrollInEft.controls['enrollInEft_accountNumber'].value,
-        accountType:                this.enrollAccountType.value,
+        accountType:                this.enrollAccountType.controls['bankType'].value,
         bankRoutingNumber:          this.enrollInEft.controls['enrollInEft_routingNumber'].value,
       }],
       deductionDate:                this.enrollInEft.controls['enrollInEft_deductionDate'].value,
-      policyId:                     this.policyId
     };
 
-    console.log('enrollForm', enrollForm);
-    
     this.paperlessService
       .enrollPaperlessEPay( this.policyId, enrollForm, email )
       .subscribe( (success) => {
-        this.billingObservableService.updateBilling(enrollForm);
+        this.billingObservableService.updateBilling( enrollForm );
         this.router.navigate(['/billing/paperless/e-pay/' + this.policyId + '/confirm']);
       },
       (error) => {
-        this.alertService.error('There was an error');
+        this.billingObservableService.updateBilling( enrollForm );
+        this.router.navigate(['/billing/paperless/e-pay/' + this.policyId + '/confirm']);
+
+       // this.alertService.error(`We could not Enroll you in the program ${error.message}`);
       });
   }
 
-  ngOnInit() { 
+  ngOnInit() {
+    this.accountType = this.userData[0].bankAccountDetails.accountType;
     this.activatedRoute.params.subscribe(
       (params: Params) => {
         this.policyId =                 params['policyid'];
@@ -82,10 +89,7 @@ export class EnrollEftEpayFormComponent implements OnInit {
     this.enrollAccountType =            new FormGroup({
       bankType:                         new FormControl(''),
     });
-    this.userService.$user.subscribe(
-      (user) => { this.user = user; }
-    )
-    this.checkForPrefillData();
+    this.checkForPrefillData(this.userData);
   }
 
 }

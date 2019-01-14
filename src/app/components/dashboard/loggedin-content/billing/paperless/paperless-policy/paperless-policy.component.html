@@ -13,7 +13,7 @@
       </h2>
       <table mdbTable class="paperless-table">
         <tbody class="med-grey-color">
-          <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user">
+          <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of policyInfo">
             <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
               <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
               <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
@@ -33,7 +33,7 @@
                   <div class="mx-auto text-center">
                     <mapfre-button 
                       additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                      (click)="cancellEnroll(pdetail.policynumber.policynumber); hideModalAction($event)">
+                      (click)="cancellEnroll(pdetail.policynumber.policynumber, user[0].userDetails.email.address); hideModalAction($event)">
                       {{ 'REMOVE_FROM_E-POLICY' | translate }}
                     </mapfre-button>
                     <mapfre-button 
@@ -65,7 +65,7 @@
                   <div class="mx-auto text-center">
                       <mapfre-button 
                         additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                        (click)="enroll(pdetail.policynumber.policynumber); hideModalAction($event)">
+                        (click)="enroll(pdetail.policynumber.policynumber, user[0].userDetails.email.address); hideModalAction($event)">
                         {{ 'CONFIRM_ENROLLMENT' | translate }}
                       </mapfre-button>
                       <mapfre-button  

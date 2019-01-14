@@ -12,7 +12,7 @@
     </h2>
     <table mdbTable class="paperless-table">
       <tbody class="med-grey-color">
-        <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of user">
+        <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngFor="let pdetail of policyInfo">
         
           <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
               <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
@@ -33,16 +33,16 @@
                   </div>
                   <div class="mx-auto text-c
                   enter">
-                      <mapfre-button 
-                        additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                        (click)="cancellEnroll(pdetail.policynumber.policynumber, 'e-bill'); hideModalAction($event)">
-                        {{ 'REMOVE_FROM_E-BILL' | translate }}
-                      </mapfre-button>
-                      <mapfre-button 
-                        additionalClasses="ghost secondary padding-vertical pv16  w-50"
-                        (click)="hideModalAction($event)">
-                        {{ 'CANCEL' | translate }}
-                      </mapfre-button>
+                    <mapfre-button 
+                      additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
+                      (click)="cancellEnroll(pdetail.policynumber.policynumber, user[0].userDetails.email.address); hideModalAction($event)">
+                      {{ 'REMOVE_FROM_E-BILL' | translate }}
+                    </mapfre-button>
+                    <mapfre-button 
+                      additionalClasses="ghost secondary padding-vertical pv16  w-50"
+                      (click)="hideModalAction($event)">
+                      {{ 'CANCEL' | translate }}
+                    </mapfre-button>
                   </div>
                 </div>
               </mapfre-modal>
@@ -67,7 +67,7 @@
                   <div class="mx-auto text-center">
                       <mapfre-button 
                         additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                        (click)="enroll(pdetail.policynumber.policynumber, 'e-bill'); hideModalAction($event)">
+                        (click)="enroll(pdetail.policynumber.policynumber, user[0].userDetails.email.address); hideModalAction($event)">
                         {{ 'CONFIRM_ENROLLMENT' | translate }}
                       </mapfre-button>
                       <mapfre-button 
@@ -88,7 +88,7 @@
     </h2>
     <div class="row margin-top mt16">
       <div class="col">
-        {{ 'EMAIL' | translate }}: &nbsp;&nbsp; <strong>{{ 'test-email' }}</strong>
+        {{ 'EMAIL' | translate }}: &nbsp;&nbsp; <strong>{{  user[0].userDetails.email.address }}</strong>
       </div>
       <div class="col text-right">
         <a class="mapfre link edit-link float-right" [routerLink]="['/profile','verify-password']"> 

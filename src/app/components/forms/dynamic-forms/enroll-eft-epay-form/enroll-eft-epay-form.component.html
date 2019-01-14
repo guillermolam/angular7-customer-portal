@@ -1,18 +1,19 @@
+<mapfre-alert></mapfre-alert>
 <form 
+
   [formGroup]="enrollInEft" 
   name="enrollInEft"  
-  (ngSubmit)="enrollInEft.valid && enrollAccountType.valid && enroll()">
+  (ngSubmit)="enroll(userData[0].bankAccountDetails.accountType) ">
   
   <div class="row margin-vertical mv8">
     <div class="col text-center">
-      
       <div class="mapfre pill-box d-inline-block" [formGroup]="enrollAccountType">
         <div class="pill pill-left">
-          <input type="radio" id="optionone" class="pill-radio" name="bankType" value="checking" checked formControlName="bankType" required>
+          <input type="radio" id="optionone" class="pill-radio" name="bankType" value="CHECKING" [checked]="accountType == 'CHECKING'" formControlName="bankType" required>
           <label for="optionone" class="pill-label  padding-horizontal ph16 padding-vertical pv4">Checking</label>
         </div>
         <div class="pill pill-right">
-          <input type="radio" id="optiontwo" class="pill-radio" name="bankType" value="savings" formControlName="bankType" required>
+          <input type="radio" id="optiontwo" class="pill-radio" name="bankType" value="SAVINGS" formControlName="bankType" [checked]="accountType == 'SAVING'" required>
           <label for="optiontwo" class="pill-label padding-horizontal ph16 padding-vertical pv4">Saving</label>
         </div>
       </div>
@@ -53,7 +54,7 @@
     <div class="col">
       <mapfre-button
         [additionalClasses]="'basic primary large waves-effect waves-light'"
-        [disabledValue]="enrollInEft.valid &&  enrollAccountType.valid" 
+        [disabledValue]="enrollInEft.valid && enrollAccountType.valid" 
         [inputType]="'submit'"
         [translateValue]="'CONFIRM' | translate"
       ></mapfre-button>

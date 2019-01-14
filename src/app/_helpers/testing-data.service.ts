@@ -251,135 +251,7 @@ export class TestingDataService {
         ],
       }; 
     */
-    return this.testingDataFull();
-  }
-
-  testDataDocuments(policyID): any {
-    let object;
-    if (policyID == 'abc123' ) {
-      object = [
-        {
-          policyEffectiveYear: '2001',
-          documentId: 'bac2ab56-55f3-45a7-a1a0-553652847bb7',
-          type: 'HONBEND',
-          transactionDate: '02/20/2002',
-          description: 'Homeowner NB/Endorse DEC (SDSHONBAM1)'
-        },
-        {
-          policyEffectiveYear: '2001',
-          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-          type: 'ENDORSE',
-          transactionDate: '02/20/2002',
-          description: 'Endorsement Documents'
-        },
-        {
-          policyEffectiveYear: '2001',
-          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-          type: 'ENDORSE',
-          transactionDate: '02/20/2002',
-          description: 'Endorsement Documents'
-      },
-      {
-        policyEffectiveYear: '2001',
-        documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-        type: 'ENDORSE',
-        transactionDate: '02/20/2002',
-        description: 'Endorsement Documents'
-      }
-      ];
-    }
-    else if ( policyID == 'QJN952') {
-      object = [
-        {
-          policyEffectiveYear: '2001',
-          documentId: 'bac2ab56-55f3-45a7-a1a0-553652847bb7',
-          type: 'HONBEND',
-          transactionDate: '02/20/2002',
-          description: 'Homeowner NB/Endorse DEC (SDSHONBAM1)'
-        },
-        {
-          policyEffectiveYear: '2001',
-          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-          type: 'ENDORSE',
-          transactionDate: '02/20/2002',
-          description: 'Endorsement Documents'
-        },
-        {
-          policyEffectiveYear: '2001',
-          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-          type: 'ENDORSE',
-          transactionDate: '02/20/2002',
-          description: 'Endorsement Documents'
-          },
-          {
-            policyEffectiveYear: '2001',
-            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-            type: 'ENDORSE',
-            transactionDate: '02/20/2002',
-            description: 'Endorsement Documents'
-          },
-          {
-            policyEffectiveYear: '2001',
-            documentId: 'bac2ab56-55f3-45a7-a1a0-553652847bb7',
-            type: 'HONBEND',
-            transactionDate: '02/20/2002',
-            description: 'Homeowner NB/Endorse DEC (SDSHONBAM1)'
-          },
-          {
-            policyEffectiveYear: '2001',
-            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-            type: 'ENDORSE',
-            transactionDate: '02/20/2002',
-            description: 'Endorsement Documents'
-          },
-          {
-            policyEffectiveYear: '2001',
-            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-            type: 'ENDORSE',
-            transactionDate: '02/20/2002',
-            description: 'Endorsement Documents'
-          },
-          {
-            policyEffectiveYear: '2001',
-            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-            type: 'ENDORSE',
-            transactionDate: '02/20/2002',
-            description: 'Endorsement Documents'
-          },
-          {
-            policyEffectiveYear: '2001',
-            documentId: 'bac2ab56-55f3-45a7-a1a0-553652847bb7',
-            type: 'HONBEND',
-            transactionDate: '02/20/2002',
-            description: 'Homeowner NB/Endorse DEC (SDSHONBAM1)'
-          },
-          {
-            policyEffectiveYear: '2001',
-            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-            type: 'ENDORSE',
-            transactionDate: '02/20/2002',
-            description: 'Endorsement Documents'
-          },
-          {
-            policyEffectiveYear: '2001',
-            documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-            type: 'ENDORSE',
-            transactionDate: '02/20/2002',
-            description: 'Endorsement Documents'
-        },
-        {
-          policyEffectiveYear: '2001',
-          documentId: 'f1f18405-d76f-4292-8f3f-61a3b06a66a2',
-          type: 'ENDORSE',
-          transactionDate: '02/20/2002',
-          description: 'Endorsement Documents'
-        }
-      ];
-    }
-    else {
-      object = false;
-    }
-    return object;
+    return this.testingPolicyInfol();
   }
 
   testDataClaims(): any {
@@ -565,39 +437,43 @@ export class TestingDataService {
     
   }
 
-  testDataBilling(): any {
+  testBankingInfo(): any {
     return {
-
-    }
+      accountHolderName:"Default",
+      accountNumber:{
+        digits:"12345678987887777",
+      },
+      accountType:"CHECKING",
+      mailingAddress:{
+        city:"NORTH OXFORD",
+        state:"MASSACHUSETTS",
+        streetName:"120 HIGHWAY 20|55",
+        zipCode:{
+          code:"01537",
+          }
+      },
+      routingNumber:{
+        digits:"265473812",
+      }
+    };
   }
 
-   testUserFunction(): any {
+  testUserInfo(): any {
     return {
-      firstName: 'FirstName',
-      middleName: 'MiddleName',
-      lastName: 'LastName',
-      email: 'test@email.com',
-    }
+      address:null,
+      email: {
+        address:"testmfre@gmail.com"
+      },
+      firstName:"DEFAULT",
+      lastName:"DEFAULT",
+      middleName:"DEFAULr",
+      phone:{
+        number:"1254122222"
+      }
+    };
   }
 
-  testDataChecking(policyID): any {
-    let object;
-    if ( policyID == 'QJN952') {
-      object = [{
-        accountName: 'Test Name',
-        bankRoutingNumber: '123456789',
-        accountNumber: '11111111111111111',
-        mailingAddress: '1078 Boylston Street, Boston, MA, USA',
-        apartment: '123'
-      }];
-    }
-    else {
-      object = false;
-    }
-    return object;
-  }
-
-  testingDataFull(): any {
+  testingPolicyInfol(): any {
     return [
       {
       "email": {
@@ -642,11 +518,11 @@ export class TestingDataService {
       ],
       "policyStatus": "INACTIVE",
       "policyFlags": {
-        "isEft": "ENROLLED",
+        "isEft": "UNENROLLED",
         "isEftEligible": "UNENROLLED",
         "isEdf": "UNENROLLED",
         "isEbillEligible": "ENROLLED",
-        "isEbill": "ENROLLED",
+        "isEbill": "UNENROLLED",
         "isEdfEligible": "UNENROLLED",
         "isCCEligible": "Y",
         "allowDeductionDateChange": "Y"
@@ -1403,9 +1279,9 @@ export class TestingDataService {
       ],
       "policyStatus": "INACTIVE",
       "policyFlags": {
-        "isEft": "ENROLLED",
+        "isEft": "UNENROLLED",
         "isEftEligible": "UNENROLLED",
-        "isEdf": "ENROLLMENT-PENDING",
+        "isEdf": "UNENROLLED",
         "isEbillEligible": "UNENROLLED",
         "isEbill": "UNENROLLED",
         "isEdfEligible": "UNENROLLED",
@@ -2164,11 +2040,11 @@ export class TestingDataService {
       ],
       "policyStatus": "ACTIVE",
       "policyFlags": {
-        "isEft": "ENROLLMENT-PENDING",
+        "isEft": "UNENROLLED",
         "isEftEligible": "UNENROLLED",
-        "isEdf": "ENROLLED",
+        "isEdf": "UNENROLLED",
         "isEbillEligible": "UNENROLLED",
-        "isEbill": "UNENROLLMENT-PENDING",
+        "isEbill": "UNENROLLED",
         "isEdfEligible": "UNENROLLED",
         "isCCEligible": "Y",
         "allowDeductionDateChange": "Y"

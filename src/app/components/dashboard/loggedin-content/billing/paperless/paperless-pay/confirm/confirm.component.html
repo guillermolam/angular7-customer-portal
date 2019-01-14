@@ -32,7 +32,7 @@
     <div class="col">
       <mapfre-button
         [additionalClasses]="'basic primary large mx-auto waves-effect'"
-        [routerLink]="['/billing/paperless']">  
+        (click)="reSyncBilling()">  
         {{ 'CONTINUE' | translate }}
       </mapfre-button>
     </div>
