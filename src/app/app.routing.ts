@@ -95,8 +95,8 @@ children: [
     { path: 'policy-not-found',           component: PolicyNotFoundComponent},
     { path: 'edit-policy-details',        component: EditPolicyDetailsComponent},
     { path: 'policy-in-process',          component: PolicyInProcessComponent},
-    // { path: 'validate-policy-rights',     component: ValidatePolicyRightsComponent},
-    { path: 'validate-policy-rights',     component: PolicyBelongToAnotherScreenComponent},
+    { path: 'validate-policy-rights',     component: ValidatePolicyRightsComponent},
+    // { path: 'validate-policy-rights',     component: PolicyBelongToAnotherScreenComponent},
     { path: ':policyid',
       children: [
         { path: '',                       redirectTo: 'details', pathMatch: 'full' },

@@ -84,7 +84,7 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
             policyDate:             string;
             policyDetails:           any;
             policyNumber:           string;
-            user:                   User = {};
+            user:                   any;
             
 
   constructor(
@@ -96,41 +96,34 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
   ) { }
 
   confirmPolicy(): void {
-    // this.authService
-    //   .confirmPolicyAndAccount(this.userService)
-    //   .subscribe(
-    //     (data) => {
-    //       console.log(data);
-          this.router.navigate(['/signup', 'createpassword']);
-  //       },
-  //       (err) => {
-  //         this.alertService.error('There was an issue');
-  //       }
-  //     );
-  }
 
-  // createUserObject(formValue): void {
-  //   this.policyDetail =          [{ policynumber: { policynumber: formValue.editPolicyNumber } }];
-  //   this.user = {
-  //     firstName:                    formValue.editFirst_name,
-  //     middleName:                   formValue.editMI_name,
-  //     lastName:                     formValue.editLast_name,
-  //     email:                        formValue.editEmail,
-  //     policyDetails:                this.policyDetail
-  //   };
-  //   this.userService.updateUser(this.user);
-  // }
+    if (this.router.url==='/my-insurance/validate-policy-rights') {
+      this.policyService.addPolicyToEmail(this.user.userDetails.email.address,this.policyNumber).subscribe(()=>{
+          this.alertService.error('Policy added successfully');
+          this.router.navigate(['/my-insurance']);
+      },(err)=>{
+        this.alertService.error('Policy is already added');
+        this.router.navigate(['/my-insurance']);
+      })    
+    }else {
+          this.router.navigate(['/signup', 'createpassword']);
+    } 
+  }
 
   ngOnInit() {
 
-    this.policyNumber = `${this.userData.policyDetails[0].policynumber.policynumber}`;
+    this.userService.$user.subscribe((user)=>{
 
-    //new code
-    this.policyService.getPolicyDetailsByNumber(this.policyNumber).subscribe((details)=>{
-      this.policyDetails = details;
-      console.log(details);
-    });
-    
+      console.log(user);
+      this.policyNumber = `${user.policyDetails[0].policynumber.policynumber}`;
+      this.user = user;
+      //new code
+      this.policyService.getPolicyDetailsByNumber(this.policyNumber).subscribe((details)=>{
+        this.policyDetails = details;
+        // console.log(details);
+      });
+
+    });    
   }
 
 }

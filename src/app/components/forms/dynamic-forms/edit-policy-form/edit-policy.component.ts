@@ -17,10 +17,10 @@ import { UserService }                from '../../../../_services/user.service';
 
 export class EditPolicyComponent implements OnInit {
   @Input()  inputs:                     FormBase<any>[] = [];
-  @Input()  userData:                   User;
+  // @Input()  userData:                   User;
             editPolicyForm:             FormGroup;
             loading:                    boolean = false;
-            user:                       User  = {};
+            user:                       any  = {};
 
   constructor(
     private authService:                AuthenticationService,
@@ -30,60 +30,84 @@ export class EditPolicyComponent implements OnInit {
   ) { }
 
   createUserObject(object): void {
-    this.user = {
-      addPolicyAttempts:                this.userData.addPolicyAttempts +1,
-      firstName:                        object.editFirst_name,
-      middleName:                       object.editMI_name,
-      lastName:                         object.editLast_name,
-      email:                            object.editEmail,
-      policyDetails:                    [{
-        policynumber:                   { policynumber: object.editPolicyNumber }
-      }]
-    };
+    // console.log(this.user)
+    this.user.addPolicyAttempts = this.user.addPolicyAttempts + 1;
+    this.user.userDetails.firstName = object.editFirst_name
+    this.user.userDetails.middleName = object.editMI_name
+    this.user.userDetails.lastName =  object.editLast_name
+    this.user.userDetails.email.address = object.editEmail
+    this.user.policyDetails =  [{
+      policynumber:                   { policynumber: object.editPolicyNumber }
+    }];
     this.userService.updateUser(this.user);
   }
 
   editPolicy(): void {
-    if(this.router.url==='/my-insurance/edit-policy-details'){
-      this.router.navigate(['/my-insurance','validate-policy-rights']);
-    }else {
       this.createUserObject(this.editPolicyForm.value);
       this.authService
       .verifyPolicy(this.userService)
       .subscribe(
-        (data) => {
-          this.router.navigate(['signup', 'create-password']);
+        (response) => {
+          // this.policyService.updatePolicyDetails(response); //new code
+          // policy not linked and exists in as400
+          if (this.router.url==='/my-insurance/edit-policy-details') {
+            this.router.navigate(['/my-insurance','validate-policy-rights']);
+          }else {
+            this.router.navigate(['signup', 'create-password']);
+          }
         },
         (err) => {
-          if (err.status === 409) {
-            // Policy is not found
-            this.router.navigate(['signup', 'not-found']);
+          if (this.router.url==='/my-insurance/edit-policy-details') {
+            if (err.status === 409) {
+              // Conflict, Policy is not found and name validation fails
+              this.router.navigate(['/my-insurance','policy-not-found']);
+            }
+            else if (err.status === 400) {
+              // bad requrest - 400 - Biz Policy
+              this.router.navigate(['/my-insurance','business-policy-not-supported']);
+            }
+            else if (err.status === 404){
+              // 404 - if the policy belongs to another account
+              // this.router.navigate(['signup', 'notfound']);
+            this.router.navigate(['/my-insurance','validate-policy-rights']);
+            // this.router.navigate(['signup', 'policy-belongs-to-another']);
+            }
+          }else {
+            if (err.status === 409) {
+              // Conflict, Policy is not found and name validation fails
+              this.router.navigate(['signup', 'not-found']);
+            }
+            else if (err.status === 400) {
+              // bad requrest - 400 - Biz Policy
+              this.router.navigate(['signup', 'bop']);
+            }
+            else if (err.status === 404){
+              // 404 - if the policy belongs to another account
+              // this.router.navigate(['signup', 'notfound']);
+              this.router.navigate(['signup', 'policy-belongs-to-another']);
+            }
+
           }
-          else if (err.status === 400) {
-            // bad requrest - 400 - Biz Policy
-            this.router.navigate(['signup', 'bop']);
-          }
-          else if (err.status === 404) {
-            // conflict - 409 - if the policy belongs to another
-            this.router.navigate(['signup', 'policy-belongs-to-another']);
-          }
+         
         }
       )
     ;
-    } 
     
   }
 
   prefillData(prefillData): void {
-    this.editPolicyForm.get('editFirst_name').setValue(prefillData.firstName);
-    this.editPolicyForm.get('editMI_name').setValue(prefillData.middleName);
-    this.editPolicyForm.get('editLast_name').setValue(prefillData.lastName);
+    this.editPolicyForm.get('editFirst_name').setValue(prefillData.userDetails.firstName);
+    this.editPolicyForm.get('editMI_name').setValue(prefillData.userDetails.middleName);
+    this.editPolicyForm.get('editLast_name').setValue(prefillData.userDetails.lastName);
     this.editPolicyForm.get('editPolicyNumber').setValue(prefillData.policyDetails[0].policynumber.policynumber);
   }
 
   ngOnInit() {
     this.editPolicyForm = this.ipt.toFormGroup(this.inputs);
-    this.prefillData(this.userData);
+    this.userService.$user.subscribe((user)=>{
+      this.prefillData(user);
+      this.user = user;
+    })
   }
 
 }

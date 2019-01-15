@@ -23,33 +23,33 @@ export class ServiceHelpersService {
     if ( db == 'createaccount' ) {
       obj =  {
         customer: {
-          firstName:        items.firstName,
-          middleName:       items.middleName,
-          lastName:         items.lastName,
-          email:            items.email
+          firstName:        items.userDetails.firstName,
+          middleName:       items.userDetails.middleName,
+          lastName:         items.userDetails.lastName,
+          email:            items.userDetails.email.address
         },
         policynumbers: [{
             policynumber:   pn
         }],
         credentials: {
-          email:            items.email,
+          email:            items.userDetails.email.address,
           password:         pword
         }
       };
     }
     else if (db == 'personalpolicy') {
       obj = {
-        firstName:          items.firstName,
-        middleName:         items.middleName,
-        lastName:           items.lastName
+        firstName:          items.userDetails.firstName,
+        middleName:         items.userDetails.middleName,
+        lastName:           items.userDetails.lastName
       };
     }
     else if (db == 'verifyuser') {
       obj = {
-        firstName:          items.firstName,
-        middleName:         items.middleName,
-        lastName:           items.lastName,
-        email:              items.email
+        firstName:          items.userDetails.firstName,
+        middleName:         items.userDetails.middleName,
+        lastName:           items.userDetails.lastName,
+        email:              items.userDetails.email.address
       };
     }
     return obj;

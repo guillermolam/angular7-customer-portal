@@ -103,4 +103,11 @@ export class PolicyDetailsService {
     return this.http.get(url);
   }
 
+  addPolicyToEmail(email,policyNumber){
+    const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/add-policy`;
+    // const url = `${environment.backend_server_url}/personal-policies/${email}/${policyNumber}/add-policy`;    
+    return this.http.post(url,{});
+  }
+
+
 }
