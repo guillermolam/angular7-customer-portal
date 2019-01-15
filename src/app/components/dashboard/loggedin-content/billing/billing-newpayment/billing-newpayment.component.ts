@@ -2,13 +2,10 @@ import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { AlertService }             from 'mapfre-design-library';
 import { NewPaymentService }        from '../../../../../_services/forms/new-payment/new-payment.service';
+import { PolicyDataService }        from '../../../../../_services/my-insurance/data-services/policy-data.service';
 import { User }                     from '../../../../../_models/user';
 import { UserService }              from './../../../../../_services/user.service';
 import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
-
-import { TestingDataService }       from './../../../../../_helpers/testing-data.service';
-import { BillingDataService }       from './../../../../../_services/my-insurance/data-services/billing-data.service';
-import { forkJoin }                 from 'rxjs';
 
 @Component({
   selector:     'app-billing-newpayment',
@@ -21,7 +18,7 @@ export class BillingNewpaymentComponent implements OnInit {
   checkingInfo:                     any;
   input:                            object;
   inputs:                           any[];
-  loading:                          boolean = false;
+  loading:                          boolean;
   legalCheckbox:                    boolean = false;
   policyId:                         number;
   user:                             User;
@@ -32,29 +29,42 @@ export class BillingNewpaymentComponent implements OnInit {
     service:                        NewPaymentService,
     private activatedRoute:         ActivatedRoute,
     private alertService:           AlertService,
+    private policyDataService:      PolicyDataService,
     private userService:            UserService,
     private userInformation:        UserInfoService,
-    private testingData:            TestingDataService,
-    private billingDataService:     BillingDataService,
-
   ) {
     this.inputs = service.getInputs();
    }
 
+  checkForAccount(): boolean {
+    const bankDetails = this.checkingInfo[0].bankAccountDetails;
+    let returnBool;
+    if (bankDetails.accountHolderName != '' || bankDetails.accountHolderName != undefined) {
+      returnBool = true;
+    }
+    else {
+      returnBool = false;
+    }
+    return returnBool;
+  }
+
   ngOnInit() {
-    this.userService.$user.subscribe((userResponse) => {
-      this.checkingInfo = userResponse;
-    });
+    this.loading = true;
+    
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-      this.billingDataService.$billingDetails
-      .subscribe((billingResponse: any[]) => {
-        if (billingResponse) {
-          this.policyDetails = billingResponse;
+      this.policyDataService.$policyDetails
+      .subscribe((policyResponse) => {
+        if (policyResponse) {
+          this.policyDetails = policyResponse;
         }
-        this.loading = false;
+      });
+      this.userService.$user
+      .subscribe((userResponse) => {
+        this.checkingInfo = userResponse;
       });
     });
+    this.loading = false;
   }
 }

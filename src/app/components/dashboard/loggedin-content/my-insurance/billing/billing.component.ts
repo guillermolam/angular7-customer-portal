@@ -3,12 +3,9 @@ import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 
 import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
+import { PolicyDataService }        from '../../../../../_services/my-insurance/data-services/policy-data.service';
 import { User }                     from '../../../../../_models/user';
 import { UserService }              from '../../../../../_services/user.service';
-import { TestingDataService }       from '../../../../../_helpers/testing-data.service';
-import { BillingDataService } from './../../../../../_services/my-insurance/data-services/billing-data.service';
-
-
 
 @Component({
   selector: 'app-billing',
@@ -19,25 +16,27 @@ export class BillingDetailsComponent implements OnInit {
   schedualOrHistory:        boolean = true;
   checkBillingVar:          boolean = false;
   policyId:                 number;
-  user:                     User;
+  user:                     any;
   policyDetails:            any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService:    AuthenticationService,
-    private userService:    UserService,
+    private policyDataService: PolicyDataService,
     private sanitizer:      DomSanitizer,
-
-    private testingData:    TestingDataService,
-    private billingDataService: BillingDataService,
+    private userService:    UserService
   ) { }
 
-  checkBilling(): boolean {
-    return false;
-  }
-
-  pendingChecks(): boolean {
-    return false;
+  findOutstandingBalance(p): boolean {
+    let returnBool;
+    const billing = p.billingDetails;
+    if ( billing[0] == undefined || billing[0].outstandingbalance == 0 || billing[0].outstandingbalance == undefined ) {
+      returnBool = false;
+    }
+    else {
+      returnBool = true;
+    }
+    return returnBool;
   }
 
   switchHistories(type): void {
@@ -50,9 +49,6 @@ export class BillingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // When logging in go a verify user
-    // We will need this once the new endpoints are set.
-
     this.userService.$user
     .subscribe( (user) => {
       this.user = user;
@@ -60,14 +56,9 @@ export class BillingDetailsComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-      this.billingDataService.$billingDetails
-      .subscribe((billingResponse: any[]) => {
-        if (billingResponse !== undefined) {
-          this.policyDetails = billingResponse;
-        }
-        else {
-          this.policyDetails = this.user;
-        }
+      this.policyDataService.$policyDetails
+      .subscribe((policyResponse) => {
+        this.policyDetails = policyResponse;
       });
     });
   }

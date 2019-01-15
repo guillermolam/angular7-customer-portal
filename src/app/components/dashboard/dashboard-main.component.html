@@ -4,7 +4,7 @@
     <app-loggedin-sidenav></app-loggedin-sidenav>
     <div class="col main-column">
       <h1>{{ testAlert }}</h1>
-      <mapfre-alert *ngIf='showAlert'></mapfre-alert>
+      <mapfre-alert></mapfre-alert>
       <router-outlet></router-outlet>
       <ng-container *ngIf="loading">
         <mapfre-loading></mapfre-loading>

@@ -1,7 +1,7 @@
 import { Component, OnInit,
   OnChanges, Input }                from '@angular/core';
 import { AlertService, ModalOptions } from 'mapfre-design-library';
-import { BillingDataService }       from './../../../../../../_services/my-insurance/data-services/billing-data.service';
+import { PolicyDataService }        from '../../../../../../_services/my-insurance/data-services/policy-data.service';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
@@ -21,8 +21,8 @@ export class PaperlessPayComponent implements OnInit, OnChanges {
 
   constructor(
     private alertService:           AlertService,
-    private billingDataService:     BillingDataService,
     private paperlessService:       PaperlessService,
+    private policyDataService:      PolicyDataService,
     private userService:            UserService
   ) { 
     this.endEnrollOptionsModal = new ModalOptions({
@@ -79,7 +79,7 @@ export class PaperlessPayComponent implements OnInit, OnChanges {
     this.userService.$user.subscribe( (user) => {
       this.user = user;
     });
-    this.billingDataService.$billingDetails //need to change this to policyObservable
+    this.policyDataService.$policyDetails
     .subscribe( (policyInfo) => {
       this.policyInfo = policyInfo;
     });

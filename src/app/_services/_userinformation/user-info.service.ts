@@ -3,7 +3,7 @@ import { Injectable }         from '@angular/core';
 import { of, throwError }     from 'rxjs';
 import { Observable }         from 'rxjs';
 import { catchError, map }    from 'rxjs/operators';
-import { environment }        from '../../../environments/environment';//change it to environment later
+import { environment }        from '../../../environments/environment'; // change it to environment later
 import { ServiceHelpersService } from '../../_helpers/service-helpers.service';
 import { PolicyDetailsService } from '../my-insurance/policy-details.service';
 import { User }               from '../../_models/user';
@@ -30,7 +30,7 @@ export class UserInfoService {
   }
 
   getCurrentBillByPolicy(policyNumber): Observable<object> {
-    const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`; ///change
+    const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`; // change
     return this.http.get(url);
   }
 
@@ -44,11 +44,8 @@ export class UserInfoService {
     return this.http.put(url, bankInfo, this.httpOptions);
   }
 
-  policyByEmail(email: string = 'testmfre@gmail.com') {
+  policyByEmail(email) {
     const url = `${environment.backend_server_url}/personal-policies/${email}`;
     return this.http.get(url);
-    // this.http.get(url).subscribe((response)=>{
-    //   this.policyDetailsService.updatePolicyDetails(response);
-    // });
   }
 }

@@ -15,16 +15,17 @@
 
     <section class="row policy-details-content">
       <div class="col col1">
-        <ng-container *ngIf="checkingInfo.bankAccountDetails.accountHolderName; else noAccount">
+        <ng-container *ngIf="checkForAccount()">
           <app-new-payment-form [inputs]="inputs"></app-new-payment-form>  
         </ng-container>
-        <ng-template #noAccount>
+        <ng-container *ngIf="!checkForAccount()">
           <app-new-payment-no-checking-form [inputs]="inputs"></app-new-payment-no-checking-form> 
-        </ng-template>
+        </ng-container>
       </div>
       <div class="col col2">
         <app-billing-sidebar [policy]="policy"></app-billing-sidebar>
       </div>
     </section>
+    
   </ng-container>
 </ng-container>

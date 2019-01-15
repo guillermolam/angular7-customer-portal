@@ -1,6 +1,5 @@
 import { Component, OnInit, AfterViewInit }   from '@angular/core';
 import { Router, NavigationEnd }              from '@angular/router';
-import { BillingDataService }                 from './../../_services/my-insurance/data-services/billing-data.service';
 import { BillingDetailsService }              from './../../_services/my-insurance/billing-details.service';
 import { PolicyDataService }                  from '../../_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }               from './../../_services/my-insurance/policy-details.service';
@@ -22,19 +21,19 @@ export class DashboardMainComponent implements OnInit {
 
   constructor(
     private authenticationService:            AuthenticationService,
-    private billingDataService:               BillingDataService,
     private policyDataService:                PolicyDataService,
     private policyDetailsService:             PolicyDetailsService,
     private router:                           Router,
     private storageService:                   StorageServiceObservablesService,
     private userService:                      UserService,
-    
+
     private testingData:                      TestingDataService) {
 
     }
 
   ngOnInit() {
     this.loading = true;
+
     if (this.router.url === '/my-insurance') {
       this.reportClaim = true;
       this.showAlert   = true;
@@ -69,7 +68,7 @@ export class DashboardMainComponent implements OnInit {
         () => { this.loading = false; },
         (err) => {
           this.loading = false;
-          this.billingDataService.updateBillingDetails( this.testingData.testDatafunction() );
+          this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
         }
      );
 
@@ -79,8 +78,7 @@ export class DashboardMainComponent implements OnInit {
         const response = {
           userDetails: {...userResponse},
           bankAccountDetails:  {...accountResponse}
-        }
-      
+        };
         this.userService.updateUser(response);
       },
       (err) => {

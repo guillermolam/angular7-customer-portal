@@ -1,15 +1,11 @@
-import { Component, OnInit }                from '@angular/core';
-import { Router, Params, ActivatedRoute}    from '@angular/router';
-import { AlertService }                     from 'mapfre-design-library';
-
-import { BillingService }                   from './../../../../../_services/_iam/billing-service.service';
-import { BillingObservableService }         from './../../../../../_services/billing.service';
-import { Billing }                          from './../../../../../_models/billing';
-import { User }                             from './../../../../../_models/user';
-import { UserService }                      from './../../../../../_services/user.service';
-import { BillingDataService }               from './../../../../../_services/my-insurance/data-services/billing-data.service';
-import { BillingDetailsService }            from './../../../../../_services/my-insurance/billing-details.service';
-
+import { Component, OnInit }              from '@angular/core';
+import { Router, Params, ActivatedRoute}  from '@angular/router';
+import { AlertService }                   from 'mapfre-design-library';
+import { BillingDataService }             from './../../../../../_services/my-insurance/data-services/billing-data.service';
+import { BillingDetailsService }          from './../../../../../_services/my-insurance/billing-details.service';
+import { PolicyDataService }              from './../../../../../_services/my-insurance/data-services/policy-data.service';
+import { User }                           from './../../../../../_models/user';
+import { UserService }                    from './../../../../../_services/user.service';
 
 @Component({
   selector: 'app-billing-confirm',
@@ -20,26 +16,25 @@ export class BillingConfirmComponent implements OnInit {
   billing:                                any;
   loading:                                boolean;
   policyId:                               string;
-  policyDetails:                                   any;
+  policyDetails:                          any;
   user:                                   any;
 
   constructor(
     private activatedRoute:               ActivatedRoute,
     private alertService:                 AlertService,
-    private billingService:               BillingService,
-    private billingObservableService:     BillingObservableService,
     private billingDataService:           BillingDataService,
     private billingDetailsService:        BillingDetailsService,
+    private policyDataService:            PolicyDataService,
     private router:                       Router,
     private userService:                  UserService,
   ) { }
 
   sendPayment(): void {
     this.billingDetailsService
-      .makeECheckPayment(this.billing, this.user.userDetails.email.address, this.policyId)
+      .makeECheckPayment(this.billing, this.user[0].userDetails.email.address, this.policyId)
       .subscribe( (response) => {
-        this.billingObservableService.clearBilling();
-        this.alertService.success('you paid your bill', true);
+        this.billingDataService.clearBilling();
+        this.alertService.success('Congrats! You\'ve paid your bill!', true);
         this.router.navigate(['/my-insurance']);
       },
       (err) => {
@@ -51,23 +46,27 @@ export class BillingConfirmComponent implements OnInit {
 
   ngOnInit() {
 
-    this.activatedRoute.params.subscribe(
+    this.activatedRoute.params
+    .subscribe(
       (params: Params) => {
         this.policyId =                 params['policyid'];
-        this.billingDataService.$billingDetails.subscribe((billingResponse) => {
-        this.policyDetails =            billingResponse;
-    });
+        this.policyDataService.$policyDetails
+        .subscribe(
+          (policyResponse) => {
+            this.policyDetails =            policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
+        });
+        this.userService.$user
+        .subscribe(
+          (user) => {
+            this.user =                   user;
+        });
+        this.billingDataService.$billingDetails
+        .subscribe(
+          (billing) => {
+            this.billing =                billing;
+        });
     });
 
-    this.userService.$user.subscribe(
-      (user) => {
-        this.user =                     user;
-    });
-
-    this.billingObservableService.$billing.subscribe( 
-      (billing) => {
-        this.billing =                  billing;
-    });
   }
 
 }

@@ -102,7 +102,7 @@ export class AuthenticationService {
     return this.http.post(url, {}, this.serviceHelpers.options);
   }
 
-  updateMileage(user: User, mileage: number) {
+  updateMileage(email, mileage: number) {
     const url =  `https://httpstat.us/404`;
     return this.http.get(url, {});
   }
@@ -137,9 +137,9 @@ export class AuthenticationService {
   }
 
   verifyUser(userObject): Observable<object> {
-    const user =         userObject.$user.source.value,
-        userSendObject = this.serviceHelpers.creatUserObject(user, 'verifyuser'),
-        url =          `${environment.backend_server_url}/customers/accounts/${user.email}`;
+    const user =          userObject.$user.source.value,
+        userSendObject =  this.serviceHelpers.creatUserObject(user, 'verifyuser'),
+        url =             `${environment.backend_server_url}/customers/accounts/${user.email}`;
 
     return this.http
       .post(url, userSendObject, this.serviceHelpers.options)
@@ -153,11 +153,11 @@ export class AuthenticationService {
   verifyPolicyLink(userObject): Observable<boolean>{ 
     const user =            userObject.$user.source.value;
     const policyNumber =    user.policyDetails[0].policynumber.policynumber;
-    const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/links`;
+    const url =             `${environment.backend_server_url}/personal-policies/${policyNumber}/links`;
 
     return this.http.get(url).pipe(
-      map(()=> true),
-      catchError(()=> throwError(false)
+      map(() => true),
+      catchError(() => throwError(false)
       ));
   }
 

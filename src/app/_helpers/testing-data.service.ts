@@ -1319,8 +1319,39 @@ export class TestingDataService {
       },
       "effDate": "2016-09-10T00:00:00.000+0000",
       "expDate": "2017-09-10T00:00:00.000+0000",
-      "billingDetails": {},
-      "documentsDetails": [],
+      "billingDetails": [{
+        amountApplied:747,
+        amountPaid:747,
+        amountStillDue:100,
+        billMortgageeFlag:false,
+        billingCsrProfileId:"",
+        billingPolicyStatus:"EXPIRED",
+        cancelReasonCode:"",
+        directBillStatus:"10",
+        indicator:"BH",
+        minAmountDue:291.28,
+        noticeIssued:"2016-12-19T00:00:00.000+0000",
+        noticePayDate:"2016-12-27T00:00:00.000+0000",
+        noticeType:"BILL",
+        outstandingbalance:100,
+        paymentDueDate:"2017-01-17T00:00:00.000+0000",
+        prefix:"00",
+        totalPremiumAmount:1684,
+      }],
+      "documentsDetails": [{
+        description:"Invoices",
+        documentId:"3300dea3-8de7-42ab-932e-743c6f84db49",
+        policyEffectiveYear:"2017",
+        transactionDate:"12/19/2016",
+        type:"INVOICE"
+      },{
+        description:"Invoices",
+        documentId:"9499366d-9a5f-4706-afc8-a594dfc6aa9b",
+        policyEffectiveYear:"2018",
+        transactionDate:"09/18/2017",
+        type:"INVOICE",
+      }],
+      
       "vehicleDetails": [
         {
           "vehicleIdentificationNumber": {
@@ -1354,7 +1385,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "09/15/2016",
           "paymentType": "EFP"
         },
         {
@@ -1370,7 +1401,7 @@ export class TestingDataService {
           "bnIndicator": "MP",
           "billBalance": 9,
           "tempNoticeType": "EFP",
-          "dueDate": "",
+          "dueDate": "10/15/201",
           "currentDateIssued": "          ",
           "transactionType": "",
           "dateApplied": "",
@@ -1392,7 +1423,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "11/15/2016",
           "paymentType": "EFP"
         },
         {
@@ -1411,7 +1442,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "12/15/2016",
           "paymentType": "EFP"
         },
         {
@@ -1430,7 +1461,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "01/15/2017",
           "paymentType": "EFP"
         },
         {
@@ -1449,7 +1480,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "01/15/2017",
           "paymentType": "EFP"
         },
         {
@@ -1468,7 +1499,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "01/15/2017",
           "paymentType": "EFP"
         },
         {
@@ -1487,7 +1518,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "01/15/2017",
           "paymentType": "EFP"
         },
         {
@@ -1506,7 +1537,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "01/15/2017",
           "paymentType": "EFP"
         },
         {
@@ -1525,7 +1556,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "01/15/2017",
           "paymentType": "EFP"
         },
         {
@@ -1544,7 +1575,7 @@ export class TestingDataService {
           "dueDate": "",
           "currentDateIssued": "          ",
           "transactionType": "",
-          "dateApplied": "",
+          "dateApplied": "01/15/2017",
           "paymentType": "EFP"
         }
       ],
@@ -2080,8 +2111,38 @@ export class TestingDataService {
       },
       "effDate": "2016-09-10T00:00:00.000+0000",
       "expDate": "2017-09-10T00:00:00.000+0000",
-      "billingDetails": {},
-      "documentsDetails": [],
+      "billingDetails": [{
+        amountApplied:847,
+        amountPaid:847,
+        amountStillDue:0,
+        billMortgageeFlag:false,
+        billingCsrProfileId:"",
+        billingPolicyStatus:"EXPIRED",
+        cancelReasonCode:"",
+        directBillStatus:"10",
+        indicator:"BH",
+        minAmountDue:291.28,
+        noticeIssued:"2016-12-19T00:00:00.000+0000",
+        noticePayDate:"2016-12-27T00:00:00.000+0000",
+        noticeType:"BILL",
+        outstandingbalance:0,
+        paymentDueDate:"2017-01-17T00:00:00.000+0000",
+        prefix:"00",
+        totalPremiumAmount:1684,
+      }],
+      "documentsDetails": [{
+        description:"Invoices",
+        documentId:"3300dea3-8de7-42ab-932e-743c6f84db49",
+        policyEffectiveYear:"2017",
+        transactionDate:"12/19/2016",
+        type:"INVOICE"
+      },{
+        description:"Invoices",
+        documentId:"9499366d-9a5f-4706-afc8-a594dfc6aa9b",
+        policyEffectiveYear:"2018",
+        transactionDate:"09/18/2017",
+        type:"INVOICE",
+      }],
       "vehicleDetails": [
         {
           "vehicleIdentificationNumber": {

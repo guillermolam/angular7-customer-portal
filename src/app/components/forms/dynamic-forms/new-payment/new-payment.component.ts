@@ -1,15 +1,13 @@
-
-import { BillingDataService } from './../../../../_services/my-insurance/data-services/billing-data.service';
-// --- Angular ---//
 import { Component, Input, OnInit }   from '@angular/core';
 import { FormGroup, FormControl }     from '@angular/forms';
-import { ActivatedRoute, Router, Params } from '@angular/router';
-import { AlertService, RegExHelper,
-  FormBase, FormBaseControlService, GetGooglePlaceService }  from 'mapfre-design-library';
-// --- Components | Services | Models --- //
-import { BillingObservableService }   from '../../../../_services/billing.service';
+import { ActivatedRoute, Router, Params }
+                                      from '@angular/router';
+import { AlertService, RegExHelper, FormBase, FormBaseControlService, GetGooglePlaceService } 
+                                      from 'mapfre-design-library';
+import { BillingDataService }         from './../../../../_services/my-insurance/data-services/billing-data.service';
 import { Billing }                    from '../../../../_models/billing';
-import { UserService } from './../../../../_services/user.service';
+import { PolicyDataService }          from '../../../../_services/my-insurance/data-services/policy-data.service';
+import { UserService }                from '../../../../_services/user.service';
 
 @Component({
   selector: 'app-new-payment-form',
@@ -20,26 +18,25 @@ import { UserService } from './../../../../_services/user.service';
 export class NewPaymentComponent implements OnInit {
 
   @Input()  inputs:                   FormBase<any>[] = [];
+            checkingInfo:             any;
             editAccount:              boolean = false;
             showCustomAmount:         boolean = false;
-            policyDetails:          any;
-            checkingInfo: any;
+            policyDetails:            any;
             loading:                  boolean = false;
             newPaymentForm:           FormGroup;
             newPaymentRadioForm:      FormGroup;
             policyId:                 string;
             mailingAddress:           any;
 
-
   constructor(
     private activatedRoute:           ActivatedRoute,
     private alertService:             AlertService,
-    private billingObservableService: BillingObservableService,
+    private billingDataService:       BillingDataService,
+    private getGooglePlaceService:    GetGooglePlaceService,
     private ipt:                      FormBaseControlService,
     private router:                   Router,
-    private userService: UserService,
-    private billingDataService: BillingDataService,
-    private getGooglePlaceService: GetGooglePlaceService
+    private policyDataService:        PolicyDataService,
+    private userService:              UserService
   ) {
   }
 
@@ -59,131 +56,108 @@ export class NewPaymentComponent implements OnInit {
   }
 
   newPaymentFormSubmit(): void {
-    let radioAmount;
+    let radioAmount,
+        paymentObj =                {};
 
     if (this.newPaymentRadioForm.controls['paymentAmount'].value == 'other' ) {
-      radioAmount = this.newPaymentRadioForm.controls['otherAmount'].value;
+      radioAmount =                 this.newPaymentRadioForm.controls['otherAmount'].value;
     }
     else {
-      radioAmount = this.newPaymentRadioForm.controls['paymentAmount'].value;
+      radioAmount =                 this.newPaymentRadioForm.controls['paymentAmount'].value;
     }
 
-
-    // {
-    //   "bankAccount": {
-    //     "accountHolderName": "test",
-    //     "routingNumber": {
-    //       "digits": "265473812"
-    //     },
-    //     "accountNumber":  {
-    //       "digits": "168444192727"
-    //     },
-    //     "accountType":"CHECKING",
-    //     "mailingAddress":
-    //       {
-    //         "streetName": "abc street",
-    //         "city": "BOSTON",
-    //         "state": "MASSACHUSETTS",
-    //         "zipCode": {
-    //           "code": "02720"
-    //         }
-    //       }
-    //     },
-    //     "checkNumber": "890",
-    //     "paymentAmount": "10.00F"
-    // }
-
-    // const bill: any = {
-    //   billingInfo: [{
-    //     accountName:                this.checkingInfo.bankAccountDetails.accountHolderName,
-    //     accountNumber:              this.checkingInfo.bankAccountDetails.accountNumber.digits,
-    //     bankRoutingNumber:          this.checkingInfo.bankAccountDetails.routingNumber.digits,
-    //     mailingAddress:              this.checkingInfo.bankAccountDetails.mailingAddress.streetName + ' ' +
-    //                                 this.checkingInfo.bankAccountDetails.mailingAddress.city + ' ' +
-    //                                 this.checkingInfo.bankAccountDetails.mailingAddress.state,
-    //     apartment:                  this.checkingInfo.bankAccountDetails.mailingAddress.apartment || '',
-    //     checkNumber:                this.newPaymentRadioForm.controls['checkingNumberAmount'].value || ''
-    //   }],
-    //   amount:                       radioAmount,
-    //   policyId:                     this.policyId
-    // };
-    if(this.newPaymentForm.controls.newPayment_aptNumber.value)
-    this.mailingAddress['streetName'] = this.mailingAddress['streetName'] + '|' + (this.newPaymentForm.controls.newPayment_aptNumber.value || '');
-
-
+    if ( this.newPaymentForm.controls.newPayment_aptNumber.value ) {
+      this.mailingAddress['streetName'] = this.mailingAddress['streetName'] + '|' + (this.newPaymentForm.controls.newPayment_aptNumber.value || '');
+    }
     this.getGooglePlaceService.updateAddress(this.mailingAddress);
 
-    const paymentObj = {
-      bankAccount: {
-        accountHolderName: this.checkingInfo.bankAccountDetails.accountHolderName,
-        routingNumber: {
-          digits: this.checkingInfo.bankAccountDetails.routingNumber.digits
-        },
-        accountNumber:  {
-          digits: this.checkingInfo.bankAccountDetails.accountNumber.digits
-        },
-        accountType:'CHECKING',
-        mailingAddress: this.mailingAddress
-        },
-        checkNumber: this.newPaymentForm.controls.newPayment_checkNumber.value || '',
-        paymentAmount: radioAmount
+    if ( this.checkingInfo[0].bankAccountDetails.accountNumber.digits == this.newPaymentForm.controls['newPayment_accountNumber'].value) {
+      paymentObj = {
+        bankAccount: {
+          accountHolderName:            this.checkingInfo[0].bankAccountDetails.accountHolderName,
+          routingNumber: {
+            digits:                     this.checkingInfo[0].bankAccountDetails.routingNumber.digits
+          },
+          accountNumber:  {
+            digits:                     this.checkingInfo[0].bankAccountDetails.accountNumber.digits
+          },
+          accountType:                  'CHECKING',
+          mailingAddress:               this.mailingAddress
+          },
+          checkNumber:                  this.newPaymentForm.controls.newPayment_checkNumber.value || '',
+          paymentAmount:                radioAmount
+      };
+    }
+    else {
+      if(this.newPaymentForm.controls['newPayment_confirmAccountNumber'].value != this.newPaymentForm.controls['newPayment_accountNumber'].value) {
+        this.alertService.error('Account Number and Confirm Bank Account Number do not match');
+        paymentObj = 'err' ;
+      }
+      else {
+        paymentObj = {
+          bankAccount: {
+            accountHolderName:            this.newPaymentForm.controls['newPayment_accountName'].value,
+            routingNumber: {
+              digits:                     this.newPaymentForm.controls['newPayment_routingNumber'].value
+            },
+            accountNumber:  {
+              digits:                     this.newPaymentForm.controls['newPayment_accountNumber'].value
+            },
+            accountType:                  'CHECKING',
+            mailingAddress:               this.newPaymentForm.controls['newPayment_mailingAddress'].value
+            },
+            checkNumber:                  this.newPaymentForm.controls['newPayment_checkNumber'].value  || '',
+            paymentAmount:                radioAmount
+        };
+      }
     }
 
-    console.log(paymentObj);
-   
-    this.billingObservableService.updateBilling(paymentObj);
-
-    this.router.navigate(['/billing',this.policyId, 'confirm']);
-    
+    this.billingDataService.updateBillingDetails(paymentObj);
+    this.router.navigate(['/billing', this.policyId, 'confirm']);
   }
 
-  setValues(checkingInfo: any): void {
-    // console.log(checkingInfo);
-
-    const apartmentNo = checkingInfo.bankAccountDetails.mailingAddress.streetName.split('|');
-
+  setValues(checkingInfo): void {
+    const bDetails =                    checkingInfo[0].bankAccountDetails;
+    const apartmentNo =                 bDetails.mailingAddress.streetName.split('|');
     const address = {
-            "streetName": apartmentNo[0],
-            "city": checkingInfo.bankAccountDetails.mailingAddress.city,
-            "state": checkingInfo.bankAccountDetails.mailingAddress.state,
-            "zipCode": {
-              "code": checkingInfo.bankAccountDetails.mailingAddress.zipCode.code
-            }
-          }
-
-    
+      "streetName":                     apartmentNo[0],
+      "city":                           bDetails.mailingAddress.city,
+      "state":                          bDetails.mailingAddress.state,
+      "zipCode": {
+        "code":                         bDetails.mailingAddress.zipCode.code
+      }
+    };
 
     this.newPaymentForm.patchValue({
-      newPayment_accountName:         checkingInfo.bankAccountDetails.accountHolderName,
-      newPayment_routingNumber:       checkingInfo.bankAccountDetails.routingNumber.digits,
-      newPayment_accountNumber:       checkingInfo.bankAccountDetails.accountNumber.digits,
-      newPayment_confirmAccountNumber: checkingInfo.bankAccountDetails.accountNumber.digits,
-      newPayment_mailingAddress:      apartmentNo[0] + ', ' +
-                                      checkingInfo.bankAccountDetails.mailingAddress.city + ', ' +
-                                      checkingInfo.bankAccountDetails.mailingAddress.state,
-      newPayment_aptNumber:           apartmentNo[1] || ''
+      newPayment_accountName:           bDetails.accountHolderName,
+      newPayment_routingNumber:         bDetails.routingNumber.digits,
+      newPayment_accountNumber:         bDetails.accountNumber.digits,
+      newPayment_confirmAccountNumber:  bDetails.accountNumber.digits,
+      newPayment_mailingAddress:        apartmentNo[0] + ', ' +
+                                        bDetails.mailingAddress.city + ', ' +
+                                        bDetails.mailingAddress.state,
+      newPayment_aptNumber:             apartmentNo[1]
     });
-
     this.getGooglePlaceService.updateAddress(address);
-
   }
 
-
   ngOnInit() {
-
-   
-   
-
-    this.activatedRoute.params.subscribe((params: Params) => {
+    this.activatedRoute.params
+    .subscribe((params: Params) => {
       this.policyId =                 params['policyid'];
-      this.billingDataService.$billingDetails.subscribe((billingResponse: any[])=>{
-        this.policyDetails = billingResponse.filter(response => response.policynumber.policynumber === this.policyId);
-        console.log(this.policyDetails)
+      this.policyDataService.$policyDetails
+      .subscribe((policyResponse) => {
+        this.policyDetails =          policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
+      });
+      this.userService.$user
+      .subscribe((userResponse) => {
+        this.checkingInfo =           userResponse;
       });
     });
 
-    this.getGooglePlaceService.$address.subscribe((address)=>{
-      this.mailingAddress = address
+    this.getGooglePlaceService.$address
+    .subscribe((address) => {
+      this.mailingAddress =           address;
     });
 
     this.newPaymentForm =             this.ipt.toFormGroup(this.inputs);
@@ -192,12 +166,6 @@ export class NewPaymentComponent implements OnInit {
       paymentAmount:                  new FormControl(),
       otherAmount:                    new FormControl()
     });
-   
-    this.userService.$user.subscribe((userResponse)=>{
-      this.checkingInfo = userResponse;
-      this.setValues(userResponse);
-    });
-
-    
+    this.setValues(this.checkingInfo);
   }
 }

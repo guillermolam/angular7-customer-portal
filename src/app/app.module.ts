@@ -1,5 +1,3 @@
-import { PolicyDocumentsDataService } from './_services/my-insurance/data-services/policy-documents-data.service';
-import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
 // --- Design Library --- //
 import { MapfreDesignLibraryModule }            from 'mapfre-design-library';
 import { MDBBootstrapModule }                   from 'angular-bootstrap-md';
@@ -13,8 +11,8 @@ import { GooglePlaceModule }                    from 'ngx-google-places-autocomp
 import { HTTP_INTERCEPTORS, HttpClientModule }  from '@angular/common/http';
 import { JwtModule }                            from '@auth0/angular-jwt';
 import { MockBackend }                          from '@angular/http/testing';
-import { NgModule, NO_ERRORS_SCHEMA, 
-        enableProdMode }                        from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, enableProdMode }
+                                                from '@angular/core';
 import { ReactiveFormsModule }                  from '@angular/forms';
 import { TranslateModule }                      from '@ngx-translate/core';
 import { ServiceWorkerModule }                  from '@angular/service-worker';
@@ -28,7 +26,6 @@ import { AuthGuard }                            from './_guards/auth.guard';
 import { JwtInterceptor }                       from './_helpers/jwt.interceptor';
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
-import { BillingObservableService }             from './_services/billing.service';
 import { ApartmentPipePipe }                    from './_helpers/_pipes/apartment-pipe.pipe';
 import { CustomDateFormatPipe }                 from './_helpers/_pipes/custom-date-format.pipe';
 import { ProfileSettingsRoutingService }        from './_services/profile-settings/profile-settings-routing.service';
@@ -36,6 +33,7 @@ import { ProfileConfirmModalService }           from './_services/profile-settin
 import { StorageServiceObservablesService }     from './_services/storage-service-observables/storage-service-observables.service';
 import { PolicyDataService }                    from './_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }                 from './_services/my-insurance/policy-details.service';
+import { PolicyDocumentsDataService }           from './_services/my-insurance/data-services/policy-documents-data.service';
 
 // ----- Account ----- //
 import { DashboardMainComponent }                 from './components/dashboard/dashboard-main.component';
@@ -56,6 +54,7 @@ import { ClaimsComponent }                      from './routes/claims/claims.com
 import { ContactComponent }                     from './routes/contact/contact.component';
 import { ProfileSettingsComponent }             from './routes/profile-settings/profile-settings.component';
 import { AddressChangeComponent }               from './routes/profile-settings/address-change/address-change.component';
+import { ChangeEmailComponent }                 from './routes/profile-settings/change-email/change-email.component';
 
 // ----- Components ----- //
 import { LoginFormComponent }                   from './components/forms/dynamic-forms/login-form/login-form.component';
@@ -133,7 +132,6 @@ import { PolicyNotFoundComponent } from './components/dashboard/loggedin-content
 import { EditPolicyDetailsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/edit-policy-details/edit-policy-details.component';
 import { PolicyInProcessComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-in-process/policy-in-process.component';
 import { ValidatePolicyRightsComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/validate-policy-rights/validate-policy-rights.component';
-
 import { PaperlessComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless.component';
 import { PaperlessMiscComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-misc/paperless-misc.component';
 import { PaperlessBillComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-bill/paperless-bill.component';
@@ -144,8 +142,8 @@ import { PaperlessFirstTimeComponent } from './components/dashboard/loggedin-con
 import { PaperlessPayEnrollComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/enroll/enroll.component';
 import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enroll-eft-epay-form/enroll-eft-epay-form.component';
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
-import { ChangeEmailComponent } from './routes/profile-settings/change-email/change-email.component';
- 
+import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
+
 if (environment.production) {
   enableProdMode();
 }
@@ -307,7 +305,6 @@ export function tokenGetter() {
     ProfileConfirmModalService,
     PolicyDetailsService,
     StorageServiceObservablesService,
-    BillingObservableService,
     PolicyDataService,
     PolicyDocumentsDataService
 

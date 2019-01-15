@@ -9,23 +9,23 @@
       <div class="row">
         <div class="col">
           <div class="radio-label padding-left pl4">
-            <input class="" type="radio" id="paymentAmount-minimum" name="paymentAmount" checked formControlName="paymentAmount" [value]="policyDetails[0].billingDetails[0].minAmountDue " required="true" (change)="OnChangeShowCustomAmountField('min')">
+            <input class="" type="radio" id="paymentAmount-minimum" name="paymentAmount" checked formControlName="paymentAmount" [value]="policyDetails[0]?.billingDetails[0].minAmountDue" required="true" (change)="OnChangeShowCustomAmountField('min')">
             <label class="" for="paymentAmount-minimum">{{ 'MINIMUM_AMOUNT_DUE' | translate }}</label>
           </div>
         </div>
         <div class="col payment-amount text-right">
-          <strong>${{ policyDetails[0].billingDetails[0].minAmountDue }}</strong>
+          <strong>{{ policyDetails[0]?.billingDetails[0].minAmountDue | currency}}</strong>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <div class="radio-label padding-left pl4">
-            <input class="" type="radio" id="paymentAmount-max" name="paymentAmount" formControlName="paymentAmount" [value]="policyDetails[0].billingDetails.outstandingbalance || 0" required="true" (change)="OnChangeShowCustomAmountField('max')">
+            <input class="" type="radio" id="paymentAmount-max" name="paymentAmount" formControlName="paymentAmount" [value]="policyDetails[0]?.billingDetails[0].outstandingbalance || 0" required="true" (change)="OnChangeShowCustomAmountField('max')">
             <label class="" for="paymentAmount-max">{{ 'OUTSTANDING_POLICY_BALANCE' | translate }}</label>
           </div>
         </div>
         <div class="col payment-amount text-right">
-          <strong>${{ policyDetails[0].billingDetails.outstandingbalance }}</strong>
+          <strong>{{ policyDetails[0]?.billingDetails[0].outstandingbalance | currency}}</strong>
         </div>
       </div>
       <div class="row">
@@ -66,14 +66,14 @@
     <div class="col">
       <h2 class="title">
           {{ 'CHECKING_ACCOUNT' | translate }}
-          <ng-container *ngIf="checkingInfo.bankAccountDetails.accountHolderName">
-              <mapfre-button additionalClasses="link-button blue-link float-right no-border no-padding no-margin  waves-effect" (click)="OnClickEditButton($event)">
-                  {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
-              </mapfre-button>
+          <ng-container *ngIf="checkingInfo[0]?.bankAccountDetails.accountHolderName">
+            <mapfre-button additionalClasses="link-button blue-link float-right no-border no-padding no-margin  waves-effect" (click)="OnClickEditButton($event)">
+                {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
+            </mapfre-button>
           </ng-container>
       </h2>
 
-      <ng-container *ngIf="editAccount || !checkingInfo.bankAccountDetails.accountHolderName">
+      <ng-container *ngIf="editAccount || !checkingInfo[0]?.bankAccountDetails.accountHolderName">
         <div class="checking-form margin-top mt16">
           <div *ngFor="let input of inputs" class="input" [ngClass]="{ 'first-input': input?.inputType == 'address' }">
             <ng-container *ngIf="input.inputType == 'checkbox'">
@@ -89,16 +89,16 @@
         </div>
       </ng-container>
 
-      <ng-container *ngIf="checkingInfo.bankAccountDetails.accountHolderName && !editAccount ">
+      <ng-container *ngIf="checkingInfo[0]?.bankAccountDetails.accountHolderName && !editAccount ">
         <div class="checking-info margin-top mt24">
           <div class="row  margin-bottom mb8">
             <div class="col">
-              {{ 'ACCOUNT_HOLDER' | translate}}: <strong>{{checkingInfo.bankAccountDetails.accountHolderName}}</strong>
+              {{ 'ACCOUNT_HOLDER' | translate}}: <strong>{{checkingInfo[0]?.bankAccountDetails.accountHolderName}}</strong>
             </div>
           </div>
           <div class="row margin-bottom mb24">
             <div class="col">
-                {{ 'ACCOUNT_NUMBER' | translate}}: <strong>{{checkingInfo.bankAccountDetails.accountNumber.digits}}</strong>
+                {{ 'ACCOUNT_NUMBER' | translate}}: <strong>{{checkingInfo[0]?.bankAccountDetails.accountNumber.digits}}</strong>
             </div>
           </div>
         </div>

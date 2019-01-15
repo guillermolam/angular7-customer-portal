@@ -28,10 +28,11 @@
                 <div class="policy-icon">
                   <svg-money-mono-color-svg></svg-money-mono-color-svg>
                 </div>
-                <h2 class="title" [ngClass]="{'no-border': !checkBilling()}">
-                {{ 'BILLING_OVERVIEW' | translate }}
+                <h2 class="title" [ngClass]="{'no-border': findOutstandingBalance(policy) }">
+                  {{ 'BILLING_OVERVIEW' | translate }}
                 </h2>
-                <ng-container *ngIf="!policy.billingDetails[0] || (policy.billingDetails[0] && policy.billingDetails[0].outstandingbalance == 0); else currentBalance">
+
+                <ng-container *ngIf="!findOutstandingBalance(policy); else currentBalance">
                   <div class="margin-top mt16 d-table w-100">
                     <div class="no-payment-svg d-table-cell padding pr16">
                       <svg-check-icon-svg></svg-check-icon-svg> 
@@ -41,7 +42,8 @@
                     </div>
                   </div>
                 </ng-container>
-                <!-- <ng-template #currentBalance>  -->
+
+                <ng-template #currentBalance>  
                   <table mdbTable class="claims-table">
                     <thead class="lite-grey-color">
                       <tr class="row-content border-full grey-border">
@@ -59,13 +61,13 @@
                     <tbody class="med-grey-color">
                       <tr class="row-content border-full grey-border  no-border-bottom">
                         <td>
-                          <strong>{{ policy.billingDetails[0].outstandingbalance }}</strong>
+                          <strong>{{ policy.billingDetails[0]?.outstandingbalance | currency }}</strong>
                         </td>
                         <td>
-                            <strong>{{ policy.billingDetails[0].paymentDueDate |   date:'MM/dd/yy' }}</strong>
+                            <strong>{{ policy.billingDetails[0]?.paymentDueDate |   date:'MM/dd/yy' }}</strong>
                         </td>
                         <td>
-                            <strong>{{ policy.billingDetails[0].minAmountDue }}</strong>
+                            <strong>{{ policy.billingDetails[0]?.minAmountDue | currency }}</strong>
                         </td>
                       </tr>
                       <tr class="border-full grey-border no-border-top">
@@ -79,82 +81,103 @@
                       </tr>
                     </tbody>
                   </table>
-                <!-- </ng-template> -->
+                </ng-template>
+
               </div>
             </div>
-            <div class="row  margin-top mt40">
-                <div class="col">
-            <ng-container *ngIf="!policy.billingDetails[0] || (policy.billingDetails[0] && policy.billingDetails[0].outstandingbalance == 0); else showSchedule">
-              <div class="policy-icon">
-                  <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
-              </div>
-              <h2 class="title" [ngClass]="{'no-border': !checkBilling()}">
-                {{ 'PAYMENT_HISTORY' | translate }}
-              </h2>
-            </ng-container>
-                <table mdbTable class="claims-table">
-                    <ng-template #showSchedule>
-                        <thead class="">
-                            <tr class="no-padding no-border">
-                              <td colspan="2" class="no-padding no-border">
-                                <nav class="tab-accordian-navigation">
-                                  <div class="tab-navigation">
-                                    <ul class="w-100 pl-0 d-table no-margin">
-                                      <li [ngClass]="{'active': schedualOrHistory }" class="width w-50">
-                                        <a (click)="switchHistories('schedual')">{{'SCHEDULED_PAYMENTS' | translate}}</a>
-                                      </li>
-                                      <li [ngClass]="{'active': !schedualOrHistory }" class="width w-50">
-                                          <a (click)="switchHistories('history')">{{'HISTORY' | translate}}</a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </nav>
-                              </td>
-                            </tr>
-                          </thead>
-                          <tbody class="med-grey-color">
-                   
-                              <tr class="row-content border-full grey-border lite-grey-color">
-                                <td>  
-                                    {{ 'AMOUNT' | translate }}
-                                </td>
-                                <td class="text-right"> 
-                                    {{ 'DATE' | translate }}
-                                </td>
-                              </tr>
-                              <ng-container *ngFor="let scheduledPayment of policy.scheduledBills">
-                                  <tr class="row-content border-full grey-border">
-                                      <td>
-                                        <strong>${{ scheduledPayment.minAmountDue }}</strong>
-                                      </td>
-                                      <td class="text-right"> 
-                                          <strong>{{ scheduledPayment.dueDate |  date:'MM/dd/yy' }}</strong>
-                                      </td>
-                                    </tr>
-                              </ng-container>
-                            </tbody>
-                    </ng-template>
-                  <tbody class="med-grey-color">
-                    <tr class="row-content border-full grey-border lite-grey-color">
-                      <td>  
-                          {{ 'AMOUNT' | translate }}
-                      </td>
-                      <td class="text-right"> 
-                          {{ 'DATE' | translate }}
-                      </td>
-                    </tr>
-                    <ng-container *ngFor="let historyPayment of policy.billingHistory">
-                    <tr class="row-content border-full grey-border">
-                      <td>
-                        <strong>${{ historyPayment.minAmountDue }}</strong>
-                      </td>
-                      <td class="text-right"> 
-                        <strong>{{ historyPayment.dateApplied |  date:'MM/dd/yy' }}</strong>
-                      </td>
-                    </tr>
-                    </ng-container>
-                  </tbody>
-                </table>
+            <div class=" margin-top mt40 w-100">
+              <div class="">
+
+                <ng-container *ngIf="!findOutstandingBalance(policy); else showSchedule">
+                  <div class="policy-icon">
+                      <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
+                  </div>
+                  <h2 class="title no-border">
+                    {{ 'PAYMENT_HISTORY' | translate }}
+                  </h2>
+                  <table mdbTable class="claims-table">
+                    <tbody class="med-grey-color">
+                      <tr class="row-content border-full grey-border lite-grey-color">
+                        <td>  
+                            {{ 'AMOUNT' | translate }}
+                        </td>
+                        <td class="text-right"> 
+                            {{ 'DATE' | translate }}
+                        </td>
+                      </tr>
+                      <ng-container *ngFor="let historyPayment of policy.billingHistory">
+                      <tr class="row-content border-full grey-border">
+                        <td>
+                          <strong>{{ historyPayment.minAmountDue | currency }}</strong>
+                        </td>
+                        <td class="text-right"> 
+                          <strong>{{ historyPayment.dateApplied |  date:'MM/dd/yy' }}</strong>
+                        </td>
+                      </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </ng-container>
+
+
+                <ng-template #showSchedule>
+                  <nav class="tab-accordian-navigation">
+                    <div class="tab-navigation">
+                      <ul class="w-100 pl-0 d-table no-margin">
+                        <li [ngClass]="{'active': schedualOrHistory }" class="width w-50">
+                          <a (click)="switchHistories('schedual')">{{'SCHEDULED_PAYMENTS' | translate}}</a>
+                        </li>
+                        <li [ngClass]="{'active': !schedualOrHistory }" class="width w-50">
+                            <a (click)="switchHistories('history')">{{'HISTORY' | translate}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
+                  <table mdbTable class="claims-table w-100" *ngIf="schedualOrHistory">
+                    <tbody class="med-grey-color">
+                      <tr class="row-content border-full grey-border lite-grey-color">
+                        <td>  
+                            {{ 'AMOUNT' | translate }}
+                        </td>
+                        <td class="text-right"> 
+                            {{ 'DATE' | translate }}
+                        </td>
+                      </tr>
+                      <ng-container *ngFor="let scheduledPayment of policy.scheduledBills">
+                        <tr class="row-content border-full grey-border">
+                          <td>
+                            <strong>{{ scheduledPayment.minAmountDue | currency }}</strong>
+                          </td>
+                          <td class="text-right"> 
+                              <strong>{{ scheduledPayment.dueDate |  date:'MM/dd/yy' }}</strong>
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                  <table mdbTable class="claims-table w-100" *ngIf="!schedualOrHistory">
+                    <tbody class="med-grey-color">
+                      <tr class="row-content border-full grey-border lite-grey-color">
+                        <td>  
+                            {{ 'AMOUNT' | translate }}
+                        </td>
+                        <td class="text-right"> 
+                            {{ 'DATE' | translate }}
+                        </td>
+                      </tr>
+                      <ng-container *ngFor="let historyPayment of policy.billingHistory">
+                      <tr class="row-content border-full grey-border">
+                        <td>
+                          <strong>{{ historyPayment.amountPaid | currency }}</strong>
+                        </td>
+                        <td class="text-right"> 
+                          <strong>{{ historyPayment.dateApplied |  date:'MM/dd/yy' }}</strong>
+                        </td>
+                      </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </ng-template>
               </div>
             </div>
           </div>
@@ -164,7 +187,7 @@
               <h2 class="title no-border">
                 {{ 'PENDING_CHECKS' | translate }}
               </h2>
-              <table mdbTable class="claims-table">
+              <table mdbTable class="claims-table w-100">
                 <thead class="lite-grey-color">
                   <tr class="row-content border-full grey-border">
                     <td>  
@@ -179,7 +202,7 @@
                   <ng-container *ngFor="let pendingCheckPayment of policy.pendingCheckPayments ">
                     <tr class="row-content border-full grey-border">
                       <td>
-                        <strong>${{ pendingCheckPayment.paymentAmount }}</strong>
+                        <strong>{{ pendingCheckPayment.paymentAmount | currency }}</strong>
                       </td>
                       <td class="text-right"> 
                           <strong>{{ pendingCheckPayment.paymentDateTime | date:'MM/dd/yy'}}</strong>

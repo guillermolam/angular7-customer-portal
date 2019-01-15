@@ -28,7 +28,7 @@
                     {{ 'PAYMENT_AMOUNT' | translate }}
                 </div>
                 <div class="col text-right">
-                  <strong>${{billing.paymentAmount}}</strong>
+                  <strong>{{billing.paymentAmount | currency }}</strong>
                 </div>
               </div>
               <div class="row  margin-bottom mb16">
@@ -102,7 +102,7 @@
             </div>
           </div>
         <div class="col col2">
-          <app-billing-sidebar></app-billing-sidebar>
+          <app-billing-sidebar [policy]="policy"></app-billing-sidebar>
         </div>
       </section>
     </ng-container>

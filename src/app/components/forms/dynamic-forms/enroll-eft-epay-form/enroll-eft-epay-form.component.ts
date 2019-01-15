@@ -7,7 +7,7 @@ import { AlertService,
   FormBase, FormBaseControlService, User }  from 'mapfre-design-library';
 import { UserService }                from './../../../../_services/user.service';
 import { Billing }                    from './../../../../_models/billing';
-import { BillingObservableService }   from './../../../../_services/billing.service';
+import { BillingDataService }         from './../../../../_services/my-insurance/data-services/billing-data.service';
 import { PaperlessService }           from '../../../../_services/_iam/paperless.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class EnrollEftEpayFormComponent implements OnInit {
   constructor(
     private activatedRoute:           ActivatedRoute,
     private alertService:             AlertService,
-    private billingObservableService: BillingObservableService,
+    private billingDataService:       BillingDataService,
     private ipt:                      FormBaseControlService,
     private router:                   Router,
     private paperlessService:         PaperlessService,
@@ -68,14 +68,13 @@ export class EnrollEftEpayFormComponent implements OnInit {
     this.paperlessService
       .enrollPaperlessEPay( this.policyId, enrollForm, email )
       .subscribe( (success) => {
-        this.billingObservableService.updateBilling( enrollForm );
+        this.billingDataService.updateBillingDetails( enrollForm );
         this.router.navigate(['/billing/paperless/e-pay/' + this.policyId + '/confirm']);
       },
       (error) => {
-        this.billingObservableService.updateBilling( enrollForm );
+        this.billingDataService.updateBillingDetails( enrollForm );
         this.router.navigate(['/billing/paperless/e-pay/' + this.policyId + '/confirm']);
-
-       // this.alertService.error(`We could not Enroll you in the program ${error.message}`);
+        this.alertService.error(`We could not Enroll you in the program ${error.message}`, true);
       });
   }
 

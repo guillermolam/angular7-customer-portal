@@ -1,13 +1,11 @@
 import { Component, OnInit }          from '@angular/core';
-import { ActivatedRoute, Router,
-  Params }                            from '@angular/router';
+import { Router }                     from '@angular/router';
 import { AlertService }               from 'mapfre-design-library';
-import { BillingObservableService }   from '../../../../../../../_services/billing.service';
+import { BillingDataService }         from './../../../../../../../_services/my-insurance/data-services/billing-data.service';
 import { Billing }                    from './../../../../../../../_models/billing';
 import { UserService }                from '../../../../../../../_services/user.service';
 import { AuthenticationService }      from '../../../../../../../_services/_iam/authentication-service.service';
 import { StorageServiceObservablesService }   from '../../../../../../../_services/storage-service-observables/storage-service-observables.service';
-import { TestingDataService }         from '../../../../../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-confirm',
@@ -19,12 +17,10 @@ export class PaperlessPayConfirmComponent implements OnInit {
   constructor(
     private alertService:             AlertService,
     private authenticationService:    AuthenticationService,
-    private billingObservableService: BillingObservableService,
+    private billingDataService:       BillingDataService,
     private router:                   Router,
     private storageService:           StorageServiceObservablesService,
     private userService:              UserService,
-   
-    private testingData:              TestingDataService
   ) { }
 
   reSyncBilling(): void {
@@ -40,15 +36,15 @@ export class PaperlessPayConfirmComponent implements OnInit {
         this.router.navigate(['/billing/paperless/e-pay']);
       },
       (err) => {
-        this.alertService.error(`We are sorry. You did not enroll ${err} `, true);
+        this.alertService.error(`Sorry, there was an issue and we could not enroll you. ${err} `, true);
         this.router.navigate(['/billing/paperless/e-pay']);
       })
     ;
   }
 
   ngOnInit() {
-    this.billingObservableService.$billing.subscribe( (success) => {
-      this.billingInfo =              success;
+    this.billingDataService.$billingDetails.subscribe( (success) => {
+      this.billingInfo =            success;
     });
   }
 

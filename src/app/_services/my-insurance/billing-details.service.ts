@@ -20,13 +20,6 @@ export class BillingDetailsService {
     const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
     // const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`;
     return this.http.get(url);
-    // .pipe(map((billingResponse)=>{
-    //   return billingResponse;
-    // }));
-    // .subscribe((response) => {
-    //   console.log(response);
-    //   this.billingDataService.updateBillingDetails(response);
-    // });
   }
 
 

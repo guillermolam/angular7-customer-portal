@@ -1,6 +1,6 @@
 import { Component, OnInit }        from '@angular/core';
 import { AlertService, ModalOptions } from 'mapfre-design-library';
-import { BillingDataService }       from './../../../../../../_services/my-insurance/data-services/billing-data.service';
+import { PolicyDataService }        from '../../../../../../_services/my-insurance/data-services/policy-data.service';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
 import { PolicyDetailsService }     from '../../../../../../_services/my-insurance/policy-details.service';
 import { User }                     from './../../../../../../_models/user';
@@ -24,8 +24,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
 
   constructor(
     private alertService:           AlertService,
-    private billingDataService:     BillingDataService,
     private paperlessService:       PaperlessService,
+    private policyDataService:      PolicyDataService,
     private policyDetailsService:   PolicyDetailsService,
     private userService:            UserService
   ) {
@@ -179,7 +179,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       this.user = userInfo;
     });
 
-    this.billingDataService.$billingDetails //need to change this to policyObservable
+    this.policyDataService.$policyDetails
     .subscribe( (policyInfo) => {
       this.policyInfo = policyInfo;
       this.firstTimeCheck(policyInfo);
