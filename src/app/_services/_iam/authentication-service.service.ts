@@ -27,7 +27,8 @@ export class AuthenticationService {
   confirmPolicyAndAccount(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.backend_server_url}/customers/accounts/${user.email}`,
+      url =                 `https://mdv-doctest:8083/customers/accounts/${user.email}`,
+      // url =                 `${environment.backend_server_url}/customers/accounts/${user.email}`,
       userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.serviceHelpers.options)
@@ -122,7 +123,8 @@ export class AuthenticationService {
   }
 
   verifyAccountTokenVerification(token: string, email: string): Observable<object> {
-    const url =           `${environment.backend_server_url}/customers/accounts/?token=${token}&email=${email}`;
+    const url =           `https://mdv-doctest:8083/customers/accounts/?token=${token}&email=${email}`;
+    // const url =           `${environment.backend_server_url}/customers/accounts/?token=${token}&email=${email}`;
     return this.http.put(url, {}, this.serviceHelpers.options);
   }
 
@@ -130,7 +132,8 @@ export class AuthenticationService {
     const
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
-      url =             `${environment.backend_server_url}/personal-policies/${policyNumber}/insureds/namevalidation`,
+      url =             `https://mdv-doctest:8084/personal-policies/${policyNumber}/insureds/namevalidation`,
+      // url =             `${environment.backend_server_url}/personal-policies/${policyNumber}/insureds/namevalidation`,
       userSendObject =  this.serviceHelpers.creatUserObject(user, 'personalpolicy')
     ;
     return this.http.put(url, userSendObject);
@@ -139,7 +142,8 @@ export class AuthenticationService {
   verifyUser(userObject): Observable<object> {
     const user =         userObject.$user.source.value,
         userSendObject = this.serviceHelpers.creatUserObject(user, 'verifyuser'),
-        url =          `${environment.backend_server_url}/customers/accounts/${user.email}`;
+        url =          `https://mdv-doctest:8083/customers/accounts/${user.email}`;
+        // url =          `${environment.backend_server_url}/customers/accounts/${user.email}`;
 
     return this.http
       .post(url, userSendObject, this.serviceHelpers.options)
@@ -153,7 +157,8 @@ export class AuthenticationService {
   verifyPolicyLink(userObject): Observable<boolean>{ 
     const user =            userObject.$user.source.value;
     const policyNumber =    user.policyDetails[0].policynumber.policynumber;
-    const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/links`;
+    const url = `https://mdv-doctest:8084/personal-policies/${policyNumber}/links`;
+    // const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/links`;
 
     return this.http.get(url).pipe(
       map(()=> true),

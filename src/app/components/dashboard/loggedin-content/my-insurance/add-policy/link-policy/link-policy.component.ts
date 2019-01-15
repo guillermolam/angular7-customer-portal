@@ -35,6 +35,7 @@ export class LinkPolicyComponent implements OnInit {
   ngOnInit() {
     
     this.userService.$user.subscribe((user)=>{
+      console.log(user);
       this.user = user;
     })
   }
