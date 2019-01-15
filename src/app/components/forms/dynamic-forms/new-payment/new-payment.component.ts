@@ -87,11 +87,12 @@ export class NewPaymentComponent implements OnInit {
           checkNumber:                  this.newPaymentForm.controls.newPayment_checkNumber.value || '',
           paymentAmount:                radioAmount
       };
+      this.billingDataService.updateBillingDetails(paymentObj);
+      this.router.navigate(['/billing', this.policyId, 'confirm']);
     }
     else {
       if(this.newPaymentForm.controls['newPayment_confirmAccountNumber'].value != this.newPaymentForm.controls['newPayment_accountNumber'].value) {
         this.alertService.error('Account Number and Confirm Bank Account Number do not match');
-        paymentObj = 'err' ;
       }
       else {
         paymentObj = {
@@ -109,11 +110,10 @@ export class NewPaymentComponent implements OnInit {
             checkNumber:                  this.newPaymentForm.controls['newPayment_checkNumber'].value  || '',
             paymentAmount:                radioAmount
         };
+        this.billingDataService.updateBillingDetails(paymentObj);
+        this.router.navigate(['/billing', this.policyId, 'confirm']);
       }
     }
-
-    this.billingDataService.updateBillingDetails(paymentObj);
-    this.router.navigate(['/billing', this.policyId, 'confirm']);
   }
 
   setValues(checkingInfo): void {
