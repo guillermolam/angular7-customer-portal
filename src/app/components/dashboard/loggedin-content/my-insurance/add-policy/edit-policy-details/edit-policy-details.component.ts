@@ -39,7 +39,7 @@ export class EditPolicyDetailsComponent implements OnInit {
   ngOnInit() {
     this.userService.$user.subscribe(
       (user) => {
-        this.user =  FakeAccountResponse.getUserData();;
+        this.user =  user;
       }
     );
   }

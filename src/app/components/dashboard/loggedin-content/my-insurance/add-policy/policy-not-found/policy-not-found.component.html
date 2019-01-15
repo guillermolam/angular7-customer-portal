@@ -29,52 +29,46 @@
       </div>
     </div>
   </div>
-  <div>
-    <div>
+
+  <div class="margin-vertical mv24"  *ngIf="userData.addPolicyAttempts > 1">
       <mapfre-info-divs>
         <em>{{ 'NOTFOUND_IF_YOU_PURCHASE' | translate }}</em> 
       </mapfre-info-divs>
+      <div class="text-center">
+          <mapfre-button
+            additionalClasses="link-button small blue-link"
+            [customIcon]="'../../../../../assets/img/icons/back-arrow.png'"
+            [iconClasses]="'align-middle'"
+            [routerLink]="['/my-insurance','link-policy']"
+            [showIconsCustom]="true">  
+            {{ 'BACK' | translate }}
+          </mapfre-button>
+        </div>
     </div>
-    <div class="text-center margin-vertical mv24">
-      <mapfre-link
-        additionalClasses="small-link horizontal-space"
-        [routerLink]="['/my-insurance','edit-policy-details']"
-      >
-        {{ 'EDIT_POLICY_INFO' | translate }}
-      </mapfre-link>
-    </div>
-    <div>
-      <mapfre-button 
-        [additionalClasses]="'basic primary large'"
-        [routerLink]="['/my-insurance','link-policy']"
-      >
-        {{ 'TRY_AGAIN_WITH_A_DIFFERENT' | translate }}
-      </mapfre-button>
-    </div>
-  </div>
-  <div *ngIf="userData.addPolicyAttempts >= 3">
-    <div>
-      <mapfre-info-divs>
-          <em>{{ 'NOTFOUND_IF_YOU_PURCHASE' | translate }}</em> 
-      </mapfre-info-divs>
-    </div>
-    <div class="text-center margin-top mt24 ">
-      <mapfre-button 
-        [additionalClasses]="'basic primary large'"
-        [routerLink]="['/my-insurance','link-policy']"        
-      >
-        {{ 'TRY_AGAIN_WITH_A_DIFFERENT' | translate }}
-      </mapfre-button>
-    </div>
-  </div>
+    <ng-container  *ngIf="userData.addPolicyAttempts <= 1">
+        <div class="text-center margin-vertical mv24">
+            <mapfre-link
+              additionalClasses="small-link horizontal-space"
+              [routerLink]="['/my-insurance','edit-policy-details']"
+            >
+              {{ 'EDIT_POLICY_INFO' | translate }}
+            </mapfre-link>
+          </div>
+          <div>
+            <mapfre-button 
+              [additionalClasses]="'basic primary large waves-effect waves-light'"
+              (click)="onTryAgain()"
+              [routerLink]="['/my-insurance','link-policy']"        
+            >
+              {{ 'TRY_AGAIN_WITH_A_DIFFERENT' | translate }}
+            </mapfre-button>
+          </div>
+    </ng-container>
+    
   <hr class="margin-bottom mb24 margin-top mt24">
   <div class="row">
     <div class="col text-center">
-      <mapfre-link
-      (click)="onRedirectContact()"
-      [additionalClasses]="'switch-line-up blue-link'">
       {{ 'NOTFOUND_NEED_ASSISTANCE' | translate }}
-      </mapfre-link>
     </div>
   </div>
   </div>

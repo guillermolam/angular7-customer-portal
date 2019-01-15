@@ -10,18 +10,18 @@
             <div class="col">
               <div class="icon icon-container">
                 <div class="svg">
-                  <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'auto' ">
+                  <ng-container *ngIf="policyDetails?.policyType.toLowerCase() === 'auto' ">
                     <svg-car-icon-svg></svg-car-icon-svg>
                   </ng-container>
-                  <ng-container *ngIf="policyDetails.policyType.toLowerCase() === 'home' ">
+                  <ng-container *ngIf="policyDetails?.policyType.toLowerCase() === 'home' ">
                     <svg-home-icon-svg></svg-home-icon-svg>
                   </ng-container>
                 </div>
               </div>
               <div class="info-container">
                 <ul>
-                  <li>{{ "Personal" | translate }} {{ policyDetails.policyType | translate }}:&nbsp;<strong>{{ policyDetails.policynumber.policynumber }}</strong></li>
-                  <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyDetails.effDate | date:'shortDate' }}</strong></li>
+                  <li>{{ "Personal" | translate }} {{ policyDetails?.policyType | translate }}:&nbsp;<strong>{{ policyDetails?.policynumber.policynumber }}</strong></li>
+                  <li>{{ 'EFFECTIVE_DATE' | translate }}:&nbsp;<strong>{{ policyDetails?.effDate | date:'shortDate' }}</strong></li>
                 </ul>
               </div>
             </div>

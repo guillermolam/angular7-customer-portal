@@ -13,7 +13,7 @@ import { FakeAccountResponse } from './../../../../../../_helpers/_testing-helpe
 })
 export class PolicyNotFoundComponent implements OnInit {
 
-  @Input()  userData:               User = FakeAccountResponse.getUserData();
+  userData:               any = {};
   amountOfTries:          number;
   policyHolderName:       string;
   policyNumber:           string;
@@ -24,53 +24,15 @@ private router:                 Router,
 private userService:            UserService
 ) { }
 
-getObservableData(userData): void {
-this.policyHolderName =         `${userData.firstName} ${userData.middleName} ${userData.lastName}`;
-this.policyNumber =             `${userData.policyDetails[0].policynumber.policynumber}`;
-}
+// getObservableData(userData): void {
+// this.policyHolderName =         `${userData.firstName} ${userData.middleName} ${userData.lastName}`;
+// this.policyNumber =             `${userData.policyDetails[0].policynumber.policynumber}`;
+// }
 
-tryAgain(): void {
-this.updateObservable(this.userData);
-this.authService
-.verifyPolicy(this.userService)
-.subscribe(
-(data) => {
-this.userService.$user.subscribe((userService) => {
-  const checkPassword = userService.password,
-    email = this.userData.email,
-    password = this.userData.password;
-
-  if ( checkPassword != '' || checkPassword != undefined || checkPassword != null ) {
-    this.authService.login(email, password).subscribe(
-      (data) => { this.router.navigate(['/my-insurance']); }
-    );
-  }
-  else {
-    this.router.navigate(['/verifyaccount']);
-  }
-});
-},
-(err) => {
-if (err.status === 404) {
-  // Policy is not found
-  this.router.navigate(['signup', 'notfound']);
-}
-else if (err.status === 400) {
-  // bad requrest - 400 - Biz Policy
-  this.router.navigate(['signup', 'bop']);
-}
-else if (err.status === 409) {
-  // conflict - 409 - if the policy belongs to another
-  this.router.navigate(['signup', 'policybelongstoanother']);
-}
-}
-)
-;
-}
-
-updateObservable(userData): void {
-userData.addPolicyAttempts = userData.addPolicyAttempts + 1;
-this.userService.updateUser(userData);
+onTryAgain(): void {
+  this.userData.addPolicyAttempts = this.userData.addPolicyAttempts + 1;
+  // console.log(this.userData.addPolicyAttempts);
+  this.userService.updateUser(this.userData);
 }
 
 onRedirectContact(){
@@ -78,7 +40,16 @@ onRedirectContact(){
 }
 
 ngOnInit() {
-this.getObservableData(this.userData);
+this.userService.$user.subscribe((userData)=>{
+  this.policyHolderName =         `${userData.userDetails.firstName} ${userData.userDetails.middleName || ''} ${userData.userDetails.lastName}`;
+  this.policyNumber =             `${userData.policyDetails[0].policynumber.policynumber}`;
+  this.userData = userData;
+  this.userData.addPolicyAttempts = userData.addPolicyAttempts || 0;
+  // console.log(this.userData);
+});
+
+
+
 }
 
 }

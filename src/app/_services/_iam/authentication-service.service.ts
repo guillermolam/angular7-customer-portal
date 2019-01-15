@@ -27,7 +27,8 @@ export class AuthenticationService {
   confirmPolicyAndAccount(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.backend_server_url}/customers/accounts/${user.email}`,
+      url =                 `https://mdv-doctest:8083/customers/accounts/${user.email}`,
+      // url =                 `${environment.backend_server_url}/customers/accounts/${user.email}`,
       userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.serviceHelpers.options)
@@ -122,7 +123,8 @@ export class AuthenticationService {
   }
 
   verifyAccountTokenVerification(token: string, email: string): Observable<object> {
-    const url =           `${environment.backend_server_url}/customers/accounts/?token=${token}&email=${email}`;
+    const url =           `https://mdv-doctest:8083/customers/accounts/?token=${token}&email=${email}`;
+    // const url =           `${environment.backend_server_url}/customers/accounts/?token=${token}&email=${email}`;
     return this.http.put(url, {}, this.serviceHelpers.options);
   }
 
@@ -130,7 +132,8 @@ export class AuthenticationService {
     const
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
-      url =             `${environment.backend_server_url}/personal-policies/${policyNumber}/insureds/namevalidation`,
+      url =             `https://mdv-doctest:8084/personal-policies/${policyNumber}/insureds/namevalidation`,
+      // url =             `${environment.backend_server_url}/personal-policies/${policyNumber}/insureds/namevalidation`,
       userSendObject =  this.serviceHelpers.creatUserObject(user, 'personalpolicy')
     ;
     return this.http.put(url, userSendObject);
