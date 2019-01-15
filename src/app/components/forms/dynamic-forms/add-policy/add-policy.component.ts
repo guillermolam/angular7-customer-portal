@@ -17,11 +17,11 @@ import { User }                       from '../../../../_models/user';
 })
 export class AddPolicyComponent implements OnInit {
   @Input()  inputs:                   FormBase<any>[] = [];
-  @Input()  userData:                 Observable<User>;
+  // @Input()  userData:                 Observable<User>;
             addPolicyForm:            FormGroup;
             legalCheckbox:            boolean = false;
             loading:                  boolean = false;
-
+            user:                     any;
   constructor(
     private authService:              AuthenticationService,
     private ipt:                      FormBaseControlService,
@@ -32,22 +32,7 @@ export class AddPolicyComponent implements OnInit {
 
   addPolicy(): void {
     console.log(this.addPolicyForm.controls.addPolicy.value)
-  //   if (this.router.url==='/my-insurance/link-policy') {
-  //     if ( this.addPolicyForm.controls.addPolicy.value === '800000' ) {
-  //       this.router.navigate(['/my-insurance','business-policy-not-supported']);
-  //      // this.router.navigate(['/signup', 'bop']);
-  //     }
-  //     else if ( this.addPolicyForm.controls.addPolicy.value === '123456' ) {
-  //       this.router.navigate(['/my-insurance','validate-policy-rights']);
-  //      //this.router.navigate(['/signup', 'not-found']);
-  //     }
-  //     else if ( this.addPolicyForm.controls.addPolicy.value === '111111' ) {
-  //       this.router.navigate(['/my-insurance','policy-not-found']);
-  //       //this.router.navigate(['/signup', 'policy-belongs-to-another']);
-  //     }
-  //  }
-  //   else {
-      this.addPolicyToObject(this.userData);
+      this.addPolicyToObject();
       if (this.legalCheckbox) {
         this.authService
           .verifyPolicy(this.userService)
@@ -98,16 +83,15 @@ export class AddPolicyComponent implements OnInit {
           )
         ;
       }
-    // }
   }
 
-  addPolicyToObject(userObject): void {
-    console.log(userObject);
+  addPolicyToObject(): void {
+    // console.log(userObject);
     const policyDetail = [{
       policynumber : { policynumber: this.addPolicyForm.value.addPolicy }
     }];
-    userObject.policyDetails = policyDetail;
-    this.userService.updateUser(userObject);
+    this.user.policyDetails = policyDetail;
+    this.userService.updateUser(this.user);
   }
 
   getLegalCheckBoxValue(e): void {
@@ -116,6 +100,9 @@ export class AddPolicyComponent implements OnInit {
 
   ngOnInit() {
     this.addPolicyForm = this.ipt.toFormGroup(this.inputs);
+    this.userService.$user.subscribe((user)=>{
+          this.user = user;
+    });
   }
 
 }
