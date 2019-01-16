@@ -1,15 +1,19 @@
 import { DomSanitizer, SafeUrl }            from '@angular/platform-browser';
 import { Component, OnInit }                from '@angular/core';
-import { FormGroup, FormControl, Validators }           
+import { FormGroup, FormControl, Validators }
                                             from '@angular/forms';
 import { ActivatedRoute, Params }           from '@angular/router';
 import { filter }                           from 'rxjs/operators';
-import { AlertService }                     from 'mapfre-design-library';
 import { AuthenticationService }            from '../../../../../_services/_iam/authentication-service.service';
 import { PolicyDataService }                from '../../../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDetailsService }             from '../../../../../_services/my-insurance/policy-details.service';
+import { StorageServiceObservablesService } from '../../../../../_services/storage-service-observables/storage-service-observables.service';
 import { User }                             from '../../../../../_models/user';
 import { UserService }                      from '../../../../../_services/user.service';
 import { WalletCardService }                from '../../../../../_services/_iam/wallet-card.service';
+
+import { TestingDataService }               from '../../../../../_helpers/testing-data.service';
+
 import * as isEqual from 'lodash.isequal';
 
 @Component({
@@ -35,12 +39,15 @@ export class PolicyDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute:             ActivatedRoute,
-    private alertService:               AlertService,
     private authService:                AuthenticationService,
     private userService:                UserService,
     private sanitizer:                  DomSanitizer,
     private policyDataService:          PolicyDataService,
     private walletCardService:          WalletCardService,
+    private policyDetailsService:       PolicyDetailsService,
+    private storageService:             StorageServiceObservablesService,
+
+    private testingData:                TestingDataService
   ) {
    }
 
@@ -99,6 +106,10 @@ export class PolicyDetailsComponent implements OnInit {
     this.legalCheckbox = e.target.checked ? true : false;
   }
 
+  isAddressEqual(policyDetail) {
+    return isEqual(policyDetail.mailingAddress, policyDetail.residentialAddress);
+  }
+
   onSubmit(i, e): void {
     const policyInfo =                  this.policyDetails[0],
           policyId =                    policyInfo.policynumber.policynumber,
@@ -112,23 +123,27 @@ export class PolicyDetailsComponent implements OnInit {
     this.showMessage = e;
   }
 
-  isAddressEqual(policyDetail) {
-    return isEqual(policyDetail.mailingAddress, policyDetail.residentialAddress);
+  reSyncWithPolicyData(): void {
+    this.policyDetailsService
+    .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
+    .subscribe(
+      (success) => console.log('loading Complete'),
+      (err) => {
+        this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
+      },
+    );
   }
 
   updateMileageById( email, policyId, form ) {
-    console.log('this.alertLoad',this.alertLoad)
-    this.alertLoad = true;
-    console.log('this.alertLoad',this.alertLoad)
-    let successArray = [],
-        VName =        [];
+    this.alertLoad =                    true;
+    let successArray =                  [],
+        VName =                         [];
     this.policyDetails[0].vehicleDetails.forEach((vehicleDetail, i) => {
       const formController =            form.controls.groups;
       let vehicleId =                   vehicleDetail.vehicleIdentificationNumber.Id,
           odometerReading =             vehicleDetail.odometerReading;
 
       if ( formController.controls[`updateMileageInput_${i}`].dirty && formController.controls[`updateMileageInput_${i}`].value != odometerReading ) {
-        
         this.authService
         .updateMileage(email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`].value )
         .subscribe(
@@ -142,6 +157,7 @@ export class PolicyDetailsComponent implements OnInit {
         );
       }
     });
+
     setTimeout(() => {
       if (successArray.every((val, i, arr) => val == true)) {
         this.message =              `We\'ve updated you odemeters.`;
@@ -155,15 +171,19 @@ export class PolicyDetailsComponent implements OnInit {
         this.message =              `We could only update some of the odemeters. ${VName.join(', ')} had an issue`;
         this.messageType =          'default';
       }
-      this.showMessage =          true;
-      this.alertLoad =            false;
+      this.showMessage =            true;
+      this.alertLoad =              false;
+      setTimeout(() => {
+        this.showMessage =          false;
+        this.reSyncWithPolicyData();
+      }, 2000);
     }, 500);
   }
 
   ngOnInit() {
     this.loading = true;
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.policyId =                   params['policyid'];
+      this.policyId =                params['policyid'];
     });
 
     this.policyDataService.$policyDetails
@@ -175,9 +195,9 @@ export class PolicyDetailsComponent implements OnInit {
 
     this.userService.$user
     .subscribe( (user) => {
-      this.user = user;
+      this.user =                   user;
     });
 
-    this.loading = false;
+    this.loading =                  false;
   }
 }
