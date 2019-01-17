@@ -31,7 +31,7 @@ export class BillingConfirmComponent implements OnInit {
 
   sendPayment(): void {
     this.billingDetailsService
-      .makeECheckPayment(this.billing, this.user[0].userDetails.email.address, this.policyId)
+      .makeECheckPayment(this.billing, this.user.userDetails.email.address, this.policyId)
       .subscribe( (response) => {
         this.billingDataService.clearBilling();
         this.alertService.success('Congrats! You\'ve paid your bill!', true);

@@ -18,9 +18,9 @@
         <ng-container *ngIf="checkForAccount()">
           <app-new-payment-form [inputs]="inputs"></app-new-payment-form>  
         </ng-container>
-        <ng-container *ngIf="!checkForAccount()">
+        <!-- <ng-container *ngIf="!checkForAccount()">
           <app-new-payment-no-checking-form [inputs]="inputs"></app-new-payment-no-checking-form> 
-        </ng-container>
+        </ng-container> -->
       </div>
       <div class="col col2">
         <app-billing-sidebar [policy]="policy"></app-billing-sidebar>

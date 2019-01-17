@@ -37,7 +37,7 @@ export class BillingNewpaymentComponent implements OnInit {
    }
 
   checkForAccount(): boolean {
-    const bankDetails = this.checkingInfo[0].bankAccountDetails;
+    const bankDetails = this.checkingInfo.bankAccountDetails;
     let returnBool;
     if (bankDetails.accountHolderName != '' || bankDetails.accountHolderName != undefined) {
       returnBool = true;

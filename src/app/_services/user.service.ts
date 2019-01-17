@@ -19,7 +19,7 @@ export class UserService {
   }
 
   updateUser(user: any) {
-    // console.log('userService', user);
+    console.log('userService', user);
     this.messageSource.next(user);
   }
 }
