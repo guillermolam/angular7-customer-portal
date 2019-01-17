@@ -3,7 +3,7 @@
 </ng-container>
 
 <ng-container *ngFor="let policy of policyDetails">
-  <ng-container *ngIf="policy.policynumber.policynumber == policyId">
+  <ng-container *ngIf="policy.policynumber.policynumber == policyId && !loading">
     <ng-container *ngIf="policy.policyType == 'AUTO'">
       <mapfre-card 
         [singleCard]="false"
@@ -64,8 +64,8 @@
                   {{ 'ODOMETER_UPDATE' | translate }}<strong>{{ 'NEW_DISCOUNTS' | translate}}</strong>.
                 </p>
                 <form [formGroup]="updateMileage" class="update-mileage no-padding">
-                  <div class="margin-bottom mb24">
-                    <div class="mapfre-input vehicle" *ngFor="let vehicle of policy.vehicle; let i = index; let last = last; let first = first">
+                  <div class="margin-bottom mb24" formGroupName="groups">
+                    <div class="mapfre-input vehicle" *ngFor="let vehicle of policy.vehicleDetails; let i = index; let last = last; let first = first">
                       <div id="id{{i}}" [ngClass]="{'margin-top mt24': i != 0}">
                         <h3 class="title">
                             {{vehicle.vehicle}}
@@ -75,39 +75,48 @@
                             <input 
                               mdbInputDirective 
                               value="{{vehicle?.odometerReading}}" 
-                              type="number" 
-                              [id]="'form-input'+i" 
+                              type="number"
+                              [id]="'form-input_'+i" 
                               class="form-control" 
-                              formControlName="updateMileageInput">
-                              <mapfre-label [forInput]= "'form-input'+i">{{ 'MILEAGE' | translate }}</mapfre-label>
+                              [formControlName]="'updateMileageInput_'+i">
+                              <mapfre-label [forInput]= "'form-input_'+i">{{ 'MILEAGE' | translate }}</mapfre-label>
                           </div>
-                          <!--  Please don't remove this ... maybe needing this
-                            [attr.disabled]="!legalCheckbox ? '' : null"
-                            [ngClass]="{ 'disabled': !legalCheckbox }"> -->
                         </div>
                       </div> 
                     </div>
                   </div>
-                  <div class="row margin-top mt32 margin-bottom mb24 checkbox">
+                  <div class="row margin-top mt32 margin-bottom mb24 checkbox" formGroupName="legal">
                     <div class="col">
-                      <input class="single-checkbox" type="checkbox" id="legal-checkbox" required (change)="getLegalCheckBoxValue($event)">
+                      <input 
+                        class="single-checkbox"
+                        type="checkbox"
+                        id="legal-checkbox"
+                        required
+                        (change)="getLegalCheckBoxValue($event)"
+                        [formControlName]="'legalCheckMark'">
                       <label class="form-check-label legal disclaimer disclaimer small" for="legal-checkbox">{{ 'LEGAL_CHECKMARK' | translate }}</label>
                     </div>
                   </div>
-                  <div class="row" *ngIf="showMessage">
+                  <ng-container *ngIf="alertLoad && !showMessage">
+                    <div class="margin-bottom mb16 loading-no-padding">
+                        <mapfre-loading></mapfre-loading>
+                    </div>
+                     
+                  </ng-container>
+                  <div class="row" *ngIf="!alertLoad && showMessage">
                     <div class="col">
-                      <mapfre-alert [nonDynamic]="true" [alertType]="'success'" (hide)="showMe($event)">
-                        You have updated the odometer.
+                      <mapfre-alert [nonDynamic]="true" [alertType]="messageType" (hide)="showMe($event)">
+                        {{ message | translate }}
                       </mapfre-alert>
                     </div>
                   </div>
-                  <div class="row" *ngIf="!showMessage">
+                  <div class="row" *ngIf="!alertLoad && !showMessage">
                     <div class="col">
                       <mapfre-button
                         (click)="onSubmit(i, $event)"
                         [inputType]="'submit'"
                         [additionalClasses]="'ghost primary large full waves-effect waves-light'"
-                        [disabledValue]="legalCheckbox"
+                        [disabledValue]="legalCheckbox && updateMileage.controls.groups.dirty && updateMileage.valid"
                         [translateValue]=" 'UPDATE_MILEAGE' | translate ">
                           {{ 'UPDATE_MILEAGE' | translate }}
                         </mapfre-button>
@@ -270,7 +279,7 @@
                         {{ policy.mailingAddress.streetName }}  {{ policy.mailingAddress.city }}  {{ policy.mailingAddress.state }}  {{ policy.mailingAddress.zipCode.code }}
                     </div>
                     <div class="col edit-address">
-                        <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>
@@ -287,7 +296,7 @@
                               </div>
                         </ng-template>
                     <div class="col edit-address">
-                        <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>

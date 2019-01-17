@@ -7,6 +7,7 @@ import { Injectable }       from '@angular/core';
 
 export class BillingDataService {
 
+  private storeBankAccount:         string = null;
   billingDetails:           any;
   private messageSource =   new BehaviorSubject<any>(this.billingDetails);
   $billingDetails =         this.messageSource.asObservable();
@@ -20,5 +21,15 @@ export class BillingDataService {
   updateBillingDetails(currentBill: any) {
     console.log('BillingDataService', currentBill);
     this.messageSource.next(currentBill);
+  }
+
+  getBankAccountCheck(){
+    console.log(this.storeBankAccount);
+    return this.storeBankAccount;
+  }
+
+  setBankAccountCheck(checkValue){
+    console.log(this.storeBankAccount);
+    this.storeBankAccount = checkValue;
   }
 }

@@ -66,19 +66,19 @@
     <div class="col">
       <h2 class="title">
           {{ 'CHECKING_ACCOUNT' | translate }}
-          <ng-container *ngIf="checkingInfo[0]?.bankAccountDetails.accountHolderName">
+          <ng-container *ngIf="checkingInfo?.bankAccountDetails.accountHolderName">
             <mapfre-button additionalClasses="link-button blue-link float-right no-border no-padding no-margin  waves-effect" (click)="OnClickEditButton($event)">
                 {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
             </mapfre-button>
           </ng-container>
       </h2>
 
-      <ng-container *ngIf="editAccount || !checkingInfo[0]?.bankAccountDetails.accountHolderName">
+      <ng-container *ngIf="editAccount || !checkingInfo?.bankAccountDetails.accountHolderName">
         <div class="checking-form margin-top mt16">
           <div *ngFor="let input of inputs" class="input" [ngClass]="{ 'first-input': input?.inputType == 'address' }">
             <ng-container *ngIf="input.inputType == 'checkbox'">
               <div class="margin-vertical mv8">
-                <input class="single-checkbox" id="store-checkbox"  type="checkbox" [formControlName]="input?.key">
+                <input class="single-checkbox" id="store-checkbox"  type="checkbox" [formControlName]="input?.key" (change)="getStoreAccountInfo($event)" [attr.checked]='storeBankAccount'>
                 <label class="margin-left ml16" for="store-checkbox">{{input.label | translate }}</label>
               </div>
             </ng-container>
@@ -89,16 +89,16 @@
         </div>
       </ng-container>
 
-      <ng-container *ngIf="checkingInfo[0]?.bankAccountDetails.accountHolderName && !editAccount ">
+      <ng-container *ngIf="checkingInfo?.bankAccountDetails.accountHolderName && !editAccount ">
         <div class="checking-info margin-top mt24">
           <div class="row  margin-bottom mb8">
             <div class="col">
-              {{ 'ACCOUNT_HOLDER' | translate}}: <strong>{{checkingInfo[0]?.bankAccountDetails.accountHolderName}}</strong>
+              {{ 'ACCOUNT_HOLDER' | translate}}: <strong>{{checkingInfo?.bankAccountDetails.accountHolderName}}</strong>
             </div>
           </div>
           <div class="row margin-bottom mb24">
             <div class="col">
-                {{ 'ACCOUNT_NUMBER' | translate}}: <strong>{{checkingInfo[0]?.bankAccountDetails.accountNumber.digits}}</strong>
+                {{ 'ACCOUNT_NUMBER' | translate}}: <strong>{{checkingInfo?.bankAccountDetails.accountNumber.digits}}</strong>
             </div>
           </div>
         </div>
