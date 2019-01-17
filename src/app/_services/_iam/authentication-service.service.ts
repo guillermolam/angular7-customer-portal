@@ -103,9 +103,9 @@ export class AuthenticationService {
     return this.http.post(url, {}, this.serviceHelpers.options);
   }
 
-  updateMileage(email, mileage: number) {
-    const url =  `https://httpstat.us/404`;
-    return this.http.get(url, {});
+  updateMileage(emailAddress, policyId, vechicalId, odameter): Observable<object> {
+    const url =           `https://mdv-doctest:8084//personal-policies/${emailAddress}/${policyId}/${vechicalId}?odometerReading=${odameter}`;
+    return this.http.post(url, {} , this.serviceHelpers.options);
   }
 
   updatePassword(user: User) {

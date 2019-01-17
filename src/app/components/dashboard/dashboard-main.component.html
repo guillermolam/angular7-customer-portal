@@ -3,11 +3,12 @@
   <div class="row">
     <app-loggedin-sidenav></app-loggedin-sidenav>
     <div class="col main-column">
-      <h1>{{ testAlert }}</h1>
       <mapfre-alert></mapfre-alert>
-      <router-outlet></router-outlet>
       <ng-container *ngIf="loading">
-        <mapfre-loading></mapfre-loading>
+          <mapfre-loading></mapfre-loading>
+      </ng-container>
+      <ng-container *ngIf="!loading">
+        <router-outlet></router-outlet>
       </ng-container>
     </div>
     <div class="col-sm-12 col column-misc" *ngIf="reportClaim">

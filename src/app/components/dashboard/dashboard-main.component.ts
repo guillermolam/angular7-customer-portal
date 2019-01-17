@@ -44,7 +44,6 @@ export class DashboardMainComponent implements OnInit {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // console.log(event.url);
         if ( event.url === '/my-insurance' ) {
           this.reportClaim =                true;
           this.showAlert =                  true;
@@ -55,43 +54,40 @@ export class DashboardMainComponent implements OnInit {
         else {
           this.reportClaim =                false;
           this.showAlert =                  false;
-
         }
       }
     });
 
     this.policyDetailsService
-      .getPolicyDetailsByEmail(
-        this.storageService.getUserFromStorage()
-      )
+      .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
       .subscribe(
-        () => { this.loading = false; },
+        (success) => console.log('loading Complete'),
         (err) => {
-          this.loading = false;
           this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
-        }
-     );
-
-    this.authenticationService
-      .getUserDetailsByEmail(this.storageService.getUserFromStorage())
-      .subscribe(([userResponse, accountResponse]) => {
-        const response = {
-          userDetails: {...userResponse},
-          bankAccountDetails:  {...accountResponse}
-        };
-        this.userService.updateUser(response);
-      },
-      (err) => {
-        this.loading = false;
-        let ui = [{
-          userDetails: this.testingData.testUserInfo(),
-          bankAccountDetails: this.testingData.testBankingInfo()
-        }];
-        this.userService.updateUser( ui );
-        this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
+        },
+      ).add(() => {
+        this.authenticationService
+          .getUserDetailsByEmail(this.storageService.getUserFromStorage())
+          .subscribe(([userResponse, accountResponse]) => {
+            const response = {
+              userDetails: {...userResponse},
+              bankAccountDetails:  {...accountResponse}
+            };
+            this.userService.updateUser(response);
+          },
+          (err) => {
+            let ui = [{
+              userDetails: this.testingData.testUserInfo(),
+              bankAccountDetails: this.testingData.testBankingInfo()
+            }];
+            this.userService.updateUser( ui );
+            this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
+          }).add( () => {
+            this.loading = false;
+          })
+        ;
       })
     ;
-
   }
 
 }
