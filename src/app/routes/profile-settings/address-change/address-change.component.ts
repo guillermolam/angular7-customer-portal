@@ -16,7 +16,7 @@ export class AddressChangeComponent implements OnInit {
     addressType:                    string;
     loading:                        boolean = false;
     typeOfAddress:                  string;
-
+    policyId:                       string;
     constructor(
       service: ChangeAddressService,
       private activatedRoute:           ActivatedRoute,
@@ -29,6 +29,7 @@ export class AddressChangeComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.addressType = params['address-type'];
+      this.policyId         = params['policyid'];
     });
 
     if( this.addressType == 'mailing' ) {
