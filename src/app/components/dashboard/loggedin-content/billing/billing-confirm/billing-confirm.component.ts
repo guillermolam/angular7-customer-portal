@@ -6,6 +6,8 @@ import { BillingDetailsService }          from './../../../../../_services/my-in
 import { PolicyDataService }              from './../../../../../_services/my-insurance/data-services/policy-data.service';
 import { User }                           from './../../../../../_models/user';
 import { UserService }                    from './../../../../../_services/user.service';
+import { BankAccountService }             from './../../../../../_services/profile-settings/bank-account.service';
+
 
 @Component({
   selector: 'app-billing-confirm',
@@ -18,6 +20,7 @@ export class BillingConfirmComponent implements OnInit {
   policyId:                               string;
   policyDetails:                          any;
   user:                                   any;
+  storeBankAccount:                       string;
 
   constructor(
     private activatedRoute:               ActivatedRoute,
@@ -27,9 +30,14 @@ export class BillingConfirmComponent implements OnInit {
     private policyDataService:            PolicyDataService,
     private router:                       Router,
     private userService:                  UserService,
+    private bankAccountService:           BankAccountService
   ) { }
 
   sendPayment(): void {
+    if(this.storeBankAccount){
+      this.bankAccountService.addBankAccount(this.user.userDetails.email.address, this.billing.bankAccount).subscribe();
+    }
+
     this.billingDetailsService
       .makeECheckPayment(this.billing, this.user.userDetails.email.address, this.policyId)
       .subscribe( (response) => {
@@ -66,6 +74,11 @@ export class BillingConfirmComponent implements OnInit {
             this.billing =                billing;
         });
     });
+
+    this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck)=>{
+      this.storeBankAccount = bankAccountCheck;
+    });
+
 
   }
 

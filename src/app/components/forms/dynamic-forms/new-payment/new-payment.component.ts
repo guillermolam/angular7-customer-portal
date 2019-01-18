@@ -79,9 +79,9 @@ export class NewPaymentComponent implements OnInit {
   getStoreAccountInfo(e): void {
     console.log(e.target.checked);
     if(e.target.checked)
-    this.billingDataService.setBankAccountCheck('checked');
+    this.billingDataService.updateBankAccountCheck('checked');
     else
-    this.billingDataService.setBankAccountCheck(null);
+    this.billingDataService.updateBankAccountCheck(null);
 
   }
 
@@ -151,7 +151,9 @@ export class NewPaymentComponent implements OnInit {
   ngOnInit() {
 
     this.newPaymentForm =             this.ipt.toFormGroup(this.inputs);
-    this.storeBankAccount=            this.billingDataService.getBankAccountCheck();
+    this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck)=>{
+      this.storeBankAccount = bankAccountCheck;
+    });
     this.activatedRoute.params
     .subscribe((params: Params) => {
       this.policyId =                 params['policyid'];
@@ -172,7 +174,6 @@ export class NewPaymentComponent implements OnInit {
     .subscribe((address) => {
       this.mailingAddress =           address;
     });
-
    
     this.newPaymentRadioForm =        new FormGroup({
       checkingNumberAmount:           new FormControl(),

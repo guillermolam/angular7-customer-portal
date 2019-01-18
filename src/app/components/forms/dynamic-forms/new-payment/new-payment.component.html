@@ -78,7 +78,7 @@
           <div *ngFor="let input of inputs" class="input" [ngClass]="{ 'first-input': input?.inputType == 'address' }">
             <ng-container *ngIf="input.inputType == 'checkbox'">
               <div class="margin-vertical mv8">
-                <input class="single-checkbox" id="store-checkbox"  type="checkbox" [formControlName]="input?.key" (change)="getStoreAccountInfo($event)" [attr.checked]='storeBankAccount'>
+                <input  type="checkbox" class="single-checkbox" id="store-checkbox" (change)="getStoreAccountInfo($event)" [checked]="storeBankAccount">
                 <label class="margin-left ml16" for="store-checkbox">{{input.label | translate }}</label>
               </div>
             </ng-container>
