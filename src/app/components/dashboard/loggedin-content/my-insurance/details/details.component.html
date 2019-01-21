@@ -42,7 +42,7 @@
                 </h2>
                 <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
                 <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
-                  <div class="col">
+                  <div class="col col-name">
                     <strong>{{ holder['Insured Name'] }}</strong>
                   </div>
                   
@@ -67,7 +67,7 @@
                   <div class="margin-bottom mb24" formGroupName="groups">
                     <div class="mapfre-input vehicle" *ngFor="let vehicle of policy.vehicleDetails; let i = index; let last = last; let first = first">
                       <div id="id{{i}}" [ngClass]="{'margin-top mt24': i != 0}">
-                        <h3 class="title">
+                        <h3 class="title vehicle-name">
                             {{vehicle.vehicle}}
                         </h3>
                         <div class="row input-control margin-top mt16" [ngClass]="{ 'disabled': !legalCheckbox }">
@@ -151,9 +151,9 @@
                   {{ 'YOUR_AGENT' | translate }}
                 </h2>
                 <strong>
-                  {{ policy.agent.agentName }}
+                  {{ policy.agent.agentName | titlecase }}
                 </strong>
-                <p class="title-case">{{ policy.agent.address.streetName  }} {{ policy.agent.address.city }} {{ policy.agent.address.state }} {{ policy.agent.address.zipCode.code }}</p>
+                <p class="title-case">{{ policy.agent.address.streetName | titlecase }} {{ policy.agent.address.city | titlecase }}, {{ policy.agent.address.state | fullstateToAbv }}, {{ policy.agent.address.zipCode.code }}</p>
                 <p class="no-margin-bottom">{{'PHONE' | translate }}: <a href="tel:{{ policy.agent.agentPhone.number }}" class="underline"> {{ policy.agent.agentPhone.number }}</a></p>
               </div>
             </div>
@@ -276,7 +276,7 @@
                   <div class="row"><div class="col"><strong> {{ 'MAILING' | translate}}</strong></div></div>
                   <div class="row">
                     <div class="col address-copy">
-                        {{ policy.mailingAddress.streetName }}  {{ policy.mailingAddress.city }}  {{ policy.mailingAddress.state }}  {{ policy.mailingAddress.zipCode.code }}
+                        {{ policy.mailingAddress.streetName | titlecase }} {{ policy.mailingAddress.city | titlecase }}, {{ policy.mailingAddress.state | fullstateToAbv }} {{ policy.mailingAddress.zipCode.code }}
                     </div>
                     <div class="col edit-address">
                         <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
@@ -286,21 +286,19 @@
                 <div class="residential-add margin-bottom mb16 address">
                   <div class="row"><div class="col"><strong> {{ 'RESIDENTIAL' | translate}}</strong></div></div>
                   <div class="row">
-                      <div class="col address-copy" *ngIf="!isAddressEqual(policy); else sameAsMailing">
-                          {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }} 
-                        </div>
-                        <ng-template #sameAsMailing> 
-                            <div class="col address-copy">
-                                <!-- {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }}  -->
-                                  {{ 'SAME_AS_MAILING' | translate}}
-                              </div>
-                        </ng-template>
+                    <div class="col address-copy text-capitalize" *ngIf="!isItTheSameAddress; else sameAsMailing">
+                      {{ policy.residentialAddress.streetName | titlecase }}  {{ policy.residentialAddress.city | titlecase }}, {{ policy.residentialAddress.state | fullstateToAbv }}, {{ policy.residentialAddress.zipCode.code }} 
+                    </div>
+                    <ng-template #sameAsMailing> 
+                      <div class="col address-copy text-capitalize">
+                        {{ 'SAME_AS_MAILING' | translate}}
+                      </div>
+                    </ng-template>
                     <div class="col edit-address">
                         <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>
-      
               </div>
             </div>
           </div>
@@ -333,7 +331,7 @@
         
         <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
           
-        <section class="row policy-details-content">
+        <section class="row policy-details-content margin-top mt40 mobile-margin">
           <div class="col-sm-12 col-md col1">
             
               <div class="row margin-bottom mb16 policy-holders row-section">
@@ -343,7 +341,7 @@
                     </h2>
                     
                     <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
-                      <div class="col">
+                      <div class="col col-name">
                         <strong>{{ holder['Insured Name'] }}</strong>
                       </div>
                       
@@ -363,23 +361,19 @@
                     <svg-house-mono-color-small-svg></svg-house-mono-color-small-svg> {{ 'PROPERTY_COVERED' | translate }}
                 </h2>
                 <div class="margin-bottom mb16">
-                  <div>
+                  <div class="text-capitalize">
                     <strong>
-                      <!-- {{ 'property address' }} -->
-                      {{ policy.property[0].address.streetName }}, {{ policy.property[0].address.city }}, {{ policy.property[0].address.state }}, {{ policy.property[0].address.zipCode.code }}
-                      <!-- {{ policy.property[0].address.streetName }}  {{ policy.property[0].address.city }}  {{ policy.property[0].address.state }}  {{ policy.property[0].address.zipCode.code }} -->
+                      {{ address }} {{ policy.property[0].address.city }}, {{ policy.property[0].address.state | fullstateToAbv }}, {{ policy.property[0].address.zipCode.code }}
                     </strong>
                   </div>
                   <div>
-                      {{ 'property address' }}
-                    <!-- {{ 'APARTMENT' | translate}}: <strong> {{ policy.property[0].address.streetName }}</strong> -->
+                     {{ 'APARTMENT' | translate}}: <strong> {{ apt }}</strong> 
                   </div>
                 </div>
                               
                 <iframe height="168" id="gmap_canvas" 
                 [src]="getAddress([policy.property[0].address.streetName, policy.property[0].address.city, policy.property[0].address.state, policy.property[0].address.zipCode.code])" 
                   frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-                  <!-- [src]="getAddress([policy.property[0].address.streetName, policy.property[0].address.city, policy.property[0].address.state, policy.property[0].address.zipCode.code ])"  -->
                 </iframe>
               </div>
             </div>
@@ -406,9 +400,9 @@
                       {{ 'YOUR_AGENT' | translate }}
                     </h2>
                     <strong>
-                      {{ policy.agent.agentName }}
+                      <span  class="text-capitalize">{{ policy.agent.agentName | titlecase }}</span>
                     </strong>
-                    <p class="title-case">{{ policy.agent.address.streetName  }} {{ policy.agent.address.city }} {{ policy.agent.address.state }} {{ policy.agent.address.zipCode.code }}</p>
+                    <p class="text-capitalize">{{ policy.agent.address.streetName| titlecase  }} {{ policy.agent.address.city| titlecase }}, {{ policy.agent.address.state | fullstateToAbv }}, {{ policy.agent.address.zipCode.code }}</p>
                     <p>{{'PHONE' | translate }}: <a href="tel:{{ policy.agent.agentPhone.number }}" class="underline"> {{ policy.agent.agentPhone.number }}</a></p>
                   </div>
                 </div>
@@ -528,12 +522,11 @@
                     <div class="mailing-add margin-vertical mv16 address">
                         <div class="row"><div class="col"><strong> {{ 'MAILING' | translate}}</strong></div></div>
                         <div class="row">
-                          <div class="col address-copy">
-                              {{ policy.mailingAddress.streetName }}  {{ policy.mailingAddress.city }}  {{ policy.mailingAddress.state }}  {{ policy.mailingAddress.zipCode.code }}
+                          <div class="col address-copy text-capitalize">
+                              {{ policy.mailingAddress.streetName | titlecase }}  {{ policy.mailingAddress.city | titlecase }}, {{ policy.mailingAddress.state | fullstateToAbv }}, {{ policy.mailingAddress.zipCode.code }}
                           </div>
                           <div class="col edit-address">
                               <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
-
                           </div>
                         </div>
                       </div>
@@ -541,16 +534,14 @@
                     <div class="residential-add margin-bottom mb16 address">
                       <div class="row"><div class="col"><strong> {{ 'RESIDENTIAL' | translate}}</strong></div></div>
                       <div class="row">
-                          <div class="col address-copy" *ngIf="!isAddressEqual(policy); else sameAsMailing">
-                              {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }} 
-                                <!-- {{ 'SAME_AS_MAILING' | translate}} -->
-                            </div>
-                            <ng-template #sameAsMailing> 
-                                <div class="col address-copy">
-                                    <!-- {{ policy.residentialAddress.streetName }}  {{ policy.residentialAddress.city }}  {{ policy.residentialAddress.state }}  {{ policy.residentialAddress.zipCode.code }}  -->
-                                      {{ 'SAME_AS_MAILING' | translate}}
-                                  </div>
-                            </ng-template>
+                        <div class="col address-copy text-capitalize" *ngIf="!isItTheSameAddress; else sameAsMailing">
+                          {{ policy.residentialAddress.streetName | titlecase }}  {{ policy.residentialAddress.city | titlecase }}, {{ policy.residentialAddress.state | fullstateToAbv }}, {{ policy.residentialAddress.zipCode.code }} 
+                        </div>
+                        <ng-template #sameAsMailing> 
+                          <div class="col address-copy text-capitalize">
+                            {{ 'SAME_AS_MAILING' | translate}}
+                          </div>
+                        </ng-template>
                         <div class="col edit-address">
                             <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
                         </div>

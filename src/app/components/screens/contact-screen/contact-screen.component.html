@@ -51,17 +51,17 @@
           <div class="agent-info  margin-bottom mb32">
               <div class="row agent-name margin-bottom mb8">
                 <div class="col">
-                  {{policy?.agent.agentName}}
+                  {{policy?.agent.agentName | titlecase }}
                 </div>
               </div>
               <div class="row policy-info margin-bottom mb8">
                 <div class="col">
-                    {{policy?.policyType | translate }} &mdash; {{policy?.policynumber.policynumber}}
+                    {{ policy?.policyType | translate }} &mdash; {{ policy?.policynumber.policynumber }}
                 </div>
               </div>
               <div class="row agent-address margin-bottom mb8">
                 <div class="col">
-                    {{policy?.agent.address.streetName}} {{policy?.agent.address.city}} {{policy?.agent.address.state}} {{policy?.agent.address.zipCode.code}}
+                    {{ policy?.agent.address.streetName  | titlecase }} {{ policy?.agent.address.city | titlecase }} {{ policy?.agent.address.state | fullstateToAbv  }}, {{policy?.agent.address.zipCode.code}}
                 </div>
               </div>
               <div class="row agent-phone margin-bottom mb8">
@@ -69,7 +69,7 @@
                     <strong>Phone:</strong>
                 </div>
                 <div class="col col-info">
-                    <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline blue-link">{{policy?.agent.agentPhone.number}}</a>
+                    <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline blue-link">{{ policy?.agent.agentPhone.number }}</a>
                 </div>
               </div>
             </div>

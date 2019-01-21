@@ -15,7 +15,7 @@
             <small>
             <span [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 
               'red-color': policy.policyStatus === 'INACTIVE' }">
-              <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
+              <small>{{policy.effDate | customDateFormat }} {{ 'TO' | translate }} {{policy.expDate | customDateFormat }}</small>
             </span>
           </small>
           </h1>

@@ -14,7 +14,7 @@
               <small>
               <span [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 
                 'red-color': policy.policyStatus === 'INACTIVE' }">
-                <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
+                <small>{{ policy.effDate | customDateFormat }} {{ 'TO' | translate }} {{ policy.expDate | customDateFormat }}</small>
               </span>
             </small>
             </h1>
@@ -53,7 +53,7 @@
                         <td> 
                             {{ 'DUE_DATE' | translate }}
                         </td>
-                        <td> 
+                        <td class="text-right"> 
                             {{ 'AMOUNT' | translate }}
                         </td>
                       </tr>
@@ -64,18 +64,18 @@
                           <strong>{{ policy.billingDetails[0]?.outstandingbalance | currency }}</strong>
                         </td>
                         <td>
-                            <strong>{{ policy.billingDetails[0]?.paymentDueDate |   date:'MM/dd/yy' }}</strong>
+                            <strong>{{ policy.billingDetails[0]?.paymentDueDate | date }}</strong>
                         </td>
-                        <td>
+                        <td class="text-right">
                             <strong>{{ policy.billingDetails[0]?.minAmountDue | currency }}</strong>
                         </td>
                       </tr>
                       <tr class="border-full grey-border no-border-top">
-                        <td colspan="3" class="text-center no-border-top">
+                        <td colspan="3" class="text-center no-border-top no-padding padding-bottom pb16">
                           <mapfre-link
-                            [additionalClasses]="'basic primary large btn width w75'"
+                            additionalClasses="basic primary large btn w-75 mx-auto"
                             [routerLink]="['/billing/' +  policy.policynumber.policynumber + '/new-payment/']">
-                            {{ 'PAY_BY_CHECK' | translate}}
+                            {{ 'MAKE_A_PAYMENT' | translate}}
                           </mapfre-link>
                         </td>
                       </tr>
@@ -111,7 +111,7 @@
                           <strong>{{ historyPayment.minAmountDue | currency }}</strong>
                         </td>
                         <td class="text-right"> 
-                          <strong>{{ historyPayment.dateApplied |  date:'MM/dd/yy' }}</strong>
+                          <strong>{{ historyPayment.dateApplied |  date }}</strong>
                         </td>
                       </tr>
                       </ng-container>
@@ -121,14 +121,14 @@
 
 
                 <ng-template #showSchedule>
-                  <nav class="tab-accordian-navigation">
+                  <nav class="tab-accordian-navigation w-100">
                     <div class="tab-navigation">
                       <ul class="w-100 pl-0 d-table no-margin">
                         <li [ngClass]="{'active': schedualOrHistory }" class="width w-50">
-                          <a (click)="switchHistories('schedual')">{{'SCHEDULED_PAYMENTS' | translate}}</a>
+                          <a (click)="switchHistories('schedual')">{{ 'SCHEDULED_PAYMENTS' | translate }}</a>
                         </li>
                         <li [ngClass]="{'active': !schedualOrHistory }" class="width w-50">
-                            <a (click)="switchHistories('history')">{{'HISTORY' | translate}}</a>
+                            <a (click)="switchHistories('history')">{{ 'HISTORY' | translate }}</a>
                         </li>
                       </ul>
                     </div>
@@ -149,7 +149,7 @@
                             <strong>{{ scheduledPayment.minAmountDue | currency }}</strong>
                           </td>
                           <td class="text-right"> 
-                              <strong>{{ scheduledPayment.dueDate |  date:'MM/dd/yy' }}</strong>
+                              <strong>{{ scheduledPayment.dueDate |  date }}</strong>
                           </td>
                         </tr>
                       </ng-container>
@@ -171,7 +171,7 @@
                           <strong>{{ historyPayment.amountPaid | currency }}</strong>
                         </td>
                         <td class="text-right"> 
-                          <strong>{{ historyPayment.dateApplied |  date:'MM/dd/yy' }}</strong>
+                          <strong>{{ historyPayment.dateApplied | date }}</strong>
                         </td>
                       </tr>
                       </ng-container>
@@ -202,10 +202,10 @@
                   <ng-container *ngFor="let pendingCheckPayment of policy.pendingCheckPayments ">
                     <tr class="row-content border-full grey-border">
                       <td>
-                        <strong>{{ pendingCheckPayment.paymentAmount | currency }}</strong>
+                        <small><strong>{{ pendingCheckPayment.paymentAmount | currency }}</strong></small>
                       </td>
                       <td class="text-right"> 
-                          <strong>{{ pendingCheckPayment.paymentDateTime | date:'MM/dd/yy'}}</strong>
+                          <small><strong>{{ pendingCheckPayment.paymentDateTime | date }}</strong></small>
                       </td>
                     </tr>
                   </ng-container>

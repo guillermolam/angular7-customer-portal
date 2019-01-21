@@ -143,6 +143,8 @@ import { PaperlessPayEnrollComponent } from './components/dashboard/loggedin-con
 import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enroll-eft-epay-form/enroll-eft-epay-form.component';
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
+import { FullstateToAbvPipe } from './_helpers/_pipes/fullstate-to-abv.pipe';
+import { AbvToFulstatePipe } from './_helpers/_pipes/abv-to-fulstate.pipe';
 
 if (environment.production) {
   enableProdMode();
@@ -263,6 +265,8 @@ export function tokenGetter() {
     EnrollEftEpayFormComponent,
     PaperlessPayConfirmComponent,
     ChangeEmailComponent,
+    FullstateToAbvPipe,
+    AbvToFulstatePipe,
 
 
   ],
