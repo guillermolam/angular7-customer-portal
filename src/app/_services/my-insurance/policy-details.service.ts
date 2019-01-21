@@ -29,7 +29,7 @@ export class PolicyDetailsService {
         forkJoin(
           this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber),
           this.getDocumentsByPolicy(policy.policynumber.policynumber),
-          this.getVehicleByPolicy(policy.policynumber.policynumber),
+          // this.getVehicleByPolicy(policy.policynumber.policynumber),
           this.billingDetailsService.getHistoryBillsByPolicy(policy.policynumber.policynumber),
           this.billingDetailsService.getScheduledBillsByPolicy(policy.policynumber.policynumber),
           // .pipe(
@@ -37,12 +37,12 @@ export class PolicyDetailsService {
           //   catchError((error)=> throwError(error.status))),
           this.billingDetailsService.getPendingChecksByPolicy(policy.policynumber.policynumber)
         )
-        .subscribe(([billingResponse,documentsResponse, vehicleResponse, historyResponse, scheduledBills, pendingCheckPayments])=>{
+        .subscribe(([billingResponse,documentsResponse/*, vehicleResponse*/, historyResponse, scheduledBills, pendingCheckPayments])=>{
           this.policyBillingDataAll.push(...[Object.assign(
             policy, 
             { billingDetails: {...billingResponse}},
             { documentsDetails: documentsResponse},
-            { vehicleDetails: vehicleResponse},
+            // { vehicleDetails: vehicleResponse},
             { billingHistory: historyResponse},
             { scheduledBills: scheduledBills },
             { pendingCheckPayments: pendingCheckPayments }

@@ -1,4 +1,4 @@
-
+<mapfre-card [singleCard]="false">
 <div class="change-address single-card-column"> 
   <div class="row text-center">
     <div class="col"> 
@@ -17,10 +17,11 @@
           [additionalClasses]="'link-button blue-link small'"
           [customIcon]="'./assets/img/icons/back-arrow.png'"
           [iconClasses]="'align-middle'"
-          [routerLink]="['/', 'my-insurance', 'QJN952', 'details' ]"
+          [routerLink]="['/my-insurance', policyId, 'details' ]"
           [showIconsCustom]="true">  
          {{ 'BACK' | translate }}
         </mapfre-button>
       </div>
     </div>
   </div>
+</mapfre-card>

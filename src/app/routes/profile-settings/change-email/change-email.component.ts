@@ -25,7 +25,7 @@ export class ChangeEmailComponent implements OnInit {
         this.oldEmail = queryParam.oldEmail;
         this.token    = queryParam.token;
         this.requestBody = {
-            newEmail: queryParam.newEmail,
+            email: queryParam.newEmail,
             password: ""
         }
         this.changeEmailService.updateAccountEmail(this.oldEmail,this.token,this.requestBody).subscribe(()=>{

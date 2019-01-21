@@ -33,6 +33,12 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 Temporary "documentation" for all of the components [Components on Trello](https://trello.com/b/entNM8FY/component-creation). This should hopefully be fully realized in the future.
 
+## Helpers
+
+-pipes
+
+-test data
+
 ## Problem with AppModule ["ERROR in No NgModule metadata found for 'AppModule'."]
 This is typacally a result of having a different node.js or angular-cli version.
 Steps to solve this issue are as follows:

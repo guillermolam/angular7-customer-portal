@@ -9,248 +9,6 @@ export class TestingDataService {
   constructor() { }
 
   testDatafunction() {
-    /*
-      return {
-        firstName: 'FirstName',
-        middleName: 'MiddleName',
-        lastName: 'LastName',
-        email: 'test@email.com',
-        policyDetails: [
-          {
-            balance: 0, 
-            nextDueDate: '10/28/2018',
-            nextDueAmount: 0, 
-            policynumber: {
-                policynumber: 'QJN952'
-            },
-            agent: {
-                agentCode: {
-                    code: '434'
-                },
-                agentName: 'AAA NORTHEAST INSURANCE AGCY, INC.',
-                agentNameExt: '',
-                agentPhone: {
-                    number: '(800) 222-4242'
-                },
-                address: {
-                  streetName: '1320 NORTH MAIN STREET',
-                  city: 'FALL RIVER',
-                  state: 'MASSACHUSETTS',
-                  zipCode: {
-                      code: '02720'
-                  }
-              }
-            },
-            insurer: [
-              {
-                'firstName': 'JENNIFER',
-                'middleName': 'L',
-                'lastName': 'JUDD',
-                'Insurer Name': 'JENNIFER L JUDD'
-              }
-            ],
-            policyStatus: 'INACTIVE',
-            policyFlags: {
-              isEft: 'enrollment-pending',
-              isEftEligi: false,
-              isEbillElig: true,
-              isEdfElig: false,
-              isEbill: 'enrollment-pending',
-              isEdf: 'enrollment-pending'
-            },
-            policyType: 'AUTO',
-            vehicle: [
-                {
-                  vehicle: '2016 RAM 1500 SLT'
-                },
-                {
-                  vehicle: '1998 HONDA CR-V LX'
-                },
-                {
-                  vehicle: '1998 HONDA CR-V LX'
-                }
-            ],
-            effDate: '2016-09-10T04:00:00.000+0000',
-            expDate: '2017-09-10T04:00:00.000+0000'
-          },
-          {
-            
-            balance: 1000.99,
-            nextDueDate: '10/28/2018',
-            nextDueAmount: 79.99,
-
-            policynumber: {
-                policynumber: '66161'
-            },
-            agent: {
-                agentCode: {
-                    code: '434'
-                },
-                agentName: 'AAA NORTHEAST INSURANCE AGCY, INC.',
-                agentNameExt: '',
-                agentPhone: {
-                    number: '(800) 222-4242'
-                },
-                address: {
-                  streetName: '1320 NORTH MAIN STREET',
-                  city: 'FALL RIVER',
-                  state: 'MASSACHUSETTS',
-                  zipCode: {
-                      code: '02720'
-                  }
-              },
-            },
-            insurer: [
-              {
-                'firstName': 'JENNIFER1',
-                'middleName': 'L',
-                'lastName': 'JUDD',
-                'Insurer Name': 'JENNIFER L JUDD'
-              },
-              {
-                'firstName': 'JENNIFER2',
-                'middleName': 'L',
-                'lastName': 'JUDD',
-                'Insurer Name': 'JENNIFER L JUDD'
-              }
-            ],
-            policyStatus: 'ACTIVE',
-            policyFlags: {
-              isEft: false,
-              isEftEligi: true,
-              isEbillElig: true,
-              isEdfElig: true,
-              isEbill: true,
-              isEdf: true
-            },
-            policyType: 'AUTO',
-            vehicle: [
-                {
-                  vehicle: '2016 RAM 1500 SLT'
-                },
-            ],
-            effDate: '2016-09-10T04:00:00.000+0000',
-            expDate: '2017-09-10T04:00:00.000+0000'
-          },
-          {
-            balance: 0,
-            nextDueDate: '10/28/2018',
-            nextDueAmount: 0,
-            policynumber: {
-                policynumber: 'BBWQKQ' 
-            },
-            agent: {
-                agentCode: {
-                    code: 'AS9'
-                },
-                agentName: 'GILBERT C. OLIVEIRA INS AGENCY INC',
-                agentNameExt: '',
-                agentPhone: {
-                    number: '(508) 675-7475'
-                },
-                address: {
-                  streetName: '1320 NORTH MAIN STREET',
-                  city: 'FALL RIVER',
-                  state: 'MASSACHUSETTS',
-                  zipCode: {
-                      code: '02720'
-                  }
-              }
-            },
-            insurer: [
-                {
-                    'firstName': 'CONRAD',
-                    'middleName': '',
-                    'lastName': 'GAGNE',
-                    'Insurer Name': 'CONRAD GAGNE'
-                }
-            ],
-            policyStatus: 'INACTIVE',
-            policyFlags: {
-                isEft: true,
-                isEftEligi: false,
-                isEbillElig: false,
-                isEdfElig: false,
-                isEbill: false,
-                isEdf: false
-            },
-            property: [
-                {
-                    address: {
-                        streetName: '1833 Commonwealth ave apt 12',
-                        city: 'Brighton',
-                        state: 'MASSACHUSETTS',
-                        zipCode: {
-                            code: '02135'
-                        }
-                    }
-                }
-            ],
-            policyType: 'HOME',
-            effDate: '2017-05-10T04:00:00.000+0000',
-            expDate: '2018-05-10T04:00:00.000+0000'
-        },
-        {
-          balance: 0,
-          nextDueDate: '10/28/2018',
-          nextDueAmount: 0,
-          policynumber: {
-              policynumber: 'abc123'
-          },
-          agent: {
-              agentCode: {
-                  code: 'AS9'
-              },
-              agentName: 'GILBERT C. OLIVEIRA INS AGENCY INC',
-              agentNameExt: '',
-              agentPhone: {
-                  number: '(508) 675-7475'
-              },
-              address: {
-                streetName: '1320 NORTH MAIN STREET',
-                city: 'FALL RIVER',
-                state: 'MASSACHUSETTS',
-                zipCode: {
-                    code: '02720'
-                }
-            }
-          },
-          insurer: [
-              {
-                  'firstName': 'CONRAD',
-                  'middleName': '',
-                  'lastName': 'GAGNE',
-                  'Insurer Name': 'CONRAD GAGNE'
-              }
-          ],
-          policyStatus: 'INACTIVE',
-          policyFlags: {
-              isEft: true,
-              isEftEligi: false,
-              isEbillElig: false,
-              isEdfElig: false,
-              isEbill: false,
-              isEdf: 'removal-pending'
-          },
-          property: [
-              {
-                  address: {
-                      streetName: 'Ray St Fall River Ma',
-                      city: 'Fall River',
-                      state: 'MASSACHUSETTS',
-                      zipCode: {
-                          code: '02720'
-                      }
-                  }
-              }
-          ],
-          policyType: 'HOME',
-          effDate: '2017-05-10T04:00:00.000+0000',
-          expDate: '2018-05-10T04:00:00.000+0000'
-      }
-        ],
-      }; 
-    */
     return this.testingPolicyInfol();
   }
 
@@ -260,7 +18,7 @@ export class TestingDataService {
       return [
         {
           LOSS_NUMBER: 'AAABBB-CCCDDD',
-          LOSS_DATE: '21/01/1992',
+          LOSS_DATE: '2018-12-08T00:00:00.000+0000',
           LOSS_DESC: 'collision',
           SUCCESS: '1',
           policyid: 'QJN952',
@@ -277,7 +35,7 @@ export class TestingDataService {
               {
                 number: 'ABC1234',
                 appraiser: 'Boston Appraisals',
-                amount: '$500.12',
+                amount: 500.12,
                 status: 'Complete'
               }
             ],
@@ -285,13 +43,13 @@ export class TestingDataService {
               {
                 check: '0026929804',
                 datepaid: '12/03/2018',
-                amount: '$320.12',
+                amount: 320.12,
                 status: 'Cashed 09/08/2018'
               },
               {
                 check: '0026929804',
                 datepaid: '12/03/2018',
-                amount: '$320.12',
+                amount: 320.12,
                 status: 'Cashed 09/08/2018'
               },
             ],
@@ -299,7 +57,7 @@ export class TestingDataService {
         },
         {
           LOSS_NUMBER: 'A1B1C1-D1E1F1',
-          LOSS_DATE: '21/01/1992',
+          LOSS_DATE: '2018-12-08T00:00:00.000+0000',
           LOSS_DESC: 'collision',
           SUCCESS: '0',
           policyid: '66161',
@@ -316,27 +74,27 @@ export class TestingDataService {
             {
               number: 'ABC1234',
               appraiser: 'Boston Appraisals',
-              amount: '$500.12',
+              amount: 500.12,
               status: 'Complete'
             },
             {
               number: 'ABC1234',
               appraiser: 'Boston Appraisals',
-              amount: '$333.12',
+              amount: 333.12,
               status: 'Complete'
             }
             ],
             payments: [
             {
               check: '0026929804',
-              datepaid: '12/03/2018',
-              amount: '$320.12',
+              datepaid: '2018-12-08T00:00:00.000+0000',
+              amount: 320.12,
               status: 'Cashed 09/08/2018'
             },
             {
               check: '0026131104',
-              datepaid: '12/03/2018',
-              amount: '$331.12',
+              datepaid: '2018-12-08T00:00:00.000+0000',
+              amount: 331.12,
               status: 'Cashed 09/08/2018'
             },
             ],
@@ -344,7 +102,7 @@ export class TestingDataService {
         },
         {
           LOSS_NUMBER: 'AAABBB-BBBBBBB',
-          LOSS_DATE: '21/01/1992',
+          LOSS_DATE: '2018-12-08T00:00:00.000+0000',
           LOSS_DESC: 'water damage',
           SUCCESS: '1',
           policyid: 'abc123',
@@ -361,27 +119,27 @@ export class TestingDataService {
             {
               number: 'ABC1234',
               appraiser: 'Boston Appraisals',
-              amount: '$500.12',
+              amount: 500.12,
               status: 'Complete'
             },
             {
               number: 'ABC1234',
               appraiser: 'Boston Appraisals',
-              amount: '$333.12',
+              amount: 333.12,
               status: 'Complete'
             }
             ],
             payments: [
             {
               check: '0026929804',
-              datepaid: '12/03/2018',
-              amount: '$320.12',
+              datepaid: '2018-12-08T00:00:00.000+0000',
+              amount: 320.12,
               status: 'Cashed 09/08/2018'
             },
             {
               check: '0026131104',
-              datepaid: '12/03/2018',
-              amount: '$331.12',
+              datepaid: '2018-12-08T00:00:00.000+0000',
+              amount: 331.12,
               status: 'Cashed 09/08/2018'
             },
             ],
@@ -407,13 +165,13 @@ export class TestingDataService {
           {
             number: 'ABC1234',
             appraiser: 'Boston Appraisals',
-            amount: '$500.12',
+            amount: 500.12,
             status: 'Complete'
           },
           {
             number: 'ABC1234',
             appraiser: 'Boston Appraisals',
-            amount: '$333.12',
+            amount: 333.12,
             status: 'Complete'
           }
           ],
@@ -421,13 +179,13 @@ export class TestingDataService {
           {
             check: '0026929804',
             datepaid: '12/03/2018',
-            amount: '$320.12',
+            amount: 320.12,
             status: 'Cashed 09/08/2018'
           },
           {
             check: '0026131104',
             datepaid: '12/03/2018',
-            amount: '$331.12',
+            amount: 331.12,
             status: 'Cashed 09/08/2018'
           },
           ],

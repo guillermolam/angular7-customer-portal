@@ -6,12 +6,12 @@ import { BankAccountService }             from '../../../../../_services/profile
 import { BillingDataService }             from './../../../../../_services/my-insurance/data-services/billing-data.service';
 import { BillingDetailsService }          from './../../../../../_services/my-insurance/billing-details.service';
 import { PolicyDataService }              from './../../../../../_services/my-insurance/data-services/policy-data.service';
-import { User }                           from './../../../../../_models/user';
-import { UserService }                    from './../../../../../_services/user.service';
-
 import { PolicyDetailsService }           from '../../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }
                                           from '../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { User }                           from './../../../../../_models/user';
+import { UserService }                    from './../../../../../_services/user.service';
+
 import { TestingDataService }             from '../../../../../_helpers/testing-data.service';
 
 @Component({
@@ -25,6 +25,7 @@ export class BillingConfirmComponent implements OnInit {
   policyId:                               string;
   policyDetails:                          any;
   user:                                   any;
+  storeBankAccount:                       string;
 
   constructor(
     private activatedRoute:               ActivatedRoute,
@@ -43,11 +44,11 @@ export class BillingConfirmComponent implements OnInit {
 
   payment(): boolean  {
     let boolForSub;
+
     this.billingDetailsService
-      .makeECheckPayment(this.billing, this.user[0].userDetails.email.address, this.policyId)
+      .makeECheckPayment(this.billing, this.user.userDetails.email.address, this.policyId)
       .subscribe( (response) => {
         boolForSub =                      true;
-        
         this.billingDataService.clearBilling();
         this.alertService.success('Congrats! You\'ve paid your bill!', true);
         this.router.navigate(['/my-insurance']);
@@ -58,7 +59,7 @@ export class BillingConfirmComponent implements OnInit {
     );
     return boolForSub;
   }
-  
+
   saveCheckingAccount(email, bankAccountDetails): boolean {
     let boolForSub;
     this.bankAccountService
@@ -93,7 +94,9 @@ export class BillingConfirmComponent implements OnInit {
   }
 
   sendPayment(): void {
-    
+    if(this.storeBankAccount){
+      this.bankAccountService.addBankAccount(this.user.userDetails.email.address, this.billing.bankAccount).subscribe();
+    }
   }
 
   ngOnInit() {
@@ -118,6 +121,10 @@ export class BillingConfirmComponent implements OnInit {
         });
     });
     console.log(this.billing)
+
+    this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck)=>{
+      this.storeBankAccount = bankAccountCheck;
+    });
   }
 
 }

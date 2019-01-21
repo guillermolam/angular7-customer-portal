@@ -27,6 +27,7 @@ export class NewPaymentComponent implements OnInit {
             newPaymentRadioForm:      FormGroup;
             policyId:                 string;
             mailingAddress:           any;
+            storeBankAccount:         string;
 
   constructor(
     private activatedRoute:           ActivatedRoute,
@@ -55,9 +56,39 @@ export class NewPaymentComponent implements OnInit {
     }
   }
 
+  createBankDetailsObject(){
+
+    const paymentObj = {
+      bankAccount: {
+        accountHolderName:            this.newPaymentForm.controls.newPayment_accountName.value,
+        routingNumber: {
+          digits:                     this.newPaymentForm.controls.newPayment_routingNumber.value
+        },
+        accountNumber:  {
+          digits:                     this.newPaymentForm.controls.newPayment_accountNumber.value
+        },
+        accountType:                  'CHECKING',
+        mailingAddress:               this.mailingAddress
+        },
+        checkNumber:                  this.newPaymentForm.controls.newPayment_checkNumber.value || '',
+    };
+
+    return paymentObj;
+  }
+
+  getStoreAccountInfo(e): void {
+    console.log(e.target.checked);
+    if(e.target.checked)
+    this.billingDataService.updateBankAccountCheck('checked');
+    else
+    this.billingDataService.updateBankAccountCheck(null);
+
+  }
+
+
   newPaymentFormSubmit(): void {
     let radioAmount,
-        paymentObj =                {};
+        paymentObj = {};
 
     if (this.newPaymentRadioForm.controls['paymentAmount'].value == 'other' ) {
       radioAmount =                 this.newPaymentRadioForm.controls['otherAmount'].value;
@@ -71,53 +102,29 @@ export class NewPaymentComponent implements OnInit {
     }
     this.getGooglePlaceService.updateAddress(this.mailingAddress);
 
-    if ( this.checkingInfo[0].bankAccountDetails.accountNumber.digits == this.newPaymentForm.controls['newPayment_accountNumber'].value) {
-      paymentObj = {
-        bankAccount: {
-          accountHolderName:            this.checkingInfo[0].bankAccountDetails.accountHolderName,
-          routingNumber: {
-            digits:                     this.checkingInfo[0].bankAccountDetails.routingNumber.digits
-          },
-          accountNumber:  {
-            digits:                     this.checkingInfo[0].bankAccountDetails.accountNumber.digits
-          },
-          accountType:                  'CHECKING',
-          mailingAddress:               this.mailingAddress
-          },
-          checkNumber:                  this.newPaymentForm.controls.newPayment_checkNumber.value || '',
-          paymentAmount:                radioAmount
-      };
-      this.billingDataService.updateBillingDetails(paymentObj);
-      this.router.navigate(['/billing', this.policyId, 'confirm']);
-    }
-    else {
+    // if ( this.checkingInfo.bankAccountDetails.accountNumber.digits == this.newPaymentForm.controls['newPayment_accountNumber'].value) {
+    //   paymentObj = this.createBankDetailsObject();
+    //   paymentObj['paymentAmount'] = radioAmount;
+
+    //   this.billingDataService.updateBillingDetails(paymentObj);
+    //   this.router.navigate(['/billing', this.policyId, 'confirm']);
+    // }
+    // else {
       if(this.newPaymentForm.controls['newPayment_confirmAccountNumber'].value != this.newPaymentForm.controls['newPayment_accountNumber'].value) {
         this.alertService.error('Account Number and Confirm Bank Account Number do not match');
       }
       else {
-        paymentObj = {
-          bankAccount: {
-            accountHolderName:            this.newPaymentForm.controls['newPayment_accountName'].value,
-            routingNumber: {
-              digits:                     this.newPaymentForm.controls['newPayment_routingNumber'].value
-            },
-            accountNumber:  {
-              digits:                     this.newPaymentForm.controls['newPayment_accountNumber'].value
-            },
-            accountType:                  'CHECKING',
-            mailingAddress:               this.newPaymentForm.controls['newPayment_mailingAddress'].value
-            },
-            checkNumber:                  this.newPaymentForm.controls['newPayment_checkNumber'].value  || '',
-            paymentAmount:                radioAmount
-        };
+        paymentObj = this.createBankDetailsObject();
+        paymentObj['paymentAmount'] = radioAmount;
+        
         this.billingDataService.updateBillingDetails(paymentObj);
         this.router.navigate(['/billing', this.policyId, 'confirm']);
       }
-    }
+    // }
   }
 
   setValues(checkingInfo): void {
-    const bDetails =                    checkingInfo[0].bankAccountDetails;
+    const bDetails =                    checkingInfo.bankAccountDetails;
     const apartmentNo =                 bDetails.mailingAddress.streetName.split('|');
     const address = {
       "streetName":                     apartmentNo[0],
@@ -142,6 +149,11 @@ export class NewPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.newPaymentForm =             this.ipt.toFormGroup(this.inputs);
+    this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck)=>{
+      this.storeBankAccount = bankAccountCheck;
+    });
     this.activatedRoute.params
     .subscribe((params: Params) => {
       this.policyId =                 params['policyid'];
@@ -152,6 +164,9 @@ export class NewPaymentComponent implements OnInit {
       this.userService.$user
       .subscribe((userResponse) => {
         this.checkingInfo =           userResponse;
+        if(this.checkingInfo.bankAccountDetails.accountHolderName){
+          this.setValues(this.checkingInfo);
+        }
       });
     });
 
@@ -159,13 +174,11 @@ export class NewPaymentComponent implements OnInit {
     .subscribe((address) => {
       this.mailingAddress =           address;
     });
-
-    this.newPaymentForm =             this.ipt.toFormGroup(this.inputs);
+   
     this.newPaymentRadioForm =        new FormGroup({
       checkingNumberAmount:           new FormControl(),
       paymentAmount:                  new FormControl(),
       otherAmount:                    new FormControl()
     });
-    this.setValues(this.checkingInfo);
   }
 }

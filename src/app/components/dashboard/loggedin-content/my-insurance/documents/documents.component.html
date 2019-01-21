@@ -52,8 +52,8 @@
                       <div *ngIf="doc.type == 'Unknown' " class="circle-with-type"> ? </div>
                     </td>
                     <td class="col col-name">{{doc.description}}</td>
-                    <td class="col col-date">{{doc.transactionDate | date}}</td>
-                    <td class="col col-view">VIEW <i class="fas fa-angle-right"></i> </td>
+                    <td class="col col-date text-right">{{doc.transactionDate | date}}</td>
+                    <td class="col col-view text-right">VIEW <i class="fas fa-angle-right"></i> </td>
                 </tr>
               </tbody>
             </table>

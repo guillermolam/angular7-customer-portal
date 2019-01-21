@@ -25,10 +25,11 @@
           <div class="col col1 col-md-8 margin-bottom mb24">
             <div class="row">
               <div class="col">
-                <div class="policy-icon">
-                  <svg-money-mono-color-svg></svg-money-mono-color-svg>
-                </div>
+                
                 <h2 class="title" [ngClass]="{'no-border': findOutstandingBalance(policy) }">
+                  <div class="policy-icon">
+                      <svg-money-mono-color-svg></svg-money-mono-color-svg>
+                    </div>
                   {{ 'BILLING_OVERVIEW' | translate }}
                 </h2>
 
@@ -43,14 +44,14 @@
                   </div>
                 </ng-container>
 
-                <ng-template #currentBalance>  
+               <ng-template #currentBalance> 
                   <table mdbTable class="claims-table">
                     <thead class="lite-grey-color">
                       <tr class="row-content border-full grey-border">
                         <td>  
                             {{ 'CUSTOMER_BALANCE' | translate }}
                         </td>
-                        <td> 
+                        <td class="text-center"> 
                             {{ 'DUE_DATE' | translate }}
                         </td>
                         <td class="text-right"> 
@@ -63,7 +64,7 @@
                         <td>
                           <strong>{{ policy.billingDetails[0]?.outstandingbalance | currency }}</strong>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <strong>{{ policy.billingDetails[0]?.paymentDueDate | date }}</strong>
                         </td>
                         <td class="text-right">
@@ -81,7 +82,7 @@
                       </tr>
                     </tbody>
                   </table>
-                </ng-template>
+               </ng-template> 
 
               </div>
             </div>
@@ -89,10 +90,11 @@
               <div class="">
 
                 <ng-container *ngIf="!findOutstandingBalance(policy); else showSchedule">
-                  <div class="policy-icon">
-                      <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
-                  </div>
+                  
                   <h2 class="title no-border">
+                    <div class="policy-icon">
+                      <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
+                    </div>
                     {{ 'PAYMENT_HISTORY' | translate }}
                   </h2>
                   <table mdbTable class="claims-table">
