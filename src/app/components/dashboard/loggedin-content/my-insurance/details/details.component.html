@@ -279,7 +279,7 @@
                         {{ policy.mailingAddress.streetName }}  {{ policy.mailingAddress.city }}  {{ policy.mailingAddress.state }}  {{ policy.mailingAddress.zipCode.code }}
                     </div>
                     <div class="col edit-address">
-                        <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>
@@ -296,7 +296,7 @@
                               </div>
                         </ng-template>
                     <div class="col edit-address">
-                        <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>

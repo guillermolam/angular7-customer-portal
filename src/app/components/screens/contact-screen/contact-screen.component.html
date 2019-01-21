@@ -5,20 +5,20 @@
     <div class="col col1">
     <div class="row">
       <div class="col">
-        <h2 class="title margin-bottom mb16">New and Existing Claims</h2>
+        <h2 class="title margin-bottom mb16">{{ 'NEW_AND_EXISTING_CLAIMS' | translate }}</h2>
         <p>
-          <strong>Phone:</strong>&nbsp;<a href="tel:18002211605" class="mapfre link blue-link underline">1-800-221-1605</a>&nbsp;<span class="info">27/7</span><br>
-          <strong>Email:</strong>&nbsp;<a href="mailto:claims@mapfreusa.com" class="mapfre link blue-link underline">claims@mapfreusa.com</a> 
+          <strong>{{ 'PHONE' | translate }}:</strong>&nbsp;<a href="tel:18002211605" class="mapfre link blue-link underline">1-800-221-1605</a>&nbsp;<span class="info">27/7</span><br>
+          <strong>{{ 'EMAIL' | translate }}:</strong>&nbsp;<a href="mailto:claims@mapfreusa.com" class="mapfre link blue-link underline">claims@mapfreusa.com</a> 
         </p>
 
       </div>
     </div>
     <div class="row">
       <div class="col">
-          <h2 class="title margin-bottom mb16">Billing, Customer Service, and Quotes</h2> 
+          <h2 class="title margin-bottom mb16">{{ 'BILLING_CUSTOMER_SERVICE_QUOTES' | translate }}</h2> 
           <p>
-            <strong>Phone:</strong>&nbsp;<a href="tel:18002211605,14300" class="mapfre link blue-link underline">1-800-221-1605 X 14300</a>&nbsp;<span class="info">8am to 6pm (EST) Mon - Fri</span><br>
-            <strong>Email:</strong>&nbsp;<a href="mailto:service@mapfreusa.com" class="mapfre link blue-link underline">service@mapfreusa.com</a> 
+            <strong>{{ 'PHONE' | translate }}:</strong>&nbsp;<a href="tel:18002211605,14300" class="mapfre link blue-link underline">1-800-221-1605 X 14300</a>&nbsp;<span class="info">8am to 6pm (EST) Mon - Fri</span><br>
+            <strong>{{ 'EMAIL' | translate }}:</strong>&nbsp;<a href="mailto:service@mapfreusa.com" class="mapfre link blue-link underline">service@mapfreusa.com</a> 
           </p>
 
       </div>
@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col">
-        <h2 class="title margin-bottom mb16">Follow Us</h2>
+        <h2 class="title margin-bottom mb16">{{ 'FOLLOW_US' | translate }}</h2>
         <ul class="social inline margin-bottom mb16">
           <li><a href="https://www.facebook.com/mapfreinsurance" target="_blank" class="mapfre link brands facebook"><i class="fab fa-facebook-square"></i></a></li>
           <li><a href="https://www.linkedin.com/company/mapfre/" target="_blank" class="mapfre link brands linkedin"><i class="fab fa-linkedin"></i></a></li>
@@ -42,8 +42,8 @@
     <div class="row">
       <div class="col">
         <h2 class="title margin-bottom mb16 ">
-          <div>Contact Your Agents </div>
-          <div class="small-subtitle">For policy changes, coverages, and discountss</div>
+          <div>{{ 'CONTACT_YOUR_AGENTS' | translate }}</div>
+          <div class="small-subtitle">{{ 'FOR_POLICY_CHANGES_COVERAGES_DISCOUTS' | translate }}</div>
         </h2>
 
       <ng-container *ngFor="let policy of user; let key = index ">
@@ -51,25 +51,25 @@
           <div class="agent-info  margin-bottom mb32">
               <div class="row agent-name margin-bottom mb8">
                 <div class="col">
-                  {{policy?.agent.agentName}}
+                  {{ policy?.agent.agentName | titlecase }}
                 </div>
               </div>
               <div class="row policy-info margin-bottom mb8">
                 <div class="col">
-                    {{policy?.policyType | translate }} &mdash; {{policy?.policynumber.policynumber}}
+                    {{ policy?.policyType | translate }} &mdash; {{ policy?.policynumber.policynumber }}
                 </div>
               </div>
               <div class="row agent-address margin-bottom mb8">
                 <div class="col">
-                    {{policy?.agent.address.streetName}} {{policy?.agent.address.city}} {{policy?.agent.address.state}} {{policy?.agent.address.zipCode.code}}
+                    {{ policy?.agent.address.streetName  | titlecase }} {{ policy?.agent.address.city | titlecase }} {{ policy?.agent.address.state | fullstateToAbv  }}, {{policy?.agent.address.zipCode.code}}
                 </div>
               </div>
               <div class="row agent-phone margin-bottom mb8">
                 <div class="col col-description">
-                    <strong>Phone:</strong>
+                    <strong>{{ 'PHONE' | translate }}:</strong>
                 </div>
                 <div class="col col-info">
-                    <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline blue-link">{{policy?.agent.agentPhone.number}}</a>
+                    <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline blue-link">{{ policy?.agent.agentPhone.number }}</a>
                 </div>
               </div>
             </div>
