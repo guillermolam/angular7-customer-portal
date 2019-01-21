@@ -4,6 +4,16 @@
 
 .info-type.info-description.col {
   max-width: 130px;
+
+  @media (min-width: 768px) and (max-width: 847px) {
+    max-width: 110px;
+  }
+  @media (min-width: 992px) and (max-width: 1103px) {
+    max-width: 110px;
+  }
+  @media (max-width: 561px) {
+    max-width: 110px;
+  }
 }
 
 .claim.row {
@@ -22,12 +32,20 @@
   }
 }
 
-.info-data.adjuster-info {
-  @media (min-width: 768px) {
-    padding-left: 16px;
+.info-data{
+  &.adjuster-info {
     float: left;
-  }
-  @media (max-width: 767px) {
-    padding-left: 32px;
+    padding-left: 16px;
+
+    @media (min-width: 768px) and (max-width: 847px) {
+      padding-left: 32px;
+    }
+    @media (min-width: 992px) and (max-width: 1103px) {
+      padding-left: 32px;
+    }
+    @media (max-width: 561px) {
+      padding-left: 32px;
+      padding-right: 16px;
+    }
   }
 }

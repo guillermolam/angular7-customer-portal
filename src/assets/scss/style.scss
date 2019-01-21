@@ -1,5 +1,10 @@
 @import '_app-components/all';
 
+a[href^="mailto"] {
+  word-break: break-word;
+  hyphens: auto;
+}
+
 h1.title-cta {
   font-size: 24px;
   line-height: normal;
