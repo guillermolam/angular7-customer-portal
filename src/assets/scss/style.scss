@@ -817,12 +817,9 @@ h1.title-cta {
   }
 }
 
-
-
 .title-case {
   text-transform: capitalize;
 }
-
 
 .border-full {
   border: thin solid;
@@ -844,4 +841,12 @@ h1.title-cta {
 
 .loading-no-padding div {
   min-height: 0px;
+}
+
+.checkmark-single {
+  float: left;
+}
+
+.min-amount-check {
+  width: 90%;
 }

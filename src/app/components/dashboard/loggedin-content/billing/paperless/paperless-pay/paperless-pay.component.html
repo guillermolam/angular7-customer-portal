@@ -18,7 +18,7 @@
             <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
           </td>
           <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8  width w-20">{{ pdetail.policyType }} &ndash; {{ pdetail.policynumber.policynumber }} </td>
-          <td class="no-padding green-text padding-vertical pv8 align-middle">{{ pdetail.effDate | date:'shortDate' }} {{ 'TO' | translate }} {{ pdetail.expDate | date:'shortDate' }}</td>
+          <td class="no-padding green-text padding-vertical pv8 align-middle">{{ pdetail.effDate | date }} {{ 'TO' | translate }} {{ pdetail.expDate | date }}</td>
           
           <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEft == 'ENROLLED'">
             <mapfre-modal 
@@ -55,7 +55,7 @@
           </td>
           <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail.policyFlags.isEft == 'UNENROLLED'">
             <mapfre-button 
-              additionalClasses="no-margin float-right btn mapfre waves-light primary ghost w-100 waves-effect"
+              additionalClasses="no-margin float-right w-100 primary ghost"
              [routerLink]="[pdetail.policynumber.policynumber + '/enroll']">
               {{ 'ENROLL' | translate }}
             </mapfre-button>

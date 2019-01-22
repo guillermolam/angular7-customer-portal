@@ -37,7 +37,7 @@ export class PaperlessPolicyComponent implements OnInit {
     });
     this.enrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium enroll modal-dialog',
-      additionalButtonClasses:      'no-margin float-right btn mapfre waves-light primary ghost',
+      additionalButtonClasses:      'no-margin float-right w-100 primary ghost',
       animatePosition:              'top',
       buttonCopy:                   'ENROLL',
       modalId:                      'enrollModal',
