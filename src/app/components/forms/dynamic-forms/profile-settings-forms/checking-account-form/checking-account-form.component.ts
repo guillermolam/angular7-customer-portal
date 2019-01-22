@@ -4,7 +4,7 @@ import { ProfileConfirmModalService } from '../../../../../_services/profile-set
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CheckingAccountService } from '../../../../../_services/forms/profile-settings/checking-account.service';
-import { FormBase, FormBaseControlService, AlertService,GetGooglePlaceService } from 'mapfre-design-library';
+import { FormBase, FormBaseControlService, AlertService,GetGooglePlaceService, ValidateAddressService } from 'mapfre-design-library';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../../../_services/_iam/authentication-service.service';
 import { UserService }                        from '../../../../../_services/user.service';
@@ -14,12 +14,15 @@ import { UserService }                        from '../../../../../_services/use
   templateUrl: './checking-account-form.component.html',
   styleUrls: ['./checking-account-form.component.scss']
 })
-export class CheckingAccountFormComponent implements OnInit {
+export class CheckingAccountFormComponent implements OnInit, OnDestroy {
 
   @Input() inputs: FormBase<any>[] = [];
            checkingAccountForm: FormGroup;
            confirmModal:        boolean;
            mailingAddress: any;
+           addressAlert:        boolean;
+          //  addressObservable: any;
+          //  googlePlaceObservable:   any;
 
   constructor(
     private ipt:                      FormBaseControlService,
@@ -30,14 +33,28 @@ export class CheckingAccountFormComponent implements OnInit {
     private storageService: StorageServiceObservablesService,
     private getGooglePlaceService : GetGooglePlaceService,
     private authenticationService:            AuthenticationService,
-    private userService:               UserService
+    private userService:               UserService,
+    private validateAddressService:    ValidateAddressService
     ) { }
 
   ngOnInit() {
+
+    console.log('called');
+
     this.checkingAccountForm = this.ipt.toFormGroup(this.inputs);
     this.getGooglePlaceService.$address.subscribe((address)=>{
       this.mailingAddress = address;
     });
+
+    this.validateAddressService.$address.subscribe((resp)=>{
+      if(resp===false){
+        this.alertService.error('Please enter valid address from suggestions');
+        this.addressAlert= false;
+      }else if(resp===true){
+        this.addressAlert = true;
+      }
+    })
+
   }
 
   onSubmitAccountDetails(){
@@ -55,16 +72,16 @@ export class CheckingAccountFormComponent implements OnInit {
       const bankAccountDetails = this.createBankAccountObject();
       const email = this.storageService.getUserFromStorage();
       this.bankAccountService.addBankAccount(email,bankAccountDetails).subscribe((response)=>{
-        this.authenticationService
-        .getUserDetailsByEmail(this.storageService.getUserFromStorage())
-        .subscribe(([userResponse, accountResponse]) => {
-          this.userService.updateUser(
-          {
-            userDetails: {...userResponse},
-            bankAccountDetails:  {...accountResponse}
-          }
-          );
-        })
+        // this.authenticationService
+        // .getUserDetailsByEmail(this.storageService.getUserFromStorage())
+        // .subscribe(([userResponse, accountResponse]) => {
+        //   this.userService.updateUser(
+        //   {
+        //     userDetails: {...userResponse},
+        //     bankAccountDetails:  {...accountResponse}
+        //   }
+        //   );
+        // })
         this.alertService.success('Checking account information succesfully updated',true);
         this.router.navigate(['/profile']);
       }, (err)=>{
@@ -113,6 +130,14 @@ export class CheckingAccountFormComponent implements OnInit {
       // bankAccount.mailingAddress.streetName = this.checkingAccountForm.controls.changeAddress.value;
       // bankAccount.accountType = 'CHECKING';
       // bankAccount.apartment = this.checkingAccountForm.controls.changeAddressAPT.value;
+  }
+
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    // this.addressObservable.unsubscribe();
+    // this.googlePlaceObservable.unsubscribe();
   }
 
 }

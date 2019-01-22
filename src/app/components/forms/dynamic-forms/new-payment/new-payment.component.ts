@@ -176,7 +176,7 @@ export class NewPaymentComponent implements OnInit {
     });
    
     this.newPaymentRadioForm =        new FormGroup({
-      checkingNumberAmount:           new FormControl(),
+      // checkingNumberAmount:           new FormControl(),
       paymentAmount:                  new FormControl(),
       otherAmount:                    new FormControl()
     });

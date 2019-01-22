@@ -53,6 +53,7 @@
               id="otherAmount"
               name="otherAmount"
               type="tel"
+              required="true"
               [mdbValidate]="false"
               mdbInputDirective
               />
@@ -67,9 +68,9 @@
       <h2 class="title">
           {{ 'CHECKING_ACCOUNT' | translate }}
           <ng-container *ngIf="checkingInfo?.bankAccountDetails.accountHolderName">
-            <mapfre-button additionalClasses="link-button blue-link float-right no-border no-padding no-margin  waves-effect" (click)="OnClickEditButton($event)">
+            <mapfre-link additionalClasses="link-button blue-link float-right no-border no-padding no-margin  waves-effect" (click)="OnClickEditButton($event)">
                 {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
-            </mapfre-button>
+            </mapfre-link>
           </ng-container>
       </h2>
 

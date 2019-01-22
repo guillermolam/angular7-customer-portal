@@ -93,7 +93,7 @@ export class CheckingAccountService {
       }),
       ...this.changeAddressService.getInputs(
         'profile-input-border checking-account-address',
-        this.checkAccountDetails(this.checkingAccount)? '': `${streetAddress[0]}, ${this.checkingAccount.mailingAddress.city}, ${this.checkingAccount.mailingAddress.state} ${this.checkingAccount.mailingAddress.zipCode.code}`,
+        this.checkAccountDetails(this.checkingAccount)? '': `${streetAddress[0]}, ${this.checkingAccount.mailingAddress.city}, ${this.checkingAccount.mailingAddress.stateCode}, USA`,
         this.checkAccountDetails(this.checkingAccount)? '': `${streetAddress[1] || ''}`
         )
     ];

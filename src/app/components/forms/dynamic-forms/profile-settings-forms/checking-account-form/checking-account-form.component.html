@@ -20,7 +20,7 @@
         <div class="col">
           <mapfre-button
             [additionalClasses]="'basic primary large waves-effect waves-light'"
-            [disabledValue]="checkingAccountForm.valid" 
+            [disabledValue]="checkingAccountForm.valid && addressAlert" 
             [inputType]="'submit'"
             [translateValue]="'CONFIRM' | translate"
           ></mapfre-button>
