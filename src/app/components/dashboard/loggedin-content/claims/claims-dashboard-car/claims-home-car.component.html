@@ -1,21 +1,21 @@
 <div class="claim auto row no-margins-hug" [ngClass]="{ 'hug-header': type == 'details', 'hug-content': type != 'details' }">
-  <div class="col-12 no-padding">
-    <div class="policy-background float-left">
+  <div class="col-12 no-padding row">
+    <div class="policy-background col">
         <div class="car"></div>
     </div>
-    <div>
-      <h2 class="claim-id">{{ claim.LOSS_DESC }} - <strong>#{{ claim.LOSS_NUMBER }}</strong></h2>
+    <div class="col">
+      <h2 class="claim-id">{{ claim.LOSS_DESC | titlecase }} - <strong>#{{ claim.LOSS_NUMBER }}</strong></h2>
       <div class="policy-id">
-          {{ claim.policytype }} - 
+          {{ claim.policytype | titlecase }} - 
           <ng-container *ngIf="type != 'details'">
               {{ claim.policyid }}
           </ng-container>
           <ng-container *ngIf="type == 'details'">
               <a [routerLink]="['/my-insurance', claim.policyid, 'details']"><strong>{{ claim.policyid }}</strong></a>
           </ng-container>
-      </div>
+      </div> 
       <div class="date-loss">
-          {{ 'DATE_OF_LOSS' | translate }}: {{ claim.LOSS_DATE }}
+          {{ 'DATE_OF_LOSS' | translate }}: {{ claim.LOSS_DATE | date }}
       </div>
     </div>
   </div>

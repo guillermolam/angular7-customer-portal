@@ -14,7 +14,7 @@
               <small>
               <span [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 
                 'red-color': policy.policyStatus === 'INACTIVE' }">
-                <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
+                <small>{{ policy.effDate | customDateFormat }} {{ 'TO' | translate }} {{ policy.expDate | customDateFormat }}</small>
               </span>
             </small>
             </h1>
@@ -25,10 +25,11 @@
           <div class="col col1 col-md-8 margin-bottom mb24">
             <div class="row">
               <div class="col">
-                <div class="policy-icon">
-                  <svg-money-mono-color-svg></svg-money-mono-color-svg>
-                </div>
+                
                 <h2 class="title" [ngClass]="{'no-border': findOutstandingBalance(policy) }">
+                  <div class="policy-icon">
+                      <svg-money-mono-color-svg></svg-money-mono-color-svg>
+                    </div>
                   {{ 'BILLING_OVERVIEW' | translate }}
                 </h2>
 
@@ -43,17 +44,17 @@
                   </div>
                 </ng-container>
 
-                <!-- <ng-template #currentBalance>   -->
+               <ng-template #currentBalance> 
                   <table mdbTable class="claims-table">
                     <thead class="lite-grey-color">
                       <tr class="row-content border-full grey-border">
                         <td>  
                             {{ 'CUSTOMER_BALANCE' | translate }}
                         </td>
-                        <td> 
+                        <td class="text-center"> 
                             {{ 'DUE_DATE' | translate }}
                         </td>
-                        <td> 
+                        <td class="text-right"> 
                             {{ 'AMOUNT' | translate }}
                         </td>
                       </tr>
@@ -63,25 +64,25 @@
                         <td>
                           <strong>{{ policy.billingDetails[0]?.outstandingbalance | currency }}</strong>
                         </td>
-                        <td>
-                            <strong>{{ policy.billingDetails[0]?.paymentDueDate |   date:'MM/dd/yy' }}</strong>
+                        <td class="text-center">
+                            <strong>{{ policy.billingDetails[0]?.paymentDueDate | date }}</strong>
                         </td>
-                        <td>
+                        <td class="text-right">
                             <strong>{{ policy.billingDetails[0]?.minAmountDue | currency }}</strong>
                         </td>
                       </tr>
                       <tr class="border-full grey-border no-border-top">
-                        <td colspan="3" class="text-center no-border-top">
+                        <td colspan="3" class="text-center no-border-top no-padding padding-bottom pb16">
                           <mapfre-link
-                            [additionalClasses]="'basic primary large btn width w75'"
+                            additionalClasses="basic primary large btn w-75 mx-auto"
                             [routerLink]="['/billing/' +  policy.policynumber.policynumber + '/new-payment/']">
-                            {{ 'PAY_BY_CHECK' | translate}}
+                            {{ 'MAKE_A_PAYMENT' | translate}}
                           </mapfre-link>
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                <!-- </ng-template> -->
+               </ng-template> 
 
               </div>
             </div>
@@ -89,10 +90,11 @@
               <div class="">
 
                 <ng-container *ngIf="!findOutstandingBalance(policy); else showSchedule">
-                  <div class="policy-icon">
-                      <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
-                  </div>
+                  
                   <h2 class="title no-border">
+                    <div class="policy-icon">
+                      <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
+                    </div>
                     {{ 'PAYMENT_HISTORY' | translate }}
                   </h2>
                   <table mdbTable class="claims-table">
@@ -111,7 +113,7 @@
                           <strong>{{ historyPayment.minAmountDue | currency }}</strong>
                         </td>
                         <td class="text-right"> 
-                          <strong>{{ historyPayment.dateApplied |  date:'MM/dd/yy' }}</strong>
+                          <strong>{{ historyPayment.dateApplied |  date }}</strong>
                         </td>
                       </tr>
                       </ng-container>
@@ -121,14 +123,14 @@
 
 
                 <ng-template #showSchedule>
-                  <nav class="tab-accordian-navigation">
+                  <nav class="tab-accordian-navigation w-100">
                     <div class="tab-navigation">
                       <ul class="w-100 pl-0 d-table no-margin">
                         <li [ngClass]="{'active': schedualOrHistory }" class="width w-50">
-                          <a (click)="switchHistories('schedual')">{{'SCHEDULED_PAYMENTS' | translate}}</a>
+                          <a (click)="switchHistories('schedual')">{{ 'SCHEDULED_PAYMENTS' | translate }}</a>
                         </li>
                         <li [ngClass]="{'active': !schedualOrHistory }" class="width w-50">
-                            <a (click)="switchHistories('history')">{{'HISTORY' | translate}}</a>
+                            <a (click)="switchHistories('history')">{{ 'HISTORY' | translate }}</a>
                         </li>
                       </ul>
                     </div>
@@ -149,7 +151,7 @@
                             <strong>{{ scheduledPayment.minAmountDue | currency }}</strong>
                           </td>
                           <td class="text-right"> 
-                              <strong>{{ scheduledPayment.dueDate |  date:'MM/dd/yy' }}</strong>
+                              <strong>{{ scheduledPayment.dueDate |  date }}</strong>
                           </td>
                         </tr>
                       </ng-container>
@@ -171,7 +173,7 @@
                           <strong>{{ historyPayment.amountPaid | currency }}</strong>
                         </td>
                         <td class="text-right"> 
-                          <strong>{{ historyPayment.dateApplied |  date:'MM/dd/yy' }}</strong>
+                          <strong>{{ historyPayment.dateApplied | date }}</strong>
                         </td>
                       </tr>
                       </ng-container>
@@ -202,10 +204,10 @@
                   <ng-container *ngFor="let pendingCheckPayment of policy.pendingCheckPayments ">
                     <tr class="row-content border-full grey-border">
                       <td>
-                        <strong>{{ pendingCheckPayment.paymentAmount | currency }}</strong>
+                        <small><strong>{{ pendingCheckPayment.paymentAmount | currency }}</strong></small>
                       </td>
                       <td class="text-right"> 
-                          <strong>{{ pendingCheckPayment.paymentDateTime | date:'MM/dd/yy'}}</strong>
+                          <small><strong>{{ pendingCheckPayment.paymentDateTime | date }}</strong></small>
                       </td>
                     </tr>
                   </ng-container>

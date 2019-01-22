@@ -29,27 +29,18 @@
         <div class="claim-info">
           <div class="row margin-bottom mb16 margin-top mt8">
             <div class="col info-type">
-                {{ 'CLAIMANT' | translate }}:
-            </div>
-            <div class="col info-data">
-              {{claim.details.claimant}}
+                {{ 'CLAIMANT' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim.details.claimant}}</strong></div>
             </div>
           </div>
           <div class="row margin-bottom mb16">
             <div class="col info-type">
-                {{ 'PAYMENTS_TO_DATE' | translate }}:
+                {{ 'PAYMENTS_TO_DATE' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim.details.payments_to_date}}</strong></div>
             </div>
-            <div class="col info-data">
-                {{claim.details.payments_to_date}}
-              </div>
           </div>
           <div class="row margin-bottom mb16"> 
             <div class="col info-type">
-                {{ 'LOCATION' | translate }}:
+                {{ 'LOCATION' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim.details.location}}</strong></div>
             </div>
-            <div class="col info-data">
-                {{claim.details.location}}
-              </div>
           </div>
           <div class="row margin-bottom mb16">
             <div class="col">
@@ -60,28 +51,42 @@
             </div>
           </div>
           <div class="row margin-bottom mb16">
-            <div class="col info-type">
+            <div class="col info-type info-description">
                 {{ 'DESCRIPTION' | translate }}:
             </div>
-            <div class="col info-data">
-                {{claim.details.description}}
-              </div>
+            <div class="col info-data no-padding-left">
+              <strong>{{claim.details.description}}</strong>
+            </div>
           </div>
+
           <div class="row margin-bottom mb16">
-            <div class="col info-type">
-                {{ 'CLAIMANT_ADJUSTER' | translate }}:
-              </div>
-              <div class="col info-data">
-                <div>
-                    {{ 'PHONE' | translate }}: <a href="tel:{{claim.details.claim_adjustter_number}}" class="mapfre link underline blue-link">{{claim.details.claim_adjustter_number}}</a>
-                </div>
-                <div>
-                    {{ 'EMAIL' | translate }}: <a href="mailto:{{claim.details.claim_adjustter_email}}" class="mapfre link underline blue-link">{{claim.details.claim_adjustter_email}}</a>
-                </div>
-                <div>
-                    {{ 'FAX' | translate }}: {{claim.details.claim_adjustter_fax}}
+            <div class="padding-left pl16 info-type info-description">
+              {{ 'CLAIMANT_ADJUSTER' | translate }}:
+            </div>
+            <div class="info-data adjuster-info">
+
+              <div class="row">
+                <div class="col">
+                    <strong><a href="tel:{{claim.details.claim_adjustter_number}}" class="mapfre link underline blue-link">{{claim.details.claim_adjustter_number}}</a></strong>
                 </div>
               </div>
+              <div class="row">
+                <div class="col">
+                  <div>
+                      {{ 'EMAIL' | translate }}: 
+                  </div>
+                  <div>
+                    <strong><a href="mailto:{{claim.details.claim_adjustter_email}}" class="mapfre link underline blue-link">{{claim.details.claim_adjustter_email}}</a></strong>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  {{ 'FAX' | translate | titlecase }}: <strong>{{claim.details.claim_adjustter_fax}}</strong>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
@@ -97,13 +102,13 @@
                     <td>  
                         {{ 'NUMBER' | translate }}
                     </td>
-                    <td> 
+                    <td class="text-center"> 
                         {{ 'APPRAISER' | translate }}
                     </td>
-                    <td> 
+                    <td class="text-center"> 
                         {{ 'AMOUNT' | translate }}
                     </td>
-                    <td> 
+                    <td class="text-right"> 
                         {{ 'STATUS' | translate }}
                     </td>
                   </tr>
@@ -113,13 +118,13 @@
                     <td>
                       {{appraisal.number}}
                     </td>
-                    <td>
-                      {{appraisal.appraiser}}
+                    <td class="text-center">
+                      {{ appraisal.appraiser }}
                     </td>
-                    <td>
-                      {{appraisal.amount}}
+                    <td class="text-center">
+                      {{ appraisal.amount | currency }}
                     </td>
-                    <td>
+                    <td class="text-right">
                       {{appraisal.status}}
                     </td>
                   </tr>
@@ -141,13 +146,13 @@
                       <td>
                           {{ 'CHECK' | translate }}
                       </td>
-                      <td>
+                      <td class="text-center">
                           {{ 'DATE_PAID' | translate }}
                       </td>
-                      <td>
+                      <td class="text-center">
                           {{ 'AMOUNT' | translate }}
                       </td>
-                      <td>
+                      <td class="text-right">
                           {{ 'STATUS' | translate }}
                       </td>
                     </tr>
@@ -155,16 +160,16 @@
                   <tbody class="med-grey-color">
                     <tr *ngFor="let payment of claim.details.payments" class="row-content border-full grey-border">
                       <td>
-                        {{payment.check}}
+                        {{ payment.check }}
                       </td>
-                      <td>
-                        {{payment.datepaid}}
+                      <td class="text-center">
+                        {{ payment.datepaid | date }}
                       </td>
-                      <td>
-                        {{payment.amount}}
+                      <td class="text-center">
+                        {{ payment.amount | currency }}
                       </td>
-                      <td>
-                        {{payment.status}}
+                      <td class="text-right">
+                        {{ payment.status }}
                       </td>
                     </tr>
                   </tbody>
