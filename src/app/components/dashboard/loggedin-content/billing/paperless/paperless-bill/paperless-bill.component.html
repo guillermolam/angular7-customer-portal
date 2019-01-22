@@ -35,7 +35,7 @@
                   enter">
                     <mapfre-button 
                       additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                      (click)="cancellEnroll(pdetail.policynumber.policynumber, user[0].userDetails.email.address); hideModalAction($event)">
+                      (click)="cancellEnroll(pdetail.policynumber.policynumber, user.userDetails.email.address); hideModalAction($event)">
                       {{ 'REMOVE_FROM_E-BILL' | translate }}
                     </mapfre-button>
                     <mapfre-button 
@@ -67,7 +67,7 @@
                   <div class="mx-auto text-center">
                       <mapfre-button 
                         additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                        (click)="enroll(pdetail.policynumber.policynumber, user[0].userDetails.email.address); hideModalAction($event)">
+                        (click)="enroll(pdetail.policynumber.policynumber, user.userDetails.email.address); hideModalAction($event)">
                         {{ 'CONFIRM_ENROLLMENT' | translate }}
                       </mapfre-button>
                       <mapfre-button 
@@ -88,7 +88,7 @@
     </h2>
     <div class="row margin-top mt16">
       <div class="col">
-        {{ 'EMAIL' | translate }}: &nbsp;&nbsp; <strong>{{  user[0].userDetails.email.address }}</strong>
+        {{ 'EMAIL' | translate }}: &nbsp;&nbsp; <strong>{{  user.userDetails.email.address }}</strong>
       </div>
       <div class="col text-right">
         <a class="mapfre link edit-link float-right" [routerLink]="['/profile','verify-password']"> 

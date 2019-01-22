@@ -65,7 +65,7 @@
                 </p>
                 <form [formGroup]="updateMileage" class="update-mileage no-padding">
                   <div class="margin-bottom mb24" formGroupName="groups">
-                    <div class="mapfre-input vehicle" *ngFor="let vehicle of policy.vehicleDetails; let i = index; let last = last; let first = first">
+                    <div class="mapfre-input vehicle" *ngFor="let vehicle of policy.vehicle; let i = index; let last = last; let first = first">
                       <div id="id{{i}}" [ngClass]="{'margin-top mt24': i != 0}">
                         <h3 class="title vehicle-name">
                             {{vehicle.vehicle}}
