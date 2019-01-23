@@ -1,3 +1,4 @@
+import { AuthService } from './auth/auth.service';
 // --- Design Library --- //
 import { MapfreDesignLibraryModule }            from 'mapfre-design-library';
 import { MDBBootstrapModule }                   from 'angular-bootstrap-md';
@@ -293,6 +294,7 @@ export function tokenGetter() {
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
+    AuthService,
     AuthGuard,
     AuthenticationService,
     CookieService,

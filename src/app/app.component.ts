@@ -1,3 +1,4 @@
+import { AuthService } from './auth/auth.service';
 import { ActivatedRoute, Router }     from '@angular/router';
 import { Component, enableProdMode, OnInit }  from '@angular/core';
 import { TranslateService }           from '@ngx-translate/core';
@@ -17,9 +18,23 @@ export class AppComponent implements OnInit {
     public translate:       TranslateService,
     public _languages:      Language,
     private activeRoute:    ActivatedRoute,
-    private router:         Router
+    private router:         Router,
+    private auth:           AuthService
   ) {
      this.checkRoute();
+     this.auth.handleAuthentication();
+  }
+
+  isAuthenticated(){
+    return this.auth.isAuthenticated();
+  }
+
+  login(){
+    this.auth.login();
+  }
+
+  logout(){
+    this.auth.logout();
   }
 
   checkRoute() {
@@ -68,6 +83,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.findLanguage();
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      this.auth.renewTokens();
+    }
   }
 
 }
