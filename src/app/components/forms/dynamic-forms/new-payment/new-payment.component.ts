@@ -1,5 +1,6 @@
 import { Component, Input, OnInit }   from '@angular/core';
-import { FormGroup, FormControl }     from '@angular/forms';
+import { FormGroup, FormControl, Validators }
+                                      from '@angular/forms';
 import { ActivatedRoute, Router, Params }
                                       from '@angular/router';
 import { AlertService, RegExHelper, FormBase, FormBaseControlService, GetGooglePlaceService } 
@@ -18,6 +19,8 @@ import { UserService }                from '../../../../_services/user.service';
 export class NewPaymentComponent implements OnInit {
 
   @Input()  inputs:                   FormBase<any>[] = [];
+            bankDetails:              any;
+            checkAmount:              boolean = true;
             checkingInfo:             any;
             editAccount:              boolean = false;
             showCustomAmount:         boolean = false;
@@ -42,9 +45,7 @@ export class NewPaymentComponent implements OnInit {
   }
 
   OnClickEditButton(event): void {
-    if (event) {
-      this.editAccount =             !this.editAccount;
-    }
+    this.editAccount =             !this.editAccount;
   }
 
   OnChangeShowCustomAmountField(input): void {
@@ -56,8 +57,17 @@ export class NewPaymentComponent implements OnInit {
     }
   }
 
-  createBankDetailsObject(){
+  checkAmountNow(e): void {
+    const amount = parseInt(e.target.value);
+    if ( amount > this.policyDetails[0].billingDetails[0].minAmountDue && !amount) {
+      this.checkAmount = true;
+    }
+    else {
+      this.checkAmount = false;
+    }
+  }
 
+  createBankDetailsObject(){
     const paymentObj = {
       bankAccount: {
         accountHolderName:            this.newPaymentForm.controls.newPayment_accountName.value,
@@ -77,63 +87,65 @@ export class NewPaymentComponent implements OnInit {
   }
 
   getStoreAccountInfo(e): void {
-    console.log(e.target.checked);
-    if(e.target.checked)
-    this.billingDataService.updateBankAccountCheck('checked');
-    else
-    this.billingDataService.updateBankAccountCheck(null);
-
+    if (e.target.checked) {
+      this.billingDataService.updateBankAccountCheck('checked');
+    }
+    else {
+      this.billingDataService.updateBankAccountCheck(null);
+    }
   }
-
 
   newPaymentFormSubmit(): void {
     let radioAmount,
-        paymentObj = {};
+        paymentObj =                    {};
+    const bankingInfo =                 this.checkingInfo[0].bankAccountDetails,
+          nPForm =                      this.newPaymentForm,
+          errorString =                 `'ACCOUNT_NUMBER_CONFIRM_DO_NOT_MATCH' | translate`; 
 
     if (this.newPaymentRadioForm.controls['paymentAmount'].value == 'other' ) {
-      radioAmount =                 this.newPaymentRadioForm.controls['otherAmount'].value;
+      radioAmount =                     this.newPaymentRadioForm.controls['otherAmount'].value;
     }
     else {
-      radioAmount =                 this.newPaymentRadioForm.controls['paymentAmount'].value;
+      radioAmount =                     this.newPaymentRadioForm.controls['paymentAmount'].value;
     }
 
-    if ( this.newPaymentForm.controls.newPayment_aptNumber.value ) {
-      this.mailingAddress['streetName'] = this.mailingAddress['streetName'] + '|' + (this.newPaymentForm.controls.newPayment_aptNumber.value || '');
+    if ( nPForm.controls['newPayment_aptNumber'].value ) {
+      this.mailingAddress['streetName'] = this.mailingAddress['streetName'] + '|' + (nPForm.controls['newPayment_aptNumber'].value || '');
     }
+
     this.getGooglePlaceService.updateAddress(this.mailingAddress);
 
-    // if ( this.checkingInfo.bankAccountDetails.accountNumber.digits == this.newPaymentForm.controls['newPayment_accountNumber'].value) {
-    //   paymentObj = this.createBankDetailsObject();
-    //   paymentObj['paymentAmount'] = radioAmount;
-
-    //   this.billingDataService.updateBillingDetails(paymentObj);
-    //   this.router.navigate(['/billing', this.policyId, 'confirm']);
-    // }
-    // else {
-      if(this.newPaymentForm.controls['newPayment_confirmAccountNumber'].value != this.newPaymentForm.controls['newPayment_accountNumber'].value) {
-        this.alertService.error('Account Number and Confirm Bank Account Number do not match');
+    if ( bankingInfo.accountNumber.digits == nPForm.controls['newPayment_accountNumber'].value) {
+      paymentObj =                      this.createBankDetailsObject();
+      paymentObj['paymentAmount'] =     parseFloat(radioAmount);
+      this.billingDataService.updateBillingDetails(paymentObj);
+      this.router.navigate(['/billing', this.policyId, 'confirm']);
+    }
+    else {
+      if (nPForm.controls['newPayment_confirmAccountNumber'].value != nPForm.controls['newPayment_accountNumber'].value) {
+        this.alertService.error(errorString);
       }
       else {
-        paymentObj = this.createBankDetailsObject();
-        paymentObj['paymentAmount'] = radioAmount;
-        
+        paymentObj =                      this.createBankDetailsObject();
+        paymentObj['paymentAmount'] =     parseFloat(radioAmount);
         this.billingDataService.updateBillingDetails(paymentObj);
         this.router.navigate(['/billing', this.policyId, 'confirm']);
       }
-    // }
+    }
   }
 
   setValues(checkingInfo): void {
-    const bDetails =                    checkingInfo.bankAccountDetails;
-    const apartmentNo =                 bDetails.mailingAddress.streetName.split('|');
-    const address = {
-      "streetName":                     apartmentNo[0],
-      "city":                           bDetails.mailingAddress.city,
-      "state":                          bDetails.mailingAddress.state,
-      "zipCode": {
-        "code":                         bDetails.mailingAddress.zipCode.code
-      }
-    };
+    const bDetails =                    checkingInfo[0].bankAccountDetails,
+          apartmentNo =                 bDetails.mailingAddress.streetName.split('|'),
+          address = {
+          streetName:                   apartmentNo[0],
+          city:                         bDetails.mailingAddress.city,
+          state:                        bDetails.mailingAddress.state,
+            zipCode: {
+              code:                     bDetails.mailingAddress.zipCode.code
+            }
+          }
+    ;
 
     this.newPaymentForm.patchValue({
       newPayment_accountName:           bDetails.accountHolderName,
@@ -145,28 +157,61 @@ export class NewPaymentComponent implements OnInit {
                                         bDetails.mailingAddress.state,
       newPayment_aptNumber:             apartmentNo[1]
     });
+
     this.getGooglePlaceService.updateAddress(address);
+  }
+
+  setDynamicInputValidation(radiobutton: string): void {
+    const otherAmount =                 this.newPaymentRadioForm.controls['otherAmount'],
+          validation =                  '^[0-9]+(\.[0-9]{2,2})?$'; //needs to be placed in teh regex helper
+    if (radiobutton == 'other') {
+      otherAmount.setValidators([Validators.required, Validators.maxLength(20),  Validators.pattern(validation)  ]);
+      this.setMinCheckMarkValidation(true);
+    }
+    else {
+      otherAmount.setValidators([Validators.maxLength(20),  Validators.pattern(validation)  ]);
+      this.setMinCheckMarkValidation(false);
+    }
+    otherAmount.setValue('');
+    otherAmount.updateValueAndValidity();
+  }
+
+  setMinCheckMarkValidation(checkmark): void {
+    const notMinAmount =                 this.newPaymentRadioForm.controls['minAmountCheck'];
+    if (checkmark) {
+      notMinAmount.setValidators(Validators.required);
+    } else {
+      notMinAmount.setValidators([]);
+    }
+    notMinAmount.updateValueAndValidity();
+  }
+
+  test(e): void {
+    console.log(e.target.value, this.newPaymentRadioForm.controls.otherAmount.valid, e.target.value.length);
   }
 
   ngOnInit() {
 
     this.newPaymentForm =             this.ipt.toFormGroup(this.inputs);
-    this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck)=>{
-      this.storeBankAccount = bankAccountCheck;
+    this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck) => {
+      this.storeBankAccount =         bankAccountCheck;
     });
+
     this.activatedRoute.params
     .subscribe((params: Params) => {
       this.policyId =                 params['policyid'];
       this.policyDataService.$policyDetails
       .subscribe((policyResponse) => {
-        this.policyDetails =          policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
+        this.policyDetails =          policyResponse.filter(
+          (response) =>               response.policynumber.policynumber === this.policyId);
       });
       this.userService.$user
       .subscribe((userResponse) => {
         this.checkingInfo =           userResponse;
-        if(this.checkingInfo.bankAccountDetails.accountHolderName){
+        if (this.checkingInfo[0].bankAccountDetails.accountHolderName) {
           this.setValues(this.checkingInfo);
         }
+        this.bankDetails =            this.checkingInfo[0].bankAccountDetails;
       });
     });
 
@@ -174,11 +219,12 @@ export class NewPaymentComponent implements OnInit {
     .subscribe((address) => {
       this.mailingAddress =           address;
     });
-   
+
     this.newPaymentRadioForm =        new FormGroup({
-      // checkingNumberAmount:           new FormControl(),
-      paymentAmount:                  new FormControl(),
-      otherAmount:                    new FormControl()
+      checkingNumberAmount:           new FormControl(),
+      paymentAmount:                  new FormControl('', Validators.required),
+      otherAmount:                    new FormControl(''),
+      minAmountCheck:                 new FormControl('')
     });
   }
 }

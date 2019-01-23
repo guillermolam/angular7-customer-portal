@@ -54,7 +54,7 @@
             <div class="col info-type info-description">
                 {{ 'DESCRIPTION' | translate }}:
             </div>
-            <div class="col info-data no-padding-left">
+            <div class="col info-data no-padding-left claim-description">
               <strong>{{claim.details.description}}</strong>
             </div>
           </div>
@@ -67,7 +67,7 @@
 
               <div class="row">
                 <div class="col">
-                    <strong><a href="tel:{{claim.details.claim_adjustter_number}}" class="mapfre link underline blue-link">{{claim.details.claim_adjustter_number}}</a></strong>
+                    <strong><a href="tel:{{claim.details.claim_adjustter_number}}" class="mapfre link underline blue-link">{{ claim.details.claim_adjustter_number | lowercase }}</a></strong>
                 </div>
               </div>
               <div class="row">
@@ -76,7 +76,7 @@
                       {{ 'EMAIL' | translate }}: 
                   </div>
                   <div>
-                    <strong><a href="mailto:{{claim.details.claim_adjustter_email}}" class="mapfre link underline blue-link">{{claim.details.claim_adjustter_email}}</a></strong>
+                    <strong><a href="mailto:{{ claim.details.claim_adjustter_email | lowercase }}" class="mapfre link underline blue-link">{{ claim.details.claim_adjustter_email | lowercase }}</a></strong>
                   </div>
                 </div>
               </div>

@@ -60,7 +60,7 @@ export class TestingDataService {
           LOSS_DATE: '2018-12-08T00:00:00.000+0000',
           LOSS_DESC: 'collision',
           SUCCESS: '0',
-          policyid: '66161',
+          policyid: '123456',
           policytype: 'auto',
           details: {
             claimant: 'MARIA C. BRILHANT',
@@ -105,7 +105,7 @@ export class TestingDataService {
           LOSS_DATE: '2018-12-08T00:00:00.000+0000',
           LOSS_DESC: 'water damage',
           SUCCESS: '1',
-          policyid: 'abc123',
+          policyid: 'QWERTY',
           policytype: 'property',
           details: {
             claimant: 'MARIA C. BRILHANT',
@@ -148,10 +148,10 @@ export class TestingDataService {
       },
       {
         LOSS_NUMBER: 'CCCCCC-D1E1F1',
-        LOSS_DATE: '21/01/1992',
+        LOSS_DATE: '2018-12-08T00:00:00.000+0000',
         LOSS_DESC: 'lightening damage',
         SUCCESS: '0',
-        policyid: 'BBWQKQ',
+        policyid: 'QWERTY',
         policytype: 'property',
         details: {
           claimant: 'MARIA C. BRILHANT',

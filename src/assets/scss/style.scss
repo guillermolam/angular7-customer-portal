@@ -1,5 +1,10 @@
 @import '_app-components/all';
 
+a[href^="mailto"] {
+  word-break: break-word;
+  hyphens: auto;
+}
+
 h1.title-cta {
   font-size: 24px;
   line-height: normal;
@@ -812,12 +817,9 @@ h1.title-cta {
   }
 }
 
-
-
 .title-case {
   text-transform: capitalize;
 }
-
 
 .border-full {
   border: thin solid;
@@ -839,4 +841,12 @@ h1.title-cta {
 
 .loading-no-padding div {
   min-height: 0px;
+}
+
+.checkmark-single {
+  float: left;
+}
+
+.min-amount-check {
+  width: 90%;
 }
