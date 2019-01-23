@@ -9,7 +9,6 @@ export class ServiceHelpersService {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
-      'Access-Control-Allow-Headers': 'authorization',
       'Content-Type':         'application/json;charset=utf-8',
     })
   };
