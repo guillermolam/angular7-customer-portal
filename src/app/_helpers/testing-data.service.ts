@@ -887,18 +887,6 @@ export class TestingDataService {
           "code": "02719"
         }
       },
-      "vehicle": [
-        {
-          "vehicleIdentificationNumber": null,
-          "odometerReading": 0,
-          "vehicle": "2016 RAM 1500 SLT"
-        },
-        {
-          "vehicleIdentificationNumber": null,
-          "odometerReading": 0,
-          "vehicle": "1998 HONDA CR-V LX"
-        }
-      ],
       "policyType": "AUTO",
       "residentialAddress": {
         "streetName": "34 EVERGREEN ST.",
@@ -943,7 +931,7 @@ export class TestingDataService {
         type:"INVOICE",
       }],
       
-      "vehicleDetails": [
+      "vehicle": [
         {
           "vehicleIdentificationNumber": {
             "Id": "1C6RR7GT3GS124646"
