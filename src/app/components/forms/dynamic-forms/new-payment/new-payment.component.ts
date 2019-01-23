@@ -45,26 +45,17 @@ export class NewPaymentComponent implements OnInit {
   }
 
   OnClickEditButton(event): void {
-    this.editAccount =             !this.editAccount;
+    this.editAccount =              !this.editAccount;
   }
 
   OnChangeShowCustomAmountField(input): void {
-    if (input == 'other') {
-      this.showCustomAmount =       true;
-    }
-    else {
-      this.showCustomAmount =       false;
-    }
+    this.showCustomAmount =         input == 'other' ? true : false;
   }
 
   checkAmountNow(e): void {
-    const amount = parseInt(e.target.value);
-    if ( amount > this.policyDetails[0].billingDetails[0].minAmountDue && !amount) {
-      this.checkAmount = true;
-    }
-    else {
-      this.checkAmount = false;
-    }
+    const amount =                  parseInt(e.target.value),
+          minAmount =               this.policyDetails[0].billingDetails[0].minAmountDue;
+    this.checkAmount =              amount > minAmount && !amount ? true : false;
   }
 
   createBankDetailsObject(){

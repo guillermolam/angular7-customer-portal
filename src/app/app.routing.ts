@@ -10,7 +10,6 @@ import { VerifyUserGuard }                from './_guards/verify-user.guard';
 // --- components ---- //
 import { ProfileEditEmailComponent }      from './components/dashboard/loggedin-content/profile/profile-edit-email/profile-edit-email.component';
 import { ProfileCheckingAccountComponent } from './components/dashboard/loggedin-content/profile/profile-checking-account/profile-checking-account.component';
-
 import { ProfilePhoneComponent }          from './components/dashboard/loggedin-content/profile/profile-phone/profile-phone.component';
 import { InformationHomeComponent }       from './components/dashboard/loggedin-content/information/information-home/information-home.component';
 import { InformationMainComponent }       from './components/dashboard/loggedin-content/information/information-main.component';
@@ -23,7 +22,7 @@ import { InformationRenewalComponent }    from './components/dashboard/loggedin-
 import { InformationCancelComponent }     from './components/dashboard/loggedin-content/information/information-cancel/information-cancel.component';
 import { InformationLegalComponent }      from './components/dashboard/loggedin-content/information/information-legal/information-legal.component';
 import { ClaimsDetailComponent }          from './components/dashboard/loggedin-content/claims/claims-detail/claims-detail.component';
-import { ClaimsHomeComponent }            from './components/dashboard/loggedin-content/claims/claims-dashboard-home/claims-home.component';
+import { ClaimsHomeComponent }            from './components/dashboard/loggedin-content/claims/claims-dashboard-main/claims-home.component';
 import { ClaimsHomeClosedComponent }      from './components/dashboard/loggedin-content/claims/claims-dashboard-closed/claims-home-closed.component';
 import { ProfileEmailConfirmComponent }   from './components/dashboard/loggedin-content/profile/profile-email-confirm/profile-email-confirm.component';
 import { PolicyDetailsComponent }         from './components/dashboard/loggedin-content/my-insurance/details/details.component';

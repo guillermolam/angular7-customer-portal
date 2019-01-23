@@ -507,10 +507,19 @@ h1.title-cta {
     font-weight: bold;
     text-transform: uppercase;
   }
+  .row.policy-details-content {
+    // margin-left: 0;
+    // margin-right: 0;
+    // padding-left: 15px;
+    // padding-right: 15px;
+  }
 
-  .policy-details-content {
+  .details-content {
     @media (min-width: 1200px) {
-      padding: 0 24px;
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 15px;
+      padding-right: 15px;
     }
     &.mobile-margin.mt40.margin-top {
       @media (max-width: 767px) {
@@ -524,13 +533,12 @@ h1.title-cta {
     @media (max-width: 1199px) {
       padding: 6px;
     }
-
   }
 
   .col1 {
     @media (min-width: 1200px) {
       padding-right:  40px;
-      padding-left:   30px;
+      padding-left:   0px;
     }
     @media (min-width: 768px) and (max-width: 1199px) {
       padding-left: 8px;
@@ -541,7 +549,7 @@ h1.title-cta {
   .col2 {
     @media (min-width: 1200px) {
       padding-left: 40px;
-      padding-right: 21px;
+      padding-right: 0px;
     }
 
     @media (min-width:768px) and (max-width: 1199px) {
@@ -652,7 +660,7 @@ h1.title-cta {
     }
   
     .address-copy {
-     width: 228px;
+      max-width: 227px;
     }
   
     .edit-address {

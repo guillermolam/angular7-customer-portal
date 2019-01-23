@@ -9,7 +9,7 @@ import { User }                             from '../../../../_models/user';
   styleUrls: ['./onboarding-wallet-modal.component.scss']
 })
 export class OnboardingWalletModalComponent implements OnInit {
-    @Input() policyNumber:                      string;
+    @Input() policyNumber:                  string;
              hideModal:                     boolean = false;
              onClickEventWalletPass:        boolean = false;
              walletDownloadModalOptions:    ModalOptions;
@@ -18,7 +18,7 @@ export class OnboardingWalletModalComponent implements OnInit {
     private _cookieService:                 CookieService,
   ) { 
     this.walletDownloadModalOptions = new ModalOptions({
-      additionalButtonClasses:              'ghost primary xsmall full',
+      additionalButtonClasses:              'ghost primary xsmall full no-margin',
       additionalClasses:                    'modal-dialog center-on-page wallet-popup modal-medium',
       animatePosition:                      'bottom',
       buttonCopy:                           'DOWNLOAD',

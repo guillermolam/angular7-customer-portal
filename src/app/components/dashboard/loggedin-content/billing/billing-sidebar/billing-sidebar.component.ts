@@ -19,7 +19,7 @@ export class BillingSidebarComponent implements OnInit {
   ) {
     this.inputs = service.getInputs();
     this.billingRepModal = new ModalOptions({
-      additionalButtonClasses:            'link-button blue-link heavy-link xsmall full',
+      additionalButtonClasses:            'link-button blue-link heavy-link xsmall full no-margin',
       additionalClasses:                  'modal-dialog center-on-page modal-medium',
       animatePosition:                    'top',
       buttonCopy:                         'CONTACT_YOUR_BILLING_REP',

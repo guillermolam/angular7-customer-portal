@@ -24,9 +24,9 @@
       <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
       <ng-container *ngIf="loading">
         <mapfre-loading></mapfre-loading>
-      </ng-container>
+      </ng-container> 
       <ng-template [ngIf]="showDocuments(policy)" >
-        <section class="row documents-content margin-top mt40 mobile-margins">
+        <section class="row documents-content details-content margin-top mt40 mobile-margins">
           <div class="col">
             <table mdbTable class="documents-table">
               <tbody> 
@@ -61,7 +61,7 @@
         </section>
       </ng-template>
       <ng-template [ngIf]="!showDocuments(policy)">
-        <section class="row documents-content no-documents"> 
+        <section class="row details-content documents-content no-documents"> 
           <div class="col">
             <img src="./assets/img/images/no-documents.png">
             <h1 class="title margin-vertical mv16">{{ 'NO_DOCUMENTS_TITLE' | translate }}</h1>
