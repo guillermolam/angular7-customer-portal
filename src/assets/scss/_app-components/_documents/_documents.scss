@@ -1,11 +1,11 @@
 .documents-table {
   tbody {
     tr {
-      color: #006580;
+      color: $dark-blue;
 
       &:hover {
         cursor: pointer;
-        background: #F7F7F7;
+        background: $softer-grey;
       }
 
       &.row {
@@ -20,19 +20,19 @@
   }
   
   &.table thead th {
-    border: thin solid #ccc;
+    border: thin solid $lite-gray;
   }
 
   
 
   .row-content {
-    border-bottom: thin solid #ccc;
-    border-left: thin solid #ccc;
-    border-right: thin solid #ccc;
+    border-bottom: thin solid $lite-gray;
+    border-left: thin solid $lite-gray;
+    border-right: thin solid $lite-gray;
   }
 
   .col-type {
-    max-width: 32px;
+    max-width: 61px;
   }
 
   .col-name {
@@ -41,7 +41,7 @@
 
   .col-date {
     //max-width: 100px;
-    color: #ccc;
+    color: $lite-gray;
     font-size: 12px;
   }
 
@@ -71,10 +71,10 @@
 }
 
 .circle-with-type {
-  border-radius: 50%;
-  background: #006580;
-  color: #ccc;
-  width: 24px;
-  text-align: center;
-  height: 24px;
+  border-radius:        50%;
+  background:           $dark-blue;
+  color:                $lite-gray;
+  width:                24px;
+  text-align:           center;
+  height:               24px;
 }

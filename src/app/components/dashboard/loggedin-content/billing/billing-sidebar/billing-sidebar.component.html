@@ -6,8 +6,8 @@
     <ng-container *ngIf="!policy?.policyFlags.isEft">
       <p class="text-center">{{ 'ENROLL_NOW_COPY' | translate}}</p>
       <div class="paperless row">
-        <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 row">
-          <div class="col paperless-icon">
+        <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 d-table">
+          <div class="d-table-cell paperless-icon">
               <div class="svg-container">
                   <svg width="40px" height="32px" viewBox="0 0 40 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -28,7 +28,7 @@
                   </svg>
                 </div>
           </div>
-          <div class="col paperless-copy">
+          <div class="d-table-cell paperless-copy">
             <strong>{{ 'AMOUNT_TO_SAVE' | translate}}</strong>
           </div>
         </div>
@@ -43,8 +43,8 @@
     </ng-container>
     <ng-container *ngIf="policy?.policyFlags.isEft">
         <div class="paperless row">
-          <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 row">
-            <div class="col paperless-icon">
+          <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 d-table">
+            <div class="d-table-cell paperless-icon">
                 <div class="svg-container">
                     <svg width="40px" height="32px" viewBox="0 0 40 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                       <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -65,7 +65,7 @@
                     </svg>
                   </div>
             </div>
-            <div class="col paperless-copy">
+            <div class="d-table-cell paperless-copy">
               <strong>{{ 'ENROLLED' | translate}}</strong>
             </div>
           </div>
