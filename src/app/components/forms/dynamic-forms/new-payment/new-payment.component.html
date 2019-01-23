@@ -9,7 +9,16 @@
       <div class="row">
         <div class="col">
           <div class="radio-label padding-left pl4">
-            <input class="" type="radio" id="paymentAmount-minimum" name="paymentAmount" checked formControlName="paymentAmount" [value]="policyDetails[0]?.billingDetails[0].minAmountDue" required="true" (change)="OnChangeShowCustomAmountField('min')">
+            <input
+              class=""
+              type="radio"
+              id="paymentAmount-minimum"
+              name="paymentAmount"
+              checked
+              formControlName="paymentAmount"
+              [value]="policyDetails[0]?.billingDetails[0].minAmountDue"
+              required="true"
+              (change)="OnChangeShowCustomAmountField('min'); setDynamicInputValidation('min')">
             <label class="" for="paymentAmount-minimum">{{ 'MINIMUM_AMOUNT_DUE' | translate }}</label>
           </div>
         </div>
@@ -20,7 +29,15 @@
       <div class="row">
         <div class="col">
           <div class="radio-label padding-left pl4">
-            <input class="" type="radio" id="paymentAmount-max" name="paymentAmount" formControlName="paymentAmount" [value]="policyDetails[0]?.billingDetails[0].outstandingbalance || 0" required="true" (change)="OnChangeShowCustomAmountField('max')">
+            <input 
+              class=""
+              type="radio"
+              id="paymentAmount-max"
+              name="paymentAmount"
+              formControlName="paymentAmount"
+              [value]="policyDetails[0]?.billingDetails[0].outstandingbalance || 0"
+              required="true"
+              (change)="OnChangeShowCustomAmountField('max'); setDynamicInputValidation('max')">
             <label class="" for="paymentAmount-max">{{ 'OUTSTANDING_POLICY_BALANCE' | translate }}</label>
           </div>
         </div>
@@ -39,24 +56,33 @@
               formControlName="paymentAmount" 
               value="other" 
               required="true"
-              (change)="OnChangeShowCustomAmountField('other')">
+              (change)="OnChangeShowCustomAmountField('other'); setDynamicInputValidation('other')">
             <label class="" for="paymentAmount-other">{{ 'OTHER_AMOUNT' | translate }}</label>
           </div>
         </div>
       </div>
       <div class="row margin-top mt16" *ngIf="showCustomAmount">
         <div class="col input-content" style="margin-left: 20px">
-          <div class= "input-field mapfre">
+          <div class="input-field mapfre">
             <input 
               class="w-50"
               formControlName="otherAmount"
               id="otherAmount"
               name="otherAmount"
               type="tel"
+              required="true"
               [mdbValidate]="false"
+              (keyup)="test($event)"
+              (blur)="checkAmountNow($event)"
               mdbInputDirective
               />
             <mapfre-label forInput= "otherAmount">{{ 'ENTER_AMOUNT' | translate }}</mapfre-label>
+          </div>
+          <div class="help-block error-block" *ngIf="!newPaymentRadioForm.controls.otherAmount.valid && newPaymentRadioForm.controls.otherAmount.touched && newPaymentRadioForm.controls.otherAmount.value !='' ">
+            {{ 'NOT_IN_A_VALID_FORMAT' | translate }}
+          </div>
+          <div class="help-block" *ngIf="!checkAmount && newPaymentRadioForm.controls.otherAmount.touched">
+            {{ 'THIS_AMOUNT_IS_LESS_THAN_YOU_MIN' | translate }} {{policyDetails[0]?.billingDetails[0].minAmountDue | currency}}
           </div>
         </div>
       </div>
@@ -65,20 +91,22 @@
   <section class="row bank-inputs margin-top mt24">
     <div class="col">
       <h2 class="title">
-          {{ 'CHECKING_ACCOUNT' | translate }}
-          <ng-container *ngIf="checkingInfo[0]?.bankAccountDetails.accountHolderName">
-            <mapfre-button additionalClasses="link-button blue-link float-right no-border no-padding no-margin  waves-effect" (click)="OnClickEditButton($event)">
-                {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
-            </mapfre-button>
-          </ng-container>
+        {{ 'CHECKING_ACCOUNT' | translate }}
+        <ng-container *ngIf="bankDetails?.accountHolderName">
+          <mapfre-button 
+            additionalClasses="link-button blue-link float-right no-border no-padding no-margin"
+            (click)="OnClickEditButton($event)">
+              {{ 'EDIT' | translate }} <svg-edit-icon-svg></svg-edit-icon-svg>  
+          </mapfre-button>
+        </ng-container>
       </h2>
 
-      <ng-container *ngIf="editAccount || !checkingInfo[0]?.bankAccountDetails.accountHolderName">
+      <ng-container *ngIf="editAccount || !bankDetails?.accountHolderName">
         <div class="checking-form margin-top mt16">
           <div *ngFor="let input of inputs" class="input" [ngClass]="{ 'first-input': input?.inputType == 'address' }">
             <ng-container *ngIf="input.inputType == 'checkbox'">
               <div class="margin-vertical mv8">
-                <input class="single-checkbox" id="store-checkbox"  type="checkbox" [formControlName]="input?.key">
+                <input  type="checkbox" class="single-checkbox" id="store-checkbox" (change)="getStoreAccountInfo($event)" [checked]="storeBankAccount">
                 <label class="margin-left ml16" for="store-checkbox">{{input.label | translate }}</label>
               </div>
             </ng-container>
@@ -89,16 +117,16 @@
         </div>
       </ng-container>
 
-      <ng-container *ngIf="checkingInfo[0]?.bankAccountDetails.accountHolderName && !editAccount ">
+      <ng-container *ngIf="bankDetails?.accountHolderName && !editAccount ">
         <div class="checking-info margin-top mt24">
           <div class="row  margin-bottom mb8">
             <div class="col">
-              {{ 'ACCOUNT_HOLDER' | translate}}: <strong>{{checkingInfo[0]?.bankAccountDetails.accountHolderName}}</strong>
+              {{ 'ACCOUNT_HOLDER' | translate}}: <strong>{{bankDetails?.accountHolderName}}</strong>
             </div>
           </div>
           <div class="row margin-bottom mb24">
             <div class="col">
-                {{ 'ACCOUNT_NUMBER' | translate}}: <strong>{{checkingInfo[0]?.bankAccountDetails.accountNumber.digits}}</strong>
+                {{ 'ACCOUNT_NUMBER' | translate}}: <strong>{{bankDetails?.accountNumber.digits}}</strong>
             </div>
           </div>
         </div>
@@ -120,10 +148,24 @@
         </div>
       </ng-container>
 
-      <div class="row text-center margin-top mt32">
+      <div class="row margin-top mt24" *ngIf="!checkAmount && newPaymentRadioForm.controls.otherAmount.touched" [formGroup]="newPaymentRadioForm">
+        <div class="col">
+          <div class="checkmark-single">
+              <input 
+              class="single-checkbox"
+              type="checkbox"
+              id="legal-checkbox"
+              required
+              formControlName="minAmountCheck">
+          </div>
+          <label class="form-check-label legal disclaimer small min-amount-check" for="legal-checkbox">{{ 'CHECKING_YOU_KNOW_THAT_AMOUNT_IS_LESS_THAN_MIN_AMOUNT' | translate }}</label>
+        </div>
+      </div>
+
+      <div class="row text-center margin-top mt32"> 
         <div class="col">
           <mapfre-button
-            [additionalClasses]="'basic primary large w-75 center-button  waves-effect waves-light'"
+            additionalClasses="basic primary large w-75 center-button"
             [disabledValue]="newPaymentRadioForm.valid" 
             [inputType]="'submit'"
             [translateValue]="'CONTINUE' | translate">
@@ -133,7 +175,7 @@
       <div class="row text-center margin-bottom mb24 margin-top mt16">
         <div class="col">
           <mapfre-button
-            [additionalClasses]="'ghost secondary small  waves-effect'"
+            additionalClasses="ghost secondary small"
             [routerLink]="['/my-insurance']">
             {{ 'CANCEL' | translate}}
           </mapfre-button>

@@ -18,7 +18,7 @@ import { PaperlessService }           from '../../../../_services/_iam/paperless
 })
 export class EnrollEftEpayFormComponent implements OnInit {
   @Input()  inputs:                   FormBase<any>[] = [];
-  @Input()  userData:                 any;
+            userData:                 any;
             enrollInEft:              FormGroup;
             enrollAccountType:        FormGroup;
             accountType:              string;
@@ -36,7 +36,7 @@ export class EnrollEftEpayFormComponent implements OnInit {
   ) { }
 
   checkForPrefillData(eftData): void {
-    const bankDetails = eftData[0].bankAccountDetails || '';
+    const bankDetails = eftData.bankAccountDetails || '';
     if (bankDetails != '') {
       this.enrollInEft.patchValue({
         enrollInEft_accountName:      bankDetails.accountHolderName,
@@ -79,7 +79,6 @@ export class EnrollEftEpayFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.accountType = this.userData[0].bankAccountDetails.accountType;
     this.activatedRoute.params.subscribe(
       (params: Params) => {
         this.policyId =                 params['policyid'];
@@ -88,7 +87,12 @@ export class EnrollEftEpayFormComponent implements OnInit {
     this.enrollAccountType =            new FormGroup({
       bankType:                         new FormControl(''),
     });
-    this.checkForPrefillData(this.userData);
+    this.userService.$user.subscribe((userResponse)=>{
+      this.userData = userResponse;
+      this.accountType = this.userData.bankAccountDetails.accountType;
+      this.checkForPrefillData(this.userData);
+    })
+    
   }
 
 }

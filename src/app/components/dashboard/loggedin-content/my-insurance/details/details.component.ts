@@ -1,18 +1,19 @@
-import { DomSanitizer, SafeUrl }            from '@angular/platform-browser';
-import { Component, OnInit }                from '@angular/core';
+import { DomSanitizer, SafeUrl }          from '@angular/platform-browser';
+import { Component, OnInit }              from '@angular/core';
 import { FormGroup, FormControl, Validators }
-                                            from '@angular/forms';
-import { ActivatedRoute, Params }           from '@angular/router';
-import { filter }                           from 'rxjs/operators';
-import { AuthenticationService }            from '../../../../../_services/_iam/authentication-service.service';
-import { PolicyDataService }                from '../../../../../_services/my-insurance/data-services/policy-data.service';
-import { PolicyDetailsService }             from '../../../../../_services/my-insurance/policy-details.service';
-import { StorageServiceObservablesService } from '../../../../../_services/storage-service-observables/storage-service-observables.service';
-import { User }                             from '../../../../../_models/user';
-import { UserService }                      from '../../../../../_services/user.service';
-import { WalletCardService }                from '../../../../../_services/_iam/wallet-card.service';
+                                          from '@angular/forms';
+import { ActivatedRoute, Params }         from '@angular/router';
+import { filter }                         from 'rxjs/operators';
+import { AuthenticationService }          from '../../../../../_services/_iam/authentication-service.service';
+import { PolicyDataService }              from '../../../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDetailsService }           from '../../../../../_services/my-insurance/policy-details.service';
+import { StorageServiceObservablesService }
+                                          from '../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { User }                           from '../../../../../_models/user';
+import { UserService }                    from '../../../../../_services/user.service';
+import { WalletCardService }              from '../../../../../_services/_iam/wallet-card.service';
 
-import { TestingDataService }               from '../../../../../_helpers/testing-data.service';
+import { TestingDataService }             from '../../../../../_helpers/testing-data.service';
 
 import * as isEqual from 'lodash.isequal';
 
@@ -22,30 +23,35 @@ import * as isEqual from 'lodash.isequal';
   styleUrls: ['./details.component.scss']
 })
 export class PolicyDetailsComponent implements OnInit {
-  alertLoad:                              boolean = false;
-  alerton:                                any;
-  input:                                  object;
-  loading:                                boolean = false;
-  legalCheckbox:                          boolean = false;
-  message:                                string;
-  messageType:                            string;
-  policyId:                               number;
-  user:                                   User;
-  showMessage:                            boolean = false;
-  updateMileage:                          FormGroup;
-  vehicles:                               object;
-  policyDetails:                          any;
-  sameMailingAddress:                     boolean;
+  address:                              string = 'address';
+  agentStreet:                          string;
+  alertLoad:                            boolean = false;
+  alerton:                              any;
+  apt:                                  string = 'apt';
+  input:                                object;
+  isItTheSameAddress:                   boolean;
+  loading:                              boolean = false;
+  legalCheckbox:                        boolean = false;
+  message:                              string;
+  messageType:                          string;
+  policyId:                             number;
+  policyDetails:                        any;
+  sameMailingAddress:                   boolean;
+  showMessage:                          boolean = false;
+  state:                                string;
+  updateMileage:                        FormGroup;
+  vehicles:                             object;
+  user:                                 any;
 
   constructor(
     private activatedRoute:             ActivatedRoute,
     private authService:                AuthenticationService,
-    private userService:                UserService,
     private sanitizer:                  DomSanitizer,
-    private policyDataService:          PolicyDataService,
-    private walletCardService:          WalletCardService,
-    private policyDetailsService:       PolicyDetailsService,
     private storageService:             StorageServiceObservablesService,
+    private policyDataService:          PolicyDataService,
+    private policyDetailsService:       PolicyDetailsService,
+    private userService:                UserService,
+    private walletCardService:          WalletCardService,
 
     private testingData:                TestingDataService
   ) {
@@ -102,12 +108,43 @@ export class PolicyDetailsComponent implements OnInit {
     return safeUrl;
   }
 
+  getApartmentAndState(data): void {
+    if(data.property != undefined) {
+      const streetAddress =               data.property[0].address.streetName;
+      let   addressArray =                [];
+
+      if (addressArray.some((x) => x == '|')) {
+        addressArray =                    streetAddress.split('|');
+        this.address =                    addressArray[0];
+        this.apt =                        addressArray[1];
+      }
+      else {
+        addressArray =                    streetAddress.split(' ');
+        this.address =                    `${addressArray[0]} ${addressArray[1]} ${addressArray[2]}`;
+        if (addressArray[3] == 'apt' ) {
+          this.apt =                      addressArray[4];
+        }
+        else {
+          this.apt =                      addressArray[3];
+        }
+      }
+    }
+  }
+
   getLegalCheckBoxValue(e): void {
     this.legalCheckbox = e.target.checked ? true : false;
   }
 
   isAddressEqual(policyDetail) {
-    return isEqual(policyDetail.mailingAddress, policyDetail.residentialAddress);
+    let address;
+
+    if (isEqual(policyDetail.mailingAddress, policyDetail.residentialAddress)) {
+      address = true;
+    }
+    else {
+      address = false;
+    }
+    this.isItTheSameAddress = address;
   }
 
   onSubmit(i, e): void {
@@ -160,21 +197,21 @@ export class PolicyDetailsComponent implements OnInit {
 
     setTimeout(() => {
       if (successArray.every((val, i, arr) => val == true)) {
-        this.message =              `We\'ve updated you odemeters.`;
-        this.messageType =          'success';
+        this.message =                `We\'ve updated you odemeters.`;
+        this.messageType =            'success';
       }
       else if (successArray.every((val, i, arr) => val == false)) {
-        this.message =              'There was a problem';
-        this.messageType =          'error';
+        this.message =                'There was a problem';
+        this.messageType =            'error';
       }
       else {
-        this.message =              `We could only update some of the odemeters. ${VName.join(', ')} had an issue`;
-        this.messageType =          'default';
+        this.message =                `We could only update some of the odemeters. ${VName.join(', ')} had an issue`;
+        this.messageType =            'default';
       }
-      this.showMessage =            true;
-      this.alertLoad =              false;
+      this.showMessage =              true;
+      this.alertLoad =                false;
       setTimeout(() => {
-        this.showMessage =          false;
+        this.showMessage =            false;
         this.reSyncWithPolicyData();
       }, 2000);
     }, 500);
@@ -183,21 +220,22 @@ export class PolicyDetailsComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.policyId =                params['policyid'];
+      this.policyId =                 params['policyid'];
     });
 
     this.policyDataService.$policyDetails
     .subscribe((policyResponse) => {
-      this.policyDetails =          policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
-      console.log(this.policyDetails[0]);
+      this.policyDetails =            policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
       this.createUpdateMilageFormControls(this.policyDetails[0]);
+      this.getApartmentAndState(this.policyDetails[0]);
+      this.isAddressEqual(this.policyDetails[0]);
     });
 
     this.userService.$user
     .subscribe( (user) => {
-      this.user =                   user;
+      this.user =                     user;
     });
 
-    this.loading =                  false;
+    this.loading =                    false;
   }
 }

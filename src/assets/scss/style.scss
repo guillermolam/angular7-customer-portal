@@ -1,5 +1,10 @@
 @import '_app-components/all';
 
+a[href^="mailto"] {
+  word-break: break-word;
+  hyphens: auto;
+}
+
 h1.title-cta {
   font-size: 24px;
   line-height: normal;
@@ -31,7 +36,7 @@ h1.title-cta {
 
   .account-header {
     float:              left;
-    color:            #fff;
+    color:              $white;
     font-size:          14px;
     line-height:        24px;
     font-weight:        400;
@@ -148,38 +153,36 @@ h1.title-cta {
 
 .claim-link,
 .policy-link {
-  background: #006580;
-  color: $white;
-  display: block;
-  text-align: right;
-  font-weight: bold;
-  border: 2px solid $dark-blue;
+  background:         $dark-blue;
+  color:              $white;
+  display:            block;
+  text-align:         right;
+  font-weight:        bold;
+  border:             2px solid $dark-blue;
   
   svg g {
     @include transition(0.5s);
   }
 
   &:hover {
-    background: $white;
-
-    svg g {
-      fill: $dark-blue;
-    }
+    background:       $hover-blue;
+    border-color:     $hover-blue;
+    color:            $white;
   }
 }
 
 .col.one-column {
   @media (min-width: 992px) and (max-width: 1019px) {
-    margin-left: 256px;
-    max-width: 71%;
+    margin-left:      256px;
+    max-width:        71%;
   }
 }
 
 .col1-image {
-  max-width: 177px;
+  max-width:          177px;
 
   img {
-    width: 144px;
+    width:            144px;
   }
 }
 
@@ -378,15 +381,15 @@ h1.title-cta {
 
   @media (max-width: 350px) {
     a {
-      font-size: 8px;
+      font-size:        8px;
     }
 
     .active .nav-copy {
-      text-shadow: none;
+      text-shadow:      none;
     }
 
     .nav-content {
-      font-size: 8px;
+      font-size:        8px;
     }
   } 
   
@@ -396,14 +399,14 @@ h1.title-cta {
     right:              0;
     left:               0;
     width:              100%;
-    z-index:          100;
+    z-index:            100;
 
     ul {
-      display: table;
-      width:100%;
+      display:          table;
+      width:            100%;
 
       li {
-        display:          table-cell;
+        display:        table-cell;
       }
     }
 
@@ -428,64 +431,63 @@ h1.title-cta {
   }
 
   h1.title {
-    color: $grey;
-    font-size: 24px;
-    line-height: normal;
-    padding-left: 8px;
-    margin-bottom: 0;
-    margin-top: -8px;
+    color:              $grey;
+    font-size:          24px;
+    line-height:        normal;
+    margin-bottom:      0;
+    margin-top:         -8px;
 
     @media (max-width: 575px) {
-      font-size: 14px;
-      margin-top: 0px;
-      line-height: 24px;
+      font-size:        18px;
+      margin-top:       0px;
+      line-height:      24px;
     }
 
     small {
-      font-size: 16px;
-      padding-left: 16px;
+      font-size:        16px;
+      padding-left:     16px;
 
       @media (max-width: 575px) {
-        font-size: 12px;
-        padding-left: 8px;
+        font-size:      12px;
+        padding-left:   8px;
       }
     }
   }
 
   h2 {
     &.title {
-      font-size: 18px;
-      line-height: 32px;
-      border-bottom: 2px solid $soft-grey;
-      color: $grey;
-      text-align: left;
-      padding-bottom: 10px;
+      font-size:        18px;
+      line-height:      32px;
+      border-bottom:    2px solid $soft-grey;
+      color:            $grey;
+      text-align:       left;
+      padding-bottom:   10px;
   
       .small-subtitle { 
-        color: $dark-grey;
-        font-size: 11px;
-        line-height: 16px;
+        color:          $dark-grey;
+        font-size:      11px;
+        line-height:    16px;
       }
   
       .svg-container {
-        float: left;
-        padding-right: 16px;
+        float:          left;
+        padding-right:  16px;
   
         svg {
-          width: 24px;
+          width:        24px;
         }
       }
     }
 
     &.claim-id {
-      color: $med-gray;
-      font-size: 18px;
-      line-height: 32px;
-      margin-bottom: 0;
+      color:            $med-gray;
+      font-size:        18px;
+      line-height:      24px;
+      margin-bottom:    0;
   
       @media (max-width: 575px) {
-        font-size: 14px;
-        line-height: 24px;
+        font-size:      14px;
+        line-height:    24px;
       } 
     }
     
@@ -527,7 +529,8 @@ h1.title-cta {
 
   .col1 {
     @media (min-width: 1200px) {
-      padding-right: 40px;
+      padding-right:  40px;
+      padding-left:   30px;
     }
     @media (min-width: 768px) and (max-width: 1199px) {
       padding-left: 8px;
@@ -538,6 +541,7 @@ h1.title-cta {
   .col2 {
     @media (min-width: 1200px) {
       padding-left: 40px;
+      padding-right: 21px;
     }
 
     @media (min-width:768px) and (max-width: 1199px) {
@@ -581,9 +585,12 @@ h1.title-cta {
       background-repeat: no-repeat;
 
       @media (max-width: 575px) {
-        height: 45px;
-        width: 21px;
-        background-size: auto 45px;
+        //height: 45px;
+        //width: 21px;
+        //background-size: auto 45px;
+        height: 65px;
+        width: 35px;
+        background-size: auto 66px;
       }
     }
   }
@@ -753,7 +760,7 @@ h1.title-cta {
 .no-margins-hug {
   &.hug-content {
     @media (min-width: 1200px) {
-      margin-left: -24px;
+      margin-left: -40px;
       margin-right: -40px;
     }
   }
@@ -810,12 +817,9 @@ h1.title-cta {
   }
 }
 
-
-
 .title-case {
   text-transform: capitalize;
 }
-
 
 .border-full {
   border: thin solid;
@@ -837,4 +841,12 @@ h1.title-cta {
 
 .loading-no-padding div {
   min-height: 0px;
+}
+
+.checkmark-single {
+  float: left;
+}
+
+.min-amount-check {
+  width: 90%;
 }

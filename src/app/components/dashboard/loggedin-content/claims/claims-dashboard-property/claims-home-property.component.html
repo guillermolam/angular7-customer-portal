@@ -1,12 +1,12 @@
 <div class="claim home row no-margins-hug" [ngClass]="{ 'hug-header': type == 'details', 'hug-content': type != 'details' }">
-  <div class="col-12 no-padding">
-    <div class="policy-background float-left">
+  <div class="col-12 no-padding row">
+    <div class="policy-background col">
         <div class="house"></div>
     </div>
-    <div>
-      <h2 class="claim-id">{{ claim.LOSS_DESC }} - <strong>#{{ claim.LOSS_NUMBER }}</strong></h2>
+    <div class="col">
+      <h2 class="claim-id">{{ claim.LOSS_DESC | titlecase }} - <strong>#{{ claim.LOSS_NUMBER }}</strong></h2>
       <div class="policy-id">
-          {{ claim.policytype }} - 
+          {{ claim.policytype | titlecase }} - 
           <ng-container *ngIf="type != 'details'">
               {{ claim.policyid }}
           </ng-container>
@@ -15,7 +15,7 @@
           </ng-container>
       </div>
       <div class="date-loss">
-          {{ 'DATE_OF_LOSS' | translate }}: {{ claim.LOSS_DATE }}
+          {{ 'DATE_OF_LOSS' | translate }}: {{ claim.LOSS_DATE | date }}
       </div>
     </div>
   </div>
@@ -28,6 +28,6 @@
     </div>
   </ng-container>
   <ng-container *ngIf="type == 'details'">
-    <hr class="margin-top mb16 col-12  no-padding" />
+    <hr class="margin-top mb16 w-100 no-padding" />
   </ng-container>
 </div>

@@ -41,14 +41,14 @@ onSubmitPhoneDetails(){
 
   this.phoneNumber = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");
   this.changePhoneService.addUpdatePhone(this.storageService.getUserFromStorage(), this.phoneNumber).subscribe((response)=>{  
-    this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
-    .subscribe(([userResponse,accountResponse])=>{
-      this.userService.updateUser(
-       {
-         userDetails: {...userResponse},
-         bankAccountDetails:  {...accountResponse}}
-      );
-    });
+    // this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
+    // .subscribe(([userResponse,accountResponse])=>{
+    //   this.userService.updateUser(
+    //    {
+    //      userDetails: {...userResponse},
+    //      bankAccountDetails:  {...accountResponse}}
+    //   );
+    // });
   
     this.alertService.success('Phone number succesfully updated',true);
     // FakeAccountSettings.user.phone = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");

@@ -1,3 +1,51 @@
 .collapse-carot i {
   font-size: 14px;
 }
+
+.info-type.info-description.col {
+  max-width: 130px;
+
+  @media (min-width: 768px) and (max-width: 847px) {
+    max-width: 110px;
+  }
+  @media (min-width: 992px) and (max-width: 1103px) {
+    max-width: 110px;
+  }
+  @media (max-width: 561px) {
+    max-width: 110px;
+  }
+}
+
+.claim.row {
+  margin-left: -18px;
+  margin-right: -18px;
+}
+
+.faq {
+  @media (min-width: 1200px) {
+    margin-left: -40px;
+    margin-right: -30px;
+  }
+  @media (max-width: 1199px) {
+    margin-left: -15px;
+    margin-right: -16px;
+  }
+}
+
+.info-data{
+  &.adjuster-info {
+    float: left;
+    padding-left: 16px;
+
+    @media (min-width: 768px) and (max-width: 847px) {
+      padding-left: 32px;
+    }
+    @media (min-width: 992px) and (max-width: 1103px) {
+      padding-left: 32px;
+    }
+    @media (max-width: 561px) {
+      padding-left: 32px;
+      padding-right: 16px;
+    }
+  }
+}

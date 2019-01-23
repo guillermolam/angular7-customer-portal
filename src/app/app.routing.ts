@@ -103,6 +103,7 @@ children: [
         { path: 'details',                component: PolicyDetailsComponent },
         { path: 'billing',                component: BillingDetailsComponent },
         { path: 'documents',              component: DocumentDetailsComponent },
+        { path: 'change-address/:address-type', component: AddressChangeComponent},
       ]
     },
   ]

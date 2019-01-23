@@ -37,34 +37,32 @@ export class BillingNewpaymentComponent implements OnInit {
    }
 
   checkForAccount(): boolean {
-    const bankDetails = this.checkingInfo[0].bankAccountDetails;
+    const bankDetails =             this.checkingInfo[0].bankAccountDetails;
     let returnBool;
     if (bankDetails.accountHolderName != '' || bankDetails.accountHolderName != undefined) {
-      returnBool = true;
+      returnBool =                  true;
     }
     else {
-      returnBool = false;
+      returnBool =                  false;
     }
     return returnBool;
   }
 
   ngOnInit() {
-    this.loading = true;
-    
+    this.loading =                  true;
 
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.policyId = params['policyid'];
+      this.policyId =               params['policyid'];
       this.policyDataService.$policyDetails
       .subscribe((policyResponse) => {
-        if (policyResponse) {
-          this.policyDetails = policyResponse;
-        }
+        this.policyDetails =        policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);;
       });
       this.userService.$user
       .subscribe((userResponse) => {
-        this.checkingInfo = userResponse;
+        this.checkingInfo =         userResponse;
       });
     });
-    this.loading = false;
+
+    this.loading =                 false;
   }
 }
