@@ -17,34 +17,34 @@ export class BillingDetailsService {
   ) {}
 
   getCurrentBillByPolicy(policyNumber: string){
-    const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
-    // const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`;
+    // const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
+    const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`;
     return this.http.get(url);
   }
 
 
   getScheduledBillsByPolicy(policyNumber: string){
-    const url = `${this.billingURL}/billing/scheduled-bills?policyNumber=${policyNumber}`;
-    // const url = `${environment.backend_server_url}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    // const url = `${this.billingURL}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    const url = `${environment.backend_server_url}/billing/scheduled-bills?policyNumber=${policyNumber}`;
     return this.http.get(url);
   }
 
   getHistoryBillsByPolicy(policyNumber: string){
-    const url = `${this.billingURL}/billing/history-bills?policyNumber=${policyNumber}`;
-    // const url = `${environment.backend_server_url}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    // const url = `${this.billingURL}/billing/history-bills?policyNumber=${policyNumber}`;
+    const url = `${environment.backend_server_url}/billing/scheduled-bills?policyNumber=${policyNumber}`;
     return this.http.get(url);
   }
 
 
   getPendingChecksByPolicy(policyNumber: string){
-    const url = `${this.billingURL}/billing/${policyNumber}/unprocessedpayment`;
-    // const url = `${environment.backend_server_url}/billing/${policyNumber}/unprocessedpayment`;
+    // const url = `${this.billingURL}/billing/${policyNumber}/unprocessedpayment`;
+    const url = `${environment.backend_server_url}/billing/${policyNumber}/unprocessedpayment`;
     return this.http.get(url);
   }
 
   makeECheckPayment(billingData, email, policyNumber){
-    const url = `${this.billingURL}/billing/${email}/${policyNumber}`;
-    // const url = `${environment.backend_server_url}/billing/${email}/${policyNumber}`;
+    // const url = `${this.billingURL}/billing/${email}/${policyNumber}`;
+    const url = `${environment.backend_server_url}/billing/${email}/${policyNumber}`;
     return this.http.post(url,billingData);
 
   }

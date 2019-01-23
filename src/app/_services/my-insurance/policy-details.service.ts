@@ -21,8 +21,8 @@ export class PolicyDetailsService {
   ) { }
 
   getPolicyDetailsByEmail(email: string = 'testmfr@gmail.com'){
-    const url = `${this.backendUrl}/personal-policies/${email}`;
-    // const url = `${environment.backend_server_url}/personal-policies/${email}`;
+    // const url = `${this.backendUrl}/personal-policies/${email}`;
+    const url = `${environment.backend_server_url}/personal-policies/${email}`;
     return this.http.get(url).pipe(map((policyResponse: any[]) => {
       // this.policyDataService.updatePolicyDetails(policyResponse);
       policyResponse.forEach((policy) => {
@@ -64,8 +64,8 @@ export class PolicyDetailsService {
 }
 
   getDocumentsByPolicy(policyNumber: string){
-    const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;
-    // const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/documents`;
+    // const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;
+    const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/documents`;
     return this.http.get(url);
   }
 
@@ -73,20 +73,20 @@ export class PolicyDetailsService {
     const options = {
       responseType:  'arraybuffer' as 'json'
     };
-    const url = `${this.backendUrl}/personal-policies/document/${documentId}`;
-    // const url = `${environment.backend_server_url}/personal-policies/document/${documentId}`;
+    // const url = `${this.backendUrl}/personal-policies/document/${documentId}`;
+    const url = `${environment.backend_server_url}/personal-policies/document/${documentId}`;
     return this.http.get(url, options);
   }
 
   getVehicleByPolicy(policyNumber){
-    const url = `${this.backendUrl}/personal-policies/${policyNumber}/vehicles`;
-    // const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/vehicles`;
+    // const url = `${this.backendUrl}/personal-policies/${policyNumber}/vehicles`;
+    const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/vehicles`;
     return this.http.get(url);
   }
 
   updateMileageById(email,policyNumber,vehicleId, odometerReading){
-    const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
-    // const url = `${environment.backend_server_url}/personal-policies/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
+    // const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
+    const url = `${environment.backend_server_url}/personal-policies/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
     return this.http.post(url, {});
   }
 
@@ -97,8 +97,8 @@ export class PolicyDetailsService {
   }
 
   addPolicyToEmail(email,policyNumber){
-    const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/add-policy`;
-    // const url = `${environment.backend_server_url}/personal-policies/${email}/${policyNumber}/add-policy`;    
+    // const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/add-policy`;
+    const url = `${environment.backend_server_url}/personal-policies/${email}/${policyNumber}/add-policy`;    
     return this.http.post(url,{});
   }
 
