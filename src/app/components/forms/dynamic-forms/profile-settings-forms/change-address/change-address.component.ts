@@ -50,7 +50,6 @@ export class ChangeAddressComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.addressType = params['address-type'];
     });
-
     this.changeAddressForm = this.ipt.toFormGroup(this.inputs);
   }
 
