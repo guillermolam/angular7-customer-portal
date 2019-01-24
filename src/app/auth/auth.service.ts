@@ -13,9 +13,11 @@ export class AuthService {
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
     domain: AUTH_CONFIG.domain,
-    responseType: 'token id_token',
-    redirectUri: AUTH_CONFIG.callbackURL
-  });
+    responseType: 'token',
+    redirectUri: AUTH_CONFIG.callbackURL,
+    scope: 'openid'
+  })
+  //audience('https://external-dev.login.sys.nonprod.us-east-1.aws.pcf.mapfreusa.com/oauth/authorize');
 
   constructor(public router: Router) {
     this._idToken = '';
@@ -37,12 +39,15 @@ export class AuthService {
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
+      if (authResult && authResult.accessToken) {
+        console.log("Sucessfully authenticated");
         this.localLogin(authResult);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/my-insurance']);
       } else if (err) {
-        this.router.navigate(['/login']);
         console.log(err);
+        console.log(authResult);
+        console.log(authResult.accessToken);
+        console.log(authResult.idToken);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
@@ -50,7 +55,8 @@ export class AuthService {
 
   private localLogin(authResult): void {
     // Set isLoggedIn flag in localStorage
-    localStorage.setItem('isLoggedIn', 'true');
+    console.log("Seeting local storage");
+    localStorage.setItem('ccc', 'true');
     // Set the time that the access token will expire at
     const expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
     this._accessToken = authResult.accessToken;
