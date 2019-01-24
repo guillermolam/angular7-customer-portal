@@ -13,7 +13,7 @@ export class ChangeProfileEmailService {
 
   checkIfEmailExists(oldEmail, newEmail){
   //  const url = `https://mdv-doctest:8087/identity/users/change-email?email=${oldEmail}`
-   const url = `${environment.backend_server_url}/identity/users/change-email?email=${oldEmail}`;
+   const url = `${environment.backend_server_url}/identity-api/users/change-email?email=${oldEmail}`;
     const body = {
         email: newEmail,
         password:""

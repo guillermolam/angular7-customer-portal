@@ -14,8 +14,8 @@ import { UserService }          from './../user.service';
 })
 export class PaperlessService {
   firstTime:                    boolean;
-  billing:                      string = `${environment.backend_server_url}/billing`;
-  personalPolicy:               string = `${environment.backend_server_url}/personal-policies`;
+  billing:                      string = `${environment.backend_server_url}/billing-api`;
+  personalPolicy:               string = `${environment.backend_server_url}/personal-policy-api`;
 
   private messageSource =       new BehaviorSubject<boolean>(this.firstTime);
   $firstTime =                  this.messageSource.asObservable();

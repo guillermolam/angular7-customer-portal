@@ -20,7 +20,7 @@ export class BillingService {
 
   payBillByCheck(bill, user): Observable<any>{
     const
-      url =                 `${environment.backend_server_url}/customers/accounts/${user.email}`,
+      url =                 `${environment.backend_server_url}/b2c-account-api/${user.email}`,
       userSendObject =      this.serviceHelpers.creatUserObject(bill, 'payByCheck');
     ;
     return this.http.put(url, userSendObject, this.serviceHelpers.options)

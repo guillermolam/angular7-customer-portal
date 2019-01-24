@@ -30,12 +30,12 @@ export class UserInfoService {
   }
 
   getCurrentBillByPolicy(policyNumber): Observable<object> {
-    const url = `${environment.backend_server_url}/billing/${policyNumber}/currentbill`; // change
+    const url = `${environment.backend_server_url}/billing-api/${policyNumber}/currentbill`; // change
     return this.http.get(url);
   }
 
   getUserDocuments(policyNumber, user, accessToken): Observable<object> {
-    const url = `${environment.backend_server_url}/personal-policies/${policyNumber}/documents`;
+    const url = `${environment.backend_server_url}/personal-policy-api/${policyNumber}/documents`;
     return this.http.get(url);
   }
 
@@ -45,7 +45,7 @@ export class UserInfoService {
   }
 
   policyByEmail(email) {
-    const url = `${environment.backend_server_url}/personal-policies/${email}`;
+    const url = `${environment.backend_server_url}/personal-policy-api/${email}`;
     return this.http.get(url);
   }
 }

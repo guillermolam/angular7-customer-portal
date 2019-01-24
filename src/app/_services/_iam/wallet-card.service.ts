@@ -15,7 +15,7 @@ export class WalletCardService {
         responseType:               'arraybuffer' as 'json'
     };
     // const url: string =           `https://mdv-doctest:8083/customers/accounts/wallet/${policyNumber}`;
-    const url: string =           `${environment.backend_server_url}/customers/accounts/wallet/${policyNumber}`;
+    const url: string =           `${environment.backend_server_url}/b2c-account-api/wallet/${policyNumber}`;
     return this.http.get(url, options);
   }
 
