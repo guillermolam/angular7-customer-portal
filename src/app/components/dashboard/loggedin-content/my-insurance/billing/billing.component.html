@@ -21,8 +21,8 @@
           </div>
         </header>
         <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
-        <section class="row margin-top mt40 mobile-margin"> 
-          <div class="col col1 col-md-8 margin-bottom mb24">
+        <section class="row details-content margin-top mt40 mobile-margin"> 
+          <div class="col col1 margin-bottom mb24">
             <div class="row">
               <div class="col">
                 
@@ -184,7 +184,7 @@
             </div>
           </div>
           
-          <div class="col col2 col-md-4">
+          <div class="col col2 ">
             <div class="margin-bottom mb32" *ngIf="policy.pendingCheckPayments">
               <h2 class="title no-border">
                 {{ 'PENDING_CHECKS' | translate }}

@@ -59,8 +59,8 @@ export class PolicyDetailsComponent implements OnInit {
 
   createUpdateMilageFormControls(data): void {
     let milageControl =                 [];
-    for ( let i = 0; i <= data.vehicleDetails.length; i++ ) {
-      if ( i != data.vehicleDetails.length ) {
+    for ( let i = 0; i <= data.vehicle.length; i++ ) {
+      if ( i != data.vehicle.length ) {
         milageControl.push(
           {
             name:                       `updateMileageInput_${i}`,

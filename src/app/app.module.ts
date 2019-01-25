@@ -34,9 +34,10 @@ import { StorageServiceObservablesService }     from './_services/storage-servic
 import { PolicyDataService }                    from './_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }                 from './_services/my-insurance/policy-details.service';
 import { PolicyDocumentsDataService }           from './_services/my-insurance/data-services/policy-documents-data.service';
-
+import { FullstateToAbvPipe }                   from './_helpers/_pipes/fullstate-to-abv.pipe';
+import { AbvToFulstatePipe }                    from './_helpers/_pipes/abv-to-fulstate.pipe';
 // ----- Account ----- //
-import { DashboardMainComponent }                 from './components/dashboard/dashboard-main.component';
+import { DashboardMainComponent }               from './components/dashboard/dashboard-main.component';
 // ----- Routes ----- //
 import { CreateNewPasswordComponent }           from './routes/create-new-password/create-new-password.component';
 import { DashboardComponent }                   from './routes/my-insurance/dashboard.component';
@@ -104,7 +105,7 @@ import { ContactScreenComponent } from './components/screens/contact-screen/cont
 import { EditEmailFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/edit-email-form/edit-email-form.component';
 import { ProfileEmailConfirmComponent } from './components/dashboard/loggedin-content/profile/profile-email-confirm/profile-email-confirm.component';
 import { ProfileConfirmModalComponent } from './components/dashboard/loggedin-content/profile/profile-confirm-modal/profile-confirm-modal.component';
-import { ClaimsHomeComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-home/claims-home.component';
+import { ClaimsHomeComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-main/claims-home.component';
 import { ClaimsWrapperComponent } from './components/dashboard/loggedin-content/claims/claims.component';
 import { ClaimsDetailComponent } from './components/dashboard/loggedin-content/claims/claims-detail/claims-detail.component';
 import { ClaimsHomeClosedComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-closed/claims-home-closed.component';
@@ -143,8 +144,6 @@ import { PaperlessPayEnrollComponent } from './components/dashboard/loggedin-con
 import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enroll-eft-epay-form/enroll-eft-epay-form.component';
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
-import { FullstateToAbvPipe } from './_helpers/_pipes/fullstate-to-abv.pipe';
-import { AbvToFulstatePipe } from './_helpers/_pipes/abv-to-fulstate.pipe';
 
 if (environment.production) {
   enableProdMode();

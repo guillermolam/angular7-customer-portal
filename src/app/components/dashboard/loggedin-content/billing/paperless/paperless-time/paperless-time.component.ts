@@ -5,6 +5,9 @@ import { PaperlessService }         from '../../../../../../_services/_iam/paper
 import { PolicyDetailsService }     from '../../../../../../_services/my-insurance/policy-details.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
+import { concatMap } from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+
 
 @Component({
   selector: 'app-paperless-time',
@@ -132,26 +135,30 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
   }
 
-  firstTimeCheck(data): void {
-    let firstTime;
-    const fta = [];
-    for ( const policyDetails of data ) {
-      const policyFlags = policyDetails.policyFlags;
-      if ( policyFlags.isEbill != 'UNENROLLED' || policyFlags.isEdf != 'UNENROLLED'  || policyFlags.isEft != 'UNENROLLED' ) {
-        fta.push(false);
-      }
-      else {
-        fta.push(true);
-      }
-    }
-    if (fta.every( (val, i, arr) => val === arr[0] )) {
-      firstTime = true;
-    }
-    else {
-      firstTime = false;
-    }
-    this.firstTime = firstTime;
-  }
+  //pls do not remove
+  
+  // firstTimeCheck(data): void {
+  //   console.log(data.length);
+  //   let firstTime = true;
+  //   console.log('data', data);
+  //   for(let i=0;i<data.length;i++){
+  //     console.log(i);
+  //   }
+  //   // const fta = [];
+  //   data.forEach((policyDetails)=> { 
+  //     const policyFlags = policyDetails.policyFlags;
+  //     console.log(policyDetails);
+  //     if ( policyFlags.isEbill === 'UNENROLLED' && policyFlags.isEdf === 'UNENROLLED'  && policyFlags.isEft === 'UNENROLLED' ) {
+  //       firstTime = firstTime && true;
+  //       console.log('called');
+  //     }
+  //     else {
+  //       firstTime = firstTime && false;
+  //     }
+  //   });
+  //   this.firstTime = firstTime;
+  //   console.log(this.firstTime);
+  // }
 
   hideModalAction(event): void {
     if (event) {
@@ -179,10 +186,14 @@ export class PaperlessFirstTimeComponent implements OnInit {
       this.user = userInfo;
     });
 
-    this.policyDataService.$policyDetails
-    .subscribe( (policyInfo) => {
+    this.policyDataService.$policyDetails.pipe(
+      concatMap((response)=>{
+        return of(response);
+      })
+    ).subscribe( (policyInfo) => {
       this.policyInfo = policyInfo;
-      this.firstTimeCheck(policyInfo);
+      //pls do not remove
+      // this.firstTimeCheck(this.policyInfo);
       this.allEPayMethod(policyInfo);
     });
 
