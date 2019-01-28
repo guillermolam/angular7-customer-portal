@@ -142,7 +142,8 @@ export class AuthenticationService {
   verifyUser(userObject): Observable<object> {
     const user =          userObject.$user.source.value,
         userSendObject =  this.serviceHelpers.creatUserObject(user, 'verifyuser'),
-        url =             `${environment.backend_server_url}/customers/accounts/${user.email}`;
+        url =             `https://mdv-doctest:8083/customers/accounts/${user.userDetails.email.address}`;
+        // url =             `${environment.backend_server_url}/customers/accounts/${user.email}`;
 
     return this.http
       .post(url, userSendObject, this.serviceHelpers.options)

@@ -24,40 +24,26 @@ export class PolicyDetailsService {
     const url = `${this.backendUrl}/personal-policies/${email}`;
     // const url = `${environment.backend_server_url}/personal-policies/${email}`;
     return this.http.get(url).pipe(map((policyResponse: any[]) => {
-      // this.policyDataService.updatePolicyDetails(policyResponse);
       policyResponse.forEach((policy) => {
         forkJoin(
           this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber),
           this.getDocumentsByPolicy(policy.policynumber.policynumber),
-          // this.getVehicleByPolicy(policy.policynumber.policynumber),
           this.billingDetailsService.getHistoryBillsByPolicy(policy.policynumber.policynumber),
           this.billingDetailsService.getScheduledBillsByPolicy(policy.policynumber.policynumber),
-          // .pipe(
-          //   map(res => res),
-          //   catchError((error)=> throwError(error.status))),
           this.billingDetailsService.getPendingChecksByPolicy(policy.policynumber.policynumber)
         )
-        .subscribe(([billingResponse,documentsResponse/*, vehicleResponse*/, historyResponse, scheduledBills, pendingCheckPayments])=>{
+        .subscribe(([billingResponse,documentsResponse, historyResponse, scheduledBills, pendingCheckPayments])=>{
           this.policyBillingDataAll.push(...[Object.assign(
             policy, 
             { billingDetails: {...billingResponse}},
             { documentsDetails: documentsResponse},
-            // { vehicleDetails: vehicleResponse},
             { billingHistory: historyResponse},
             { scheduledBills: scheduledBills },
             { pendingCheckPayments: pendingCheckPayments }
             )]);
         });
-        //   this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber).subscribe((billingResponse: any[]) => {
-        //     this.getDocumentsByPolicy(policy.policynumber.policynumber).subscribe((documentsResponse: any[]) => {
-        //       this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}}, {documentsDetails: documentsResponse})]);
-        //     });
-        //     // this.policyBillingDataAll.push(...[Object.assign(policy, {billingDetails: {...billingResponse}})]);
-        //   });
-        // });
-        // return this.billingDataAll;
       })
-      console.log('getPolicyDetailsByEmail', this.policyBillingDataAll);
+      // console.log('getPolicyDetailsByEmail', this.policyBillingDataAll);
       this.policyDataService.updatePolicyDetails(this.policyBillingDataAll); // will need to be changed to a policyDataService
     })
   );
