@@ -38,7 +38,7 @@ export class SignupProcessComponent implements OnInit {
     this.editPolicyInfo = editPolicyService.getInputs();
     this.whereToFindModalOptions = new ModalOptions({
       additionalClasses:              'modal-small center-on-page modal-dialog', 
-      additionalButtonClasses:        'padding-vertical pv4 link-button blue-link normal-link w-100 text-capitalize small underline',
+      additionalButtonClasses:        'no-padding-horizontal link-button blue-link font-weight normal-text text-capitalize small underline',
       animatePosition:                'bottom',
       buttonCopy:                     'MODAL_WHERE_CAN_I_LINK',
       modalId:                        'helpModal',
