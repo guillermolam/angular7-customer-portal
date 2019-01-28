@@ -53,7 +53,7 @@ export class PaperlessService {
   }
 
   cancelPaperlessEBill( policyid, email ): Observable<any> {
-    const url = `${this.personalPolicy}/${email}/${policyid}/unebill-enrollment`;
+    const url = `${this.personalPolicy}/${email}/${policyid}/ebill-unenrollment`;
     return this.http.post(url, {}, this.serviceHelpers.options );
   }
 
