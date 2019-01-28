@@ -57,6 +57,7 @@ export class AuthService {
     // Set isLoggedIn flag in localStorage
     console.log("Seeting local storage");
     localStorage.setItem('ccc', 'true');
+    localStorage.setItem("access_token", authResult.accessToken);
     // Set the time that the access token will expire at
     const expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
     this._accessToken = authResult.accessToken;

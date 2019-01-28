@@ -67,29 +67,18 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    const urlpartone =      `${environment.backend_auth_server_url}/`,
-          urlparttwo =      `grant_type=password&username=${username}&password=${password}`,
-          url = urlpartone + urlparttwo;
+    const url =     `${environment.backend_server_url}/identity-api/users/authenticate`;
+      const body = {
+      email: username,
+      password: password
+      }    
 
-    return this.http.post(url, {}, {
-        headers : {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      })
+    return this.http.post(url, body)
       .pipe(
-        map((access_token) => {
-          if (access_token) {
-            localStorage.setItem(
-              'currentUser',
-              JSON.stringify({ username, access_token })
-            );
-            console.log('access_token', access_token);
+        map((response) => {
+            console.log('response', response);
             return true;
-          }
-          else {
-            return false;
-          }
-        }),
+          }),
         catchError( (error) => throwError('Invalid email/password combination'))
       );
   }
