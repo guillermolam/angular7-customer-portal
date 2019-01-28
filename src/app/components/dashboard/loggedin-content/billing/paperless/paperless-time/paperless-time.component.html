@@ -31,7 +31,8 @@
         <table mdbTable class="paperless-table margin-bottom mb24">
           <tbody class="med-grey-color">
             <ng-container *ngFor="let pdetail of policyInfo">
-            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngIf="pdetail.policyFlags.isEdfEligible.toUpperCase()==='Y' && pdetail.policyStatus.toUpperCase() === 'ACTIVE'">
+            <tr class="row-content border-full grey-border property enroll padding-vertical pv8">
+               <!-- *ngIf="pdetail.policyFlags.isEdfEligible.toUpperCase()==='Y' && pdetail.policyStatus.toUpperCase() === 'ACTIVE'"> -->
               <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
                 <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
                 <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
@@ -107,7 +108,8 @@
         <table mdbTable class="paperless-table margin-bottom mb24">
           <tbody class="med-grey-color">
             <ng-container *ngFor="let pdetail of policyInfo">
-            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngIf="pdetail.policyFlags.isEftEligible.toUpperCase()==='Y' && pdetail.policyStatus.toUpperCase() === 'ACTIVE'">
+            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" >
+              <!-- *ngIf="pdetail.policyFlags.isEftEligible.toUpperCase()==='Y' && pdetail.policyStatus.toUpperCase() === 'ACTIVE'"> -->
               <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
                 <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
                 <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail.policyType == 'AUTO'" />
@@ -169,7 +171,8 @@
         <table mdbTable class="paperless-table margin-bottom mb24">
           <tbody class="med-grey-color">
             <ng-container *ngFor="let pdetail of policyInfo">
-             <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngIf="pdetail.policyFlags.isEbillEligible.toUpperCase()==='Y' && pdetail.policyStatus.toUpperCase() === 'ACTIVE'">
+             <tr class="row-content border-full grey-border property enroll padding-vertical pv8">
+             <!-- *ngIf="pdetail.policyFlags.isEbillEligible.toUpperCase()==='Y' && pdetail.policyStatus.toUpperCase() === 'ACTIVE'"> -->
               
                 <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
                     <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail.policyType == 'HOME'" />
