@@ -79,8 +79,9 @@ const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword',               component: CreateNewPasswordComponent },
   { path: 'login',                        component: LoginComponent },
-  { path: 'signup',                       component: SignupComponent 
+  { path: 'signup',                       component: SignupComponent, 
     children:[
+      { path: '', component: SignupProcessComponent },
       { path: 'add-policy', component: SignupAddPolicyComponent },
       { path: 'bop', component: SignupBopComponent },
       { path: 'create-password', component: SignupCreatePasswordComponent },

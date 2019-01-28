@@ -11,9 +11,9 @@ import { User }                           from '../../_models/user';
 import { UserService }                    from '../../_services/user.service';
 
 @Component({
-  selector: 'app-signup-process',
-  templateUrl: './signup-process.component.html',
-  styleUrls: ['./signup-process.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
   previousUrl;

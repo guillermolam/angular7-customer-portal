@@ -2,8 +2,9 @@ import { Component }                  from "@angular/core";
 import { CreateAccountService }       from '../../../_services/forms/create-account/create-account-service.service';
 
 @Component({
-  templateUrl: "./signup.component.html",
-  styleUrls: ["./signup.component.scss"],
+  selector: 'app-signup-process',
+  templateUrl: "./signup-process.component.html",
+  styleUrls: ["./signup-process.component.scss"],
   providers: [ CreateAccountService ]
 })
 
