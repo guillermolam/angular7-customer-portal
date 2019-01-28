@@ -12,152 +12,85 @@ export class TestingDataService {
     return this.testingPolicyInfol();
   }
 
-  testDataClaims(): any {
-   // return '';
-    
-      return [
-        {
-          LOSS_NUMBER: 'AAABBB-CCCDDD',
-          LOSS_DATE: '2018-12-08T00:00:00.000+0000',
-          LOSS_DESC: 'collision',
-          SUCCESS: '1',
-          policyid: 'QJN952',
-          policytype: 'auto',
-          details: {
-            claimant: 'MARIA C. BRILHANT',
-            payments_to_date: '$2868.87',
-            location: '10 City Square, Charlestown, MA 02129',
-            description: 'Ins Veh was hit & run or run off road by unidentified veh',
-            claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
-            claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
-            claim_adjustter_fax: '1-508-949-5930',
-            appraisal: [
-              {
-                number: 'ABC1234',
-                appraiser: 'Boston Appraisals',
-                amount: 500.12,
-                status: 'Complete'
-              }
-            ],
-            payments: [
-              {
-                check: '0026929804',
-                datepaid: '12/03/2018',
-                amount: 320.12,
-                status: 'Cashed 09/08/2018'
-              },
-              {
-                check: '0026929804',
-                datepaid: '12/03/2018',
-                amount: 320.12,
-                status: 'Cashed 09/08/2018'
-              },
-            ],
-          }
-        },
-        {
-          LOSS_NUMBER: 'A1B1C1-D1E1F1',
-          LOSS_DATE: '2018-12-08T00:00:00.000+0000',
-          LOSS_DESC: 'collision',
-          SUCCESS: '0',
-          policyid: '123456',
-          policytype: 'auto',
-          details: {
-            claimant: 'MARIA C. BRILHANT',
-            payments_to_date: '$2868.87',
-            location: '62 Summer St, Boston, MA 02110',
-            description: 'Ins Veh was hit & run or run off road by unidentified veh',
-            claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
-            claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
-            claim_adjustter_fax: '1-508-949-5930',
-            appraisal: [
-            {
-              number: 'ABC1234',
-              appraiser: 'Boston Appraisals',
-              amount: 500.12,
-              status: 'Complete'
-            },
-            {
-              number: 'ABC1234',
-              appraiser: 'Boston Appraisals',
-              amount: 333.12,
-              status: 'Complete'
-            }
-            ],
-            payments: [
-            {
-              check: '0026929804',
-              datepaid: '2018-12-08T00:00:00.000+0000',
-              amount: 320.12,
-              status: 'Cashed 09/08/2018'
-            },
-            {
-              check: '0026131104',
-              datepaid: '2018-12-08T00:00:00.000+0000',
-              amount: 331.12,
-              status: 'Cashed 09/08/2018'
-            },
-            ],
-          }
-        },
-        {
-          LOSS_NUMBER: 'AAABBB-BBBBBBB',
-          LOSS_DATE: '2018-12-08T00:00:00.000+0000',
-          LOSS_DESC: 'water damage',
-          SUCCESS: '1',
-          policyid: 'QWERTY',
-          policytype: 'property',
-          details: {
-            claimant: 'MARIA C. BRILHANT',
-            payments_to_date: '$2868.87',
-            location: '110 Strathmore Rd. 02135 Brighton, MA',
-            description: 'Water Damage from a leaky roof',
-            claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
-            claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
-            claim_adjustter_fax: '1-508-949-5930',
-            appraisal: [
-            {
-              number: 'ABC1234',
-              appraiser: 'Boston Appraisals',
-              amount: 500.12,
-              status: 'Complete'
-            },
-            {
-              number: 'ABC1234',
-              appraiser: 'Boston Appraisals',
-              amount: 333.12,
-              status: 'Complete'
-            }
-            ],
-            payments: [
-            {
-              check: '0026929804',
-              datepaid: '2018-12-08T00:00:00.000+0000',
-              amount: 320.12,
-              status: 'Cashed 09/08/2018'
-            },
-            {
-              check: '0026131104',
-              datepaid: '2018-12-08T00:00:00.000+0000',
-              amount: 331.12,
-              status: 'Cashed 09/08/2018'
-            },
-            ],
-          }
-          
-      },
+  testDataClaimsDetail(): any {
+    return [
       {
-        LOSS_NUMBER: 'CCCCCC-D1E1F1',
+        LOSS_NUMBER: 'AAABBB-CCCDDD',
+        "lossDate": "2013-01-13T05:08:00.000+0000",
+        "claimNumber": {
+            "claimNumber": "CCCDDD"
+        },
+        "lossNumber": {
+            "lossNumber": "AAABBB"
+        },
+        "claimType": "Property damage",
+        "fileNumber": {
+            "fileNumber": "AAABBB-CCCDDD"
+        },
+        "propertyOrAuto": "171517710012013 ,  ",
+        "propertyOrAutoIndicator": "Auto",
         LOSS_DATE: '2018-12-08T00:00:00.000+0000',
-        LOSS_DESC: 'lightening damage',
-        SUCCESS: '0',
-        policyid: 'QWERTY',
-        policytype: 'property',
+        LOSS_DESC: 'collision',
+        SUCCESS: '1',
+        policyid: 'QJN952',
+        policytype: 'auto',
         details: {
           claimant: 'MARIA C. BRILHANT',
           payments_to_date: '$2868.87',
-          location: '1848 Commonwealth Ave Brighton MA 02135',
-          description: 'lightening struck the building',
+          location: '10 City Square, Charlestown, MA 02129',
+          description: 'Ins Veh was hit & run or run off road by unidentified veh',
+          claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
+          claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
+          claim_adjustter_fax: '1-508-949-5930',
+          appraisal: [
+            {
+              number: 'ABC1234',
+              appraiser: 'Boston Appraisals',
+              amount: 500.12,
+              status: 'Complete'
+            }
+          ],
+          payments: [
+            {
+              check: '0026929804',
+              datepaid: '12/03/2018',
+              amount: 320.12,
+              status: 'Cashed 09/08/2018'
+            },
+            {
+              check: '0026929804',
+              datepaid: '12/03/2018',
+              amount: 320.12,
+              status: 'Cashed 09/08/2018'
+            },
+          ],
+        }
+      },
+      {
+        LOSS_NUMBER: 'A1B1C1-D1E1F1',
+        "lossDate": "2013-01-13T05:08:00.000+0000",
+        "claimNumber": {
+            "claimNumber": "D1E1F1"
+        },
+        "lossNumber": {
+            "lossNumber": "A1B1C1"
+        },
+        "claimType": "Property damage",
+        "fileNumber": {
+            "fileNumber": "A1B1C1-D1E1F1"
+        },
+        "propertyOrAuto": "171517710012013 ,  ",
+        "propertyOrAutoIndicator": "Auto",
+        LOSS_DATE: '2018-12-08T00:00:00.000+0000',
+        LOSS_DESC: 'collision',
+        SUCCESS: '0',
+        policyid: '123456',
+        policytype: 'auto',
+        details: {
+          claimant: 'MARIA C. BRILHANT',
+          payments_to_date: '$2868.87',
+          location: '62 Summer St, Boston, MA 02110',
+          description: 'Ins Veh was hit & run or run off road by unidentified veh',
           claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
           claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
           claim_adjustter_fax: '1-508-949-5930',
@@ -178,21 +111,215 @@ export class TestingDataService {
           payments: [
           {
             check: '0026929804',
-            datepaid: '12/03/2018',
+            datepaid: '2018-12-08T00:00:00.000+0000',
             amount: 320.12,
             status: 'Cashed 09/08/2018'
           },
           {
             check: '0026131104',
-            datepaid: '12/03/2018',
+            datepaid: '2018-12-08T00:00:00.000+0000',
             amount: 331.12,
             status: 'Cashed 09/08/2018'
           },
           ],
         }
+      },
+      {
+        LOSS_NUMBER: 'AAABBB-BBBBBBB',
+        "lossDate": "2013-01-13T05:08:00.000+0000",
+        "claimNumber": {
+            "claimNumber": "BBBBBBB"
+        },
+        "lossNumber": {
+            "lossNumber": "AAABBB"
+        },
+        "claimType": "Property damage",
+        "fileNumber": {
+            "fileNumber": "AAABBB-BBBBBBB"
+        },
+        "propertyOrAuto": "171517710012013 ,  ",
+        "propertyOrAutoIndicator": "Property",
+        LOSS_DATE: '2018-12-08T00:00:00.000+0000',
+        LOSS_DESC: 'water damage',
+        SUCCESS: '1',
+        policyid: 'QWERTY',
+        policytype: 'property',
+        details: {
+          claimant: 'MARIA C. BRILHANT',
+          payments_to_date: '$2868.87',
+          location: '110 Strathmore Rd. 02135 Brighton, MA',
+          description: 'Water Damage from a leaky roof',
+          claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
+          claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
+          claim_adjustter_fax: '1-508-949-5930',
+          appraisal: [
+          {
+            number: 'ABC1234',
+            appraiser: 'Boston Appraisals',
+            amount: 500.12,
+            status: 'Complete'
+          },
+          {
+            number: 'ABC1234',
+            appraiser: 'Boston Appraisals',
+            amount: 333.12,
+            status: 'Complete'
+          }
+          ],
+          payments: [
+          {
+            check: '0026929804',
+            datepaid: '2018-12-08T00:00:00.000+0000',
+            amount: 320.12,
+            status: 'Cashed 09/08/2018'
+          },
+          {
+            check: '0026131104',
+            datepaid: '2018-12-08T00:00:00.000+0000',
+            amount: 331.12,
+            status: 'Cashed 09/08/2018'
+          },
+          ],
+        }
+        
+    },
+    {
+      LOSS_NUMBER: 'CCCCCC-D1E1F1',
+      "lossDate": "2013-01-13T05:08:00.000+0000",
+      "claimNumber": {
+          "claimNumber": "D1E1F1"
+      },
+      "lossNumber": {
+          "lossNumber": "CCCCCC"
+      },
+      "claimType": "Property damage",
+      "fileNumber": {
+          "fileNumber": "CCCCCC-D1E1F1"
+      },
+      "propertyOrAuto": "171517710012013 ,  ",
+      "propertyOrAutoIndicator": "Property",
+      LOSS_DATE: '2018-12-08T00:00:00.000+0000',
+      LOSS_DESC: 'lightening damage',
+      SUCCESS: '0',
+      policyid: 'QWERTY',
+      policytype: 'property',
+      details: {
+        claimant: 'MARIA C. BRILHANT',
+        payments_to_date: '$2868.87',
+        location: '1848 Commonwealth Ave Brighton MA 02135',
+        description: 'lightening struck the building',
+        claim_adjustter_number: '1-800-221-1605 EXTENSION 15450 ',
+        claim_adjustter_email: 'CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM ',
+        claim_adjustter_fax: '1-508-949-5930',
+        appraisal: [
+        {
+          number: 'ABC1234',
+          appraiser: 'Boston Appraisals',
+          amount: 500.12,
+          status: 'Complete'
+        },
+        {
+          number: 'ABC1234',
+          appraiser: 'Boston Appraisals',
+          amount: 333.12,
+          status: 'Complete'
+        }
+        ],
+        payments: [
+        {
+          check: '0026929804',
+          datepaid: '12/03/2018',
+          amount: 320.12,
+          status: 'Cashed 09/08/2018'
+        },
+        {
+          check: '0026131104',
+          datepaid: '12/03/2018',
+          amount: 331.12,
+          status: 'Cashed 09/08/2018'
+        },
+        ],
       }
-    ];
-    
+    }
+  ];
+  }
+
+  testDataClaimsList(): any {
+    return [
+      {
+        "description": "IV BACKING UP, COLLIDED WITH OV",
+        "lossDate": "2013-01-13T05:08:00.000+0000",
+        "claimNumber": {
+            "claimNumber": "CCCDDD"
+        },
+        "lossNumber": {
+            "lossNumber": "AAABBB"
+        },
+        "claimType": "Property damage",
+        "fileNumber": {
+            "fileNumber": "AAABBB-CCCDDD"
+        },
+        "propertyOrAuto": "171517710012013 ,  ",
+        "propertyOrAutoIndicator": "Auto"
+      },
+      {
+        "description": "111",
+        "lossDate": "2013-01-13T05:08:00.000+0000",
+        "claimNumber": {
+            "claimNumber": "D1E1F1"
+        },
+        "lossNumber": {
+            "lossNumber": "A1B1C1"
+        },
+        "claimType": "Property damage",
+        "fileNumber": {
+            "fileNumber": "A1B1C1-D1E1F1"
+        },
+        "propertyOrAuto": "171517710012013 ,  ",
+        "propertyOrAutoIndicator": "Auto"
+      },
+      {
+        "description": "111",
+        "lossDate": "2013-01-13T05:08:00.000+0000",
+        "claimNumber": {
+            "claimNumber": "BBBBBBB"
+        },
+        "lossNumber": {
+            "lossNumber": "AAABBB"
+        },
+        "claimType": "Property damage",
+        "fileNumber": {
+            "fileNumber": "AAABBB-BBBBBBB"
+        },
+        "propertyOrAuto": "171517710012013 ,  ",
+        "propertyOrAutoIndicator": "Property"
+      },
+      {
+        "description": "111",
+        "lossDate": "2013-01-13T05:08:00.000+0000",
+        "claimNumber": {
+            "claimNumber": "D1E1F1"
+        },
+        "lossNumber": {
+            "lossNumber": "CCCCCC"
+        },
+        "claimType": "Property damage",
+        "fileNumber": {
+            "fileNumber": "CCCCCC-D1E1F1"
+        },
+        "propertyOrAuto": "171517710012013 ,  ",
+        "propertyOrAutoIndicator": "Property"
+      }
+    ]
+  }
+
+  testDataClaims(type): any { 
+    if(type == 'list') {
+      return this.testDataClaimsList();
+    }
+    else {
+      return this.testDataClaimsDetail();
+    }
   }
 
   testBankingInfo(): any {
@@ -247,6 +374,9 @@ export class TestingDataService {
       "policynumber": {
         "policynumber": "QJN952"
       },
+      
+
+
       "agent": {
         "agentCode": {
           "code": "434"
@@ -277,10 +407,10 @@ export class TestingDataService {
       "policyStatus": "INACTIVE",
       "policyFlags": {
         "isEft": "UNENROLLED",
-        "isEftEligible": "UNENROLLED",
+        "isEftEligible": "Y",
         "isEdf": "UNENROLLED",
-        "isEbillEligible": "ENROLLED",
-        "isEbill": "UNENROLLED",
+        "isEbillEligible": "Y",
+        "isEbill": "ENROLLED",
         "isEdfEligible": "UNENROLLED",
         "isCCEligible": "Y",
         "allowDeductionDateChange": "Y"
@@ -821,7 +951,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         },
 
@@ -871,11 +1001,11 @@ export class TestingDataService {
       "policyStatus": "INACTIVE",
       "policyFlags": {
         "isEft": "UNENROLLED",
-        "isEftEligible": "UNENROLLED",
+        "isEftEligible": "Y",
         "isEdf": "UNENROLLED",
-        "isEbillEligible": "UNENROLLED",
+        "isEbillEligible": "Y",
         "isEbill": "UNENROLLED",
-        "isEdfEligible": "UNENROLLED",
+        "isEdfEligible": "Y",
         "isCCEligible": "Y",
         "allowDeductionDateChange": "Y"
       },
@@ -1434,7 +1564,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         }
       ]
@@ -1482,12 +1612,12 @@ export class TestingDataService {
       ],
       "policyStatus": "ACTIVE",
       "policyFlags": {
-        "isEft": "UNENROLLED",
-        "isEftEligible": "UNENROLLED",
-        "isEdf": "UNENROLLED",
-        "isEbillEligible": "UNENROLLED",
-        "isEbill": "UNENROLLED",
-        "isEdfEligible": "UNENROLLED",
+        "isEft": "ENROLLED",
+        "isEftEligible": "Y",
+        "isEdf": "ENROLLED",
+        "isEbillEligible": "Y",
+        "isEbill": "ENROLLED",
+        "isEdfEligible": "Y",
         "isCCEligible": "Y",
         "allowDeductionDateChange": "Y"
       },
@@ -2057,7 +2187,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 10,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         }
 
@@ -2106,11 +2236,11 @@ export class TestingDataService {
       "policyStatus": "ACTIVE",
       "policyFlags": {
         "isEft": "UNENROLLED",
-        "isEftEligible": "UNENROLLED",
+        "isEftEligible": "Y",
         "isEdf": "UNENROLLED",
-        "isEbillEligible": "UNENROLLED",
+        "isEbillEligible": "Y",
         "isEbill": "UNENROLLED",
-        "isEdfEligible": "UNENROLLED",
+        "isEdfEligible": "Y",
         "isCCEligible": "Y",
         "allowDeductionDateChange": "Y"
       },
@@ -2680,7 +2810,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         },
         {
@@ -2704,7 +2834,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         },
         {
@@ -2728,7 +2858,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         },
         {
@@ -2752,7 +2882,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         },
         {
@@ -2776,7 +2906,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         },
         {
@@ -2800,7 +2930,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         },
         {
@@ -2824,7 +2954,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         },
         {
@@ -2848,7 +2978,7 @@ export class TestingDataService {
           },
           "checkNumber": "0",
           "paymentAmount": 10,
-          "deductionDay": 0,
+          "deductionDay": 1,
           "paymentDateTime": "2016-04-21T00:00:00.000+0000"
         }
       ]

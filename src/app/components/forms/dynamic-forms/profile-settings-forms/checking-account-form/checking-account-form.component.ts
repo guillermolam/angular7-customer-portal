@@ -30,12 +30,12 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     private router:                   Router,
     private alertService:             AlertService,
     private profileConfirmModalService: ProfileConfirmModalService,
-    private bankAccountService: BankAccountService,
-    private storageService: StorageServiceObservablesService,
-    private getGooglePlaceService : GetGooglePlaceService,
-    private authenticationService:            AuthenticationService,
-    private userService:               UserService,
-    private validateAddressService:    ValidateAddressService
+    private bankAccountService:       BankAccountService,
+    private storageService:           StorageServiceObservablesService,
+    private getGooglePlaceService:    GetGooglePlaceService,
+    private authenticationService:    AuthenticationService,
+    private userService:              UserService,
+    private validateAddressService:   ValidateAddressService
     ) { }
   
 
@@ -114,11 +114,13 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
       this.mailingAddress = address;
     });
 
-    this.validateAddressService.$address.subscribe((resp)=>{
-      if(resp===false){
+    this.validateAddressService.$address
+    .subscribe((resp) => {
+      if( resp === false) {
         this.alertService.error('Please enter valid address from suggestions');
         this.addressAlert = false;
-      } else if (resp===true){
+      }
+      else if ( resp === true ) {
         this.addressAlert = true;
       }
     });

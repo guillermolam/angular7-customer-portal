@@ -1,18 +1,18 @@
+<header class="row margin-bottom mb16">
+  <div class="col">
+    <h1 class="title">
+      {{ 'CLAIMS' | translate }}
+    </h1>
+  </div>
+</header>
 <section class="details-content row">
   <div class="col1 col">
-    <header class="row margin-bottom mb16">
-      <div class="col">
-        <h1 class="title">
-          {{ 'CLAIMS' | translate }}
-        </h1>
-      </div>
-    </header>
     <ng-container *ngIf="claims?.length != 0">
       <ng-container *ngFor="let claim of claims">
-        <ng-container *ngIf="claim.policytype == 'auto' ">
+        <ng-container *ngIf="claim.propertyOrAutoIndicator == 'Auto' ">
           <app-claims-home-car [claim]="claim"></app-claims-home-car>
         </ng-container>
-        <ng-container *ngIf="claim.policytype == 'property' ">
+        <ng-container *ngIf="claim.propertyOrAutoIndicator == 'Property' ">
           <app-claims-home-property [claim]="claim"></app-claims-home-property>
         </ng-container>
       </ng-container>

@@ -135,6 +135,7 @@ children: [
       { path: 'e-pay',                    children : [
         { path: '',                       component: PaperlessPayComponent },
         { path: ':policyid/enroll',       component: PaperlessPayEnrollComponent },
+        { path: ':policyid/edit-enroll',  component: PaperlessPayEnrollComponent },
         { path: ':policyid/confirm',      component: PaperlessPayConfirmComponent}
       ] },
       { path: 'e-policy',                 component: PaperlessPolicyComponent },
