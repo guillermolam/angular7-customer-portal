@@ -16,35 +16,16 @@ import { UserService }                    from '../../../_services/user.service'
   styleUrls: ['./signup-process.component.scss']
 })
 export class SignupProcessComponent implements OnInit {
-  addPolicy:                            any[];
-  createNewPassword:                    any[];
-  editPolicyInfo:                       any[];
   previousUrl;
   user:                                 User  = {};
-  whereInTheProcess:                    string;
-  whereToFindModalOptions:              ModalOptions;
 
   constructor(
     private activatedRoute:             ActivatedRoute,
     private location:                   Location,
     private userService:                UserService,
-    editPolicyService:                  EditPolicyService,
-    passwordService:                    CreateNewPasswordFormService,
-    policyService:                      AddPolicyService,
     private router:                             Router
   ) {
-    this.addPolicy = policyService.getInputs();
-    this.createNewPassword = passwordService.getInputs();
-    this.editPolicyInfo = editPolicyService.getInputs();
-    this.whereToFindModalOptions = new ModalOptions({
-      additionalClasses:              'modal-small center-on-page modal-dialog', 
-      additionalButtonClasses:        'no-padding-horizontal link-button blue-link font-weight normal-text text-capitalize small underline',
-      animatePosition:                'bottom',
-      buttonCopy:                     'MODAL_WHERE_CAN_I_LINK',
-      modalId:                        'helpModal',
-      modalTranslateCopy:             'MODAL_WHERE_CAN_I_TITLE',
-      typeOfModal:                    'default',
-    });
+   
   }
 
 
@@ -70,9 +51,6 @@ export class SignupProcessComponent implements OnInit {
         this.user = user;
       }
     );
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.whereInTheProcess = params['parm'];
-    });
   }
 
 }

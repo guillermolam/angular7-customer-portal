@@ -144,6 +144,13 @@ import { PaperlessPayEnrollComponent } from './components/dashboard/loggedin-con
 import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enroll-eft-epay-form/enroll-eft-epay-form.component';
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
+import { SignupAddPolicyComponent } from './routes/signup/signup-process/signup-add-policy/signup-add-policy.component';
+import { SignupBopComponent } from './routes/signup/signup-process/signup-bop/signup-bop.component';
+import { SignupCreatePasswordComponent } from './routes/signup/signup-process/signup-create-password/signup-create-password.component';
+import { SignupEditPolicyComponent } from './routes/signup/signup-process/signup-edit-policy/signup-edit-policy.component';
+import { SignupEmailInUseComponent } from './routes/signup/signup-process/signup-email-in-use/signup-email-in-use.component';
+import { SignupPolicyBelongsToAnotherComponent } from './routes/signup/signup-process/signup-policy-belongs-to-another/signup-policy-belongs-to-another.component';
+import { SignupNotFoundComponent } from './routes/signup/signup-process/signup-not-found/signup-not-found.component';
 
 if (environment.production) {
   enableProdMode();
@@ -266,6 +273,13 @@ export function tokenGetter() {
     ChangeEmailComponent,
     FullstateToAbvPipe,
     AbvToFulstatePipe,
+    SignupAddPolicyComponent,
+    SignupBopComponent,
+    SignupCreatePasswordComponent,
+    SignupEditPolicyComponent,
+    SignupEmailInUseComponent,
+    SignupPolicyBelongsToAnotherComponent,
+    SignupNotFoundComponent,
 
 
   ],
@@ -310,7 +324,6 @@ export function tokenGetter() {
     StorageServiceObservablesService,
     PolicyDataService,
     PolicyDocumentsDataService
-
   ],
   bootstrap: [AppComponent]
 })

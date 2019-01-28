@@ -1,3 +1,10 @@
+import { SignupPolicyBelongsToAnotherComponent } from './routes/signup/signup-process/signup-policy-belongs-to-another/signup-policy-belongs-to-another.component';
+import { SignupNotFoundComponent } from './routes/signup/signup-process/signup-not-found/signup-not-found.component';
+import { SignupEmailInUseComponent } from './routes/signup/signup-process/signup-email-in-use/signup-email-in-use.component';
+import { SignupEditPolicyComponent } from './routes/signup/signup-process/signup-edit-policy/signup-edit-policy.component';
+import { SignupCreatePasswordComponent } from './routes/signup/signup-process/signup-create-password/signup-create-password.component';
+import { SignupBopComponent } from './routes/signup/signup-process/signup-bop/signup-bop.component';
+import { SignupAddPolicyComponent } from './routes/signup/signup-process/signup-add-policy/signup-add-policy.component';
 import { ChangeEmailComponent } from './routes/profile-settings/change-email/change-email.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }         from '@angular/router';
@@ -72,8 +79,17 @@ const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword',               component: CreateNewPasswordComponent },
   { path: 'login',                        component: LoginComponent },
-  { path: 'signup',                       component: SignupComponent },
-  { path: 'signup/:parm',                 component: SignupProcessComponent},
+  { path: 'signup',                       component: SignupComponent,
+    children:[
+      { path: 'add-policy', component: SignupAddPolicyComponent },
+      { path: 'bop', component: SignupBopComponent },
+      { path: 'create-password', component: SignupCreatePasswordComponent },
+      { path: 'edit-policy', component: SignupEditPolicyComponent },
+      { path: 'email-in-use', component: SignupEmailInUseComponent },
+      { path: 'not-found', component: SignupNotFoundComponent },
+      { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent },
+    ]
+  },
   { path: 'testing',                      component: TestingComponent },
   { path: 'verifyaccount',                component: VerifyAccountComponent, 
   // canActivate: [VerifyUserGuard] 
