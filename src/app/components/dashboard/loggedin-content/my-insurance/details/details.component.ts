@@ -226,7 +226,10 @@ export class PolicyDetailsComponent implements OnInit {
     this.policyDataService.$policyDetails
     .subscribe((policyResponse) => {
       this.policyDetails =            policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
-      this.createUpdateMilageFormControls(this.policyDetails[0]);
+      console.log(this.policyDetails);
+      // if(this.policyDetails[0].policyType.toUpperCase()==='AUTO'){
+        this.createUpdateMilageFormControls(this.policyDetails[0]);
+      // }
       this.getApartmentAndState(this.policyDetails[0]);
       this.isAddressEqual(this.policyDetails[0]);
     });
