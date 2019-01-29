@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateNewPasswordFormService } from '../../../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
+import { Location }                       from '@angular/common';
 
 @Component({
   selector: 'app-signup-create-password',
@@ -12,10 +13,15 @@ export class SignupCreatePasswordComponent implements OnInit {
 
   constructor(
     private passwordService:                    CreateNewPasswordFormService,
+    private location:                   Location
   ) { }
 
   ngOnInit() {
     this.createNewPassword = this.passwordService.getInputs();
+  }
+
+  goBackAPage(){
+    this.location.back();
   }
 
 }

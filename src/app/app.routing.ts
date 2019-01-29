@@ -84,7 +84,7 @@ const appRoutes: Routes = [
       { path: '', component: SignupProcessComponent },
       { path: 'add-policy', component: SignupAddPolicyComponent },
       { path: 'bop', component: SignupBopComponent },
-      { path: 'create-password', component: SignupCreatePasswordComponent },
+      { path: 'createpassword', component: SignupCreatePasswordComponent },
       { path: 'edit-policy', component: SignupEditPolicyComponent },
       { path: 'email-in-use', component: SignupEmailInUseComponent },
       { path: 'not-found', component: SignupNotFoundComponent },
