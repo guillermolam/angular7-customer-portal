@@ -16,6 +16,7 @@ import { WalletCardService }              from '../../../../../_services/_iam/wa
 import { TestingDataService }             from '../../../../../_helpers/testing-data.service';
 
 import * as isEqual from 'lodash.isequal';
+import { GetGooglePlaceService } from 'mapfre-design-library';
 
 @Component({
   selector: 'app-policy-details-screen',
@@ -52,8 +53,8 @@ export class PolicyDetailsComponent implements OnInit {
     private policyDetailsService:       PolicyDetailsService,
     private userService:                UserService,
     private walletCardService:          WalletCardService,
-
-    private testingData:                TestingDataService
+    private testingData:                TestingDataService,
+    private googlePlaceService:         GetGooglePlaceService
   ) {
    }
 
@@ -93,6 +94,10 @@ export class PolicyDetailsComponent implements OnInit {
         }
       )
     ;
+  }
+
+  getMailingOrResidentialAddress(updateAddress){
+    this.googlePlaceService.updateAddress(updateAddress);
   }
 
   getAddress(a: string[]): SafeUrl {

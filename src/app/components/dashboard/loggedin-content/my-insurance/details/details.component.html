@@ -279,7 +279,7 @@
                         {{ policy.mailingAddress.streetName | titlecase }} {{ policy.mailingAddress.city | titlecase }}, {{ policy.mailingAddress.state | fullstateToAbv }} {{ policy.mailingAddress.zipCode.code }}
                     </div>
                     <div class="col edit-address">
-                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResidentialAddress(policy.mailingAddress)"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>
@@ -295,7 +295,7 @@
                       </div>
                     </ng-template>
                     <div class="col edit-address">
-                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'residential']" (click)="getMailingOrResidentialAddress(policy.mailingAddress)"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>
@@ -532,7 +532,7 @@
                               {{ policy.mailingAddress.streetName | titlecase }}  {{ policy.mailingAddress.city | titlecase }}, {{ policy.mailingAddress.state | fullstateToAbv }}, {{ policy.mailingAddress.zipCode.code }}
                           </div>
                           <div class="col edit-address">
-                              <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
+                              <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResidentialAddress(policy.mailingAddress)"><i class="far fa-edit"></i></a>
                           </div>
                         </div>
                       </div>
@@ -549,7 +549,7 @@
                           </div>
                         </ng-template>
                         <div class="col edit-address">
-                            <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
+                            <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResidentialAddress(policy.mailingAddress)"><i class="far fa-edit"></i></a>
                         </div>
                       </div>
                     </div>
