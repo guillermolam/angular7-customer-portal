@@ -195,9 +195,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
       //pls do not remove
       // this.firstTimeCheck(this.policyInfo);
       this.allEPayMethod(policyInfo);
+      this.loading = false;
     });
-
-    this.loading = false;
   }
 
 }

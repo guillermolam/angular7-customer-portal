@@ -1,34 +1,30 @@
-<mapfre-alert></mapfre-alert>
 <form 
-
   [formGroup]="enrollInEft" 
   name="enrollInEft"  
-  (ngSubmit)="enroll(userData.bankAccountDetails.accountType) ">
+  (ngSubmit)="enroll(userData.userDetails.email.address, policyId) ">
   
   <div class="row margin-vertical mv8">
     <div class="col text-center">
       <div class="mapfre pill-box d-inline-block" [formGroup]="enrollAccountType">
         <div class="pill pill-left">
-          <input type="radio" id="optionone" class="pill-radio" name="bankType" value="CHECKING" [checked]="accountType == 'CHECKING'" formControlName="bankType" required>
+          <input type="radio" id="optionone" class="pill-radio" name="bankType" value="CHECKING" formControlName="bankType" [checked]="accountType === 'CHECKING'" required>
           <label for="optionone" class="pill-label  padding-horizontal ph16 padding-vertical pv4">Checking</label>
         </div>
         <div class="pill pill-right">
-          <input type="radio" id="optiontwo" class="pill-radio" name="bankType" value="SAVINGS" formControlName="bankType" [checked]="accountType == 'SAVING'" required>
+          <input type="radio" id="optiontwo" class="pill-radio" name="bankType" value="SAVINGS" formControlName="bankType" [checked]="accountType === 'SAVING'" required>
           <label for="optiontwo" class="pill-label padding-horizontal ph16 padding-vertical pv4">Saving</label>
         </div>
       </div>
-
     </div>
   </div>
 
   <div class="row">
     <div class="col">
       <div *ngFor="let input of inputs; let index = index; " class="input">
-        
-        <ng-container *ngIf="input.inputType == 'select'">
+         <ng-container *ngIf="input.inputType == 'select'">
           <select [id]="input.key" [formControlName]="input.key" class="custom-select margin-bottom mb8">
             <option selected>
-                {{input.label}}
+              {{input.label}}
             </option>
             <option *ngFor="let opt of input.options; let index = index;" [value]="opt">
               {{opt}}
@@ -36,20 +32,18 @@
           </select>
         </ng-container>
         <ng-container *ngIf="input.inputType == 'checkbox'">
-            <div class="margin-top mt16">
-              <input class="single-checkbox" id="store-checkbox"  type="checkbox" [formControlName]="input?.key">
-              <label class="margin-left ml16" for="store-checkbox">{{ input.label | translate }}</label>
-            </div>
-          </ng-container>
+          <div class="margin-top mt16">
+            <input class="single-checkbox" id="store-checkbox"  type="checkbox" [formControlName]="input?.key">
+            <label class="margin-left ml16" for="store-checkbox">{{ input.label | translate }}</label>
+          </div>
+        </ng-container>
         <ng-container *ngIf="input.inputType != 'select' && input.inputType != 'checkbox' ">
           <mapfre-validation [input]="input" [form]="enrollInEft"></mapfre-validation>
         </ng-container>
-
       </div>
     </div>
   </div>
   
-
   <div class="row margin-top mt32 text-center">
     <div class="col">
       <mapfre-button
