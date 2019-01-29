@@ -20,7 +20,7 @@ export class CreateAccountFormComponent implements OnInit {
   @Input()  inputs:                 FormBase<any>[] = [];
             signUpForm:             FormGroup;
             loading:                boolean = false;
-            user:                   User = {};
+            user:                   any = {};
 
   constructor(
     private alertService:           AlertService,
