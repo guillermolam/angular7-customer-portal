@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Location }                       from '@angular/common';
+
 
 @Component({
   selector: 'app-signup-bop',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupBopComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private location:                   Location
+  ) { }
 
   ngOnInit() {
   }
+
+  goBackAPage(){
+    this.location.back();
+  }
+
 
 }
