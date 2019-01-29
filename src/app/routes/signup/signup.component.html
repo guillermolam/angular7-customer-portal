@@ -1,28 +1,7 @@
 <mapfre-header></mapfre-header>
 <div class="container mapfre-content">
-<mapfre-card 
-  additionalClasses="signup">
-  <div class="row text-center">
-    <div class="col"> 
-      <div class="header-icon full-icon">
-          <svg-create-account-svg></svg-create-account-svg>
-      </div>
-      <h1 class="title-copy">{{ 'CREATE_ACCOUNT' | translate }}</h1> 
-    </div>
-  </div>
-  <mapfre-alert></mapfre-alert> 
-  <app-create-account-form [inputs]="inputs"></app-create-account-form>
-  <div class="row text-center margin-top mt24">
-    <div class="col">
-        <mapfre-button
-          additionalClasses="link-button blue-link small w-100"
-          [customIcon]="'./assets/img/icons/back-arrow.png'"
-          [iconClasses]="'align-middle'"
-          [routerLink]="['/login']"
-          [showIconsCustom]="true"
-        >  {{ 'LOGIN' | translate }}
-        </mapfre-button>
-    </div>
-  </div>
+<mapfre-card additionalClasses="signup">
+  <mapfre-alert></mapfre-alert>
+  <router-outlet></router-outlet>
 </mapfre-card>
 </div>
