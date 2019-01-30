@@ -13,18 +13,18 @@ pipeline{
 		}
 		
 		// Running unit test after build
-		//stage('RUN UNIT TESTS'){
-		  //steps{
+		stage('RUN UNIT TESTS'){
+		  steps{
 		    	// Added to run unit test case for all module.
-		    //  sh "npm run cibuild_test"
-		  //}
-		//}
+		     sh "npm run cibuild_test"
+		  }
+		}
 
-		//stage('STATIC ANALYSIS'){
-		  //  steps{
-		    //    sh "npm run sonar-run"
-		    //}
-		//}
+		stage('STATIC ANALYSIS'){
+		   steps{
+		       sh "npm run sonar-run"
+		    }
+		}
 
 		stage("BUILD & PUBLISH IMAGE"){
 			environment {
