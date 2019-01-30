@@ -25,11 +25,7 @@
                 "output": "./assets/"
               },
               "src/manifest.json",
-              {
-                "glob": "Staticfile",
-                "input": "./Staticfile",
-                "output": "./Staticfile"
-              }
+              "src/Staticfile"
             ],
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.scss",
