@@ -68,11 +68,13 @@ import { AddressChangeComponent }         from './routes/profile-settings/addres
 import { ContactComponent }               from './routes/contact/contact.component';
 import { ClaimsComponent }                from './routes/claims/claims.component';
 import { InformationComponent }           from './routes/information/information.component';
+import { ExternalLoginComponent } from './routes/external-login/external-login.component';
 
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword',               component: CreateNewPasswordComponent },
-  { path: 'login',                        component: LoginComponent },
+  // { path: 'login',                        component: LoginComponent },
+  { path: 'login',                        component: ExternalLoginComponent },
   { path: 'signup',                       component: SignupComponent },
   { path: 'signup/:parm',                 component: SignupProcessComponent},
   { path: 'testing',                      component: TestingComponent },

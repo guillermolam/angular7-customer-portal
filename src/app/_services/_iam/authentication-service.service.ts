@@ -75,12 +75,21 @@ export class AuthenticationService {
 
     return this.http.post(url, body)
       .pipe(
-        map((response) => {
-            console.log('response', response);
+        map((access_token) => {
+          console.log('access_token', access_token);
+          if (access_token) {
+            localStorage.setItem(
+              'currentUser',
+              JSON.stringify({ username, access_token })
+            );
             return true;
-          }),
+          }
+          else {
+            return false;
+          }
+        }),
         catchError( (error) => throwError('Invalid email/password combination'))
-      );
+      )
   }
 
   logout(): void {

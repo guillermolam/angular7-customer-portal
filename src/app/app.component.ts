@@ -82,6 +82,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.login();
     this.findLanguage();
     // if (localStorage.getItem('isLoggedIn') === 'true') {
     //   this.auth.renewTokens();

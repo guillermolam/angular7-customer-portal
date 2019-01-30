@@ -39,6 +39,8 @@ export class AuthService {
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
+      console.log('authresult', authResult);
+      console.log('err', err);
       if (authResult && authResult.accessToken) {
         console.log("Sucessfully authenticated");
         this.localLogin(authResult);

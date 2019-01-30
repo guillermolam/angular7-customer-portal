@@ -32,7 +32,7 @@ export class JwtInterceptor implements HttpInterceptor {
     .pipe(catchError((e) => {
       console.log(e);
       if((e.status == 401 && e.error.error === 'Invalid Request')){
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
       }
         return throwError(e);     
     }))

@@ -146,6 +146,7 @@ import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-co
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
 import { FullstateToAbvPipe } from './_helpers/_pipes/fullstate-to-abv.pipe';
 import { AbvToFulstatePipe } from './_helpers/_pipes/abv-to-fulstate.pipe';
+import { ExternalLoginComponent } from './routes/external-login/external-login.component';
 
 
 if (environment.production) {
@@ -269,6 +270,7 @@ export function tokenGetter() {
     ChangeEmailComponent,
     FullstateToAbvPipe,
     AbvToFulstatePipe,
+    ExternalLoginComponent,
 
 
   ],
