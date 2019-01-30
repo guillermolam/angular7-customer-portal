@@ -295,7 +295,7 @@
                       </div>
                     </ng-template>
                     <div class="col edit-address">
-                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'residential']" (click)="getMailingOrResidentialAddress(policy.mailingAddress)"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'residential']" (click)="getMailingOrResidentialAddress(policy.residentialAddress)"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>
@@ -549,7 +549,7 @@
                           </div>
                         </ng-template>
                         <div class="col edit-address">
-                            <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResidentialAddress(policy.mailingAddress)"><i class="far fa-edit"></i></a>
+                            <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResidentialAddress(policy.residentialAddress)"><i class="far fa-edit"></i></a>
                         </div>
                       </div>
                     </div>

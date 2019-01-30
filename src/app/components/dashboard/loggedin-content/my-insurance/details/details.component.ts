@@ -97,6 +97,7 @@ export class PolicyDetailsComponent implements OnInit {
   }
 
   getMailingOrResidentialAddress(updateAddress){
+    console.log(updateAddress);
     this.googlePlaceService.updateAddress(updateAddress);
   }
 
