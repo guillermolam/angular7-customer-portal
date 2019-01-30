@@ -1,1059 +1,587 @@
 <?xml version="1.0"?>
-<testsuite name="Chrome 71.0.3578 (Windows 10.0.0)" package="" timestamp="2019-01-29T02:30:13" id="0" hostname="DESKTOP-MNUV28M" tests="227" errors="0" failures="33" time="3.445">
+<testsuite name="Chrome 71.0.3578 (Windows 10.0.0)" package="" timestamp="2019-01-30T15:53:53" id="0" hostname="DESKTOP-MNUV28M" tests="233" errors="0" failures="0" time="1.75">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"/>
   </properties>
-  <testcase name="ForgotPasswordComponent should call method getEmailFromParamater" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+  <testcase name="LoggedinAccountHeaderComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoggedinAccountHeaderComponent">
     <skipped/>
   </testcase>
-  <testcase name="ForgotPasswordComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+  <testcase name="ClaimsHomePropertyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsHomePropertyComponent">
     <skipped/>
   </testcase>
-  <testcase name="ForgotPasswordComponent should get email from parameter" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+  <testcase name="AddPolicyService should return Formbase to add policy" time="0.042" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyService"/>
+  <testcase name="ProfileEditPasswordComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileEditPasswordComponent">
     <skipped/>
   </testcase>
-  <testcase name="ForgotPasswordComponent should set the emailInputs" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+  <testcase name="EditPhoneService should return the phone formbase" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPhoneService">
     <skipped/>
   </testcase>
-  <testcase name="ForgotPasswordComponent should set showConfirmation to true" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+  <testcase name="EditPolicyDetailsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyDetailsComponent">
     <skipped/>
   </testcase>
-  <testcase name="ChangeAddressComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeAddressComponent">
+  <testcase name="CreateNewPasswordFormService should create new password form" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordFormService">
     <skipped/>
   </testcase>
-  <testcase name="OnboardingWalletBackListComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).OnboardingWalletBackListComponent">
+  <testcase name="UserService should update the user" time="0.028" classname="Chrome_71_0_3578_(Windows_10_0_0).UserService"/>
+  <testcase name="BillingDetailsService should update the observable for document by policyNumber" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingDetailsService">
     <skipped/>
   </testcase>
-  <testcase name="SignupEditPolicyComponent should create" time="0.293" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupEditPolicyComponent">
-    <failure type="">1. If 'svg-policy-error-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-policy-error-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon full-icon"&gt;
-      [ERROR -&gt;]&lt;svg-policy-error-svg&gt;&lt;/svg-policy-error-svg&gt;
-    &lt;/div&gt;
-      &lt;svg-policy-error-svg&gt;&lt;/svg-policy-error-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'EDIT_POLICY' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="row text-center margin-bottom mb16 sub-title-copy"&gt;
-  &lt;div class="col"&gt;
-'svg-policy-error-svg' is not a known element:
-1. If 'svg-policy-error-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-policy-error-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon full-icon"&gt;
-      [ERROR -&gt;]&lt;svg-policy-error-svg&gt;&lt;/svg-policy-error-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ 'EDIT_POLICY' "): ng:///DynamicTestModule/SignupEditPolicyComponent.html@3:6
-The pipe 'translate' could not be found ("
-      &lt;svg-policy-error-svg&gt;&lt;/svg-policy-error-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'EDIT_POLICY' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@5:30
-The pipe 'translate' could not be found ("
-&lt;div class="row text-center margin-bottom mb16 sub-title-copy"&gt;
-  &lt;div class="col"&gt;
-   [ERROR -&gt;] {{ 'EDITPOLICY_REVIEW_POLICY' | translate }}
-  &lt;/div&gt;
-&lt;/div&gt;
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@10:3
-Can't bind to 'inputs' since it isn't a known property of 'app-edit-policy-form'.
-1. If 'app-edit-policy-form' is an Angular component and it has 'inputs' input, then verify that it is part of this module.
-2. If 'app-edit-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-edit-policy-form [ERROR -&gt;][inputs]="editPolicyInfo" [userData]="user"&gt;&lt;/app-edit-policy-form&gt;
-&lt;div class="row text-center margi"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@13:22
-Can't bind to 'userData' since it isn't a known property of 'app-edit-policy-form'.
-1. If 'app-edit-policy-form' is an Angular component and it has 'userData' input, then verify that it is part of this module.
-2. If 'app-edit-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-edit-policy-form [inputs]="editPolicyInfo" [ERROR -&gt;][userData]="user"&gt;&lt;/app-edit-policy-form&gt;
-&lt;div class="row text-center margin-top mt24"&gt;
-    &lt;div clas"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@13:48
-'app-edit-policy-form' is not a known element:
-1. If 'app-edit-policy-form' is an Angular component, then verify that it is part of this module.
-2. If 'app-edit-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-[ERROR -&gt;]&lt;app-edit-policy-form [inputs]="editPolicyInfo" [userData]="user"&gt;&lt;/app-edit-policy-form&gt;
-&lt;div class="): ng:///DynamicTestModule/SignupEditPolicyComponent.html@13:0
-Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-    &lt;div class="col"&gt;
-      &lt;mapfre-button
-        [ERROR -&gt;][additionalClasses]="'secondary ghost small'"
-        [routerLink]="['/signup', 'add-policy']"
-      "): ng:///DynamicTestModule/SignupEditPolicyComponent.html@17:8
-Can't bind to 'routerLink' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'routerLink' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-      &lt;mapfre-button
-        [additionalClasses]="'secondary ghost small'"
-        [ERROR -&gt;][routerLink]="['/signup', 'add-policy']"
-      &gt;{{ 'CANCEL' | translate }}&lt;/mapfre-button&gt;
-    &lt;/div&gt;"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@18:8
-The pipe 'translate' could not be found ("tionalClasses]="'secondary ghost small'"
-        [routerLink]="['/signup', 'add-policy']"
-      &gt;{{ [ERROR -&gt;]'CANCEL' | translate }}&lt;/mapfre-button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@19:10
-'mapfre-button' is not a known element:
-1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-&lt;div class="row text-center margin-top mt24"&gt;
-    &lt;div class="col"&gt;
-      [ERROR -&gt;]&lt;mapfre-button
-        [additionalClasses]="'secondary ghost small'"
-        [routerLink]="['/signup'"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@16:6
-Can't bind to 'modalOptions' since it isn't a known property of 'mapfre-modal'.
-1. If 'mapfre-modal' is an Angular component and it has 'modalOptions' input, then verify that it is part of this module.
-2. If 'mapfre-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;div class="col"&gt;
-    &lt;mapfre-modal 
-      [ERROR -&gt;][modalOptions]="whereToFindModalOptions"&gt;
-      &lt;div class="modal-body no-margin-bottom"&gt;
-        &lt;hr"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@26:6
-The pipe 'translate' could not be found ("
-        &lt;hr class="margin-bottom mb24" /&gt;
-        &lt;div class="margin-bottom mb8"&gt;
-   [ERROR -&gt;]       {{ 'POLICY_DOCUMENT' | translate}}
-        &lt;/div&gt;
-        &lt;div class="margin-bottom mb24"&gt;
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@30:3
-'mapfre-modal' is not a known element:
-1. If 'mapfre-modal' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-&lt;div class="row text-center"&gt;
-  &lt;div class="col"&gt;
-    [ERROR -&gt;]&lt;mapfre-modal 
-      [modalOptions]="whereToFindModalOptions"&gt;
-      &lt;div class="modal-body no-margin"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@25:4
-error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-policy-error-svg' is not a known element:
-    &lt;h1 class="title-copy"&gt;{{ 'EDIT_POLICY' "): ng:///DynamicTestModule/SignupEditPolicyComponent.html@3:6, The pipe 'translate' could not be found ("
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@5:30, The pipe 'translate' could not be found ("
-   [ERROR -&gt;] {{ ' ...
-Error: Template parse errors:
-    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
-    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
-    at &lt;Jasmine&gt;
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
-    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
-</failure>
-    <failure type="">1. If 'svg-policy-error-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-policy-error-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon full-icon"&gt;
-      [ERROR -&gt;]&lt;svg-policy-error-svg&gt;&lt;/svg-policy-error-svg&gt;
-    &lt;/div&gt;
-      &lt;svg-policy-error-svg&gt;&lt;/svg-policy-error-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'EDIT_POLICY' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="row text-center margin-bottom mb16 sub-title-copy"&gt;
-  &lt;div class="col"&gt;
-Error: Template parse errors:
-'svg-policy-error-svg' is not a known element:
-1. If 'svg-policy-error-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-policy-error-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon full-icon"&gt;
-      [ERROR -&gt;]&lt;svg-policy-error-svg&gt;&lt;/svg-policy-error-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ 'EDIT_POLICY' "): ng:///DynamicTestModule/SignupEditPolicyComponent.html@3:6
-The pipe 'translate' could not be found ("
-      &lt;svg-policy-error-svg&gt;&lt;/svg-policy-error-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'EDIT_POLICY' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@5:30
-The pipe 'translate' could not be found ("
-&lt;div class="row text-center margin-bottom mb16 sub-title-copy"&gt;
-  &lt;div class="col"&gt;
-   [ERROR -&gt;] {{ 'EDITPOLICY_REVIEW_POLICY' | translate }}
-  &lt;/div&gt;
-&lt;/div&gt;
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@10:3
-Can't bind to 'inputs' since it isn't a known property of 'app-edit-policy-form'.
-1. If 'app-edit-policy-form' is an Angular component and it has 'inputs' input, then verify that it is part of this module.
-2. If 'app-edit-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-edit-policy-form [ERROR -&gt;][inputs]="editPolicyInfo" [userData]="user"&gt;&lt;/app-edit-policy-form&gt;
-&lt;div class="row text-center margi"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@13:22
-Can't bind to 'userData' since it isn't a known property of 'app-edit-policy-form'.
-1. If 'app-edit-policy-form' is an Angular component and it has 'userData' input, then verify that it is part of this module.
-2. If 'app-edit-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-edit-policy-form [inputs]="editPolicyInfo" [ERROR -&gt;][userData]="user"&gt;&lt;/app-edit-policy-form&gt;
-&lt;div class="row text-center margin-top mt24"&gt;
-    &lt;div clas"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@13:48
-'app-edit-policy-form' is not a known element:
-1. If 'app-edit-policy-form' is an Angular component, then verify that it is part of this module.
-2. If 'app-edit-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-[ERROR -&gt;]&lt;app-edit-policy-form [inputs]="editPolicyInfo" [userData]="user"&gt;&lt;/app-edit-policy-form&gt;
-&lt;div class="): ng:///DynamicTestModule/SignupEditPolicyComponent.html@13:0
-Can't bind to 'additionalClasses' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'additionalClasses' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-    &lt;div class="col"&gt;
-      &lt;mapfre-button
-        [ERROR -&gt;][additionalClasses]="'secondary ghost small'"
-        [routerLink]="['/signup', 'add-policy']"
-      "): ng:///DynamicTestModule/SignupEditPolicyComponent.html@17:8
-Can't bind to 'routerLink' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'routerLink' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-      &lt;mapfre-button
-        [additionalClasses]="'secondary ghost small'"
-        [ERROR -&gt;][routerLink]="['/signup', 'add-policy']"
-      &gt;{{ 'CANCEL' | translate }}&lt;/mapfre-button&gt;
-    &lt;/div&gt;"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@18:8
-The pipe 'translate' could not be found ("tionalClasses]="'secondary ghost small'"
-        [routerLink]="['/signup', 'add-policy']"
-      &gt;{{ [ERROR -&gt;]'CANCEL' | translate }}&lt;/mapfre-button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@19:10
-'mapfre-button' is not a known element:
-1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-&lt;div class="row text-center margin-top mt24"&gt;
-    &lt;div class="col"&gt;
-      [ERROR -&gt;]&lt;mapfre-button
-        [additionalClasses]="'secondary ghost small'"
-        [routerLink]="['/signup'"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@16:6
-Can't bind to 'modalOptions' since it isn't a known property of 'mapfre-modal'.
-1. If 'mapfre-modal' is an Angular component and it has 'modalOptions' input, then verify that it is part of this module.
-2. If 'mapfre-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;div class="col"&gt;
-    &lt;mapfre-modal 
-      [ERROR -&gt;][modalOptions]="whereToFindModalOptions"&gt;
-      &lt;div class="modal-body no-margin-bottom"&gt;
-        &lt;hr"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@26:6
-The pipe 'translate' could not be found ("
-        &lt;hr class="margin-bottom mb24" /&gt;
-        &lt;div class="margin-bottom mb8"&gt;
-   [ERROR -&gt;]       {{ 'POLICY_DOCUMENT' | translate}}
-        &lt;/div&gt;
-        &lt;div class="margin-bottom mb24"&gt;
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@30:3
-'mapfre-modal' is not a known element:
-1. If 'mapfre-modal' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-&lt;div class="row text-center"&gt;
-  &lt;div class="col"&gt;
-    [ERROR -&gt;]&lt;mapfre-modal 
-      [modalOptions]="whereToFindModalOptions"&gt;
-      &lt;div class="modal-body no-margin"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@25:4
-error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-policy-error-svg' is not a known element:
-    &lt;h1 class="title-copy"&gt;{{ 'EDIT_POLICY' "): ng:///DynamicTestModule/SignupEditPolicyComponent.html@3:6, The pipe 'translate' could not be found ("
-"): ng:///DynamicTestModule/SignupEditPolicyComponent.html@5:30, The pipe 'translate' could not be found ("
-   [ERROR -&gt;] {{ ' ...
-    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
-    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
-    at &lt;Jasmine&gt;
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
-    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
-</failure>
-    <failure type="">Error: Expected undefined to be truthy.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/routes/signup/signup-process/signup-edit-policy/signup-edit-policy.component.spec.ts:23:23)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-</failure>
-  </testcase>
-  <testcase name="PolicyDataService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDataService">
+  <testcase name="ClaimsHomeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsHomeComponent">
     <skipped/>
   </testcase>
-  <testcase name="WalletCardService should return the Policy details" time="0.036" classname="Chrome_71_0_3578_(Windows_10_0_0).WalletCardService"/>
-  <testcase name="LoggedinContentComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoggedinContentComponent">
+  <testcase name="ProfileEditEmailComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileEditEmailComponent">
     <skipped/>
   </testcase>
-  <testcase name="EditPolicyComponent should throw error and redirect to signup/bop" time="0.14" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent"/>
-  <testcase name="EditPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0.075" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
-    <failure type="">Error: Expected '/signup/not-found' to be '/signup/policybelongstoanother'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/edit-policy-form/edit-policy.component.spec.ts:180:29)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-  </testcase>
-  <testcase name="EditPolicyComponent should Initialize" time="0.06" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent"/>
-  <testcase name="EditPolicyComponent should get the prefill data" time="0.057" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
-    <failure type="">TypeError: Cannot read property 'firstName' of undefined
-    at &lt;Jasmine&gt;
-    at EditPolicyComponent../src/app/components/forms/dynamic-forms/edit-policy-form/edit-policy.component.ts.EditPolicyComponent.prefillData src/app/components/forms/dynamic-forms/edit-policy-form/edit-policy.component.ts:99:80)
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/edit-policy-form/edit-policy.component.spec.ts:200:15)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="EditPolicyComponent should throw error and redirect to signup/notfound" time="0.051" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
-    <failure type="">Error: Expected '/signup/policy-belongs-to-another' to be '/signup/notfound'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/edit-policy-form/edit-policy.component.spec.ts:144:29)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-  </testcase>
-  <testcase name="EditPolicyComponent should edit the policy" time="0.055" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
-    <failure type="">Error: Expected '/signup/create-password' to be '/signup/createpassword'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/edit-policy-form/edit-policy.component.spec.ts:124:29)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-  </testcase>
-  <testcase name="EditPolicyComponent should create user object" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+  <testcase name="EditPolicyService should return formbase to edit policy service" time="0.012" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyService"/>
+  <testcase name="ContactBillingRepService should be created" time="0.013" classname="Chrome_71_0_3578_(Windows_10_0_0).ContactBillingRepService"/>
+  <testcase name="ClaimsHomeClosedComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsHomeClosedComponent">
     <skipped/>
   </testcase>
-  <testcase name="EditPolicyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+  <testcase name="PaperlessMiscComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessMiscComponent">
     <skipped/>
   </testcase>
-  <testcase name="OnboardingWalletBackComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).OnboardingWalletBackComponent">
+  <testcase name="PolicyDetailsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDetailsComponent">
     <skipped/>
   </testcase>
-  <testcase name="NewPaymentService should be created" time="0.008" classname="Chrome_71_0_3578_(Windows_10_0_0).NewPaymentService"/>
-  <testcase name="UserInfoService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).UserInfoService">
-    <skipped/>
-  </testcase>
-  <testcase name="InformationLegalComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationLegalComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PolicyDocumentsDataService should be created" time="0.008" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDocumentsDataService">
-    <failure type="">Error: StaticInjectorError[PolicyDocumentsDataService]: 
-  NullInjectorError: No provider for PolicyDocumentsDataService!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ Function ] })
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at TestBedViewEngine.push../node_modules/@angular/core/fesm5/testing.js.TestBedViewEngine.get node_modules/@angular/core/fesm5/testing.js:1816:1)
-    at Function.push../node_modules/@angular/core/fesm5/testing.js.TestBedViewEngine.get node_modules/@angular/core/fesm5/testing.js:1598:1)
-    at UserContext.&lt;anonymous&gt; src/app/_services/my-insurance/data-services/policy-documents-data.service.spec.ts:9:57)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-</failure>
-  </testcase>
-  <testcase name="NewPaymentComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).NewPaymentComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PaperlessComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="BillingMainComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingMainComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ConfirmComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ConfirmComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ChangeAddressService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeAddressService">
-    <skipped/>
-  </testcase>
-  <testcase name="CheckingAccountService should return the checking account formbase" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CheckingAccountService">
-    <skipped/>
-  </testcase>
-  <testcase name="OnboardingWalletModalComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).OnboardingWalletModalComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="BillingConfirmComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingConfirmComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ChangeAddressService should be created" time="0.007" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeAddressService">
-    <failure type="">Error: StaticInjectorError(DynamicTestModule)[AuthenticationService -&gt; HttpClient]: 
-  StaticInjectorError(Platform: core)[AuthenticationService -&gt; HttpClient]: 
-    NullInjectorError: No provider for HttpClient!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AuthenticationService', Function ] })
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at injectInjectorOnly node_modules/@angular/core/fesm5/core.js:1772:1)
-</failure>
-  </testcase>
-  <testcase name="MyInsuranceMainComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).MyInsuranceMainComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="LoginFormComponent should throw error if invalid email/password" time="0.151" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should do nothing if user property is false" time="0.128" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should redirect to /forgotpassword if email pattern does not match" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="LoginFormComponent should set rememberMe field of component" time="0.093" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should set the expiry of the cookie" time="0.077" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should test Initialization of a component" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="LoginFormComponent it should login and navigate to my-insurance if there are no returnurl paramaters" time="0.082" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="LoginFormComponent should get the email and password login form " time="0.1" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
-  <testcase name="NewPaymentComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).NewPaymentComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="EmailFormService should return the formbase for email" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailFormService"/>
-  <testcase name="WalletCardComponent should call the wallet card service to generate the pk pass" time="0.023" classname="Chrome_71_0_3578_(Windows_10_0_0).WalletCardComponent"/>
-  <testcase name="InformationProductsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationProductsComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="BillingService should be created" time="0.011" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingService">
-    <failure type="">Error: StaticInjectorError(DynamicTestModule)[WalletCardService -&gt; HttpClient]: 
-  StaticInjectorError(Platform: core)[WalletCardService -&gt; HttpClient]: 
-    NullInjectorError: No provider for HttpClient!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'WalletCardService', Function ] })
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at injectInjectorOnly node_modules/@angular/core/fesm5/core.js:1772:1)
-</failure>
-  </testcase>
-  <testcase name="InformationComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="SignupCreatePasswordComponent should create" time="0.019" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupCreatePasswordComponent">
-    <failure type="">1. If 'svg-create-new-password-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-create-new-password-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon"&gt;
-      [ERROR -&gt;]&lt;svg-create-new-password-svg&gt;&lt;/svg-create-new-password-svg&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'CREATE_NEW_PASSWORD' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-'svg-create-new-password-svg' is not a known element:
-1. If 'svg-create-new-password-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-create-new-password-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon"&gt;
-      [ERROR -&gt;]&lt;svg-create-new-password-svg&gt;&lt;/svg-create-new-password-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ "): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@3:6
-The pipe 'translate' could not be found ("svg-create-new-password-svg&gt;&lt;/svg-create-new-password-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'CREATE_NEW_PASSWORD' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@5:30
-Can't bind to 'inputs' since it isn't a known property of 'app-create-password-form'.
-1. If 'app-create-password-form' is an Angular component and it has 'inputs' input, then verify that it is part of this module.
-2. If 'app-create-password-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-create-password-form [ERROR -&gt;][inputs]="createNewPassword" [userData]="user"&gt;&lt;/app-create-password-form&gt;
-&lt;div class="row margin-top"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@8:26
-Can't bind to 'userData' since it isn't a known property of 'app-create-password-form'.
-1. If 'app-create-password-form' is an Angular component and it has 'userData' input, then verify that it is part of this module.
-2. If 'app-create-password-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-create-password-form [inputs]="createNewPassword" [ERROR -&gt;][userData]="user"&gt;&lt;/app-create-password-form&gt;
-&lt;div class="row margin-top mt24 text-center"&gt;
-  &lt;div cl"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@8:55
-'app-create-password-form' is not a known element:
-1. If 'app-create-password-form' is an Angular component, then verify that it is part of this module.
-2. If 'app-create-password-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-[ERROR -&gt;]&lt;app-create-password-form [inputs]="createNewPassword" [userData]="user"&gt;&lt;/app-create-password-form&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@8:0
-Can't bind to 'customIcon' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'customIcon' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-    &lt;mapfre-button
-      additionalClasses="link-button blue-link small w-100"
-      [ERROR -&gt;][customIcon]="'assets/img/icons/back-arrow.png'"
-      [iconClasses]="'align-middle'"
-      (click)=""): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@13:6
-Can't bind to 'iconClasses' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'iconClasses' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("es="link-button blue-link small w-100"
-      [customIcon]="'assets/img/icons/back-arrow.png'"
-      [ERROR -&gt;][iconClasses]="'align-middle'"
-      (click)="goBackAPage()"
-      [showIconsCustom]="true"
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@14:6
-Can't bind to 'showIconsCustom' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'showIconsCustom' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-      [iconClasses]="'align-middle'"
-      (click)="goBackAPage()"
-      [ERROR -&gt;][showIconsCustom]="true"
-    &gt;  {{ 'BACK' | translate }}
-    &lt;/mapfre-button&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@16:6
-The pipe 'translate' could not be found ("
-      (click)="goBackAPage()"
-      [showIconsCustom]="true"
-    &gt;  {{[ERROR -&gt;] 'BACK' | translate }}
-    &lt;/mapfre-button&gt;
-  &lt;/div&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@17:9
-'mapfre-button' is not a known element:
-1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-&lt;div class="row margin-top mt24 text-center"&gt;
-  &lt;div class="col"&gt;
-    [ERROR -&gt;]&lt;mapfre-button
-      additionalClasses="link-button blue-link small w-100"
-      [customIcon]="'asset"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@11:4
-error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-create-new-password-svg' is not a known element:
-    &lt;h1 class="title-copy"&gt;{{ "): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@3:6, The pipe 'translate' could not be found ("svg-create-new-password-svg&gt;&lt;/svg-create-new-password-svg&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@5:30, Can't bind to 'inputs' since it isn't a known property of 'app-create-password-form'.
-1. If 'app-create-password ...
-Error: Template parse errors:
-    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
-    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
-    at &lt;Jasmine&gt;
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
-    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
-</failure>
-    <failure type="">1. If 'svg-create-new-password-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-create-new-password-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon"&gt;
-      [ERROR -&gt;]&lt;svg-create-new-password-svg&gt;&lt;/svg-create-new-password-svg&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'CREATE_NEW_PASSWORD' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-Error: Template parse errors:
-'svg-create-new-password-svg' is not a known element:
-1. If 'svg-create-new-password-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-create-new-password-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon"&gt;
-      [ERROR -&gt;]&lt;svg-create-new-password-svg&gt;&lt;/svg-create-new-password-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ "): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@3:6
-The pipe 'translate' could not be found ("svg-create-new-password-svg&gt;&lt;/svg-create-new-password-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'CREATE_NEW_PASSWORD' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@5:30
-Can't bind to 'inputs' since it isn't a known property of 'app-create-password-form'.
-1. If 'app-create-password-form' is an Angular component and it has 'inputs' input, then verify that it is part of this module.
-2. If 'app-create-password-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-create-password-form [ERROR -&gt;][inputs]="createNewPassword" [userData]="user"&gt;&lt;/app-create-password-form&gt;
-&lt;div class="row margin-top"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@8:26
-Can't bind to 'userData' since it isn't a known property of 'app-create-password-form'.
-1. If 'app-create-password-form' is an Angular component and it has 'userData' input, then verify that it is part of this module.
-2. If 'app-create-password-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-create-password-form [inputs]="createNewPassword" [ERROR -&gt;][userData]="user"&gt;&lt;/app-create-password-form&gt;
-&lt;div class="row margin-top mt24 text-center"&gt;
-  &lt;div cl"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@8:55
-'app-create-password-form' is not a known element:
-1. If 'app-create-password-form' is an Angular component, then verify that it is part of this module.
-2. If 'app-create-password-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-[ERROR -&gt;]&lt;app-create-password-form [inputs]="createNewPassword" [userData]="user"&gt;&lt;/app-create-password-form&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@8:0
-Can't bind to 'customIcon' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'customIcon' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-    &lt;mapfre-button
-      additionalClasses="link-button blue-link small w-100"
-      [ERROR -&gt;][customIcon]="'assets/img/icons/back-arrow.png'"
-      [iconClasses]="'align-middle'"
-      (click)=""): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@13:6
-Can't bind to 'iconClasses' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'iconClasses' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("es="link-button blue-link small w-100"
-      [customIcon]="'assets/img/icons/back-arrow.png'"
-      [ERROR -&gt;][iconClasses]="'align-middle'"
-      (click)="goBackAPage()"
-      [showIconsCustom]="true"
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@14:6
-Can't bind to 'showIconsCustom' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'showIconsCustom' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-      [iconClasses]="'align-middle'"
-      (click)="goBackAPage()"
-      [ERROR -&gt;][showIconsCustom]="true"
-    &gt;  {{ 'BACK' | translate }}
-    &lt;/mapfre-button&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@16:6
-The pipe 'translate' could not be found ("
-      (click)="goBackAPage()"
-      [showIconsCustom]="true"
-    &gt;  {{[ERROR -&gt;] 'BACK' | translate }}
-    &lt;/mapfre-button&gt;
-  &lt;/div&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@17:9
-'mapfre-button' is not a known element:
-1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-&lt;div class="row margin-top mt24 text-center"&gt;
-  &lt;div class="col"&gt;
-    [ERROR -&gt;]&lt;mapfre-button
-      additionalClasses="link-button blue-link small w-100"
-      [customIcon]="'asset"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@11:4
-error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-create-new-password-svg' is not a known element:
-    &lt;h1 class="title-copy"&gt;{{ "): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@3:6, The pipe 'translate' could not be found ("svg-create-new-password-svg&gt;&lt;/svg-create-new-password-svg&gt;
-"): ng:///DynamicTestModule/SignupCreatePasswordComponent.html@5:30, Can't bind to 'inputs' since it isn't a known property of 'app-create-password-form'.
-1. If 'app-create-password ...
-    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
-    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
-    at &lt;Jasmine&gt;
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
-    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
-</failure>
-    <failure type="">Error: Expected undefined to be truthy.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/routes/signup/signup-process/signup-create-password/signup-create-password.component.spec.ts:23:23)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-</failure>
-  </testcase>
-  <testcase name="EmailUseScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailUseScreenComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PaperlessService should be created" time="0.005" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessService">
-    <failure type="">Error: StaticInjectorError(DynamicTestModule)[WalletCardService -&gt; HttpClient]: 
-  StaticInjectorError(Platform: core)[WalletCardService -&gt; HttpClient]: 
-    NullInjectorError: No provider for HttpClient!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'WalletCardService', Function ] })
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at injectInjectorOnly node_modules/@angular/core/fesm5/core.js:1772:1)
-</failure>
-  </testcase>
-  <testcase name="ValidateAddressService should be created" time="0.008" classname="Chrome_71_0_3578_(Windows_10_0_0).ValidateAddressService"/>
-  <testcase name="BillingDetailsService should update the observable for document by policyNumber" time="0.008" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingDetailsService">
-    <failure type="">Error: Expected one matching request for criteria "Match URL: https://mdv-doctest:443/apis/billing/BBWQKQ/currentbill", found none.
-    at HttpClientTestingBackend.push../node_modules/@angular/common/fesm5/http/testing.js.HttpClientTestingBackend.expectOne node_modules/@angular/common/fesm5/http/testing.js:292:1)
-    at UserContext.&lt;anonymous&gt; src/app/_services/my-insurance/billing-details.service.spec.ts:29:26)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="DocumentDetailsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).DocumentDetailsComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="LoginService should return formbase for creating login form" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginService"/>
-  <testcase name="InformationMainComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationMainComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="SignupAddPolicyComponent should create" time="0.017" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupAddPolicyComponent">
-    <failure type="">1. If 'svg-policy-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-policy-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon full-icon"&gt;
-      [ERROR -&gt;]&lt;svg-policy-svg&gt;&lt;/svg-policy-svg&gt;
-    &lt;/div&gt;
-      &lt;svg-policy-svg&gt;&lt;/svg-policy-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'ADD_POLICY_TITLE' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-'svg-policy-svg' is not a known element:
-1. If 'svg-policy-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-policy-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon full-icon"&gt;
-      [ERROR -&gt;]&lt;svg-policy-svg&gt;&lt;/svg-policy-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ 'ADD_POLICY_TITLE' | trans"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@3:6
-The pipe 'translate' could not be found ("
-      &lt;svg-policy-svg&gt;&lt;/svg-policy-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'ADD_POLICY_TITLE' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@5:30
-Can't bind to 'inputs' since it isn't a known property of 'app-add-policy-form'.
-1. If 'app-add-policy-form' is an Angular component and it has 'inputs' input, then verify that it is part of this module.
-2. If 'app-add-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-add-policy-form [ERROR -&gt;][inputs]="addPolicy" [userData]="user"&gt;&lt;/app-add-policy-form&gt;
-&lt;div class="row text-center margin-top "): ng:///DynamicTestModule/SignupAddPolicyComponent.html@8:21
-Can't bind to 'userData' since it isn't a known property of 'app-add-policy-form'.
-1. If 'app-add-policy-form' is an Angular component and it has 'userData' input, then verify that it is part of this module.
-2. If 'app-add-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-add-policy-form [inputs]="addPolicy" [ERROR -&gt;][userData]="user"&gt;&lt;/app-add-policy-form&gt;
-&lt;div class="row text-center margin-top mt16"&gt;
-  &lt;div class=""): ng:///DynamicTestModule/SignupAddPolicyComponent.html@8:42
-'app-add-policy-form' is not a known element:
-1. If 'app-add-policy-form' is an Angular component, then verify that it is part of this module.
-2. If 'app-add-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-[ERROR -&gt;]&lt;app-add-policy-form [inputs]="addPolicy" [userData]="user"&gt;&lt;/app-add-policy-form&gt;
-&lt;div class="row te"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@8:0
-Can't bind to 'modalOptions' since it isn't a known property of 'mapfre-modal'.
-1. If 'mapfre-modal' is an Angular component and it has 'modalOptions' input, then verify that it is part of this module.
-2. If 'mapfre-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;div class="col"&gt;
-    &lt;mapfre-modal 
-      [ERROR -&gt;][modalOptions]="whereToFindModalOptions"&gt;
-      &lt;div class="modal-body no-padding-top"&gt;
-        &lt;hr c"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@12:6
-The pipe 'translate' could not be found ("
-        &lt;hr class="margin-bottom mb24" /&gt;
-        &lt;div class="margin-bottom mb8"&gt;
-   [ERROR -&gt;]       {{ 'POLICY_DOCUMENT' | translate}}
-        &lt;/div&gt;
-        &lt;div class="margin-bottom mb24"&gt;
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@16:3
-'mapfre-modal' is not a known element:
-1. If 'mapfre-modal' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-&lt;div class="row text-center margin-top mt16"&gt;
-  &lt;div class="col"&gt;
-    [ERROR -&gt;]&lt;mapfre-modal 
-      [modalOptions]="whereToFindModalOptions"&gt;
-      &lt;div class="modal-body no-paddin"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@11:4
-Can't bind to 'customIcon' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'customIcon' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-      &lt;mapfre-button
-        additionalClasses="link-button blue-link small w-100"
-        [ERROR -&gt;][customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [rout"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@30:8
-Can't bind to 'iconClasses' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'iconClasses' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("link-button blue-link small w-100"
-        [customIcon]="'assets/img/icons/back-arrow.png'"
-        [ERROR -&gt;][iconClasses]="'align-middle'"
-        [routerLink]="['/signup']"
-        [showIconsCustom]="true"
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@31:8
-Can't bind to 'routerLink' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'routerLink' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("    [customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [ERROR -&gt;][routerLink]="['/signup']"
-        [showIconsCustom]="true"
-      &gt;  {{ 'BACK' | translate }}
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@32:8
-Can't bind to 'showIconsCustom' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'showIconsCustom' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-        [iconClasses]="'align-middle'"
-        [routerLink]="['/signup']"
-        [ERROR -&gt;][showIconsCustom]="true"
-      &gt;  {{ 'BACK' | translate }}
-      &lt;/mapfre-button&gt;
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@33:8
-The pipe 'translate' could not be found ("
-        [routerLink]="['/signup']"
-        [showIconsCustom]="true"
-      &gt;  {{[ERROR -&gt;] 'BACK' | translate }}
-      &lt;/mapfre-button&gt;
-    &lt;/div&gt;
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@34:11
-'mapfre-button' is not a known element:
-1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="row text-center"&gt;
-    &lt;div class="col"&gt;
-      [ERROR -&gt;]&lt;mapfre-button
-        additionalClasses="link-button blue-link small w-100"
-        [customIcon]="'a"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@28:6
-error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-policy-svg' is not a known element:
-    &lt;h1 class="title-copy"&gt;{{ 'ADD_POLICY_TITLE' | trans"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@3:6, The pipe 'translate' could not be found ("
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@5:30, Can't bind to 'inputs' since it isn't a known property of 'app-add-policy-form'.
-1. If 'app-add-policy-form' is an Angular component and it has 'inputs' input, then verify  ...
-Error: Template parse errors:
-    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
-    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
-    at &lt;Jasmine&gt;
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
-    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
-</failure>
-    <failure type="">1. If 'svg-policy-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-policy-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon full-icon"&gt;
-      [ERROR -&gt;]&lt;svg-policy-svg&gt;&lt;/svg-policy-svg&gt;
-    &lt;/div&gt;
-      &lt;svg-policy-svg&gt;&lt;/svg-policy-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'ADD_POLICY_TITLE' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-Error: Template parse errors:
-'svg-policy-svg' is not a known element:
-1. If 'svg-policy-svg' is an Angular component, then verify that it is part of this module.
-2. If 'svg-policy-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="col"&gt;
-    &lt;div class="header-icon full-icon"&gt;
-      [ERROR -&gt;]&lt;svg-policy-svg&gt;&lt;/svg-policy-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ 'ADD_POLICY_TITLE' | trans"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@3:6
-The pipe 'translate' could not be found ("
-      &lt;svg-policy-svg&gt;&lt;/svg-policy-svg&gt;
-    &lt;/div&gt;
-    &lt;h1 class="title-copy"&gt;{{ [ERROR -&gt;]'ADD_POLICY_TITLE' | translate }}&lt;/h1&gt; 
-  &lt;/div&gt;
-&lt;/div&gt;
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@5:30
-Can't bind to 'inputs' since it isn't a known property of 'app-add-policy-form'.
-1. If 'app-add-policy-form' is an Angular component and it has 'inputs' input, then verify that it is part of this module.
-2. If 'app-add-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-add-policy-form [ERROR -&gt;][inputs]="addPolicy" [userData]="user"&gt;&lt;/app-add-policy-form&gt;
-&lt;div class="row text-center margin-top "): ng:///DynamicTestModule/SignupAddPolicyComponent.html@8:21
-Can't bind to 'userData' since it isn't a known property of 'app-add-policy-form'.
-1. If 'app-add-policy-form' is an Angular component and it has 'userData' input, then verify that it is part of this module.
-2. If 'app-add-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;app-add-policy-form [inputs]="addPolicy" [ERROR -&gt;][userData]="user"&gt;&lt;/app-add-policy-form&gt;
-&lt;div class="row text-center margin-top mt16"&gt;
-  &lt;div class=""): ng:///DynamicTestModule/SignupAddPolicyComponent.html@8:42
-'app-add-policy-form' is not a known element:
-1. If 'app-add-policy-form' is an Angular component, then verify that it is part of this module.
-2. If 'app-add-policy-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;/div&gt;
-&lt;/div&gt;
-[ERROR -&gt;]&lt;app-add-policy-form [inputs]="addPolicy" [userData]="user"&gt;&lt;/app-add-policy-form&gt;
-&lt;div class="row te"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@8:0
-Can't bind to 'modalOptions' since it isn't a known property of 'mapfre-modal'.
-1. If 'mapfre-modal' is an Angular component and it has 'modalOptions' input, then verify that it is part of this module.
-2. If 'mapfre-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-  &lt;div class="col"&gt;
-    &lt;mapfre-modal 
-      [ERROR -&gt;][modalOptions]="whereToFindModalOptions"&gt;
-      &lt;div class="modal-body no-padding-top"&gt;
-        &lt;hr c"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@12:6
-The pipe 'translate' could not be found ("
-        &lt;hr class="margin-bottom mb24" /&gt;
-        &lt;div class="margin-bottom mb8"&gt;
-   [ERROR -&gt;]       {{ 'POLICY_DOCUMENT' | translate}}
-        &lt;/div&gt;
-        &lt;div class="margin-bottom mb24"&gt;
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@16:3
-'mapfre-modal' is not a known element:
-1. If 'mapfre-modal' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-modal' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-&lt;div class="row text-center margin-top mt16"&gt;
-  &lt;div class="col"&gt;
-    [ERROR -&gt;]&lt;mapfre-modal 
-      [modalOptions]="whereToFindModalOptions"&gt;
-      &lt;div class="modal-body no-paddin"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@11:4
-Can't bind to 'customIcon' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'customIcon' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-      &lt;mapfre-button
-        additionalClasses="link-button blue-link small w-100"
-        [ERROR -&gt;][customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [rout"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@30:8
-Can't bind to 'iconClasses' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'iconClasses' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("link-button blue-link small w-100"
-        [customIcon]="'assets/img/icons/back-arrow.png'"
-        [ERROR -&gt;][iconClasses]="'align-middle'"
-        [routerLink]="['/signup']"
-        [showIconsCustom]="true"
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@31:8
-Can't bind to 'routerLink' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'routerLink' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("    [customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [ERROR -&gt;][routerLink]="['/signup']"
-        [showIconsCustom]="true"
-      &gt;  {{ 'BACK' | translate }}
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@32:8
-Can't bind to 'showIconsCustom' since it isn't a known property of 'mapfre-button'.
-1. If 'mapfre-button' is an Angular component and it has 'showIconsCustom' input, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
-        [iconClasses]="'align-middle'"
-        [routerLink]="['/signup']"
-        [ERROR -&gt;][showIconsCustom]="true"
-      &gt;  {{ 'BACK' | translate }}
-      &lt;/mapfre-button&gt;
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@33:8
-The pipe 'translate' could not be found ("
-        [routerLink]="['/signup']"
-        [showIconsCustom]="true"
-      &gt;  {{[ERROR -&gt;] 'BACK' | translate }}
-      &lt;/mapfre-button&gt;
-    &lt;/div&gt;
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@34:11
-'mapfre-button' is not a known element:
-1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
-2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
-  &lt;div class="row text-center"&gt;
-    &lt;div class="col"&gt;
-      [ERROR -&gt;]&lt;mapfre-button
-        additionalClasses="link-button blue-link small w-100"
-        [customIcon]="'a"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@28:6
-error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-policy-svg' is not a known element:
-    &lt;h1 class="title-copy"&gt;{{ 'ADD_POLICY_TITLE' | trans"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@3:6, The pipe 'translate' could not be found ("
-"): ng:///DynamicTestModule/SignupAddPolicyComponent.html@5:30, Can't bind to 'inputs' since it isn't a known property of 'app-add-policy-form'.
-1. If 'app-add-policy-form' is an Angular component and it has 'inputs' input, then verify  ...
-    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
-    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
-    at &lt;Jasmine&gt;
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
-    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
-    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
-</failure>
-    <failure type="">Error: Expected undefined to be truthy.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/routes/signup/signup-process/signup-add-policy/signup-add-policy.component.spec.ts:23:23)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-</failure>
-  </testcase>
-  <testcase name="WelcomeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).WelcomeComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="EditPasswordService should return the password textbox" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPasswordService"/>
-  <testcase name="BopScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BopScreenComponent">
+  <testcase name="ProfileConfirmModalComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileConfirmModalComponent">
     <skipped/>
   </testcase>
   <testcase name="ProfileConfirmModalService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileConfirmModalService">
     <skipped/>
   </testcase>
-  <testcase name="PaperlessTimeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessTimeComponent">
+  <testcase name="EmailEmailPasswordFormService should return the email textbox" time="0.008" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailEmailPasswordFormService"/>
+  <testcase name="EmailEmailPasswordFormService should return the password textbox" time="0.01" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailEmailPasswordFormService"/>
+  <testcase name="EditEmailService should return the email textbox" time="0.011" classname="Chrome_71_0_3578_(Windows_10_0_0).EditEmailService"/>
+  <testcase name="ClaimsHomeCarComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsHomeCarComponent">
     <skipped/>
   </testcase>
-  <testcase name="EnrollEftEpayService should be created" time="0.003" classname="Chrome_71_0_3578_(Windows_10_0_0).EnrollEftEpayService"/>
-  <testcase name="ChangeEmailComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeEmailComponent">
+  <testcase name="InformationProductsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationProductsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPasswordService should return the password textbox" time="0.007" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPasswordService"/>
+  <testcase name="MyInsuranceComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).MyInsuranceComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ApartmentPipePipe create an instance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ApartmentPipePipe">
+    <skipped/>
+  </testcase>
+  <testcase name="StorageServiceObservablesService should be created" time="0.009" classname="Chrome_71_0_3578_(Windows_10_0_0).StorageServiceObservablesService"/>
+  <testcase name="PaperlessBillComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessBillComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="MyInsuranceMainComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).MyInsuranceMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyDocumentsDataService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDocumentsDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="ContactBillingRepFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ContactBillingRepFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="WalletCardComponent should call the wallet card service to generate the pk pass" time="0.059" classname="Chrome_71_0_3578_(Windows_10_0_0).WalletCardComponent"/>
+  <testcase name="PolicyNotFoundComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="UserInfoService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).UserInfoService">
+    <skipped/>
+  </testcase>
+  <testcase name="SignUpGuard should be able to route when user has an observable" time="0.015" classname="Chrome_71_0_3578_(Windows_10_0_0).SignUpGuard"/>
+  <testcase name="SignUpGuard should not route when user there is no user observable" time="0.016" classname="Chrome_71_0_3578_(Windows_10_0_0).SignUpGuard"/>
+  <testcase name="PolicyDataService should update the observable for documents by policy number" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyDataService should update the observable for policy by email" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeProfileEmailService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeProfileEmailService">
+    <skipped/>
+  </testcase>
+  <testcase name="EnrollComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EnrollComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyInProcessComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyInProcessComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangePasswordFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileSettingsRoutingService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileSettingsRoutingService">
+    <skipped/>
+  </testcase>
+  <testcase name="ConfirmComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ConfirmComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationDiscountsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationDiscountsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingDataService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to false" time="0.115" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to true" time="0.081" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successpassword property to true" time="0.066" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should verify if the token is valid" time="0.068" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should return false if the token is invalid" time="0.059" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should verify for the invalid token" time="0.065" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should call isTockenValid if route params exists" time="0.06" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LinkPolicyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LinkPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should add policy to the userObject" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should return the true checkbox value" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should verify policy and route user to createpassword page" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/notfound" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should return the false checkbox value" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/addpolicy" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AbvToFulstatePipe create an instance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AbvToFulstatePipe">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingNewpaymentComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingNewpaymentComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileEmailConfirmComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileEmailConfirmComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EnrollEftEpayFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EnrollEftEpayFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeAddressService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeAddressService">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingMainComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyDataService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationLegalComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationLegalComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupNotFoundComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupNotFoundComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BusinesspolicyDetectedComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BusinesspolicyDetectedComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginFormComponent it should login and navigate to my-insurance if there are no returnurl paramaters" time="0.105" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should test Initialization of a component" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginFormComponent should set the expiry of the cookie" time="0.111" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should redirect to /forgotpassword if email pattern does not match" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginFormComponent should set rememberMe field of component" time="0.096" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should throw error if invalid email/password" time="0.099" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should get the email and password login form " time="0.093" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should do nothing if user property is false" time="0.105" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginFormComponent"/>
+  <testcase name="BillingSidebarComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingSidebarComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="WalletCardService should return the Policy details" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).WalletCardService">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationHomeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationHomeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="OnboardingWalletFrontComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).OnboardingWalletFrontComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginComponent should get the inputs" time="0.039" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginComponent"/>
+  <testcase name="LoginComponent should get the null inputs" time="0.039" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginComponent"/>
+  <testcase name="LoggedinContentComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoggedinContentComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeEmailService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeEmailService">
+    <skipped/>
+  </testcase>
+  <testcase name="ContactComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ContactComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileCheckingAccountComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileCheckingAccountComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordExpiredComponent should get email from parameter" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordExpiredComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordExpiredComponent should call getEmailFromParameter" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordExpiredComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationRenewalComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationRenewalComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessService">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/notfound" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should edit the policy" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/bop" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should Initialize" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should get the prefill data" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should create user object" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingService">
+    <skipped/>
+  </testcase>
+  <testcase name="NewPaymentComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).NewPaymentComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="TestingComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).TestingComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangePhoneService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangePhoneService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthGuard should not route when user is not logged in" time="0.009" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthGuard"/>
+  <testcase name="AuthGuard should be able to route when user is logged in" time="0.007" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthGuard"/>
+  <testcase name="ChangePhoneComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangePhoneComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeAddressService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeAddressService">
+    <skipped/>
+  </testcase>
+  <testcase name="OnboardingWalletBackComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).OnboardingWalletBackComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="DashboardNavComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).DashboardNavComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticateUserService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticateUserService">
+    <skipped/>
+  </testcase>
+  <testcase name="AddressChangeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddressChangeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="NewPaymentService should be created" time="0.004" classname="Chrome_71_0_3578_(Windows_10_0_0).NewPaymentService"/>
+  <testcase name="InformationMainComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ContactScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ContactScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreatePasswordFormComponent should redirect user to verify account" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreatePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreatePasswordFormComponent should initializes parameters oninitialization" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreatePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreatePasswordFormComponent should call createPassword method" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreatePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreatePasswordFormComponent should call updatePassword method" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreatePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should get email from parameter" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should set showConfirmation to true" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should set the emailInputs" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should call method getEmailFromParamater" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should call register() to register the user" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should update the user object" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/emailinuse" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/addpolicy" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should create the user object" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationAboutComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationAboutComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ValidateAddressService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ValidateAddressService">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingDetailsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingDetailsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="NewPaymentComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).NewPaymentComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BankAccountService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BankAccountService">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupComponent should get the null inputs" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupComponent should get the inputs" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordTooManyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordTooManyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CheckingAccountService should return the checking account formbase" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CheckingAccountService">
+    <skipped/>
+  </testcase>
+  <testcase name="DashboardComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).DashboardComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should throw error for confirm policy and account" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should not update the password" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should verify the user" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should update the password" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should not login successfully" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should logout the user" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should verify the policy" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should create a password" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should verify the token for verifyaccount" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should send email on forgot password" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should verify the token for forgotpassword" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should login successfully" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should throw error while login" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should confirm policy and account" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessComponent">
     <skipped/>
   </testcase>
   <testcase name="NoClaimsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).NoClaimsComponent">
     <skipped/>
   </testcase>
+  <testcase name="ValidatePolicyRightsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ValidatePolicyRightsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EmailFormService should return the formbase for email" time="0.007" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailFormService"/>
+  <testcase name="ClaimsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="VerifyAccountScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).VerifyAccountScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordSetComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordSetComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileSettingsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileSettingsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditEmailFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditEmailFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsAccordianFaqComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsAccordianFaqComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsNavigationComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsNavigationComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsService">
+    <skipped/>
+  </testcase>
+  <testcase name="FullstateToAbvPipe create an instance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).FullstateToAbvPipe">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeAddressComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeAddressComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsReportComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsReportComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should create the app" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should render title in a h1 tag" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should have as title 'app'" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingConfirmComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingConfirmComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessPolicyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeEmailComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeEmailComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsMiscComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsMiscComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginService should return formbase for creating login form" time="0.005" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginService"/>
   <testcase name="InformationCancelComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationCancelComponent">
     <skipped/>
   </testcase>
-  <testcase name="BillingDataService should be created" time="0.005" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingDataService"/>
-  <testcase name="ClaimsHomeCarComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsHomeCarComponent">
+  <testcase name="DocumentDetailsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).DocumentDetailsComponent">
     <skipped/>
   </testcase>
-  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to my-insurance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
+  <testcase name="CreateAccountService should return formbase to create account service" time="0.004" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountService"/>
+  <testcase name="SignupBopComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupBopComponent">
     <skipped/>
   </testcase>
-  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to verifyaccount" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
+  <testcase name="OnboardingWalletModalComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).OnboardingWalletModalComponent">
     <skipped/>
   </testcase>
-  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/notfound" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
+  <testcase name="PaperlessPayComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessPayComponent">
     <skipped/>
   </testcase>
-  <testcase name="PolicyNotFoundScreenComponent should update policy holdername and number" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
+  <testcase name="BopScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BopScreenComponent">
     <skipped/>
   </testcase>
-  <testcase name="PolicyNotFoundScreenComponent should call updateObservable" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
+  <testcase name="PaperlessTimeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessTimeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordNondynamicComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordNondynamicComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsDetailComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsDetailComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileMainComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EnrollEftEpayService should be created" time="0.005" classname="Chrome_71_0_3578_(Windows_10_0_0).EnrollEftEpayService"/>
+  <testcase name="OnboardingWalletBackListComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).OnboardingWalletBackListComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsDataService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupAddPolicyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupAddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CheckingAccountFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CheckingAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="WelcomeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).WelcomeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EmailConfirmationComponent should emit false value" time="0.047" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should throw error" time="0.037" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should do nothing" time="0.038" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should send email to user and emit true" time="0.037" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailConfirmationComponent"/>
+  <testcase name="CustomDateFormatPipe create an instance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CustomDateFormatPipe">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupEmailInUseComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupEmailInUseComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="MiscColumnComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).MiscColumnComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupCreatePasswordComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupCreatePasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyBelongToAnotherScreenComponent should create usr object" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyBelongToAnotherScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyBelongToAnotherScreenComponent should throw error" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyBelongToAnotherScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyBelongToAnotherScreenComponent should redirect ro createpassword page" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyBelongToAnotherScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EmailUseScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailUseScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoggedinSidenavComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoggedinSidenavComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SendEmailFormComponent should check is valid method" time="0.024" classname="Chrome_71_0_3578_(Windows_10_0_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should get email from existing parameters" time="0.027" classname="Chrome_71_0_3578_(Windows_10_0_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should send email id to authservice when forgot password" time="0.025" classname="Chrome_71_0_3578_(Windows_10_0_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should run getEmailParameter on initialization" time="0.028" classname="Chrome_71_0_3578_(Windows_10_0_0).SendEmailFormComponent"/>
+  <testcase name="AuthGuard should not route when user has no observable" time="0.009" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthGuard"/>
+  <testcase name="AuthGuard should be able to route when user has an observable" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthGuard"/>
+  <testcase name="estingService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).estingService">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupProcessComponent should initialize user and update whereInTheProcess" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupProcessComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupProcessComponent should initialize " time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupProcessComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ReviewPolicyScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ReviewPolicyScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupPolicyBelongsToAnotherComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupPolicyBelongsToAnotherComponent">
     <skipped/>
   </testcase>
   <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/bop" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
@@ -1065,831 +593,39 @@ error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-policy-svg
   <testcase name="PolicyNotFoundScreenComponent should call get ovbservable on initialization" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
     <skipped/>
   </testcase>
-  <testcase name="CreateAccountService should return formbase to create account service" time="0.005" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountService"/>
-  <testcase name="BillingSidebarComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingSidebarComponent">
+  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to my-insurance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
     <skipped/>
   </testcase>
-  <testcase name="BillingDetailsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingDetailsComponent">
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/notfound" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
     <skipped/>
   </testcase>
-  <testcase name="CreateNewPasswordFormService should create new password form" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordFormService">
+  <testcase name="PolicyNotFoundScreenComponent should call updateObservable" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
     <skipped/>
   </testcase>
-  <testcase name="LoggedinSidenavComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoggedinSidenavComponent">
+  <testcase name="PolicyNotFoundScreenComponent should update policy holdername and number" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
     <skipped/>
   </testcase>
-  <testcase name="AddressChangeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddressChangeComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="InformationAboutComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationAboutComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="FullstateToAbvPipe create an instance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).FullstateToAbvPipe"/>
-  <testcase name="ClaimsAccordianFaqComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsAccordianFaqComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="EditPhoneService should return the phone formbase" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPhoneService">
-    <skipped/>
-  </testcase>
-  <testcase name="PolicyBelongToAnotherScreenComponent should redirect ro createpassword page" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyBelongToAnotherScreenComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PolicyBelongToAnotherScreenComponent should create usr object" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyBelongToAnotherScreenComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PolicyBelongToAnotherScreenComponent should throw error" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyBelongToAnotherScreenComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PolicyDetailsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDetailsComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="EditPolicyService should return formbase to edit policy service" time="0.013" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyService"/>
-  <testcase name="DashboardComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).DashboardComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="InformationHomeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationHomeComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PolicyNotFoundComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="LoginComponent should get the null inputs" time="0.058" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginComponent"/>
-  <testcase name="LoginComponent should get the inputs" time="0.05" classname="Chrome_71_0_3578_(Windows_10_0_0).LoginComponent"/>
-  <testcase name="ContactBillingRepService should be created" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).ContactBillingRepService"/>
-  <testcase name="EditEmailService should return the email textbox" time="0.007" classname="Chrome_71_0_3578_(Windows_10_0_0).EditEmailService"/>
-  <testcase name="EmailEmailPasswordFormService should return the password textbox" time="0.008" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailEmailPasswordFormService"/>
-  <testcase name="EmailEmailPasswordFormService should return the email textbox" time="0.012" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailEmailPasswordFormService"/>
-  <testcase name="AddPolicyComponent should verify policy and route user to createpassword page" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="AddPolicyComponent should return the false checkbox value" time="0.09" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
-    <failure type="">  StaticInjectorError(Platform: core)[AddPolicyComponent -&gt; PolicyDataService]: 
-    NullInjectorError: No provider for PolicyDataService!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AddPolicyComponent', Function ], ngDebugContext: DebugContext_({ view: Object({ def: Object({ factory: Function, nodeFlags: 33669633, rootNodeFlags: 33554433, nodeMatchedQueries: 0, flags: 0, nodes: [ Object({ nodeIndex: 0, parent: null, renderParent: null, bindingIndex: 0, outputIndex: 0, checkIndex: 0, flags: 33554433, childFlags: 115200, directChildFlags: 115200, childMatchedQueries: 0, matchedQueries: Object({  }), matchedQueryIds: 0, references: Object({  }), ngContentIndex: null, childCount: 2, bindings: [  ], bindingFlags: 0, outputs: [  ], element: Object({ ns: '', name: 'app-add-policy-form', attrs: [  ], template: null, componentProvider: Object({ nodeIndex: 2, parent: &lt;circular reference: Object&gt;, renderParent: &lt;circular reference: Object&gt;, bindingIndex: 0, outputIndex: 0, checkIndex: 2, flags: 114688, childFlags: 0, directChildFlags: 0, childMatchedQueries: 0, matchedQueries: Object, matchedQueryIds: 0, references: Object,  ...
-Error: StaticInjectorError(DynamicTestModule)[AddPolicyComponent -&gt; PolicyDataService]: 
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at resolveDep node_modules/@angular/core/fesm5/core.js:22180:1)
-</failure>
-    <failure type="">TypeError: Cannot read property 'componentInstance' of undefined
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/add-policy/add-policy.component.spec.ts:53:25)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-    <failure type="">TypeError: Cannot read property 'getLegalCheckBoxValue' of undefined
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/add-policy/add-policy.component.spec.ts:138:15)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="AddPolicyComponent should throw error and redirect to signup/notfound" time="0.057" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
-    <failure type="">  StaticInjectorError(Platform: core)[AddPolicyComponent -&gt; PolicyDataService]: 
-    NullInjectorError: No provider for PolicyDataService!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AddPolicyComponent', Function ], ngDebugContext: DebugContext_({ view: Object({ def: Object({ factory: Function, nodeFlags: 33669633, rootNodeFlags: 33554433, nodeMatchedQueries: 0, flags: 0, nodes: [ Object({ nodeIndex: 0, parent: null, renderParent: null, bindingIndex: 0, outputIndex: 0, checkIndex: 0, flags: 33554433, childFlags: 115200, directChildFlags: 115200, childMatchedQueries: 0, matchedQueries: Object({  }), matchedQueryIds: 0, references: Object({  }), ngContentIndex: null, childCount: 2, bindings: [  ], bindingFlags: 0, outputs: [  ], element: Object({ ns: '', name: 'app-add-policy-form', attrs: [  ], template: null, componentProvider: Object({ nodeIndex: 2, parent: &lt;circular reference: Object&gt;, renderParent: &lt;circular reference: Object&gt;, bindingIndex: 0, outputIndex: 0, checkIndex: 2, flags: 114688, childFlags: 0, directChildFlags: 0, childMatchedQueries: 0, matchedQueries: Object, matchedQueryIds: 0, references: Object,  ...
-Error: StaticInjectorError(DynamicTestModule)[AddPolicyComponent -&gt; PolicyDataService]: 
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at resolveDep node_modules/@angular/core/fesm5/core.js:22180:1)
-</failure>
-    <failure type="">TypeError: Cannot read property 'componentInstance' of undefined
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/add-policy/add-policy.component.spec.ts:53:25)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-    <failure type="">Error: &lt;spyOn&gt; : could not find an object to spy upon for verifyPolicy()
-Usage: spyOn(&lt;object&gt;, &lt;methodName&gt;)
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/add-policy/add-policy.component.spec.ts:74:5)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-</failure>
-  </testcase>
-  <testcase name="AddPolicyComponent should return the true checkbox value" time="0.058" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
-    <failure type="">  StaticInjectorError(Platform: core)[AddPolicyComponent -&gt; PolicyDataService]: 
-    NullInjectorError: No provider for PolicyDataService!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AddPolicyComponent', Function ], ngDebugContext: DebugContext_({ view: Object({ def: Object({ factory: Function, nodeFlags: 33669633, rootNodeFlags: 33554433, nodeMatchedQueries: 0, flags: 0, nodes: [ Object({ nodeIndex: 0, parent: null, renderParent: null, bindingIndex: 0, outputIndex: 0, checkIndex: 0, flags: 33554433, childFlags: 115200, directChildFlags: 115200, childMatchedQueries: 0, matchedQueries: Object({  }), matchedQueryIds: 0, references: Object({  }), ngContentIndex: null, childCount: 2, bindings: [  ], bindingFlags: 0, outputs: [  ], element: Object({ ns: '', name: 'app-add-policy-form', attrs: [  ], template: null, componentProvider: Object({ nodeIndex: 2, parent: &lt;circular reference: Object&gt;, renderParent: &lt;circular reference: Object&gt;, bindingIndex: 0, outputIndex: 0, checkIndex: 2, flags: 114688, childFlags: 0, directChildFlags: 0, childMatchedQueries: 0, matchedQueries: Object, matchedQueryIds: 0, references: Object,  ...
-Error: StaticInjectorError(DynamicTestModule)[AddPolicyComponent -&gt; PolicyDataService]: 
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at resolveDep node_modules/@angular/core/fesm5/core.js:22180:1)
-</failure>
-    <failure type="">TypeError: Cannot read property 'componentInstance' of undefined
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/add-policy/add-policy.component.spec.ts:53:25)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-    <failure type="">TypeError: Cannot read property 'getLegalCheckBoxValue' of undefined
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/add-policy/add-policy.component.spec.ts:131:15)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="AddPolicyComponent should add policy to the userObject" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="AddPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="AddPolicyComponent should throw error and redirect to signup/addpolicy" time="0.057" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyComponent">
-    <failure type="">  StaticInjectorError(Platform: core)[AddPolicyComponent -&gt; PolicyDataService]: 
-    NullInjectorError: No provider for PolicyDataService!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AddPolicyComponent', Function ], ngDebugContext: DebugContext_({ view: Object({ def: Object({ factory: Function, nodeFlags: 33669633, rootNodeFlags: 33554433, nodeMatchedQueries: 0, flags: 0, nodes: [ Object({ nodeIndex: 0, parent: null, renderParent: null, bindingIndex: 0, outputIndex: 0, checkIndex: 0, flags: 33554433, childFlags: 115200, directChildFlags: 115200, childMatchedQueries: 0, matchedQueries: Object({  }), matchedQueryIds: 0, references: Object({  }), ngContentIndex: null, childCount: 2, bindings: [  ], bindingFlags: 0, outputs: [  ], element: Object({ ns: '', name: 'app-add-policy-form', attrs: [  ], template: null, componentProvider: Object({ nodeIndex: 2, parent: &lt;circular reference: Object&gt;, renderParent: &lt;circular reference: Object&gt;, bindingIndex: 0, outputIndex: 0, checkIndex: 2, flags: 114688, childFlags: 0, directChildFlags: 0, childMatchedQueries: 0, matchedQueries: Object, matchedQueryIds: 0, references: Object,  ...
-Error: StaticInjectorError(DynamicTestModule)[AddPolicyComponent -&gt; PolicyDataService]: 
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at resolveDep node_modules/@angular/core/fesm5/core.js:22180:1)
-</failure>
-    <failure type="">TypeError: Cannot read property 'componentInstance' of undefined
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/add-policy/add-policy.component.spec.ts:53:25)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-    <failure type="">Error: &lt;spyOn&gt; : could not find an object to spy upon for verifyPolicy()
-Usage: spyOn(&lt;object&gt;, &lt;methodName&gt;)
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/add-policy/add-policy.component.spec.ts:89:5)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-</failure>
-  </testcase>
-  <testcase name="AuthenticationService should throw error for confirm policy and account" time="0.012" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <failure type="">Failed: Cannot read property 'firstName' of undefined
-    at &lt;Jasmine&gt;
-    at ServiceHelpersService../src/app/_helpers/service-helpers.service.ts.ServiceHelpersService.creatUserObject src/app/_helpers/service-helpers.service.ts:26:47)
-    at AuthenticationService../src/app/_services/_iam/authentication-service.service.ts.AuthenticationService.confirmPolicyAndAccount src/app/_services/_iam/authentication-service.service.ts:32:49)
-    at UserContext.&lt;anonymous&gt; src/app/_services/_iam/authentication-service.service.spec.ts:61:17)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at AsyncTestZoneSpec.push../node_modules/zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke node_modules/zone.js/dist/async-test.js:106:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:126:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.runGuarded node_modules/zone.js/dist/zone.js:161:1)
-    at runInTestZone node_modules/zone.js/dist/async-test.js:234:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/async-test.js:168:1)
-</failure>
-  </testcase>
-  <testcase name="AuthenticationService should not update the password" time="0.017" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <failure type="">Failed: Expected one matching request for criteria "Match URL: https://mdv-doctest:443/apis/identity/users/password/user@policies.com?newPassword=test@2018&amp;token=asdfghjkl", found none.
-Error: Expected one matching request for criteria "Match URL: https://mdv-doctest:443/apis/identity/users/password/user@policies.com?newPassword=test@2018&amp;token=asdfghjkl", found none.
-    at HttpClientTestingBackend.push../node_modules/@angular/common/fesm5/http/testing.js.HttpClientTestingBackend.expectOne node_modules/@angular/common/fesm5/http/testing.js:292:1)
-    at UserContext.&lt;anonymous&gt; src/app/_services/_iam/authentication-service.service.spec.ts:202:8)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at AsyncTestZoneSpec.push../node_modules/zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke node_modules/zone.js/dist/async-test.js:106:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:126:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.runGuarded node_modules/zone.js/dist/zone.js:161:1)
-    at runInTestZone node_modules/zone.js/dist/async-test.js:234:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/async-test.js:168:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-    <failure type="">Error: Expected no open requests, found 1: PUT https://mdv-doctest:8087/identity/users/password/user@policies.com
-    at HttpClientTestingBackend.push../node_modules/@angular/common/fesm5/http/testing.js.HttpClientTestingBackend.verify node_modules/@angular/common/fesm5/http/testing.js:326:1)
-    at UserContext.&lt;anonymous&gt; src/app/_services/_iam/authentication-service.service.spec.ts:40:14)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="AuthenticationService should verify the policy" time="0.011" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <failure type="">Failed: Cannot read property 'firstName' of undefined
-    at &lt;Jasmine&gt;
-    at ServiceHelpersService../src/app/_helpers/service-helpers.service.ts.ServiceHelpersService.creatUserObject src/app/_helpers/service-helpers.service.ts:42:47)
-    at AuthenticationService../src/app/_services/_iam/authentication-service.service.ts.AuthenticationService.verifyPolicy src/app/_services/_iam/authentication-service.service.ts:137:45)
-    at UserContext.&lt;anonymous&gt; src/app/_services/_iam/authentication-service.service.spec.ts:210:17)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at AsyncTestZoneSpec.push../node_modules/zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke node_modules/zone.js/dist/async-test.js:106:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:126:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.runGuarded node_modules/zone.js/dist/zone.js:161:1)
-    at runInTestZone node_modules/zone.js/dist/async-test.js:234:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/async-test.js:168:1)
-</failure>
-  </testcase>
-  <testcase name="AuthenticationService should login successfully" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should verify the token for forgotpassword" time="0.009" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService"/>
-  <testcase name="AuthenticationService should send email on forgot password" time="0.011" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService"/>
-  <testcase name="AuthenticationService should update the password" time="0.011" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <failure type="">Failed: Expected one matching request for criteria "Match URL: https://mdv-doctest:443/apis/identity/users/password/user@policies.com?newPassword=test@2018&amp;token=asdfghjkl", found none.
-Error: Expected one matching request for criteria "Match URL: https://mdv-doctest:443/apis/identity/users/password/user@policies.com?newPassword=test@2018&amp;token=asdfghjkl", found none.
-    at HttpClientTestingBackend.push../node_modules/@angular/common/fesm5/http/testing.js.HttpClientTestingBackend.expectOne node_modules/@angular/common/fesm5/http/testing.js:292:1)
-    at UserContext.&lt;anonymous&gt; src/app/_services/_iam/authentication-service.service.spec.ts:191:8)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at AsyncTestZoneSpec.push../node_modules/zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke node_modules/zone.js/dist/async-test.js:106:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:126:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.runGuarded node_modules/zone.js/dist/zone.js:161:1)
-    at runInTestZone node_modules/zone.js/dist/async-test.js:234:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/async-test.js:168:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-    <failure type="">Error: Expected no open requests, found 1: PUT https://mdv-doctest:8087/identity/users/password/user@policies.com
-    at HttpClientTestingBackend.push../node_modules/@angular/common/fesm5/http/testing.js.HttpClientTestingBackend.verify node_modules/@angular/common/fesm5/http/testing.js:326:1)
-    at UserContext.&lt;anonymous&gt; src/app/_services/_iam/authentication-service.service.spec.ts:40:14)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="AuthenticationService should confirm policy and account" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should not login successfully" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should throw error while login" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should verify the user" time="0.008" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <failure type="">Failed: Cannot read property 'firstName' of undefined
-    at &lt;Jasmine&gt;
-    at ServiceHelpersService../src/app/_helpers/service-helpers.service.ts.ServiceHelpersService.creatUserObject src/app/_helpers/service-helpers.service.ts:49:47)
-    at AuthenticationService../src/app/_services/_iam/authentication-service.service.ts.AuthenticationService.verifyUser src/app/_services/_iam/authentication-service.service.ts:144:47)
-    at UserContext.&lt;anonymous&gt; src/app/_services/_iam/authentication-service.service.spec.ts:220:17)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at AsyncTestZoneSpec.push../node_modules/zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke node_modules/zone.js/dist/async-test.js:106:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:126:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.runGuarded node_modules/zone.js/dist/zone.js:161:1)
-    at runInTestZone node_modules/zone.js/dist/async-test.js:234:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/async-test.js:168:1)
-</failure>
-  </testcase>
-  <testcase name="AuthenticationService should verify the token for verifyaccount" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthenticationService should logout the user" time="0.009" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService"/>
-  <testcase name="AuthenticationService should create a password" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticationService">
-    <skipped/>
-  </testcase>
-  <testcase name="InformationDiscountsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationDiscountsComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PaperlessMiscComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessMiscComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="AddPolicyService should return Formbase to add policy" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).AddPolicyService"/>
-  <testcase name="ValidatePolicyRightsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ValidatePolicyRightsComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MiscColumnComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).MiscColumnComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PaperlessBillComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessBillComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="AbvToFulstatePipe create an instance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AbvToFulstatePipe">
-    <skipped/>
-  </testcase>
-  <testcase name="LinkPolicyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LinkPolicyComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreateNewPasswordSetComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordSetComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="TestingComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).TestingComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ContactComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ContactComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CustomDateFormatPipe create an instance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CustomDateFormatPipe">
-    <skipped/>
-  </testcase>
-  <testcase name="AppComponent should have as title 'app'" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AppComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="AppComponent should render title in a h1 tag" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AppComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="AppComponent should create the app" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).AppComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ClaimsMiscComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsMiscComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ProfileSettingsRoutingService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileSettingsRoutingService">
-    <skipped/>
-  </testcase>
-  <testcase name="PolicyInProcessComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyInProcessComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="SignupComponent should get the null inputs" time="0.035" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupComponent">
-    <failure type="">  StaticInjectorError(Platform: core)[SignupComponent -&gt; UserService]: 
-    NullInjectorError: No provider for UserService!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'SignupComponent', Function ], ngDebugContext: DebugContext_({ view: Object({ def: Object({ factory: Function, nodeFlags: 33673729, rootNodeFlags: 33554433, nodeMatchedQueries: 0, flags: 0, nodes: [ Object({ nodeIndex: 0, parent: null, renderParent: null, bindingIndex: 0, outputIndex: 0, checkIndex: 0, flags: 33554433, childFlags: 119296, directChildFlags: 119296, childMatchedQueries: 0, matchedQueries: Object({  }), matchedQueryIds: 0, references: Object({  }), ngContentIndex: null, childCount: 2, bindings: [  ], bindingFlags: 0, outputs: [  ], element: Object({ ns: '', name: 'app-signup', attrs: [  ], template: null, componentProvider: Object({ nodeIndex: 2, parent: &lt;circular reference: Object&gt;, renderParent: &lt;circular reference: Object&gt;, bindingIndex: 0, outputIndex: 0, checkIndex: 2, flags: 114688, childFlags: 0, directChildFlags: 0, childMatchedQueries: 0, matchedQueries: Object, matchedQueryIds: 0, references: Object, ngContentIndex ...
-Error: StaticInjectorError(DynamicTestModule)[SignupComponent -&gt; UserService]: 
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at resolveDep node_modules/@angular/core/fesm5/core.js:22180:1)
-</failure>
-    <failure type="">TypeError: Cannot read property 'componentInstance' of undefined
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/routes/signup/signup.component.spec.ts:50:25)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-    <failure type="">Error: &lt;spyOn&gt; : could not find an object to spy upon for getInputs()
-Usage: spyOn(&lt;object&gt;, &lt;methodName&gt;)
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/routes/signup/signup.component.spec.ts:63:5)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-</failure>
-  </testcase>
-  <testcase name="SignupComponent should get the inputs" time="0.073" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupComponent">
-    <failure type="">  StaticInjectorError(Platform: core)[SignupComponent -&gt; UserService]: 
-    NullInjectorError: No provider for UserService!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'SignupComponent', Function ], ngDebugContext: DebugContext_({ view: Object({ def: Object({ factory: Function, nodeFlags: 33673729, rootNodeFlags: 33554433, nodeMatchedQueries: 0, flags: 0, nodes: [ Object({ nodeIndex: 0, parent: null, renderParent: null, bindingIndex: 0, outputIndex: 0, checkIndex: 0, flags: 33554433, childFlags: 119296, directChildFlags: 119296, childMatchedQueries: 0, matchedQueries: Object({  }), matchedQueryIds: 0, references: Object({  }), ngContentIndex: null, childCount: 2, bindings: [  ], bindingFlags: 0, outputs: [  ], element: Object({ ns: '', name: 'app-signup', attrs: [  ], template: null, componentProvider: Object({ nodeIndex: 2, parent: &lt;circular reference: Object&gt;, renderParent: &lt;circular reference: Object&gt;, bindingIndex: 0, outputIndex: 0, checkIndex: 2, flags: 114688, childFlags: 0, directChildFlags: 0, childMatchedQueries: 0, matchedQueries: Object, matchedQueryIds: 0, references: Object, ngContentIndex ...
-Error: StaticInjectorError(DynamicTestModule)[SignupComponent -&gt; UserService]: 
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at resolveDep node_modules/@angular/core/fesm5/core.js:22180:1)
-</failure>
-    <failure type="">TypeError: Cannot read property 'componentInstance' of undefined
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/routes/signup/signup.component.spec.ts:50:25)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-    <failure type="">TypeError: Cannot read property 'inputs' of undefined
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/routes/signup/signup.component.spec.ts:59:22)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="CreateNewPasswordExpiredComponent should get email from parameter" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordExpiredComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreateNewPasswordExpiredComponent should call getEmailFromParameter" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordExpiredComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ContactBillingRepFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ContactBillingRepFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthGuard should not route when user is not logged in" time="0.025" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthGuard"/>
-  <testcase name="AuthGuard should be able to route when user is logged in" time="0.013" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthGuard"/>
-  <testcase name="ProfileEmailConfirmComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileEmailConfirmComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="MyInsuranceComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).MyInsuranceComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ForgotPasswordNondynamicComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordNondynamicComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="StorageServiceObservablesService should be created" time="0.007" classname="Chrome_71_0_3578_(Windows_10_0_0).StorageServiceObservablesService"/>
-  <testcase name="EmailConfirmationComponent should send email to user and emit true" time="0.046" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailConfirmationComponent"/>
-  <testcase name="EmailConfirmationComponent should emit false value" time="0.051" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailConfirmationComponent"/>
-  <testcase name="EmailConfirmationComponent should do nothing" time="0.044" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailConfirmationComponent"/>
-  <testcase name="EmailConfirmationComponent should throw error" time="0.044" classname="Chrome_71_0_3578_(Windows_10_0_0).EmailConfirmationComponent"/>
-  <testcase name="ClaimsHomePropertyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsHomePropertyComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="SignupProcessComponent should initialize " time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupProcessComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="SignupProcessComponent should initialize user and update whereInTheProcess" time="0.034" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupProcessComponent">
-    <failure type="">TypeError: component.ngOnInit is not a function
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/routes/signup/signup-process/signup-process.component.spec.ts:98:15)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="estingService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).estingService">
-    <skipped/>
-  </testcase>
-  <testcase name="ClaimsHomeComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsHomeComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="EditEmailFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditEmailFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ChangePasswordFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="BillingNewpaymentComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingNewpaymentComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ProfileEditPasswordComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileEditPasswordComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ChangeProfileEmailService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeProfileEmailService">
-    <skipped/>
-  </testcase>
-  <testcase name="ForgotPasswordTooManyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ForgotPasswordTooManyComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ClaimsDetailComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsDetailComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="EditPolicyDetailsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EditPolicyDetailsComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreatePasswordFormComponent should initializes parameters oninitialization" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreatePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreatePasswordFormComponent should redirect user to verify account" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreatePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreatePasswordFormComponent should call updatePassword method" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreatePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreatePasswordFormComponent should call createPassword method" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreatePasswordFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ClaimsHomeClosedComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsHomeClosedComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="AuthGuard should be able to route when user has an observable" time="0.01" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthGuard"/>
-  <testcase name="AuthGuard should not route when user has no observable" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthGuard"/>
-  <testcase name="ApartmentPipePipe create an instance" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ApartmentPipePipe">
-    <skipped/>
-  </testcase>
-  <testcase name="ProfileCheckingAccountComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileCheckingAccountComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="BusinesspolicyDetectedComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BusinesspolicyDetectedComponent">
+  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to verifyaccount" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyNotFoundScreenComponent">
     <skipped/>
   </testcase>
   <testcase name="ProfilePhoneComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfilePhoneComponent">
     <skipped/>
   </testcase>
-  <testcase name="ProfileMainComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileMainComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/addpolicy" time="0.058" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent">
-    <failure type="">Error: Expected '/signup/add-policy' to be '/signup/addpolicy'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/create-account-form/create-account-form.component.spec.ts:147:29)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-  </testcase>
-  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/emailinuse" time="0.052" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent">
-    <failure type="">Error: Expected '/signup/email-in-use' to be '/signup/emailinuse'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/create-account-form/create-account-form.component.spec.ts:131:29)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-  </testcase>
-  <testcase name="CreateAccountFormComponent should call register() to register the user" time="0.045" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent">
-    <failure type="">Error: Expected '/signup/create-password' to be '/signup/createpassword'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/create-account-form/create-account-form.component.spec.ts:117:29)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-  </testcase>
-  <testcase name="CreateAccountFormComponent should update the user object" time="0.1" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent"/>
-  <testcase name="CreateAccountFormComponent should create the user object" time="0.059" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateAccountFormComponent">
-    <failure type="">Error: Expected undefined to be 'first'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/create-account-form/create-account-form.component.spec.ts:72:38)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-    <failure type="">Error: Expected undefined to be 'last'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/create-account-form/create-account-form.component.spec.ts:73:37)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-    <failure type="">Error: Expected undefined to be 'middle'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/create-account-form/create-account-form.component.spec.ts:74:39)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-    <failure type="">Error: Expected undefined to be 'test@xyz.com'.
-    at &lt;Jasmine&gt;
-    at UserContext.&lt;anonymous&gt; src/app/components/forms/dynamic-forms/create-account-form/create-account-form.component.spec.ts:75:34)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-</failure>
-  </testcase>
-  <testcase name="DashboardNavComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).DashboardNavComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ClaimsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PaperlessPayComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessPayComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="BankAccountService should be created" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BankAccountService">
-    <skipped/>
-  </testcase>
-  <testcase name="ProfileSettingsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileSettingsComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="VerifyAccountScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).VerifyAccountScreenComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ContactScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ContactScreenComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="OnboardingWalletFrontComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).OnboardingWalletFrontComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ProfileEditEmailComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileEditEmailComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="InformationRenewalComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).InformationRenewalComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="SendEmailFormComponent should check is valid method" time="0.036" classname="Chrome_71_0_3578_(Windows_10_0_0).SendEmailFormComponent"/>
-  <testcase name="SendEmailFormComponent should send email id to authservice when forgot password" time="0.037" classname="Chrome_71_0_3578_(Windows_10_0_0).SendEmailFormComponent"/>
-  <testcase name="SendEmailFormComponent should get email from existing parameters" time="0.039" classname="Chrome_71_0_3578_(Windows_10_0_0).SendEmailFormComponent"/>
-  <testcase name="SendEmailFormComponent should run getEmailParameter on initialization" time="0.036" classname="Chrome_71_0_3578_(Windows_10_0_0).SendEmailFormComponent"/>
-  <testcase name="ChangeEmailService should be created" time="0.007" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangeEmailService">
-    <failure type="">Error: StaticInjectorError(DynamicTestModule)[AuthenticationService -&gt; HttpClient]: 
-  StaticInjectorError(Platform: core)[AuthenticationService -&gt; HttpClient]: 
-    NullInjectorError: No provider for HttpClient!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AuthenticationService', Function ] })
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at injectInjectorOnly node_modules/@angular/core/fesm5/core.js:1772:1)
-</failure>
-  </testcase>
-  <testcase name="ClaimsComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="PaperlessPolicyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).PaperlessPolicyComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CheckingAccountFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CheckingAccountFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreateNewPasswordComponent should set successChangePassword to true" time="0.056" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should set successChangePassword to false" time="0.061" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="CreateNewPasswordComponent should return false if the token is invalid" time="0.053" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should set successpassword property to true" time="0.063" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should call isTockenValid if route params exists" time="0.079" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should verify if the token is valid" time="0.049" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
-  <testcase name="CreateNewPasswordComponent should verify for the invalid token" time="0.12" classname="Chrome_71_0_3578_(Windows_10_0_0).CreateNewPasswordComponent"/>
-  <testcase name="PolicyDataService should update the observable for policy by email" time="0.013" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDataService">
-    <failure type="">Error: Expected one matching request for criteria "Match URL: https://mdv-doctest:443/apis/personal-policies/testmfre@gmail.com", found none.
-    at HttpClientTestingBackend.push../node_modules/@angular/common/fesm5/http/testing.js.HttpClientTestingBackend.expectOne node_modules/@angular/common/fesm5/http/testing.js:292:1)
-    at UserContext.&lt;anonymous&gt; src/app/_services/my-insurance/policy-details.service.spec.ts:34:26)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="PolicyDataService should update the observable for documents by policy number" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).PolicyDataService">
-    <failure type="">Error: Expected one matching request for criteria "Match URL: https://mdv-doctest:443/apis/personal-policies/BBWQKQ/documents", found none.
-    at HttpClientTestingBackend.push../node_modules/@angular/common/fesm5/http/testing.js.HttpClientTestingBackend.expectOne node_modules/@angular/common/fesm5/http/testing.js:292:1)
-    at UserContext.&lt;anonymous&gt; src/app/_services/my-insurance/policy-details.service.spec.ts:45:26)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/fake-async-test.js:597:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
-    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
-    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:390:1)
-    at Zone../node_modules/zone.js/dist/zone.js.Zone.run node_modules/zone.js/dist/zone.js:150:1)
-    at runInTestZone node_modules/zone.js/dist/jasmine-patch.js:145:1)
-    at UserContext.&lt;anonymous&gt; node_modules/zone.js/dist/jasmine-patch.js:160:1)
-    at &lt;Jasmine&gt;
-</failure>
-  </testcase>
-  <testcase name="ReviewPolicyScreenComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ReviewPolicyScreenComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ChangePhoneService should be created" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangePhoneService">
-    <failure type="">Error: StaticInjectorError(DynamicTestModule)[PolicyDetailsService -&gt; HttpClient]: 
-  StaticInjectorError(Platform: core)[PolicyDetailsService -&gt; HttpClient]: 
-    NullInjectorError: No provider for HttpClient!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'PolicyDetailsService', Function ] })
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at injectInjectorOnly node_modules/@angular/core/fesm5/core.js:1772:1)
-</failure>
-  </testcase>
-  <testcase name="LoggedinAccountHeaderComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).LoggedinAccountHeaderComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ClaimsReportComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsReportComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ProfileConfirmModalComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileConfirmModalComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ProfileComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ProfileComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="SignUpGuard should be able to route when user has an observable" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).SignUpGuard"/>
-  <testcase name="SignUpGuard should not route when user there is no user observable" time="0.01" classname="Chrome_71_0_3578_(Windows_10_0_0).SignUpGuard"/>
-  <testcase name="AuthenticateUserService should be created" time="0.006" classname="Chrome_71_0_3578_(Windows_10_0_0).AuthenticateUserService">
-    <failure type="">Error: StaticInjectorError(DynamicTestModule)[SignUpGuard -&gt; UserService]: 
-  StaticInjectorError(Platform: core)[SignUpGuard -&gt; UserService]: 
-    NullInjectorError: No provider for UserService!
-error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'SignUpGuard', Function ] })
-    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
-    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
-    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
-    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
-    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
-    at injectInjectorOnly node_modules/@angular/core/fesm5/core.js:1772:1)
-</failure>
-  </testcase>
-  <testcase name="ChangePhoneComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ChangePhoneComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="BillingComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).BillingComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="ClaimsNavigationComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).ClaimsNavigationComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="EnrollEftEpayFormComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EnrollEftEpayFormComponent">
-    <skipped/>
-  </testcase>
-  <testcase name="UserService should update the user" time="0.007" classname="Chrome_71_0_3578_(Windows_10_0_0).UserService"/>
-  <testcase name="EnrollComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).EnrollComponent">
+  <testcase name="SignupEditPolicyComponent should create" time="0" classname="Chrome_71_0_3578_(Windows_10_0_0).SignupEditPolicyComponent">
     <skipped/>
   </testcase>
   <system-out>
-    <![CDATA[Chrome 71.0.3578 (Windows 10.0.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+    <![CDATA[Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 1, creationDate: Wed Jan 30 2019 10:53:53 GMT-0500 (Eastern Standard Time), email: 'first@xyz.com', firstName: 'first', middleName: 'middle', lastName: 'last', password: 'passwd', policyDetails: [Object{}], temporaryPassword: 'temp'}
+,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{email: 'test@xyz.com'}
+,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', null
 ,Chrome 71.0.3578 (Windows 10.0.0) WARN: undefined
 ,Chrome 71.0.3578 (Windows 10.0.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
 ,Chrome 71.0.3578 (Windows 10.0.0) WARN: undefined
 ,Chrome 71.0.3578 (Windows 10.0.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: undefined
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: undefined
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 2, firstName: 'Conrad', middleName: '', lastName: 'Gagne', email: 'user@policies.com', password: 'test@2018', policyDetails: [Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}, Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}]}
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 2, firstName: 'Conrad', middleName: '', lastName: 'Gagne', email: 'user@policies.com', password: 'test@2018', policyDetails: [Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}, Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}]}
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 2, firstName: 'Conrad', middleName: '', lastName: 'Gagne', email: 'user@policies.com', password: 'test@2018', policyDetails: [Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}, Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}]}
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 2, firstName: 'Conrad', middleName: '', lastName: 'Gagne', email: 'user@policies.com', password: 'test@2018', policyDetails: [Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}, Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}]}
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 2, firstName: 'Conrad', middleName: '', lastName: 'Gagne', email: 'user@policies.com', password: 'test@2018', policyDetails: [Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}, Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}]}
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 2, firstName: 'Conrad', middleName: '', lastName: 'Gagne', email: 'user@policies.com', password: 'test@2018', policyDetails: [Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}, Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}]}
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 2, firstName: 'Conrad', middleName: '', lastName: 'Gagne', email: 'user@policies.com', password: 'test@2018', policyDetails: [Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}, Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}]}
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 2, firstName: 'Conrad', middleName: '', lastName: 'Gagne', email: 'user@policies.com', password: 'test@2018', policyDetails: [Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}, Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}]}
 ,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'error'
 ,Chrome 71.0.3578 (Windows 10.0.0) WARN: undefined
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{email: 'test@xyz.com'}
 ,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', null
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: undefined
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: undefined
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 2, firstName: 'Conrad', middleName: '', lastName: 'Gagne', email: 'user@policies.com', password: 'test@2018', policyDetails: [Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}, Object{InsName1: ..., effDate: ..., expDate: ..., policynumber: ..., policyStatus: ..., policyType: ..., status: ...}]}
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
-,Chrome 71.0.3578 (Windows 10.0.0) WARN: undefined
 ,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{email: 'test@xyz.com'}
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', null
-,Chrome 71.0.3578 (Windows 10.0.0) LOG: 'userService', Object{addPolicyAttempts: 1, creationDate: Mon Jan 28 2019 21:30:17 GMT-0500 (Eastern Standard Time), email: 'first@xyz.com', firstName: 'first', middleName: 'middle', lastName: 'last', password: 'passwd', policyDetails: [Object{}], temporaryPassword: 'temp'}
 
 ]]>
   </system-out>
