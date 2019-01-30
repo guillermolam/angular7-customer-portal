@@ -2,7 +2,7 @@ import { Component, Input, OnInit }     from '@angular/core';
 import { FormGroup }                    from '@angular/forms';
 import { ActivatedRoute, Router, Params }
                                         from '@angular/router';
-import { AlertService, RegExHelper, FormBase, FormBaseControlService }
+import { AlertService, RegExHelper, FormBase, FormBaseControlService, GetGooglePlaceService }
                                         from 'mapfre-design-library';
 import { AuthenticationService }        from '../../../../../_services/_iam/authentication-service.service';
 import { ChangeAddressService }         from './../../../../../_services/change-address/change-address.service';
@@ -23,6 +23,7 @@ export class ChangeAddressComponent implements OnInit {
       loading:                          boolean = false;
       policyID:                         string;
       user:                             any;
+      addressObject:               any;
 
     constructor(
       private activatedRoute:           ActivatedRoute,
@@ -32,14 +33,9 @@ export class ChangeAddressComponent implements OnInit {
       private ipt:                      FormBaseControlService,
       private regExHelper:              RegExHelper,
       private router:                   Router,
-      private userService:              UserService
+      private userService:              UserService,
+      private getGooglePlaceService:    GetGooglePlaceService
     ) {}
-
-  addressObject(): object {
-    return {
-
-    };
-  }
 
   changeAddress(): void {
     console.log(this.changeAddressForm);
@@ -51,11 +47,9 @@ export class ChangeAddressComponent implements OnInit {
     }
   }
 
-  mailing(policyid, object): void {
-    this.changeAddressService
-      .updateMailingAddress(policyid, object)
-      .subscribe((success) => {
-        this.reSync(this.user.userDetails.email.address);
+  mailing(policyid, object) {
+    this.changeAddressService.updateMailingAddress(policyid, object).subscribe((success) => {
+        // this.reSync(this.user.userDetails.email.address);
         this.alertService.success('You have updated your mailing address', true);
         this.router.navigate(['/my-insurance']);
       },
@@ -76,11 +70,9 @@ export class ChangeAddressComponent implements OnInit {
       });
   }
 
-  residental(policyid, object): void {
-    this.changeAddressService
-      .updateResidentialAddress(policyid, object)
-      .subscribe((success) => {
-        this.reSync(this.user.userDetails.email.address);
+  residental(policyid, object) {
+    this.changeAddressService.updateResidentialAddress(policyid, object).subscribe((success) => {
+        // this.reSync(this.user.userDetails.email.address);
         this.alertService.success('You have updated your residental address', true);
         this.router.navigate(['/my-insurance']);
       },
@@ -90,9 +82,12 @@ export class ChangeAddressComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getGooglePlaceService.$address.subscribe((address)=>{
+      this.addressObject = address;
+    })
     this.activatedRoute.params.subscribe((params: Params) => {
       this.addressType =              params['address-type'];
-      this.policyID =                 params['policy-id'];
+      this.policyID =                 params['policyid'];
       this.userService.$user.subscribe( (userinfo) => {
         this.user =                   userinfo;
       })
