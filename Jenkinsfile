@@ -59,6 +59,7 @@ pipeline{
 								verbose: true,
 								credential: '',
 								extraVars: '''---
+comma_separated_hosts: "mdv-doctest02"
 user: "glam"
 docker_registry_username: "$DOCKER_NEXUS_CREDS_USR"
 docker_registry_password: "$DOCKER_NEXUS_CREDS_PSW"
