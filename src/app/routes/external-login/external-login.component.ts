@@ -30,6 +30,7 @@ export class ExternalLoginComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    console.log('isAuthenticated',this.isAuthenticated());
     this.login();
   }
 

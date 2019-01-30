@@ -80,11 +80,12 @@ export class AuthService {
 
   public logout(): void {
     // Remove tokens and expiry time
+    console.log('loggedout');
     this._accessToken = '';
     this._idToken = '';
     this._expiresAt = 0;
     // Remove isLoggedIn flag from localStorage
-    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('access_token');
     // Go back to the home route
     this.router.navigate(['/']);
   }

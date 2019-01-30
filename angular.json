@@ -24,7 +24,12 @@
                 "input": "./node_modules/mapfre-design-library/assets/",
                 "output": "./assets/"
               },
-              "src/manifest.json"
+              "src/manifest.json",
+              {
+                "glob": "Staticfile",
+                "input": "./Staticfile",
+                "output": "./Staticfile"
+              }
             ],
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.scss",

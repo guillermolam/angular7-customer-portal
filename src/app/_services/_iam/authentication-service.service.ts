@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/auth.service';
 import { HttpClient }             from '@angular/common/http';
 import { Injectable }             from '@angular/core';
 import { of, throwError,
@@ -17,7 +18,8 @@ export class AuthenticationService {
   constructor(
     private http:             HttpClient,
     private serviceHelpers:   ServiceHelpersService,
-    private bankAccountService: BankAccountService
+    private bankAccountService: BankAccountService,
+    private auth:               AuthService
   ) {
     // set token if saved in local storage
     const currentUser =       JSON.parse(localStorage.getItem('currentUser'));
@@ -93,8 +95,8 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    this.token =        null;
-    localStorage.removeItem('currentUser');
+    this.auth.logout();
+    localStorage.removeItem('access_token');
   }
 
   tokenVerification(token: string, email: string): Observable<object> {
