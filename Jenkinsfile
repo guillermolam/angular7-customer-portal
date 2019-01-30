@@ -13,18 +13,18 @@ pipeline{
 		}
 		
 		// Running unit test after build
-		stage('RUN UNIT TESTS'){
-		  steps{
+		//stage('RUN UNIT TESTS'){
+		  //steps{
 		    	// Added to run unit test case for all module.
-		      sh "npm run cibuild_test"
-		  }
-		}
+		    //  sh "npm run cibuild_test"
+		  //}
+		//}
 
-		stage('STATIC ANALYSIS'){
-		    steps{
-		        sh "npm run sonar-run"
-		    }
-		}
+		//stage('STATIC ANALYSIS'){
+		  //  steps{
+		    //    sh "npm run sonar-run"
+		    //}
+		//}
 
 		stage("BUILD & PUBLISH IMAGE"){
 			environment {
@@ -39,19 +39,42 @@ pipeline{
 			}
 		}
 
-		stage("DEV"){
+		stage("DEPLOY TO DEV"){
+			environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+				CUSTOMER_PORTAL_CLIENT_ID = credentials('CUSTOMER_PORTAL_CLIENT_ID')
+				CUSTOMER_PORTAL_CLIENT_SECRET_KEY = credentials('CUSTOMER_PORTAL_CLIENT_SECRET_KEY')
+            }
 			steps{
-				pushToCloudFoundry(
-    				target: '${DEV_PCF_HOST}',
-    				organization: '${DEV_PCF_ORG}',
-    				cloudSpace: '${DEV_PCF_SPACE}',
-    				credentialsId: '${DEV_SPACE_CREDENTIALS}',
-    				pluginTimeout: '240', // default value is 120
-    				manifestChoice: [ // optional... defaults to manifestFile: manifest.yml
-        				manifestFile: 'manifest.yml'
-    				]
-				)
-			}
+        		ansibleTower(
+								towerServer: 'ANSIBLE_TOWER',
+								templateType: 'job',
+								jobTemplate: 'deploy_customer_portal_ui_on_prem',
+								importTowerLogs: true,
+								inventory: 'ON_PREM_DEVELOPMENT',
+								jobTags: '',
+								skipJobTags: '',
+								limit: '',
+								removeColor: false,
+								verbose: true,
+								credential: '',
+								extraVars: '''---
+user: "glam"
+docker_registry_username: "$DOCKER_NEXUS_CREDS_USR"
+docker_registry_password: "$DOCKER_NEXUS_CREDS_PSW"
+docker_registry: "${NEXUS_REPO_URL}"
+image_name: "${NEXUS_REPO_URL}/${JOB_NAME}-dev"
+tag: "${BUILD_NUMBER}"
+container_name: "${CUSTOMER_PORTAL_APP_NAME}"
+container_image: "${NEXUS_REPO_URL}/${JOB_NAME}-dev:${BUILD_NUMBER}"
+api_gateway_url: "https://dev.mapfreapis.com/"
+client_id: "$CUSTOMER_PORTAL_CLIENT_ID"
+client_secret: "$CUSTOMER_PORTAL_CLIENT_SECRET_KEY"
+ports: 
+ - "80:80"
+ - "443:443"'''
+            )			
+				}
 		}
 
 		stage("PERFORMANCE ANALYSIS"){
@@ -104,14 +127,41 @@ pipeline{
 			}
 		}
 
-		// stage("PROD"){
-		// 	environment {
-		// 		DOCKER_NEXUS_CREDS = credentials('nexus')
-        //     }
-		// 	steps{
-        					
-		// 		}
-		// }
+		stage("PROD"){
+			environment {
+				DOCKER_NEXUS_CREDS = credentials('nexus')
+            }
+			steps{
+        		ansibleTower(
+								towerServer: 'ANSIBLE_TOWER',
+								templateType: 'job',
+								jobTemplate: 'deploy_customer_portal_ui_to_aws',
+								importTowerLogs: true,
+								inventory: 'AWS_DEVELOPMENT',
+								jobTags: '',
+								skipJobTags: '',
+								limit: '',
+								removeColor: false,
+								verbose: true,
+								credential: '',
+								extraVars: '''---
+user: "ec2-user"
+docker_registry_username: "$DOCKER_NEXUS_CREDS_USR"
+docker_registry_password: "$DOCKER_NEXUS_CREDS_PSW"
+docker_registry: "${NEXUS_REPO_URL}"
+image_name: "${NEXUS_REPO_URL}/${JOB_NAME}"
+tag: "${BUILD_NUMBER}"
+container_name: "${CUSTOMER_PORTAL_APP_NAME}"
+container_image: "${NEXUS_REPO_URL}/${JOB_NAME}:${BUILD_NUMBER}"
+api_gateway_url: "https://mapfreapis.com:443/"
+client_id: "$CUSTOMER_PORTAL_CLIENT_ID"
+client_secret: "$CUSTOMER_PORTAL_CLIENT_SECRET_KEY"
+ports: 
+ - "80:80"
+ - "443:443"'''
+            )			
+				}
+		}
 	}
 }
 
