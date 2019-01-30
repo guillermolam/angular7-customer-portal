@@ -17,11 +17,7 @@ export class ClaimsHomeClosedComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.claims = this.testingData.testDataClaims('list');
-    if (this.claims.length == 0) {
-      // this should probably be a guard?
-      this.router.navigate(['/claims']);
-    }
+    
   }
 
 }

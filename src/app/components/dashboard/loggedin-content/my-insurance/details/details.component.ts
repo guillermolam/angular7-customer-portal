@@ -170,10 +170,7 @@ export class PolicyDetailsComponent implements OnInit {
     this.policyDetailsService
     .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
     .subscribe(
-      (success) => console.log('loading Complete'),
-      (err) => {
-        this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
-      },
+      (success) => console.log('Loading Complete'),
     );
   }
 

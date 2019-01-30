@@ -24,7 +24,7 @@ describe('WalletCardService', () => {
     walletService = TestBed.get(WalletCardService);
   });
 
-  it('should return the Policy details', fakeAsync( () => {
+  xit('should return the Policy details', fakeAsync( () => {
     const email = 'testmc@gmail.com';
     const arrayBuffer = new ArrayBuffer(1);
 
