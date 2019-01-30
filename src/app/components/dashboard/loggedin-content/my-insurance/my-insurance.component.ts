@@ -25,7 +25,6 @@ export class MyInsuranceComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private router:                   Router,
     private userService:              UserService,
-    private testingData:              TestingDataService,
     // private userInfoService:       UserInfoService,
     private storageService:           StorageServiceObservablesService,
     // private policyDetailsService:  PolicyDetailsService

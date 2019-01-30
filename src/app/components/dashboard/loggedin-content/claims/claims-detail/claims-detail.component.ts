@@ -5,8 +5,6 @@ import { DomSanitizer, SafeUrl }    from '@angular/platform-browser';
 import { ClaimsDataService }        from '../../../../../_services/_claims/claims-data.service';
 import { UserService }              from '../../../../../_services/user.service';
 
-import { TestingDataService }       from '../../../../../_helpers/testing-data.service';
-
 @Component({
   selector: 'app-claims-detail',
   templateUrl: './claims-detail.component.html',
@@ -20,7 +18,6 @@ export class ClaimsDetailComponent implements OnInit {
   constructor(
     private claimsDataService:      ClaimsDataService,
     private userService:            UserService,
-    private testingData:            TestingDataService,
     private activeRoute:            ActivatedRoute,
     private sanitizer:              DomSanitizer,
   ) { }

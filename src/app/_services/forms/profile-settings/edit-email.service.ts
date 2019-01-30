@@ -11,12 +11,11 @@ export class EditEmailService {
 
   }
 
-  getInputs(id:string) {
-    
+  getInputs(id: string) {
     const inputs: FormBase<any>[] = [
-       this.passwordService.getEmailInputs(id, 'profile-input-border')
+       this.passwordService.getEmailInputs( id, 'profile-input-border' ),
+       this.passwordService.getEmailConfirmation( id, 'profile-input-border' )
     ];
     return inputs;
   }
-
 }

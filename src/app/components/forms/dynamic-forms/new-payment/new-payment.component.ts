@@ -126,7 +126,7 @@ export class NewPaymentComponent implements OnInit {
   }
 
   setValues(checkingInfo): void {
-    const bDetails =                    checkingInfo[0].bankAccountDetails,
+    const bDetails =                    checkingInfo.bankAccountDetails,
           apartmentNo =                 bDetails.mailingAddress.streetName.split('|'),
           address = {
           streetName:                   apartmentNo[0],
@@ -182,7 +182,6 @@ export class NewPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.newPaymentForm =             this.ipt.toFormGroup(this.inputs);
     this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck) => {
       this.storeBankAccount =         bankAccountCheck;
@@ -199,10 +198,10 @@ export class NewPaymentComponent implements OnInit {
       this.userService.$user
       .subscribe((userResponse) => {
         this.checkingInfo =           userResponse;
-        if (this.checkingInfo[0].bankAccountDetails.accountHolderName) {
+        if (this.checkingInfo.bankAccountDetails.accountHolderName) {
           this.setValues(this.checkingInfo);
         }
-        this.bankDetails =            this.checkingInfo[0].bankAccountDetails;
+        this.bankDetails =            this.checkingInfo.bankAccountDetails;
       });
     });
 

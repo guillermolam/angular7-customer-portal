@@ -1,8 +1,8 @@
-import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { EditPasswordService } from '../../../../../_services/forms/profile-settings/edit-password.service';
-import { User } from 'mapfre-design-library';
-import { EditEmailService } from '../../../../../_services/forms/profile-settings/edit-email.service';
+import { ActivatedRoute }         from '@angular/router';
+import { Component, OnInit }      from '@angular/core';
+import { User }                   from 'mapfre-design-library';
+import { EditPasswordService }    from '../../../../../_services/forms/profile-settings/edit-password.service';
+import { EditEmailService }       from '../../../../../_services/forms/profile-settings/edit-email.service';
 
 @Component({
   selector: 'app-profile-edit-email',
@@ -12,21 +12,22 @@ import { EditEmailService } from '../../../../../_services/forms/profile-setting
 })
 export class ProfileEditEmailComponent implements OnInit {
 
-  verifyPassword: any[];
-  user: User = {};
-  whereInTheProcess: string;
+  verifyPassword:                 any[];
+  user:                           User = {};
+  whereInTheProcess:              string;
 
   constructor(
-    private editPasswordService: EditPasswordService,
-    private editEmailService:    EditEmailService,
-    private activatedRoute:      ActivatedRoute
+    private activatedRoute:       ActivatedRoute,
+    private editPasswordService:  EditPasswordService,
+    private editEmailService:     EditEmailService
   ) { }
 
   ngOnInit() {
-    this.whereInTheProcess = this.activatedRoute.snapshot.routeConfig.path;
-    if(this.whereInTheProcess==='edit-email'){
+    this.whereInTheProcess =      this.activatedRoute.snapshot.routeConfig.path;
+    if ( this.whereInTheProcess === 'edit-email' ) {
       this.verifyPassword = this.editEmailService.getInputs('changeEmail');
-    }else {
+    }
+    else {
       this.verifyPassword = this.editPasswordService.getInputs('changePassword');
     }
   }

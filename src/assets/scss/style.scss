@@ -707,6 +707,10 @@ h1.title-cta {
   padding: 32px;
 }
 
+.inline-svg .svg-container {
+  display: inline;
+}
+
 .input-control.disabled {
   .btn.mapfre.ghost.primary:disabled {
     border-color: #c6db80;
