@@ -106,7 +106,7 @@ ports:
 
 		stage('E2E TEST'){
             steps {
-                sh 'npm run pre_e2e'
+                // sh 'npm run pre_e2e' // coz of docker used for selenium
                 sh 'npm run e2e_compile'
                 sh 'npm run e2e_run'
             }
