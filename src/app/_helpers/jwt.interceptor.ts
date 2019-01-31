@@ -23,7 +23,7 @@ export class JwtInterceptor implements HttpInterceptor {
     if (currentUser && currentUser.current_user) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${currentUser.current_user.current_user}`,
+          Authorization: `Bearer ${currentUser.current_user.jwt_token}`,
         },
       });
     }
@@ -32,7 +32,7 @@ export class JwtInterceptor implements HttpInterceptor {
     .pipe(catchError((e) => {
       console.log(e);
       if((e.status == 401 && e.error.error === 'Invalid Request')){
-        // this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
       }
         return throwError(e);     
     }))

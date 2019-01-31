@@ -57,13 +57,6 @@ export class LoginFormComponent implements OnInit {
         .login (this.user.email, this.user.password)
         .subscribe (
           (data) => {
-            let redirectURl;
-            if ( this.returnUrl != '/' ) {
-              redirectURl = `/${this.returnUrl}`;
-            }
-            else {
-              redirectURl = `/my-insurance`;
-            }
             this.alertService.success('Successful Login', true);
             this.router.navigate([`/my-insurance`]);
           },
