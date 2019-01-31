@@ -79,12 +79,12 @@ export class AuthenticationService {
       }
     })
       .pipe(
-        map((jwt_token) => {
-          console.log('jwt_token', jwt_token);
-          if (jwt_token) {
+        map((access_token) => {
+          console.log('access_token', access_token);
+          if (access_token) {
             localStorage.setItem(
               'currentUser',
-              JSON.stringify({ username, jwt_token })
+              JSON.stringify({ username, access_token })
             );
             return true;
           }
