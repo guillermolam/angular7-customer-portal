@@ -1,4 +1,3 @@
-import { AuthService } from './auth/auth.service';
 import { ActivatedRoute, Router }     from '@angular/router';
 import { Component, enableProdMode, OnInit }  from '@angular/core';
 import { TranslateService }           from '@ngx-translate/core';
@@ -18,24 +17,12 @@ export class AppComponent implements OnInit {
     public translate:       TranslateService,
     public _languages:      Language,
     private activeRoute:    ActivatedRoute,
-    private router:         Router,
-    private auth:           AuthService
+    private router:         Router
   ) {
      this.checkRoute();
-     this.auth.handleAuthentication();
   }
 
-  isAuthenticated(){
-    return this.auth.isAuthenticated();
-  }
-
-  login(){
-    this.auth.login();
-  }
-
-  logout(){
-    this.auth.logout();
-  }
+  
 
   checkRoute() {
     /* ** ToDo: Create a better loop ** */

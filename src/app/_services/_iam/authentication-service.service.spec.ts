@@ -95,7 +95,7 @@ describe('AuthenticationService', () => {
     let password = 'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone =      `${environment.backend_auth_server_url}/auth/oauth/v2/token`,
+    let urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}`;
     let url = urlpartone + '?' + urlparttwo;
 
@@ -115,7 +115,7 @@ describe('AuthenticationService', () => {
     let password =        'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone =      `${environment.backend_auth_server_url}/auth/oauth/v2/token`,
+    let urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}`;
     let url = urlpartone + '?' + urlparttwo;
 
@@ -134,7 +134,7 @@ describe('AuthenticationService', () => {
     let password =        'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone =      `${environment.backend_auth_server_url}/auth/oauth/v2/token`,
+    let urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}`;
     let url = urlpartone + '?' + urlparttwo;
 
@@ -151,7 +151,7 @@ describe('AuthenticationService', () => {
 
   it('should logout the user', async( () => {
     authService.token = 'token';
-    localStorage.setItem('currentUser', JSON.stringify({ user: 'username', token: 'access_token' }));
+    localStorage.setItem('currentUser', JSON.stringify({ user: 'username', token: 'current_user' }));
     authService.logout();
     expect(localStorage.getItem('currentUser')).toBeNull();
     expect(authService.token).toBeNull();
@@ -184,7 +184,7 @@ describe('AuthenticationService', () => {
 
   it('should update the password', async( () => {
     let token = 'asdfghjkl';
-    authService.updatePassword(user, token).subscribe((res: HttpResponse<number>) => {
+    authService.updatePassword(user).subscribe((res: HttpResponse<number>) => {
         expect(res.status).toBe(200);
     });
     const req = httpMock
@@ -195,7 +195,7 @@ describe('AuthenticationService', () => {
 
   it('should not update the password', async( () => {
     let token = 'asdfghjkl';
-    authService.updatePassword(user, token).subscribe((res: HttpResponse<number>) => {
+    authService.updatePassword(user).subscribe((res: HttpResponse<number>) => {
         expect(res.status).toBe(400);
     });
     const req = httpMock

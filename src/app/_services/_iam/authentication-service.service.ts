@@ -1,4 +1,3 @@
-import { AuthService } from './../../auth/auth.service';
 import { HttpClient }             from '@angular/common/http';
 import { Injectable }             from '@angular/core';
 import { of, throwError,
@@ -18,8 +17,7 @@ export class AuthenticationService {
   constructor(
     private http:             HttpClient,
     private serviceHelpers:   ServiceHelpersService,
-    private bankAccountService: BankAccountService,
-    private auth:               AuthService
+    private bankAccountService: BankAccountService
   ) {
     // set token if saved in local storage
     const currentUser =       JSON.parse(localStorage.getItem('currentUser'));
@@ -69,20 +67,24 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    const url =     `${environment.backend_server_url}/identity-api/users/authenticate`;
-      const body = {
-      email: username,
-      password: password
-      }    
-
-    return this.http.post(url, body)
+    const url =     `${environment.backend_server_url}/auth/oauth/token`;
+    return this.http.get(url,{
+      params: {
+        username: username,
+        password: password,
+        grant_type: `password`
+      },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
       .pipe(
-        map((access_token) => {
-          console.log('access_token', access_token);
-          if (access_token) {
+        map((jwt_token) => {
+          console.log('jwt_token', jwt_token);
+          if (jwt_token) {
             localStorage.setItem(
               'currentUser',
-              JSON.stringify({ username, access_token })
+              JSON.stringify({ username, jwt_token })
             );
             return true;
           }
@@ -95,8 +97,7 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    this.auth.logout();
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('currentUser');
   }
 
   tokenVerification(token: string, email: string): Observable<object> {
