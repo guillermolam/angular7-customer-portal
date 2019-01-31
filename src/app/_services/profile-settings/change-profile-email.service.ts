@@ -8,9 +8,9 @@ import { ServiceHelpersService }  from '../../_helpers/service-helpers.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ChangeProfileEmailService { 
-  backendAccounts:                string = 'https://mdv-doctest:8083';
-  backendIdentity:                string = 'https://mdv-doctest:8087';   // environment.backend_server_url
+export class ChangeProfileEmailService {
+  backendAccounts:                string = environment.backend_server_cu;
+  backendIdentity:                string = environment.backend_server_id;   // environment.backend_server_url
   email:                          any;
   process:                        boolean;
   private messageSource =         new BehaviorSubject<any>(this.email);

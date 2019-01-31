@@ -5,17 +5,16 @@ import { environment }              from '../../../environments/environment';
 
 @Injectable()
 export class WalletCardService {
-
+  backend:                          string = environment.backend_server_cu;
   constructor(
-    private http:             HttpClient,
+    private http:                   HttpClient,
   ) {}
 
   generatePkPass(policyNumber): Observable<any> {
     const options = {
         responseType:               'arraybuffer' as 'json'
     };
-    // const url: string =           `https://mdv-doctest:8083/customers/accounts/wallet/${policyNumber}`;
-    const url: string =           `${environment.backend_server_url}/customers/accounts/wallet/${policyNumber}`;
+    const url: string =             `${this.backend}/customers/accounts/wallet/${policyNumber}`;
     return this.http.get(url, options);
   }
 

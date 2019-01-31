@@ -1,44 +1,39 @@
 import { StorageServiceObservablesService } from './../storage-service-observables/storage-service-observables.service';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './../user.service';
-import { Injectable } from '@angular/core';
-import { of, throwError }         from 'rxjs';
-import { catchError, map }        from 'rxjs/operators';
+import { UserService }          from './../user.service';
+import { Injectable }           from '@angular/core';
+import { of, throwError }       from 'rxjs';
+import { catchError, map }      from 'rxjs/operators';
+import { environment }          from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticateUserService {
+  backend:                    string = environment.backend_server_id;
 
   constructor(
-    private userService: UserService,
-    private storageService: StorageServiceObservablesService,
     private http:             HttpClient,
+    private userService:      UserService,
+    private storageService:   StorageServiceObservablesService
   ) { }
 
-  
-  authenticateCurrentPassword(password){
- 
-      const url = `https://mdv-doctest:8087/identity/users/authenticate`;
-      // const url = `${environment.backend_server_url}/identity/users/authenticate`;
-      const body = {
-      email: this.storageService.getUserFromStorage(),
-      // email: user.email.address,
-      password: password
-      }    
-      return this.http.post(url,body);
+  /* will nedd to check if this is being used */
+
+  authenticateCurrentPassword(psw) {
+      const
+        url =                 `${this.backend}/identity/users/authenticate`,
+        body = {
+            email:            this.storageService.getUserFromStorage(),
+            password:         psw
+        };
+      return this.http.post(url, body);
   }
 
-
-  changeUserPassword(newPassword){
-
-    return this.userService.$user.pipe(map((user)=>{
-      const url = `https://mdv-doctest:8087/identity/users/password/${user.email.address}?newPassword=${newPassword}`;
-      // const url = `${environment.backend_server_url}/identity/users/password/${user.email.address}?newPassword=${newPassword}`;
-      return this.http.post(url,{});
-    })
-    );    
+  changeUserPassword(newPassword) {
+    return this.userService.$user.pipe( map( (user) => {
+      const url =             `${this.backend}/identity/users/password/${user.email.address}?newPassword=${newPassword}`;
+      return this.http.post(url, {});
+    }));
   }
-
-
 }

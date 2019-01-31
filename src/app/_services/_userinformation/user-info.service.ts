@@ -12,6 +12,10 @@ import { User }               from '../../_models/user';
   providedIn: 'root'
 })
 export class UserInfoService {
+  /** 
+   * May need to remove this service as it might not be in use.
+   * Thus I am not updating this service
+   */
 
   billingURL: string = 'https://mdv-doctest:8086'; ///will be removed
   httpOptions;
