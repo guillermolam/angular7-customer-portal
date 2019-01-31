@@ -72,7 +72,7 @@ import { InformationComponent }           from './routes/information/information
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword',               component: CreateNewPasswordComponent },
-  // { path: 'login',                        component: LoginComponent },
+  { path: 'login',                        component: LoginComponent },
   { path: 'signup',                       component: SignupComponent },
   { path: 'signup/:parm',                 component: SignupProcessComponent},
   { path: 'testing',                      component: TestingComponent },
