@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  backend_auth_server_url: 'http://mdv-doctest:443/auth',
+  backend_auth_server_url: 'https://mdv-doctest:443/auth',
   backend_server_url:     'https://mdv-doctest:443/apis',
   
   backend_server_cu:      'https://mdv-doctest:8083',
