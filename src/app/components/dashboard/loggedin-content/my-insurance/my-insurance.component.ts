@@ -5,7 +5,6 @@ import { UserInfoService }            from '../../../../_services/_userinformati
 import { User }                       from '../../../../_models/user';
 import { UserService }                from '../../../../_services/user.service';
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
-import { TestingDataService }         from '../../../../_helpers/testing-data.service';
 import { StorageServiceObservablesService } from '../../../../_services/storage-service-observables/storage-service-observables.service';
 // import { PolicyDetailsService } from '../../../../_services/my-insurance/policy-details.service';
 

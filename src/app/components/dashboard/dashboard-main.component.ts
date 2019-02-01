@@ -92,16 +92,7 @@ export class DashboardMainComponent implements OnInit {
             this.userService.updateUser(response);
           },
           (err) => {
-            // If one of them errors out then all of them will. This is for local and testing purposes only.
-            let ui = {
-              userDetails: this.testingData.testUserInfo(),
-              bankAccountDetails: this.testingData.testBankingInfo()
-            };
-            this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
-            this.userService.updateUser( ui );
-            this.claimsDataService.updateClaims('list', this.testingData.testDataClaims('list'));
-            this.claimsDataService.updateClaims('details', this.testingData.testDataClaims('details'));
-            this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
+
           })
           .add(() => {
             this.loading = false;

@@ -12,8 +12,6 @@ import { StorageServiceObservablesService }
 import { User }                           from './../../../../../_models/user';
 import { UserService }                    from './../../../../../_services/user.service';
 
-import { TestingDataService }             from '../../../../../_helpers/testing-data.service';
-
 @Component({
   selector: 'app-billing-confirm',
   templateUrl: './billing-confirm.component.html',

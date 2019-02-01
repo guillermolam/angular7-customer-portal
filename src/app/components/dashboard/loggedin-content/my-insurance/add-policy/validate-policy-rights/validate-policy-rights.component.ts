@@ -3,8 +3,6 @@ import { User, AlertService } from 'mapfre-design-library';
 import { AuthenticationService } from '../../../../../../_services/_iam/authentication-service.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../../../_services/user.service';
-import { FakePolicyResponse } from './../../../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-policy-response.model';
-
 
 @Component({
   selector: 'app-validate-policy-rights',
