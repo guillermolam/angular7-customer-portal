@@ -102,6 +102,7 @@ export class CreatePasswordFormComponent implements OnInit {
       .updatePassword(this.user)
       .subscribe((data) => {
       this.profileSettingsRoutingService.setChangePasswordAlert(true);
+      this.profileSettingsRoutingService.clearPasswordProcess();
       this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
       this.router.navigate(['/profile']);
       })

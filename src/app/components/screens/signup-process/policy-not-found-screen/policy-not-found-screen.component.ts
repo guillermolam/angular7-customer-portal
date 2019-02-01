@@ -5,6 +5,7 @@ import { AuthenticationService }    from '../../../../_services/_iam/authenticat
 import { UserService }              from '../../../../_services/user.service';
 import { User }                     from '../../../../_models/user';
 import { PolicyDataService } from '../../../../_services/my-insurance/data-services/policy-data.service';
+import { Location }                       from '@angular/common';
 
 
 @Component({
@@ -22,13 +23,17 @@ export class PolicyNotFoundScreenComponent implements OnInit {
     private authService:            AuthenticationService,
     private router:                 Router,
     private userService:            UserService,
-    private policyService:          PolicyDataService
-
+    private policyService:          PolicyDataService,
+    private location:               Location
   ) { }
 
   getObservableData(userData): void {
-    this.policyHolderName =         `${userData.firstName} ${userData.middleName} ${userData.lastName}`;
+    this.policyHolderName =         `${userData.userDetails.firstName} ${userData.userDetails.middleName} ${userData.userDetails.lastName}`;
     this.policyNumber =             `${userData.policyDetails[0].policynumber.policynumber}`;
+  }
+
+  goBackAPage(){
+    this.location.back();
   }
 
   tryAgain(): void {

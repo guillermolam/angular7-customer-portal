@@ -1,4 +1,4 @@
-- hosts: "mdv-doctest"
+- hosts: "{{ comma_separated_hosts }}"
   remote_user: "{{user}}"
   tasks:
   - name: Docker Login

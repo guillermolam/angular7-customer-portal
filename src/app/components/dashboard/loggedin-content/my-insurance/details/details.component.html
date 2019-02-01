@@ -42,15 +42,15 @@
                 </h2>
                 <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
                 <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
-                  <div class="col col-name">
+                  <div class="col-lg-6 col-md-8 col-sm-8 col-xs-8 col-xxs-8">
                     <strong>{{ holder['Insured Name'] }}</strong>
                   </div>
                   
-                  <div class="col" *ngIf="holder.isPrimaryInsured">
+                  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 col-xxs-4" *ngIf="holder.isPrimaryInsured">
                     <small>{{ 'PRIMARY' | translate }}</small>
                   </div>
-                  <div class="col" *ngIf="!holder.isPrimaryInsured">
-                      <small>{{ 'SECONDARY' | translate }}</small>
+                  <div class="ccol-lg-6 col-md-4 col-sm-4 col-xs-4 col-xxs-4" *ngIf="!holder.isPrimaryInsured">
+                    <small>{{ 'SECONDARY' | translate }}</small>
                   </div>
                 </div>
               </div>
@@ -65,10 +65,10 @@
                 </p>
                 <form [formGroup]="updateMileage" class="update-mileage no-padding">
                   <div class="margin-bottom mb24" formGroupName="groups">
-                    <div class="mapfre-input vehicle" *ngFor="let vehicle of policy.vehicle; let i = index; let last = last; let first = first">
+                    <div class="mapfre-input vehicle" *ngFor="let vehicle of policy?.vehicle; let i = index; let last = last; let first = first">
                       <div id="id{{i}}" [ngClass]="{'margin-top mt24': i != 0}">
                         <h3 class="title vehicle-name">
-                            {{vehicle.vehicle}}
+                            {{vehicle?.vehicle}}
                         </h3>
                         <div class="row input-control margin-top mt16" [ngClass]="{ 'disabled': !legalCheckbox }">
                           <div class="col input-field mapfre">
@@ -279,7 +279,7 @@
                         {{ policy.mailingAddress.streetName | titlecase }} {{ policy.mailingAddress.city | titlecase }}, {{ policy.mailingAddress.state | fullstateToAbv }} {{ policy.mailingAddress.zipCode.code }}
                     </div>
                     <div class="col edit-address">
-                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResidentialAddress(policy.mailingAddress)"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>
@@ -295,7 +295,7 @@
                       </div>
                     </ng-template>
                     <div class="col edit-address">
-                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
+                        <a [routerLink]="['/my-insurance', policyId , 'change-address', 'residential']" (click)="getMailingOrResidentialAddress(policy.residentialAddress)"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
                 </div>
@@ -532,7 +532,7 @@
                               {{ policy.mailingAddress.streetName | titlecase }}  {{ policy.mailingAddress.city | titlecase }}, {{ policy.mailingAddress.state | fullstateToAbv }}, {{ policy.mailingAddress.zipCode.code }}
                           </div>
                           <div class="col edit-address">
-                              <a [routerLink]="['/', 'profile' , 'change-address', 'mailing']"><i class="far fa-edit"></i></a>
+                              <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResidentialAddress(policy.mailingAddress)"><i class="far fa-edit"></i></a>
                           </div>
                         </div>
                       </div>
@@ -549,7 +549,7 @@
                           </div>
                         </ng-template>
                         <div class="col edit-address">
-                            <a [routerLink]="['/', 'profile' , 'change-address', 'residential']"><i class="far fa-edit"></i></a>
+                            <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResidentialAddress(policy.residentialAddress)"><i class="far fa-edit"></i></a>
                         </div>
                       </div>
                     </div>

@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable }               from 'rxjs';
 
 import { User }                     from '../../../../_models/user';
+import { UserService }              from '../../../../_services/user.service'
+
 
 @Component({
   selector: 'app-email-use-screen',
@@ -12,10 +14,14 @@ export class EmailUseScreenComponent implements OnInit {
   @Input() userData:              User;
   userEmail:                      string;
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
-    this.userEmail = this.userData.email != undefined  ? this.userData.email : 'email@gmail.com';
+    this.userService.$user.subscribe((user)=>{
+      this.userEmail = user.userDetails.email.address != undefined  ? user.userDetails.email.address : 'email@gmail.com';
+    })
   } 
 
 }

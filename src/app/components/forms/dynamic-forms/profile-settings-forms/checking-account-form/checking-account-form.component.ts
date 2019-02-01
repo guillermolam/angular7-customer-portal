@@ -1,8 +1,8 @@
 import { FormGroup }                          from '@angular/forms';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Router }                             from '@angular/router';
 import { FormBase, FormBaseControlService, AlertService, GetGooglePlaceService, ValidateAddressService }
                                               from 'mapfre-design-library';
-import { Router }                             from '@angular/router';
 import { StorageServiceObservablesService }   from './../../../../../_services/storage-service-observables/storage-service-observables.service';
 import { BankAccountService }                 from './../../../../../_services/profile-settings/bank-account.service';
 import { ProfileConfirmModalService }         from '../../../../../_services/profile-settings/profile-confirm-modal.service';
@@ -18,10 +18,10 @@ import { UserService }                        from '../../../../../_services/use
 export class CheckingAccountFormComponent implements OnInit, OnDestroy {
 
   @Input() inputs: FormBase<any>[] = [];
-           checkingAccountForm: FormGroup;
-           confirmModal:        boolean;
-           mailingAddress: any;
-           addressAlert:        boolean;
+           checkingAccountForm:       FormGroup;
+           confirmModal:              boolean;
+           mailingAddress:            any;
+           addressAlert:              boolean;
           //  addressObservable: any;
           //  googlePlaceObservable:   any;
 
@@ -30,12 +30,12 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     private router:                   Router,
     private alertService:             AlertService,
     private profileConfirmModalService: ProfileConfirmModalService,
-    private bankAccountService: BankAccountService,
-    private storageService: StorageServiceObservablesService,
-    private getGooglePlaceService : GetGooglePlaceService,
-    private authenticationService:            AuthenticationService,
-    private userService:               UserService,
-    private validateAddressService:    ValidateAddressService
+    private bankAccountService:       BankAccountService,
+    private storageService:           StorageServiceObservablesService,
+    private getGooglePlaceService:    GetGooglePlaceService,
+    private authenticationService:    AuthenticationService,
+    private userService:              UserService,
+    private validateAddressService:   ValidateAddressService
     ) { }
   
 
@@ -68,7 +68,7 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
       this.confirmModal = value;
     });
     this.profileConfirmModalService.onCheckDirty(this.checkingAccountForm);
-    if(this.confirmModal===false) {
+    if(this.confirmModal === false) {
       this.router.navigate(['/profile']);
     }
   }
@@ -85,18 +85,18 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     // if(!validateAddress){
     //   this.alertService.error('Please select address from dropdown',false);
     // }else {
-      const bankAccountDetails = this.createBankAccountObject();
-      const email = this.storageService.getUserFromStorage();
+      const bankAccountDetails =  this.createBankAccountObject();
+      const email =               this.storageService.getUserFromStorage();
       this.bankAccountService
-        .addBankAccount(email,bankAccountDetails)
+        .addBankAccount(email, bankAccountDetails)
         .subscribe((response) => {
           this.authenticationService
           .getUserDetailsByEmail(this.storageService.getUserFromStorage())
           .subscribe(([userResponse, accountResponse]) => {
             this.userService.updateUser(
             {
-              userDetails: {...userResponse},
-              bankAccountDetails:  {...accountResponse}
+              userDetails:          {...userResponse},
+              bankAccountDetails:   {...accountResponse}
             }
             );
             this.alertService.success('Checking account information succesfully updated', true);
@@ -114,11 +114,13 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
       this.mailingAddress = address;
     });
 
-    this.validateAddressService.$address.subscribe((resp)=>{
-      if(resp===false){
+    this.validateAddressService.$address
+    .subscribe((resp) => {
+      if ( resp === false) {
         this.alertService.error('Please enter valid address from suggestions');
         this.addressAlert = false;
-      } else if (resp===true){
+      }
+      else if ( resp === true ) {
         this.addressAlert = true;
       }
     });

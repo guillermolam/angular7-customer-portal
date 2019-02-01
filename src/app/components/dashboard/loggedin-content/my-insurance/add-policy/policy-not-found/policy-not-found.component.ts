@@ -3,8 +3,6 @@ import { User } from 'mapfre-design-library';
 import { AuthenticationService } from '../../../../../../_services/_iam/authentication-service.service';
 import { UserService } from '../../../../../../_services/user.service';
 import { Router } from '@angular/router';
-import { FakeAccountResponse } from './../../../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
-
 
 @Component({
   selector: 'app-policy-not-found',

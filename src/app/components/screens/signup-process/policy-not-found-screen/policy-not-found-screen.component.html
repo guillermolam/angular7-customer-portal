@@ -30,7 +30,7 @@
     >
       {{ 'EDIT_POLICY_INFO' | translate }}
     </mapfre-link>
-  </div>
+
   <div>
     <mapfre-button 
       [additionalClasses]="'basic primary large waves-effect waves-light'"
@@ -40,6 +40,15 @@
     </mapfre-button>
   </div>
 </div>
+</div>
+<div class="row text-center">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'ghost secondary small'"
+        (click)="goBackAPage()"
+      >{{ 'CANCEL' | translate }}</mapfre-button>
+    </div>
+  </div>
 <!-- <div *ngIf="userData.addPolicyAttempts >= 3">
   <div>
     <mapfre-info-divs>

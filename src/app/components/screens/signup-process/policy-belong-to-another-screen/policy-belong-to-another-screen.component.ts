@@ -72,6 +72,7 @@ import { AuthenticationService }        from '../../../../_services/_iam/authent
 import { PolicyDetails }                from '../../../../_models/policy-details';
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';
+import { Location }                       from '@angular/common';
 
 
 @Component({
@@ -92,14 +93,15 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
     private authService:            AuthenticationService,
     private router:                 Router,
     private userService:            UserService,
+    private location:               Location,
     private policyService:          PolicyDetailsService
   ) { }
 
   confirmPolicy(): void {
-
     if (this.router.url==='/my-insurance/validate-policy-rights') {
+      console.log(this.router.url);
       this.policyService.addPolicyToEmail(this.user.userDetails.email.address,this.policyNumber).subscribe(()=>{
-          this.alertService.error('Policy added successfully');
+          this.alertService.success('Policy added successfully');
           this.router.navigate(['/my-insurance']);
       },(err)=>{
         this.alertService.error('Policy is already added');
@@ -110,6 +112,10 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
     } 
   }
 
+  goBackAPage(){
+    this.location.back();
+  }
+
   ngOnInit() {
 
     this.userService.$user.subscribe((user)=>{
@@ -117,6 +123,7 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
       console.log(user);
       this.policyNumber = `${user.policyDetails[0].policynumber.policynumber}`;
       this.user = user;
+      console.log(this.policyNumber);
       //new code
       this.policyService.getPolicyDetailsByNumber(this.policyNumber).subscribe((details)=>{
         this.policyDetails = details;

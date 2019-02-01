@@ -12,8 +12,6 @@ import { StorageServiceObservablesService }
 import { User }                           from './../../../../../_models/user';
 import { UserService }                    from './../../../../../_services/user.service';
 
-import { TestingDataService }             from '../../../../../_helpers/testing-data.service';
-
 @Component({
   selector: 'app-billing-confirm',
   templateUrl: './billing-confirm.component.html',
@@ -39,9 +37,7 @@ export class BillingConfirmComponent implements OnInit {
     private router:                       Router,
     private storageService:               StorageServiceObservablesService,
     private userService:                  UserService,
-
-    private testingDataService:           TestingDataService
-  ) { }
+) { }
 
   checkMethodForMinAmount(bill, billingDetails): void {
     if (bill > billingDetails) {
@@ -71,17 +67,17 @@ export class BillingConfirmComponent implements OnInit {
     let boolForSub;
     this.bankAccountService
     .addBankAccount(email, bankAccountDetails)
-    .subscribe((response) => {
+    .subscribe( (response) => {
       this.authenticationService
-        .getUserDetailsByEmail(this.storageService.getUserFromStorage())
-        .subscribe(([userResponse, accountResponse]) => {
-          const response = {
-            userDetails:              {...userResponse},
-            bankAccountDetails:       {...accountResponse}
-          };
-          this.userService.updateUser(response);
-          boolForSub =                true;
-        })
+      .getUserDetailsByEmail(this.storageService.getUserFromStorage())
+      .subscribe(([userResponse, accountResponse]) => {
+        const resObject = {
+          userDetails:              {...userResponse},
+          bankAccountDetails:       {...accountResponse}
+        };
+        this.userService.updateUser(resObject);
+        boolForSub =                true;
+      });
     },
     (err) => {
       boolForSub =                    false;
@@ -111,7 +107,7 @@ export class BillingConfirmComponent implements OnInit {
       }
     }
     else {
-      if ( this.payment(this.billing, this.user.userDetails.email.address, this.policyId) ) {
+      if ( this.payment( this.billing, this.user.userDetails.email.address, this.policyId ) ) {
         this.loading =                false;
         this.alertService.success('Congrats! You\'ve paid your bill!', true);
         this.router.navigate(['/my-insurance']);
@@ -147,7 +143,7 @@ export class BillingConfirmComponent implements OnInit {
         .subscribe((bankAccountCheck) => {
           this.storeBankAccount =      bankAccountCheck;
         });
-       this.checkMethodForMinAmount(this.policyDetails[0].billingDetails[0].minAmountDue, this.billing.paymentAmount);
+        this.checkMethodForMinAmount( this.policyDetails[0].billingDetails[0].minAmountDue, this.billing.paymentAmount );
     });
   }
 

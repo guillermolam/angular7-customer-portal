@@ -6,7 +6,7 @@ import { TextBox } from 'mapfre-design-library';
 })
 export class EmailPasswordFormService {
 
-  getPasswordInputs(id: string, classes?:string){
+  getPasswordInputs(id: string, classes?: string) {
     const inputs = new TextBox({
       additionalClasses: `form-control ${classes}`,
       inputType: 'password',
@@ -22,7 +22,7 @@ export class EmailPasswordFormService {
     return inputs;
   }
 
-  getEmailInputs(id: string, classes?:string){
+  getEmailInputs(id: string, classes?: string) {
     const inputs =  new TextBox({
       additionalClasses:  `form-control ${classes}`,
       inputType: 'email',
@@ -35,5 +35,16 @@ export class EmailPasswordFormService {
     return inputs;
   }
 
-  
+  getEmailConfirmation(id, classes?: string) {
+    const inputs = new TextBox({
+      additionalClasses:  `form-control ${classes}`,
+      inputType: 'email',
+      key: `confirmation_${id}`,
+      label: 'CONFIRM_EMAIL',
+      required: true,
+      type: 'email',
+      validationMessageError: 'VALID_EMAIL_VALIDATION_MESSAGE',
+    });
+    return inputs;
+  }
 }

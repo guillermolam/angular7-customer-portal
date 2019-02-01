@@ -56,6 +56,13 @@ import { ContactComponent }                     from './routes/contact/contact.c
 import { ProfileSettingsComponent }             from './routes/profile-settings/profile-settings.component';
 import { AddressChangeComponent }               from './routes/profile-settings/address-change/address-change.component';
 import { ChangeEmailComponent }                 from './routes/profile-settings/change-email/change-email.component';
+import { SignupAddPolicyComponent }             from './routes/signup/signup-process/signup-add-policy/signup-add-policy.component';
+import { SignupBopComponent }                   from './routes/signup/signup-process/signup-bop/signup-bop.component';
+import { SignupCreatePasswordComponent }        from './routes/signup/signup-process/signup-create-password/signup-create-password.component';
+import { SignupEditPolicyComponent }            from './routes/signup/signup-process/signup-edit-policy/signup-edit-policy.component';
+import { SignupEmailInUseComponent }            from './routes/signup/signup-process/signup-email-in-use/signup-email-in-use.component';
+import { SignupPolicyBelongsToAnotherComponent } from './routes/signup/signup-process/signup-policy-belongs-to-another/signup-policy-belongs-to-another.component';
+import { SignupNotFoundComponent }              from './routes/signup/signup-process/signup-not-found/signup-not-found.component';
 
 // ----- Components ----- //
 import { LoginFormComponent }                   from './components/forms/dynamic-forms/login-form/login-form.component';
@@ -266,6 +273,13 @@ export function tokenGetter() {
     ChangeEmailComponent,
     FullstateToAbvPipe,
     AbvToFulstatePipe,
+    SignupAddPolicyComponent,
+    SignupBopComponent,
+    SignupCreatePasswordComponent,
+    SignupEditPolicyComponent,
+    SignupEmailInUseComponent,
+    SignupPolicyBelongsToAnotherComponent,
+    SignupNotFoundComponent,
 
 
   ],
@@ -310,7 +324,6 @@ export function tokenGetter() {
     StorageServiceObservablesService,
     PolicyDataService,
     PolicyDocumentsDataService
-
   ],
   bootstrap: [AppComponent]
 })

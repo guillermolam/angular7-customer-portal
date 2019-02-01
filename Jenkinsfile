@@ -13,18 +13,18 @@ pipeline{
 		}
 		
 		// Running unit test after build
-		//stage('RUN UNIT TESTS'){
-		  //steps{
+		stage('RUN UNIT TESTS'){
+		  steps{
 		    	// Added to run unit test case for all module.
-		    //  sh "npm run cibuild_test"
-		  //}
-		//}
+		     sh "npm run cibuild_test"
+		  }
+		}
 
-		//stage('STATIC ANALYSIS'){
-		  //  steps{
-		    //    sh "npm run sonar-run"
-		    //}
-		//}
+		stage('STATIC ANALYSIS'){
+		   steps{
+		       sh "npm run sonar-run"
+		    }
+		}
 
 		stage("BUILD & PUBLISH IMAGE"){
 			environment {
@@ -59,6 +59,7 @@ pipeline{
 								verbose: true,
 								credential: '',
 								extraVars: '''---
+comma_separated_hosts: "mdv-doctest02"
 user: "glam"
 docker_registry_username: "$DOCKER_NEXUS_CREDS_USR"
 docker_registry_password: "$DOCKER_NEXUS_CREDS_PSW"
@@ -105,7 +106,7 @@ ports:
 
 		stage('E2E TEST'){
             steps {
-                sh 'npm run pre_e2e'
+                // sh 'npm run pre_e2e' // coz of docker used for selenium
                 sh 'npm run e2e_compile'
                 sh 'npm run e2e_run'
             }

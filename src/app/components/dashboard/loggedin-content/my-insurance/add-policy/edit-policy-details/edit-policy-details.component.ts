@@ -4,7 +4,6 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { EditPolicyService } from './../../../../../../_services/forms/create-account/edit-policy.service';
 import { ModalOptions, User } from 'mapfre-design-library';
 import { UserService } from './../../../../../../_services/user.service';
-import { FakeAccountResponse } from './../../../../../../_helpers/_testing-helpers/_services/_testing-helpers/fakeResponse/fake-account-response.model';
 
 
 @Component({

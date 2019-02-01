@@ -74,11 +74,16 @@ These should replicate what you will get in your VM. If you are having trouble c
 
 **Location** `customer-portal/src/app/_helpers/testing-data.service.ts`
 
+Sass Style guide. https://docs.google.com/document/d/1tzs0FKY-V2DQD31IB8RBwMNsrDzqxM6DXt0h2XdEb64/edit?usp=sharing
+
+Please remember to download TSlint and use the JSON at the end of the file.
+
 **How to Implement**
 
 `import { TestingDataService } from './_helpers/testing-data.service';` *How for you have to dig may vary*
 
 *Within you class constructor*
+
 
 `constructor(private testingData: TestingDataService) {}`
 
