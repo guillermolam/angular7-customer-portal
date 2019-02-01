@@ -84,6 +84,7 @@ Please remember to download TSlint and use the JSON at the end of the file.
 
 *Within you class constructor*
 
+
 `constructor(private testingData: TestingDataService) {}`
 
 **In ngInit**
