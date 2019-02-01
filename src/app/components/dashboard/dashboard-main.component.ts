@@ -71,8 +71,8 @@ export class DashboardMainComponent implements OnInit {
           .getUserDetailsByEmail(this.storageService.getUserFromStorage())
           .subscribe(([userResponse, accountResponse]) => {
             const response = {
-              userDetails: {...userResponse},
-              bankAccountDetails:  {...accountResponse}
+              userDetails:                  {...userResponse},
+              bankAccountDetails:           {...accountResponse}
             };
 
             // Claim List
@@ -92,7 +92,7 @@ export class DashboardMainComponent implements OnInit {
             this.userService.updateUser(response);
           },
           (err) => {
-            // If one of them errors out then all of them will. This is for local and testing purposes only.
+
           })
           .add(() => {
             this.loading = false;

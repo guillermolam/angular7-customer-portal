@@ -1,7 +1,5 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { TestingDataService } from '../../../../../_helpers/testing-data.service';
-
 
 @Component({
   selector: 'app-claims-home-closed',
@@ -12,7 +10,6 @@ export class ClaimsHomeClosedComponent implements OnInit {
   claims;
 
   constructor(
-    private testingData: TestingDataService,
     private router: Router
   ) { }
 

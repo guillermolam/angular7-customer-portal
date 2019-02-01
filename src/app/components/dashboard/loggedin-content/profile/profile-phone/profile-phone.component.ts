@@ -1,4 +1,3 @@
-import { FakeAccountSettings } from '../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { ActivatedRoute } from '@angular/router';
 import { EditPhoneService } from '../../../../../_services/forms/profile-settings/edit-phone.service';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +18,7 @@ export class ProfilePhoneComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.editPhoneService.getInputs().subscribe((eidtPhoneResponse)=>{
       this.accountPhoneForm = eidtPhoneResponse;
     });

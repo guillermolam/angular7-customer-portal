@@ -12,6 +12,7 @@ import { ServiceHelpersService }  from '../../_helpers/service-helpers.service';
   providedIn: 'root'
 })
 export class ClaimsService {
+  backend:                        string = environment.backend_server_mk;
 
   constructor(
     private http:                 HttpClient,
@@ -19,12 +20,12 @@ export class ClaimsService {
   ) { }
 
   getClaimsList(email): Observable<any> {
-    let url =                     `${environment.backend_server_mk}/claims?email=${email}`;
+    let url =                     `${this.backend}/claims?email=${email}`;
     return this.http.get(url, this.serviceHelpers.options);
   }
 
   getClaimsDetails(email): Observable<any> {
-    let url =                     `${environment.backend_server_mk}/claims/loss?email=${email}`;
+    let url =                     `${this.backend}/claims/loss?email=${email}`;
     return this.http.get(url, this.serviceHelpers.options);
   }
 }

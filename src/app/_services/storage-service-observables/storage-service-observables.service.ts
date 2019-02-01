@@ -24,7 +24,7 @@ export class StorageServiceObservablesService {
       currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     else {
-      currentUser = { username: 'testmfre@gmail.com'};
+      currentUser = { username: 'testmfre@gmail.com'}; // need to remove for production 
     }
     this.userEmail = currentUser.username;
     return this.userEmail;
