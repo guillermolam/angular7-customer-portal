@@ -83,25 +83,32 @@ const appRoutes: Routes = [
   { path: 'login',                        component: LoginComponent },
   { path: 'signup',                       component: SignupComponent,
     children:[
-      { path: '',                         component: SignupProcessComponent },
-      { path: 'add-policy',               component: SignupAddPolicyComponent },
-      { path: 'bop',                      component: SignupBopComponent },
-      { path: 'createpassword',           component: SignupCreatePasswordComponent },
-      { path: 'edit-policy',              component: SignupEditPolicyComponent },
-      { path: 'email-in-use',             component: SignupEmailInUseComponent },
-      { path: 'not-found',                component: SignupNotFoundComponent },
-      { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent },
+      { path: '',                         component: SignupProcessComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'add-policy',               component: SignupAddPolicyComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'bop',                      component: SignupBopComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'createpassword',           component: SignupCreatePasswordComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'edit-policy',              component: SignupEditPolicyComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'email-in-use',             component: SignupEmailInUseComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'not-found',                component: SignupNotFoundComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent, canActivate: [SignUpGuard] 
+      },
     ]
   },
   { path: 'testing',                      component: TestingComponent },
-  { path: 'verifyaccount',                component: VerifyAccountComponent,
-  // canActivate: [VerifyUserGuard] 
+  { path: 'verifyaccount',                component: VerifyAccountComponent, canActivate: [VerifyUserGuard]
 },
   { path: 'welcome',                      component: WelcomeComponent },
   { path: 'walletcard',                   component: WalletCardComponent},
   { path: 'profile/change-email',         component: ChangeEmailComponent},
 // when logged in
-{ path: '', component: DashboardMainComponent, // canActivate: [AuthGuard],
+{ path: '', component: DashboardMainComponent, canActivate: [AuthGuard],
 children: [
 { path: '',                               component: LoggedinContentComponent, children: [
   { path: '',                             redirectTo: 'my-insurance', pathMatch: 'full' },
