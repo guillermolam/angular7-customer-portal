@@ -1,45 +1,46 @@
-import { DomSanitizer, SafeUrl }          from '@angular/platform-browser';
-import { Component, OnInit }              from '@angular/core';
+import { Component, OnInit, Input }     from '@angular/core';
+import { DomSanitizer, SafeUrl }        from '@angular/platform-browser';
 import { FormGroup, FormControl, Validators }
-                                          from '@angular/forms';
-import { ActivatedRoute, Params }         from '@angular/router';
-import { filter }                         from 'rxjs/operators';
-import { GetGooglePlaceService }          from 'mapfre-design-library';
-import { AuthenticationService }          from '../../../../../_services/_iam/authentication-service.service';
-import { PolicyDataService }              from '../../../../../_services/my-insurance/data-services/policy-data.service';
-import { PolicyDetailsService }           from '../../../../../_services/my-insurance/policy-details.service';
+                                        from '@angular/forms';
+import { ActivatedRoute, Params }       from '@angular/router';
+import { GetGooglePlaceService }        from 'mapfre-design-library';
+import { AuthenticationService }        from '../../../../../../_services/_iam/authentication-service.service';
+import { PolicyDataService }            from '../../../../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDetailsService }         from '../../../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }
-                                          from '../../../../../_services/storage-service-observables/storage-service-observables.service';
-import { User }                           from '../../../../../_models/user';
-import { UserService }                    from '../../../../../_services/user.service';
-import { WalletCardService }              from '../../../../../_services/_iam/wallet-card.service';
-import * as isEqual                       from 'lodash.isequal';
+                                        from '../../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { WalletCardService }            from '../../../../../../_services/_iam/wallet-card.service';
+import * as isEqual                     from 'lodash.isequal';
 
 @Component({
-  selector: 'app-policy-details-screen',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  selector: 'app-details-car',
+  templateUrl: './details-car.component.html',
+  styleUrls: ['./details-car.component.scss']
 })
-export class PolicyDetailsComponent implements OnInit {
-  address:                              string = 'address';
-  agentStreet:                          string;
-  alertLoad:                            boolean = false;
-  alerton:                              any;
-  apt:                                  string = 'apt';
-  input:                                object;
-  isItTheSameAddress:                   boolean;
-  loading:                              boolean = false;
-  legalCheckbox:                        boolean = false;
-  message:                              string;
-  messageType:                          string;
-  policyId:                             number;
-  policyDetails:                        any;
-  sameMailingAddress:                   boolean;
-  showMessage:                          boolean = false;
-  state:                                string;
-  updateMileage:                        FormGroup;
-  vehicles:                             object;
-  user:                                 any;
+export class DetailsCarComponent implements OnInit {
+  @Input()  policy:                     any;
+  @Input()  policyIdInput:              number;
+            address:                    string = 'address';
+            agentStreet:                string;
+            alertLoad:                  boolean = false;
+            alerton:                    any;
+            apt:                        string = 'apt';
+            errorClass:                 any = [];
+            errorMessage:               any = [];
+            input:                      object;
+            isItTheSameAddress:         boolean;
+            loading:                    boolean = false;
+            legalCheckbox:              boolean = false;
+            message:                    string;
+            messageType:                string;
+            policyId:                   number;
+            policyDetails:              any;
+            sameMailingAddress:         boolean;
+            showMessage:                boolean = false;
+            state:                      string;
+            updateMileage:              FormGroup;
+            vehicles:                   object;
+            user:                       any;
 
   constructor(
     private activatedRoute:             ActivatedRoute,
@@ -48,13 +49,12 @@ export class PolicyDetailsComponent implements OnInit {
     private storageService:             StorageServiceObservablesService,
     private policyDataService:          PolicyDataService,
     private policyDetailsService:       PolicyDetailsService,
-    private userService:                UserService,
     private walletCardService:          WalletCardService,
     private googlePlaceService:         GetGooglePlaceService
   ) {
    }
 
-  createUpdateMilageFormControls(data): void {
+   createUpdateMilageFormControls(data): void {
     let milageControl =                 [];
     for ( let i = 0; i <= data.vehicle.length; i++ ) {
       if ( i != data.vehicle.length ) {
@@ -76,20 +76,6 @@ export class PolicyDetailsComponent implements OnInit {
       groups:                           formGroup,
       legal:                            legalGroup
     });
-  }
-
-  downloadWalletCard(email, policyid) {
-    this.walletCardService
-      .generatePkPass(email)
-      .subscribe(
-        (success) => {
-          console.log('Successful download of wallet card');
-        },
-        (err) => {
-          console.log('Err download of wallet card', err);
-        }
-      )
-    ;
   }
 
   getMailingOrResidentialAddress(updateAddress){
@@ -150,8 +136,8 @@ export class PolicyDetailsComponent implements OnInit {
   }
 
   onSubmit(i, e): void {
-    const policyInfo =                  this.policyDetails[0],
-          policyId =                    policyInfo.policynumber.policynumber,
+    const policyInfo =                  this.policy,
+          policyId =                    this.policyId,
           form =                        this.updateMileage;
     if (this.legalCheckbox) {
       this.updateMileageById( policyInfo.email.address, policyId, form );
@@ -174,12 +160,15 @@ export class PolicyDetailsComponent implements OnInit {
     this.alertLoad =                    true;
     let successArray =                  [],
         VName =                         [];
-    this.policyDetails[0].vehicleDetails.forEach((vehicleDetail, i) => {
+    this.policy.vehicle.forEach((vehicleDetail, i) => {
       const formController =            form.controls.groups;
       let vehicleId =                   vehicleDetail.vehicleIdentificationNumber.Id,
           odometerReading =             vehicleDetail.odometerReading;
 
-      if ( formController.controls[`updateMileageInput_${i}`].dirty && formController.controls[`updateMileageInput_${i}`].value != odometerReading ) {
+      if( formController.controls[`updateMileageInput_${i}`] === '' || formController.controls[`updateMileageInput_${i}`].value == odometerReading ) {
+        this.errorMessage[i] = 'This vehicle was not updated.';
+      }
+      else if ( formController.controls[`updateMileageInput_${i}`].dirty ) {
         this.authService
         .updateMileage(email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`].value )
         .subscribe(
@@ -191,6 +180,11 @@ export class PolicyDetailsComponent implements OnInit {
             successArray.push(false);
           }
         );
+      }
+      else {
+        this.errorMessage[i] = 'Please add your current mileage.';
+        this.errorClass = true;
+        return;
       }
     });
 
@@ -217,16 +211,11 @@ export class PolicyDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = true;
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.policyId =                 params['policyid'];
-    });
-
-    this.policyDataService.$policyDetails
-    .subscribe((policyResponse) => {
-      this.policyDetails =            policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
-      this.loading =                  false;
-    });
-
+    this.createUpdateMilageFormControls( this.policy );
+    this.getApartmentAndState( this.policy );
+    this.isAddressEqual( this.policy );
+    this.policyId =                       this.policyIdInput;
+    console.log(this.policyId)
   }
+
 }

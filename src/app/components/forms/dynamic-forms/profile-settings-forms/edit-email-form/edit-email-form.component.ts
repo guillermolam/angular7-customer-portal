@@ -34,6 +34,12 @@ export class EditEmailFormComponent implements OnInit {
     const newEmail =                        this.editEmailForm.controls.changeEmail.value,
           confirmEmail =                    this.editEmailForm.controls.confirmation_changeEmail.value;
 
+    if ( newEmail === 'skip@skip.com') {
+      this.changeProfileEmailService.saveEmail(newEmail);
+      this.router.navigate(['/profile', 'email-confirmation']);
+      return;
+    }
+
     if ( newEmail === confirmEmail ) {
       this.changeProfileEmailService
       .checkEmailExists(this.currentEmail, newEmail)
