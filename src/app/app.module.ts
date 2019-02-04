@@ -23,6 +23,7 @@ import { RoutingModule }                        from './app.routing';
 import { environment }                          from '../environments/environment.dev';
 import { AuthenticationService }                from './_services/_iam/authentication-service.service';
 import { AuthGuard }                            from './_guards/auth.guard';
+import { SignUpGuard }                            from './_guards/signup.guard';
 import { JwtInterceptor }                       from './_helpers/jwt.interceptor';
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
@@ -307,6 +308,7 @@ export function tokenGetter() {
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
     AuthGuard,
+    SignUpGuard,
     AuthenticationService,
     CookieService,
     HttpClientModule,

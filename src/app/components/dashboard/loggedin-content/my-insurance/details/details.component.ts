@@ -93,8 +93,16 @@ export class PolicyDetailsComponent implements OnInit {
   }
 
   getMailingOrResidentialAddress(updateAddress){
-    console.log(updateAddress);
-    this.googlePlaceService.updateAddress(updateAddress);
+    const address = {
+      streetName: updateAddress.streetName,
+      city: updateAddress.city,
+      state: updateAddress.stateCode,
+      zipCode: {
+        code: updateAddress.zipCode.code
+      }
+    }
+    console.log(address);
+    this.googlePlaceService.updateAddress(address);
   }
 
   getAddress(a: string[]): SafeUrl {

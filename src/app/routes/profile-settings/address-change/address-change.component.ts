@@ -36,8 +36,8 @@ export class AddressChangeComponent implements OnInit {
     let streetAddress: any = [];
     this.getGooglePlaceService.$address.subscribe((address)=>{
     streetAddress = address.streetName.split('|');
-    this.inputs = this.service.getInputs('',`${streetAddress[0]}, ${address.city}, ${address.stateCode}, USA`,streetAddress[1] || '');
-    })
+    this.inputs = this.service.getInputs('',`${streetAddress[0]}, ${address.city}, ${address.state}, USA`,streetAddress[1] || '');
+    });
     
     this.activatedRoute.params.subscribe((params: Params) => {
       this.addressType = params['address-type'];
