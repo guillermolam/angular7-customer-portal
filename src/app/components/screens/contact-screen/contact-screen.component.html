@@ -1,83 +1,83 @@
 <mapfre-card 
   [singleCard]="false"
   [additionalClasses]="'contact details'">
-  <div class="row">
+  <section class="details-content row">
     <div class="col col1">
-    <div class="row margin-bottom mb16">
-      <div class="col">
-        <h2 class="title margin-bottom mb16">{{ 'NEW_AND_EXISTING_CLAIMS' | translate }}</h2>
-        <div>
-          <strong>{{ 'PHONE' | translate }}:</strong>&nbsp;<a href="tel:18002211605" class="mapfre link blue-link underline">1-800-221-1605</a>
-          <div class="info">Always here for you 27/7</div>
-          <strong>{{ 'EMAIL' | translate }}:</strong>&nbsp;<a href="mailto:claims@mapfreusa.com" class="mapfre link blue-link underline">claims@mapfreusa.com</a> 
+      <div class="row margin-bottom mb16">
+        <div class="col">
+          <h2 class="title margin-bottom mb16">{{ 'NEW_AND_EXISTING_CLAIMS' | translate }}</h2>
+          <div>
+            <strong>{{ 'PHONE' | translate }}:</strong>&nbsp;<a href="tel:18002211605" class="mapfre link blue-link underline">1-800-221-1605</a>
+            <div class="info">Always here for you 27/7</div>
+            <strong>{{ 'EMAIL' | translate }}:</strong>&nbsp;<a href="mailto:claims@mapfreusa.com" class="mapfre link blue-link underline">claims@mapfreusa.com</a> 
+          </div>
+        </div>
+      </div>
+      <div class="row margin-bottom mb16">
+        <div class="col">
+            <h2 class="title margin-bottom mb16">{{ 'BILLING_CUSTOMER_SERVICE_QUOTES' | translate }}</h2> 
+            <div>
+              <strong>{{ 'PHONE' | translate }}:</strong>&nbsp;<a href="tel:18002211605,14300" class="mapfre link blue-link underline">1-800-221-1605 X 14300</a>
+              <div class="info">8am to 6pm (EST) Mon - Fri</div>
+              <strong>{{ 'EMAIL' | translate }}:</strong>&nbsp;<a href="mailto:service@mapfreusa.com" class="mapfre link blue-link underline">service@mapfreusa.com</a> 
+            </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h2 class="title margin-bottom mb16">{{ 'FOLLOW_US' | translate }}</h2>
+          <ul class="social inline margin-bottom mb16">
+            <li><a href="https://www.facebook.com/mapfreinsurance" target="_blank" class="mapfre link brands facebook"><i class="fab fa-facebook-square"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/mapfre/" target="_blank" class="mapfre link brands linkedin"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://www.youtube.com/user/mapfreins" target="_blank" class="mapfre link brands youtube"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://twitter.com/mapfreins" target="_blank" class="mapfre link brands twitter"><i class="fab fa-twitter-square"></i></a></li>
+            <li><a href="https://www.instagram.com/mapfreinsurance/" target="_blank" class="mapfre link brands instagram"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="col col2">
+      <div class="row">
+        <div class="col">
+          <h2 class="title margin-bottom mb16 ">
+            <div>{{ 'CONTACT_YOUR_AGENTS' | translate }}</div>
+          </h2>
+          <div class="font-small margin-bottom mb8">{{ 'FOR_POLICY_CHANGES_COVERAGES_DISCOUTS' | translate }}</div>
+
+          <ng-container *ngFor="let policy of user; let key = index ">
+            <ng-container *ngIf="policy?.agent.agentName[key] == policy?.agent.agentName[key +1] ">
+              <div class="agent-info  margin-bottom mb32">
+                  <div class="row agent-name margin-bottom mb8">
+                    <div class="col"> 
+                      {{ policy?.agent.agentName | titlecase }}
+                    </div>
+                  </div>
+                  <div class="row policy-info margin-bottom mb8">
+                    <div class="col">
+                        {{ policy?.policyType | translate }} &mdash; {{ policy?.policynumber.policynumber }}
+                    </div>
+                  </div>
+                  <div class="row agent-address margin-bottom mb8">
+                    <div class="col">
+                        {{ policy?.agent.address.streetName  | titlecase }} {{ policy?.agent.address.city | titlecase }} {{ policy?.agent.address.state | fullstateToAbv  }}, {{policy?.agent.address.zipCode.code}}
+                    </div>
+                  </div>
+                  <div class="row agent-phone margin-bottom mb8">
+                    <div class="col col-description">
+                        <strong>{{ 'PHONE' | translate }}:</strong>
+                    </div>
+                    <div class="col col-info">
+                        <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline blue-link">{{ policy?.agent.agentPhone.number }}</a>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
         </div>
       </div>
     </div>
-    <div class="row margin-bottom mb16">
-      <div class="col">
-          <h2 class="title margin-bottom mb16">{{ 'BILLING_CUSTOMER_SERVICE_QUOTES' | translate }}</h2> 
-          <div>
-            <strong>{{ 'PHONE' | translate }}:</strong>&nbsp;<a href="tel:18002211605,14300" class="mapfre link blue-link underline">1-800-221-1605 X 14300</a>
-            <div class="info">8am to 6pm (EST) Mon - Fri</div>
-            <strong>{{ 'EMAIL' | translate }}:</strong>&nbsp;<a href="mailto:service@mapfreusa.com" class="mapfre link blue-link underline">service@mapfreusa.com</a> 
-          </div>
-
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <h2 class="title margin-bottom mb16">{{ 'FOLLOW_US' | translate }}</h2>
-        <ul class="social inline margin-bottom mb16">
-          <li><a href="https://www.facebook.com/mapfreinsurance" target="_blank" class="mapfre link brands facebook"><i class="fab fa-facebook-square"></i></a></li>
-          <li><a href="https://www.linkedin.com/company/mapfre/" target="_blank" class="mapfre link brands linkedin"><i class="fab fa-linkedin"></i></a></li>
-          <li><a href="https://www.youtube.com/user/mapfreins" target="_blank" class="mapfre link brands youtube"><i class="fab fa-youtube"></i></a></li>
-          <li><a href="https://twitter.com/mapfreins" target="_blank" class="mapfre link brands twitter"><i class="fab fa-twitter-square"></i></a></li>
-          <li><a href="https://www.instagram.com/mapfreinsurance/" target="_blank" class="mapfre link brands instagram"><i class="fab fa-instagram"></i></a></li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-  <div class="col col2">
-    <div class="row">
-      <div class="col">
-        <h2 class="title margin-bottom mb16 ">
-          <div>{{ 'CONTACT_YOUR_AGENTS' | translate }}</div>
-        </h2>
-        <div class="font-small margin-bottom mb8">{{ 'FOR_POLICY_CHANGES_COVERAGES_DISCOUTS' | translate }}</div>
-
-        <ng-container *ngFor="let policy of user; let key = index ">
-          <ng-container *ngIf="policy?.agent.agentName[key] == policy?.agent.agentName[key +1] ">
-            <div class="agent-info  margin-bottom mb32">
-                <div class="row agent-name margin-bottom mb8">
-                  <div class="col"> 
-                    {{ policy?.agent.agentName | titlecase }}
-                  </div>
-                </div>
-                <div class="row policy-info margin-bottom mb8">
-                  <div class="col">
-                      {{ policy?.policyType | translate }} &mdash; {{ policy?.policynumber.policynumber }}
-                  </div>
-                </div>
-                <div class="row agent-address margin-bottom mb8">
-                  <div class="col">
-                      {{ policy?.agent.address.streetName  | titlecase }} {{ policy?.agent.address.city | titlecase }} {{ policy?.agent.address.state | fullstateToAbv  }}, {{policy?.agent.address.zipCode.code}}
-                  </div>
-                </div>
-                <div class="row agent-phone margin-bottom mb8">
-                  <div class="col col-description">
-                      <strong>{{ 'PHONE' | translate }}:</strong>
-                  </div>
-                  <div class="col col-info">
-                      <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline blue-link">{{ policy?.agent.agentPhone.number }}</a>
-                  </div>
-                </div>
-              </div>
-            </ng-container>
-          </ng-container>
-      </div>
-    </div>
-  </div>
-  </div>
+  </section>
 </mapfre-card>

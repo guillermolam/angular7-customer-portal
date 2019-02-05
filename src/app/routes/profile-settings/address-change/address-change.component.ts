@@ -3,6 +3,7 @@ import { Component, OnInit }          from '@angular/core';
 import { ActivatedRoute, Router,
   Params }                            from '@angular/router';
 import { ChangeAddressService }       from '../../../_services/forms/change-address/change-address.service';
+import { GetGooglePlaceService }      from 'mapfre-design-library';
 
 @Component({
   selector: 'app-address-change',
@@ -12,21 +13,32 @@ import { ChangeAddressService }       from '../../../_services/forms/change-addr
 })
 export class AddressChangeComponent implements OnInit {
 
-  inputs: any[];
+    inputs: any[];
     addressType:                    string;
     loading:                        boolean = false;
     typeOfAddress:                  string;
     policyId:                       string;
     constructor(
-      service: ChangeAddressService,
+      private service: ChangeAddressService,
       private activatedRoute:           ActivatedRoute,
       private router:                   Router,
+      private getGooglePlaceService:    GetGooglePlaceService
     ) {
-      this.inputs = service.getInputs();
+    }
+
+
+    getAddress(){
+      
     }
 
   ngOnInit() {
 
+    let streetAddress: any = [];
+    this.getGooglePlaceService.$address.subscribe((address)=>{
+    streetAddress = address.streetName.split('|');
+    this.inputs = this.service.getInputs('',`${streetAddress[0]}, ${address.city}, ${address.state}, USA`,streetAddress[1] || '');
+    });
+    
     this.activatedRoute.params.subscribe((params: Params) => {
       this.addressType = params['address-type'];
       this.policyId         = params['policyid'];

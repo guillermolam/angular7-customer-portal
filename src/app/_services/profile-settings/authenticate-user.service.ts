@@ -1,20 +1,21 @@
 import { StorageServiceObservablesService } from './../storage-service-observables/storage-service-observables.service';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './../user.service';
-import { Injectable } from '@angular/core';
-import { of, throwError }         from 'rxjs';
-import { catchError, map }        from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+import { UserService }          from './../user.service';
+import { Injectable }           from '@angular/core';
+import { of, throwError }       from 'rxjs';
+import { catchError, map }      from 'rxjs/operators';
+import { environment }          from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticateUserService {
+  // backend:                    string = environment.backend_server_id;
 
   constructor(
-    private userService: UserService,
-    private storageService: StorageServiceObservablesService,
     private http:             HttpClient,
+    private userService:      UserService,
+    private storageService:   StorageServiceObservablesService
   ) { }
 
   
@@ -39,7 +40,7 @@ export class AuthenticateUserService {
       return this.http.post(url,{});
     })
     );    
-  }
 
+  }
 
 }

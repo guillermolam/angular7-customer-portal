@@ -104,14 +104,14 @@ pipeline{
 			}
 		}
 
-		stage("PROD"){
-			environment {
-				DOCKER_NEXUS_CREDS = credentials('nexus')
-            }
-			steps{
+		// stage("PROD"){
+		// 	environment {
+		// 		DOCKER_NEXUS_CREDS = credentials('nexus')
+        //     }
+		// 	steps{
         					
-				}
-		}
+		// 		}
+		// }
 	}
 }
 

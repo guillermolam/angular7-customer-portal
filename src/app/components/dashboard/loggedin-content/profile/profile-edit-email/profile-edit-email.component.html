@@ -4,7 +4,7 @@
       <div class="header-icon">
         <svg-email-validate-svg></svg-email-validate-svg>
       </div>
-      <div *ngIf="whereInTheProcess==='edit-email'; else enterPassword">
+      <div *ngIf="whereInTheProcess === 'edit-email'; else enterPassword">
           <h1 class="title-copy">{{ 'PROFILE_EMAIL_ONE' | translate }}</h1> 
       </div> 
       <ng-template #enterPassword>

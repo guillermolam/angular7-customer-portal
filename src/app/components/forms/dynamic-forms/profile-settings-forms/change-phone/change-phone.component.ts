@@ -1,13 +1,12 @@
-import { StorageServiceObservablesService } from './../../../../../_services/storage-service-observables/storage-service-observables.service';
-import { ChangePhoneService } from './../../../../../_services/profile-settings/change-phone.service';
-import { FakeAccountSettings } from '../../../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBase, FormBaseControlService, AlertService } from 'mapfre-design-library';
-import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
-import { AuthenticationService } from '../../../../../_services/_iam/authentication-service.service';
-import { UserService }                        from '../../../../../_services/user.service';
+import { Component, OnInit, Input }                         from '@angular/core';
+import { FormGroup }                                        from '@angular/forms';
+import { Router }                                           from '@angular/router';
+import { FormBase, FormBaseControlService, AlertService }   from 'mapfre-design-library';
+import { StorageServiceObservablesService }                 from './../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { ChangePhoneService }                               from './../../../../../_services/profile-settings/change-phone.service';
+import { ProfileConfirmModalService }                       from '../../../../../_services/profile-settings/profile-confirm-modal.service';
+import { AuthenticationService }                            from '../../../../../_services/_iam/authentication-service.service';
+import { UserService }                                      from '../../../../../_services/user.service';
 
 @Component({
   selector: 'app-change-phone',
@@ -16,55 +15,54 @@ import { UserService }                        from '../../../../../_services/use
 })
 export class ChangePhoneComponent implements OnInit {
 
-@Input() inputs: FormBase<any>[] = [];
-         phoneAccountForm: FormGroup;
-         phoneNumber: string;
-         confirmModal:        boolean;
+@Input() inputs:                        FormBase<any>[] = [];
+         phoneAccountForm:              FormGroup;
+         phoneNumber:                   string;
+         confirmModal:                  boolean;
 
 constructor(
-  private ipt:                      FormBaseControlService,
-  private router:                   Router,
-  private alertService:             AlertService,
-  private profileConfirmModalService: ProfileConfirmModalService,
-  private changePhoneService: ChangePhoneService,
-  private storageService: StorageServiceObservablesService,
-  private authenticationService:            AuthenticationService,
-  private userService:               UserService
+  private alertService:                 AlertService,
+  private authenticationService:        AuthenticationService,
+  private changePhoneService:           ChangePhoneService,
+  private ipt:                          FormBaseControlService,
+  private router:                       Router,
+  private profileConfirmModalService:   ProfileConfirmModalService,
+  private storageService:               StorageServiceObservablesService,
+  private userService:                  UserService
   ) { }
 
-ngOnInit() {
-      this.phoneNumber = this.inputs[0].value;
-      this.phoneAccountForm = this.ipt.toFormGroup(this.inputs);
-}
+  onCheckDirty() {
+    this.profileConfirmModalService.onCheckDirty(this.phoneAccountForm);
+    this.profileConfirmModalService.$checkDirty.subscribe((value) => {
+      this.confirmModal = value;
+    });
 
-onSubmitPhoneDetails(){
-
-  this.phoneNumber = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");
-  this.changePhoneService.addUpdatePhone(this.storageService.getUserFromStorage(), this.phoneNumber).subscribe((response)=>{  
-    // this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
-    // .subscribe(([userResponse,accountResponse])=>{
-    //   this.userService.updateUser(
-    //    {
-    //      userDetails: {...userResponse},
-    //      bankAccountDetails:  {...accountResponse}}
-    //   );
-    // });
-  
-    this.alertService.success('Phone number succesfully updated',true);
-    // FakeAccountSettings.user.phone = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g,"");
-    this.router.navigate(['/profile']);
-  });
-}
-
-onCheckDirty(){
-  this.profileConfirmModalService.onCheckDirty(this.phoneAccountForm);
-  this.profileConfirmModalService.$checkDirty.subscribe((value)=>{
-    this.confirmModal = value;
-  });
-  
-  if(this.confirmModal===false){
-    this.router.navigate(['/profile']);
+    if ( this.confirmModal === false ) {
+      this.router.navigate(['/profile']);
+    }
   }
-}
+
+  onSubmitPhoneDetails(){
+    this.phoneNumber = this.phoneAccountForm.controls.accountPhone.value.replace(/[^0-9]/g, '');
+    this.changePhoneService
+    .addUpdatePhone(this.storageService.getUserFromStorage(), this.phoneNumber)
+    .subscribe((response) => {
+      this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
+      .subscribe(([userResponse, accountResponse]) => {
+        this.userService.updateUser(
+        {
+          userDetails:         {...userResponse},
+          bankAccountDetails:  {...accountResponse}}
+        );
+        this.alertService.success('Phone number succesfully updated',true);
+        this.router.navigate(['/profile']);
+      });
+    });
+  }
+
+  ngOnInit() {
+    this.phoneNumber = this.inputs[0].value;
+    this.phoneAccountForm = this.ipt.toFormGroup(this.inputs);
+  }
 
 }

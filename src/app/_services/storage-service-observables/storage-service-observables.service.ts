@@ -23,11 +23,22 @@ export class StorageServiceObservablesService {
     if (JSON.parse(localStorage.getItem('currentUser'))) {
       currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
-    else {
-      currentUser = { username: 'testmfre@gmail.com'};
-    }
     this.userEmail = currentUser.username;
     return this.userEmail;
+  }
+
+
+  setUserStorage(email:string){
+    // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    // for development and testing
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // if (JSON.parse(localStorage.getItem('currentUser'))) {
+    currentUser.username = email;
+    localStorage.setItem('currentUser',JSON.stringify(currentUser));
+    // }
+    // this.userEmail = currentUser.username;
+    // return this.userEmail;
   }
 
 }

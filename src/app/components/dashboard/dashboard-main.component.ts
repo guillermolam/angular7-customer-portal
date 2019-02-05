@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit }   from '@angular/core';
 import { Router, NavigationEnd }              from '@angular/router';
 import { AuthenticationService }              from './../../_services/_iam/authentication-service.service';
 import { BillingDetailsService }              from './../../_services/my-insurance/billing-details.service';
+import { ClaimsDataService }                  from './../../_services/_claims/claims-data.service';
+import { ClaimsService }                      from './../../_services/_claims/claims.service';
 import { PolicyDataService }                  from '../../_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }               from './../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }   from './../../_services/storage-service-observables/storage-service-observables.service';
@@ -21,6 +23,8 @@ export class DashboardMainComponent implements OnInit {
 
   constructor(
     private authenticationService:            AuthenticationService,
+    private claimsService:                    ClaimsService,
+    private claimsDataService:                ClaimsDataService,
     private policyDataService:                PolicyDataService,
     private policyDetailsService:             PolicyDetailsService,
     private router:                           Router,
@@ -61,33 +65,39 @@ export class DashboardMainComponent implements OnInit {
     this.policyDetailsService
       .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
       .subscribe(
-        (success) => console.log('loading Complete'),
-        (err) => {
-          this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
-        },
+        (success) => {}
       ).add(() => {
         this.authenticationService
           .getUserDetailsByEmail(this.storageService.getUserFromStorage())
           .subscribe(([userResponse, accountResponse]) => {
             const response = {
-              userDetails: {...userResponse},
-              bankAccountDetails:  {...accountResponse}
+              userDetails:                  {...userResponse},
+              bankAccountDetails:           {...accountResponse}
             };
+
+            // Claim List
+            this.claimsService
+            .getClaimsList(this.storageService.getUserFromStorage())
+            .subscribe( (claimsList) => {
+              this.claimsDataService.updateClaims('list', claimsList);
+            });
+
+            // Claim Details
+            this.claimsService
+            .getClaimsDetails(this.storageService.getUserFromStorage())
+            .subscribe( (claimsList) => {
+              this.claimsDataService.updateClaims('details', claimsList);
+            });
+
             this.userService.updateUser(response);
           },
           (err) => {
-            let ui = [{
-              userDetails: this.testingData.testUserInfo(),
-              bankAccountDetails: this.testingData.testBankingInfo()
-            }];
-            this.userService.updateUser( ui );
-            this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
-          }).add( () => {
-            this.loading = false;
+
           })
-        ;
-      })
-    ;
+          .add(() => {
+            this.loading = false;
+          });
+      });
   }
 
 }

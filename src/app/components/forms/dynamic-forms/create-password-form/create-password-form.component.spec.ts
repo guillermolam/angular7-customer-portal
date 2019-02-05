@@ -26,7 +26,7 @@ class MockAuthService extends AuthenticationService {
     return obs;
   }
 
-  updatePassword(user, token): Observable<any> {
+  updatePassword(user): Observable<any> {
     let obs = Observable.create((observer: Observer<boolean>) => {
       observer.next(true);
     });

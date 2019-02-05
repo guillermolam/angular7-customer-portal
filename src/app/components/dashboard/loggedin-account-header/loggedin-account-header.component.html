@@ -1,7 +1,9 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark red scrolling-navbar ie-nav">
   <div class="container loggedin">
     <div class="brand">
-      <img src="./assets/img/logos/mapfre_ins_white.png" alt="Mapfre Insurance" class="logo" />
+      <a routerLink="/my-insurance">
+        <img src="./assets/img/logos/mapfre_ins_white.png" alt="Mapfre Insurance" class="logo" />
+      </a>
     </div>
     <div class="navbar-nav nav-flex-icons">
       <mapfre-modal 
@@ -14,7 +16,7 @@
         <a 
           routerLink="/profile"
           routerLinkActive="active"
-          class=" modal-footer grey-color"
+          class="modal-footer grey-color"
           (click)="hideModalAction($event, '/profile')">
           <div class="mapfre-information-container">
             <div class="mapfre-icon-information row">

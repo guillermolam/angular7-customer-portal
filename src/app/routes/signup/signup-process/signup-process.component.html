@@ -1,182 +1,21 @@
-<mapfre-header></mapfre-header>
-<div class="container mapfre-content">
-<mapfre-card additionalClasses="signup">
-  <mapfre-alert></mapfre-alert>
-  <ng-container [ngSwitch]="whereInTheProcess">
-
-    <div *ngSwitchCase="'add-policy'">
-      <div class="row text-center">
-        <div class="col">
-          <div class="header-icon full-icon">
-            <svg-policy-svg></svg-policy-svg>
-          </div>
-          <h1 class="title-copy">{{ 'ADD_POLICY_TITLE' | translate }}</h1> 
-        </div>
+<div class="row text-center">
+    <div class="col"> 
+      <div class="header-icon full-icon">
+          <svg-create-account-svg></svg-create-account-svg>
       </div>
-      <app-add-policy-form [inputs]="addPolicy" [userData]="user"></app-add-policy-form>
-      <div class="row text-center margin-top mt16">
-        <div class="col">
-          <mapfre-modal 
-            [modalOptions]="whereToFindModalOptions">
-            <div class="modal-body no-padding-top">
-              <hr class="margin-bottom mb24" />
-              <div class="margin-bottom mb8">
-                {{ 'POLICY_DOCUMENT' | translate}}
-              </div>
-              <div class="margin-bottom mb24">
-                <img src="./assets/img/images/where-can-i-find-my-policy-number.png">
-              </div>
-            </div>
-          </mapfre-modal>
-        </div>
-      </div>
-        <hr class="margin-vertical mv24" />
-        <div class="row text-center">
-          <div class="col">
-            <mapfre-button
-              additionalClasses="link-button blue-link small w-100"
-              [customIcon]="'assets/img/icons/back-arrow.png'"
-              [iconClasses]="'align-middle'"
-              [routerLink]="['/signup']"
-              [showIconsCustom]="true"
-            >  {{ 'BACK' | translate }}
-            </mapfre-button>
-          </div>
-        </div>
+      <h1 class="title-copy">{{ 'CREATE_ACCOUNT' | translate }}</h1> 
     </div>
-
-    <div *ngSwitchCase="'bop'">
-      <div class="row text-center">
-        <div class="col">
-          <div class="header-icon full-icon">
-            <svg-policy-error-svg></svg-policy-error-svg>
-          </div>
-          <h1 class="title-copy">{{ 'BOP' | translate }}</h1> 
-        </div>
-      </div>
-      <app-bop-screen></app-bop-screen>
-      <div class="text-center">
+  </div>
+  <mapfre-alert></mapfre-alert> 
+  <app-create-account-form [inputs]="inputs"></app-create-account-form>
+  <div class="row text-center margin-top mt24">
+    <div class="col">
         <mapfre-button
           additionalClasses="link-button blue-link small w-100"
-          [customIcon]="'../../../../../assets/img/icons/back-arrow.png'"
+          [customIcon]="'./assets/img/icons/back-arrow.png'"
           [iconClasses]="'align-middle'"
-          (click)="goBackAPage()"
-          [showIconsCustom]="true">  
-          {{ 'BACK' | translate }}
+          [routerLink]="['/login']"
+          [showIconsCustom]="true"
+        >  {{ 'LOGIN' | translate }}
         </mapfre-button>
-      </div>
     </div>
-
-    <div *ngSwitchCase="'create-password'">
-      <div class="row text-center">
-        <div class="col">
-          <div class="header-icon">
-            <svg-create-new-password-svg></svg-create-new-password-svg>
-          </div>
-          <h1 class="title-copy">{{ 'CREATE_NEW_PASSWORD' | translate }}</h1> 
-        </div>
-      </div>
-      <app-create-password-form [inputs]="createNewPassword" [userData]="user"></app-create-password-form>
-      <div class="row margin-top mt24 text-center">
-        <div class="col">
-          <mapfre-button
-            additionalClasses="link-button blue-link small w-100"
-            [customIcon]="'assets/img/icons/back-arrow.png'"
-            [iconClasses]="'align-middle'"
-            (click)="goBackAPage()"
-            [showIconsCustom]="true"
-          >  {{ 'BACK' | translate }}
-          </mapfre-button>
-        </div>
-      </div>
-    </div>
-
-    <div *ngSwitchCase="'edit-policy'">
-      <div class="row text-center">
-        <div class="col">
-          <div class="header-icon full-icon">
-            <svg-policy-error-svg></svg-policy-error-svg>
-          </div>
-          <h1 class="title-copy">{{ 'EDIT_POLICY' | translate }}</h1> 
-        </div>
-      </div>
-      <div class="row text-center margin-bottom mb16 sub-title-copy">
-        <div class="col">
-          {{ 'EDITPOLICY_REVIEW_POLICY' | translate }}
-        </div>
-      </div>
-      <app-edit-policy-form [inputs]="editPolicyInfo" [userData]="user"></app-edit-policy-form>
-      <div class="row text-center margin-top mt24">
-          <div class="col">
-            <mapfre-button
-              [additionalClasses]="'secondary ghost small'"
-              [routerLink]="['/signup', 'add-policy']"
-            >{{ 'CANCEL' | translate }}</mapfre-button>
-          </div>
-        </div>
-      <hr class="margin-vertical mv24" />
-      <div class="row text-center">
-        <div class="col">
-          <mapfre-modal 
-            [modalOptions]="whereToFindModalOptions">
-            <div class="modal-body no-margin-bottom">
-              <hr class="margin-bottom mb24" />
-              <div class="margin-bottom mb8">
-                {{ 'POLICY_DOCUMENT' | translate}}
-              </div>
-              <div class="margin-bottom mb24">
-                <img src="./assets/img/images/find-policy-image.png" style="width: 100%;">
-              </div>
-            </div>
-          </mapfre-modal>
-        </div>
-      </div>
-    </div>
-
-    <div *ngSwitchCase="'email-in-use'">
-      <div class="row text-center">
-        <div class="col">
-          <div class="header-icon full-icon">
-            <svg-email-error-svg></svg-email-error-svg>
-          </div>
-        </div>
-      </div>
-      <app-email-use-screen [userData]="user"></app-email-use-screen>
-    </div>
-
-    <div *ngSwitchCase="'not-found'">
-      <div class="row text-center">
-        <div class="col">
-          <div class="header-icon full-icon">
-            <svg-policy-error-svg></svg-policy-error-svg>
-          </div>
-          <h1 class="title-copy">{{ 'NOT_FOUND' | translate }}</h1> 
-        </div>
-      </div>
-      <app-policy-not-found-screen [userData]="user"></app-policy-not-found-screen>
-      <div class="row text-center">
-        <div class="col">
-          <mapfre-button
-            [additionalClasses]="'ghost secondary small'"
-            [routerLink]="['/login']"
-          >{{ 'CANCEL' | translate }}</mapfre-button>
-        </div>
-      </div>
-    </div>
-
-    <div *ngSwitchCase="'policy-belongs-to-another'">
-      <div class="row text-center">
-        <div class="col">
-          <div class="header-icon full-icon">
-            <svg-policy-error-svg></svg-policy-error-svg>
-          </div>
-          <h1 class="title-copy">{{ 'POLICYBELONGS_TO_ANOTHER' | translate }}</h1> 
-        </div>
-      </div>
-      <div>
-        <app-policy-belong-to-another-screen [userData]="user"></app-policy-belong-to-another-screen>
-      </div>
-    </div>
-  </ng-container>
-</mapfre-card>
-</div>

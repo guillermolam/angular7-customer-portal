@@ -23,7 +23,7 @@ export class ChangeAddressService {
         additionalClasses: `form-control ${classes}`,
         inputType: 'text',
         key: 'changeAddressAPT',
-        label: 'ADDRESS_APT',
+        label: 'APT',
         value: apartment,
         required: false,
         minLength: 1,
