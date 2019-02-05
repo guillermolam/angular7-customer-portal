@@ -29,6 +29,18 @@
         <section class="row documents-content details-content margin-top mt40 mobile-margins">
           <div class="col">
             <table mdbTable class="documents-table">
+              <thead>
+                <th colspan="4">
+                  <div class="row mapfre-card-download-button">
+                    <div class="col col-left">
+                      <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
+                    </div>
+                    <div class="col col-right">
+                      <app-onboarding-wallet-modal [policyNumber]="policyId"></app-onboarding-wallet-modal>
+                    </div>
+                  </div>
+                </th>
+              </thead>
               <tbody> 
                 <tr class="row row-content" 
                   *ngFor="let doc of policy.documentsDetails; let i = index" 
@@ -53,7 +65,10 @@
                     </td>
                     <td class="col col-name">{{doc.description}}</td>
                     <td class="col col-date text-right">{{doc.transactionDate | date}}</td>
-                    <td class="col col-view text-right">VIEW <i class="fas fa-angle-right"></i> </td>
+                    <td class="col col-view text-right">
+                      <span class="align-top">VIEW</span>
+                      <i class="material-icons align-top">keyboard_arrow_right</i> 
+                    </td>
                 </tr>
               </tbody>
             </table>
@@ -61,11 +76,23 @@
         </section>
       </ng-template>
       <ng-template [ngIf]="!showDocuments(policy)">
-        <section class="row details-content documents-content no-documents"> 
-          <div class="col">
-            <img src="./assets/img/images/no-documents.png">
-            <h1 class="title margin-vertical mv16">{{ 'NO_DOCUMENTS_TITLE' | translate }}</h1>
-            <p>{{ 'NO_DOCUMENTS_PARAGRAPH' | translate }}</p>
+        <section class="details-content documents-content no-documents">
+          <div class="no-documents-container">
+            <div class="row mapfre-card-download-button">
+              <div class="col col-left">
+                <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
+              </div>
+              <div class="col col-right">
+                <app-onboarding-wallet-modal [policyNumber]="policyId"></app-onboarding-wallet-modal>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <img src="./assets/img/images/no-documents.png">
+                <h1 class="title margin-vertical mv16">{{ 'NO_DOCUMENTS_TITLE' | translate }}</h1>
+                <p>{{ 'NO_DOCUMENTS_PARAGRAPH' | translate }}</p>
+              </div>
+            </div>
           </div>
         </section>
       </ng-template>

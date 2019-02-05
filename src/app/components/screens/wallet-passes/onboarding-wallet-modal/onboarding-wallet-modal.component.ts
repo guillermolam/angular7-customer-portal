@@ -18,7 +18,7 @@ export class OnboardingWalletModalComponent implements OnInit {
     private _cookieService:                 CookieService,
   ) { 
     this.walletDownloadModalOptions = new ModalOptions({
-      additionalButtonClasses:              'ghost primary xsmall full no-margin',
+      additionalButtonClasses:              'ghost primary xsmall full no-margin float-right width w160',
       additionalClasses:                    'modal-dialog center-on-page wallet-popup modal-medium',
       animatePosition:                      'bottom',
       buttonCopy:                           'DOWNLOAD',

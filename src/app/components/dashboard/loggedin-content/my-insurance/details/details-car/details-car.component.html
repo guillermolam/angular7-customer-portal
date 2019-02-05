@@ -1,14 +1,7 @@
 
 <section class="row details-content margin-top mt40 mobile-margin">
     <div class="col-sm-12 col-md col1">
-      <div class="row margin-bottom mb24 mapfre-card-download-button">
-        <div class="col col-left">
-          <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
-        </div>
-        <div class="col col-right">
-          <app-onboarding-wallet-modal [policyNumber]="policyId"></app-onboarding-wallet-modal>
-        </div>
-      </div>
+      
       <div class="row margin-bottom mb32 policy-holders row-section">
         <div class="col">
           <h2 class="title margin-bottom mb16">
@@ -16,14 +9,14 @@
           </h2>
           <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
           <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
-            <div class="col-lg-6 col-md-8 col-sm-8 col-xs-8 col-xxs-8">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-5">
               <strong>{{ holder['Insured Name'] }}</strong>
             </div>
             
-            <div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 col-xxs-4" *ngIf="holder.isPrimaryInsured">
+            <div class="col" *ngIf="holder.isPrimaryInsured">
               <small>{{ 'PRIMARY' | translate }}</small>
             </div>
-            <div class="ccol-lg-6 col-md-4 col-sm-4 col-xs-4 col-xxs-4" *ngIf="!holder.isPrimaryInsured">
+            <div class="col" *ngIf="!holder.isPrimaryInsured">
               <small>{{ 'SECONDARY' | translate }}</small>
             </div>
           </div>
@@ -53,7 +46,7 @@
                         [id]="'form-input_'+i" 
                         class="form-control" 
                         [formControlName]="'updateMileageInput_'+i"
-                        [class.error]="errorClass">
+                        [class.error]="errorClass[i]">
                         <mapfre-label [forInput]= "'form-input_'+i">{{ 'MILEAGE' | translate }}</mapfre-label>
                     </div>
                   </div>
@@ -71,7 +64,6 @@
                   (change)="getLegalCheckBoxValue($event)"
                   [formControlName]="'legalCheckMark'">
                 <label class="form-check-label legal disclaimer disclaimer small" for="legal-checkbox">{{ 'LEGAL_CHECKMARK' | translate }}</label>
-               
               </div>
             </div>
             <ng-container *ngIf="alertLoad && !showMessage">

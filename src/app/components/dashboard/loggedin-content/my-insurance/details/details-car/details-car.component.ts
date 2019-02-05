@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators }
                                         from '@angular/forms';
 import { ActivatedRoute, Params }       from '@angular/router';
 import { GetGooglePlaceService }        from 'mapfre-design-library';
-import { AuthenticationService }        from '../../../../../../_services/_iam/authentication-service.service';
+import { MileageService }               from './../../../../../../_services/my-insurance/mileage.service';
 import { PolicyDataService }            from '../../../../../../_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }         from '../../../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }
@@ -44,7 +44,7 @@ export class DetailsCarComponent implements OnInit {
 
   constructor(
     private activatedRoute:             ActivatedRoute,
-    private authService:                AuthenticationService,
+    private mileageService:             MileageService,
     private sanitizer:                  DomSanitizer,
     private storageService:             StorageServiceObservablesService,
     private policyDataService:          PolicyDataService,
@@ -55,7 +55,7 @@ export class DetailsCarComponent implements OnInit {
    }
 
    createUpdateMilageFormControls(data): void {
-    let milageControl =                 [];
+    const milageControl =                 [];
     for ( let i = 0; i <= data.vehicle.length; i++ ) {
       if ( i != data.vehicle.length ) {
         milageControl.push(
@@ -158,56 +158,75 @@ export class DetailsCarComponent implements OnInit {
 
   updateMileageById( email, policyId, form ) {
     this.alertLoad =                    true;
-    let successArray =                  [],
-        VName =                         [];
-    this.policy.vehicle.forEach((vehicleDetail, i) => {
-      const formController =            form.controls.groups;
-      let vehicleId =                   vehicleDetail.vehicleIdentificationNumber.Id,
-          odometerReading =             vehicleDetail.odometerReading;
+    const
+      successArray =                    [],
+      VName =                           [];
 
-      if( formController.controls[`updateMileageInput_${i}`] === '' || formController.controls[`updateMileageInput_${i}`].value == odometerReading ) {
-        this.errorMessage[i] = 'This vehicle was not updated.';
-      }
-      else if ( formController.controls[`updateMileageInput_${i}`].dirty ) {
-        this.authService
-        .updateMileage(email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`].value )
+    // make sure that all of the arraies clear out. The is no reason to add values on a new
+    // instantiante of the method, aka when someone reclicks the confirm button.
+
+    this.errorMessage.length =            0;
+    successArray.length =                 0;
+    this.errorClass.length =              0;
+
+    this.policy.vehicle.forEach((vehicleDetail, i) => {
+      const
+        formController =                  form.controls.groups,
+        vehicleId =                       vehicleDetail.vehicleIdentificationNumber.Id,
+        odometerReading =                 vehicleDetail.odometerReading;
+
+      this.mileageService
+        .updateMileage( email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`], odometerReading )
         .subscribe(
           (success) => {
-            successArray.push(true);
+            console.log(success)
+            this.errorMessage.push( `element_${i}` );
+            successArray.push( true );
+            this.errorClass.push( false );
           },
           (error) => {
-            VName.push(vehicleDetail.vehicle);
-            successArray.push(false);
+            console.log('error subscription ', error)
+            if (error === 'Same Value') {
+              this.errorMessage.push( `Please update your mileage element_${i}` );
+              this.errorClass.push( true );
+            }
+            else if (error === `no ${error}`) {
+              console.log(`no ${error}`);
+              this.errorMessage.push( `There was a problem with updating your mileage  element_${i}` );
+              successArray.push(false);
+              this.errorClass.push(true);
+            }
+            else if (!error) {
+              console.log(`no ${error}`);
+              this.errorMessage.push( `This vehicle was not updated.  element_${i}` );
+              successArray.push(false);
+              this.errorClass.push(true);
+            }
           }
-        );
-      }
-      else {
-        this.errorMessage[i] = 'Please add your current mileage.';
-        this.errorClass = true;
-        return;
-      }
+        )
+        .add( () => {
+          this.alertLoad =              false;
+          // this.reSyncWithPolicyData()
+        });
     });
 
-    setTimeout(() => {
-      if (successArray.every((val, i, arr) => val == true)) {
+    console.log('mileage errorMessage', this.errorMessage, 'errorClass' ,this.errorClass, 'successArray', successArray);
+
+    // Due to the subscription we want everything to have a chance to run.
+
+    /*setTimeout(() => {
+      if ( successArray.every((val, i, arr) => val === true) && successArray.length != 0 ) {
         this.message =                `We\'ve updated you odemeters.`;
         this.messageType =            'success';
+        this.showMessage =            true;
+       
       }
-      else if (successArray.every((val, i, arr) => val == false)) {
-        this.message =                'There was a problem';
-        this.messageType =            'error';
-      }
-      else {
-        this.message =                `We could only update some of the odemeters. ${VName.join(', ')} had an issue`;
-        this.messageType =            'default';
-      }
-      this.showMessage =              true;
-      this.alertLoad =                false;
+
       setTimeout(() => {
         this.showMessage =            false;
-        this.reSyncWithPolicyData();
-      }, 2000);
-    }, 500);
+        this.alertLoad =              false;
+      }, 1000);
+    }, 500); */
   }
 
   ngOnInit() {
@@ -215,7 +234,6 @@ export class DetailsCarComponent implements OnInit {
     this.getApartmentAndState( this.policy );
     this.isAddressEqual( this.policy );
     this.policyId =                       this.policyIdInput;
-    console.log(this.policyId)
   }
 
 }
