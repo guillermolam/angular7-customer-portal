@@ -157,14 +157,7 @@ export class PolicyDetailsComponent implements OnInit {
     this.isItTheSameAddress = address;
   }
 
-  onSubmit(i, e): void {
-    const policyInfo =                  this.policyDetails[0],
-          policyId =                    policyInfo.policynumber.policynumber,
-          form =                        this.updateMileage;
-    if (this.legalCheckbox) {
-      this.updateMileageById( policyInfo.email.address, policyId, form );
-    }
-  }
+  
 
   showMe(e): void {
     this.showMessage = e;
@@ -178,51 +171,7 @@ export class PolicyDetailsComponent implements OnInit {
     );
   }
 
-  updateMileageById( email, policyId, form ) {
-    this.alertLoad =                    true;
-    let successArray =                  [],
-        VName =                         [];
-    this.policyDetails[0].vehicleDetails.forEach((vehicleDetail, i) => {
-      const formController =            form.controls.groups;
-      let vehicleId =                   vehicleDetail.vehicleIdentificationNumber.Id,
-          odometerReading =             vehicleDetail.odometerReading;
-
-      if ( formController.controls[`updateMileageInput_${i}`].dirty && formController.controls[`updateMileageInput_${i}`].value != odometerReading ) {
-        this.authService
-        .updateMileage(email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`].value )
-        .subscribe(
-          (success) => {
-            successArray.push(true);
-          },
-          (error) => {
-            VName.push(vehicleDetail.vehicle);
-            successArray.push(false);
-          }
-        );
-      }
-    });
-
-    setTimeout(() => {
-      if (successArray.every((val, i, arr) => val == true)) {
-        this.message =                `We\'ve updated you odemeters.`;
-        this.messageType =            'success';
-      }
-      else if (successArray.every((val, i, arr) => val == false)) {
-        this.message =                'There was a problem';
-        this.messageType =            'error';
-      }
-      else {
-        this.message =                `We could only update some of the odemeters. ${VName.join(', ')} had an issue`;
-        this.messageType =            'default';
-      }
-      this.showMessage =              true;
-      this.alertLoad =                false;
-      setTimeout(() => {
-        this.showMessage =            false;
-        this.reSyncWithPolicyData();
-      }, 2000);
-    }, 500);
-  }
+ 
 
   ngOnInit() {
     this.loading = true;
