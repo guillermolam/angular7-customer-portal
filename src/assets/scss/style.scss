@@ -756,19 +756,6 @@ h1.title-cta {
   padding-left:         0;
 }
 
-.no-documents .col {
-  max-width: 456px;
-  margin: auto;
-  text-align: center;
-  padding-bottom: 80px;
-  padding-top: 64px;
-
-  img {
-    text-align: center;
-    max-width: 344px;
-  }
-}
-
 .no-margins-hug {
   &.hug-content {
     @media (min-width: 1200px) {

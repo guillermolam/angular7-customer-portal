@@ -13,14 +13,27 @@
       }
     }
 
-    td{
+    td {
       padding: 0.75rem;
-    }
 
+      &:first-child {
+        padding-left: 16px;
+      }
+
+      &:last-child {
+        
+           padding-right: 24px;
+       
+      }
+    }
   }
   
   &.table thead th {
     border: thin solid $lite-gray;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 24px;
+    padding-left: 16px;
   }
 
   
@@ -32,11 +45,12 @@
   }
 
   .col-type {
-    max-width: 61px;
+    max-width: 53px;
   }
 
   .col-name {
     width: auto;
+    padding-left: 0;
   }
 
   .col-date {
@@ -49,16 +63,13 @@
     font-size: 10px;
 
     i {
-      font-size: 16px;
-      top: 2px;
+      font-size: 24px;
       position: relative;
     }
   }
 
-  .pagination {
-    p {
-      display: none;
-    }
+  .pagination p {
+    display: none;
   }
 
   .footer-page {
@@ -72,8 +83,21 @@
 .circle-with-type {
   border-radius:        50%;
   background:           $dark-blue;
-  color:                $lite-gray;
+  color:                $white;
   width:                24px;
   text-align:           center;
   height:               24px;
+}
+
+.no-documents .no-documents-container {
+  max-width: 456px;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 80px;
+  padding-top: 64px;
+
+  img {
+    text-align: center;
+    max-width: 344px;
+  }
 }

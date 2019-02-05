@@ -425,13 +425,17 @@ export class TestingDataService {
       },
       "vehicle": [
         {
-          "vehicleIdentificationNumber": null,
-          "odometerReading": 0,
+          "vehicleIdentificationNumber": {
+            "Id": "1C6RR7GT3GS124646"
+          },
+          "odometerReading": 9,
           "vehicle": "2016 RAM 1500 SLT"
         },
         {
-          "vehicleIdentificationNumber": null,
-          "odometerReading": 0,
+          "vehicleIdentificationNumber": {
+            "Id": "JHLRD1843WC063631"
+          },
+          "odometerReading": 20,
           "vehicle": "1998 HONDA CR-V LX"
         }
       ],
@@ -448,22 +452,7 @@ export class TestingDataService {
       "expDate": "2017-09-10T00:00:00.000+0000",
       "billingDetails": {},
       "documentsDetails": [],
-      "vehicleDetails": [
-        {
-          "vehicleIdentificationNumber": {
-            "Id": "1C6RR7GT3GS124646"
-          },
-          "odometerReading": 9,
-          "vehicle": "2016 RAM 1500 SLT"
-        },
-        {
-          "vehicleIdentificationNumber": {
-            "Id": "JHLRD1843WC063631"
-          },
-          "odometerReading": 20,
-          "vehicle": "1998 HONDA CR-V LX"
-        }
-      ],
+      
       "billingHistory": [
         {
           "noticeData": "          EFP                                         99.17                MPMP09/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
@@ -1631,13 +1620,17 @@ export class TestingDataService {
       },
       "vehicle": [
         {
-          "vehicleIdentificationNumber": null,
-          "odometerReading": 0,
+          "vehicleIdentificationNumber": {
+            "Id": "1C6RR7GT3GS124646"
+          },
+          "odometerReading": 9,
           "vehicle": "2016 RAM 1500 SLT"
         },
         {
-          "vehicleIdentificationNumber": null,
-          "odometerReading": 0,
+          "vehicleIdentificationNumber": {
+            "Id": "JHLRD1843WC063631"
+          },
+          "odometerReading": 20,
           "vehicle": "1998 HONDA CR-V LX"
         }
       ],
@@ -1684,22 +1677,7 @@ export class TestingDataService {
         transactionDate:"09/18/2017",
         type:"INVOICE",
       }],
-      "vehicleDetails": [
-        {
-          "vehicleIdentificationNumber": {
-            "Id": "1C6RR7GT3GS124646"
-          },
-          "odometerReading": 9,
-          "vehicle": "2016 RAM 1500 SLT"
-        },
-        {
-          "vehicleIdentificationNumber": {
-            "Id": "JHLRD1843WC063631"
-          },
-          "odometerReading": 20,
-          "vehicle": "1998 HONDA CR-V LX"
-        }
-      ],
+      
       "billingHistory": [
         {
           "noticeData": "          EFP                                         99.17                MPMP09/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
@@ -2307,22 +2285,7 @@ export class TestingDataService {
         transactionDate:"09/18/2017",
         type:"INVOICE",
       }],
-      "vehicleDetails": [
-        {
-          "vehicleIdentificationNumber": {
-            "Id": "1C6RR7GT3GS124646"
-          },
-          "odometerReading": 9,
-          "vehicle": "2016 RAM 1500 SLT"
-        },
-        {
-          "vehicleIdentificationNumber": {
-            "Id": "JHLRD1843WC063631"
-          },
-          "odometerReading": 20,
-          "vehicle": "1998 HONDA CR-V LX"
-        }
-      ],
+     
       "billingHistory": [
         {
           "noticeData": "          EFP                                         99.17                MPMP09/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
