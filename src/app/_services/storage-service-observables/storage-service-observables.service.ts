@@ -23,7 +23,16 @@ export class StorageServiceObservablesService {
     if (JSON.parse(localStorage.getItem('currentUser'))) {
       currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
-    this.userEmail = currentUser.username;
+    
+    // this undefined error shouldn't show up if you are logged in,
+    // but for testing and dev purposes we should just set it if
+    // it is undefined
+    if (currentUser ===  undefined) {
+      this.userEmail = '';
+    }
+    else {
+      this.userEmail = currentUser.username;
+    }
     return this.userEmail;
   }
 

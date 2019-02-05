@@ -16,13 +16,11 @@ export class ProfileMainComponent implements OnInit {
     private userService: UserService
   ) { }
 
-  onRemoveAccount(){
+  onRemoveAccount() {
     this.confirmModal = true;
   }
 
   ngOnInit() {
-
-    console.log('called');
 
     this.userService.$user
     .subscribe( (userResponse) => {

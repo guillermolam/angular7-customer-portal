@@ -50,7 +50,7 @@
                         <mapfre-label [forInput]= "'form-input_'+i">{{ 'MILEAGE' | translate }}</mapfre-label>
                     </div>
                   </div>
-                  <div class="help-block error-block"> {{ errorMessage[i] | translate }}</div>
+                  <div class="help-block error-block" *ngIf="checkIfIndexIsTheSame(errorMessage[i], i)"> {{ errorMessage[i] | translate }}</div>
                 </div> 
               </div>
             </div>

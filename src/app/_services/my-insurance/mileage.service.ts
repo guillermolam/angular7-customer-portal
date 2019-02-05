@@ -20,45 +20,48 @@ export class MileageService {
     private serviceHelpers:       ServiceHelpersService
   ) { }
 
-  checkForSameValue( inputValue, arrayValue ) {
-    // return () ?
-  }
-
-  checkMilageValues( inputValue, arrayValue ): boolean {
-    if ( (inputValue.value !== '' || inputValue.value !== arrayValue) && inputValue.dirty ) {
-      return true;
+  checkMilageValues( inputValue, arrayValue ): string {
+    let stringValue;
+    if ( inputValue.value !== '' && inputValue.dirty === true ) {
+      if ( inputValue.value > arrayValue ) {
+        stringValue = 'ok';
+      }
+      else if ( inputValue.value !== arrayValue ) {
+        stringValue = 'input was less than';
+      }
+      else {
+       stringValue = 'values are the same';
+      }
     }
     else {
-      return false;
+      stringValue = 'input not changed';
     }
+    console.log(stringValue, inputValue, arrayValue )
+
+    return stringValue;
   }
 
-  updateMileage(emailAddress, policyId, vechicalId, inputValue, arrayValue ): Observable<any> {
-    const url =                 `${this.backendPerPol}/personal-policies/${emailAddress}/${policyId}/${vechicalId}?odometerReading=${inputValue}`;
-    if ( this.checkMilageValues( inputValue, arrayValue ) ) {
+  updateMileage( emailAddress, policyId, vechicalId, inputValue, arrayValue ): Observable<any> {
+    const url = `${this.backendPerPol}/personal-policies/${emailAddress}/${policyId}/${vechicalId}?odometerReading=${inputValue}`;
+
+    if ( this.checkMilageValues( inputValue, arrayValue ) === 'values are the same') {
+      return throwError('Same Value');
+    }
+    else if ( this.checkMilageValues( inputValue, arrayValue ) === 'input was less than') {
+      return throwError('Less Than Original');
+    }
+    else if ( this.checkMilageValues( inputValue, arrayValue ) == 'ok' ) {
       return this.http.post(url, {} , this.serviceHelpers.options)
       .pipe(
-       /* mergeMap(
-          err => inputValue === arrayValue 
-          ? throwError('Same Value')
-          : throwError(`no ${err}`)
-        ) */
         map( (res) => res['payload']),
         catchError( (err) => {
-          console.log(err)
-          if (inputValue.value === arrayValue) {
-            return throwError('Same Value');
-          }
-          else if (err) {
-            return throwError(`no ${err}`);
-          }
+         return throwError('ok');
         })
       );
     }
     else {
-      return throwError( this.checkMilageValues( inputValue, arrayValue ) );
+      return throwError('Input has not changed');
     }
-
   }
 
 }

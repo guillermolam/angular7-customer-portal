@@ -2,14 +2,11 @@ import { Component, OnInit, Input }     from '@angular/core';
 import { DomSanitizer, SafeUrl }        from '@angular/platform-browser';
 import { FormGroup, FormControl, Validators }
                                         from '@angular/forms';
-import { ActivatedRoute, Params }       from '@angular/router';
 import { GetGooglePlaceService }        from 'mapfre-design-library';
 import { MileageService }               from './../../../../../../_services/my-insurance/mileage.service';
-import { PolicyDataService }            from '../../../../../../_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }         from '../../../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }
                                         from '../../../../../../_services/storage-service-observables/storage-service-observables.service';
-import { WalletCardService }            from '../../../../../../_services/_iam/wallet-card.service';
 import * as isEqual                     from 'lodash.isequal';
 
 @Component({
@@ -23,7 +20,6 @@ export class DetailsCarComponent implements OnInit {
             address:                    string = 'address';
             agentStreet:                string;
             alertLoad:                  boolean = false;
-            alerton:                    any;
             apt:                        string = 'apt';
             errorClass:                 any = [];
             errorMessage:               any = [];
@@ -34,22 +30,15 @@ export class DetailsCarComponent implements OnInit {
             message:                    string;
             messageType:                string;
             policyId:                   number;
-            policyDetails:              any;
-            sameMailingAddress:         boolean;
             showMessage:                boolean = false;
             state:                      string;
             updateMileage:              FormGroup;
-            vehicles:                   object;
-            user:                       any;
 
   constructor(
-    private activatedRoute:             ActivatedRoute,
     private mileageService:             MileageService,
     private sanitizer:                  DomSanitizer,
     private storageService:             StorageServiceObservablesService,
-    private policyDataService:          PolicyDataService,
     private policyDetailsService:       PolicyDetailsService,
-    private walletCardService:          WalletCardService,
     private googlePlaceService:         GetGooglePlaceService
   ) {
    }
@@ -78,6 +67,10 @@ export class DetailsCarComponent implements OnInit {
     });
   }
 
+  checkIfIndexIsTheSame( arrayIndex, index ): boolean {
+   return this.errorMessage.indexOf(arrayIndex) == index ? true : false;
+  }
+
   getMailingOrResidentialAddress(updateAddress){
     console.log(updateAddress);
     this.googlePlaceService.updateAddress(updateAddress);
@@ -97,7 +90,7 @@ export class DetailsCarComponent implements OnInit {
   }
 
   getApartmentAndState(data): void {
-    if(data.property != undefined) {
+    if (data.property != undefined) {
       const streetAddress =               data.property[0].address.streetName;
       let   addressArray =                [];
 
@@ -123,7 +116,7 @@ export class DetailsCarComponent implements OnInit {
     this.legalCheckbox = e.target.checked ? true : false;
   }
 
-  isAddressEqual(policyDetail) {
+  isAddressEqual(policyDetail): void {
     let address;
 
     if (isEqual(policyDetail.mailingAddress, policyDetail.residentialAddress)) {
@@ -179,61 +172,60 @@ export class DetailsCarComponent implements OnInit {
         .updateMileage( email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`], odometerReading )
         .subscribe(
           (success) => {
-            console.log(success)
-            this.errorMessage.push( `element_${i}` );
-            successArray.push( true );
-            this.errorClass.push( false );
+            successArray.splice(i, 0, true );
+            this.errorMessage.splice(i, 0, '');
+            this.errorClass.splice(i, 0, false );
+            this.reSyncWithPolicyData();
           },
           (error) => {
-            console.log('error subscription ', error)
+            successArray.splice(i, 0, false );
+            this.errorClass.splice(i, 0, true );
+
             if (error === 'Same Value') {
-              this.errorMessage.push( `Please update your mileage element_${i}` );
-              this.errorClass.push( true );
+              this.errorMessage.splice(i, 0, `Please update your mileage element_${i}` );
             }
-            else if (error === `no ${error}`) {
-              console.log(`no ${error}`);
-              this.errorMessage.push( `There was a problem with updating your mileage  element_${i}` );
-              successArray.push(false);
-              this.errorClass.push(true);
+            else if (error === 'Input has not changed') {
+              this.errorMessage.splice(i, 0, `This input was not updated element_${i}` );
             }
-            else if (!error) {
-              console.log(`no ${error}`);
-              this.errorMessage.push( `This vehicle was not updated.  element_${i}` );
-              successArray.push(false);
-              this.errorClass.push(true);
+            else if (error === 'Less Than Original') {
+              this.errorMessage.splice(i, 0, `The value you have input is less than the original amount element_${i}` );
             }
+            else if (error.error === false ) {
+              this.errorMessage.splice(i, 0, `There was a problem updating your vehicle element_${i}` );
+            }
+            else {
+              this.errorMessage.splice(i, 0, `There was a problem updating your vehicle element_${i}` );
+            }
+
           }
         )
         .add( () => {
           this.alertLoad =              false;
-          // this.reSyncWithPolicyData()
         });
     });
 
-    console.log('mileage errorMessage', this.errorMessage, 'errorClass' ,this.errorClass, 'successArray', successArray);
+    console.log('this.errorMessage', this.errorMessage)
 
     // Due to the subscription we want everything to have a chance to run.
 
-    /*setTimeout(() => {
+    setTimeout(() => {
       if ( successArray.every((val, i, arr) => val === true) && successArray.length != 0 ) {
         this.message =                `We\'ve updated you odemeters.`;
         this.messageType =            'success';
         this.showMessage =            true;
-       
       }
-
       setTimeout(() => {
         this.showMessage =            false;
         this.alertLoad =              false;
       }, 1000);
-    }, 500); */
+    }, 500);
   }
 
   ngOnInit() {
     this.createUpdateMilageFormControls( this.policy );
     this.getApartmentAndState( this.policy );
     this.isAddressEqual( this.policy );
-    this.policyId =                       this.policyIdInput;
+    this.policyId =                     this.policyIdInput;
   }
 
 }
