@@ -33,7 +33,7 @@ export class BillingDetailsService {
 
   getHistoryBillsByPolicy(policyNumber: string){
     // const url = `${this.billingURL}/billing/history-bills?policyNumber=${policyNumber}`;
-    const url = `${environment.backend_server_url}/billing-api/scheduled-bills?policyNumber=${policyNumber}`;
+    const url = `${environment.backend_server_url}/billing-api/history-bills?policyNumber=${policyNumber}`;
     return this.http.get(url);
   }
 
