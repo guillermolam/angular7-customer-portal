@@ -10,7 +10,7 @@ import { environment }          from '../../../environments/environment';
   providedIn: 'root'
 })
 export class AuthenticateUserService {
-  backend:                    string = environment.backend_server_id;
+  // backend:                    string = environment.backend_server_id;
 
   constructor(
     private http:             HttpClient,
@@ -43,10 +43,4 @@ export class AuthenticateUserService {
 
   }
 
-  changeUserPassword(newPassword) {
-    return this.userService.$user.pipe( map( (user) => {
-      const url =             `${this.backend}/identity/users/password/${user.email.address}?newPassword=${newPassword}`;
-      return this.http.post(url, {});
-    }));
-  }
 }

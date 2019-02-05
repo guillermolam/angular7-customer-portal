@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class BankAccountService {
-  backend:                    string = environment.backend_server_bl;
+  // backend:                    string = environment.backend_server_bl;
   constructor(
     private http:             HttpClient,
   ) { }

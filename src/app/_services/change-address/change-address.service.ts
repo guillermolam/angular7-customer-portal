@@ -7,7 +7,7 @@ import { environment }            from '../../../environments/environment';
   providedIn: 'root'
 })
 export class ChangeAddressService {
-  backendPP: string =              environment.backend_server_pp;
+  // backendPP: string =              environment.backend_server_pp;
 
   constructor(
     private http:                  HttpClient,

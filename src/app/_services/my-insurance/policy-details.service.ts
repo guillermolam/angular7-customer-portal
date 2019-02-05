@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 export class PolicyDetailsService {
 
   private policyBillingDataAll:     any[] = [];
-  private backendUrl:               string = environment.backend_server_pp;
+  // private backendUrl:               string = environment.backend_server_pp;
 
   constructor(
     private http:                   HttpClient,

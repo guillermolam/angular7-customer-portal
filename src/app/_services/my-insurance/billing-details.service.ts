@@ -10,7 +10,7 @@ import { BillingDataService } from './data-services/billing-data.service';
 })
 export class BillingDetailsService {
 
-  billingURL:                   string = environment.backend_server_bl;
+  // billingURL:                   string = environment.backend_server_bl;
 
   constructor(
     private http:               HttpClient,

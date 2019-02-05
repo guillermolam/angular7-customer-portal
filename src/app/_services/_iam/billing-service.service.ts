@@ -11,7 +11,7 @@ import { User }                   from '../../_models/user';
   providedIn: 'root'
 })
 export class BillingService {
-  backend:                        string = environment.backend_server_cu;
+  // backend:                        string = environment.backend_server_cu;
   user:                           User;
 
   constructor(

@@ -5,7 +5,7 @@ import { environment }              from '../../../environments/environment';
 
 @Injectable()
 export class WalletCardService {
-  backend:                          string = environment.backend_server_cu;
+//   backend:                          string = environment.backend_server_cu;
   constructor(
     private http:                   HttpClient,
   ) {}

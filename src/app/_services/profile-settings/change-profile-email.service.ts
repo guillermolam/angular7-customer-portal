@@ -9,8 +9,8 @@ import { ServiceHelpersService }  from '../../_helpers/service-helpers.service';
   providedIn: 'root'
 })
 export class ChangeProfileEmailService {
-  backendAccounts:                string = environment.backend_server_cu;
-  backendIdentity:                string = environment.backend_server_id;   // environment.backend_server_url
+  // backendAccounts:                string = environment.backend_server_cu;
+  // backendIdentity:                string = environment.backend_server_id;   // environment.backend_server_url
   email:                          any;
   process:                        boolean;
   private messageSource =         new BehaviorSubject<any>(this.email);

@@ -15,11 +15,11 @@ export class AuthenticationService {
 
   // Anything that was originally using the backendAPI env is not being changed.
 
-  backendApi:                     string = environment.backend_server_url;
-  backendAuth:                    string = environment.backend_auth_server_url;
-  backendCustomers:               string = environment.backend_server_cu;
-  backendId:                      string = environment.backend_server_id;
-  backendPerPol:                  string = environment.backend_server_pp;
+  // backendApi:                     string = environment.backend_server_url;
+  // backendAuth:                    string = environment.backend_auth_server_url;
+  // backendCustomers:               string = environment.backend_server_cu;
+  // backendId:                      string = environment.backend_server_id;
+  // backendPerPol:                  string = environment.backend_server_pp;
 
   public token:                   string;
 
