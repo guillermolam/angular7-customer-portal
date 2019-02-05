@@ -1,0 +1,1486 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 67.0.3396 (Mac OS X 10.14.0)" package="" timestamp="2019-02-05T14:59:49" id="0" hostname="MAMR00195.local" tests="242" errors="0" failures="5" time="3.819">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36"/>
+  </properties>
+  <testcase name="ChangeProfileSettingsPasswordGuard should be able to route when user has an observable" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeProfileSettingsPasswordGuard">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeProfileSettingsPasswordGuard should not route when user there is no observable" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeProfileSettingsPasswordGuard">
+    <skipped/>
+  </testcase>
+  <testcase name="CustomDateFormatPipe create an instance" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CustomDateFormatPipe">
+    <skipped/>
+  </testcase>
+  <testcase name="FullstateToAbvPipe create an instance" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).FullstateToAbvPipe">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PaperlessComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="MyInsuranceMainComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).MyInsuranceMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignUpGuard should not route when user there is no user observable" time="0.071" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignUpGuard"/>
+  <testcase name="SignUpGuard should be able to route when user has an observable" time="0.028" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignUpGuard"/>
+  <testcase name="ContactComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ContactComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsReportComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsReportComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EmailUseScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailUseScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationMainComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).InformationMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileSettingsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileSettingsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessPayComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PaperlessPayComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="MiscColumnComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).MiscColumnComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="DetailsHomeComponent should create" time="0.461" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).DetailsHomeComponent">
+    <failure type="">1. If 'svg-holder-mono-color-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-holder-mono-color-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+            &lt;div class="col"&gt;
+              &lt;h2 class="title margin-bottom mb16"&gt;
+                [ERROR -&gt;]&lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ 'POLICY_HOLDER' | translate }}
+                &lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ [ERROR -&gt;]'POLICY_HOLDER' | translate }}
+              &lt;/h2&gt;
+              
+                
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-holder-mono-color-svg' is not a known element:
+           "): ng:///DynamicTestModule/DetailsHomeComponent.html@6:16, The pipe 'translate' could not be found ("tle margin-bottom mb16"&gt;
+"): ng:///DynamicTestModule/DetailsHomeComponent.html@6:75, The pipe 'translate' could not be found ("
+                &lt;div class ...
+    at &lt;Jasmine&gt;
+    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
+    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
+</failure>
+    <failure type="">1. If 'svg-holder-mono-color-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-holder-mono-color-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+            &lt;div class="col"&gt;
+              &lt;h2 class="title margin-bottom mb16"&gt;
+                [ERROR -&gt;]&lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ 'POLICY_HOLDER' | translate }}
+                &lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ [ERROR -&gt;]'POLICY_HOLDER' | translate }}
+              &lt;/h2&gt;
+              
+                
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-holder-mono-color-svg' is not a known element:
+           "): ng:///DynamicTestModule/DetailsHomeComponent.html@6:16, The pipe 'translate' could not be found ("tle margin-bottom mb16"&gt;
+"): ng:///DynamicTestModule/DetailsHomeComponent.html@6:75, The pipe 'translate' could not be found ("
+                &lt;div class ...
+    at &lt;Jasmine&gt;
+    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
+    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
+</failure>
+    <failure type="">Error: Expected undefined to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.&lt;anonymous&gt; src/app/components/dashboard/loggedin-content/my-insurance/details/details-home/details-home.component.spec.ts:23:23)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
+</failure>
+  </testcase>
+  <testcase name="SignupNotFoundComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupNotFoundComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthGuard should be able to route when user has an observable" time="0.014" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="AuthGuard should not route when user has no observable" time="0.024" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="ClaimsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingNewpaymentComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BillingNewpaymentComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoggedinContentComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoggedinContentComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationAboutComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).InformationAboutComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeEmailComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeEmailComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="UserService should update the user" time="0.132" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).UserService"/>
+  <testcase name="PolicyBelongToAnotherScreenComponent should create usr object" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyBelongToAnotherScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyBelongToAnotherScreenComponent should throw error" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyBelongToAnotherScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyBelongToAnotherScreenComponent should redirect ro createpassword page" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyBelongToAnotherScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangePhoneComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangePhoneComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="WalletCardComponent should call the wallet card service to generate the pk pass" time="0.083" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).WalletCardComponent"/>
+  <testcase name="SignupEmailInUseComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupEmailInUseComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeProfileSettingsEmailGuard should be able to route when user has an observable" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeProfileSettingsEmailGuard">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeProfileSettingsEmailGuard should not route when user there is no observable" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeProfileSettingsEmailGuard">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BillingComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="NoClaimsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).NoClaimsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyDetailsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyDetailsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyDataService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingSidebarComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BillingSidebarComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangePasswordFormComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EmailConfirmationComponent should emit false value" time="0.198" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should do nothing" time="0.104" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should send email to user and emit true" time="0.146" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="EmailConfirmationComponent should throw error" time="0.151" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailConfirmationComponent"/>
+  <testcase name="InformationDiscountsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).InformationDiscountsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessTimeComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PaperlessTimeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeAddressService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeAddressService">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupEditPolicyComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupEditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingDetailsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BillingDetailsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationRenewalComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).InformationRenewalComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BopScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BopScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingConfirmComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BillingConfirmComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="OnboardingWalletModalComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).OnboardingWalletModalComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CheckingAccountService should return the checking account formbase" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CheckingAccountService">
+    <skipped/>
+  </testcase>
+  <testcase name="NewPaymentComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).NewPaymentComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationCancelComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).InformationCancelComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="UserInfoService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).UserInfoService">
+    <skipped/>
+  </testcase>
+  <testcase name="LoggedinSidenavComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoggedinSidenavComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyDetailsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyDetailsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingMainComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BillingMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsAccordianFaqComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsAccordianFaqComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsHomePropertyComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsHomePropertyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="DetailsCarComponent should create" time="0.156" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).DetailsCarComponent">
+    <failure type="">1. If 'svg-holder-mono-color-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-holder-mono-color-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+        &lt;div class="col"&gt;
+          &lt;h2 class="title margin-bottom mb16"&gt;
+            [ERROR -&gt;]&lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ 'POLICY_HOLDER' | translate }}
+            &lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ [ERROR -&gt;]'POLICY_HOLDER' | translate }}
+          &lt;/h2&gt;
+'svg-holder-mono-color-svg' is not a known element:
+1. If 'svg-holder-mono-color-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-holder-mono-color-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+        &lt;div class="col"&gt;
+          &lt;h2 class="title margin-bottom mb16"&gt;
+            [ERROR -&gt;]&lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ 'POLICY_HOLDER' | translate }}
+          &lt;"): ng:///DynamicTestModule/DetailsCarComponent.html@7:12
+The pipe 'translate' could not be found ("="title margin-bottom mb16"&gt;
+            &lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ [ERROR -&gt;]'POLICY_HOLDER' | translate }}
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;{{ 'POLICY_HO"): ng:///DynamicTestModule/DetailsCarComponent.html@7:71
+The pipe 'translate' could not be found ("-svg&gt; {{ 'POLICY_HOLDER' | translate }}
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;{{ [ERROR -&gt;]'POLICY_HOLDER_ONE' | translate}} &lt;a routerLink="/my-insurance/{{policyId}}/documents"  class="underl"): ng:///DynamicTestModule/DetailsCarComponent.html@9:44
+Can't bind to 'routerLink' since it isn't a known property of 'a'. ("}}
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;{{ 'POLICY_HOLDER_ONE' | translate}} &lt;a [ERROR -&gt;]routerLink="/my-insurance/{{policyId}}/documents"  class="underline"&gt;{{ 'POLICY_HOLDER_TWO' | transla"): ng:///DynamicTestModule/DetailsCarComponent.html@9:81
+The pipe 'translate' could not be found ("OLDER_ONE' | translate}} &lt;a routerLink="/my-insurance/{{policyId}}/documents"  class="underline"&gt;{{ [ERROR -&gt;]'POLICY_HOLDER_TWO' | translate}}&lt;/a&gt; {{ 'POLICY_HOLDER_THREE' | translate}}&lt;/p&gt;
+          &lt;div class"): ng:///DynamicTestModule/DetailsCarComponent.html@9:153
+The pipe 'translate' could not be found ("my-insurance/{{policyId}}/documents"  class="underline"&gt;{{ 'POLICY_HOLDER_TWO' | translate}}&lt;/a&gt; {{ [ERROR -&gt;]'POLICY_HOLDER_THREE' | translate}}&lt;/p&gt;
+          &lt;div class="policy-holder margin-bottom mb8 row" *n"): ng:///DynamicTestModule/DetailsCarComponent.html@9:194
+The pipe 'translate' could not be found ("
+            
+            &lt;div class="col" *ngIf="holder.isPrimaryInsured"&gt;
+              &lt;small&gt;{{ [ERROR -&gt;]'PRIMARY' | translate }}&lt;/small&gt;
+            &lt;/div&gt;
+            &lt;div class="col" *ngIf="!holder.isPri"): ng:///DynamicTestModule/DetailsCarComponent.html@16:24
+The pipe 'translate' could not be found ("      &lt;/div&gt;
+            &lt;div class="col" *ngIf="!holder.isPrimaryInsured"&gt;
+              &lt;small&gt;{{ [ERROR -&gt;]'SECONDARY' | translate }}&lt;/small&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@19:24
+'svg-car-mono-color-small-svg' is not a known element:
+1. If 'svg-car-mono-color-small-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-car-mono-color-small-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+        &lt;div class="col"&gt;
+          &lt;h2 class="title margin-bottom mb16"&gt;
+              [ERROR -&gt;]&lt;svg-car-mono-color-small-svg&gt;&lt;/svg-car-mono-color-small-svg&gt; {{'VEHICLES' | translate}}
+          &lt;/"): ng:///DynamicTestModule/DetailsCarComponent.html@27:14
+The pipe 'translate' could not be found (" margin-bottom mb16"&gt;
+              &lt;svg-car-mono-color-small-svg&gt;&lt;/svg-car-mono-color-small-svg&gt; {{[ERROR -&gt;]'VEHICLES' | translate}}
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@27:78
+The pipe 'translate' could not be found ("
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;
+   [ERROR -&gt;]         {{ 'ODOMETER_UPDATE' | translate }}&lt;strong&gt;{{ 'NEW_DISCOUNTS' | translate}}&lt;/strong&gt;.
+      "): ng:///DynamicTestModule/DetailsCarComponent.html@30:3
+The pipe 'translate' could not be found ("          &lt;p class="section-description"&gt;
+            {{ 'ODOMETER_UPDATE' | translate }}&lt;strong&gt;{{ [ERROR -&gt;]'NEW_DISCOUNTS' | translate}}&lt;/strong&gt;.
+          &lt;/p&gt;
+          &lt;form [formGroup]="updateMileage" cl"): ng:///DynamicTestModule/DetailsCarComponent.html@30:58
+Can't bind to 'formGroup' since it isn't a known property of 'form'. ("TE' | translate }}&lt;strong&gt;{{ 'NEW_DISCOUNTS' | translate}}&lt;/strong&gt;.
+          &lt;/p&gt;
+          &lt;form [ERROR -&gt;][formGroup]="updateMileage" class="update-mileage no-padding"&gt;
+            &lt;div class="margin-bottom "): ng:///DynamicTestModule/DetailsCarComponent.html@32:16
+Can't bind to 'formControlName' since it isn't a known property of 'input'. ("      [id]="'form-input_'+i" 
+                        class="form-control" 
+                        [ERROR -&gt;][formControlName]="'updateMileageInput_'+i"
+                        [class.error]="errorClass[i]"&gt;
+  "): ng:///DynamicTestModule/DetailsCarComponent.html@47:24
+Can't bind to 'forInput' since it isn't a known property of 'mapfre-label'.
+1. If 'mapfre-label' is an Angular component and it has 'forInput' input, then verify that it is part of this module.
+2. If 'mapfre-label' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("t_'+i"
+                        [class.error]="errorClass[i]"&gt;
+                        &lt;mapfre-label [ERROR -&gt;][forInput]= "'form-input_'+i"&gt;{{ 'MILEAGE' | translate }}&lt;/mapfre-label&gt;
+                    &lt;/div&gt;
+ "): ng:///DynamicTestModule/DetailsCarComponent.html@49:38
+The pipe 'translate' could not be found ("lass.error]="errorClass[i]"&gt;
+                        &lt;mapfre-label [forInput]= "'form-input_'+i"&gt;{{ [ERROR -&gt;]'MILEAGE' | translate }}&lt;/mapfre-label&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@49:71
+'mapfre-label' is not a known element:
+1. If 'mapfre-label' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-label' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("ateMileageInput_'+i"
+                        [class.error]="errorClass[i]"&gt;
+                        [ERROR -&gt;]&lt;mapfre-label [forInput]= "'form-input_'+i"&gt;{{ 'MILEAGE' | translate }}&lt;/mapfre-label&gt;
+              "): ng:///DynamicTestModule/DetailsCarComponent.html@49:24
+The pipe 'translate' could not be found ("          &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="help-block error-block"&gt; {{ [ERROR -&gt;]errorMessage[i] | translate }}&lt;/div&gt;
+                &lt;/div&gt; 
+              &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@52:58
+Can't bind to 'formControlName' since it isn't a known property of 'input'. ("              required
+                  (change)="getLegalCheckBoxValue($event)"
+                  [ERROR -&gt;][formControlName]="'legalCheckMark'"&gt;
+                &lt;label class="form-check-label legal disclaimer"): ng:///DynamicTestModule/DetailsCarComponent.html@64:18
+The pipe 'translate' could not be found ("          &lt;label class="form-check-label legal disclaimer disclaimer small" for="legal-checkbox"&gt;{{ [ERROR -&gt;]'LEGAL_CHECKMARK' | translate }}&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@65:106
+'mapfre-loading' is not a known element:
+1. If 'mapfre-loading' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-loading' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. (" !showMessage"&gt;
+              &lt;div class="margin-bottom mb16 loading-no-padding"&gt;
+                  [ERROR -&gt;]&lt;mapfre-loading&gt;&lt;/mapfre-loading&gt;
+              &lt;/div&gt;
+               
+"): ng:///DynamicTestModule/DetailsCarComponent.html@70:18
+Can't bind to 'nonDynamic' since it isn't a known property of 'mapfre-alert'.
+1. If 'mapfre-alert' is an Angular component and it has 'nonDynamic' input, then verify that it is part of this module.
+2. If 'mapfre-alert' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("w" *ngIf="!alertLoad &amp;&amp; showMessage"&gt;
+              &lt;div class="col"&gt;
+                &lt;mapfre-alert [ERROR -&gt;][nonDynamic]="true" [alertType]="messageType" (hide)="showMe($event)"&gt;
+                  {{ message |"): ng:///DynamicTestModule/DetailsCarComponent.html@76:30
+Can't bind to 'alertType' since it isn't a known property of 'mapfre-alert'.
+1. If 'mapfre-alert' is an Angular component and it has 'alertType' input, then verify that it is part of this module.
+2. If 'mapfre-alert' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. (" &amp;&amp; showMessage"&gt;
+              &lt;div class="col"&gt;
+                &lt;mapfre-alert [nonDynamic]="true" [ERROR -&gt;][alertType]="messageType" (hide)="showMe($event)"&gt;
+                  {{ message | translate }}
+      "): ng:///DynamicTestModule/DetailsCarComponent.html@76:50
+The pipe 'translate' could not be found ("            &lt;mapfre-alert [nonDynamic]="true" [alertType]="messageType" (hide)="showMe($event)"&gt;
+   [ERROR -&gt;]               {{ message | translate }}
+                &lt;/mapfre-alert&gt;
+              &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@77:3
+'mapfre-alert' is not a known element:
+1. If 'mapfre-alert' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-alert' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("&lt;div class="row" *ngIf="!alertLoad &amp;&amp; showMessage"&gt;
+              &lt;div class="col"&gt;
+                [ERROR -&gt;]&lt;mapfre-alert [nonDynamic]="true" [alertType]="messageType" (hide)="showMe($event)"&gt;
+                "): ng:///DynamicTestModule/DetailsCarComponent.html@76:16
+The pipe 'translate' could not be found ("e full"
+                  [disabledValue]="legalCheckbox &amp;&amp; updateMileage.valid"
+                  [[ERROR -&gt;]translateValue]=" 'UPDATE_MILEAGE' | translate "&gt;
+                    {{ 'UPDATE_MILEAGE' | translate"): ng:///DynamicTestModule/DetailsCarComponent.html@88:19
+Can't bind to 'inputType' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'inputType' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+                &lt;mapfre-button
+                  (click)="onSubmit(i, $event)"
+                  [ERROR -&gt;][inputType]="'submit'"
+                  additionalClasses="ghost primary large full"
+               "): ng:///DynamicTestModule/DetailsCarComponent.html@85:18
+Can't bind to 'disabledValue' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'disabledValue' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("utType]="'submit'"
+                  additionalClasses="ghost primary large full"
+                  [ERROR -&gt;][disabledValue]="legalCheckbox &amp;&amp; updateMileage.valid"
+                  [translateValue]=" 'UPDATE_M"): ng:///DynamicTestModule/DetailsCarComponent.html@87:18
+Can't bind to 'translateValue' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'translateValue' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("ge full"
+                  [disabledValue]="legalCheckbox &amp;&amp; updateMileage.valid"
+                  [ERROR -&gt;][translateValue]=" 'UPDATE_MILEAGE' | translate "&gt;
+                    {{ 'UPDATE_MILEAGE' | translat"): ng:///DynamicTestModule/DetailsCarComponent.html@88:18
+The pipe 'translate' could not be found ("box &amp;&amp; updateMileage.valid"
+                  [translateValue]=" 'UPDATE_MILEAGE' | translate "&gt;
+   [ERROR -&gt;]                 {{ 'UPDATE_MILEAGE' | translate }}
+                  &lt;/mapfre-button&gt;
+              "): ng:///DynamicTestModule/DetailsCarComponent.html@89:3
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("div class="row" *ngIf="!alertLoad &amp;&amp; !showMessage"&gt;
+              &lt;div class="col"&gt;
+                [ERROR -&gt;]&lt;mapfre-button
+                  (click)="onSubmit(i, $event)"
+                  [inputType]="'submit"): ng:///DynamicTestModule/DetailsCarComponent.html@83:16
+The pipe 'translate' could not be found ("
+          &lt;div class="margin-top mt16"&gt;
+            &lt;div class="legal"&gt;
+   [ERROR -&gt;]           {{ 'LEGAL' | translate}}
+            &lt;/div&gt;
+          &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@96:3
+The pipe 'translate' could not be found ("
+              &lt;/svg&gt;
+            &lt;/div&gt;
+   [ERROR -&gt;]         {{ 'YOUR_AGENT' | translate }}
+          &lt;/h2&gt;
+          &lt;strong&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@119:3
+The pipe 'fullstateToAbv' could not be found (""&gt;{{ policy.agent.address.streetName | titlecase }} {{ policy.agent.address.city | titlecase }}, {{ [ERROR -&gt;]policy.agent.address.state | fullstateToAbv }}, {{ policy.agent.address.zipCode.code }}&lt;/p&gt;
+         "): ng:///DynamicTestModule/DetailsCarComponent.html@124:130
+The pipe 'translate' could not be found ("lstateToAbv }}, {{ policy.agent.address.zipCode.code }}&lt;/p&gt;
+          &lt;p class="no-margin-bottom"&gt;{{[ERROR -&gt;]'PHONE' | translate }}: &lt;a href="tel:{{ policy.agent.agentPhone.number }}" class="underline"&gt; {{ poli"): ng:///DynamicTestModule/DetailsCarComponent.html@125:40
+The pipe 'translate' could not be found ("
+              &lt;/svg&gt;
+            &lt;/div&gt;
+   [ERROR -&gt;]         {{ 'PAPERLESS' | translate}}
+          &lt;/h2&gt;
+          &lt;ng-container *ngIf="!policy.policyFl"): ng:///DynamicTestModule/DetailsCarComponent.html@144:3
+The pipe 'translate' could not be found ("
+          &lt;/h2&gt;
+          &lt;ng-container *ngIf="!policy.policyFlags.isEft"&gt;
+            &lt;p&gt;{{ [ERROR -&gt;]'ENROLL_NOW_COPY' | translate}}&lt;/p&gt;
+            &lt;div class="paperless row"&gt;
+              &lt;div class="): ng:///DynamicTestModule/DetailsCarComponent.html@147:18
+The pipe 'translate' could not be found ("      &lt;/div&gt;
+                &lt;div class="d-table-cell paperless-copy"&gt;
+                  &lt;strong&gt;{{ [ERROR -&gt;]'AMOUNT_TO_SAVE' | translate}}&lt;/strong&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@172:29
+The pipe 'translate' could not be found ("lClasses="basic primary full small no-margin"
+                  routerLink="/billing/paperless"&gt;
+   [ERROR -&gt;]               {{ 'ENROLL_NOW' | translate}}
+                &lt;/mapfre-button&gt;
+              &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@179:3
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+              &lt;/div&gt;
+              &lt;div class="col-lg-12 col-md-12 col-sm-6"&gt;
+                [ERROR -&gt;]&lt;mapfre-button
+                  additionalClasses="basic primary full small no-margin"
+             "): ng:///DynamicTestModule/DetailsCarComponent.html@176:16
+The pipe 'translate' could not be found ("      &lt;/div&gt;
+                &lt;div class="d-table-cell paperless-copy"&gt;
+                  &lt;strong&gt;{{ [ERROR -&gt;]'ENROLLED' | translate}}&lt;/strong&gt;
+                &lt;/div&gt;
+              &lt;/div&gt; 
+"): ng:///DynamicTestModule/DetailsCarComponent.html@209:29
+The pipe 'translate' could not be found ("lasses="ghost primary full small no-margin"
+                    routerLink="/billing/paperless"&gt;
+   [ERROR -&gt;]                 {{ 'PAPERLESS_SETTINGS' | translate}}
+                  &lt;/mapfre-button&gt;
+           "): ng:///DynamicTestModule/DetailsCarComponent.html@216:3
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+              &lt;/div&gt; 
+              &lt;div class="col-lg-12 col-md-12 col-sm-6"&gt;
+                  [ERROR -&gt;]&lt;mapfre-button
+                    additionalClasses="ghost primary full small no-margin"
+           "): ng:///DynamicTestModule/DetailsCarComponent.html@213:18
+The pipe 'translate' could not be found ("
+              &lt;/svg&gt;
+            &lt;/div&gt;
+   [ERROR -&gt;]         {{ 'ADDRESS' | translate}}
+          &lt;/h2&gt;
+          &lt;div class="mailing-add margin-vertical"): ng:///DynamicTestModule/DetailsCarComponent.html@241:3
+The pipe 'translate' could not be found ("ailing-add margin-vertical mv16 address"&gt;
+            &lt;div class="row"&gt;&lt;div class="col"&gt;&lt;strong&gt; {{ [ERROR -&gt;]'MAILING' | translate}}&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;
+              &lt;div class=""): ng:///DynamicTestModule/DetailsCarComponent.html@244:58
+The pipe 'fullstateToAbv' could not be found ("                  {{ policy.mailingAddress.streetName | titlecase }} {{ policy.mailingAddress.city |[ERROR -&gt;] titlecase }}, {{ policy.mailingAddress.state | fullstateToAbv }} {{ policy.mailingAddress.zipCode.co"): ng:///DynamicTestModule/DetailsCarComponent.html@247:100
+Can't bind to 'routerLink' since it isn't a known property of 'a'. ("
+              &lt;/div&gt;
+              &lt;div class="col edit-address"&gt;
+                  &lt;a [ERROR -&gt;][routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResiden"): ng:///DynamicTestModule/DetailsCarComponent.html@250:21
+The pipe 'translate' could not be found ("idential-add margin-bottom mb16 address"&gt;
+            &lt;div class="row"&gt;&lt;div class="col"&gt;&lt;strong&gt; {{ [ERROR -&gt;]'RESIDENTIAL' | translate}}&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;
+              &lt;div cla"): ng:///DynamicTestModule/DetailsCarComponent.html@255:58
+The pipe 'fullstateToAbv' could not be found ("        {{ policy.residentialAddress.streetName | titlecase }}  {{ policy.residentialAddress.city | [ERROR -&gt;]titlecase }}, {{ policy.residentialAddress.state | fullstateToAbv }}, {{ policy.residentialAddress.zi"): ng:///DynamicTestModule/DetailsCarComponent.html@258:108
+The pipe 'translate' could not be found ("    &lt;ng-template #sameAsMailing&gt; 
+                &lt;div class="col address-copy text-capitalize"&gt;
+   [ERROR -&gt;]               {{ 'SAME_AS_MAILING' | translate}}
+                &lt;/div&gt;
+              &lt;/ng-template&gt;"): ng:///DynamicTestModule/DetailsCarComponent.html@262:3
+Can't bind to 'routerLink' since it isn't a known property of 'a'. ("
+              &lt;/ng-template&gt;
+              &lt;div class="col edit-address"&gt;
+                  &lt;a [ERROR -&gt;][routerLink]="['/my-insurance', policyId , 'change-address', 'residential']" (click)="getMailingOrRes"): ng:///DynamicTestModule/DetailsCarComponent.html@266:21
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-holder-mono-color-svg' is not a known element:
+          &lt;"): ng:///DynamicTestModule/DetailsCarComponent.html@7:12, The pipe 'translate' could not be found ("="title margin-bottom mb16"&gt;
+          &lt;p class="section-description"&gt;{{ 'POLICY_HO"): ng:///DynamicTestModule/DetailsCarComponent.html@7:71, The pipe 'translate' could not be found ("-svg&gt; {{ 'POLICY_HOLDER ...
+Error: Template parse errors:
+    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
+    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
+</failure>
+    <failure type="">1. If 'svg-holder-mono-color-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-holder-mono-color-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+        &lt;div class="col"&gt;
+          &lt;h2 class="title margin-bottom mb16"&gt;
+            [ERROR -&gt;]&lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ 'POLICY_HOLDER' | translate }}
+            &lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ [ERROR -&gt;]'POLICY_HOLDER' | translate }}
+          &lt;/h2&gt;
+Error: Template parse errors:
+'svg-holder-mono-color-svg' is not a known element:
+1. If 'svg-holder-mono-color-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-holder-mono-color-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+        &lt;div class="col"&gt;
+          &lt;h2 class="title margin-bottom mb16"&gt;
+            [ERROR -&gt;]&lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ 'POLICY_HOLDER' | translate }}
+          &lt;"): ng:///DynamicTestModule/DetailsCarComponent.html@7:12
+The pipe 'translate' could not be found ("="title margin-bottom mb16"&gt;
+            &lt;svg-holder-mono-color-svg&gt;&lt;/svg-holder-mono-color-svg&gt; {{ [ERROR -&gt;]'POLICY_HOLDER' | translate }}
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;{{ 'POLICY_HO"): ng:///DynamicTestModule/DetailsCarComponent.html@7:71
+The pipe 'translate' could not be found ("-svg&gt; {{ 'POLICY_HOLDER' | translate }}
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;{{ [ERROR -&gt;]'POLICY_HOLDER_ONE' | translate}} &lt;a routerLink="/my-insurance/{{policyId}}/documents"  class="underl"): ng:///DynamicTestModule/DetailsCarComponent.html@9:44
+Can't bind to 'routerLink' since it isn't a known property of 'a'. ("}}
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;{{ 'POLICY_HOLDER_ONE' | translate}} &lt;a [ERROR -&gt;]routerLink="/my-insurance/{{policyId}}/documents"  class="underline"&gt;{{ 'POLICY_HOLDER_TWO' | transla"): ng:///DynamicTestModule/DetailsCarComponent.html@9:81
+The pipe 'translate' could not be found ("OLDER_ONE' | translate}} &lt;a routerLink="/my-insurance/{{policyId}}/documents"  class="underline"&gt;{{ [ERROR -&gt;]'POLICY_HOLDER_TWO' | translate}}&lt;/a&gt; {{ 'POLICY_HOLDER_THREE' | translate}}&lt;/p&gt;
+          &lt;div class"): ng:///DynamicTestModule/DetailsCarComponent.html@9:153
+The pipe 'translate' could not be found ("my-insurance/{{policyId}}/documents"  class="underline"&gt;{{ 'POLICY_HOLDER_TWO' | translate}}&lt;/a&gt; {{ [ERROR -&gt;]'POLICY_HOLDER_THREE' | translate}}&lt;/p&gt;
+          &lt;div class="policy-holder margin-bottom mb8 row" *n"): ng:///DynamicTestModule/DetailsCarComponent.html@9:194
+The pipe 'translate' could not be found ("
+            
+            &lt;div class="col" *ngIf="holder.isPrimaryInsured"&gt;
+              &lt;small&gt;{{ [ERROR -&gt;]'PRIMARY' | translate }}&lt;/small&gt;
+            &lt;/div&gt;
+            &lt;div class="col" *ngIf="!holder.isPri"): ng:///DynamicTestModule/DetailsCarComponent.html@16:24
+The pipe 'translate' could not be found ("      &lt;/div&gt;
+            &lt;div class="col" *ngIf="!holder.isPrimaryInsured"&gt;
+              &lt;small&gt;{{ [ERROR -&gt;]'SECONDARY' | translate }}&lt;/small&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@19:24
+'svg-car-mono-color-small-svg' is not a known element:
+1. If 'svg-car-mono-color-small-svg' is an Angular component, then verify that it is part of this module.
+2. If 'svg-car-mono-color-small-svg' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+        &lt;div class="col"&gt;
+          &lt;h2 class="title margin-bottom mb16"&gt;
+              [ERROR -&gt;]&lt;svg-car-mono-color-small-svg&gt;&lt;/svg-car-mono-color-small-svg&gt; {{'VEHICLES' | translate}}
+          &lt;/"): ng:///DynamicTestModule/DetailsCarComponent.html@27:14
+The pipe 'translate' could not be found (" margin-bottom mb16"&gt;
+              &lt;svg-car-mono-color-small-svg&gt;&lt;/svg-car-mono-color-small-svg&gt; {{[ERROR -&gt;]'VEHICLES' | translate}}
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@27:78
+The pipe 'translate' could not be found ("
+          &lt;/h2&gt;
+          &lt;p class="section-description"&gt;
+   [ERROR -&gt;]         {{ 'ODOMETER_UPDATE' | translate }}&lt;strong&gt;{{ 'NEW_DISCOUNTS' | translate}}&lt;/strong&gt;.
+      "): ng:///DynamicTestModule/DetailsCarComponent.html@30:3
+The pipe 'translate' could not be found ("          &lt;p class="section-description"&gt;
+            {{ 'ODOMETER_UPDATE' | translate }}&lt;strong&gt;{{ [ERROR -&gt;]'NEW_DISCOUNTS' | translate}}&lt;/strong&gt;.
+          &lt;/p&gt;
+          &lt;form [formGroup]="updateMileage" cl"): ng:///DynamicTestModule/DetailsCarComponent.html@30:58
+Can't bind to 'formGroup' since it isn't a known property of 'form'. ("TE' | translate }}&lt;strong&gt;{{ 'NEW_DISCOUNTS' | translate}}&lt;/strong&gt;.
+          &lt;/p&gt;
+          &lt;form [ERROR -&gt;][formGroup]="updateMileage" class="update-mileage no-padding"&gt;
+            &lt;div class="margin-bottom "): ng:///DynamicTestModule/DetailsCarComponent.html@32:16
+Can't bind to 'formControlName' since it isn't a known property of 'input'. ("      [id]="'form-input_'+i" 
+                        class="form-control" 
+                        [ERROR -&gt;][formControlName]="'updateMileageInput_'+i"
+                        [class.error]="errorClass[i]"&gt;
+  "): ng:///DynamicTestModule/DetailsCarComponent.html@47:24
+Can't bind to 'forInput' since it isn't a known property of 'mapfre-label'.
+1. If 'mapfre-label' is an Angular component and it has 'forInput' input, then verify that it is part of this module.
+2. If 'mapfre-label' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("t_'+i"
+                        [class.error]="errorClass[i]"&gt;
+                        &lt;mapfre-label [ERROR -&gt;][forInput]= "'form-input_'+i"&gt;{{ 'MILEAGE' | translate }}&lt;/mapfre-label&gt;
+                    &lt;/div&gt;
+ "): ng:///DynamicTestModule/DetailsCarComponent.html@49:38
+The pipe 'translate' could not be found ("lass.error]="errorClass[i]"&gt;
+                        &lt;mapfre-label [forInput]= "'form-input_'+i"&gt;{{ [ERROR -&gt;]'MILEAGE' | translate }}&lt;/mapfre-label&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@49:71
+'mapfre-label' is not a known element:
+1. If 'mapfre-label' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-label' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("ateMileageInput_'+i"
+                        [class.error]="errorClass[i]"&gt;
+                        [ERROR -&gt;]&lt;mapfre-label [forInput]= "'form-input_'+i"&gt;{{ 'MILEAGE' | translate }}&lt;/mapfre-label&gt;
+              "): ng:///DynamicTestModule/DetailsCarComponent.html@49:24
+The pipe 'translate' could not be found ("          &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="help-block error-block"&gt; {{ [ERROR -&gt;]errorMessage[i] | translate }}&lt;/div&gt;
+                &lt;/div&gt; 
+              &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@52:58
+Can't bind to 'formControlName' since it isn't a known property of 'input'. ("              required
+                  (change)="getLegalCheckBoxValue($event)"
+                  [ERROR -&gt;][formControlName]="'legalCheckMark'"&gt;
+                &lt;label class="form-check-label legal disclaimer"): ng:///DynamicTestModule/DetailsCarComponent.html@64:18
+The pipe 'translate' could not be found ("          &lt;label class="form-check-label legal disclaimer disclaimer small" for="legal-checkbox"&gt;{{ [ERROR -&gt;]'LEGAL_CHECKMARK' | translate }}&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@65:106
+'mapfre-loading' is not a known element:
+1. If 'mapfre-loading' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-loading' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. (" !showMessage"&gt;
+              &lt;div class="margin-bottom mb16 loading-no-padding"&gt;
+                  [ERROR -&gt;]&lt;mapfre-loading&gt;&lt;/mapfre-loading&gt;
+              &lt;/div&gt;
+               
+"): ng:///DynamicTestModule/DetailsCarComponent.html@70:18
+Can't bind to 'nonDynamic' since it isn't a known property of 'mapfre-alert'.
+1. If 'mapfre-alert' is an Angular component and it has 'nonDynamic' input, then verify that it is part of this module.
+2. If 'mapfre-alert' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("w" *ngIf="!alertLoad &amp;&amp; showMessage"&gt;
+              &lt;div class="col"&gt;
+                &lt;mapfre-alert [ERROR -&gt;][nonDynamic]="true" [alertType]="messageType" (hide)="showMe($event)"&gt;
+                  {{ message |"): ng:///DynamicTestModule/DetailsCarComponent.html@76:30
+Can't bind to 'alertType' since it isn't a known property of 'mapfre-alert'.
+1. If 'mapfre-alert' is an Angular component and it has 'alertType' input, then verify that it is part of this module.
+2. If 'mapfre-alert' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. (" &amp;&amp; showMessage"&gt;
+              &lt;div class="col"&gt;
+                &lt;mapfre-alert [nonDynamic]="true" [ERROR -&gt;][alertType]="messageType" (hide)="showMe($event)"&gt;
+                  {{ message | translate }}
+      "): ng:///DynamicTestModule/DetailsCarComponent.html@76:50
+The pipe 'translate' could not be found ("            &lt;mapfre-alert [nonDynamic]="true" [alertType]="messageType" (hide)="showMe($event)"&gt;
+   [ERROR -&gt;]               {{ message | translate }}
+                &lt;/mapfre-alert&gt;
+              &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@77:3
+'mapfre-alert' is not a known element:
+1. If 'mapfre-alert' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-alert' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("&lt;div class="row" *ngIf="!alertLoad &amp;&amp; showMessage"&gt;
+              &lt;div class="col"&gt;
+                [ERROR -&gt;]&lt;mapfre-alert [nonDynamic]="true" [alertType]="messageType" (hide)="showMe($event)"&gt;
+                "): ng:///DynamicTestModule/DetailsCarComponent.html@76:16
+The pipe 'translate' could not be found ("e full"
+                  [disabledValue]="legalCheckbox &amp;&amp; updateMileage.valid"
+                  [[ERROR -&gt;]translateValue]=" 'UPDATE_MILEAGE' | translate "&gt;
+                    {{ 'UPDATE_MILEAGE' | translate"): ng:///DynamicTestModule/DetailsCarComponent.html@88:19
+Can't bind to 'inputType' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'inputType' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+                &lt;mapfre-button
+                  (click)="onSubmit(i, $event)"
+                  [ERROR -&gt;][inputType]="'submit'"
+                  additionalClasses="ghost primary large full"
+               "): ng:///DynamicTestModule/DetailsCarComponent.html@85:18
+Can't bind to 'disabledValue' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'disabledValue' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("utType]="'submit'"
+                  additionalClasses="ghost primary large full"
+                  [ERROR -&gt;][disabledValue]="legalCheckbox &amp;&amp; updateMileage.valid"
+                  [translateValue]=" 'UPDATE_M"): ng:///DynamicTestModule/DetailsCarComponent.html@87:18
+Can't bind to 'translateValue' since it isn't a known property of 'mapfre-button'.
+1. If 'mapfre-button' is an Angular component and it has 'translateValue' input, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("ge full"
+                  [disabledValue]="legalCheckbox &amp;&amp; updateMileage.valid"
+                  [ERROR -&gt;][translateValue]=" 'UPDATE_MILEAGE' | translate "&gt;
+                    {{ 'UPDATE_MILEAGE' | translat"): ng:///DynamicTestModule/DetailsCarComponent.html@88:18
+The pipe 'translate' could not be found ("box &amp;&amp; updateMileage.valid"
+                  [translateValue]=" 'UPDATE_MILEAGE' | translate "&gt;
+   [ERROR -&gt;]                 {{ 'UPDATE_MILEAGE' | translate }}
+                  &lt;/mapfre-button&gt;
+              "): ng:///DynamicTestModule/DetailsCarComponent.html@89:3
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("div class="row" *ngIf="!alertLoad &amp;&amp; !showMessage"&gt;
+              &lt;div class="col"&gt;
+                [ERROR -&gt;]&lt;mapfre-button
+                  (click)="onSubmit(i, $event)"
+                  [inputType]="'submit"): ng:///DynamicTestModule/DetailsCarComponent.html@83:16
+The pipe 'translate' could not be found ("
+          &lt;div class="margin-top mt16"&gt;
+            &lt;div class="legal"&gt;
+   [ERROR -&gt;]           {{ 'LEGAL' | translate}}
+            &lt;/div&gt;
+          &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@96:3
+The pipe 'translate' could not be found ("
+              &lt;/svg&gt;
+            &lt;/div&gt;
+   [ERROR -&gt;]         {{ 'YOUR_AGENT' | translate }}
+          &lt;/h2&gt;
+          &lt;strong&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@119:3
+The pipe 'fullstateToAbv' could not be found (""&gt;{{ policy.agent.address.streetName | titlecase }} {{ policy.agent.address.city | titlecase }}, {{ [ERROR -&gt;]policy.agent.address.state | fullstateToAbv }}, {{ policy.agent.address.zipCode.code }}&lt;/p&gt;
+         "): ng:///DynamicTestModule/DetailsCarComponent.html@124:130
+The pipe 'translate' could not be found ("lstateToAbv }}, {{ policy.agent.address.zipCode.code }}&lt;/p&gt;
+          &lt;p class="no-margin-bottom"&gt;{{[ERROR -&gt;]'PHONE' | translate }}: &lt;a href="tel:{{ policy.agent.agentPhone.number }}" class="underline"&gt; {{ poli"): ng:///DynamicTestModule/DetailsCarComponent.html@125:40
+The pipe 'translate' could not be found ("
+              &lt;/svg&gt;
+            &lt;/div&gt;
+   [ERROR -&gt;]         {{ 'PAPERLESS' | translate}}
+          &lt;/h2&gt;
+          &lt;ng-container *ngIf="!policy.policyFl"): ng:///DynamicTestModule/DetailsCarComponent.html@144:3
+The pipe 'translate' could not be found ("
+          &lt;/h2&gt;
+          &lt;ng-container *ngIf="!policy.policyFlags.isEft"&gt;
+            &lt;p&gt;{{ [ERROR -&gt;]'ENROLL_NOW_COPY' | translate}}&lt;/p&gt;
+            &lt;div class="paperless row"&gt;
+              &lt;div class="): ng:///DynamicTestModule/DetailsCarComponent.html@147:18
+The pipe 'translate' could not be found ("      &lt;/div&gt;
+                &lt;div class="d-table-cell paperless-copy"&gt;
+                  &lt;strong&gt;{{ [ERROR -&gt;]'AMOUNT_TO_SAVE' | translate}}&lt;/strong&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@172:29
+The pipe 'translate' could not be found ("lClasses="basic primary full small no-margin"
+                  routerLink="/billing/paperless"&gt;
+   [ERROR -&gt;]               {{ 'ENROLL_NOW' | translate}}
+                &lt;/mapfre-button&gt;
+              &lt;/div&gt;
+"): ng:///DynamicTestModule/DetailsCarComponent.html@179:3
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+              &lt;/div&gt;
+              &lt;div class="col-lg-12 col-md-12 col-sm-6"&gt;
+                [ERROR -&gt;]&lt;mapfre-button
+                  additionalClasses="basic primary full small no-margin"
+             "): ng:///DynamicTestModule/DetailsCarComponent.html@176:16
+The pipe 'translate' could not be found ("      &lt;/div&gt;
+                &lt;div class="d-table-cell paperless-copy"&gt;
+                  &lt;strong&gt;{{ [ERROR -&gt;]'ENROLLED' | translate}}&lt;/strong&gt;
+                &lt;/div&gt;
+              &lt;/div&gt; 
+"): ng:///DynamicTestModule/DetailsCarComponent.html@209:29
+The pipe 'translate' could not be found ("lasses="ghost primary full small no-margin"
+                    routerLink="/billing/paperless"&gt;
+   [ERROR -&gt;]                 {{ 'PAPERLESS_SETTINGS' | translate}}
+                  &lt;/mapfre-button&gt;
+           "): ng:///DynamicTestModule/DetailsCarComponent.html@216:3
+'mapfre-button' is not a known element:
+1. If 'mapfre-button' is an Angular component, then verify that it is part of this module.
+2. If 'mapfre-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+              &lt;/div&gt; 
+              &lt;div class="col-lg-12 col-md-12 col-sm-6"&gt;
+                  [ERROR -&gt;]&lt;mapfre-button
+                    additionalClasses="ghost primary full small no-margin"
+           "): ng:///DynamicTestModule/DetailsCarComponent.html@213:18
+The pipe 'translate' could not be found ("
+              &lt;/svg&gt;
+            &lt;/div&gt;
+   [ERROR -&gt;]         {{ 'ADDRESS' | translate}}
+          &lt;/h2&gt;
+          &lt;div class="mailing-add margin-vertical"): ng:///DynamicTestModule/DetailsCarComponent.html@241:3
+The pipe 'translate' could not be found ("ailing-add margin-vertical mv16 address"&gt;
+            &lt;div class="row"&gt;&lt;div class="col"&gt;&lt;strong&gt; {{ [ERROR -&gt;]'MAILING' | translate}}&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;
+              &lt;div class=""): ng:///DynamicTestModule/DetailsCarComponent.html@244:58
+The pipe 'fullstateToAbv' could not be found ("                  {{ policy.mailingAddress.streetName | titlecase }} {{ policy.mailingAddress.city |[ERROR -&gt;] titlecase }}, {{ policy.mailingAddress.state | fullstateToAbv }} {{ policy.mailingAddress.zipCode.co"): ng:///DynamicTestModule/DetailsCarComponent.html@247:100
+Can't bind to 'routerLink' since it isn't a known property of 'a'. ("
+              &lt;/div&gt;
+              &lt;div class="col edit-address"&gt;
+                  &lt;a [ERROR -&gt;][routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResiden"): ng:///DynamicTestModule/DetailsCarComponent.html@250:21
+The pipe 'translate' could not be found ("idential-add margin-bottom mb16 address"&gt;
+            &lt;div class="row"&gt;&lt;div class="col"&gt;&lt;strong&gt; {{ [ERROR -&gt;]'RESIDENTIAL' | translate}}&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;
+              &lt;div cla"): ng:///DynamicTestModule/DetailsCarComponent.html@255:58
+The pipe 'fullstateToAbv' could not be found ("        {{ policy.residentialAddress.streetName | titlecase }}  {{ policy.residentialAddress.city | [ERROR -&gt;]titlecase }}, {{ policy.residentialAddress.state | fullstateToAbv }}, {{ policy.residentialAddress.zi"): ng:///DynamicTestModule/DetailsCarComponent.html@258:108
+The pipe 'translate' could not be found ("    &lt;ng-template #sameAsMailing&gt; 
+                &lt;div class="col address-copy text-capitalize"&gt;
+   [ERROR -&gt;]               {{ 'SAME_AS_MAILING' | translate}}
+                &lt;/div&gt;
+              &lt;/ng-template&gt;"): ng:///DynamicTestModule/DetailsCarComponent.html@262:3
+Can't bind to 'routerLink' since it isn't a known property of 'a'. ("
+              &lt;/ng-template&gt;
+              &lt;div class="col edit-address"&gt;
+                  &lt;a [ERROR -&gt;][routerLink]="['/my-insurance', policyId , 'change-address', 'residential']" (click)="getMailingOrRes"): ng:///DynamicTestModule/DetailsCarComponent.html@266:21
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ 'svg-holder-mono-color-svg' is not a known element:
+          &lt;"): ng:///DynamicTestModule/DetailsCarComponent.html@7:12, The pipe 'translate' could not be found ("="title margin-bottom mb16"&gt;
+          &lt;p class="section-description"&gt;{{ 'POLICY_HO"): ng:///DynamicTestModule/DetailsCarComponent.html@7:71, The pipe 'translate' could not be found ("-svg&gt; {{ 'POLICY_HOLDER ...
+    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
+    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
+</failure>
+    <failure type="">Error: Expected undefined to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.&lt;anonymous&gt; src/app/components/dashboard/loggedin-content/my-insurance/details/details-car/details-car.component.spec.ts:23:23)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
+</failure>
+  </testcase>
+  <testcase name="AuthGuard should be able to route when user is logged in" time="0.011" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="AuthGuard should not route when user is not logged in" time="0.011" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthGuard"/>
+  <testcase name="NewPaymentComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).NewPaymentComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordTooManyComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordTooManyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsDataService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="BusinesspolicyDetectedComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BusinesspolicyDetectedComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeEmailService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeEmailService">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsHomeCarComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsHomeCarComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyService should return formbase to edit policy service" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyService"/>
+  <testcase name="OnboardingWalletFrontComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).OnboardingWalletFrontComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileEmailConfirmComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileEmailConfirmComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeAddressService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeAddressService">
+    <skipped/>
+  </testcase>
+  <testcase name="ConfirmComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ConfirmComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="estingService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).estingService">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangePhoneService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangePhoneService">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupBopComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupBopComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyDataService should update the observable for documents by policy number" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyDataService should update the observable for policy by email" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="LoggedinAccountHeaderComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoggedinAccountHeaderComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupComponent should get the inputs" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupComponent should get the null inputs" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditEmailService should return the email textbox and the confirm email textbox" time="0.015" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditEmailService"/>
+  <testcase name="ProfilePhoneComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfilePhoneComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ValidatePolicyRightsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ValidatePolicyRightsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyInProcessComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyInProcessComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsHomeClosedComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsHomeClosedComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountService should return formbase to create account service" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountService"/>
+  <testcase name="AuthenticateUserService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticateUserService">
+    <skipped/>
+  </testcase>
+  <testcase name="DashboardComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).DashboardComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LinkPolicyComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LinkPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordSetComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordSetComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="NewPaymentService should be created" time="0.009" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).NewPaymentService"/>
+  <testcase name="AddPolicyService should return Formbase to add policy" time="0.011" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyService"/>
+  <testcase name="TestingComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).TestingComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupAddPolicyComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupAddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AbvToFulstatePipe create an instance" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AbvToFulstatePipe">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsHomeComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsHomeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationHomeComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).InformationHomeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessBillComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PaperlessBillComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BankAccountService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BankAccountService">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginFormComponent should redirect to /forgotpassword if email pattern does not match" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginFormComponent should set the expiry of the cookie" time="0.229" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should test Initialization of a component" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginFormComponent it should login and navigate to my-insurance if there are no returnurl paramaters" time="0.221" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should throw error if invalid email/password" time="0.156" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should set rememberMe field of component" time="0.15" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should do nothing if user property is false" time="0.23" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="LoginFormComponent should get the email and password login form " time="0.193" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginFormComponent"/>
+  <testcase name="ClaimsService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsService">
+    <skipped/>
+  </testcase>
+  <testcase name="ApartmentPipePipe create an instance" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ApartmentPipePipe">
+    <skipped/>
+  </testcase>
+  <testcase name="ContactBillingRepService should be created" time="0.013" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ContactBillingRepService"/>
+  <testcase name="AppComponent should create the app" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should have as title 'app'" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should render title in a h1 tag" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordExpiredComponent should call getEmailFromParameter" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordExpiredComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordExpiredComponent should get email from parameter" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordExpiredComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PaperlessService">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupPolicyBelongsToAnotherComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupPolicyBelongsToAnotherComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessMiscComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PaperlessMiscComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileEditPasswordComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileEditPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordComponent should call isTockenValid if route params exists" time="0.082" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordComponent should verify if the token is valid" time="0.075" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should return false if the token is invalid" time="0.086" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successpassword property to true" time="0.07" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should verify for the invalid token" time="0.061" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to true" time="0.077" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="CreateNewPasswordComponent should set successChangePassword to false" time="0.07" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordComponent"/>
+  <testcase name="EmailFormService should return the formbase for email" time="0.007" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailFormService"/>
+  <testcase name="CreatePasswordFormComponent should initializes parameters oninitialization" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreatePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreatePasswordFormComponent should call createPassword method" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreatePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreatePasswordFormComponent should call updatePassword method" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreatePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreatePasswordFormComponent should redirect user to verify account" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreatePasswordFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to my-insurance" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should check the users credential and route them to verifyaccount" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should call get ovbservable on initialization" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should update policy holdername and number" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/policybelongstoanother" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/notfound" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should throw error and redirect to signup/bop" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyNotFoundScreenComponent should call updateObservable" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyNotFoundScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ContactScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ContactScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddressChangeComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddressChangeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileCheckingAccountComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileCheckingAccountComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="HomeHeaderComponent should create" time="0.02" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).HomeHeaderComponent">
+    <failure type="">  &lt;div class="type-title"&gt;
+    &lt;h1 class="title"&gt;
+   [ERROR -&gt;]     {{ policy.policyType | translate}} &amp;mdash; {{ policy.policynumber.policynumber }} 
+                &lt;small&gt;{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{[ERROR -&gt;]policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+                &lt;small&gt;{{policy.effDate | customDateFormat }} {{ [ERROR -&gt;]'TO' |translate }} {{policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+The pipe 'translate' could not be found ("
+  &lt;div class="type-title"&gt;
+    &lt;h1 class="title"&gt;
+   [ERROR -&gt;]     {{ policy.policyType | translate}} &amp;mdash; {{ policy.policynumber.policynumber }} 
+      &lt;small&gt;"): ng:///DynamicTestModule/HomeHeaderComponent.html@6:3
+The pipe 'customDateFormat' could not be found (" 'ACTIVE' }"&gt;
+                &lt;small&gt;{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{[ERROR -&gt;]policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+"): ng:///DynamicTestModule/HomeHeaderComponent.html@11:86
+The pipe 'translate' could not be found ("licy.policyStatus !== 'ACTIVE' }"&gt;
+                &lt;small&gt;{{policy.effDate | customDateFormat }} {{ [ERROR -&gt;]'TO' |translate }} {{policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+"): ng:///DynamicTestModule/HomeHeaderComponent.html@11:65
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ The pipe 'translate' could not be found ("
+      &lt;small&gt;"): ng:///DynamicTestModule/HomeHeaderComponent.html@6:3, The pipe 'customDateFormat' could not be found (" 'ACTIVE' }"&gt;
+"): ng:///DynamicTestModule/HomeHeaderComponent.html@11:86, The pipe 'translate' could not be found ("licy.policyStatus !== 'ACTIVE' }"&gt;
+"): ng:///DynamicTestModule/HomeHeaderComponent.html@11:65 ] })
+Error: Template parse errors:
+    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
+    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
+</failure>
+    <failure type="">  &lt;div class="type-title"&gt;
+    &lt;h1 class="title"&gt;
+   [ERROR -&gt;]     {{ policy.policyType | translate}} &amp;mdash; {{ policy.policynumber.policynumber }} 
+                &lt;small&gt;{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{[ERROR -&gt;]policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+                &lt;small&gt;{{policy.effDate | customDateFormat }} {{ [ERROR -&gt;]'TO' |translate }} {{policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+Error: Template parse errors:
+The pipe 'translate' could not be found ("
+  &lt;div class="type-title"&gt;
+    &lt;h1 class="title"&gt;
+   [ERROR -&gt;]     {{ policy.policyType | translate}} &amp;mdash; {{ policy.policynumber.policynumber }} 
+      &lt;small&gt;"): ng:///DynamicTestModule/HomeHeaderComponent.html@6:3
+The pipe 'customDateFormat' could not be found (" 'ACTIVE' }"&gt;
+                &lt;small&gt;{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{[ERROR -&gt;]policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+"): ng:///DynamicTestModule/HomeHeaderComponent.html@11:86
+The pipe 'translate' could not be found ("licy.policyStatus !== 'ACTIVE' }"&gt;
+                &lt;small&gt;{{policy.effDate | customDateFormat }} {{ [ERROR -&gt;]'TO' |translate }} {{policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+"): ng:///DynamicTestModule/HomeHeaderComponent.html@11:65
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ The pipe 'translate' could not be found ("
+      &lt;small&gt;"): ng:///DynamicTestModule/HomeHeaderComponent.html@6:3, The pipe 'customDateFormat' could not be found (" 'ACTIVE' }"&gt;
+"): ng:///DynamicTestModule/HomeHeaderComponent.html@11:86, The pipe 'translate' could not be found ("licy.policyStatus !== 'ACTIVE' }"&gt;
+"): ng:///DynamicTestModule/HomeHeaderComponent.html@11:65 ] })
+    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
+    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
+</failure>
+    <failure type="">Error: Expected undefined to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.&lt;anonymous&gt; src/app/components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component.spec.ts:23:23)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
+</failure>
+  </testcase>
+  <testcase name="ClaimsDetailComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsDetailComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateNewPasswordFormService should create new password form" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateNewPasswordFormService">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingDataService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BillingDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="OnboardingWalletBackComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).OnboardingWalletBackComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileSettingsRoutingService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileSettingsRoutingService">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BillingService">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileMainComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileMainComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EnrollEftEpayService should be created" time="0.007" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EnrollEftEpayService"/>
+  <testcase name="EnrollEftEpayFormComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EnrollEftEpayFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPhoneService should return the phone formbase" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPhoneService">
+    <skipped/>
+  </testcase>
+  <testcase name="StorageServiceObservablesService should be created" time="0.014" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).StorageServiceObservablesService"/>
+  <testcase name="SendEmailFormComponent should check is valid method" time="0.085" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should get email from existing parameters" time="0.059" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should send email id to authservice when forgot password" time="0.042" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="SendEmailFormComponent should run getEmailParameter on initialization" time="0.038" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SendEmailFormComponent"/>
+  <testcase name="ProfileEditEmailComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileEditEmailComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="WalletCardService should return the Policy details" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).WalletCardService">
+    <skipped/>
+  </testcase>
+  <testcase name="EmailEmailPasswordFormService should return the email textbox" time="0.011" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailEmailPasswordFormService"/>
+  <testcase name="EmailEmailPasswordFormService should return the password textbox" time="0.011" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EmailEmailPasswordFormService"/>
+  <testcase name="ClaimsNavigationComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsNavigationComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="WelcomeComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).WelcomeComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="BillingDetailsService should update the observable for document by policyNumber" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).BillingDetailsService">
+    <skipped/>
+  </testcase>
+  <testcase name="DashboardNavComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).DashboardNavComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupCreatePasswordComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupCreatePasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CheckingAccountFormComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CheckingAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeProfileEmailService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeProfileEmailService">
+    <skipped/>
+  </testcase>
+  <testcase name="EnrollComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EnrollComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should create the user object" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/emailinuse" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should throw error and redirect to signup/addpolicy" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should update the user object" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="CreateAccountFormComponent should call register() to register the user" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CreateAccountFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginComponent should get the inputs" time="0.051" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginComponent"/>
+  <testcase name="LoginComponent should get the null inputs" time="0.046" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginComponent"/>
+  <testcase name="MyInsuranceComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).MyInsuranceComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsMiscComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsMiscComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationLegalComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).InformationLegalComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="VerifyAccountScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).VerifyAccountScreenComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordNondynamicComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordNondynamicComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ProfileConfirmModalService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileConfirmModalService">
+    <skipped/>
+  </testcase>
+  <testcase name="CarHeaderComponent should create" time="0.02" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).CarHeaderComponent">
+    <failure type="">  &lt;div class="type-title"&gt;
+    &lt;h1 class="title"&gt;
+   [ERROR -&gt;]   {{ policy.policyType | translate}} &amp;mdash; {{ policy.policynumber.policynumber }} 
+      &lt;small&gt;
+        &lt;small&gt;{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{[ERROR -&gt;]policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+        &lt;small&gt;{{policy.effDate | customDateFormat }} {{ [ERROR -&gt;]'TO' |translate }} {{policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+The pipe 'translate' could not be found ("
+  &lt;div class="type-title"&gt;
+    &lt;h1 class="title"&gt;
+   [ERROR -&gt;]   {{ policy.policyType | translate}} &amp;mdash; {{ policy.policynumber.policynumber }} 
+      &lt;small&gt;
+ "): ng:///DynamicTestModule/CarHeaderComponent.html@7:3
+The pipe 'customDateFormat' could not be found ("us === 'INACTIVE' }"&gt;
+        &lt;small&gt;{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{[ERROR -&gt;]policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+"): ng:///DynamicTestModule/CarHeaderComponent.html@10:78
+The pipe 'translate' could not be found ("r': policy.policyStatus === 'INACTIVE' }"&gt;
+        &lt;small&gt;{{policy.effDate | customDateFormat }} {{ [ERROR -&gt;]'TO' |translate }} {{policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+"): ng:///DynamicTestModule/CarHeaderComponent.html@10:57
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ The pipe 'translate' could not be found ("
+ "): ng:///DynamicTestModule/CarHeaderComponent.html@7:3, The pipe 'customDateFormat' could not be found ("us === 'INACTIVE' }"&gt;
+"): ng:///DynamicTestModule/CarHeaderComponent.html@10:78, The pipe 'translate' could not be found ("r': policy.policyStatus === 'INACTIVE' }"&gt;
+"): ng:///DynamicTestModule/CarHeaderComponent.html@10:57 ] })
+Error: Template parse errors:
+    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
+    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
+</failure>
+    <failure type="">  &lt;div class="type-title"&gt;
+    &lt;h1 class="title"&gt;
+   [ERROR -&gt;]   {{ policy.policyType | translate}} &amp;mdash; {{ policy.policynumber.policynumber }} 
+      &lt;small&gt;
+        &lt;small&gt;{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{[ERROR -&gt;]policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+        &lt;small&gt;{{policy.effDate | customDateFormat }} {{ [ERROR -&gt;]'TO' |translate }} {{policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+Error: Template parse errors:
+The pipe 'translate' could not be found ("
+  &lt;div class="type-title"&gt;
+    &lt;h1 class="title"&gt;
+   [ERROR -&gt;]   {{ policy.policyType | translate}} &amp;mdash; {{ policy.policynumber.policynumber }} 
+      &lt;small&gt;
+ "): ng:///DynamicTestModule/CarHeaderComponent.html@7:3
+The pipe 'customDateFormat' could not be found ("us === 'INACTIVE' }"&gt;
+        &lt;small&gt;{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{[ERROR -&gt;]policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+"): ng:///DynamicTestModule/CarHeaderComponent.html@10:78
+The pipe 'translate' could not be found ("r': policy.policyStatus === 'INACTIVE' }"&gt;
+        &lt;small&gt;{{policy.effDate | customDateFormat }} {{ [ERROR -&gt;]'TO' |translate }} {{policy.expDate | customDateFormat }}&lt;/small&gt;
+      &lt;/span&gt;
+    &lt;/small&gt;
+"): ng:///DynamicTestModule/CarHeaderComponent.html@10:57
+error properties: Object({ ngSyntaxError: true, ngParseErrors: [ The pipe 'translate' could not be found ("
+ "): ng:///DynamicTestModule/CarHeaderComponent.html@7:3, The pipe 'customDateFormat' could not be found ("us === 'INACTIVE' }"&gt;
+"): ng:///DynamicTestModule/CarHeaderComponent.html@10:78, The pipe 'translate' could not be found ("r': policy.policyStatus === 'INACTIVE' }"&gt;
+"): ng:///DynamicTestModule/CarHeaderComponent.html@10:57 ] })
+    at syntaxError node_modules/@angular/compiler/fesm5/compiler.js:2426:1)
+    at TemplateParser.push../node_modules/@angular/compiler/fesm5/compiler.js.TemplateParser.parse node_modules/@angular/compiler/fesm5/compiler.js:20600:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._parseTemplate node_modules/@angular/compiler/fesm5/compiler.js:26146:1)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileTemplate node_modules/@angular/compiler/fesm5/compiler.js:26133:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:26076:48
+    at &lt;Jasmine&gt;
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileComponents node_modules/@angular/compiler/fesm5/compiler.js:26076:1)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/compiler/fesm5/compiler.js:25994:1
+    at Object.then node_modules/@angular/compiler/fesm5/compiler.js:2417:33)
+    at JitCompiler.push../node_modules/@angular/compiler/fesm5/compiler.js.JitCompiler._compileModuleAndAllComponents node_modules/@angular/compiler/fesm5/compiler.js:25992:1)
+</failure>
+    <failure type="">Error: Expected undefined to be truthy.
+    at &lt;Jasmine&gt;
+    at UserContext.&lt;anonymous&gt; src/app/components/dashboard/loggedin-content/my-insurance/myinsurance-headers/car-header/car-header.component.spec.ts:23:23)
+    at ZoneDelegate../node_modules/zone.js/dist/zone.js.ZoneDelegate.invoke node_modules/zone.js/dist/zone.js:391:1)
+    at ProxyZoneSpec.push../node_modules/zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke node_modules/zone.js/dist/proxy.js:129:1)
+</failure>
+  </testcase>
+  <testcase name="AddPolicyComponent should return the false checkbox value" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should add policy to the userObject" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/addpolicy" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should return the true checkbox value" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should throw error and redirect to signup/notfound" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AddPolicyComponent should verify policy and route user to createpassword page" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AddPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="OnboardingWalletBackListComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).OnboardingWalletBackListComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPasswordService should return the password textbox" time="0.01" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPasswordService"/>
+  <testcase name="ProfileConfirmModalComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ProfileConfirmModalComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ChangeAddressComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ChangeAddressComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ValidateAddressService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ValidateAddressService">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should edit the policy" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/notfound" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should Initialize" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/bop" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should throw error and redirect to signup/policybelongstoanother" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should create user object" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="EditPolicyComponent should get the prefill data" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupProcessComponent should initialize " time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupProcessComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SignupProcessComponent should initialize user and update whereInTheProcess" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).SignupProcessComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PaperlessPolicyComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PaperlessPolicyComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="DocumentDetailsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).DocumentDetailsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).InformationComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="LoginService should return formbase for creating login form" time="0.024" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).LoginService"/>
+  <testcase name="EditEmailFormComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).EditEmailFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ContactBillingRepFormComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ContactBillingRepFormComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should update the password" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should throw error while login" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should verify the token for forgotpassword" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should not login successfully" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should verify the policy" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should not update the password" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should confirm policy and account" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should verify the user" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should verify the token for verifyaccount" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should send email on forgot password" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should logout the user" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should login successfully" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should throw error for confirm policy and account" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="AuthenticationService should create a password" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).AuthenticationService">
+    <skipped/>
+  </testcase>
+  <testcase name="ClaimsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ClaimsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="InformationProductsComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).InformationProductsComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="PolicyDocumentsDataService should be created" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).PolicyDocumentsDataService">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should set showConfirmation to true" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should get email from parameter" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should set the emailInputs" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="ForgotPasswordComponent should call method getEmailFromParamater" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ForgotPasswordComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="MileageService should be created" time="0.01" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).MileageService">
+    <failure type="">Error: StaticInjectorError(DynamicTestModule)[AuthenticationService -&gt; HttpClient]: 
+  StaticInjectorError(Platform: core)[AuthenticationService -&gt; HttpClient]: 
+    NullInjectorError: No provider for HttpClient!
+error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AuthenticationService', Function ] })
+    at NullInjector.push../node_modules/@angular/core/fesm5/core.js.NullInjector.get node_modules/@angular/core/fesm5/core.js:8894:1)
+    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
+    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
+    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
+    at resolveToken node_modules/@angular/core/fesm5/core.js:9139:1)
+    at tryResolveToken node_modules/@angular/core/fesm5/core.js:9083:1)
+    at StaticInjector.push../node_modules/@angular/core/fesm5/core.js.StaticInjector.get node_modules/@angular/core/fesm5/core.js:8980:1)
+    at resolveNgModuleDep node_modules/@angular/core/fesm5/core.js:21120:1)
+    at NgModuleRef_.push../node_modules/@angular/core/fesm5/core.js.NgModuleRef_.get node_modules/@angular/core/fesm5/core.js:21809:1)
+    at injectInjectorOnly node_modules/@angular/core/fesm5/core.js:1772:1)
+</failure>
+  </testcase>
+  <testcase name="ReviewPolicyScreenComponent should create" time="0" classname="Chrome_67_0_3396_(Mac_OS_X_10_14_0).ReviewPolicyScreenComponent">
+    <skipped/>
+  </testcase>
+  <system-out>
+    <![CDATA[Chrome 67.0.3396 (Mac OS X 10.14.0) LOG: 'userService', null
+,Chrome 67.0.3396 (Mac OS X 10.14.0) LOG: 'userService', Object{email: 'test@xyz.com'}
+,Chrome 67.0.3396 (Mac OS X 10.14.0) LOG: 'userService', Object{email: 'test@xyz.com'}
+,Chrome 67.0.3396 (Mac OS X 10.14.0) LOG: 'userService', null
+,Chrome 67.0.3396 (Mac OS X 10.14.0) LOG: 'userService', Object{addPolicyAttempts: 1, creationDate: Tue Feb 05 2019 09:59:50 GMT-0500 (Eastern Standard Time), email: 'first@xyz.com', firstName: 'first', middleName: 'middle', lastName: 'last', password: 'passwd', policyDetails: [Object{}], temporaryPassword: 'temp'}
+,Chrome 67.0.3396 (Mac OS X 10.14.0) LOG: 'error'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: 'Navigation triggered outside Angular zone, did you forget to call 'ngZone.run()'?'
+,Chrome 67.0.3396 (Mac OS X 10.14.0) WARN: undefined
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
