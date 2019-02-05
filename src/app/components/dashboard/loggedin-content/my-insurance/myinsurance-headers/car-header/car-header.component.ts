@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./car-header.component.scss']
 })
 export class CarHeaderComponent implements OnInit {
-  @Input() policy:          object;
+  @Input() policy:          any;
   constructor() { }
 
   ngOnInit() {

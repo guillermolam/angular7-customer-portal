@@ -10,7 +10,7 @@ import * as isEqual                     from 'lodash.isequal';
   styleUrls: ['./details-home.component.scss']
 })
 export class DetailsHomeComponent implements OnInit {
-  @Input()  policy:                     object;
+  @Input()  policy:                     any;
   @Input()  policyIdInput:              number;
             address:                    string = 'address';
             agentStreet:                string;

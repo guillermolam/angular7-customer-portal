@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./home-header.component.scss']
 })
 export class HomeHeaderComponent implements OnInit {
-  @Input() policy:            object;
+  @Input() policy:            any;
   constructor() { }
 
   ngOnInit() {
