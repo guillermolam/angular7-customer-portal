@@ -89,7 +89,7 @@ export class NewPaymentComponent implements OnInit {
   newPaymentFormSubmit(): void {
     let radioAmount,
         paymentObj =                    {};
-    const bankingInfo =                 this.checkingInfo[0].bankAccountDetails,
+    const bankingInfo =                 this.checkingInfo.bankAccountDetails,
           nPForm =                      this.newPaymentForm,
           errorString =                 `'ACCOUNT_NUMBER_CONFIRM_DO_NOT_MATCH' | translate`; 
 
