@@ -8,7 +8,7 @@ import { environment }  from '../../../environments/environment';
 })
 export class ChangeEmailService {
 
-  backend:              string = environment.backend_server_cu;
+  // backend:              string = environment.backend_server_cu;
 
   constructor(
     private http:       HttpClient

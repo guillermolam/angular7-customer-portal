@@ -12,7 +12,7 @@ import { ServiceHelpersService }  from '../../_helpers/service-helpers.service';
   providedIn: 'root'
 })
 export class ClaimsService {
-  backend:                        string = environment.backend_server_mk;
+  // backend:                        string = environment.backend_server_mk;
 
   constructor(
     private http:                 HttpClient,
