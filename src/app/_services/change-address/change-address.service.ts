@@ -13,7 +13,6 @@ export class ChangeAddressService {
     private http:                  HttpClient,
   ) { }
 
-<<<<<<< HEAD
    updateMailingAddress(policyNumber, reqBody){
     // const url =  `https://mdv-doctest:8084/personal-policies/${policyNumber}/mailing-address`;
     const url =  `${environment.backend_server_url}/personal-policy-api/${policyNumber}/mailing-address`

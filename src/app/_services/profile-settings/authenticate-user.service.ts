@@ -1,18 +1,10 @@
 import { StorageServiceObservablesService } from './../storage-service-observables/storage-service-observables.service';
 import { HttpClient } from '@angular/common/http';
-<<<<<<< HEAD
-import { UserService } from './../user.service';
-import { Injectable } from '@angular/core';
-import { of, throwError }         from 'rxjs';
-import { catchError, map }        from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-=======
 import { UserService }          from './../user.service';
 import { Injectable }           from '@angular/core';
 import { of, throwError }       from 'rxjs';
 import { catchError, map }      from 'rxjs/operators';
 import { environment }          from '../../../environments/environment';
->>>>>>> master
 
 @Injectable({
   providedIn: 'root'
