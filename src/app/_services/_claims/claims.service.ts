@@ -20,12 +20,12 @@ export class ClaimsService {
   ) { }
 
   getClaimsList(email): Observable<any> {
-    let url =                     `${this.backend}/claims?email=${email}`;
+    let url =                     `${environment.backend_server_url}/claims?email=${email}`;
     return this.http.get(url, this.serviceHelpers.options);
   }
 
   getClaimsDetails(email): Observable<any> {
-    let url =                     `${this.backend}/claims/loss?email=${email}`;
+    let url =                     `${environment.backend_server_url}/claims/loss?email=${email}`;
     return this.http.get(url, this.serviceHelpers.options);
   }
 }
