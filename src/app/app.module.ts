@@ -23,6 +23,7 @@ import { RoutingModule }                        from './app.routing';
 import { environment }                          from '../environments/environment.dev';
 import { AuthenticationService }                from './_services/_iam/authentication-service.service';
 import { AuthGuard }                            from './_guards/auth.guard';
+import { SignUpGuard }                            from './_guards/signup.guard';
 import { JwtInterceptor }                       from './_helpers/jwt.interceptor';
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
@@ -34,9 +35,10 @@ import { StorageServiceObservablesService }     from './_services/storage-servic
 import { PolicyDataService }                    from './_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }                 from './_services/my-insurance/policy-details.service';
 import { PolicyDocumentsDataService }           from './_services/my-insurance/data-services/policy-documents-data.service';
-
+import { FullstateToAbvPipe }                   from './_helpers/_pipes/fullstate-to-abv.pipe';
+import { AbvToFulstatePipe }                    from './_helpers/_pipes/abv-to-fulstate.pipe';
 // ----- Account ----- //
-import { DashboardMainComponent }                 from './components/dashboard/dashboard-main.component';
+import { DashboardMainComponent }               from './components/dashboard/dashboard-main.component';
 // ----- Routes ----- //
 import { CreateNewPasswordComponent }           from './routes/create-new-password/create-new-password.component';
 import { DashboardComponent }                   from './routes/my-insurance/dashboard.component';
@@ -55,6 +57,13 @@ import { ContactComponent }                     from './routes/contact/contact.c
 import { ProfileSettingsComponent }             from './routes/profile-settings/profile-settings.component';
 import { AddressChangeComponent }               from './routes/profile-settings/address-change/address-change.component';
 import { ChangeEmailComponent }                 from './routes/profile-settings/change-email/change-email.component';
+import { SignupAddPolicyComponent }             from './routes/signup/signup-process/signup-add-policy/signup-add-policy.component';
+import { SignupBopComponent }                   from './routes/signup/signup-process/signup-bop/signup-bop.component';
+import { SignupCreatePasswordComponent }        from './routes/signup/signup-process/signup-create-password/signup-create-password.component';
+import { SignupEditPolicyComponent }            from './routes/signup/signup-process/signup-edit-policy/signup-edit-policy.component';
+import { SignupEmailInUseComponent }            from './routes/signup/signup-process/signup-email-in-use/signup-email-in-use.component';
+import { SignupPolicyBelongsToAnotherComponent } from './routes/signup/signup-process/signup-policy-belongs-to-another/signup-policy-belongs-to-another.component';
+import { SignupNotFoundComponent }              from './routes/signup/signup-process/signup-not-found/signup-not-found.component';
 
 // ----- Components ----- //
 import { LoginFormComponent }                   from './components/forms/dynamic-forms/login-form/login-form.component';
@@ -104,7 +113,7 @@ import { ContactScreenComponent } from './components/screens/contact-screen/cont
 import { EditEmailFormComponent } from './components/forms/dynamic-forms/profile-settings-forms/edit-email-form/edit-email-form.component';
 import { ProfileEmailConfirmComponent } from './components/dashboard/loggedin-content/profile/profile-email-confirm/profile-email-confirm.component';
 import { ProfileConfirmModalComponent } from './components/dashboard/loggedin-content/profile/profile-confirm-modal/profile-confirm-modal.component';
-import { ClaimsHomeComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-home/claims-home.component';
+import { ClaimsHomeComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-main/claims-home.component';
 import { ClaimsWrapperComponent } from './components/dashboard/loggedin-content/claims/claims.component';
 import { ClaimsDetailComponent } from './components/dashboard/loggedin-content/claims/claims-detail/claims-detail.component';
 import { ClaimsHomeClosedComponent } from './components/dashboard/loggedin-content/claims/claims-dashboard-closed/claims-home-closed.component';
@@ -143,8 +152,6 @@ import { PaperlessPayEnrollComponent } from './components/dashboard/loggedin-con
 import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enroll-eft-epay-form/enroll-eft-epay-form.component';
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
-import { FullstateToAbvPipe } from './_helpers/_pipes/fullstate-to-abv.pipe';
-import { AbvToFulstatePipe } from './_helpers/_pipes/abv-to-fulstate.pipe';
 
 
 if (environment.production) {
@@ -267,9 +274,14 @@ export function tokenGetter() {
     PaperlessPayConfirmComponent,
     ChangeEmailComponent,
     FullstateToAbvPipe,
-    AbvToFulstatePipe
-
-
+    AbvToFulstatePipe,
+    SignupAddPolicyComponent,
+    SignupBopComponent,
+    SignupCreatePasswordComponent,
+    SignupEditPolicyComponent,
+    SignupEmailInUseComponent,
+    SignupPolicyBelongsToAnotherComponent,
+    SignupNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -295,6 +307,7 @@ export function tokenGetter() {
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
     AuthGuard,
+    SignUpGuard,
     AuthenticationService,
     CookieService,
     HttpClientModule,
@@ -312,7 +325,6 @@ export function tokenGetter() {
     StorageServiceObservablesService,
     PolicyDataService,
     PolicyDocumentsDataService
-
   ],
   bootstrap: [AppComponent]
 })

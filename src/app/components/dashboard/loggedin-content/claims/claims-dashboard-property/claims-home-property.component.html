@@ -1,12 +1,12 @@
-<div class="claim home row no-margins-hug" [ngClass]="{ 'hug-header': type == 'details', 'hug-content': type != 'details' }">
+<div class="home row no-margins-hug" [ngClass]="{ 'hug-header': type == 'details', 'hug-content': type != 'details' }">
   <div class="col-12 no-padding row">
     <div class="policy-background col">
         <div class="house"></div>
     </div>
     <div class="col">
-      <h2 class="claim-id">{{ claim.LOSS_DESC | titlecase }} - <strong>#{{ claim.LOSS_NUMBER }}</strong></h2>
+      <h2 class="claim-id">{{ claim.claimType | titlecase }} - <strong>#{{ claim.fileNumber.fileNumber }}</strong></h2>
       <div class="policy-id">
-          {{ claim.policytype | titlecase }} - 
+          {{ claim.propertyOrAutoIndicator | titlecase }} - 
           <ng-container *ngIf="type != 'details'">
               {{ claim.policyid }}
           </ng-container>
@@ -15,13 +15,13 @@
           </ng-container>
       </div>
       <div class="date-loss">
-          {{ 'DATE_OF_LOSS' | translate }}: {{ claim.LOSS_DATE | date }}
+          {{ 'DATE_OF_LOSS' | translate }}: {{ claim.lossDate | date }}
       </div>
     </div>
   </div>
   <ng-container *ngIf="type != 'details'">
     <div class="col-12  no-padding">
-      <a [routerLink]="['/claims', claim.LOSS_NUMBER, 'details']" class="d-block claim-link waves-light margin-bottom mb32 margin-top mt16 padding-right pr16"
+      <a [routerLink]="['/claims', claim.fileNumber.fileNumber, 'details']" class="d-block claim-link waves-light margin-bottom mb32 margin-top mt16 padding-right pr16"
     mdbWavesEffect >
         {{ 'CLAIM_DETAILS' | translate }}&nbsp;<svg-arror-right-svg></svg-arror-right-svg>
       </a>  

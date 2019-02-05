@@ -11,11 +11,12 @@ import { User }                   from '../../_models/user';
   providedIn: 'root'
 })
 export class BillingService {
-  user:                     User;
-  
+  backend:                        string = environment.backend_server_cu;
+  user:                           User;
+
   constructor(
-    private http:           HttpClient,
-    private serviceHelpers: ServiceHelpersService
+    private http:                 HttpClient,
+    private serviceHelpers:       ServiceHelpersService
   ) { }
 
   payBillByCheck(bill, user): Observable<any>{

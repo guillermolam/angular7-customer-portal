@@ -1,36 +1,43 @@
 <app-profile-confirm-modal [toDo]="'confirm'" *ngIf="confirmModal"></app-profile-confirm-modal>
+<div class="row margin-bottom mb16">
+  <div class="col text-center">
+    {{ 'YOUR_CURRENT_EMAIL_IS' | translate }}: <br>
+    <strong>{{ currentEmail }}</strong>
+  </div>
+</div>
 <form 
   [formGroup]="editEmailForm" 
   name="editEmailForm"  
-  (ngSubmit)="editEmailForm.valid && onChangeEmail()">
+  (ngSubmit)="editEmailForm.valid && checkIfEmailExists()">
   <mapfre-alert></mapfre-alert>
   <div class="row">
-      <div class="col">
-        <div *ngFor="let input of inputs" class="inputs">
-          <mapfre-validation [input]="input" [form]="editEmailForm" [additionalClasses]="'margin-bottom mb16'"></mapfre-validation>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col">
-          <mapfre-button
-            [additionalClasses]="'basic primary large waves-effect waves-light'"
-            [disabledValue]="editEmailForm.valid" 
-            [inputType]="'submit'"
-            [translateValue]="'CONFIRM' | translate"
-          ></mapfre-button>
-        </div>
-      </div>
-  </form>
-  <div class="row margin-top mt24 text-center">
     <div class="col">
-      <mapfre-button
-        (click)="onCheckDirty()"
-        additionalClasses="link-button small blue-link"
-        [customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [showIconsCustom]="true"
-      >  {{ 'BACK' | translate }}
-      </mapfre-button>
+      <div *ngFor="let input of inputs" class="inputs">
+        <mapfre-validation [input]="input" [form]="editEmailForm" [additionalClasses]="'margin-bottom mb16'"></mapfre-validation>
+      </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <mapfre-button
+        additionalClasses="basic primary large"
+        [disabledValue]="editEmailForm.valid" 
+        [inputType]="'submit'"
+        [translateValue]="'CONFIRM' | translate"
+      ></mapfre-button>
+    </div>
+  </div>
+</form>
+
+<div class="row margin-top mt24 text-center">
+  <div class="col">
+    <mapfre-button
+      (click)="onCheckDirty()"
+      additionalClasses="link-button small blue-link"
+      [customIcon]="'assets/img/icons/back-arrow.png'"
+      [iconClasses]="'align-middle'"
+      [showIconsCustom]="true"
+    >  {{ 'BACK' | translate }}
+    </mapfre-button>
+  </div>
+</div>

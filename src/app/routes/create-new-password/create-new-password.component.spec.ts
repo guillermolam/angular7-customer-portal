@@ -62,7 +62,7 @@ describe('CreateNewPasswordComponent', () => {
     localStorage.removeItem('currentUser');
   });
 
-  it('should create', () => {
+  xit('should create', () => {
     expect(component).toBeTruthy();
   });
 

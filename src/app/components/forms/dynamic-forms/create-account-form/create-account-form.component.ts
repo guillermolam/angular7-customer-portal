@@ -20,7 +20,7 @@ export class CreateAccountFormComponent implements OnInit {
   @Input()  inputs:                 FormBase<any>[] = [];
             signUpForm:             FormGroup;
             loading:                boolean = false;
-            user:                   User = {};
+            user:                   any = {};
 
   constructor(
     private alertService:           AlertService,
@@ -33,11 +33,13 @@ export class CreateAccountFormComponent implements OnInit {
 
   createUserObject(object, numbers): void {
     if (numbers === null) {
-      this.user = {
+      this.user.userDetails = {
         firstName:                  object.signUpFirst_name,
         middleName:                 object.signUpMI_name,
         lastName:                   object.signUpLast_name,
-        email:                      object.signUpEmail,
+        email:{
+          address:   object.signUpEmail
+        }                    
       };
      
     }
@@ -49,19 +51,15 @@ export class CreateAccountFormComponent implements OnInit {
   }
 
   fromTheBackButton(): void {
-    let localStorageUser;
+
     this.userData.$user
-      .subscribe( (user: User) => {
-        if ( user != undefined ) {
-          localStorageUser = user;
+      .subscribe( (user: any) => {
+        if(user){
+          this.signUpForm.controls.signUpFirst_name.setValue( user.userDetails.firstName || '' );
+          this.signUpForm.controls.signUpLast_name.setValue( user.userDetails.lastName || '' );
+          this.signUpForm.controls.signUpMI_name.setValue( user.userDetails.middleName || '' );
+          this.signUpForm.controls.signUpEmail.setValue( user.userDetails.email.address || '' );
         }
-        else if ( localStorage.length != 0  ) {
-          localStorageUser = this.userData.getUserInfoInStorage();
-        }
-        this.signUpForm.controls.signUpFirst_name.setValue( localStorageUser.firstName || '' );
-        this.signUpForm.controls.signUpLast_name.setValue( localStorageUser.lastName || '' );
-        this.signUpForm.controls.signUpMI_name.setValue( localStorageUser.middleName || '' );
-        this.signUpForm.controls.signUpEmail.setValue( localStorageUser.email || '' );
       }
     );
   }
@@ -69,29 +67,29 @@ export class CreateAccountFormComponent implements OnInit {
   register() {
     this.loading = true;
     this.createUserObject(this.signUpForm.value, null);
-    // if (this.userData) {
-    //   this.authService.verifyUser(this.userData)
-    //   .subscribe(
-    //     (result) => {
-    //       this.createUserObject(this.userData, result);
-    //       this.router.navigate(['signup', 'create-password' ]);
-    //     },
-    //     (err) => {
-    //       if (err.status === 400) {
-    //         // --- Email is already in use
-    //         this.router.navigate(['signup', 'email-in-use' ]);
-    //       }
-    //       else if (err.status === 403) {
-    //         // --- If the user does not have any policies
-    //         this.router.navigate(['signup', 'add-policy' ]);
-    //       }
-    //       else {
-    //         console.log(err);
-    //       }
-    //     }
-    //   );
-    // }
-    this.router.navigate(['signup', 'add-policy' ]);
+    if (this.userData) {
+      this.authService.verifyUser(this.userData)
+      .subscribe(
+        (result) => {
+          // this.createUserObject(this.userData, 'verifyuser');
+          this.router.navigate(['signup', 'create-password' ]);
+        },
+        (err) => {
+          if (err.status === 400) {
+            // --- Email is already in use
+            this.router.navigate(['signup', 'email-in-use' ]);
+          }
+          else if (err.status === 403) {
+            // --- If the user does not have any policies
+            this.router.navigate(['signup', 'add-policy' ]);
+          }
+          else {
+            console.log(err);
+          }
+        }
+      );
+    }
+    // this.router.navigate(['signup', 'add-policy' ]);
   }
 
   ngOnInit() {

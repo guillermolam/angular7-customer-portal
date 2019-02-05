@@ -7,9 +7,10 @@ describe('EmailEmailPasswordFormService', () => {
 
  let emailPasswordFormService: EmailPasswordFormService;
 
-  beforeEach(() => { TestBed.configureTestingModule({
-    providers: [EmailPasswordFormService]
-  });
+  beforeEach(() => { 
+    TestBed.configureTestingModule({
+      providers: [EmailPasswordFormService]
+    });
   
   emailPasswordFormService = TestBed.get(EmailPasswordFormService);
   });

@@ -45,26 +45,17 @@ export class NewPaymentComponent implements OnInit {
   }
 
   OnClickEditButton(event): void {
-    this.editAccount =             !this.editAccount;
+    this.editAccount =              !this.editAccount;
   }
 
   OnChangeShowCustomAmountField(input): void {
-    if (input == 'other') {
-      this.showCustomAmount =       true;
-    }
-    else {
-      this.showCustomAmount =       false;
-    }
+    this.showCustomAmount =         input == 'other' ? true : false;
   }
 
   checkAmountNow(e): void {
-    const amount = parseInt(e.target.value);
-    if ( amount > this.policyDetails[0].billingDetails[0].minAmountDue && !amount) {
-      this.checkAmount = true;
-    }
-    else {
-      this.checkAmount = false;
-    }
+    const amount =                  parseInt(e.target.value),
+          minAmount =               this.policyDetails[0].billingDetails[0].minAmountDue;
+    this.checkAmount =              amount > minAmount && !amount ? true : false;
   }
 
   createBankDetailsObject(){
@@ -98,7 +89,7 @@ export class NewPaymentComponent implements OnInit {
   newPaymentFormSubmit(): void {
     let radioAmount,
         paymentObj =                    {};
-    const bankingInfo =                 this.checkingInfo[0].bankAccountDetails,
+    const bankingInfo =                 this.checkingInfo.bankAccountDetails,
           nPForm =                      this.newPaymentForm,
           errorString =                 `'ACCOUNT_NUMBER_CONFIRM_DO_NOT_MATCH' | translate`; 
 
@@ -135,7 +126,7 @@ export class NewPaymentComponent implements OnInit {
   }
 
   setValues(checkingInfo): void {
-    const bDetails =                    checkingInfo[0].bankAccountDetails,
+    const bDetails =                    checkingInfo.bankAccountDetails,
           apartmentNo =                 bDetails.mailingAddress.streetName.split('|'),
           address = {
           streetName:                   apartmentNo[0],
@@ -191,7 +182,6 @@ export class NewPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.newPaymentForm =             this.ipt.toFormGroup(this.inputs);
     this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck) => {
       this.storeBankAccount =         bankAccountCheck;
@@ -208,10 +198,10 @@ export class NewPaymentComponent implements OnInit {
       this.userService.$user
       .subscribe((userResponse) => {
         this.checkingInfo =           userResponse;
-        if (this.checkingInfo[0].bankAccountDetails.accountHolderName) {
+        if (this.checkingInfo.bankAccountDetails.accountHolderName) {
           this.setValues(this.checkingInfo);
         }
-        this.bankDetails =            this.checkingInfo[0].bankAccountDetails;
+        this.bankDetails =            this.checkingInfo.bankAccountDetails;
       });
     });
 

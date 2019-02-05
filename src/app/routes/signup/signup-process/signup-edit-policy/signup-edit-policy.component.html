@@ -1,0 +1,39 @@
+<div class="row text-center">
+  <div class="col">
+    <div class="header-icon full-icon">
+      <svg-policy-error-svg></svg-policy-error-svg>
+    </div>
+    <h1 class="title-copy">{{ 'EDIT_POLICY' | translate }}</h1> 
+  </div>
+</div>
+<div class="row text-center margin-bottom mb16 sub-title-copy">
+  <div class="col">
+    {{ 'EDITPOLICY_REVIEW_POLICY' | translate }}
+  </div>
+</div>
+<app-edit-policy-form [inputs]="editPolicyInfo"></app-edit-policy-form>
+<div class="row text-center margin-top mt24">
+    <div class="col">
+      <mapfre-button
+        [additionalClasses]="'secondary ghost small'"
+        [routerLink]="['/signup', 'add-policy']"
+      >{{ 'CANCEL' | translate }}</mapfre-button>
+    </div>
+  </div>
+<hr class="margin-vertical mv24" />
+<div class="row text-center">
+  <div class="col">
+    <mapfre-modal 
+      [modalOptions]="whereToFindModalOptions">
+      <div class="modal-body no-margin-bottom">
+        <hr class="margin-bottom mb24" />
+        <div class="margin-bottom mb8">
+          {{ 'POLICY_DOCUMENT' | translate}}
+        </div>
+        <div class="margin-bottom mb24">
+          <img src="./assets/img/images/find-policy-image.png" style="width: 100%;">
+        </div>
+      </div>
+    </mapfre-modal>
+  </div>
+</div>

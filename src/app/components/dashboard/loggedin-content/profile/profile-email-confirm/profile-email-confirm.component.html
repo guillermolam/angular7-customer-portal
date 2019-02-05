@@ -1,56 +1,50 @@
 <div class="change-address single-card-column">
-<div class="row text-center">
+  <div class="row text-center">
     <div class="col">
       <div class="header-icon">
-        <svg-validate-svg></svg-validate-svg>
+        <svg-caution-color-svg></svg-caution-color-svg>
       </div>  
-          <h1 class="title-copy">{{ 'PROFILE_EMAIL_CONF_ONE' | translate }}</h1> 
-          <div class="sub-title-copy">
-           {{ 'PROFILE_EMAIL_CONF_TWO' | translate }} 
-          </div>
-          <div class="sub-title-copy">
-              {{ 'PROFILE_EMAIL_CONF_THREE' | translate }} 
-             </div>
-    </div>
-  </div>
-  <hr />
-  <div class="row text-center">
-      <div class="col">
-  <div class=account-settings>
-      {{ 'PROFILE_EMAIL_CONF_FOUR' | translate }}
-  </div>
-  <div class="sub-title-copy">
-      {{ 'PROFILE_EMAIL_CONF_FIVE' | translate }} 
-      <div class=account-settings>
-          {{ '[MAPFRE Insurance - IMPORTANT - Confirm your new email address]' | translate }}
+      <h1 class="title-copy">{{ 'PROFILE_EMAIL_CONF_ONE' | translate }}</h1> 
+      <div class="sub-title-copy">
+        {{ 'PROFILE_EMAIL_CONF_TWO' | translate }} 
       </div>
-  </div>
-  <div class="margin-top mt24 margin-bottom mb8">
-      <mapfre-link
-      (click)="sendEmail()"
-      additionalClasses="blue-link"
-      >
-      <div class="svg-container display-inline svg">
-          <svg-email-icon-svg></svg-email-icon-svg>
-      </div>
-      <div class="svg-container display-inline">
-          {{ 'SEND_EMAIL_AGAIN' | translate }}
-      </div>
-    </mapfre-link>
-  </div>
-  </div>
-  </div>
-  <hr />
-  <div class="row margin-top mt24 text-center">
-      <div class="col">
-        <mapfre-button
-          additionalClasses="link-button small blue-link"
-          [customIcon]="'assets/img/icons/back-arrow.png'"
-          [iconClasses]="'align-middle'"
-          [routerLink]="['/profile']"
-          [showIconsCustom]="true"
-        >  {{ 'BACK' | translate }}
-        </mapfre-button>
+      <div class="sub-title-copy">
+          
       </div>
     </div>
+  </div>
+  <div class="row text-center margin-vertical mv32">
+    <div class="col">
+      <div>
+        {{ 'PROFILE_EMAIL_CONF_THREE' | translate }}
+      </div>
+      <div class="font-size medium-font">
+        <strong>{{ newEmail }}</strong> 
+        <a 
+        [routerLink]="['/profile','edit-email']"
+        class="inline-svg margin-left ml16" > 
+          <svg-edit-icon-svg></svg-edit-icon-svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row margin-bottom mb24">
+    <div class="col">
+      <mapfre-button
+        additionalClasses="primary basic large text-center mx-auto"
+        (click)="confirmNewEmail()"
+        >{{ 'PROFILE_EMAIL_CONF_FOUR' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
+  <div class="row text-center margin-bottom mb8">
+    <div class="col">
+      <mapfre-button 
+        additionalClasses="link-button small blue-link" 
+        (click)="cancel()"
+      >  {{ 'CANCEL' | translate }}
+      </mapfre-button>
+    </div>
+  </div>
 </div>
+

@@ -1,4 +1,3 @@
-import { ChangeEmailComponent } from './routes/profile-settings/change-email/change-email.component';
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }         from '@angular/router';
 import { NgModule }                       from '@angular/core';
@@ -6,11 +5,12 @@ import { NgModule }                       from '@angular/core';
 import { AuthGuard }                      from './_guards/auth.guard';
 import { SignUpGuard }                    from './_guards/signup.guard';
 import { VerifyUserGuard }                from './_guards/verify-user.guard';
+import { ChangeProfileSettingsEmailGuard } from './_guards/change-profile-settings-email.guard';
+import { ChangeProfileSettingsPasswordGuard } from './_guards/change-profile-settings-password.guard';
 
 // --- components ---- //
 import { ProfileEditEmailComponent }      from './components/dashboard/loggedin-content/profile/profile-edit-email/profile-edit-email.component';
 import { ProfileCheckingAccountComponent } from './components/dashboard/loggedin-content/profile/profile-checking-account/profile-checking-account.component';
-
 import { ProfilePhoneComponent }          from './components/dashboard/loggedin-content/profile/profile-phone/profile-phone.component';
 import { InformationHomeComponent }       from './components/dashboard/loggedin-content/information/information-home/information-home.component';
 import { InformationMainComponent }       from './components/dashboard/loggedin-content/information/information-main.component';
@@ -23,7 +23,7 @@ import { InformationRenewalComponent }    from './components/dashboard/loggedin-
 import { InformationCancelComponent }     from './components/dashboard/loggedin-content/information/information-cancel/information-cancel.component';
 import { InformationLegalComponent }      from './components/dashboard/loggedin-content/information/information-legal/information-legal.component';
 import { ClaimsDetailComponent }          from './components/dashboard/loggedin-content/claims/claims-detail/claims-detail.component';
-import { ClaimsHomeComponent }            from './components/dashboard/loggedin-content/claims/claims-dashboard-home/claims-home.component';
+import { ClaimsHomeComponent }            from './components/dashboard/loggedin-content/claims/claims-dashboard-main/claims-home.component';
 import { ClaimsHomeClosedComponent }      from './components/dashboard/loggedin-content/claims/claims-dashboard-closed/claims-home-closed.component';
 import { ProfileEmailConfirmComponent }   from './components/dashboard/loggedin-content/profile/profile-email-confirm/profile-email-confirm.component';
 import { PolicyDetailsComponent }         from './components/dashboard/loggedin-content/my-insurance/details/details.component';
@@ -68,16 +68,41 @@ import { AddressChangeComponent }         from './routes/profile-settings/addres
 import { ContactComponent }               from './routes/contact/contact.component';
 import { ClaimsComponent }                from './routes/claims/claims.component';
 import { InformationComponent }           from './routes/information/information.component';
+import { SignupPolicyBelongsToAnotherComponent } from './routes/signup/signup-process/signup-policy-belongs-to-another/signup-policy-belongs-to-another.component';
+import { SignupNotFoundComponent }        from './routes/signup/signup-process/signup-not-found/signup-not-found.component';
+import { SignupEmailInUseComponent }      from './routes/signup/signup-process/signup-email-in-use/signup-email-in-use.component';
+import { SignupEditPolicyComponent }      from './routes/signup/signup-process/signup-edit-policy/signup-edit-policy.component';
+import { SignupCreatePasswordComponent }  from './routes/signup/signup-process/signup-create-password/signup-create-password.component';
+import { SignupBopComponent }             from './routes/signup/signup-process/signup-bop/signup-bop.component';
+import { SignupAddPolicyComponent }       from './routes/signup/signup-process/signup-add-policy/signup-add-policy.component';
+import { ChangeEmailComponent }           from './routes/profile-settings/change-email/change-email.component';
 
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword',               component: CreateNewPasswordComponent },
   { path: 'login',                        component: LoginComponent },
-  { path: 'signup',                       component: SignupComponent },
-  { path: 'signup/:parm',                 component: SignupProcessComponent},
+  { path: 'signup',                       component: SignupComponent,
+    children:[
+      { path: '',                         component: SignupProcessComponent
+      },
+      { path: 'add-policy',               component: SignupAddPolicyComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'bop',                      component: SignupBopComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'createpassword',           component: SignupCreatePasswordComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'edit-policy',              component: SignupEditPolicyComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'email-in-use',             component: SignupEmailInUseComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'not-found',                component: SignupNotFoundComponent, canActivate: [SignUpGuard] 
+      },
+      { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent, canActivate: [SignUpGuard] 
+      },
+    ]
+  },
   { path: 'testing',                      component: TestingComponent },
-  { path: 'verifyaccount',                component: VerifyAccountComponent, 
-  // canActivate: [VerifyUserGuard] 
+  { path: 'verifyaccount',                component: VerifyAccountComponent, canActivate: [VerifyUserGuard]
 },
   { path: 'welcome',                      component: WelcomeComponent },
   { path: 'walletcard',                   component: WalletCardComponent},
@@ -117,9 +142,12 @@ children: [
     { path: 'change-address/:address-type', component: AddressChangeComponent},
     { path: 'enter-password',             component: ProfileEditPasswordComponent },
     { path: 'verify-password',            component: ProfileEditEmailComponent },
-    { path: 'edit-email',                 component: ProfileEditEmailComponent },
-    { path: 'edit-password' ,             component: ProfileEditPasswordComponent },
-    { path: 'email-confirmation' ,        component: ProfileEmailConfirmComponent}
+    { path: 'edit-email',                 component: ProfileEditEmailComponent,   //  canActivate: [ChangeProfileSettingsEmailGuard] 
+    },
+    { path: 'edit-password' ,             component: ProfileEditPasswordComponent,  //canActivate: [ChangeProfileSettingsPasswordGuard]
+  },
+    { path: 'email-confirmation' ,        component: ProfileEmailConfirmComponent,  //canActivate: [ChangeProfileSettingsEmailGuard]
+  }
   ] },
   { path: 'claims',                       component: ClaimsComponent, children: [
     { path: '',                            component: ClaimsHomeComponent },
@@ -136,6 +164,7 @@ children: [
       { path: 'e-pay',                    children : [
         { path: '',                       component: PaperlessPayComponent },
         { path: ':policyid/enroll',       component: PaperlessPayEnrollComponent },
+        { path: ':policyid/edit-enroll',  component: PaperlessPayEnrollComponent },
         { path: ':policyid/confirm',      component: PaperlessPayConfirmComponent}
       ] },
       { path: 'e-policy',                 component: PaperlessPolicyComponent },

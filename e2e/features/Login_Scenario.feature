@@ -49,7 +49,7 @@ Feature: Verifying the functionality of Login to the application.
           |de<mo@gmail.com     |admin     |Please Enter A Valid Email|
           |de,mo@gmail.com     |admin     |Please Enter A Valid Email|
 	
-  @test
+  @CucumberScenario
 	Scenario Outline: Verifying the functionality of login feature with valid data.
 	  When I enter "<email>" in email field.
 	  When I enter "<password>" in password field.
@@ -66,7 +66,7 @@ Feature: Verifying the functionality of Login to the application.
           |will@mapfre.gov.in    |admin		|Invalid Email/Password	|
           |will@map-fre.com      |admin		|Invalid Email/Password	|
 
-  @test
+  @CucumberScenario
   Scenario: Verifying the functionality of Login with Remember me feature.
     Then Verify The Login Page.
     When I enter "onlyfore2e@test.com" in email field.

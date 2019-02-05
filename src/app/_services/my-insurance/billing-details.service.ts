@@ -1,20 +1,22 @@
-import { map } from 'rxjs/operators';
+import { HttpClient }         from '@angular/common/http';
+import { Injectable }         from '@angular/core';
+import { Observable }         from 'rxjs';
+import { environment }        from '../../../environments/environment';
 import { BillingDataService } from './data-services/billing-data.service';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BillingDetailsService {
 
-  billingURL: string = 'https://mdv-doctest:8086'; ///will be removed
+  billingURL:                   string = environment.backend_server_bl;
 
   constructor(
-    private http: HttpClient,
+    private http:               HttpClient,
     private billingDataService: BillingDataService
   ) {}
+
 
   getCurrentBillByPolicy(policyNumber: string){
     // const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
@@ -46,7 +48,6 @@ export class BillingDetailsService {
     // const url = `${this.billingURL}/billing/${email}/${policyNumber}`;
     const url = `${environment.backend_server_url}/billing-api/${email}/${policyNumber}`;
     return this.http.post(url,billingData);
-
   }
 
 }

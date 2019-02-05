@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators }
                                           from '@angular/forms';
 import { ActivatedRoute, Params }         from '@angular/router';
 import { filter }                         from 'rxjs/operators';
+import { GetGooglePlaceService }          from 'mapfre-design-library';
 import { AuthenticationService }          from '../../../../../_services/_iam/authentication-service.service';
 import { PolicyDataService }              from '../../../../../_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }           from '../../../../../_services/my-insurance/policy-details.service';
@@ -12,10 +13,7 @@ import { StorageServiceObservablesService }
 import { User }                           from '../../../../../_models/user';
 import { UserService }                    from '../../../../../_services/user.service';
 import { WalletCardService }              from '../../../../../_services/_iam/wallet-card.service';
-
-import { TestingDataService }             from '../../../../../_helpers/testing-data.service';
-
-import * as isEqual from 'lodash.isequal';
+import * as isEqual                       from 'lodash.isequal';
 
 @Component({
   selector: 'app-policy-details-screen',
@@ -52,15 +50,14 @@ export class PolicyDetailsComponent implements OnInit {
     private policyDetailsService:       PolicyDetailsService,
     private userService:                UserService,
     private walletCardService:          WalletCardService,
-
-    private testingData:                TestingDataService
+    private googlePlaceService:         GetGooglePlaceService
   ) {
    }
 
   createUpdateMilageFormControls(data): void {
     let milageControl =                 [];
-    for ( let i = 0; i <= data.vehicleDetails.length; i++ ) {
-      if ( i != data.vehicleDetails.length ) {
+    for ( let i = 0; i <= data.vehicle.length; i++ ) {
+      if ( i != data.vehicle.length ) {
         milageControl.push(
           {
             name:                       `updateMileageInput_${i}`,
@@ -93,6 +90,19 @@ export class PolicyDetailsComponent implements OnInit {
         }
       )
     ;
+  }
+
+  getMailingOrResidentialAddress(updateAddress){
+    const address = {
+      streetName: updateAddress.streetName,
+      city: updateAddress.city,
+      state: updateAddress.stateCode,
+      zipCode: {
+        code: updateAddress.zipCode.code
+      }
+    }
+    console.log(address);
+    this.googlePlaceService.updateAddress(address);
   }
 
   getAddress(a: string[]): SafeUrl {
@@ -164,10 +174,7 @@ export class PolicyDetailsComponent implements OnInit {
     this.policyDetailsService
     .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
     .subscribe(
-      (success) => console.log('loading Complete'),
-      (err) => {
-        this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
-      },
+      (success) => console.log('Loading Complete'),
     );
   }
 

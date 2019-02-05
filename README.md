@@ -29,15 +29,120 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+---
+
 ## Components
 
 Temporary "documentation" for all of the components [Components on Trello](https://trello.com/b/entNM8FY/component-creation). This should hopefully be fully realized in the future.
 
+### Dynamic Forms
+
+Standard information https://angular.io/guide/dynamic-form
+
+### Mapfre Design Libray
+
+**Developers repo** https://bitbucket.org/mapfre-usa-b2c/design-system-development-suite/src/master/
+What you should be using for update. Please check out the readme for more information.
+
+**Build Repo** https://bitbucket.org/mapfre-usa-b2c/design-library/src/master/
+
+---
+
 ## Helpers
 
--pipes
+### Pipes
 
--test data
+These pipes are for the html templates and will are best practise 
+
+Prebaked Pipes in Angular
+https://angular.io/api?type=pipe
+
+#### Custom Pipes
+
+**Location** `customer-portal/src/app/_helpers/_pipes`
+* Full state to Abbreviation
+* State Abbreviation to Full Name
+* Custom date format
+  * Dates turn into 10.31.2018 
+* Apartment Pipe
+
+
+### Test Data
+
+These should replicate what you will get in your VM. If you are having trouble connecting you can use this data. 
+**It shouldn't be used when you are pull requesting to the main project**
+
+**Location** `customer-portal/src/app/_helpers/testing-data.service.ts`
+
+Sass Style guide. https://docs.google.com/document/d/1tzs0FKY-V2DQD31IB8RBwMNsrDzqxM6DXt0h2XdEb64/edit?usp=sharing
+
+Please remember to download TSlint and use the JSON at the end of the file.
+
+**How to Implement**
+
+`import { TestingDataService } from './_helpers/testing-data.service';` *How for you have to dig may vary*
+
+*Within you class constructor*
+
+
+`constructor(private testingData: TestingDataService) {}`
+
+**In ngInit**
+
+```
+// PolicyData
+this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
+
+// UserData
+let ui = {
+  userDetails: this.testingData.testUserInfo(),
+  bankAccountDetails: this.testingData.testBankingInfo()
+};
+this.userService.updateUser( ui );
+
+// Claims List
+this.claimsDataService.updateClaims('list', this.testingData.testDataClaims('list'));
+
+// Claims Details
+this.claimsDataService.updateClaims('details', this.testingData.testDataClaims('details'));
+```
+
+These can be used in the error section of the subscriptions. For example:
+
+```
+this.authenticationService
+.getUserDetailsByEmail(email)
+.subscribe((success) => { },
+(err) => {
+  let ui = {
+    userDetails: this.testingData.testUserInfo(),
+    bankAccountDetails: this.testingData.testBankingInfo()
+  };
+  this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
+  this.userService.updateUser( ui );
+  this.claimsDataService.updateClaims('list', this.testingData.testDataClaims('list'));
+  this.claimsDataService.updateClaims('details', this.testingData.testDataClaims('details'));
+  this.userService.$user.subscribe((t) => { this.testAlert = t.testData; });
+});
+```
+
+---
+
+## Dev Enviroment
+
+**Information for the new forked CP**
+Forked Customer-Portal
+> `git clone https://{ YOUR USERNAME }@bitbucket.org/{ YOUR USERNAME }/customer-portal-forked.git`
+You will need to replace the _{ YOUR USERNAME }_ with your username, naturally.
+This is where you will need to do you development. Once ready for production you will need to do a pull request on the main version
+
+Do you need to merge from the original cusomer portal?
+> https://stackoverflow.com/questions/29863772/github-merging-fork-into-master-locally Basically you are creating a new remote, but instead of a URL you are using a local path
+
+**View**
+> http://mdv-doctest02
+
+---
 
 ## Problem with AppModule ["ERROR in No NgModule metadata found for 'AppModule'."]
 This is typacally a result of having a different node.js or angular-cli version.
@@ -95,4 +200,3 @@ webpack                           4.8.3
 
 NPM: 5.6.0
 ```
-

@@ -4,10 +4,13 @@ import { Observable, Observer, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ProfileSettingsRoutingService {
-  private routeSubject =           new BehaviorSubject<any>(this.router.pathFromRoot);
-  private changePasswordAlert =    new BehaviorSubject<boolean>(false);
-  $alert =                         this.changePasswordAlert.asObservable();
-  $routeSubject =                  this.routeSubject.asObservable();
+  passwordprocess:                  boolean;
+  private routeSubject =            new BehaviorSubject<any>(this.router.pathFromRoot);
+  private changePasswordAlert =     new BehaviorSubject<boolean>(false);
+  private passwordprocesssource =   new BehaviorSubject<boolean>(this.passwordprocess);
+  $passwordprocess =                this.passwordprocesssource.asObservable();
+  $alert =                          this.changePasswordAlert.asObservable();
+  $routeSubject =                   this.routeSubject.asObservable();
 
   constructor(private router: ActivatedRoute) { }
 
@@ -23,6 +26,12 @@ export class ProfileSettingsRoutingService {
     this.changePasswordAlert.next(false);
   }
 
+  setPasswordProcess(value) {
+    this.passwordprocesssource.next(value);
+  }
 
+  clearPasswordProcess() {
+    this.passwordprocesssource.next(false);
+  }
 
 }

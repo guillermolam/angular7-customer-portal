@@ -12,8 +12,6 @@ import { StorageServiceObservablesService }
 import { User }                           from './../../../../../_models/user';
 import { UserService }                    from './../../../../../_services/user.service';
 
-import { TestingDataService }             from '../../../../../_helpers/testing-data.service';
-
 @Component({
   selector: 'app-billing-confirm',
   templateUrl: './billing-confirm.component.html',
@@ -21,6 +19,7 @@ import { TestingDataService }             from '../../../../../_helpers/testing-
 })
 export class BillingConfirmComponent implements OnInit {
   billing:                                any;
+  checkAmount:                            boolean;
   loading:                                boolean;
   policyId:                               string;
   policyDetails:                          any;
@@ -38,20 +37,24 @@ export class BillingConfirmComponent implements OnInit {
     private router:                       Router,
     private storageService:               StorageServiceObservablesService,
     private userService:                  UserService,
+) { }
 
-    private testingDataService:           TestingDataService
-  ) { }
+  checkMethodForMinAmount(bill, billingDetails): void {
+    if (bill > billingDetails) {
+      this.checkAmount =                  true;
+    }
+    else {
+      this.checkAmount =                  false;
+    }
+  }
 
-  payment(): boolean  {
+  payment(billing, email, policyId): boolean  {
     let boolForSub;
-
     this.billingDetailsService
-      .makeECheckPayment(this.billing, this.user.userDetails.email.address, this.policyId)
+      .makeECheckPayment( billing, email, policyId )
       .subscribe( (response) => {
         boolForSub =                      true;
         this.billingDataService.clearBilling();
-        this.alertService.success('Congrats! You\'ve paid your bill!', true);
-        this.router.navigate(['/my-insurance']);
       },
       (err) => {
         boolForSub =                      false;
@@ -64,38 +67,55 @@ export class BillingConfirmComponent implements OnInit {
     let boolForSub;
     this.bankAccountService
     .addBankAccount(email, bankAccountDetails)
-    .subscribe((response) => {
+    .subscribe( (response) => {
       this.authenticationService
-        .getUserDetailsByEmail(this.storageService.getUserFromStorage())
-        .subscribe(([userResponse, accountResponse]) => {
-          const response = {
-            userDetails:            {...userResponse},
-            bankAccountDetails:     {...accountResponse}
-          };
-          this.userService.updateUser(response);
-        },
-        (err) => {
-          let ui = [{
-            userDetails: this.testingDataService.testUserInfo(),
-            bankAccountDetails: this.testingDataService.testBankingInfo()
-          }];
-          this.userService.updateUser( ui );
-          this.userService.$user.subscribe(() => {});
-        }).add( () => {
-          this.loading =              false;
-        })
-      ;
-      this.alertService.success('Checking account information succesfully updated',true);
-      boolForSub =                    true;
-    }, (err) => {
+      .getUserDetailsByEmail(this.storageService.getUserFromStorage())
+      .subscribe(([userResponse, accountResponse]) => {
+        const resObject = {
+          userDetails:              {...userResponse},
+          bankAccountDetails:       {...accountResponse}
+        };
+        this.userService.updateUser(resObject);
+        boolForSub =                true;
+      });
+    },
+    (err) => {
       boolForSub =                    false;
     });
     return boolForSub;
   }
 
   sendPayment(): void {
-    if(this.storeBankAccount){
-      this.bankAccountService.addBankAccount(this.user.userDetails.email.address, this.billing.bankAccount).subscribe();
+    this.loading =                    true;
+    if (this.storeBankAccount) {
+      if ( this.payment(this.billing, this.user.userDetails.email.address, this.policyId) ) {
+        if ( this.saveCheckingAccount(this.user.userDetails.email.address, this.billing.bankAccount) ) {
+          this.loading =              false;
+          this.alertService.success('Congrats! You\'ve paid your bill and saved your bank information!', true);
+          this.router.navigate(['/my-insurance']);
+        }
+        else {
+          this.loading =              false;
+          this.alertService
+          .success('We were able to pay your bill; however we could not save your bank information. If you would like to try saving your informtion again for to <a routerlink="[`/profile/edit-checking-account`]">Profile > Edit Checking Account Information</a> ', true);
+          this.router.navigate(['/my-insurance']);
+        }
+      }
+      else {
+        this.loading =                false;
+        this.alertService.error('There was a problem paying your bill, please review your details.');
+      }
+    }
+    else {
+      if ( this.payment( this.billing, this.user.userDetails.email.address, this.policyId ) ) {
+        this.loading =                false;
+        this.alertService.success('Congrats! You\'ve paid your bill!', true);
+        this.router.navigate(['/my-insurance']);
+      }
+      else {
+        this.loading =                false;
+        this.alertService.error('There was a problem paying your bill, please review your details.');
+      }
     }
   }
 
@@ -103,27 +123,27 @@ export class BillingConfirmComponent implements OnInit {
     this.activatedRoute.params
     .subscribe(
       (params: Params) => {
-        this.policyId =                 params['policyid'];
+        this.policyId =                params['policyid'];
         this.policyDataService.$policyDetails
         .subscribe(
           (policyResponse) => {
-            this.policyDetails =          policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
+            this.policyDetails =       policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
         });
         this.userService.$user
         .subscribe(
           (user) => {
-            this.user =                   user;
+            this.user =                user;
         });
         this.billingDataService.$billingDetails
         .subscribe(
           (billing) => {
-            this.billing =                billing;
+            this.billing =             billing;
         });
-    });
-    console.log(this.billing)
-
-    this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck)=>{
-      this.storeBankAccount = bankAccountCheck;
+        this.billingDataService.$storeBankAccount
+        .subscribe((bankAccountCheck) => {
+          this.storeBankAccount =      bankAccountCheck;
+        });
+        this.checkMethodForMinAmount( this.policyDetails[0].billingDetails[0].minAmountDue, this.billing.paymentAmount );
     });
   }
 
