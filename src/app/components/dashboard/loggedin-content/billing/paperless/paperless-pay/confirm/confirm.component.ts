@@ -27,6 +27,7 @@ export class PaperlessPayConfirmComponent implements OnInit {
     this.authenticationService
       .getUserDetailsByEmail(this.storageService.getUserFromStorage())
       .subscribe(([userResponse, accountResponse]) => {
+        this.userService.clearUser();
         this.userService.updateUser(
         [{
           userDetails:              {...userResponse},

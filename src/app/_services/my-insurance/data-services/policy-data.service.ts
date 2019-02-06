@@ -14,4 +14,8 @@ export class PolicyDataService {
     console.log('PolicyDataService', policyDetails);
     this.details.next(policyDetails);
   }
+
+  clear() {
+    this.details.next('');
+  }
 }

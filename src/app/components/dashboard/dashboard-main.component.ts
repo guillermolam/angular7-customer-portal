@@ -92,8 +92,22 @@ export class DashboardMainComponent implements OnInit {
             this.userService.updateUser(response);
           },
           (err) => {
-            })
-          .add(() => {
+            // PolicyData
+            this.policyDataService.updatePolicyDetails( this.testingData.testDatafunction() );
+
+            // UserData
+            let ui = {
+              userDetails: this.testingData.testUserInfo(),
+              bankAccountDetails: this.testingData.testBankingInfo()
+            };
+            this.userService.updateUser( ui );
+
+            // Claims List
+            this.claimsDataService.updateClaims('list', this.testingData.testDataClaims('list'));
+
+            // Claims Details
+            this.claimsDataService.updateClaims('details', this.testingData.testDataClaims('details'));
+          }).add(() => {
             this.loading = false;
           });
       });

@@ -22,4 +22,8 @@ export class UserService {
     console.log('userService', user);
     this.messageSource.next(user);
   }
+
+  clearUser() {
+    this.messageSource.next('');
+  }
 }
