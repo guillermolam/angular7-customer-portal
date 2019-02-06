@@ -2,7 +2,7 @@ import { Component, Input, OnInit }     from '@angular/core';
 import { FormGroup }                    from '@angular/forms';
 import { ActivatedRoute, Router, Params }
                                         from '@angular/router';
-import { AlertService, RegExHelper, FormBase, FormBaseControlService, GetGooglePlaceService }
+import { AlertService, RegExHelper, FormBase, FormBaseControlService, GetGooglePlaceService, ValidateAddressService }
                                         from 'mapfre-design-library';
 import { AuthenticationService }        from '../../../../../_services/_iam/authentication-service.service';
 import { ChangeAddressService }         from './../../../../../_services/change-address/change-address.service';
@@ -24,6 +24,7 @@ export class ChangeAddressComponent implements OnInit {
       policyID:                         string;
       user:                             any;
       addressObject:               any;
+      addressInput:                 any;
 
     constructor(
       private activatedRoute:           ActivatedRoute,
@@ -34,28 +35,52 @@ export class ChangeAddressComponent implements OnInit {
       private regExHelper:              RegExHelper,
       private router:                   Router,
       private userService:              UserService,
-      private getGooglePlaceService:    GetGooglePlaceService
+      private getGooglePlaceService:    GetGooglePlaceService,
+      private validateAddressService:   ValidateAddressService
+
     ) {}
 
   changeAddress(): void {
     console.log(this.changeAddressForm);
+    this.createAddressObject();
     if (this.addressType == 'residential') {
-      this.residental(this.policyID, this.addressObject);
+      this.residental(this.policyID);
     }
     else if(this.addressType == 'mailing') {
-      this.mailing(this.policyID, this.addressObject);
+      this.mailing(this.policyID);
     }
   }
 
-  mailing(policyid, object) {
-    this.changeAddressService.updateMailingAddress(policyid, object).subscribe((success) => {
+
+  createAddressObject(){
+    if(this.changeAddressForm.controls.changeAddressAPT.value) {
+      this.addressObject.streetName = this.addressObject.streetName.split('|')[0] + '|' + this.changeAddressForm.controls.changeAddressAPT.value; 
+    }
+    else {
+      this.addressObject.streetName = this.addressObject.streetName.split('|')[0];
+    }
+
+
+  }
+
+
+  mailing(policyid) {
+
+    let validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
+
+
+    if(validateAddress){
+    this.changeAddressService.updateMailingAddress(policyid, this.addressObject).subscribe((success) => {
         // this.reSync(this.user.userDetails.email.address);
-        this.alertService.success('You have updated your mailing address', true);
+        this.alertService.success('CHANGE_ADDRESS_ALERT_SUCCESS', true);
         this.router.navigate(['/my-insurance']);
       },
       (err) => {
-        this.alertService.error('We Could not update your mailing address');
-      })
+        this.alertService.error('CHANGE_ADDRESS_ALERT_ERROR');
+      });
+    }else{
+      this.alertService.error('PLEASE_ENTER_VALID_ADDRESS',true);
+    }
   }
 
   reSync(email): void {
@@ -70,22 +95,37 @@ export class ChangeAddressComponent implements OnInit {
       });
   }
 
-  residental(policyid, object) {
-    this.changeAddressService.updateResidentialAddress(policyid, object).subscribe((success) => {
-        // this.reSync(this.user.userDetails.email.address);
-        this.alertService.success('You have updated your residental address', true);
-        this.router.navigate(['/my-insurance']);
-      },
-      (err) => {
-        this.alertService.error('We Could not update your residental address');
-      })
+  residental(policyid) {
+
+    console.log(this.getGooglePlaceService, this.addressInput);
+      let validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
+
+      if(validateAddress){
+        this.changeAddressService.updateResidentialAddress(policyid, this.addressObject).subscribe((success) => {
+          // this.reSync(this.user.userDetails.email.address);
+          this.alertService.success('CHANGE_ADDRESS_ALERT_SUCCESS', true);
+          this.router.navigate(['/my-insurance']);
+        },
+        (err) => {
+          this.alertService.error('CHANGE_ADDRESS_ALERT_ERROR');
+        })
+      }else{
+        this.alertService.error('PLEASE_ENTER_VALID_ADDRESS',true);
+      }
+    
   }
 
   ngOnInit() {
     this.changeAddressForm =          this.ipt.toFormGroup(this.inputs);
     this.getGooglePlaceService.$address.subscribe((address)=>{
       this.addressObject = address;
-    })
+    });
+
+    this.validateAddressService.$address
+    .subscribe((resp) => {
+        this.addressInput = resp;
+    });
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.addressType =              params['address-type'];
       this.policyID =                 params['policyid'];

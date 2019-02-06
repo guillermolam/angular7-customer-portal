@@ -23,7 +23,7 @@ import { StorageServiceObservablesService } from '../../../../_services/storage-
 })
 export class CreatePasswordFormComponent implements OnInit {
   @Input()  inputs:                 FormBase<any>[] = [];
-  @Input()  userData:               Observable<User>;
+            userData:              any;
             createPasswordForm:     FormGroup;
             email:                  string;
             token:                  string;
@@ -47,7 +47,10 @@ export class CreatePasswordFormComponent implements OnInit {
 
   createNewPassword(): void {
     if (this.whereInTheProcess == 'createpassword') {
-      this.createPassword(this.userData);
+      // console.log('cpwd');
+      // this.userService.$user.subscribe((userData)=>{
+        this.createPassword(this.userData);
+      // });
     }
     else {
       this.updatePassword();
@@ -61,7 +64,7 @@ export class CreatePasswordFormComponent implements OnInit {
       .createPassword(this.userService)
       .subscribe (
         (data) => {
-          this.router.navigate(['/verify-account']);
+          this.router.navigate(['/validate-email']);
         },
         (error) => {
           console.log(this.userService, error);
@@ -150,11 +153,17 @@ export class CreatePasswordFormComponent implements OnInit {
      });
 
      this.whereInTheProcess = this.activeRoute.snapshot.routeConfig.path;
-     if(this.whereInTheProcess!=='edit-password'){
-       // route paramaters for example /signup/:parm
-      this.activeRoute.params.subscribe((params: Params) => {
-       this.whereInTheProcess =        params['parm'];
+     
+      this.userService.$user.subscribe((userData)=>{
+        this.userData = userData;
       });
-     }
+
+     console.log(this.whereInTheProcess);
+    //  if(this.whereInTheProcess!=='edit-password'){
+    //    // route paramaters for example /signup/:parm
+    //   this.activeRoute.params.subscribe((params: Params) => {
+    //    this.whereInTheProcess =        params['parm'];
+    //   });
+    //  }
   }
 }

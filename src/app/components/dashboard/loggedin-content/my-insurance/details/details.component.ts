@@ -12,6 +12,7 @@ import { StorageServiceObservablesService }
                                           from '../../../../../_services/storage-service-observables/storage-service-observables.service';
 import { User }                           from '../../../../../_models/user';
 import { UserService }                    from '../../../../../_services/user.service';
+import { ValidateAddressService }         from '../../../../../_services/change-address/validate-address.service'
 import { WalletCardService }              from '../../../../../_services/_iam/wallet-card.service';
 import * as isEqual                       from 'lodash.isequal';
 
@@ -50,7 +51,8 @@ export class PolicyDetailsComponent implements OnInit {
     private policyDetailsService:       PolicyDetailsService,
     private userService:                UserService,
     private walletCardService:          WalletCardService,
-    private googlePlaceService:         GetGooglePlaceService
+    private googlePlaceService:         GetGooglePlaceService,
+    private validateAddressService:     ValidateAddressService
   ) {
    }
 
@@ -102,7 +104,7 @@ export class PolicyDetailsComponent implements OnInit {
       }
     }
     console.log(address);
-    this.googlePlaceService.updateAddress(address);
+    this.validateAddressService.setAddress(address);
   }
 
   getAddress(a: string[]): SafeUrl {

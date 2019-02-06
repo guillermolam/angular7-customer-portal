@@ -49,7 +49,7 @@ export class AuthenticationService {
   createPassword(userObject): Observable<any> {
     const
       user =                      userObject.$user.source.value,
-      url =                       `${this.backendApi}/customers/accounts/${user.email}`,
+      url =                       `${this.backendApi}/customers/accounts/${user.userDetails.email.address}`,
       userSendObject =            this.serviceHelpers.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.serviceHelpers.options);
@@ -86,12 +86,7 @@ export class AuthenticationService {
       .pipe(
         map((access_token) => {
           if (access_token) {
-            localStorage.setItem(
-              'currentUser',
-              JSON.stringify({ username, access_token })
-            );
-            console.log('access_token', access_token);
-            return true;
+            return JSON.stringify({ username, access_token });
           }
           else {
             return false;
@@ -116,7 +111,7 @@ export class AuthenticationService {
     return this.http.post(url, {} , this.serviceHelpers.options);
   }
 
-  updatePassword(user: User) {
+  updatePassword(user) {
     const url =                 `${this.backendId}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {
       params : {

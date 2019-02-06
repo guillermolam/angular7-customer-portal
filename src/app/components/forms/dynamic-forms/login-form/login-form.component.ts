@@ -8,6 +8,7 @@ import { AlertService, RegExHelper,
 // --- Components | Services | Models --- //
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
 import { UserService }                from '../../../../_services/user.service';
+import { ValidateEmailService }       from '../../../../_services/signup-process-service/validate-email.service'
 import { User }                       from '../../../../_models/user';
 
 @Component({
@@ -34,7 +35,8 @@ export class LoginFormComponent implements OnInit {
     private ipt:                      FormBaseControlService,
     private regExHelper:              RegExHelper,
     private router:                   Router,
-    private userService:              UserService
+    private userService:              UserService,
+    private validateEmailService:     ValidateEmailService
   ) {}
 
   getCookie(): void {
@@ -56,16 +58,22 @@ export class LoginFormComponent implements OnInit {
       this.authenticationService
         .login (this.user.email, this.user.password)
         .subscribe (
-          (data) => {
-            let redirectURl;
-            if ( this.returnUrl != '/' ) {
-              redirectURl = `/${this.returnUrl}`;
+          (accessToken) => {
+            this.validateEmailService.checkActiveEmail(this.user.email).subscribe(()=>{
+              localStorage.setItem('currentUser', accessToken.toString());
+              this.alertService.success('Successful Login', true);
+              this.router.navigate([`/my-insurance`]);
+            },
+            (err)=>{
+              if (err.status === 400){
+                this.router.navigate(['/signup','validate-email']);
+              } else if(err.status === 404){
+                localStorage.setItem('currentUser', accessToken.toString());
+                this.alertService.success('Successful Login', true);
+                this.router.navigate([`/my-insurance`]);
+              }
             }
-            else {
-              redirectURl = `/my-insurance`;
-            }
-            this.alertService.success('Successful Login', true);
-            this.router.navigate([`/my-insurance`]);
+           )
           },
           (err) => {
             this.alertService.error('INVALID_EMAIL_PASSWORD');

@@ -1,0 +1,40 @@
+     <div class="row text-center">
+         <div class="col">
+           <div class="header-icon margin-bottom mb24">
+             <svg-validate-svg></svg-validate-svg>
+           </div>  
+               <h1 class="title-copy">{{ 'LETS_VERIFY_YOUR_ACCOUNT' | translate }}</h1> 
+               <div class="sub-title-copy">
+                {{ 'EMAIL_VERIFICATION_SUBJECT_TITLE' | translate }} 
+               </div>
+               <div class="sub-title-copy">
+                 <strong>
+                   {{ 'email' | translate }} 
+                 </strong>
+                </div>
+         </div>
+       </div>
+       <hr />
+       <div class="row text-center">
+           <div class="col">
+       <div class=account-settings>
+           {{ 'DID_NOT_RECEIVE_EMAIL' | translate }}
+       </div>
+       <div class="sub-title-copy">
+           {{ 'CHECK_YOUR_SPAM_MESSAGES' | translate }} 
+           <span class=account-settings>
+               {{ '[SUBJECT-EMAIL]' | translate }}
+           </span>
+       </div>
+       <div class="margin-top mt24 margin-bottom mb8">
+           <mapfre-link
+           (click)="sendEmail()"
+           [additionalClasses]="'blue-link'"
+           >
+           <div class="svg-container display-inline">
+               {{ 'RESEND_VERIFICATION_EMAIL' | translate }}
+           </div>
+         </mapfre-link>
+       </div>
+       </div>
+       </div>
