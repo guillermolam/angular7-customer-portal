@@ -35,7 +35,7 @@
                   {{ 'PAYMENT_AMOUNT' | translate }}
               </div>
               <div class="col text-right">
-                <strong>{{billing.paymentAmount | currency }}</strong>
+                <strong>{{billing?.paymentAmount | currency }}</strong>
               </div>
             </div>
             <div class="row  margin-bottom mb16">
@@ -43,7 +43,7 @@
                   {{ 'BANK_ACCOUNT_NUMBER' | translate }}
               </div>
               <div class="col text-right">
-                  <strong>{{billing.bankAccount.accountNumber.digits}}</strong>
+                  <strong>{{billing?.bankAccount?.accountNumber.digits}}</strong>
               </div>
             </div>
             <div class="row margin-bottom mb16">
@@ -51,11 +51,11 @@
                   {{ 'CHECK_NUMBER' | translate }}
               </div>
               <div class="col text-right">
-                <ng-container *ngIf="billing.checkNumber == ''">
+                <ng-container *ngIf="billing?.checkNumber == ''">
                     <strong>N/A</strong>
                 </ng-container>
-                <ng-container *ngIf="billing.checkNumber != '' ">
-                    <strong>{{billing.checkNumber}}</strong>
+                <ng-container *ngIf="billing?.checkNumber != '' ">
+                    <strong>{{billing?.checkNumber}}</strong>
                 </ng-container>
               </div>
             </div>
@@ -64,7 +64,7 @@
                 {{ 'ROUTING_NUMBER' | translate }}
               </div>
               <div class="col text-right">
-                  <strong>{{billing.bankAccount.routingNumber.digits}}</strong>
+                  <strong>{{billing?.bankAccount?.routingNumber.digits}}</strong>
               </div>
             </div>
             <div class="row margin-bottom mb16">
@@ -72,7 +72,7 @@
                   {{ 'HOLDER_NAME' | translate }}
               </div>
               <div class="col text-right">
-                  <strong>{{billing.bankAccount.accountHolderName}}</strong>
+                  <strong>{{billing?.bankAccount?.accountHolderName}}</strong>
               </div>
             </div>
             <div class="row">
@@ -80,7 +80,7 @@
                   {{ 'MAILING_ADDRESS' | translate }}
               </div>
               <div class="col text-right">
-                  <strong>{{billing.bankAccount.mailingAddress.streetName.replace('|',', APT ')}} {{ billing.bankAccount.mailingAddress.city }}, {{ billing.bankAccount.mailingAddress.state }}, {{ billing.bankAccount.mailingAddress.zipCode.code }}</strong>
+                  <strong>{{billing?.bankAccount?.mailingAddress?.streetName.replace('|',', APT ')}} {{ billing?.bankAccount?.mailingAddress.city }}, {{ billing?.bankAccount?.mailingAddress?.state }}, {{ billing?.bankAccount?.mailingAddress?.zipCode.code }}</strong>
                 </div>
             </div>
           </div>

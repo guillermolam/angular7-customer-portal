@@ -111,11 +111,6 @@ export class AuthenticationService {
     return this.http.post(url, {}, this.serviceHelpers.options);
   }
 
-  updateMileage(emailAddress, policyId, vechicalId, odameter): Observable<object> {
-    const url =                 `${this.backendPerPol}/personal-policies/${emailAddress}/${policyId}/${vechicalId}?odometerReading=${odameter}`;
-    return this.http.post(url, {} , this.serviceHelpers.options);
-  }
-
   updatePassword(user: User) {
     const url =                 `${this.backendId}/identity/users/password/${user.email}`;
     return this.http.put(url, {} , {

@@ -40,6 +40,7 @@ export class ProfileEmailConfirmComponent implements OnInit {
   }
 
   reSync(email): void {
+    this.storageService.setUserStorage(email);
     this.authenticationService
       .getUserDetailsByEmail(email)
       .subscribe(([userResponse, accountResponse]) => {

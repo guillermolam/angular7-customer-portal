@@ -23,6 +23,7 @@ import { RoutingModule }                        from './app.routing';
 import { environment }                          from '../environments/environment.dev';
 import { AuthenticationService }                from './_services/_iam/authentication-service.service';
 import { AuthGuard }                            from './_guards/auth.guard';
+import { SignUpGuard }                            from './_guards/signup.guard';
 import { JwtInterceptor }                       from './_helpers/jwt.interceptor';
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
@@ -151,6 +152,10 @@ import { PaperlessPayEnrollComponent } from './components/dashboard/loggedin-con
 import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enroll-eft-epay-form/enroll-eft-epay-form.component';
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
+import { DetailsHomeComponent } from './components/dashboard/loggedin-content/my-insurance/details/details-home/details-home.component';
+import { DetailsCarComponent } from './components/dashboard/loggedin-content/my-insurance/details/details-car/details-car.component';
+import { CarHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/car-header/car-header.component';
+import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component';
 
 if (environment.production) {
   enableProdMode();
@@ -280,6 +285,10 @@ export function tokenGetter() {
     SignupEmailInUseComponent,
     SignupPolicyBelongsToAnotherComponent,
     SignupNotFoundComponent,
+    DetailsHomeComponent,
+    DetailsCarComponent,
+    CarHeaderComponent,
+    HomeHeaderComponent,
 
 
   ],
@@ -307,6 +316,7 @@ export function tokenGetter() {
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
     AuthGuard,
+    SignUpGuard,
     AuthenticationService,
     CookieService,
     HttpClientModule,

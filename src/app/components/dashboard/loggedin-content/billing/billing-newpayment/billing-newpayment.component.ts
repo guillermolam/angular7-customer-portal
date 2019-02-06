@@ -1,11 +1,10 @@
 import { Component, OnInit }        from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
 import { AlertService }             from 'mapfre-design-library';
 import { NewPaymentService }        from '../../../../../_services/forms/new-payment/new-payment.service';
 import { PolicyDataService }        from '../../../../../_services/my-insurance/data-services/policy-data.service';
 import { User }                     from '../../../../../_models/user';
 import { UserService }              from './../../../../../_services/user.service';
-import { UserInfoService }          from '../../../../../_services/_userinformation/user-info.service';
 
 @Component({
   selector:     'app-billing-newpayment',
@@ -30,23 +29,11 @@ export class BillingNewpaymentComponent implements OnInit {
     private activatedRoute:         ActivatedRoute,
     private alertService:           AlertService,
     private policyDataService:      PolicyDataService,
+    private router:                 Router,
     private userService:            UserService,
-    private userInformation:        UserInfoService,
   ) {
     this.inputs = service.getInputs();
    }
-
-  checkForAccount(): boolean {
-    const bankDetails =             this.checkingInfo.bankAccountDetails;
-    let returnBool;
-    if (bankDetails.accountHolderName != '' || bankDetails.accountHolderName != undefined) {
-      returnBool =                  true;
-    }
-    else {
-      returnBool =                  false;
-    }
-    return returnBool;
-  }
 
   ngOnInit() {
     this.loading =                  true;
@@ -55,7 +42,11 @@ export class BillingNewpaymentComponent implements OnInit {
       this.policyId =               params['policyid'];
       this.policyDataService.$policyDetails
       .subscribe((policyResponse) => {
-        this.policyDetails =        policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);;
+        this.policyDetails =        policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
+        
+        if ( Object.keys(this.policyDetails[0].billingDetails).length === 0 ) {
+          this.router.navigate([`/my-insurance/${this.policyId}/details` ]);
+        }
       });
       this.userService.$user
       .subscribe((userResponse) => {

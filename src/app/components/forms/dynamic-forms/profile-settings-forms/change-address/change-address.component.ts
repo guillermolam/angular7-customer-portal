@@ -82,6 +82,7 @@ export class ChangeAddressComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.changeAddressForm =          this.ipt.toFormGroup(this.inputs);
     this.getGooglePlaceService.$address.subscribe((address)=>{
       this.addressObject = address;
     })
@@ -92,7 +93,6 @@ export class ChangeAddressComponent implements OnInit {
         this.user =                   userinfo;
       })
     });
-    this.changeAddressForm =          this.ipt.toFormGroup(this.inputs);
   }
 
 }

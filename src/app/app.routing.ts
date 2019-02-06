@@ -83,9 +83,9 @@ const appRoutes: Routes = [
   { path: 'login',                        component: LoginComponent },
   { path: 'signup',                       component: SignupComponent,
     children:[
-      { path: '',                         component: SignupProcessComponent, canActivate: [SignUpGuard] 
-      },
-      { path: 'add-policy',               component: SignupAddPolicyComponent, canActivate: [SignUpGuard] 
+      { path: '',                         component: SignupProcessComponent,      canActivate: [SignUpGuard] 
+},
+      { path: 'add-policy',               component: SignupAddPolicyComponent,    canActivate: [SignUpGuard] 
       },
       { path: 'bop',                      component: SignupBopComponent, canActivate: [SignUpGuard] 
       },
@@ -171,8 +171,10 @@ children: [
     ] },
     { path: ':policyid',                  children: [
       { path: '',                         redirectTo: 'new-payment', pathMatch: 'full'},
-      { path: 'new-payment',              component: BillingNewpaymentComponent},
-      { path: 'confirm',                  component: BillingConfirmComponent }
+      { path: 'new-payment',              component: BillingNewpaymentComponent
+    },
+      { path: 'confirm',                  component: BillingConfirmComponent
+     }
     ] }
   ] },
   { path: 'information',                  component: InformationComponent,  children: [

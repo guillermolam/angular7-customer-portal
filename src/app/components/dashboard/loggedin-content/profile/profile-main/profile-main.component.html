@@ -6,7 +6,7 @@
               <svg-account-profile-svg></svg-account-profile-svg>  
           </div>
           <h1 class="title-copy">{{ 'PROFILE_MAIN_ONE' | translate }}</h1>
-          <div class="sub-title-copy">{{ user?.userDetails.firstName }} {{ user?.userDetails.middleName ? user?.userDetails.middleName.substr(0,1)+'.' : '' }} {{ user?.userDetails.lastName }}</div>
+          <div class="sub-title-copy">{{ user?.userDetails?.firstName }} {{ (user?.userDetails?.middleName && user?.userDetails?.middleName.toUpperCase() !== 'DEFAULT') ? user?.userDetails?.middleName.substr(0,1)+'.' : '' }} {{ user?.userDetails?.lastName }}</div>
       </div>
   </div>
   <hr class="hr-stretch"/>
@@ -23,7 +23,7 @@
   <div>
     <label class="account-settings no-margin-bottom">{{ 'EMAIL' | translate }}</label> 
     <div class="sub-title-copy row">
-      <div class="col">{{ user?.userDetails.email.address }}</div>
+      <div class="col">{{ user?.userDetails?.email?.address }}</div>
       <div class="col">
         <a 
         [routerLink]="['/profile','verify-password']"
@@ -37,10 +37,10 @@
   <div>
       <label class="account-settings no-margin-bottom margin-top mt16">{{ 'PHONE' | translate }}</label> 
       <div class="sub-title-copy row">
-        <div class="col"><em *ngIf="!user?.userDetails.phone.number;else phoneNumber">{{ 'PROFILE_MAIN_THREE' | translate }}</em></div>
-        <ng-template #phoneNumber> {{ user?.userDetails.phone.number | formatPhone }}</ng-template>
+        <div class="col"><em *ngIf="!user?.userDetails?.phone.number;else phoneNumber">{{ 'PROFILE_MAIN_THREE' | translate }}</em></div>
+        <ng-template #phoneNumber> {{ user?.userDetails?.phone.number | formatPhone }}</ng-template>
           <div class="col">
-            <a *ngIf="!user?.userDetails.phone.number;else editPhone"
+            <a *ngIf="!user?.userDetails?.phone.number;else editPhone"
             [routerLink]="['/profile','add-phone']"
             routerLinkActive="active"
             class="float-right" > 
@@ -61,7 +61,7 @@
   <div>
       <label class="account-settings no-margin-bottom">{{ 'PROFILE_MAIN_FOUR' | translate }}</label> 
       <div class="sub-title-copy row">
-        <div class="col" *ngIf="!user?.bankAccountDetails.accountNumber;else bankName">
+        <div class="col" *ngIf="!user?.bankAccountDetails?.accountNumber;else bankName">
           <em>
             {{ 'PROFILE_MAIN_FIVE' | translate }}
           </em>
@@ -70,13 +70,13 @@
           <div class="col">
             {{ 'PROFILE_MAIN_SIX' | translate }} 
             <span class="profile-account-number">
-                {{ user?.bankAccountDetails.accountNumber.digits | checkingAccount: 'account' }}
+                {{ user?.bankAccountDetails?.accountNumber.digits | checkingAccount: 'account' }}
             </span>
           </div>
         </ng-template>
 
         <div class="col">
-          <a *ngIf="!user?.bankAccountDetails.accountNumber;else editBank"
+          <a *ngIf="!user?.bankAccountDetails?.accountNumber;else editBank"
             [routerLink]="['/profile','add-checking-account']"
             routerLinkActive="active"
             class="float-right" > 
