@@ -1,33 +1,13 @@
 # MAPFRE CUSTOMER PORTAL
-[logo]: https://noticias.mapfre.com/wp-content/uploads/2017/01/2542x457-logo-mapfre.jpg "Mapfre Customer"
 
-## Pre-requisites
-You need node.js installed in your local machine
-
-## First time
-Run `npm install` to generate "node_modules" folder
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-You can also run`ng serve --ssl true`. Install a CORS plugin for your browser and Navigate to `https://localhost:4200`.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Table of contents
+* [Components](#markdown-header-components)
+* [Helpers](#markdown-header-helpers)
+* [Commands](#markdown-header-commands)
+* [Dev Env](#markdown-header-dev-env)
+* [Packages](#markdown-header-packages)
+* [Errors that may happen in install](#markdown-header-error-that-may-happen-in-install)
+* [Angular Default Readme](#markdown-header-angular-default-readme)
 
 ---
 
@@ -128,19 +108,163 @@ this.authenticationService
 
 ---
 
+## Commands
+
+Here are some command line helpers, for serving, building, etc.
+
+**How to run these commands** `npm run *command here*`
+
+| Command   	| What it does  	|
+|---	|---	|
+|start   	| ng serve  	|
+|build-dev   	| ng build --configuration=dev  	|
+|build   	| ng build --configuration=production  	|
+|test   	| ng test --watch=false --browsers Chrome  	|
+|cibuild_test   	|  ng test --code-coverage --watch=false --browsers Chromium_no_sandbox 	|
+|lint   	| ng lint  	|
+|e2e   	| ng e2e  	|
+|cibuild   	| ng test --code-coverage && ng build --configuration=dev --no-progress  	|
+|sonar-run   	| sonar-scanner -D sonar.host.url=http://mdv-docdevl01:9000  	|
+|proxy   	| ng serve --proxy-config proxy.config.json  	|
+|lighthouse:ci   	| "node_modules/lighthouse/lighthouse-cli/index.js 'http://mdv-doctest/login--output-path=./lighthouse-report.html --quiet --chrome-flags='--headless --no-sandbox --disable-gpu' **This will change** 	|
+|prepush   	| git pull && git pull local_pull master && npm run build && npm run test  	|
+|pre_e2e   	| node_modules/protractor/node_modules/webdriver-manager/bin/webdriver-manager update --proxy='http://10.169.5.196:8080' --igonre_ssl  	|
+|e2e_compile   	| node_modules/typescript/bin/tsc -p e2e/tsconfig.e2e.json  	|
+|e2e_run    | node_modules/protractor/bin/protractor e2e/protractor.conf.js   |
+
+
+
+---
+
 ## Dev Enviroment
 
-**Information for the new forked CP**
+### Information for the new forked CP
 Forked Customer-Portal
-> `git clone https://{ YOUR USERNAME }@bitbucket.org/{ YOUR USERNAME }/customer-portal-forked.git`
-You will need to replace the _{ YOUR USERNAME }_ with your username, naturally.
-This is where you will need to do you development. Once ready for production you will need to do a pull request on the main version
+* `git clone https://{ YOUR USERNAME }@bitbucket.org/{ YOUR USERNAME }/customer-portal-forked.git`
+> You will need to replace the _{ YOUR USERNAME }_ with your username, naturally.
+> This is where you will need to do you development. Once ready for production you will need to do a pull request on the main version
 
 Do you need to merge from the original cusomer portal?
 > https://stackoverflow.com/questions/29863772/github-merging-fork-into-master-locally Basically you are creating a new remote, but instead of a URL you are using a local path
 
-**View**
-> http://mdv-doctest02
+**View - You will need to be in your VM** 
+* http://mdv-doctest02
+
+### Prepush to forked master and dev build
+You will need to make sure that the build and unit tests pass. Easiest way to do that is with the `prepush` command.
+
+---
+
+## Packages
+You may find other packages that are dependencies of other packages. All the needed packages are present in the `package.json`
+
+**To Install** npm i
+
+### dependencies
+* @agm/core
+* @angular/animations
+* @angular/common
+* @angular/compiler
+* @angular/core
+* @angular/forms
+* @angular/http
+* @angular/platform-browser
+* @angular/platform-browser-dynamic
+* @angular/pwa
+* @angular/router
+* @angular/service-worker
+* @ngx-translate/core
+* @types/chart.js
+* @types/file-saver
+* angular-bootstrap-md
+* angular2-cookie
+* bootstrap
+* chart.js
+* chartist
+* classlist.js
+* core-js
+* file-saver
+* font-awesome
+* hammerjs
+* jquery
+* jshint
+* lodash.isequal
+* ngx-cookie-service
+* ngx-google-places-autocomplete
+* popper.js
+* rxjs
+* rxjs-compat
+* sonarqube-scanner
+* tslint-sonarts
+* underscore
+* zone.js
+ 
+### Dev Dependencies
+* @agm/core
+* @angular-devkit/build-angular
+* @angular/cli
+* @angular/compiler-cli
+* @angular/language-service
+* @auth0/angular-jwt
+* @types/chai
+* @types/cucumber
+* @types/jasmine
+* @types/jasminewd2
+* @types/mapfre-design-library": "git+https://bitbucket.org/mapfre-usa-b2c/design-library.git"
+* @types/node
+* chai
+* chai-as-promised
+* codelyzer
+* cucumber
+* jasmine-core
+* jasmine-spec-reporter
+* karma
+* karma-chrome-launcher
+* karma-cli
+* karma-coverage-istanbul-reporter
+* karma-jasmine
+* karma-jasmine-html-reporter
+* karma-junit-reporter
+* lighthouse
+* mapfre-design-library": "git+https://bitbucket.org/mapfre-usa-b2c/design-library.git"
+* protractor
+* protractor-cucumber-framework
+* ts-node
+* tslint
+* typescript
+
+
+---
+
+## Angular Default Readme
+
+### Pre-requisites
+You need node.js installed in your local machine
+
+### First time
+Run `npm install` to generate "node_modules" folder
+
+### Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+You can also run`ng serve --ssl true`. Install a CORS plugin for your browser and Navigate to `https://localhost:4200`.
+
+### Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+### Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+### Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+### Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ---
 
