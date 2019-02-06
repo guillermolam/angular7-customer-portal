@@ -1,0 +1,17 @@
+<header class="margin-bottom mb16 no-margins-hug hug-header">
+  <div class="policy-background">
+    <div class="house"></div>
+  </div>
+  <div class="type-title">
+    <h1 class="title">
+        {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
+      <small>
+      <span 
+      [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 
+        'red-color': policy.policyStatus !== 'ACTIVE' }">
+                <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
+      </span>
+    </small>
+    </h1>
+  </div>
+</header>

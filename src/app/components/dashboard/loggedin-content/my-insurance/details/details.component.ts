@@ -105,6 +105,7 @@ export class PolicyDetailsComponent implements OnInit {
     }
     console.log(address);
     this.validateAddressService.setAddress(address);
+    this.googlePlaceService.updateAddress(address);
   }
 
   getAddress(a: string[]): SafeUrl {

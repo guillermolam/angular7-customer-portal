@@ -16,14 +16,14 @@
               name="paymentAmount"
               checked
               formControlName="paymentAmount"
-              [value]="policyDetails[0]?.billingDetails[0].minAmountDue"
+              [value]="policyDetails[0]?.billingDetails[0]?.minAmountDue"
               required="true"
               (change)="OnChangeShowCustomAmountField('min'); setDynamicInputValidation('min')">
             <label class="" for="paymentAmount-minimum">{{ 'MINIMUM_AMOUNT_DUE' | translate }}</label>
           </div>
         </div>
         <div class="col payment-amount text-right">
-          <strong>{{ policyDetails[0]?.billingDetails[0].minAmountDue | currency}}</strong>
+          <strong>{{ policyDetails[0]?.billingDetails[0]?.minAmountDue | currency}}</strong>
         </div>
       </div>
       <div class="row">
