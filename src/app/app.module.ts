@@ -286,6 +286,10 @@ export function tokenGetter() {
     SignupEmailInUseComponent,
     SignupPolicyBelongsToAnotherComponent,
     SignupNotFoundComponent,
+    DetailsHomeComponent,
+    DetailsCarComponent,
+    CarHeaderComponent,
+    HomeHeaderComponent,
   ],
   imports: [
     BrowserModule,
