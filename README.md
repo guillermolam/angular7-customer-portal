@@ -11,7 +11,7 @@
 
 ---
 
-## Components
+## Components 
 
 Temporary "documentation" for all of the components [Components on Trello](https://trello.com/b/entNM8FY/component-creation). This should hopefully be fully realized in the future.
 

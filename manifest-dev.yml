@@ -2,7 +2,7 @@
 applications:
 - name: customer-portal-ui
   memory: 512M
-  instances: 2
+  instances: 1
   buildpacks: 
   - staticfile_buildpack
   stack: cflinuxfs3

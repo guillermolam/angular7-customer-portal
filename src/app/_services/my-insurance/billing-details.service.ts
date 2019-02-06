@@ -10,36 +10,44 @@ import { BillingDataService } from './data-services/billing-data.service';
 })
 export class BillingDetailsService {
 
-  billingURL:                   string = environment.backend_server_bl;
+  // billingURL:                   string = environment.backend_server_bl;
 
   constructor(
     private http:               HttpClient,
     private billingDataService: BillingDataService
   ) {}
 
-  getCurrentBillByPolicy(policyNumber: string): Observable<any> {
-    const url =                 `${this.billingURL}/billing/${policyNumber}/currentbill`;
+
+  getCurrentBillByPolicy(policyNumber: string){
+    // const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
+    const url = `${environment.backend_server_url}/billing-api/${policyNumber}/currentbill`;
     return this.http.get(url);
   }
 
-  getScheduledBillsByPolicy(policyNumber: string): Observable<any> {
-    const url =                 `${this.billingURL}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+
+  getScheduledBillsByPolicy(policyNumber: string){
+    // const url = `${this.billingURL}/billing/scheduled-bills?policyNumber=${policyNumber}`;
+    const url = `${environment.backend_server_url}/billing-api/scheduled-bills?policyNumber=${policyNumber}`;
     return this.http.get(url);
   }
 
-  getHistoryBillsByPolicy(policyNumber: string): Observable<any> {
-    const url =                 `${this.billingURL}/billing/history-bills?policyNumber=${policyNumber}`;
+  getHistoryBillsByPolicy(policyNumber: string){
+    // const url = `${this.billingURL}/billing/history-bills?policyNumber=${policyNumber}`;
+    const url = `${environment.backend_server_url}/billing-api/history-bills?policyNumber=${policyNumber}`;
     return this.http.get(url);
   }
 
-  getPendingChecksByPolicy(policyNumber: string): Observable<any> {
-    const url =                 `${this.billingURL}/billing/${policyNumber}/unprocessedpayment`;
+
+  getPendingChecksByPolicy(policyNumber: string){
+    // const url = `${this.billingURL}/billing/${policyNumber}/unprocessedpayment`;
+    const url = `${environment.backend_server_url}/billing-api/${policyNumber}/unprocessedpayment`;
     return this.http.get(url);
   }
 
-  makeECheckPayment(billingData, email, policyNumber): Observable<any> {
-    const url =                 `${this.billingURL}/billing/${email}/${policyNumber}`;
-    return this.http.post(url, billingData);
+  makeECheckPayment(billingData, email, policyNumber){
+    // const url = `${this.billingURL}/billing/${email}/${policyNumber}`;
+    const url = `${environment.backend_server_url}/billing-api/${email}/${policyNumber}`;
+    return this.http.post(url,billingData);
   }
 
 }

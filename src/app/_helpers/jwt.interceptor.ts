@@ -20,7 +20,8 @@ export class JwtInterceptor implements HttpInterceptor {
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // add authorization header with jwt token if available
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser && currentUser.access_token) {
+    if (currentUser) {
+      // console.log('jwt_interceptor', `${currentUser.access_token.access_token}`)
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${currentUser.access_token.access_token}`,
@@ -31,7 +32,7 @@ export class JwtInterceptor implements HttpInterceptor {
     return next.handle(request)
     .pipe(catchError((e) => {
       console.log(e);
-      if((e.status == 401 && e.error.error === 'Invalid Request') || e.status == 500){
+      if((e.status == 401 && e.error.error === 'Invalid Request')){
         this.router.navigate(['/login']);
       }
         return throwError(e);     

@@ -95,7 +95,7 @@ describe('AuthenticationService', () => {
     let password = 'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone =      `${environment.backend_auth_server_url}/auth/oauth/v2/token`,
+    let urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}`;
     let url = urlpartone + '?' + urlparttwo;
 
@@ -115,7 +115,7 @@ describe('AuthenticationService', () => {
     let password =        'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone =      `${environment.backend_auth_server_url}/auth/oauth/v2/token`,
+    let urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}`;
     let url = urlpartone + '?' + urlparttwo;
 
@@ -134,7 +134,7 @@ describe('AuthenticationService', () => {
     let password =        'password';
     const client_id =     '7d72ecb1-ce1d-4815-8fce-0198dd83c8c4',
           client_secret = 'aeb8f080-98b7-488d-bd10-8d26fedeef2d';
-    let urlpartone =      `${environment.backend_auth_server_url}/auth/oauth/v2/token`,
+    let urlpartone =      `${environment.backend_server_url}/auth/oauth/v2/token`,
         urlparttwo =      `grant_type=password&username=${username}&password=${password}`;
     let url = urlpartone + '?' + urlparttwo;
 
@@ -151,7 +151,7 @@ describe('AuthenticationService', () => {
 
   xit('should logout the user', async( () => {
     authService.token = 'token';
-    localStorage.setItem('currentUser', JSON.stringify({ user: 'username', token: 'access_token' }));
+    localStorage.setItem('currentUser', JSON.stringify({ user: 'username', token: 'current_user' }));
     authService.logout();
     expect(localStorage.getItem('currentUser')).toBeNull();
     expect(authService.token).toBeNull();

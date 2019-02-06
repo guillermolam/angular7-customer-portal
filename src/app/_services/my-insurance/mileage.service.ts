@@ -6,14 +6,14 @@ import { Observable }             from 'rxjs/Observable';
 import { catchError, map, mergeMap }        from 'rxjs/operators';
 import { environment }            from '../../../environments/environment';
 import { ServiceHelpersService }  from '../../_helpers/service-helpers.service';
-import { error } from 'selenium-webdriver';
+import { error }                  from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MileageService {
 
-  backendPerPol:                  string = environment.backend_server_pp;
+  backendPerPol:                  string = environment.backend_server_url;
 
   constructor(
     private http:                 HttpClient,
@@ -42,7 +42,7 @@ export class MileageService {
   }
 
   updateMileage( emailAddress, policyId, vechicalId, inputValue, arrayValue ): Observable<any> {
-    const url = `${this.backendPerPol}/personal-policies/${emailAddress}/${policyId}/${vechicalId}?odometerReading=${inputValue}`;
+    const url = `${this.backendPerPol}/personal-policy-api/${emailAddress}/${policyId}/${vechicalId}?odometerReading=${inputValue}`;
 
     if ( this.checkMilageValues( inputValue, arrayValue ) === 'values are the same') {
       return throwError('Same Value');

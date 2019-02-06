@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 export class PolicyDetailsService {
 
   private policyBillingDataAll:     any[] = [];
-  private backendUrl:               string = environment.backend_server_pp;
+  // private backendUrl:               string = environment.backend_server_pp;
 
   constructor(
     private http:                   HttpClient,
@@ -19,8 +19,9 @@ export class PolicyDetailsService {
     private billingDetailsService:  BillingDetailsService
   ) { }
 
-  getPolicyDetailsByEmail(email: string = 'testmfr@gmail.com') {
-    const url =                     `${this.backendUrl}/personal-policies/${email}`;
+  getPolicyDetailsByEmail(email: string = 'testmfr@gmail.com'){
+    // const url = `${this.backendUrl}/personal-policies/${email}`;
+    const url = `${environment.backend_server_url}/personal-policy-api/${email}`;
     return this.http.get(url).pipe(map((policyResponse: any[]) => {
       policyResponse.forEach((policy) => {
         forkJoin(
@@ -46,8 +47,9 @@ export class PolicyDetailsService {
   );
 }
 
-  getDocumentsByPolicy(policyNumber: string): Observable<any> {
-    const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;
+  getDocumentsByPolicy(policyNumber: string): Observable<any>{
+    // const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;
+    const url = `${environment.backend_server_url}/personal-policy-api/${policyNumber}/documents`;
     return this.http.get(url);
   }
 
@@ -55,27 +57,33 @@ export class PolicyDetailsService {
     const options = {
       responseType:  'arraybuffer' as 'json'
     };
-    const url = `${this.backendUrl}/personal-policies/document/${documentId}`;
+
+    // const url = `${this.backendUrl}/personal-policies/document/${documentId}`;
+    const url = `${environment.backend_server_url}/personal-policy-api/document/${documentId}`;
     return this.http.get(url, options);
   }
 
-  getVehicleByPolicy(policyNumber): Observable<any> {
-    const url = `${this.backendUrl}/personal-policies/${policyNumber}/vehicles`;
+  getVehicleByPolicy(policyNumber){
+    // const url = `${this.backendUrl}/personal-policies/${policyNumber}/vehicles`;
+    const url = `${environment.backend_server_url}/personal-policy-api/${policyNumber}/vehicles`;
     return this.http.get(url);
   }
 
-  updateMileageById(email,policyNumber, vehicleId, odometerReading): Observable<any> {
-    const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
+  updateMileageById(email,policyNumber,vehicleId, odometerReading){
+    // const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
+    const url = `${environment.backend_server_url}/personal-policy-api/${email}/${policyNumber}/${vehicleId}?odometerReading=${odometerReading}`;
     return this.http.post(url, {});
   }
 
-  getPolicyDetailsByNumber(policyNumber): Observable<any> {
-    const url = `${this.backendUrl}/personal-policies/?policynumber=${policyNumber}`;
+  getPolicyDetailsByNumber(policyNumber){
+    // const url = `${this.backendUrl}/personal-policies/?policynumber=${policyNumber}`;
+    const url = `${environment.backend_server_url}/personal-policy-api/?policynumber=${policyNumber}`;    
     return this.http.get(url);
   }
 
-  addPolicyToEmail(email, policyNumber): Observable<any> {
-    const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/add-policy`;
+  addPolicyToEmail(email,policyNumber){
+    // const url = `${this.backendUrl}/personal-policies/${email}/${policyNumber}/add-policy`;
+    const url = `${environment.backend_server_url}/personal-policy-api/${email}/${policyNumber}/add-policy`;    
     return this.http.post(url,{});
   }
 

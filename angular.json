@@ -24,7 +24,8 @@
                 "input": "./node_modules/mapfre-design-library/assets/",
                 "output": "./assets/"
               },
-              "src/manifest.json"
+              "src/manifest.json",
+              "src/Staticfile"
             ],
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.scss",
@@ -35,7 +36,7 @@
             "scripts": [
               "node_modules/chart.js/dist/Chart.js",
               "node_modules/hammerjs/hammer.min.js",
-              "node_modules/underscore/underscore-min.js",
+              "node_modules/underscore/underscore-min.js"
             ]
           },
           "configurations": {

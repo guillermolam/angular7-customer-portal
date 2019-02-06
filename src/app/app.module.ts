@@ -157,6 +157,7 @@ import { DetailsCarComponent } from './components/dashboard/loggedin-content/my-
 import { CarHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/car-header/car-header.component';
 import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component';
 
+
 if (environment.production) {
   enableProdMode();
 }
@@ -285,12 +286,6 @@ export function tokenGetter() {
     SignupEmailInUseComponent,
     SignupPolicyBelongsToAnotherComponent,
     SignupNotFoundComponent,
-    DetailsHomeComponent,
-    DetailsCarComponent,
-    CarHeaderComponent,
-    HomeHeaderComponent,
-
-
   ],
   imports: [
     BrowserModule,
