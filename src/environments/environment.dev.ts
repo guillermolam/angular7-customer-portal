@@ -1,4 +1,4 @@
-const env = 'https://customer-portal-bff.apps.prd.us-east-1.aws.pcf.mapfreusa.com'
+const env = 'https://customer-portal-bff.apps.nonprod.us-east-1.aws.pcf.mapfreusa.com'
 
 export const environment = {
   production: false,

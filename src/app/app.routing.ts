@@ -84,7 +84,7 @@ const appRoutes: Routes = [
   { path: 'login',                        component: LoginComponent },
   { path: 'signup',                       component: SignupComponent,
     children:[
-      { path: '',                         component: SignupProcessComponent,      canActivate: [SignUpGuard] 
+      { path: '',                         component: SignupProcessComponent,
 },
       { path: 'add-policy',               component: SignupAddPolicyComponent,    canActivate: [SignUpGuard] 
       },

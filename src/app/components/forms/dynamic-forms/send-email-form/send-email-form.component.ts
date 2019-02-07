@@ -5,6 +5,7 @@ import { AlertService, FormBase,
   FormBaseControlService }              from 'mapfre-design-library';
 import { AuthenticationService }        from '../../../../_services/_iam/authentication-service.service';
 import { User }                         from '../../../../_models/user';
+import { ClientCredentialsService }     from '../../../../_services/client-credentials/client-credentials.service';
 
 @Component({
   selector: 'app-send-email-form',
@@ -25,6 +26,7 @@ export class SendEmailFormComponent implements OnInit {
     private authService:                AuthenticationService,
     private alertService:               AlertService,
     private ipt:                        FormBaseControlService,
+    private clientCredentialsService:   ClientCredentialsService
   ) {}
 
   isValid(event): boolean {
@@ -57,5 +59,6 @@ export class SendEmailFormComponent implements OnInit {
 
   ngOnInit() {
     this.getEmailFromParamater();
+    this.clientCredentialsService.getToken().subscribe();
   }
 }

@@ -9,6 +9,8 @@ import { AuthenticationService }        from '../../../../_services/_iam/authent
 import { PolicyDetails }                from '../../../../_models/policy-details';
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';
+import { ClientCredentialsService }     from '../../../../_services/client-credentials/client-credentials.service';
+
 
 @Component({
   selector: 'app-create-account-form',
@@ -28,7 +30,8 @@ export class CreateAccountFormComponent implements OnInit {
     private ipt:                    FormBaseControlService,
     private http:                   HttpClient,
     private router:                 Router,
-    private userData:               UserService
+    private userData:               UserService,
+    private clientCredentialsService:   ClientCredentialsService
   ) {}
 
   createUserObject(object, numbers): void {
@@ -95,6 +98,7 @@ export class CreateAccountFormComponent implements OnInit {
   ngOnInit() {
     this.signUpForm = this.ipt.toFormGroup(this.inputs);
     this.fromTheBackButton();
+    this.clientCredentialsService.getToken().subscribe();
   }
 
 }

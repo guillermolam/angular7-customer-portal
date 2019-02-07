@@ -6,25 +6,35 @@ import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
+import { ClientCredentialsTokenService } from '../_services/client-credentials/client-credentials-token.service';
 
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
 
-  constructor(private router: Router){
+  constructor(
+    private router: Router,
+    private clientCredentialsTokenService: ClientCredentialsTokenService){
 
   }
 
 
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // add authorization header with jwt token if available
+    const clientCredToken = this.clientCredentialsTokenService.getToken();
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser) {
       // console.log('jwt_interceptor', `${currentUser.access_token.access_token}`)
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${currentUser.access_token.access_token}`,
+        },
+      });
+    } else if(clientCredToken){
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${clientCredToken}`,
         },
       });
     }
