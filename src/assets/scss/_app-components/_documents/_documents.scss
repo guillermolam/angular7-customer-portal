@@ -12,7 +12,7 @@
         margin: 0;
       }
     }
-
+    
     td {
       padding: 0.75rem;
 
@@ -21,9 +21,7 @@
       }
 
       &:last-child {
-        
-           padding-right: 24px;
-       
+        padding-right: 24px;
       }
     }
   }
@@ -34,10 +32,12 @@
     padding-bottom: 1rem;
     padding-right: 24px;
     padding-left: 16px;
+    
+    &.row {
+      margin: 0;
+    }
   }
-
   
-
   .row-content {
     border-bottom: thin solid $lite-gray;
     border-left: thin solid $lite-gray;

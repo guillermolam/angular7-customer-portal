@@ -10,7 +10,7 @@
           <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
           <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
             <div class="col-lg-4 col-md-4 col-sm-4 col-5">
-              <strong>{{ holder['Insured Name'] }}</strong>
+              <h3 class="title vehicle-name">{{ holder['Insured Name'] }}</h3>
             </div>
             
             <div class="col" *ngIf="holder.isPrimaryInsured">
@@ -41,7 +41,7 @@
                     <div class="col input-field mapfre">
                       <input 
                         mdbInput
-                        value="{{vehicle?.odometerReading}}"
+                        [value]="vehicle?.odometerReading != 0 ? vehicle?.odometerReading : '' "
                         type="number"
                         [id]="'form-input_'+i" 
                         class="form-control" 

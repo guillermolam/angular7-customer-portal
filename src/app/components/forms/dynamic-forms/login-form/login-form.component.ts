@@ -57,7 +57,6 @@ export class LoginFormComponent implements OnInit {
         .login (this.user.email, this.user.password)
         .subscribe (
           (data) => {
-            this.alertService.success('Successful Login', true);
             this.router.navigate([`/my-insurance`]);
           },
           (err) => {

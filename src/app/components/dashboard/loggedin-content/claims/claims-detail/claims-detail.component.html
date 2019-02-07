@@ -3,13 +3,13 @@
 </ng-container>
 <ng-container *ngIf="!loading">
   <ng-container *ngFor="let claim of claims">
-    <ng-container *ngIf="claim.LOSS_NUMBER == claimid">
+    <ng-container *ngIf="claim?.LOSS_NUMBER == claimid">
       <header class="margin-bottom mb16 w-100" >
-        <ng-container *ngIf="claim.policytype == 'auto' ">
+        <ng-container *ngIf="claim?.policytype == 'auto' ">
           <app-claims-home-car [claim]="claim" type="details"></app-claims-home-car>
         </ng-container>
 
-        <ng-container *ngIf="claim.policytype == 'property' ">
+        <ng-container *ngIf="claim?.policytype == 'property' ">
           <app-claims-home-property [claim]="claim" type="details"></app-claims-home-property>
         </ng-container>
       </header>
@@ -33,23 +33,23 @@
           <div class="claim-info">
             <div class="row margin-bottom mb16 margin-top mt8">
               <div class="col info-type">
-                  {{ 'CLAIMANT' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim.details.claimant}}</strong></div>
+                  {{ 'CLAIMANT' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim?.details.claimant}}</strong></div>
               </div>
             </div>
             <div class="row margin-bottom mb16">
               <div class="col info-type">
-                  {{ 'PAYMENTS_TO_DATE' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim.details.payments_to_date}}</strong></div>
+                  {{ 'PAYMENTS_TO_DATE' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim?.details.payments_to_date}}</strong></div>
               </div>
             </div>
             <div class="row margin-bottom mb16"> 
               <div class="col info-type">
-                  {{ 'LOCATION' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim.details.location}}</strong></div>
+                  {{ 'LOCATION' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim?.details.location}}</strong></div>
               </div>
             </div>
             <div class="row margin-bottom mb16">
               <div class="col">
                 <div id="map-container" class="z-depth-1-half" style="height: 150px">
-                  <iframe [src]="getAddress(claim.details.location)"
+                  <iframe [src]="getAddress(claim?.details.location)"
                   frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="w-100"></iframe>
                 </div> 
               </div>
@@ -59,7 +59,7 @@
                   {{ 'DESCRIPTION' | translate }}:
               </div>
               <div class="col info-data no-padding-left claim-description">
-                <strong>{{claim.details.description}}</strong>
+                <strong>{{claim?.details.description}}</strong>
               </div>
             </div>
 
@@ -71,7 +71,7 @@
 
                 <div class="row">
                   <div class="col">
-                      <strong><a href="tel:{{claim.details.claim_adjustter_number}}" class="mapfre link underline blue-link">{{ claim.details.claim_adjustter_number | lowercase }}</a></strong>
+                      <strong><a href="tel:{{claim?.details.claim_adjustter_number}}" class="mapfre link underline blue-link">{{ claim?.details.claim_adjustter_number | lowercase }}</a></strong>
                   </div>
                 </div>
                 <div class="row">
@@ -80,13 +80,13 @@
                         {{ 'EMAIL' | translate }}: 
                     </div>
                     <div>
-                      <strong><a href="mailto:{{ claim.details.claim_adjustter_email | lowercase }}" class="mapfre link underline blue-link">{{ claim.details.claim_adjustter_email | lowercase }}</a></strong>
+                      <strong><a href="mailto:{{ claim?.details.claim_adjustter_email | lowercase }}" class="mapfre link underline blue-link">{{ claim?.details.claim_adjustter_email | lowercase }}</a></strong>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    {{ 'FAX' | translate | titlecase }}: <strong>{{claim.details.claim_adjustter_fax}}</strong>
+                    {{ 'FAX' | translate | titlecase }}: <strong>{{claim?.details.claim_adjustter_fax}}</strong>
                   </div>
                 </div>
 
@@ -100,9 +100,9 @@
                 <h2 class="title no-border">
                     {{ 'APPRAISAL_INFORMATION' | translate }}
                 </h2>
-                <table mdbTable class="claims-table">
+                <table mdbTable class="claims-table ">
                   <thead class="lite-grey-color">
-                    <tr class="row-content border-full grey-border">
+                    <tr class="row-content border-full grey-border text-center">
                       <td>  
                           {{ 'NUMBER' | translate }}
                       </td>
@@ -112,14 +112,14 @@
                       <td class="text-center"> 
                           {{ 'AMOUNT' | translate }}
                       </td>
-                      <td class="text-right"> 
+                      <td class="text-center"> 
                           {{ 'STATUS' | translate }}
                       </td>
                     </tr>
                   </thead>
                   <tbody class="med-grey-color">
-                    <tr *ngFor="let appraisal of claim.details.appraisal" class="row-content border-full grey-border">
-                      <td>
+                    <tr *ngFor="let appraisal of claim?.details.appraisal" class="row-content border-full grey-border">
+                      <td class="text-center">
                         {{appraisal.number}}
                       </td>
                       <td class="text-center">
@@ -128,7 +128,7 @@
                       <td class="text-center">
                         {{ appraisal.amount | currency }}
                       </td>
-                      <td class="text-right">
+                      <td class="text-center">
                         {{appraisal.status}}
                       </td>
                     </tr>
@@ -147,7 +147,7 @@
                   <table mdbTable class="claims-table">
                     <thead  class="lite-grey-color">
                       <tr class="row-content  border-full grey-border">
-                        <td>
+                        <td class="text-center">
                             {{ 'CHECK' | translate }}
                         </td>
                         <td class="text-center">
@@ -156,14 +156,14 @@
                         <td class="text-center">
                             {{ 'AMOUNT' | translate }}
                         </td>
-                        <td class="text-right">
+                        <td class="text-center">
                             {{ 'STATUS' | translate }}
                         </td>
                       </tr>
                     </thead>
                     <tbody class="med-grey-color">
-                      <tr *ngFor="let payment of claim.details.payments" class="row-content border-full grey-border">
-                        <td>
+                      <tr *ngFor="let payment of claim?.details.payments" class="row-content border-full grey-border">
+                        <td class="text-center">
                           {{ payment.check }}
                         </td>
                         <td class="text-center">
@@ -172,7 +172,7 @@
                         <td class="text-center">
                           {{ payment.amount | currency }}
                         </td>
-                        <td class="text-right">
+                        <td class="text-center">
                           {{ payment.status }}
                         </td>
                       </tr>

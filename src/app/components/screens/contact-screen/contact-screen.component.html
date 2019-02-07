@@ -3,7 +3,7 @@
   [additionalClasses]="'contact details'">
   <section class="details-content row">
     <div class="col col1">
-      <div class="row margin-bottom mb16">
+      <div class="row margin-bottom mb24">
         <div class="col">
           <h2 class="title margin-bottom mb16">{{ 'NEW_AND_EXISTING_CLAIMS' | translate }}</h2>
           <div>
@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      <div class="row margin-bottom mb16">
+      <div class="row margin-bottom mb24">
         <div class="col">
             <h2 class="title margin-bottom mb16">{{ 'BILLING_CUSTOMER_SERVICE_QUOTES' | translate }}</h2> 
             <div>
@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row margin-bottom mb24">
         <div class="col">
           <h2 class="title margin-bottom mb16">{{ 'FOLLOW_US' | translate }}</h2>
           <ul class="social inline margin-bottom mb16">
@@ -48,7 +48,7 @@
           <div class="font-small margin-bottom mb8">{{ 'FOR_POLICY_CHANGES_COVERAGES_DISCOUTS' | translate }}</div>
 
           <ng-container *ngFor="let policy of user; let key = index ">
-            <ng-container *ngIf="policy?.agent.agentName[key] == policy?.agent.agentName[key +1] ">
+            <!-- <ng-container *ngIf="policy?.agent.agentName[key] == policy?.agent.agentName[key +1] "> -->
               <div class="agent-info  margin-bottom mb32">
                   <div class="row agent-name margin-bottom mb8">
                     <div class="col"> 
@@ -74,7 +74,7 @@
                     </div>
                   </div>
                 </div>
-              </ng-container>
+              <!--</ng-container>-->
             </ng-container>
         </div>
       </div>

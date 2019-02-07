@@ -101,9 +101,9 @@ export class DashboardMainComponent implements OnInit {
               bankAccountDetails: this.testingData.testBankingInfo()
             };
             this.userService.updateUser( ui );
-
+            
             // Claims List
-            this.claimsDataService.updateClaims('list', this.testingData.testDataClaims('list'));
+             this.claimsDataService.updateClaims('list', this.testingData.testDataClaims('list'));
 
             // Claims Details
             this.claimsDataService.updateClaims('details', this.testingData.testDataClaims('details'));

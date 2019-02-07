@@ -156,6 +156,7 @@ import { DetailsHomeComponent } from './components/dashboard/loggedin-content/my
 import { DetailsCarComponent } from './components/dashboard/loggedin-content/my-insurance/details/details-car/details-car.component';
 import { CarHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/car-header/car-header.component';
 import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component';
+import { EmailModalComponent } from './components/forms/dynamic-forms/email-modal/email-modal.component';
 
 
 if (environment.production) {
@@ -290,6 +291,7 @@ export function tokenGetter() {
     DetailsCarComponent,
     CarHeaderComponent,
     HomeHeaderComponent,
+    EmailModalComponent,
   ],
   imports: [
     BrowserModule,

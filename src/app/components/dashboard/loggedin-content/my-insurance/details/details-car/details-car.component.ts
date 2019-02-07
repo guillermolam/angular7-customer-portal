@@ -45,7 +45,7 @@ export class DetailsCarComponent implements OnInit {
   ) {
    }
 
-   createUpdateMilageFormControls(data): void {
+  createUpdateMilageFormControls(data): void {
     const milageControl =                 [];
     for ( let i = 0; i <= data.vehicle.length; i++ ) {
       if ( i != data.vehicle.length ) {

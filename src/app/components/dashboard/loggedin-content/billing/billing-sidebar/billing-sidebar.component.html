@@ -70,12 +70,12 @@
             </div>
           </div>
           <div class="col-lg-12 col-md-12 col-sm-6">
-              <mapfre-button
-                additionalClasses="ghost primary full small mx-auto no-margin"
-                [routerLink]="['/billing/paperless']">
-                {{ 'PAPERLESS_SETTINGS' | translate}}
-              </mapfre-button>
-            </div>
+            <mapfre-button
+              additionalClasses="ghost primary full small mx-auto no-margin"
+              [routerLink]="['/billing/paperless']">
+              {{ 'PAPERLESS_SETTINGS' | translate}}
+            </mapfre-button>
+          </div>
         </div>
     </ng-container>
 
@@ -91,29 +91,16 @@
       <div class="image-container">
         <img src="./assets/img/images/undraw_questions_75e0.png" class="image-max-width" />
       </div>
-      <p class="margin-top mt16 no-margin-bottom">
-        {{ 'QUESTIONS_ABOUT_POLICY' | translate }}
+    </div>
+    <div class="font-size xsmall-font bring-up-container">
+      <p class="margin-top mt16 no-margin-bottom ">
+        <strong>{{ 'QUESTIONS_ABOUT_POLICY' | translate }}</strong>
       </p>
-      <mapfre-modal 
-        [modalOptions]="billingRepModal"
-        [hideModal]="hideModal">
-        <div class="modal-body no-margin-top margin-bottom mb24">
-          <hr class="no-margin-bottom no-margin-top">
-          <div class="margin-bottom mb8 margin-top mt16">
-            <strong>{{ 'MODAL_POLICY_NUMBER' | translate }}</strong> ABC123
-          </div>
-          <div class="margin-bottom mb8 ">
-            <strong>{{ 'MODAL_BILL_REP' | translate }}</strong> Bob Smith Boston Billing Co. <a href="tel:555-555-5555">(555) 555-5555</a>
-          </div>
-          <div class="contact-form margin-bottom mb24">
-            <app-contact-billing-rep-form [inputs]="inputs" (hideModalOutput)="hideModalOnCanel($event)"></app-contact-billing-rep-form>
-          </div>
-          <mapfre-info-divs>
-            <p class="margin-bottom mb8">{{ 'BILLING_PAR_ONE' | translate }}</p>
-            <p>{{ 'BILLING_PAR_TWO' | translate }}</p>
-          </mapfre-info-divs>
-        </div>
-      </mapfre-modal>
+      <p class="no-margin-bottom">
+        {{ policy?.agent.agentName }}
+      </p>
+      <p class="title-case no-margin-bottom">{{ policy?.agent.address.streetName | titlecase }} {{ policy.agent.address.city | titlecase }}, {{ policy.agent.address.state | fullstateToAbv }}, {{ policy.agent.address.zipCode.code }}</p>
+      <p class="no-margin-bottom">{{'PHONE' | translate }}: <a href="tel:{{ policy.agent.agentPhone.number }}" class="underline"> {{ policy.agent.agentPhone.number }}</a></p>
     </div>
   </div>
 </div>

@@ -76,12 +76,18 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   }
 
   onDownloadDocument(documentId: string, policyId, documentType) {
-    this.policyDetailsService
+    /*this.policyDetailsService
     .getDocumentById(documentId)
     .subscribe((byteArray: BlobPart) => {
       const blob =            new Blob([byteArray], {type: 'application/pdf'});
-      saveAs(blob, `document-${policyId}-${documentType}.pdf`);
-    });
+      saveAs(blob, `document-${policyId}-${documentType}.pdf`,);
+    });*/
+    const file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
+    //saveAs(file);
+    //var blob = new window.Blob(['Hello, world!'], {type: 'text/plain;charset=utf-8'});
+    //window.URL = window.URL || window.webkitURL;
+    const url = window.URL.createObjectURL(file);
+    window.location.href = url;
   }
 
   onSelectFilter(filterName): void {

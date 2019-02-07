@@ -3,11 +3,6 @@
   [formGroup]="signUpForm" 
   name="signUpForm"
   (ngSubmit)="signUpForm.valid && register()">
-  <mapfre-alert
-    [alertType]="'caution'" 
-    [nonDynamic]="true">
-    {{ 'CAUTION_CREATE_ACCOUNT' | translate }}   
-  </mapfre-alert>
   <div class="">
     <div *ngFor="let input of inputs; let index = index; " class="input" [class.first-input]="index == 0">
       <mapfre-validation [input]="input" [form]="signUpForm"></mapfre-validation>
