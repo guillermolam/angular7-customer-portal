@@ -1,4 +1,22 @@
-<router-outlet></router-outlet>
-<div [class]="checkRoute()">
-  <mapfre-footer></mapfre-footer> 
-</div>
+<!-- <ng-container *ngIf="isAuthenticated()"> -->
+  <router-outlet></router-outlet>
+  <div [class]="checkRoute()">
+    <mapfre-footer></mapfre-footer> 
+  </div>
+<!-- </ng-container>
+<ng-container *ngIf="!isAuthenticated()">
+  You are not logged in! Please <a (click)="login()">Log In</a> to continue.
+  <button id="qsLoginBtn"
+  class="btn btn-primary my-2 my-sm-0"
+  *ngIf="!isAuthenticated()"
+  (click)="login()" type="button">
+    Log In
+</button>
+
+<button id="qsLogoutBtn"
+  class="btn btn-primary my-2 my-sm-0"
+  *ngIf="isAuthenticated()"
+  (click)="logout()" type="button">
+    Log Out
+</button>
+</ng-container> -->

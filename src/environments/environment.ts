@@ -3,14 +3,15 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular.json`.
 
+const env = 'https://mdv-doctest'
+
 export const environment = {
   production: false,
-  backend_auth_server_url: 'https://mdv-doctest:443/auth',
-  backend_server_url:     'https://mdv-doctest:443/apis',
-  
-  backend_server_cu:      'https://mdv-doctest:8083',
-  backend_server_pp:      'https://mdv-doctest:8084',
-  backend_server_mk:      'https://mdv-doctest:8085',
-  backend_server_id:      'https://mdv-doctest:8087',
-  backend_server_bl:      'https://mdv-doctest:8086',
+  backend_server_url: `${env}`,
+  backend_server_url_auth: `${env}:443/auth/grant_type=password`,
+  backend_server_url_account: `${env}:8083/customers/accounts`,
+  backend_server_url_identity: `${env}:8087/identity/users`,
+  backend_server_url_policy: `${env}:8084/personal-policies`,
+  backend_server_url_billing: `${env}:8086/billing`,
+  backend_server_url_claims: `${env}:8085/claims`
 }

@@ -9,8 +9,8 @@ import { ServiceHelpersService }  from '../../_helpers/service-helpers.service';
   providedIn: 'root'
 })
 export class ChangeProfileEmailService {
-  backendAccounts:                string = environment.backend_server_cu;
-  backendIdentity:                string = environment.backend_server_id;   // environment.backend_server_url
+  // backendAccounts:                string = environment.backend_server_cu;
+  // backendIdentity:                string = environment.backend_server_id;   // environment.backend_server_url
   email:                          any;
   process:                        boolean;
   private messageSource =         new BehaviorSubject<any>(this.email);
@@ -25,7 +25,7 @@ export class ChangeProfileEmailService {
 
   // Endpoints
   changeAccountEmail(oldEmail, newEmail): Observable<any> {
-    const url =                   `${this.backendAccounts}/customers/accounts/change-email?email=${oldEmail}`;
+    const url =                   `${environment.backend_server_url_account}/change-email?email=${oldEmail}`;
     const body = {
         email:                    newEmail,
         password:                 ''
@@ -34,7 +34,8 @@ export class ChangeProfileEmailService {
   }
 
   checkEmailExists(oldEmail, newEmail): Observable<any> {
-    const url =                   `${this.backendIdentity}/identity/users/change-email?email=${oldEmail}`;
+   const url = `${environment.backend_server_url_identity}/change-email?email=${oldEmail}`;
+  //  const url =                   `${this.backendIdentity}/identity/users/change-email?email=${oldEmail}`;
     const body = {
       email:                      newEmail,
       password:                   ''

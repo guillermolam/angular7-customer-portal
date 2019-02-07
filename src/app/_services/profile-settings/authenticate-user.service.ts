@@ -10,7 +10,7 @@ import { environment }          from '../../../environments/environment';
   providedIn: 'root'
 })
 export class AuthenticateUserService {
-  backend:                    string = environment.backend_server_id;
+  // backend:                    string = environment.backend_server_id;
 
   constructor(
     private http:             HttpClient,
@@ -18,22 +18,29 @@ export class AuthenticateUserService {
     private storageService:   StorageServiceObservablesService
   ) { }
 
-  /* will nedd to check if this is being used */
-
-  authenticateCurrentPassword(psw) {
-      const
-        url =                 `${this.backend}/identity/users/authenticate`,
-        body = {
-            email:            this.storageService.getUserFromStorage(),
-            password:         psw
-        };
-      return this.http.post(url, body);
+  
+  authenticateCurrentPassword(password){
+ 
+      // const url = `https://mdv-doctest:8087/identity/users/authenticate`;
+      const url = `${environment.backend_server_url_identity}/authenticate`;
+      const body = {
+      email: this.storageService.getUserFromStorage(),
+      // email: user.email.address,
+      password: password
+      }    
+      return this.http.post(url,body);
   }
 
-  changeUserPassword(newPassword) {
-    return this.userService.$user.pipe( map( (user) => {
-      const url =             `${this.backend}/identity/users/password/${user.email.address}?newPassword=${newPassword}`;
-      return this.http.post(url, {});
-    }));
+
+  changeUserPassword(newPassword){
+
+    return this.userService.$user.pipe(map((user)=>{
+      // const url = `https://mdv-doctest:8087/identity/users/password/${user.email.address}?newPassword=${newPassword}`;
+      const url = `${environment.backend_server_url_identity}/password/${user.email.address}?newPassword=${newPassword}`;
+      return this.http.post(url,{});
+    })
+    );    
+
   }
+
 }

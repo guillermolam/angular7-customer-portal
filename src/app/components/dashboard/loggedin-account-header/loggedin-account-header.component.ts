@@ -40,6 +40,7 @@ export class LoggedinAccountHeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   resetHideModal(event): void {

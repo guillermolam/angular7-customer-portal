@@ -154,6 +154,10 @@ import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enr
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
 import { ValidateEmailScreenComponent } from './components/screens/signup-process/validate-email-screen/validate-email-screen.component';
+import { DetailsHomeComponent } from './components/dashboard/loggedin-content/my-insurance/details/details-home/details-home.component';
+import { DetailsCarComponent } from './components/dashboard/loggedin-content/my-insurance/details/details-car/details-car.component';
+import { CarHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/car-header/car-header.component';
+import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component';
 
 if (environment.production) {
   enableProdMode();
@@ -284,8 +288,10 @@ export function tokenGetter() {
     SignupPolicyBelongsToAnotherComponent,
     SignupNotFoundComponent,
     ValidateEmailScreenComponent,
-
-
+    DetailsHomeComponent,
+    DetailsCarComponent,
+    CarHeaderComponent,
+    HomeHeaderComponent,
   ],
   imports: [
     BrowserModule,

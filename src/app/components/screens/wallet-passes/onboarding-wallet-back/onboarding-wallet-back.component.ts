@@ -34,7 +34,7 @@ export class OnboardingWalletBackComponent implements OnInit {
           //
         },
         (err) => {
-          console.log('ERR Download of Card');
+          console.log('ERR  Download of Card');
         }
       )
     ;

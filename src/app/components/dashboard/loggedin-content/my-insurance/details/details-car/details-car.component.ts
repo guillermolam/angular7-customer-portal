@@ -182,19 +182,19 @@ export class DetailsCarComponent implements OnInit {
             this.errorClass.splice(i, 0, true );
 
             if (error === 'Same Value') {
-              this.errorMessage.splice(i, 0, `Please update your mileage element_${i}` );
+              this.errorMessage.splice(i, 0, `Please update your mileage` );
             }
             else if (error === 'Input has not changed') {
-              this.errorMessage.splice(i, 0, `This input was not updated element_${i}` );
+              this.errorMessage.splice(i, 0, `This input was not updated` );
             }
             else if (error === 'Less Than Original') {
-              this.errorMessage.splice(i, 0, `The value you have input is less than the original amount element_${i}` );
+              this.errorMessage.splice(i, 0, `The value you have input is less than the original amount` );
             }
             else if (error.error === false ) {
-              this.errorMessage.splice(i, 0, `There was a problem updating your vehicle element_${i}` );
+              this.errorMessage.splice(i, 0, `There was a problem updating your vehicle` );
             }
             else {
-              this.errorMessage.splice(i, 0, `There was a problem updating your vehicle element_${i}` );
+              this.errorMessage.splice(i, 0, `There was a problem updating your vehicle ` );
             }
 
           }
@@ -204,11 +204,9 @@ export class DetailsCarComponent implements OnInit {
         });
     });
 
-    console.log('this.errorMessage', this.errorMessage)
-
     // Due to the subscription we want everything to have a chance to run.
 
-    setTimeout(() => {
+    /* setTimeout(() => {
       if ( successArray.every((val, i, arr) => val === true) && successArray.length != 0 ) {
         this.message =                `We\'ve updated you odemeters.`;
         this.messageType =            'success';
@@ -218,7 +216,7 @@ export class DetailsCarComponent implements OnInit {
         this.showMessage =            false;
         this.alertLoad =              false;
       }, 1000);
-    }, 500);
+    }, 500); */
   }
 
   ngOnInit() {

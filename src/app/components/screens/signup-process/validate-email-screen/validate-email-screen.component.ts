@@ -12,4 +12,8 @@ export class ValidateEmailScreenComponent implements OnInit {
   ngOnInit() {
   }
 
+  sendEmail(){
+    
+  }
+
 }

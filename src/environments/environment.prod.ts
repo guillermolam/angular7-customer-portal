@@ -1,12 +1,13 @@
+const env=  'https://customer-portal-bff.apps.prd.us-east-1.aws.pcf.mapfreusa.com'
+
 export const environment = {
   production: true,
-  
-  backend_auth_server_url:    'https://10.175.0.168:443/auth',
-  backend_server_url:         'https://10.175.0.168:443/apis',
+  backend_server_url: env,
+  backend_server_url_auth: `${env}/auth/oauth/token`,
+  backend_server_url_account: `${env}/b2c-account-api`,
+  backend_server_url_identity: `${env}/identity-api/users`,
+  backend_server_url_policy: `${env}/personal-policy-api`,
+  backend_server_url_billing: `${env}/billing-api`,
+  backend_server_url_claims: `${env}/claims-api`
 
-  backend_server_cu:          this.backend_server_url,
-  backend_server_pp:          this.backend_server_url,
-  backend_server_mk:          'https://mdv-doctest:8085',
-  backend_server_id:          this.backend_server_url,
-  backend_server_bl:          this.backend_server_url,
 };

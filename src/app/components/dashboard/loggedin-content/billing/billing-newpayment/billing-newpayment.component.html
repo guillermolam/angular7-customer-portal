@@ -15,12 +15,17 @@
 
     <section class="row policy-details-content">
       <div class="col col1">
-        <ng-container *ngIf="checkForAccount()">
+        <ng-container *ngIf="(policy.billingDetails | json) != ({} | json)">
           <app-new-payment-form [inputs]="inputs"></app-new-payment-form>  
         </ng-container>
-        <!-- <ng-container *ngIf="!checkForAccount()">
-          <app-new-payment-no-checking-form [inputs]="inputs"></app-new-payment-no-checking-form> 
-        </ng-container> -->
+        <div class="margin-top mt16 d-table w-100" *ngIf="(policy.billingDetails | json) == ({} | json)">
+          <div class="no-payment-svg d-table-cell padding pr16">
+            <svg-check-icon-svg></svg-check-icon-svg> 
+          </div>
+          <div class="green-color font-medium d-table-cell align-middle">
+            {{ 'NO_PAYMENTS' | translate }}
+          </div>
+        </div>
       </div>
       <div class="col col2">
         <app-billing-sidebar [policy]="policy"></app-billing-sidebar>

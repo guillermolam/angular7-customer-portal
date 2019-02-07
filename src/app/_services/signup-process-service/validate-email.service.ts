@@ -9,15 +9,13 @@ import { throwError }             from 'rxjs';
 })
 export class ValidateEmailService {
 
-  backend:string = environment.backend_server_cu;
-
   constructor(
     private http:HttpClient
   ) {
    }
 
    checkActiveEmail(email: string){
-    const url = `${this.backend}/customers/accounts/check-customer?email=${email}`;  
+    const url = `${environment.backend_server_url_account}/check-customer?email=${email}`;  
     return this.http.get(url)
       .pipe(
       map((info: any) => info),

@@ -84,11 +84,11 @@ const appRoutes: Routes = [
   { path: 'login',                        component: LoginComponent },
   { path: 'signup',                       component: SignupComponent,
     children:[
-      { path: '',                         component: SignupProcessComponent
+      { path: '',                         component: SignupProcessComponent,      canActivate: [SignUpGuard] 
+},
+      { path: 'add-policy',               component: SignupAddPolicyComponent,    canActivate: [SignUpGuard] 
       },
-      { path: 'add-policy',               component: SignupAddPolicyComponent, canActivate: [SignUpGuard] 
-      },
-      { path: 'bop',                      component: SignupBopComponent, canActivate: [SignUpGuard] 
+      { path: 'bop',                      component: SignupBopComponent,  canActivate: [SignUpGuard] 
       },
       { path: 'createpassword',           component: SignupCreatePasswordComponent, canActivate: [SignUpGuard] 
       },
@@ -146,11 +146,11 @@ children: [
     { path: 'change-address/:address-type', component: AddressChangeComponent},
     { path: 'enter-password',             component: ProfileEditPasswordComponent },
     { path: 'verify-password',            component: ProfileEditEmailComponent },
-    { path: 'edit-email',                 component: ProfileEditEmailComponent,   //  canActivate: [ChangeProfileSettingsEmailGuard] 
+    { path: 'edit-email',                 component: ProfileEditEmailComponent,     canActivate: [ChangeProfileSettingsEmailGuard] 
     },
-    { path: 'edit-password' ,             component: ProfileEditPasswordComponent,  //canActivate: [ChangeProfileSettingsPasswordGuard]
+    { path: 'edit-password' ,             component: ProfileEditPasswordComponent,  canActivate: [ChangeProfileSettingsPasswordGuard]
   },
-    { path: 'email-confirmation' ,        component: ProfileEmailConfirmComponent,  //canActivate: [ChangeProfileSettingsEmailGuard]
+    { path: 'email-confirmation' ,        component: ProfileEmailConfirmComponent,  canActivate: [ChangeProfileSettingsEmailGuard]
   }
   ] },
   { path: 'claims',                       component: ClaimsComponent, children: [
@@ -175,8 +175,10 @@ children: [
     ] },
     { path: ':policyid',                  children: [
       { path: '',                         redirectTo: 'new-payment', pathMatch: 'full'},
-      { path: 'new-payment',              component: BillingNewpaymentComponent},
-      { path: 'confirm',                  component: BillingConfirmComponent }
+      { path: 'new-payment',              component: BillingNewpaymentComponent
+    },
+      { path: 'confirm',                  component: BillingConfirmComponent
+     }
     ] }
   ] },
   { path: 'information',                  component: InformationComponent,  children: [
