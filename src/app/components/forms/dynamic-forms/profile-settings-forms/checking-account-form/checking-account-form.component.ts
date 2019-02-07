@@ -22,6 +22,7 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
            confirmModal:              boolean;
            mailingAddress:            any;
            addressAlert:              boolean;
+           addressInput:         string;
           //  addressObservable: any;
           //  googlePlaceObservable:   any;
 
@@ -85,7 +86,12 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     // if(!validateAddress){
     //   this.alertService.error('Please select address from dropdown',false);
     // }else {
-      const bankAccountDetails =  this.createBankAccountObject();
+      console.log(this.getGooglePlaceService, this.addressInput);
+      let validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
+
+
+      if(validateAddress){
+        const bankAccountDetails =  this.createBankAccountObject();
       const email =               this.storageService.getUserFromStorage();
       this.bankAccountService
         .addBankAccount(email, bankAccountDetails)
@@ -99,13 +105,17 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
               bankAccountDetails:   {...accountResponse}
             }
             );
-            this.alertService.success('Checking account information succesfully updated', true);
+            this.alertService.success('CHECKING_ACCOUNT_INFO_UPDATED', true);
             this.router.navigate(['/profile']);
           });
       },
       (err) => {
-        this.alertService.error(`There was a problem with updating you checking account information ${err}`, true);
+        this.alertService.error(`ERROR_CHECKING_INFO`, true);
       });
+      }else {
+        this.alertService.error('PLEASE_ENTER_VALID_ADDRESS',true);
+      }
+      
   }
 
   ngOnInit() {
@@ -116,13 +126,7 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
 
     this.validateAddressService.$address
     .subscribe((resp) => {
-      if ( resp === false) {
-        this.alertService.error('Please enter valid address from suggestions');
-        this.addressAlert = false;
-      }
-      else if ( resp === true ) {
-        this.addressAlert = true;
-      }
+        this.addressInput = resp;
     });
   }
 

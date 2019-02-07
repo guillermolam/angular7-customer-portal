@@ -11,7 +11,6 @@ import { User }                   from '../../_models/user';
   providedIn: 'root'
 })
 export class BillingService {
-  backend:                        string = environment.backend_server_url;
   user:                           User;
 
   constructor(
@@ -21,7 +20,7 @@ export class BillingService {
 
   payBillByCheck(bill, user): Observable<any>{
     const
-      url =                 `${this.backend}/b2c-account-api/${user.email}`,
+      url =                 `${environment.backend_server_url_account}/${user.email}`,
       userSendObject =      this.serviceHelpers.creatUserObject(bill, 'payByCheck');
     ;
     return this.http.put(url, userSendObject, this.serviceHelpers.options)

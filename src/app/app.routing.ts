@@ -50,6 +50,7 @@ import { ValidatePolicyRightsComponent }  from './components/dashboard/loggedin-
 import { PolicyInProcessComponent }       from './components/dashboard/loggedin-content/my-insurance/add-policy/policy-in-process/policy-in-process.component';
 import { BusinesspolicyDetectedComponent } from './components/dashboard/loggedin-content/my-insurance/add-policy/businesspolicy-detected/businesspolicy-detected.component';
 import { PolicyBelongToAnotherScreenComponent } from './components/screens/signup-process/policy-belong-to-another-screen/policy-belong-to-another-screen.component';
+import { ValidateEmailScreenComponent } from './components/screens/signup-process/validate-email-screen/validate-email-screen.component';
 
 // ----- Routes ----- //
 import { BillingComponent }               from './routes/billing/billing.component';
@@ -99,6 +100,9 @@ const appRoutes: Routes = [
       },
       { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent, //canActivate: [SignUpGuard] 
       },
+      {
+        path: 'validate-email', component: ValidateEmailScreenComponent
+      }
     ]
   },
   { path: 'testing',                      component: TestingComponent },

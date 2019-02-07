@@ -37,7 +37,7 @@ export class AuthenticationService {
     const
       user =                userObject.$user.source.value,
       // url =                 `https://mdv-doctest:8083/customers/accounts/${user.email}`,
-      url =                 `${environment.backend_server_url}/b2c-account-api/${user.email}`,
+      url =                 `${environment.backend_server_url_account}/${user.email}`,
       userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
 
     return this.http.put(url, userSendObject, this.serviceHelpers.options)
@@ -50,14 +50,14 @@ export class AuthenticationService {
   createPassword(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.backend_server_url}/b2c-account-api/${user.email}`,
+      url =                 `${environment.backend_server_url_account}/${user.email}`,
       userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.serviceHelpers.options);
   }
 
   forgotPasswordSendEmailId(userEmail: string): Observable<any> {
-    const url = `${environment.backend_server_url}/identity-api/users/account-recovery`;
+    const url = `${environment.backend_server_url_identity}/account-recovery`;
 
     return this.http.post(url, {} , {
       params : {                  email: userEmail },
@@ -69,7 +69,7 @@ export class AuthenticationService {
 
   getUserDetailsByEmail(email) {
     // const url =  `https://mdv-doctest:8087/identity/users/${email}`;
-    const url =  `${environment.backend_server_url}/identity-api/users/${email}`;
+    const url =  `${environment.backend_server_url_identity}/${email}`;
 
     return forkJoin(
       this.http.get(url),
@@ -78,7 +78,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    const url =     `${environment.backend_server_url}/auth/oauth/token`;
+    const url =     `${environment.backend_server_url_auth}`;
     return this.http.get(url,{
       params: {
         username: username,
@@ -93,11 +93,7 @@ export class AuthenticationService {
         map((access_token) => {
           console.log('access_token', access_token);
           if (access_token) {
-            localStorage.setItem(
-              'currentUser',
-              JSON.stringify({ username, access_token })
-            );
-            return true;
+            return JSON.stringify({ username, access_token });
           }
           else {
             return false;
@@ -113,14 +109,14 @@ export class AuthenticationService {
   }
 
   tokenVerification(token: string, email: string): Observable<object> {
-    const url =           `${environment.backend_server_url}/identity-api/users/token-validation/${email}?token=${token}`;
+    const url =           `${environment.backend_server_url_identity}/token-validation/${email}?token=${token}`;
     return this.http.post(url, {}, this.serviceHelpers.options);
   }
 
   updatePassword(user: User) {
     // console.log('update-password-authservice' + user +'---->'+ user.password);
     // const url =           `https://mdv-doctest:8087/identity/users/password/${user.email}`;
-    const url =           `${environment.backend_server_url}/identity-api/users/password/${user.email}`;
+    const url =           `${environment.backend_server_url_identity}/password/${user.email}`;
     return this.http.put(url, {} , {
       params : {
         newPassword:            user.password
@@ -133,7 +129,7 @@ export class AuthenticationService {
 
   verifyAccountTokenVerification(token: string, email: string): Observable<object> {
     // const url =           `https://mdv-doctest:8083/customers/accounts/?token=${token}&email=${email}`;
-    const url =           `${environment.backend_server_url}/b2c-account-api/?token=${token}&email=${email}`;
+    const url =           `${environment.backend_server_url_account}/?token=${token}&email=${email}`;
     return this.http.put(url, {}, this.serviceHelpers.options);
   }
 
@@ -142,7 +138,7 @@ export class AuthenticationService {
       user =            userObject.$user.source.value,
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
       // url =             `https://mdv-doctest:8084/personal-policies/${policyNumber}/insureds/namevalidation`,
-      url =             `${environment.backend_server_url}/personal-policy-api/${policyNumber}/insureds/namevalidation`,
+      url =             `${environment.backend_server_url_policy}/${policyNumber}/insureds/namevalidation`,
       userSendObject =  this.serviceHelpers.creatUserObject(user, 'personalpolicy')
 
     ;
@@ -152,7 +148,7 @@ export class AuthenticationService {
   verifyUser(userObject): Observable<object> {
     const user =          userObject.$user.source.value,
         userSendObject =  this.serviceHelpers.creatUserObject(user, 'verifyuser'),
-        url =             `${environment.backend_server_url}/b2c-account-api/${user.email}`;
+        url =             `${environment.backend_server_url_account}/${user.email}`;
 
 
     return this.http
@@ -167,7 +163,7 @@ export class AuthenticationService {
   verifyPolicyLink(userObject): Observable<boolean>{ 
     const user =            userObject.$user.source.value;
     const policyNumber =    user.policyDetails[0].policynumber.policynumber;
-    const url =             `${environment.backend_server_url}/personal-policy-api/${policyNumber}/links`;
+    const url =             `${environment.backend_server_url_policy}/${policyNumber}/links`;
 
 
     return this.http.get(url).pipe(

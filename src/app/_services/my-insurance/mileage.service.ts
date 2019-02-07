@@ -42,7 +42,7 @@ export class MileageService {
   }
 
   updateMileage( emailAddress, policyId, vechicalId, inputValue, arrayValue ): Observable<any> {
-    const url = `${this.backendPerPol}/personal-policy-api/${emailAddress}/${policyId}/${vechicalId}?odometerReading=${inputValue}`;
+    const url = `${environment.backend_server_url_policy}/${emailAddress}/${policyId}/${vechicalId}?odometerReading=${inputValue}`;
 
     if ( this.checkMilageValues( inputValue, arrayValue ) === 'values are the same') {
       return throwError('Same Value');

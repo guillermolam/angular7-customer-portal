@@ -16,7 +16,7 @@ export class ChangeEmailService {
 
   updateAccountEmail(email, token, reqBody){
     // const url = `https://mdv-doctest:8083/customers/accounts/change-email?email=${email}&token=${token}`;
-    const url = `${environment.backend_server_url}/b2c-account-api/change-email?email=${email}`;
+    const url = `${environment.backend_server_url_account}/change-email?email=${email}`;
     return this.http.put(url,reqBody);
   }
 

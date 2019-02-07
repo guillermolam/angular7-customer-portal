@@ -14,8 +14,6 @@ import { UserService }          from './../user.service';
 })
 export class PaperlessService {
   firstTime:                    boolean;
-  backendBilling:                      string = `${environment.backend_server_url}/billing-api`;
-  backendPersonalPolicy:               string = `${environment.backend_server_url}/personal-policy-api`;
   private messageSource =       new BehaviorSubject<boolean>(this.firstTime);
   $firstTime =                  this.messageSource.asObservable();
 
@@ -39,40 +37,40 @@ export class PaperlessService {
   // --- unenroll methods
 
   cancelPaperlessEPolicy( policyid, email ): Observable<any> {
-    const url =               `${this.backendPersonalPolicy}/personal-policies/${email}/${policyid}/paperless-unenrollment`;
+    const url =               `${environment.backend_server_url_policy}/${email}/${policyid}/paperless-unenrollment`;
     return this.http.post(url, {}, this.serviceHelpers.options );
   }
 
   cancelPaperlessEPay( policyid, email ): Observable<any> {
-    const url =               `${this.backendBilling}/billing/${email}/${policyid}/unenroll-eft`;
+    const url =               `${environment.backend_server_url_billing}/${email}/${policyid}/unenroll-eft`;
     return this.http.put(url, {}, this.serviceHelpers.options );
   }
 
   cancelPaperlessEBill( policyid, email ): Observable<any> {
-    const url =               `${this.backendPersonalPolicy}/personal-policies/${email}/${policyid}/ebill-unenrollment`;
+    const url =               `${environment.backend_server_url_policy}/${email}/${policyid}/ebill-unenrollment`;
     return this.http.post(url, {}, this.serviceHelpers.options );
   }
 
   // --- enroll methods
 
   enrollPaperlessEPolicy( policyid, email ): Observable<any> {
-    const url =               `${this.backendPersonalPolicy}/personal-policies/${email}/${policyid}/paperless-enrollment`;
+    const url =               `${environment.backend_server_url_policy}/${email}/${policyid}/paperless-enrollment`;
     return this.http.post(url, {}, this.serviceHelpers.options );
   }
 
   enrollPaperlessEPay( policyid, formData, email ): Observable<any> {
-    const url =               `${this.backendBilling}/billing/${email}/${policyid}/enroll-eft`;
+    const url =               `${environment.backend_server_url_billing}/${email}/${policyid}/enroll-eft`;
     return this.http.put(url, formData, this.serviceHelpers.options );
   }
 
   enrollPaperlessEBill( policyid, email ): Observable<any> {
-    const url =               `${this.backendPersonalPolicy}/personal-policies/${email}/${policyid}/ebill-enrollment`;
+    const url =               `${environment.backend_server_url_policy}/${email}/${policyid}/ebill-enrollment`;
     return this.http.post(url, {}, this.serviceHelpers.options );
   }
 
   // --- other paperless methods
   updatePaperlessEPay( policyid, formData, email ): Observable<any>{
-    const url =               `${this.backendBilling}/billing/${email}/${policyid}/update-eft`;
+    const url =               `${environment.backend_server_url_billing}/${email}/${policyid}/update-eft`;
     return this.http.put(url, formData, this.serviceHelpers.options );
   }
 

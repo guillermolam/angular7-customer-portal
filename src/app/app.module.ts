@@ -34,6 +34,7 @@ import { ProfileConfirmModalService }           from './_services/profile-settin
 import { StorageServiceObservablesService }     from './_services/storage-service-observables/storage-service-observables.service';
 import { PolicyDataService }                    from './_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }                 from './_services/my-insurance/policy-details.service';
+import { ValidateAddressService }               from './_services/change-address/validate-address.service'
 import { PolicyDocumentsDataService }           from './_services/my-insurance/data-services/policy-documents-data.service';
 import { FullstateToAbvPipe }                   from './_helpers/_pipes/fullstate-to-abv.pipe';
 import { AbvToFulstatePipe }                    from './_helpers/_pipes/abv-to-fulstate.pipe';
@@ -152,12 +153,12 @@ import { PaperlessPayEnrollComponent } from './components/dashboard/loggedin-con
 import { EnrollEftEpayFormComponent } from './components/forms/dynamic-forms/enroll-eft-epay-form/enroll-eft-epay-form.component';
 import { PaperlessPayConfirmComponent } from './components/dashboard/loggedin-content/billing/paperless/paperless-pay/confirm/confirm.component';
 import { MyInsuranceComponent } from './components/dashboard/loggedin-content/my-insurance/my-insurance.component';
+import { ValidateEmailScreenComponent } from './components/screens/signup-process/validate-email-screen/validate-email-screen.component';
 import { DetailsHomeComponent } from './components/dashboard/loggedin-content/my-insurance/details/details-home/details-home.component';
 import { DetailsCarComponent } from './components/dashboard/loggedin-content/my-insurance/details/details-car/details-car.component';
 import { CarHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/car-header/car-header.component';
 import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component';
 import { EmailModalComponent } from './components/forms/dynamic-forms/email-modal/email-modal.component';
-
 
 if (environment.production) {
   enableProdMode();
@@ -287,6 +288,7 @@ export function tokenGetter() {
     SignupEmailInUseComponent,
     SignupPolicyBelongsToAnotherComponent,
     SignupNotFoundComponent,
+    ValidateEmailScreenComponent,
     DetailsHomeComponent,
     DetailsCarComponent,
     CarHeaderComponent,
@@ -334,7 +336,8 @@ export function tokenGetter() {
     PolicyDetailsService,
     StorageServiceObservablesService,
     PolicyDataService,
-    PolicyDocumentsDataService
+    PolicyDocumentsDataService,
+    ValidateAddressService
   ],
   bootstrap: [AppComponent]
 })

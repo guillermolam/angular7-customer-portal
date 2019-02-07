@@ -22,7 +22,7 @@ export class AuthenticateUserService {
   authenticateCurrentPassword(password){
  
       // const url = `https://mdv-doctest:8087/identity/users/authenticate`;
-      const url = `${environment.backend_server_url}/identity-api/users/authenticate`;
+      const url = `${environment.backend_server_url_identity}/authenticate`;
       const body = {
       email: this.storageService.getUserFromStorage(),
       // email: user.email.address,
@@ -36,7 +36,7 @@ export class AuthenticateUserService {
 
     return this.userService.$user.pipe(map((user)=>{
       // const url = `https://mdv-doctest:8087/identity/users/password/${user.email.address}?newPassword=${newPassword}`;
-      const url = `${environment.backend_server_url}/identity-api/users/password/${user.email.address}?newPassword=${newPassword}`;
+      const url = `${environment.backend_server_url_identity}/password/${user.email.address}?newPassword=${newPassword}`;
       return this.http.post(url,{});
     })
     );    
