@@ -25,7 +25,6 @@ export class JwtInterceptor implements HttpInterceptor {
     const clientCredToken = this.clientCredentialsTokenService.getToken();
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser) {
-      // console.log('jwt_interceptor', `${currentUser.access_token.access_token}`)
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${currentUser.access_token.access_token}`,
@@ -41,7 +40,6 @@ export class JwtInterceptor implements HttpInterceptor {
 
     return next.handle(request)
     .pipe(catchError((e) => {
-      console.log(e);
       if((e.status == 401 && e.error.error === 'Invalid Request')){
         this.router.navigate(['/login']);
       }

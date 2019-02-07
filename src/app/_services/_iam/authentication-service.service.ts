@@ -91,7 +91,7 @@ export class AuthenticationService {
     })
       .pipe(
         map((access_token) => {
-          console.log('access_token', access_token);
+          
           if (access_token) {
             return JSON.stringify({ username, access_token });
           }
@@ -114,7 +114,7 @@ export class AuthenticationService {
   }
 
   updatePassword(user: User) {
-    // console.log('update-password-authservice' + user +'---->'+ user.password);
+    
     // const url =           `https://mdv-doctest:8087/identity/users/password/${user.email}`;
     const url =           `${environment.backend_server_url_identity}/password/${user.email}`;
     return this.http.put(url, {} , {

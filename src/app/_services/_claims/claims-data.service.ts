@@ -21,7 +21,6 @@ export class ClaimsDataService {
     else if( type == 'details') {
       this.claimsDetailsSource.next(claims);
     }
-    console.log(`ClaimDataService ${type}`, claims);
   }
 
 }

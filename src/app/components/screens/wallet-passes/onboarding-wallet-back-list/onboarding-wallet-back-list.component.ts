@@ -26,13 +26,13 @@ export class OnboardingWalletBackListComponent implements OnInit {
       .generatePkPass(user.email)
       .subscribe(
         (success) => {
-          console.log("Successfully Download of Card");
+          // console.log("Successfully Download of Card");
           this.createCookie(365, 'download');
           //close the modal
           //
         },
         (err) => {
-          console.log("ERR Download of Card");
+          // console.log("ERR Download of Card");
         }
       )
   }

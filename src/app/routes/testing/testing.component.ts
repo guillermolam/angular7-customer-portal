@@ -18,7 +18,7 @@ export class TestingComponent implements OnInit {
   ngOnInit() {
     this.authService.verifyAccountTokenVerification('2dbabdda8aa9f7aba8a80b75c5bd63e1', 'testMfre@gmail.com')
     .subscribe((response) => {
-      console.log(this.jsonResponse);
+      // console.log(this.jsonResponse);
       this.jsonResponse = response;
     });
   }

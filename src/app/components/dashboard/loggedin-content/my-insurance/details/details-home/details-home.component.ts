@@ -36,7 +36,6 @@ export class DetailsHomeComponent implements OnInit {
    }
 
   getMailingOrResidentialAddress(updateAddress){
-    console.log(updateAddress);
     this.googlePlaceService.updateAddress(updateAddress);
   }
 
@@ -96,7 +95,7 @@ export class DetailsHomeComponent implements OnInit {
     this.getApartmentAndState(this.policy);
     this.isAddressEqual(this.policy);
     this.policyId =                       this.policyIdInput;
-    console.log(this.policyIdInput)
+
   }
 
 }

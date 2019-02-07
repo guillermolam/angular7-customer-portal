@@ -35,7 +35,6 @@ export class ProfileConfirmModalService {
     this.hideModalOnRoute = !this.hideModalOnRoute;
     if(removeAccount==='remove'){
       this.bankAccountService.deleteBankAccount(this.storageService.getUserFromStorage()).subscribe((response)=>{
-        // console.log(response);
       });
     }
     return this.hideModalOnRoute;

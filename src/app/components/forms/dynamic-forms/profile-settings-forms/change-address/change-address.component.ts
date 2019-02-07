@@ -41,7 +41,7 @@ export class ChangeAddressComponent implements OnInit {
     ) {}
 
   changeAddress(): void {
-    console.log(this.changeAddressForm);
+    // console.log(this.changeAddressForm);
     this.createAddressObject();
     if (this.addressType == 'residential') {
       this.residental(this.policyID);

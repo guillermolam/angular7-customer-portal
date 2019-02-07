@@ -36,7 +36,7 @@ export class AddPolicyComponent implements OnInit {
   ) { }
 
   addPolicy(): void {
-    console.log(this.addPolicyForm.controls.addPolicy.value)
+    
     this.addPolicyToObject();
     if (this.legalCheckbox) {
       this.authService

@@ -99,7 +99,7 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
 
   confirmPolicy(): void {
     if (this.router.url==='/my-insurance/validate-policy-rights') {
-      console.log(this.router.url);
+      // console.log(this.router.url);
       this.policyService.addPolicyToEmail(this.user.userDetails.email.address,this.policyNumber).subscribe(()=>{
           this.alertService.success('Policy added successfully');
           this.router.navigate(['/my-insurance']);
@@ -120,10 +120,10 @@ export class PolicyBelongToAnotherScreenComponent implements OnInit {
 
     this.userService.$user.subscribe((user)=>{
 
-      console.log(user);
+      // console.log(user);
       this.policyNumber = `${user.policyDetails[0].policynumber.policynumber}`;
       this.user = user;
-      console.log(this.policyNumber);
+      // console.log(this.policyNumber);
       //new code
       this.policyService.getPolicyDetailsByNumber(this.policyNumber).subscribe((details)=>{
         this.policyDetails = details;

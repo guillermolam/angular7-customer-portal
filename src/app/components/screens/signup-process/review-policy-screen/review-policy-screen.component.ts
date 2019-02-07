@@ -18,7 +18,7 @@ export class ReviewPolicyScreenComponent implements OnInit {
   ) { }
 
   downLoadWalletCard(): void {
-    console.log('You just downloaded a walletcard');
+    // console.log('You just downloaded a walletcard');
   }
 
   get userAgentTest() {
@@ -26,7 +26,7 @@ export class ReviewPolicyScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.userData);
+    // console.log(this.userData);
   }
 
 }

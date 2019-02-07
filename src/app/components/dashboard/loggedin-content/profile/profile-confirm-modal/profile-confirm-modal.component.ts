@@ -39,7 +39,7 @@ export class ProfileConfirmModalComponent implements OnInit {
 
 
   resetHideModal(event): void {
-    console.log(event);
+    
     this.profileConfirmModalService.onRestoreDefault();
     this.hideModalOnRoute = !this.hideModalOnRoute;
   }

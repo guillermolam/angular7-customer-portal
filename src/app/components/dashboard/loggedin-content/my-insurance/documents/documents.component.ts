@@ -66,10 +66,10 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
       .generatePkPass(email)
       .subscribe(
         (success) => {
-          console.log('Successful download of wallet card');
+      
         },
         (err) => {
-          console.log('Err download of wallet card', err);
+      
         }
       )
     ;

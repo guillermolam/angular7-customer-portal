@@ -27,7 +27,7 @@ export class EmailConfirmationComponent implements OnInit {
             this.showConfirmation.emit(true);
           },
           (error) => {
-            console.log(error);
+            // console.log(error);
           }
         )
       ;

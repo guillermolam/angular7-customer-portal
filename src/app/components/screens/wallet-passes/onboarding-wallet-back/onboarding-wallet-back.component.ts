@@ -26,7 +26,7 @@ export class OnboardingWalletBackComponent implements OnInit {
       .generatePkPass(policyNumber)
       .subscribe(
         (success) => {
-          console.log('Successfully Download of Card');
+          // console.log('Successfully Download of Card');
           this.createCookie(365, 'download');
           const blob = new Blob([success]);
           saveAs(blob, `${policyNumber}.pkpass`);
@@ -34,7 +34,7 @@ export class OnboardingWalletBackComponent implements OnInit {
           //
         },
         (err) => {
-          console.log('ERR  Download of Card');
+          // console.log('ERR  Download of Card');
         }
       )
     ;

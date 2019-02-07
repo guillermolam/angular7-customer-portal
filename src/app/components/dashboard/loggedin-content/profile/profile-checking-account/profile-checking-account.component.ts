@@ -29,7 +29,7 @@ export class ProfileCheckingAccountComponent implements OnInit {
   }
 
   onKeyPress(value){
-    console.log(value);
+    
   }  
 
 }

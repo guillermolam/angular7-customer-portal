@@ -84,7 +84,7 @@ export class PolicyNotFoundScreenComponent implements OnInit {
     this.userService.$user.subscribe((user)=>{
       if (!user.addPolicyAttempts)
       user.addPolicyAttempts = 0;
-      console.log(user);
+      // console.log(user);
       this.updateObservable(user);
     })
 

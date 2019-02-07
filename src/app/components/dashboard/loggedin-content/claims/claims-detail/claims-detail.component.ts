@@ -47,7 +47,6 @@ export class ClaimsDetailComponent implements OnInit {
       });
       },
       (err) => {
-        console.log('couldn\`t get user info');
     });
   }
 }

@@ -86,7 +86,7 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     // if(!validateAddress){
     //   this.alertService.error('Please select address from dropdown',false);
     // }else {
-      console.log(this.getGooglePlaceService, this.addressInput);
+      // console.log(this.getGooglePlaceService, this.addressInput);
       let validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
 
 

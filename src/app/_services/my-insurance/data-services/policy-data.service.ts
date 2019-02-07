@@ -11,7 +11,6 @@ export class PolicyDataService {
   constructor() {}
 
   updatePolicyDetails(policyDetails: any) {
-    console.log('PolicyDataService', policyDetails);
     this.details.next(policyDetails);
   }
 }

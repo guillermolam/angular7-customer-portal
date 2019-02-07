@@ -51,7 +51,7 @@ export class CheckingAccountService {
       let streetAddress: any = [];
       this.checkingAccount = userResponse.bankAccountDetails;
       if(this.checkingAccount.accountHolderName){
-        // console.log('present');
+        
         this.getGooglePlaceService.updateAddress(this.checkingAccount.mailingAddress);
         streetAddress = this.checkingAccount.mailingAddress.streetName.split('|');
       }

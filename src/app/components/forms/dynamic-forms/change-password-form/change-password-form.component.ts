@@ -48,7 +48,7 @@ export class ChangePasswordFormComponent implements OnInit {
       }
     },
     (error) => {
-      console.log(error);
+      
       this.forgotPassword = true;
       this.alertService.error('INVALID_CHANGE_PASSWORD');
     });

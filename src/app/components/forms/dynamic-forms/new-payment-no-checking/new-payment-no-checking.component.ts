@@ -77,7 +77,7 @@ export class NewPaymentNoCheckingComponent implements OnInit {
   }
 
   saveCheckingInformation(account): void {
-    console.log('saveCheckingInformation', account);
+    // console.log('saveCheckingInformation', account);
   }
 
   ngOnInit() {

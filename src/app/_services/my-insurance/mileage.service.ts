@@ -36,7 +36,6 @@ export class MileageService {
     else {
       stringValue = 'input not changed';
     }
-    console.log(stringValue, inputValue, arrayValue )
 
     return stringValue;
   }

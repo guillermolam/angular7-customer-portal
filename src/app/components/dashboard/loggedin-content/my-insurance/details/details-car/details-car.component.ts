@@ -72,7 +72,6 @@ export class DetailsCarComponent implements OnInit {
   }
 
   getMailingOrResidentialAddress(updateAddress){
-    console.log(updateAddress);
     this.googlePlaceService.updateAddress(updateAddress);
   }
 
@@ -145,7 +144,9 @@ export class DetailsCarComponent implements OnInit {
     this.policyDetailsService
     .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
     .subscribe(
-      (success) => console.log('Loading Complete'),
+      (success) => {
+        
+      },
     );
   }
 

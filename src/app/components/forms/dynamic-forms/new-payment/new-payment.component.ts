@@ -178,7 +178,7 @@ export class NewPaymentComponent implements OnInit {
   }
 
   test(e): void {
-    console.log(e.target.value, this.newPaymentRadioForm.controls.otherAmount.valid, e.target.value.length);
+    // console.log(e.target.value, this.newPaymentRadioForm.controls.otherAmount.valid, e.target.value.length);
   }
 
   ngOnInit() {

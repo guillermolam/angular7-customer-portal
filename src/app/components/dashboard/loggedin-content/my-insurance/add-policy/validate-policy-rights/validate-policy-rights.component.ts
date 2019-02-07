@@ -32,7 +32,6 @@ this.authService
 .confirmPolicyAndAccount(this.userService)
 .subscribe(
 (data) => {
-console.log(data);
 this.alertService.success('Policy added successfully');
 this.router.navigate(['/my-insurance']);
 },

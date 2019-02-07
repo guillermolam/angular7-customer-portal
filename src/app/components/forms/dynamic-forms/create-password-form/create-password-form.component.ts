@@ -64,11 +64,11 @@ export class CreatePasswordFormComponent implements OnInit {
       .createPassword(this.userService)
       .subscribe (
         (data) => {
-          console.log("createPassword");
+          // console.log("createPassword");
           this.router.navigate(['signup', 'validate-email']);
         },
         (error) => {
-          console.log(this.userService, error);
+          // console.log(this.userService, error);
         }
       );
   }
@@ -159,7 +159,7 @@ export class CreatePasswordFormComponent implements OnInit {
         this.userData = userData;
       });
 
-     console.log(this.whereInTheProcess);
+    //  console.log(this.whereInTheProcess);
     //  if(this.whereInTheProcess!=='edit-password'){
     //    // route paramaters for example /signup/:parm
     //   this.activeRoute.params.subscribe((params: Params) => {

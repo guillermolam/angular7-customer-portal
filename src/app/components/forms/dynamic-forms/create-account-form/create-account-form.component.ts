@@ -87,7 +87,7 @@ export class CreateAccountFormComponent implements OnInit {
             this.router.navigate(['signup', 'add-policy' ]);
           }
           else {
-            console.log(err);
+            // console.log(err);
           }
         }
       );

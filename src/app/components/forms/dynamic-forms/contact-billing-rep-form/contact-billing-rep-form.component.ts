@@ -35,7 +35,7 @@ export class ContactBillingRepFormComponent implements OnInit {
 
   sendMessage(): void {
     const message = this.contactBillingRepForm.value;
-    console.log(message);
+    
   }
 
   ngOnInit() {

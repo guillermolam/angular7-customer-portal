@@ -21,7 +21,6 @@ export class BillingDataService {
   }
 
   updateBillingDetails(currentBill: any) {
-    console.log('BillingDataService', currentBill);
     this.messageSource.next(currentBill);
   }
 
