@@ -47,22 +47,7 @@
                   (click)="onDownloadDocument(doc.documentId, policy.policynumber.policynumber, doc.type)"
                   >
                     <td class="col  col-type" scope="row">
-                      <div *ngIf="doc.type == 'HONBEND' " class="circle-with-type"> E </div>
-                      <div *ngIf="doc.type == 'HONB-END' " class="circle-with-type"> E </div>
-                      <div *ngIf="doc.type == 'NEW' " class="circle-with-type"> N </div>
-                      <div *ngIf="doc.type == 'HOREN' " class="circle-with-type"> R </div>
-                      <div *ngIf="doc.type == 'ENDORSE' " class="circle-with-type"> E </div>
-                      <div *ngIf="doc.type == 'INSPECT' " class="circle-with-type"> I </div>
-                      <div *ngIf="doc.type == 'RENEWAL' " class="circle-with-type"> R </div>
-                      <div *ngIf="doc.type == 'MISC' " class="circle-with-type"> M </div>
-                      <div *ngIf="doc.type == 'OTAREINI' " class="circle-with-type"> R </div>
-                      <div *ngIf="doc.type == 'OTASNCDI' " class="circle-with-type"> C </div>
-                      <div *ngIf="doc.type == 'OTASNCDM' " class="circle-with-type"> C </div>
-                      <div *ngIf="doc.type == 'OTAREINM' " class="circle-with-type"> R </div>
-                      <div *ngIf="doc.type == 'URQ' " class="circle-with-type"> U </div>
-                      <div *ngIf="doc.type == 'WMMISC' " class="circle-with-type"> M </div>
-                      <div *ngIf="doc.type == 'INVOICE' " class="circle-with-type"> I </div>
-                      <div *ngIf="doc.type == 'Unknown' " class="circle-with-type"> ? </div>
+                        <div class="circle-with-type"> {{ doc.type | documentType }}</div>
                     </td>
                     <td class="col col-name">{{doc.description}}</td>
                     <td class="col col-date text-right">{{doc.transactionDate | date}}</td>

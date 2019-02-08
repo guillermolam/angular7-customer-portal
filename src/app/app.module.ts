@@ -159,6 +159,7 @@ import { DetailsCarComponent } from './components/dashboard/loggedin-content/my-
 import { CarHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/car-header/car-header.component';
 import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component';
 import { EmailModalComponent } from './components/forms/dynamic-forms/email-modal/email-modal.component';
+import { DocumentTypePipe } from './_helpers/_pipes/document-type.pipe';
 
 if (environment.production) {
   enableProdMode();
@@ -294,6 +295,7 @@ export function tokenGetter() {
     CarHeaderComponent,
     HomeHeaderComponent,
     EmailModalComponent,
+    DocumentTypePipe,
   ],
   imports: [
     BrowserModule,

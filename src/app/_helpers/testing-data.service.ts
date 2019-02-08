@@ -356,6 +356,7 @@ export class TestingDataService {
       mailingAddress:{
         city:"NORTH OXFORD",
         state:"MASSACHUSETTS",
+        "stateCode":"MA",
         streetName:"120 HIGHWAY 20|55",
         zipCode:{
           code:"01537",
@@ -441,6 +442,7 @@ export class TestingDataService {
         "streetName": "34 EVERGREEN ST.",
         "city": "FAIRHAVEN",
         "state": "MASSACHUSETTS",
+        "stateCode":"MA",
         "zipCode": {
           "code": "02719"
         }
@@ -1621,7 +1623,7 @@ export class TestingDataService {
           "Insured Name": "JENNIFER L JUDD"
         }
       ],
-      "policyStatus": "ACTIVE",
+      "policyStatus": "CANCELLED",
       "policyFlags": {
         "isEft": "ENROLLED",
         "isEftEligible": "Y",
@@ -1636,6 +1638,7 @@ export class TestingDataService {
         "streetName": "34 EVERGREEN ST.",
         "city": "FAIRHAVEN",
         "state": "MASSACHUSETTS",
+        "stateCode":"MA",
         "zipCode": {
           "code": "02719"
         }
@@ -2180,6 +2183,7 @@ export class TestingDataService {
               "streetName": "18 MACARTHUR ST",
               "city": "DARTMOUTH",
               "state": "MASSACHUSETTS",
+              "stateCode":"MA",
               "zipCode": {
                 "code": "02747"
               }
@@ -2248,6 +2252,7 @@ export class TestingDataService {
         "streetName": "34 EVERGREEN ST.",
         "city": "FAIRHAVEN",
         "state": "MASSACHUSETTS",
+        "stateCode":"MA",
         "zipCode": {
           "code": "02719"
         }
@@ -2788,6 +2793,7 @@ export class TestingDataService {
               "streetName": "18 MACARTHUR ST",
               "city": "DARTMOUTH",
               "state": "MASSACHUSETTS",
+              "stateCode":"MA",
               "zipCode": {
                 "code": "02747"
               }
@@ -2812,6 +2818,7 @@ export class TestingDataService {
               "streetName": "18 MACARTHUR ST",
               "city": "DARTMOUTH",
               "state": "MASSACHUSETTS",
+              "stateCode":"MA",
               "zipCode": {
                 "code": "02747"
               }
@@ -2836,6 +2843,7 @@ export class TestingDataService {
               "streetName": "18 MACARTHUR ST",
               "city": "DARTMOUTH",
               "state": "MASSACHUSETTS",
+              "stateCode":"MA",
               "zipCode": {
                 "code": "02747"
               }
@@ -2860,6 +2868,7 @@ export class TestingDataService {
               "streetName": "18 MACARTHUR ST",
               "city": "DARTMOUTH",
               "state": "MASSACHUSETTS",
+              "stateCode":"MA",
               "zipCode": {
                 "code": "02747"
               }
@@ -2884,6 +2893,7 @@ export class TestingDataService {
               "streetName": "18 MACARTHUR ST",
               "city": "DARTMOUTH",
               "state": "MASSACHUSETTS",
+              "stateCode":"MA",
               "zipCode": {
                 "code": "02747"
               }
@@ -2908,6 +2918,7 @@ export class TestingDataService {
               "streetName": "18 MACARTHUR ST",
               "city": "DARTMOUTH",
               "state": "MASSACHUSETTS",
+              "stateCode":"MA",
               "zipCode": {
                 "code": "02747"
               }
@@ -2932,6 +2943,7 @@ export class TestingDataService {
               "streetName": "18 MACARTHUR ST",
               "city": "DARTMOUTH",
               "state": "MASSACHUSETTS",
+              "stateCode":"MA",
               "zipCode": {
                 "code": "02747"
               }
@@ -2956,6 +2968,7 @@ export class TestingDataService {
               "streetName": "18 MACARTHUR ST",
               "city": "DARTMOUTH",
               "state": "MASSACHUSETTS",
+              "stateCode":"MA",
               "zipCode": {
                 "code": "02747"
               }
