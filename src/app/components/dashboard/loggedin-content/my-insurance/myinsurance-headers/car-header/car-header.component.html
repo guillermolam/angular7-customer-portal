@@ -1,16 +1,19 @@
 <header class="margin-bottom mb16 no-margins-hug hug-header">
-  <div class="policy-background">
-    <div class="car" *ngIf="policy.policyType == 'AUTO'"></div>
-    <div class="house" *ngIf="policy.policyType == 'HOME'"></div>
-  </div>
-  <div class="type-title">
-    <h1 class="title">
-      {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
-      <small>
-      <span [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 'red-color': policy.policyStatus === 'INACTIVE' }">
-        <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
-      </span>
-    </small>
-    </h1>
-  </div>
-</header>
+    <div class="policy-background">
+      <div class="car" *ngIf="policy.policyType == 'AUTO'"></div>
+      <div class="house" *ngIf="policy.policyType == 'HOME'"></div>
+    </div>
+    <div class="type-title">
+      <h1 class="title">
+        {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
+        <small>
+        <span [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 'red-color': policy.policyStatus === 'INACTIVE', 'hide': policy.policyStatus === 'CANCELLED' }">
+          <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
+        </span>
+        <span class="red-color" *ngIf="policy.policyStatus === 'CANCELLED' ">
+            <small>{{ policy.policyStatus | titlecase }}</small>
+          </span>
+      </small>
+      </h1>
+    </div>
+  </header>

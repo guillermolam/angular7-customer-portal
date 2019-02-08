@@ -12,63 +12,32 @@ export class CheckingAccountService {
 
   constructor(
     private changeAddressService: ChangeAddressService,
-    private userService:          UserService,
+    private userService:            UserService,
     private getGooglePlaceService:  GetGooglePlaceService
     ) { }
 
   getInputs(){
-
-    // bankName: "PNC Financial Services Group, Inc.",
-    // accountHolderName: "John",
-    // routingNumber: 123456789,
-    // accountNumber: 1111222233334444,
-    // mailingAddress: "17 Lothian Road, Brighton, MA",
-    // apartment: ""
-
-
-
-  //   {
-  //     "accountHolderName": "test",
-  //     "routingNumber": {
-  //         "digits": "265473812"
-  //     },
-  //     "accountNumber":  {
-  //         "digits": "168444192727"
-  //     },
-  //     "accountType": "CHECKING",
-  //     "mailingAddress":
-  //         {
-  //             "streetName": "abc street",
-  //             "city": "BOSTON",
-  //             "state": "MASSACHUSETTS",
-  //             "zipCode": {
-  //                 "code": "02720"
-  //             }
-  //         }
-  // }
-
    return this.userService.$user.pipe(map((userResponse)=>{
       let streetAddress: any = [];
       this.checkingAccount = userResponse.bankAccountDetails;
       if(this.checkingAccount.accountHolderName){
-        
         this.getGooglePlaceService.updateAddress(this.checkingAccount.mailingAddress);
         streetAddress = this.checkingAccount.mailingAddress.streetName.split('|');
       }
 
       const inputs: FormBase<any>[] = [
       new TextBox({
-        additionalClasses:  'form-control profile-input-border',
+        additionalClasses:  'form-control',
         inputType:          'text',
         value:               this.checkAccountDetails(this.checkingAccount)? '': this.checkingAccount.accountHolderName ,
         key:                'bankAccountHolder',
         label:              'Bank account holder\'s name',
         required:           true,
         type:               'text',
-        validationMessageError: 'Please enter valid name'
+        validationMessageError: 'Please enter a valid name. You may have an extra space at the end of your name.'
       }),
       new TextBox({
-        additionalClasses:  'form-control profile-input-border',
+        additionalClasses:  'form-control',
         inputType:          'bank',
         key:                'bankAccountRoutingNumber',
         label:              'Bank routing number',
@@ -80,19 +49,19 @@ export class CheckingAccountService {
         validationMessageError: 'Please enter valid routing number'
       }),
       new TextBox({
-        additionalClasses:  'form-control profile-input-border',
+        additionalClasses:  'form-control',
         inputType:          'bank',
         key:                'bankAccountNumber',
         label:              'Bank account number',
-        maxLength: 17,
-        minLength: 4,
+        maxLength:          17,
+        minLength:          4,
         required:           true,
         type:               'tel',
         value:              this.checkAccountDetails(this.checkingAccount)? '': this.checkingAccount.accountNumber.digits,        
         validationMessageError: 'Please enter valid account number'
       }),
       ...this.changeAddressService.getInputs(
-        'profile-input-border checking-account-address',
+        'checking-account-address',
         this.checkAccountDetails(this.checkingAccount)? '': `${streetAddress[0]}, ${this.checkingAccount.mailingAddress.city}, ${this.checkingAccount.mailingAddress.stateCode}, USA`,
         this.checkAccountDetails(this.checkingAccount)? '': `${streetAddress[1] || ''}`
         )
@@ -103,7 +72,6 @@ export class CheckingAccountService {
   }
 
   checkAccountDetails(accountDetails){
-    
     if(accountDetails.accountHolderName){
       return false;
     }else{

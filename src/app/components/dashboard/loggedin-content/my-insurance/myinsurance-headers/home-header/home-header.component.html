@@ -4,14 +4,13 @@
   </div>
   <div class="type-title">
     <h1 class="title">
-        {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
-      <small>
-      <span 
-      [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 
-        'red-color': policy.policyStatus !== 'ACTIVE' }">
-                <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
+      {{ policy.policyType | translate}} &mdash; {{ policy.policynumber.policynumber }} 
+      <span [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 'red-color': policy.policyStatus === 'INACTIVE', 'hide': policy.policyStatus === 'CANCELLED' }">
+        <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }} {{policy.expDate | customDateFormat }}</small>
       </span>
-    </small>
+      <span class="red-color" *ngIf="policy.policyStatus === 'CANCELLED' ">
+        <small>{{ policy.policyStatus | titlecase }}</small>
+      </span>
     </h1>
   </div>
 </header>

@@ -24,7 +24,6 @@ export class CreateAccountService {
         label:                    'MIDDLE_INITIAL',
         required:                 false,
         type:                     'text',
-        validationMessageError:   'VALID_NAME_VALIDATION_MESSAGE',
       }),
       new TextBox({
         additionalClasses:        'form-control',
@@ -40,7 +39,6 @@ export class CreateAccountService {
         inputType:                'email',
         key:                      'signUpEmail',
         label:                    'EMAIL',
-        maxLength:                20,
         minLength:                5,
         required:                 true,
         type:                     'email',

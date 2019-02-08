@@ -3,35 +3,37 @@
   [formGroup]="checkingAccountForm" 
   name="checkingAccountForm"  
   (ngSubmit)="checkingAccountForm.valid && onSubmitAccountDetails()">
-  
+    <div class="row">
+      <div class="col">
+        <mapfre-alert></mapfre-alert>
+      </div>
+    </div>
+
     <div *ngFor="let input of inputs;let i = index" class="input" [class.first-input]="i==3">
       <mapfre-validation 
       [input]="input" 
       [form]="checkingAccountForm"
-      [maximumLength]="17">
-    </mapfre-validation>
+      [maximumLength]="17"
+      [changeAddressError]="changeAddressError">
+      </mapfre-validation>
     </div>
-    <div class="row">
-        <div class="col">
-        <mapfre-alert></mapfre-alert>
-        </div>
-    </div>
+    
     <div class="row margin-top mt32">
-        <div class="col">
-          <mapfre-button
-            [additionalClasses]="'basic primary large waves-effect waves-light'"
-            [disabledValue]="checkingAccountForm.valid && addressAlert" 
-            [inputType]="'submit'"
-            [translateValue]="'CONFIRM' | translate"
-          ></mapfre-button>
-        </div>
+      <div class="col">
+        <mapfre-button
+          [additionalClasses]="'basic primary large'"
+          [disabledValue]="checkingAccountForm.valid && addressAlert && checkingAccountForm.touched" 
+          [inputType]="'submit'"
+          [translateValue]="'CONFIRM' | translate"
+        ></mapfre-button>
       </div>
+    </div>
   </form>
   <div class="row margin-top mt24 text-center">
     <div class="col">
       <mapfre-button
         (click)="onCheckDirty()"
-        additionalClasses="link-button small blue-link"
+        additionalClasses="link-button small blue-link w160"
         [customIcon]="'assets/img/icons/back-arrow.png'"
         [iconClasses]="'align-middle'"
         [showIconsCustom]="true"
