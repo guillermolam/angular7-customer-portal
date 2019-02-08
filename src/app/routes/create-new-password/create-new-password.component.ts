@@ -3,6 +3,7 @@ import { ActivatedRoute }                 from '@angular/router';
 import { AuthenticationService }          from '../../_services/_iam/authentication-service.service';
 import { CreateNewPasswordFormService }   from '../../_services/forms/forgot-password/create-new-password-form/create-new-password-form.service';
 import { ClientCredentialsService }     from '../../_services/client-credentials/client-credentials.service';
+import { ClientCredentialsTokenService }     from '../../_services/client-credentials/client-credentials-token.service';
 
 
 
@@ -24,8 +25,8 @@ export class CreateNewPasswordComponent implements OnInit {
     service:                              CreateNewPasswordFormService,
     private route:                        ActivatedRoute,
     private authenticationService:        AuthenticationService,
-    private clientCredentialsService:   ClientCredentialsService
-
+    private clientCredentialsService:   ClientCredentialsService,
+    private clientCredentialsTokenService: ClientCredentialsTokenService
   ) {
       this.createNewPassword = service.getInputs();
       this.route = route;
@@ -68,7 +69,8 @@ export class CreateNewPasswordComponent implements OnInit {
       }
     });
 
-    this.clientCredentialsService.getToken().subscribe();
-
+    if(!this.clientCredentialsTokenService.getToken()){
+      this.clientCredentialsService.getToken().subscribe();
+    }
   }
 }

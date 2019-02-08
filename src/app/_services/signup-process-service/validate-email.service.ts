@@ -23,4 +23,10 @@ export class ValidateEmailService {
     );
    }
 
+
+   sendValidationEmail(email: string){
+    const url = `${environment.backend_server_url_account}/verify-email?email=${email}`;
+    return this.http.get(url);
+   }
+
 }

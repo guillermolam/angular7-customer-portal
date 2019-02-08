@@ -10,6 +10,7 @@ import { PolicyDetails }                from '../../../../_models/policy-details
 import { UserService }                  from '../../../../_services/user.service';
 import { User }                         from '../../../../_models/user';
 import { ClientCredentialsService }     from '../../../../_services/client-credentials/client-credentials.service';
+import { ClientCredentialsTokenService }     from '../../../../_services/client-credentials/client-credentials-token.service';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class CreateAccountFormComponent implements OnInit {
     private http:                   HttpClient,
     private router:                 Router,
     private userData:               UserService,
-    private clientCredentialsService:   ClientCredentialsService
+    private clientCredentialsService:   ClientCredentialsService,
+    private clientCredentialsTokenService: ClientCredentialsTokenService
   ) {}
 
   createUserObject(object, numbers): void {
@@ -98,7 +100,9 @@ export class CreateAccountFormComponent implements OnInit {
   ngOnInit() {
     this.signUpForm = this.ipt.toFormGroup(this.inputs);
     this.fromTheBackButton();
-    this.clientCredentialsService.getToken().subscribe();
+    if(!this.clientCredentialsTokenService.getToken()){
+      this.clientCredentialsService.getToken().subscribe();
+    }
   }
 
 }
