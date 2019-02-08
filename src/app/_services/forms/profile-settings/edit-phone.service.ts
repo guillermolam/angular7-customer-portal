@@ -17,7 +17,7 @@ export class EditPhoneService {
   getInputs(){
 
     return this.userService.$user.pipe(map((userResponse)=>{
-      this.phoneNumber = userResponse.userDetails.phone.number;
+      this.phoneNumber = userResponse.userDetails.phone ? userResponse.userDetails.phone.number : '';
       const inputs: FormBase<any>[] = [
         new TextBox({
           additionalClasses:  'form-control profile-input-border',

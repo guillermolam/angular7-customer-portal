@@ -50,7 +50,7 @@ export class AuthenticationService {
   createPassword(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.backend_server_url_account}/${user.email}`,
+      url =                 `${environment.backend_server_url_account}/create/${user.email}`,
       userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.serviceHelpers.options);

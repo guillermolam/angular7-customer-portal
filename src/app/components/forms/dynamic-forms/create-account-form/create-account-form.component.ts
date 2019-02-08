@@ -75,7 +75,7 @@ export class CreateAccountFormComponent implements OnInit {
       .subscribe(
         (result) => {
           // this.createUserObject(this.userData, 'verifyuser');
-          this.router.navigate(['signup', 'create-password' ]);
+          this.router.navigate(['signup', 'createpassword' ]);
         },
         (err) => {
           if (err.status === 400) {
