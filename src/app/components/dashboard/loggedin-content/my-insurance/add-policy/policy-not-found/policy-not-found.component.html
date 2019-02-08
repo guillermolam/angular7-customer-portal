@@ -1,36 +1,36 @@
 <mapfre-card 
-    [singleCard]="false"
-    [additionalClasses]="'policy-details'"> 
-    <div class="single-card-column policy-card">
-        <div class="row text-center">
-            <div class="col">
-              <div class="header-icon full-icon">
-                <svg-policy-error-svg></svg-policy-error-svg>
-              </div>
-              <h1 class="title-copy">{{ 'POLICY_NOT_FOUND' | translate }}</h1> 
-            </div>
-          </div>
-  <div class="sub-title-copy text-center margin-bottom mb16">
-    {{ 'NOTFOUND_POLICY_NOT_FOUND' | translate }}
-  </div>
-  <div class="row margin-bottom mb24">
-    <div class="col">
-      <div class="policy-info-card">
-        <div class="policy-info-title text-center">
-          {{ 'POLICY_INFO_TITLE' | translate }}
+  [singleCard]="false"
+  [additionalClasses]="'policy-details'"> 
+  <div class="single-card-column policy-card">
+    <div class="row text-center">
+      <div class="col">
+        <div class="header-icon full-icon">
+          <svg-policy-error-svg></svg-policy-error-svg>
         </div>
-        <hr>
-        <div class="policy-info-content">
-          <ul>
-            <li>{{ 'POLICY_INFO_HOLDER_NAME' | translate }}:&nbsp;<strong>{{ policyHolderName }}</strong></li>
-            <li>{{ 'POLICY_INFO_NUMBER' | translate }}:&nbsp;<strong>#{{ policyNumber }}</strong></li>
-          </ul>
+        <h1 class="title-copy">{{ 'NOT_FOUND' | translate }}</h1> 
+      </div>
+    </div>
+    <div class="sub-title-copy text-center margin-bottom mb16">
+      {{ 'NOTFOUND_POLICY_NOT_FOUND' | translate }}
+    </div>
+    <div class="row margin-bottom mb24">
+      <div class="col">
+        <div class="policy-info-card">
+          <div class="policy-info-title text-center">
+            {{ 'POLICY_INFO_TITLE' | translate }}
+          </div>
+          <hr>
+          <div class="policy-info-content">
+            <ul>
+              <li>{{ 'POLICY_INFO_HOLDER_NAME' | translate }}:&nbsp;<strong>{{ policyHolderName }}</strong></li>
+              <li>{{ 'POLICY_INFO_NUMBER' | translate }}:&nbsp;<strong>#{{ policyNumber }}</strong></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="margin-vertical mv24"  *ngIf="userData.addPolicyAttempts > 1">
+    <div class="margin-vertical mv24"  *ngIf="userData.addPolicyAttempts > 1">
       <mapfre-info-divs>
         <em>{{ 'NOTFOUND_IF_YOU_PURCHASE' | translate }}</em> 
       </mapfre-info-divs>
@@ -46,30 +46,30 @@
         </div>
     </div>
     <ng-container  *ngIf="userData.addPolicyAttempts <= 1">
-        <div class="text-center margin-vertical mv24">
-            <mapfre-link
-              additionalClasses="small-link horizontal-space"
-              [routerLink]="['/my-insurance','edit-policy-details']"
-            >
-              {{ 'EDIT_POLICY_INFO' | translate }}
-            </mapfre-link>
-          </div>
-          <div>
-            <mapfre-button 
-              [additionalClasses]="'basic primary large waves-effect waves-light'"
-              (click)="onTryAgain()"
-              [routerLink]="['/my-insurance','link-policy']"        
-            >
-              {{ 'TRY_AGAIN_WITH_A_DIFFERENT' | translate }}
-            </mapfre-button>
-          </div>
+      <div class="text-center margin-vertical mv24">
+        <mapfre-link
+          additionalClasses="small-link horizontal-space blue-link underline"
+          [routerLink]="['/my-insurance','edit-policy-details']"
+        >
+        {{ 'EDIT_POLICY_INFO' | translate }}
+        </mapfre-link>
+      </div>
+      <div>
+        <mapfre-button 
+          [additionalClasses]="'basic primary large waves-effect waves-light'"
+          (click)="onTryAgain()"
+          [routerLink]="['/my-insurance','link-policy']"        
+        >
+          {{ 'TRY_AGAIN_WITH_A_DIFFERENT' | translate }}
+        </mapfre-button>
+      </div>
     </ng-container>
     
-  <hr class="margin-bottom mb24 margin-top mt24">
-  <div class="row">
-    <div class="col text-center">
-      {{ 'NOTFOUND_NEED_ASSISTANCE' | translate }}
+    <hr class="margin-bottom mb24 margin-top mt24">
+    <div class="row">
+      <div class="col text-center">
+        {{ 'NOTFOUND_NEED_ASSISTANCE' | translate }}
+      </div>
     </div>
   </div>
-  </div>
-  </mapfre-card>
+</mapfre-card>

@@ -7,6 +7,7 @@ const env = 'https://mdv-doctest'
 
 export const environment = {
   production: false,
+
   backend_server_url: `${env}`,
   backend_server_url_auth: `${env}:443/auth/grant_type=password`,
   backend_server_url_account: `${env}:8083/customers/accounts`,
@@ -14,4 +15,5 @@ export const environment = {
   backend_server_url_policy: `${env}:8084/personal-policies`,
   backend_server_url_billing: `${env}:8086/billing`,
   backend_server_url_claims: `${env}:8085/claims`
+
 }

@@ -59,7 +59,7 @@
                   <svg-holder-mono-color-svg></svg-holder-mono-color-svg>
                 </div>
                 <div class="policy-info">
-                  <div class="policy-info-content" [class.show-more-detail]= "hideOrShow"> Holder:
+                  <div class="policy-info-content" [class.show-more-detail]= "hideOrShow">
                     <ng-container *ngFor="let insured of policy.insured; let last = last">
                       {{insured['Insured Name'] | titlecase }}<ng-container *ngIf="!last">, </ng-container>
                     </ng-container>

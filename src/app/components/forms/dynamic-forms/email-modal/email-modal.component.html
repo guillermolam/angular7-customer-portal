@@ -1,0 +1,21 @@
+<mapfre-modal 
+  [modalOptions]="billingRepModal"
+  [hideModal]="hideModal">
+  <div class="modal-body no-margin-top margin-bottom mb24">
+    <hr class="no-margin-bottom no-margin-top">
+    <div class="margin-bottom mb8 margin-top mt16">
+      <strong>
+        {{ policy?.agent.agentName }}
+      </strong>
+      <p class="title-case">{{ policy?.agent.address.streetName | titlecase }} {{ policy.agent.address.city | titlecase }}, {{ policy.agent.address.state | fullstateToAbv }}, {{ policy.agent.address.zipCode.code }}</p>
+      <p class="no-margin-bottom">{{'PHONE' | translate }}: <a href="tel:{{ policy.agent.agentPhone.number }}" class="underline"> {{ policy.agent.agentPhone.number }}</a></p>
+    </div>
+    <div class="contact-form margin-bottom mb24">
+      <app-contact-billing-rep-form [inputs]="inputs" (hideModalOutput)="hideModalOnCanel($event)"></app-contact-billing-rep-form>
+    </div>
+    <mapfre-info-divs>
+      <p class="margin-bottom mb8">{{ 'BILLING_PAR_ONE' | translate }}</p>
+      <p>{{ 'BILLING_PAR_TWO' | translate }}</p>
+    </mapfre-info-divs>
+  </div>
+</mapfre-modal>

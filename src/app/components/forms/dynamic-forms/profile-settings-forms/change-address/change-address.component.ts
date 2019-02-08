@@ -84,6 +84,7 @@ export class ChangeAddressComponent implements OnInit {
   }
 
   reSync(email): void {
+    this.userService.clearUser();
     this.authenticationService
       .getUserDetailsByEmail(email)
       .subscribe(([userResponse, accountResponse]) => {

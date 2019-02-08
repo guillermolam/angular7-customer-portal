@@ -1,12 +1,12 @@
 import { Component, OnInit }        from '@angular/core';
+import { concatMap }                from 'rxjs/operators';
+import { Observable, of }           from 'rxjs';
 import { AlertService, ModalOptions } from 'mapfre-design-library';
 import { PolicyDataService }        from '../../../../../../_services/my-insurance/data-services/policy-data.service';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
 import { PolicyDetailsService }     from '../../../../../../_services/my-insurance/policy-details.service';
 import { User }                     from './../../../../../../_models/user';
 import { UserService }              from '../../../../../../_services/user.service';
-import { concatMap } from 'rxjs/operators';
-import {Observable, of} from 'rxjs';
 
 
 @Component({
@@ -75,11 +75,11 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .cancelPaperlessEPolicy(policyid, email)
       .subscribe(
         (success) => {
-          this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
-          this.reQueryPolicyDetailService(email);
+          this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.` );
+          this.reSync(email);
         },
         (error) => {
-          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
     else if ( where == 'e-pay' ) {
@@ -88,10 +88,10 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
-          this.reQueryPolicyDetailService(email);
+          this.reSync(email);
         },
         (error) => {
-          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
     else if ( where == 'e-bill' ) {
@@ -100,10 +100,10 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
-          this.reQueryPolicyDetailService(email);
+          this.reSync(email);
         },
         (error) => {
-          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
   }
@@ -115,10 +115,11 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
-          this.reQueryPolicyDetailService(email);
+          this.reSync(email);
         },
         (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
+          console.log('there was an error', e)
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
     else if ( where == 'e-bill' ) {
@@ -127,10 +128,10 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .subscribe(
         (success) => {
           this.alertService.success(`You have enrolled in ${where}. It may take up to 2 days to process.`);
-          this.reQueryPolicyDetailService(email);
+          this.reSync(email);
         },
         (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
   }
@@ -170,9 +171,9 @@ export class PaperlessFirstTimeComponent implements OnInit {
     this.hideModal = !this.hideModal;
   }
 
-  reQueryPolicyDetailService(email): void {
+  reSync(email): void {
     this.loading = true;
-
+    this.policyDataService.clear();
     this.policyDetailsService
       .getPolicyDetailsByEmail( email )
       .subscribe( () => { this.loading = false; });
@@ -192,7 +193,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       })
     ).subscribe( (policyInfo) => {
       this.policyInfo = policyInfo;
-      //pls do not remove
+      // pls do not remove
       // this.firstTimeCheck(this.policyInfo);
       this.allEPayMethod(policyInfo);
       this.loading = false;

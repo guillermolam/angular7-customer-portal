@@ -36,7 +36,20 @@ export class MyInsuranceMainComponent implements OnInit {
   ngOnInit() {
     this.policyDataService.$policyDetails
     .subscribe((policyResponse) => {
-      this.policyResponse =       policyResponse;
+      console.log('before sort',policyResponse)
+      this.policyResponse =       policyResponse.sort((policy) => {
+        const type =              policy.policyType.toUpperCase();
+        if ( type == 'INACTIVE' ) {
+          return 1;
+        }
+        else if ( type == 'CANCEL' ) {
+          return 0;
+        }
+        else {
+          return -1;
+        }
+      });
+      console.log('after sort', this.policyResponse )
     });
 
     this.userService.$user

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ClientCredentialsTokenService } from './client-credentials-observable.service';
+import { ClientCredentialsTokenService } from './client-credentials-token.service';
 
 describe('ClientCredentialsTokenService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

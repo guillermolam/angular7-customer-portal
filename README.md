@@ -133,9 +133,6 @@ Here are some command line helpers, for serving, building, etc.
 |e2e_run    | node_modules/protractor/bin/protractor e2e/protractor.conf.js   |
 
 
-
----
-
 ## Dev Enviroment
 
 ### Information for the new forked CP
@@ -152,6 +149,11 @@ Do you need to merge from the original cusomer portal?
 
 ### Prepush to forked master and dev build
 You will need to make sure that the build and unit tests pass. Easiest way to do that is with the `prepush` command.
+
+---
+
+## Staging
+For Demos - in thought not created yet.
 
 ---
 

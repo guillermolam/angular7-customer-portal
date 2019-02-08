@@ -86,6 +86,7 @@ export class PolicyDetailsService {
     const url = `${environment.backend_server_url_policy}/${email}/${policyNumber}/add-policy`;    
     return this.http.post(url,{});
   }
+  
 
 
 }
