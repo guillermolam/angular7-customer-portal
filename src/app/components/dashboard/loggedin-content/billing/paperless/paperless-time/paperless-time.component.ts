@@ -75,11 +75,11 @@ export class PaperlessFirstTimeComponent implements OnInit {
       .cancelPaperlessEPolicy(policyid, email)
       .subscribe(
         (success) => {
-          this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.`);
+          this.alertService.error(`You have canceled your ${where}. It may take up to 2 days to process.` );
           this.reSync(email);
         },
         (error) => {
-          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
     else if ( where == 'e-pay' ) {
@@ -91,7 +91,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
           this.reSync(email);
         },
         (error) => {
-          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
     else if ( where == 'e-bill' ) {
@@ -103,7 +103,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
           this.reSync(email);
         },
         (error) => {
-          this.alertService.error(`There was a problem processing your request. Try again later ${error}`);
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
   }
@@ -118,7 +118,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
           this.reSync(email);
         },
         (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
+          console.log('there was an error', e)
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
     else if ( where == 'e-bill' ) {
@@ -130,7 +131,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
           this.reSync(email);
         },
         (e) => {
-          this.alertService.error(`There was a problem processing your request. Try again later`);
+          this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }
   }
