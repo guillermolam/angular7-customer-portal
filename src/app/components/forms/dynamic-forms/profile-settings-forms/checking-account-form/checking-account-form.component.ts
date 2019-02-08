@@ -17,12 +17,13 @@ import { UserService }                        from '../../../../../_services/use
 })
 export class CheckingAccountFormComponent implements OnInit, OnDestroy {
 
-  @Input() inputs: FormBase<any>[] = [];
-           checkingAccountForm:       FormGroup;
-           confirmModal:              boolean;
-           mailingAddress:            any;
-           addressAlert:              boolean;
-           addressInput:         string;
+  @Input()  inputs:                   FormBase<any>[] = [];
+            changeAddressError:       boolean;
+            checkingAccountForm:      FormGroup;
+            confirmModal:             boolean;
+            mailingAddress:           any;
+            addressAlert:             boolean;
+            addressInput:             string;
           //  addressObservable: any;
           //  googlePlaceObservable:   any;
 
@@ -86,12 +87,10 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     // if(!validateAddress){
     //   this.alertService.error('Please select address from dropdown',false);
     // }else {
-      console.log(this.getGooglePlaceService, this.addressInput);
-      let validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
+    const validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
 
-
-      if(validateAddress){
-        const bankAccountDetails =  this.createBankAccountObject();
+    if (validateAddress) {
+      const bankAccountDetails =  this.createBankAccountObject();
       const email =               this.storageService.getUserFromStorage();
       this.bankAccountService
         .addBankAccount(email, bankAccountDetails)
@@ -105,17 +104,24 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
               bankAccountDetails:   {...accountResponse}
             }
             );
-            this.alertService.success('CHECKING_ACCOUNT_INFO_UPDATED', true);
+            this.alertService.success('CHECKING_ACCOUNT_INFO_UPDATED');
             this.router.navigate(['/profile']);
           });
       },
       (err) => {
-        this.alertService.error(`ERROR_CHECKING_INFO`, true);
+        this.alertService.error(`ERROR_CHECKING_INFO`);
       });
-      }else {
-        this.alertService.error('PLEASE_ENTER_VALID_ADDRESS',true);
       }
-      
+      else {
+        this.changeAddressError = true;
+        //this.alertService.error('PLEASE_ENTER_VALID_ADDRESS');
+      }
+  }
+
+  setCheckingForm() {
+    this.checkingAccountForm.patchValue({
+      changeAddress: `${this.mailingAddress.streetName.split('|')[0]}, ${this.mailingAddress.city}, ${this.mailingAddress.stateCode}, USA`
+    });
   }
 
   ngOnInit() {
@@ -126,15 +132,12 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
 
     this.validateAddressService.$address
     .subscribe((resp) => {
-        this.addressInput = resp;
+        this.addressInput = resp === undefined ? this.mailingAddress : resp;
     });
+    this.setCheckingForm();
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    // this.addressObservable.unsubscribe();
-    // this.googlePlaceObservable.unsubscribe();
   }
 
 }

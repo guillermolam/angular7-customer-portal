@@ -29,11 +29,6 @@ export class AddressChangeComponent implements OnInit {
     ) {
     }
 
-
-    getAddress(){
-      
-    }
-
   ngOnInit() {
 
     let streetAddress: any = [];
