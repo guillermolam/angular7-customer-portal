@@ -21,11 +21,11 @@ export class ClaimsService {
 
   getClaimsList(email): Observable<any> {
     let url =                     `${environment.backend_server_url_claims}/?email=${email}`;
-    return this.http.get(url, this.serviceHelpers.options);
+    return this.http.get(url);
   }
 
   getClaimsDetails(email): Observable<any> {
     let url =                     `${environment.backend_server_url_claims}/loss?email=${email}`;
-    return this.http.get(url, this.serviceHelpers.options);
+    return this.http.get(url);
   }
 }
