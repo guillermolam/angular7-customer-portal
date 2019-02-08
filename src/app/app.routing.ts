@@ -84,21 +84,23 @@ const appRoutes: Routes = [
   { path: 'login',                        component: LoginComponent },
   { path: 'signup',                       component: SignupComponent,
     children:[
+
       { path: '',                         component: SignupProcessComponent,
+
 },
-      { path: 'add-policy',               component: SignupAddPolicyComponent,    canActivate: [SignUpGuard] 
+      { path: 'add-policy',               component: SignupAddPolicyComponent,    //canActivate: [SignUpGuard] 
       },
-      { path: 'bop',                      component: SignupBopComponent,  canActivate: [SignUpGuard] 
+      { path: 'bop',                      component: SignupBopComponent, //canActivate: [SignUpGuard] 
       },
-      { path: 'createpassword',           component: SignupCreatePasswordComponent, canActivate: [SignUpGuard] 
+      { path: 'createpassword',           component: SignupCreatePasswordComponent, //canActivate: [SignUpGuard] 
       },
-      { path: 'edit-policy',              component: SignupEditPolicyComponent, canActivate: [SignUpGuard] 
+      { path: 'edit-policy',              component: SignupEditPolicyComponent, //canActivate: [SignUpGuard] 
       },
-      { path: 'email-in-use',             component: SignupEmailInUseComponent, canActivate: [SignUpGuard] 
+      { path: 'email-in-use',             component: SignupEmailInUseComponent, //canActivate: [SignUpGuard] 
       },
-      { path: 'not-found',                component: SignupNotFoundComponent, canActivate: [SignUpGuard] 
+      { path: 'not-found',                component: SignupNotFoundComponent, //canActivate: [SignUpGuard] 
       },
-      { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent, canActivate: [SignUpGuard] 
+      { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent, //canActivate: [SignUpGuard] 
       },
       {
         path: 'validate-email', component: ValidateEmailScreenComponent
@@ -112,7 +114,7 @@ const appRoutes: Routes = [
   { path: 'walletcard',                   component: WalletCardComponent},
   { path: 'profile/change-email',         component: ChangeEmailComponent},
 // when logged in
-{ path: '', component: DashboardMainComponent, canActivate: [AuthGuard],
+{ path: '', component: DashboardMainComponent, //canActivate: [AuthGuard],
 children: [
 { path: '',                               component: LoggedinContentComponent, children: [
   { path: '',                             redirectTo: 'my-insurance', pathMatch: 'full' },
@@ -146,11 +148,11 @@ children: [
     { path: 'change-address/:address-type', component: AddressChangeComponent},
     { path: 'enter-password',             component: ProfileEditPasswordComponent },
     { path: 'verify-password',            component: ProfileEditEmailComponent },
-    { path: 'edit-email',                 component: ProfileEditEmailComponent,     canActivate: [ChangeProfileSettingsEmailGuard] 
+    { path: 'edit-email',                 component: ProfileEditEmailComponent,     //canActivate: [ChangeProfileSettingsEmailGuard] 
     },
-    { path: 'edit-password' ,             component: ProfileEditPasswordComponent,  canActivate: [ChangeProfileSettingsPasswordGuard]
+    { path: 'edit-password' ,             component: ProfileEditPasswordComponent,  //canActivate: [ChangeProfileSettingsPasswordGuard]
   },
-    { path: 'email-confirmation' ,        component: ProfileEmailConfirmComponent,  canActivate: [ChangeProfileSettingsEmailGuard]
+    { path: 'email-confirmation' ,        component: ProfileEmailConfirmComponent,  //canActivate: [ChangeProfileSettingsEmailGuard]
   }
   ] },
   { path: 'claims',                       component: ClaimsComponent, children: [

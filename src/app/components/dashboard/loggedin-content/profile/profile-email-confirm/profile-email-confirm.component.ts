@@ -44,6 +44,7 @@ export class ProfileEmailConfirmComponent implements OnInit {
     this.authenticationService
       .getUserDetailsByEmail(email)
       .subscribe(([userResponse, accountResponse]) => {
+        this.userService.clearUser();
         this.userService.updateUser(
         [{
           userDetails:              {...userResponse},

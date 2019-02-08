@@ -1,7 +1,9 @@
-import { AuthenticationService } from '../../../_services/_iam/authentication-service.service';
 import { Component, OnInit }      from '@angular/core';
 import { Router }                 from '@angular/router';
 import { ModalOptions }           from 'mapfre-design-library';
+import { AuthenticationService }  from '../../../_services/_iam/authentication-service.service';
+import { UserService }            from '../../../_services/user.service';
+
 
 @Component({
   selector: 'app-loggedin-account-header',
@@ -13,8 +15,9 @@ export class LoggedinAccountHeaderComponent implements OnInit {
   hideModalOnRoute:               boolean = false;
 
   constructor(
+    private authService:          AuthenticationService,
     private router:               Router,
-    private authService:          AuthenticationService
+    private userService:          UserService
   ) {
     this.headerAccountModalOptions = new ModalOptions({
       additionalClasses:          'account modal-small help',
@@ -39,6 +42,7 @@ export class LoggedinAccountHeaderComponent implements OnInit {
   }
 
   logout() {
+    this.userService.clearUser();
     this.authService.logout();
     this.router.navigate(['/login']);
   }

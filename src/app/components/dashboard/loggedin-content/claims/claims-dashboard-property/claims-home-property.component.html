@@ -8,10 +8,10 @@
       <div class="policy-id">
           {{ claim.propertyOrAutoIndicator | titlecase }} - 
           <ng-container *ngIf="type != 'details'">
-              {{ claim.policyid }}
+            {{ claim.policynumber.number }}
           </ng-container>
           <ng-container *ngIf="type == 'details'">
-              <a [routerLink]="['/my-insurance', claim.policyid, 'details']"><strong>{{ claim.policyid }}</strong></a>
+              <a [routerLink]="['/my-insurance', claim.policyid, 'details']"><strong>{{ claim.policynumber.number }}</strong></a>
           </ng-container>
       </div>
       <div class="date-loss">

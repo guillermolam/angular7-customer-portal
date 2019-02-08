@@ -21,4 +21,8 @@ export class UserService {
   updateUser(user: any) {
     this.messageSource.next(user);
   }
+
+  clearUser() {
+    this.messageSource.next('');
+  }
 }

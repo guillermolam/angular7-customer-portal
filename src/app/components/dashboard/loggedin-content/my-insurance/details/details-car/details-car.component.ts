@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators }
                                         from '@angular/forms';
 import { GetGooglePlaceService }        from 'mapfre-design-library';
 import { MileageService }               from './../../../../../../_services/my-insurance/mileage.service';
+import { PolicyDataService }            from '../../../../../../_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }         from '../../../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }
                                         from '../../../../../../_services/storage-service-observables/storage-service-observables.service';
@@ -38,12 +39,13 @@ export class DetailsCarComponent implements OnInit {
     private mileageService:             MileageService,
     private sanitizer:                  DomSanitizer,
     private storageService:             StorageServiceObservablesService,
+    private policyDataService:          PolicyDataService,
     private policyDetailsService:       PolicyDetailsService,
     private googlePlaceService:         GetGooglePlaceService
   ) {
    }
 
-   createUpdateMilageFormControls(data): void {
+  createUpdateMilageFormControls(data): void {
     const milageControl =                 [];
     for ( let i = 0; i <= data.vehicle.length; i++ ) {
       if ( i != data.vehicle.length ) {
@@ -141,6 +143,7 @@ export class DetailsCarComponent implements OnInit {
   }
 
   reSyncWithPolicyData(): void {
+    this.policyDataService.clear();
     this.policyDetailsService
     .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
     .subscribe(

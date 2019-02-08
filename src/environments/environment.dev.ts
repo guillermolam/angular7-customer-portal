@@ -11,4 +11,3 @@ export const environment = {
   backend_server_url_claims: `${env}/claims-api`
 }
 
-

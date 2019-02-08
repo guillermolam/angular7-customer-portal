@@ -1,3 +1,4 @@
+<mapfre-alert></mapfre-alert>
 <div class="row margin-top mt24">
   <div class="col-md col1-image">
       <img src="./assets/img/images/paperless.png" alt="Paperless trees" />
@@ -46,19 +47,19 @@
                 <div class="modal-body">
                   <hr class="margin-bottom mb24 no-margin-top" />
                   <div class="margin-bottom mb24">
-                      {{ 'ARE_YOU_SURE_YOU_WANT_TO_REMOVE_POLICY' | translate }} <strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'FROM_E-POLICY' | translate }}
+                    {{ 'ARE_YOU_SURE_YOU_WANT_TO_REMOVE_POLICY' | translate }} <strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'FROM_E-POLICY' | translate }}
                   </div>
                   <div class="mx-auto text-center">
-                      <mapfre-button 
-                        additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                        (click)="cancel(pdetail.policynumber.policynumber, 'e-policy', user.userDetails.email.address)">
-                        {{ 'REMOVE_FROM_E-POLICY' | translate }}
-                      </mapfre-button>
-                      <mapfre-button 
-                        additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
-                        (click)="hideModalAction($event)">
-                        {{ 'CANCEL' | translate }}
-                      </mapfre-button>
+                    <mapfre-button 
+                      additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
+                      (click)="cancel(pdetail.policynumber.policynumber, 'e-policy', user.userDetails.email.address); hideModalAction($event)">
+                      {{ 'REMOVE_FROM_E-POLICY' | translate }}
+                    </mapfre-button>
+                    <mapfre-button 
+                      additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
+                      (click)="hideModalAction($event)">
+                      {{ 'CANCEL' | translate }}
+                    </mapfre-button>
                   </div>
                 </div>
               </mapfre-modal>
@@ -78,19 +79,19 @@
                 <div class="modal-body">
                   <hr class="margin-bottom mb24 no-margin-top" />
                   <div class="margin-bottom mb24">
-                      {{ 'PLEASE_CONFIRM_YOUR_REQUEST_TO_ENROLL_POLICY' | translate }} <strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'IN_E-POLICY' | translate }}
+                    {{ 'PLEASE_CONFIRM_YOUR_REQUEST_TO_ENROLL_POLICY' | translate }} <strong>{{ pdetail.policynumber.policynumber }}</strong> {{ 'IN_E-POLICY' | translate }}
                   </div>
                   <div class="mx-auto text-center">
-                      <mapfre-button 
-                        additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                        (click)="enroll(pdetail.policynumber.policynumber, 'e-policy', user.userDetails.email.address)">
-                        {{ 'CONFIRM_ENROLLMENT' | translate }}
-                      </mapfre-button>
-                      <mapfre-button 
-                        additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
-                        (click)="hideModalAction($event)">
-                        {{ 'CANCEL' | translate }}
-                      </mapfre-button>
+                    <mapfre-button 
+                      additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
+                      (click)="enroll(pdetail.policynumber.policynumber, 'e-policy', user.userDetails.email.address); hideModalAction($event)">
+                      {{ 'CONFIRM_ENROLLMENT' | translate }}
+                    </mapfre-button>
+                    <mapfre-button 
+                      additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
+                      (click)="hideModalAction($event)">
+                      {{ 'CANCEL' | translate }}
+                    </mapfre-button>
                   </div>
                 </div>
               </mapfre-modal>

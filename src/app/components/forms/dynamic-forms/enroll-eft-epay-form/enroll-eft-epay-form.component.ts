@@ -123,13 +123,14 @@ export class EnrollEftEpayFormComponent implements OnInit {
 
   reSync(): void {
     this.loading = true;
+    this.policyDataService.clear();
     this.policyDetailsService
       .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
       .subscribe(
         () => {
           this.loading = false;
         }
-      )
+      );
   }
 
   ngOnInit() {

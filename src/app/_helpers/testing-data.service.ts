@@ -15,6 +15,9 @@ export class TestingDataService {
   testDataClaimsDetail(): any {
     return [
       {
+        "policynumber": {
+          "number": "BBWQKW"
+        },
         LOSS_NUMBER: 'AAABBB-CCCDDD',
         "lossDate": "2013-01-13T05:08:00.000+0000",
         "claimNumber": {
@@ -68,6 +71,9 @@ export class TestingDataService {
       },
       {
         LOSS_NUMBER: 'A1B1C1-D1E1F1',
+        "policynumber": {
+          "number": "123456"
+        },
         "lossDate": "2013-01-13T05:08:00.000+0000",
         "claimNumber": {
             "claimNumber": "D1E1F1"
@@ -125,6 +131,9 @@ export class TestingDataService {
         }
       },
       {
+        "policynumber": {
+          "number": "QWERTY"
+        },
         LOSS_NUMBER: 'AAABBB-BBBBBBB',
         "lossDate": "2013-01-13T05:08:00.000+0000",
         "claimNumber": {
@@ -186,6 +195,9 @@ export class TestingDataService {
     {
       LOSS_NUMBER: 'CCCCCC-D1E1F1',
       "lossDate": "2013-01-13T05:08:00.000+0000",
+      "policynumber": {
+        "number": "QWERTY"
+      },
       "claimNumber": {
           "claimNumber": "D1E1F1"
       },
@@ -249,6 +261,9 @@ export class TestingDataService {
       {
         "description": "IV BACKING UP, COLLIDED WITH OV",
         "lossDate": "2013-01-13T05:08:00.000+0000",
+        "policynumber": {
+          "number": "BBWQKW"
+        },
         "claimNumber": {
             "claimNumber": "CCCDDD"
         },
@@ -265,6 +280,9 @@ export class TestingDataService {
       {
         "description": "111",
         "lossDate": "2013-01-13T05:08:00.000+0000",
+        "policynumber": {
+          "number": "123456"
+        },
         "claimNumber": {
             "claimNumber": "D1E1F1"
         },
@@ -281,6 +299,9 @@ export class TestingDataService {
       {
         "description": "111",
         "lossDate": "2013-01-13T05:08:00.000+0000",
+        "policynumber": {
+          "number": "QWERTY"
+        },
         "claimNumber": {
             "claimNumber": "BBBBBBB"
         },
@@ -297,6 +318,9 @@ export class TestingDataService {
       {
         "description": "111",
         "lossDate": "2013-01-13T05:08:00.000+0000",
+        "policynumber": {
+          "number": "QWERTY"
+        },
         "claimNumber": {
             "claimNumber": "D1E1F1"
         },
@@ -375,9 +399,7 @@ export class TestingDataService {
         "policynumber": "QJN952"
       },
       
-
-
-      "agent": {
+"agent": {
         "agentCode": {
           "code": "434"
         },
@@ -428,7 +450,7 @@ export class TestingDataService {
           "vehicleIdentificationNumber": {
             "Id": "1C6RR7GT3GS124646"
           },
-          "odometerReading": 9,
+          "odometerReading": '',
           "vehicle": "2016 RAM 1500 SLT"
         },
         {

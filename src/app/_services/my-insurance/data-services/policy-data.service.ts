@@ -13,4 +13,8 @@ export class PolicyDataService {
   updatePolicyDetails(policyDetails: any) {
     this.details.next(policyDetails);
   }
+
+  clear() {
+    this.details.next('');
+  }
 }

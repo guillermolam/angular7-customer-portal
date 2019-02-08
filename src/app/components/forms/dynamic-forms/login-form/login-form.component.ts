@@ -61,8 +61,8 @@ export class LoginFormComponent implements OnInit {
           (accessToken) => {
             // this.validateEmailService.checkActiveEmail(this.user.email).subscribe(()=>{
               localStorage.setItem('currentUser', accessToken.toString());
-              this.alertService.success('Successful Login', true);
               this.router.navigate([`/my-insurance`]);
+
             // },
             // (err)=>{
             //   if (err.status === 400){
@@ -74,6 +74,7 @@ export class LoginFormComponent implements OnInit {
             //   }
             // }
           //  )
+
           },
           (err) => {
             this.alertService.error('INVALID_EMAIL_PASSWORD');

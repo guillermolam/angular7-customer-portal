@@ -10,35 +10,11 @@ import { ContactBillingRepService }         from './../../../../../_services/for
 })
 export class BillingSidebarComponent implements OnInit {
   @Input() policy;
-           billingRepModal:               ModalOptions;
-           inputs:                        any[];
-           hideModal:                     boolean;
 
-  constructor(
-    service:                              ContactBillingRepService
-  ) {
-    this.inputs = service.getInputs();
-    this.billingRepModal = new ModalOptions({
-      additionalButtonClasses:            'link-button blue-link heavy-link xsmall full no-margin',
-      additionalClasses:                  'modal-dialog center-on-page modal-medium',
-      animatePosition:                    'top',
-      buttonCopy:                         'CONTACT_YOUR_BILLING_REP',
-      modalId:                            'billingRepContact',
-      modalTranslateCopy:                 'MODAL_BILLING_REP_HELP_TITLE',
-      onLoad:                             false
-    });
-  }
-
-  hideModalOnCanel(event): void {
-    this.hideModal = !this.hideModal;
-    setTimeout(() => {
-      this.hideModal = !this.hideModal;
-    },
-      500
-    );
-  }
+  constructor() {}
 
   ngOnInit() {
+
   }
 
 }
