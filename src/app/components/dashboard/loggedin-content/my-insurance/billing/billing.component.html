@@ -110,7 +110,7 @@
                       <ng-container *ngFor="let historyPayment of policy.billingHistory">
                       <tr class="row-content border-full grey-border">
                         <td>
-                          <strong>{{ historyPayment.minAmountDue | currency }}</strong>
+                          <strong>{{ historyPayment.amountPaid | currency }}</strong>
                         </td>
                         <td class="text-right"> 
                           <strong>{{ historyPayment.dateApplied |  date }}</strong>
