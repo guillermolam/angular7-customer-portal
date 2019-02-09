@@ -1,6 +1,11 @@
 // ---- Packages | Helpers ---- //
 import { Routes, RouterModule,  }         from '@angular/router';
 import { NgModule }                       from '@angular/core';
+import { 
+  Error404Component, Error504Component, Error400Component, Error401Component, Error403Component, 
+  Error408Component, Error410Component, Error502Component, Error503Component, Error500Component, ErrorMaintenceComponent 
+} 
+                                          from 'mapfre-design-library';
 // ---- Guards ----- //
 import { AuthGuard }                      from './_guards/auth.guard';
 import { SignUpGuard }                    from './_guards/signup.guard';
@@ -77,18 +82,31 @@ import { SignupCreatePasswordComponent }  from './routes/signup/signup-process/s
 import { SignupBopComponent }             from './routes/signup/signup-process/signup-bop/signup-bop.component';
 import { SignupAddPolicyComponent }       from './routes/signup/signup-process/signup-add-policy/signup-add-policy.component';
 import { ChangeEmailComponent }           from './routes/profile-settings/change-email/change-email.component';
+import { ErrorComponent }                 from './routes/error/error-pages.component';
 
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword',               component: CreateNewPasswordComponent },
   { path: 'updatepassword',               component: CreateNewPasswordComponent },
   { path: 'login',                        component: LoginComponent },
+  { path: 'opps',                         component: ErrorComponent,
+  children: [
+    { path: '',                           redirectTo: 'overview', pathMatch: 'full' },
+    { path: '400',                        component: Error400Component },
+    { path: '401',                        component: Error401Component },
+    { path: '403',                        component: Error403Component},
+    { path: '404',                        component: Error404Component },
+    { path: '408',                        component: Error408Component},
+    { path: '410',                        component: Error410Component },
+    { path: '500',                        component: Error500Component },
+    { path: '502',                        component: Error502Component },
+    { path: '503',                        component: Error503Component},
+    { path: '504',                        component: Error504Component },
+    { path: 'maintence',                  component: ErrorMaintenceComponent },
+  ] },
   { path: 'signup',                       component: SignupComponent,
-    children:[
-
-      { path: '',                         component: SignupProcessComponent,
-
-},
+    children: [
+      { path: '',                         component: SignupProcessComponent },
       { path: 'add-policy',               component: SignupAddPolicyComponent,    //canActivate: [SignUpGuard] 
       },
       { path: 'bop',                      component: SignupBopComponent, //canActivate: [SignUpGuard] 
@@ -110,7 +128,7 @@ const appRoutes: Routes = [
   },
   { path: 'testing',                      component: TestingComponent },
   { path: 'verifyaccount',                component: VerifyAccountComponent, //canActivate: [VerifyUserGuard]
-},
+  },
   { path: 'welcome',                      component: WelcomeComponent },
   { path: 'walletcard',                   component: WalletCardComponent},
   { path: 'profile/change-email',         component: ChangeEmailComponent},
@@ -199,7 +217,7 @@ children: [
   { path: 'policy/add',                   component: DashboardComponent },
   { path: 'offline',                      component: DashboardComponent },
   { path: '',                             redirectTo: 'login', pathMatch: 'full'},
-  { path: '**',                           redirectTo: '' } // otherwise redirect to home
+  { path: '**',                           redirectTo: '/opps/404' } // otherwise redirect to home
 ];
 
 @NgModule({

@@ -160,6 +160,7 @@ import { CarHeaderComponent } from './components/dashboard/loggedin-content/my-i
 import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component';
 import { EmailModalComponent } from './components/forms/dynamic-forms/email-modal/email-modal.component';
 import { DocumentTypePipe } from './_helpers/_pipes/document-type.pipe';
+import { ErrorComponent } from './routes/error/error-pages.component';
 
 if (environment.production) {
   enableProdMode();
@@ -171,6 +172,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
+    ErrorComponent,
     NewPaymentNoCheckingComponent,
     ClaimsWrapperComponent,
     MyInsuranceComponent,
@@ -296,6 +298,7 @@ export function tokenGetter() {
     HomeHeaderComponent,
     EmailModalComponent,
     DocumentTypePipe,
+    
   ],
   imports: [
     BrowserModule,
