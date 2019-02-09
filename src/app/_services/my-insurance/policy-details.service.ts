@@ -1,3 +1,4 @@
+import { DashboardDataService } from './../data-services/dashboard-data.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, of, throwError } from 'rxjs';
@@ -16,6 +17,7 @@ export class PolicyDetailsService {
   constructor(
     private http:                   HttpClient,
     private policyDataService:      PolicyDataService,
+    private dashboardDataService: DashboardDataService,
     private billingDetailsService:  BillingDetailsService
   ) { }
 
@@ -24,25 +26,14 @@ export class PolicyDetailsService {
     const url = `${environment.backend_server_url_policy}/${email}`;
     return this.http.get(url).pipe(map((policyResponse: any[]) => {
       policyResponse.forEach((policy) => {
-        forkJoin(
-          this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber),
-          this.getDocumentsByPolicy(policy.policynumber.policynumber),
-          this.billingDetailsService.getHistoryBillsByPolicy(policy.policynumber.policynumber),
-          this.billingDetailsService.getScheduledBillsByPolicy(policy.policynumber.policynumber),
-          this.billingDetailsService.getPendingChecksByPolicy(policy.policynumber.policynumber)
-        )
-        .subscribe(([billingResponse,documentsResponse, historyResponse, scheduledBills, pendingCheckPayments]) => {
+          this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber)
+        .subscribe((billingResponse) => {
           this.policyBillingDataAll.push(...[Object.assign(
             policy,
-            { billingDetails:       {...billingResponse}},
-            { documentsDetails:     documentsResponse},
-            { billingHistory:       historyResponse},
-            { scheduledBills:       scheduledBills },
-            { pendingCheckPayments: pendingCheckPayments }
-            )]);
+            { billingDetails:       {...billingResponse}})]);
         });
       });
-      this.policyDataService.updatePolicyDetails(this.policyBillingDataAll);
+      this.dashboardDataService.updateDashboardDetails(this.policyBillingDataAll);
     })
   );
 }

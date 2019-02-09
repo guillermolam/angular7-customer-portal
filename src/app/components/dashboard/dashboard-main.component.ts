@@ -62,41 +62,41 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
-    this.policyDetailsService
-      .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
-      .subscribe(
-        (success) => {}
-      ).add(() => {
-        this.authenticationService
-          .getUserDetailsByEmail(this.storageService.getUserFromStorage())
-          .subscribe(([userResponse, accountResponse]) => {
-            const response = {
-              userDetails:                  {...userResponse},
-              bankAccountDetails:           {...accountResponse}
-            };
+    // this.policyDetailsService
+    //   .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
+    //   .subscribe(
+    //     (success) => {}
+    //   ).add(() => {
+    //     this.authenticationService
+    //       .getUserDetailsByEmail(this.storageService.getUserFromStorage())
+    //       .subscribe(([userResponse, accountResponse]) => {
+    //         const response = {
+    //           userDetails:                  {...userResponse},
+    //           bankAccountDetails:           {...accountResponse}
+    //         };
 
-            // Claim List
-            this.claimsService
-            .getClaimsList(this.storageService.getUserFromStorage())
-            .subscribe( (claimsList) => {
-              this.claimsDataService.updateClaims('list', claimsList);
-            });
+    //         // Claim List
+    //         this.claimsService
+    //         .getClaimsList(this.storageService.getUserFromStorage())
+    //         .subscribe( (claimsList) => {
+    //           this.claimsDataService.updateClaims('list', claimsList);
+    //         });
 
-            // Claim Details
-            this.claimsService
-            .getClaimsDetails(this.storageService.getUserFromStorage())
-            .subscribe( (claimsList) => {
-              this.claimsDataService.updateClaims('details', claimsList);
-            });
+    //         // Claim Details
+    //         this.claimsService
+    //         .getClaimsDetails(this.storageService.getUserFromStorage())
+    //         .subscribe( (claimsList) => {
+    //           this.claimsDataService.updateClaims('details', claimsList);
+    //         });
 
-            this.userService.updateUser(response);
-          },
-          (err) => {
+    //         this.userService.updateUser(response);
+    //       },
+    //       (err) => {
            
-          }).add(() => {
-            this.loading = false;
-          });
-      });
+    //       }).add(() => {
+    //         this.loading = false;
+    //       });
+    //   });
   }
 
 }

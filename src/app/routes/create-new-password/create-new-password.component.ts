@@ -16,11 +16,11 @@ import { ClientCredentialsTokenService }     from '../../_services/client-creden
 
 export class CreateNewPasswordComponent implements OnInit {
   createNewPassword:                      any[];
-  expiredLink:                            boolean = true;
+  expiredLink:                            boolean;
   paramSubmission:                        any;
   successChangePassword:                  boolean = false;
   tooManyAttempts:                        boolean = false;
-  waitingForResponse:                     boolean = false;  // waiting token api response
+  waitingForResponse:                     boolean = true;  // waiting token api response
   constructor(
     service:                              CreateNewPasswordFormService,
     private route:                        ActivatedRoute,
@@ -63,14 +63,16 @@ export class CreateNewPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      if (params) {
-        return this.isTokenValid(params.token, params.email);
-      }
-    });
+   
 
     if(!this.clientCredentialsTokenService.getToken()){
-      this.clientCredentialsService.getToken().subscribe();
+      this.clientCredentialsService.getToken().subscribe(()=>{
+        this.route.queryParams.subscribe((params) => {
+          if (params) {
+            return this.isTokenValid(params.token, params.email);
+          }
+        });
+      });
     }
   }
 }

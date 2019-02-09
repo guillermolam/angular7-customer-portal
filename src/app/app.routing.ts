@@ -81,6 +81,7 @@ import { ChangeEmailComponent }           from './routes/profile-settings/change
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword',               component: CreateNewPasswordComponent },
+  { path: 'updatepassword',               component: CreateNewPasswordComponent },
   { path: 'login',                        component: LoginComponent },
   { path: 'signup',                       component: SignupComponent,
     children:[

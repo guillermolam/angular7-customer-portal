@@ -27,7 +27,7 @@ export class CreatePasswordFormComponent implements OnInit {
             createPasswordForm:     FormGroup;
             email:                  string;
             token:                  string;
-            user:                   User = {};
+            user:                   any = {};
             whereInTheProcess:      string;
             confirmModal:        boolean;
 
@@ -99,11 +99,14 @@ export class CreatePasswordFormComponent implements OnInit {
   }*/
 
   updatePassword(): void {
-    this.user.password =              this.createPasswordForm.value.createPassword;
-    this.user.email =                 this.email || this.storageService.getUserFromStorage();
+    let user = {
+      password :             this.createPasswordForm.value.createPassword,
+      email    :               this.email || this.storageService.getUserFromStorage()
+    };
+  
     if(this.whereInTheProcess==='edit-password'){
       this.authenticationService
-      .updatePassword(this.user)
+      .updatePassword(user)
       .subscribe((data) => {
       this.profileSettingsRoutingService.setChangePasswordAlert(true);
       this.profileSettingsRoutingService.clearPasswordProcess();
@@ -112,11 +115,11 @@ export class CreatePasswordFormComponent implements OnInit {
       })
     }else {
     this.authenticationService
-      .updatePassword (this.user)
+      .updatePassword (user)
       .subscribe (
         (data) => {
           this.authenticationService
-            .login(this.user.email, this.user.password)
+            .login(user.email, user.password)
             .subscribe((succ) => {
               this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
               this.router.navigate(['my-insurance']);
