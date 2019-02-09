@@ -1,8 +1,8 @@
 import { HttpClient }         from '@angular/common/http';
 import { Injectable }         from '@angular/core';
-import { Observable }         from 'rxjs';
+import { Observable, forkJoin }         from 'rxjs';
 import { environment }        from '../../../environments/environment';
-import { BillingDataService } from './data-services/billing-data.service';
+import { BillingDataService } from '../data-services/billing-data.service';
 
 
 @Injectable({
@@ -16,6 +16,24 @@ export class BillingDetailsService {
     private http:               HttpClient,
     private billingDataService: BillingDataService
   ) {}
+
+
+  getAllDetailsByPolicy(policyNumber: string){
+    forkJoin(
+      this.getCurrentBillByPolicy(policyNumber),
+      this.getScheduledBillsByPolicy(policyNumber),
+      this.getHistoryBillsByPolicy(policyNumber),
+      this.getPendingChecksByPolicy(policyNumber),
+    ).subscribe(([billingResponse, scheduledBills, historyResponse, pendingCheckPayments]) => {
+       let result = [    
+           { billingDetails:       {...billingResponse}},
+           { billingHistory:       historyResponse},
+           { scheduledBills:       scheduledBills },
+           { pendingCheckPayments: pendingCheckPayments }
+       ]
+       this.billingDataService.updateBillingDetails({...result});
+    });
+  }
 
 
   getCurrentBillByPolicy(policyNumber: string){

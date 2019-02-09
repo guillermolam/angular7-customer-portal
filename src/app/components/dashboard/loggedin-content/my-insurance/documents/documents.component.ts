@@ -1,3 +1,5 @@
+import { DocumentsDataService } from './../../../../../_services/data-services/documents-data.service';
+import { StorageServiceObservablesService } from './../../../../../_services/storage-service-observables/storage-service-observables.service';
 import { MdbTablePaginationComponent, 
         MdbTableService }           from 'angular-bootstrap-md';
 import { Component, OnInit,
@@ -13,6 +15,7 @@ import { saveAs }                   from 'file-saver';
 import { User }                     from '../../../../../_models/user';
 import { UserService }              from '../../../../../_services/user.service';
 import { WalletCardService }        from '../../../../../_services/_iam/wallet-card.service';
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -33,11 +36,12 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   filterType:                       string = 'all-docs';
   filterName:                       string = 'All Documents';
   loading:                          boolean = false;
-  policyId:                         number;
+  policyId:                         string;
   policyDetails:                    any;
   previous:                         any = [];
   showNoDocuments:                  boolean = false;
   user:                             any;
+  documentsData:                    any = [];
 
   /**
    *
@@ -55,6 +59,8 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
     private policyDetailsService:   PolicyDetailsService,
     private userService:            UserService,
     private walletCardService:      WalletCardService,
+    private storageServiceObservablesService: StorageServiceObservablesService,
+    private documentsDataService:   DocumentsDataService
     ) {}
 
   asALink(url): void {
@@ -122,8 +128,8 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
     this.lastItemIndex =      data.last;
   }
 
-  showDocuments(policyResponse): boolean{
-    return policyResponse.documentsDetails.length !== 0;
+  showDocuments(documentsDetails): boolean{
+    return documentsDetails.length !== 0;
   }
 
   ngAfterViewInit() {
@@ -151,12 +157,17 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-      this.policyDataService.$policyDetails
-      .subscribe((policyResponse) => {
-        this.policyDetails = policyResponse;
+      forkJoin(
+        this.policyDetailsService.getDocumentsByPolicy(this.policyId),
+        this.policyDetailsService.getPolicyDetailsByNumber(this.policyId)
+      ).subscribe(([documentResponse,policyResponse])=>{
+        this.documentsData  = documentResponse;
+        this.policyDetails  = policyResponse;
+        this.loading = false;
+      },
+      (err)=>{
+
       });
     });
-
-    this.loading = false;
   }
 }
