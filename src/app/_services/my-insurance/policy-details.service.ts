@@ -4,36 +4,35 @@ import { Injectable } from '@angular/core';
 import { Observable, forkJoin, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { BillingDetailsService } from './billing-details.service';
-import { PolicyDataService } from './data-services/policy-data.service';
+import { PolicyDataService } from '../data-services/policy-data.service';
 import { environment } from '../../../environments/environment';
 
 
 @Injectable()
 export class PolicyDetailsService {
 
-  private policyBillingDataAll:     any[] = [];
   // private backendUrl:               string = environment.backend_server_pp;
 
   constructor(
     private http:                   HttpClient,
     private policyDataService:      PolicyDataService,
-    private dashboardDataService: DashboardDataService,
     private billingDetailsService:  BillingDetailsService
   ) { }
 
   getPolicyDetailsByEmail(email: string){
+    let policyBillingDataAll:     any[] = [];
     // const url = `${this.backendUrl}/personal-policies/${email}`;
     const url = `${environment.backend_server_url_policy}/${email}`;
     return this.http.get(url).pipe(map((policyResponse: any[]) => {
       policyResponse.forEach((policy) => {
           this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber)
         .subscribe((billingResponse) => {
-          this.policyBillingDataAll.push(...[Object.assign(
+          policyBillingDataAll.push(...[Object.assign(
             policy,
             { billingDetails:       {...billingResponse}})]);
         });
       });
-      this.dashboardDataService.updateDashboardDetails(this.policyBillingDataAll);
+      this.policyDataService.updatePolicyDetails(policyBillingDataAll);
     })
   );
 }

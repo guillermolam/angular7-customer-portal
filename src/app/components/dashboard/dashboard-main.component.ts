@@ -4,7 +4,6 @@ import { AuthenticationService }              from './../../_services/_iam/authe
 import { BillingDetailsService }              from './../../_services/my-insurance/billing-details.service';
 import { ClaimsDataService }                  from './../../_services/_claims/claims-data.service';
 import { ClaimsService }                      from './../../_services/_claims/claims.service';
-import { PolicyDataService }                  from '../../_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }               from './../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }   from './../../_services/storage-service-observables/storage-service-observables.service';
 import { UserService }                        from './../../_services/user.service';
@@ -25,7 +24,6 @@ export class DashboardMainComponent implements OnInit {
     private authenticationService:            AuthenticationService,
     private claimsService:                    ClaimsService,
     private claimsDataService:                ClaimsDataService,
-    private policyDataService:                PolicyDataService,
     private policyDetailsService:             PolicyDetailsService,
     private router:                           Router,
     private storageService:                   StorageServiceObservablesService,
@@ -36,8 +34,6 @@ export class DashboardMainComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.loading = true;
-
     if (this.router.url === '/my-insurance') {
       this.reportClaim = true;
       this.showAlert   = true;

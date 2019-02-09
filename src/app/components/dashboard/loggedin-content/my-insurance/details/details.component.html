@@ -1,5 +1,4 @@
 <mapfre-loading *ngIf="loading"></mapfre-loading>
-
 <ng-container *ngFor="let policy of policyDetails">
   <ng-container *ngIf="policy.policyType.toUpperCase() == 'AUTO' && !loading ">
     <mapfre-card 
@@ -12,6 +11,7 @@
   </ng-container>
    
   <ng-container *ngIf="policy.policyType.toUpperCase() == 'HOME'  && !loading ">
+
     <mapfre-card 
       [singleCard]="false"
       [additionalClasses]="'policy-details property details'">
