@@ -9,6 +9,7 @@ import { PolicyDetailsService }         from '../../../../../../_services/my-ins
 import { StorageServiceObservablesService }
                                         from '../../../../../../_services/storage-service-observables/storage-service-observables.service';
 import * as isEqual                     from 'lodash.isequal';
+import { ValidateAddressService } from '../../../../../../_services/change-address/validate-address.service';
 
 @Component({
   selector: 'app-details-car',
@@ -41,7 +42,8 @@ export class DetailsCarComponent implements OnInit {
     private storageService:             StorageServiceObservablesService,
     private policyDataService:          PolicyDataService,
     private policyDetailsService:       PolicyDetailsService,
-    private googlePlaceService:         GetGooglePlaceService
+    private googlePlaceService:         GetGooglePlaceService,
+    private validateAddressService:     ValidateAddressService
   ) {
    }
 
@@ -74,7 +76,16 @@ export class DetailsCarComponent implements OnInit {
   }
 
   getMailingOrResidentialAddress(updateAddress){
-    this.googlePlaceService.updateAddress(updateAddress);
+    const address = {
+      streetName: updateAddress.streetName,
+      city: updateAddress.city,
+      state: updateAddress.stateCode,
+      zipCode: {
+        code: updateAddress.zipCode.code
+      }
+    }
+    this.validateAddressService.setAddress(address);
+    this.googlePlaceService.updateAddress(address);
   }
 
   getAddress(a: string[]): SafeUrl {
