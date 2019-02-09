@@ -98,7 +98,7 @@ export class ChangeAddressComponent implements OnInit {
 
   residental(policyid) {
 
-    console.log(this.getGooglePlaceService, this.addressInput);
+    //console.log(this.getGooglePlaceService, this.addressInput);
       let validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
 
       if(validateAddress){

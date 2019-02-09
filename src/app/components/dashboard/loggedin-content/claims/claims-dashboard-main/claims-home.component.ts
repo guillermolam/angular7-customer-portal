@@ -20,7 +20,6 @@ export class ClaimsHomeComponent implements OnInit {
     this.claimsDataService.$claimsList
     .subscribe( (claimsList) => {
       this.claims =                 claimsList;
-      console.log(this.claims);
     });
   }
 }

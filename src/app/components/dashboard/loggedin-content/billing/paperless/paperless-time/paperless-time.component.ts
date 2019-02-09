@@ -118,7 +118,6 @@ export class PaperlessFirstTimeComponent implements OnInit {
           this.reSync(email);
         },
         (e) => {
-          console.log('there was an error', e)
           this.alertService.error(`There was a problem processing your request. Please try again later.`);
         });
     }

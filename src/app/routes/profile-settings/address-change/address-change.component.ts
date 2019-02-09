@@ -33,7 +33,6 @@ export class AddressChangeComponent implements OnInit {
 
     let streetAddress: any = [];
     this.address = this.validateAddressService.getAddress();
-    console.log(this.address, 'address');
     streetAddress = this.address.streetName.split('|');
     this.inputs = this.service.getInputs('',`${streetAddress[0]}, ${this.address.city}, ${this.address.state}, USA`,streetAddress[1] || '');
     

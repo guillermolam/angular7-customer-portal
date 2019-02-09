@@ -36,7 +36,6 @@ export class MyInsuranceMainComponent implements OnInit {
   ngOnInit() {
     this.policyDataService.$policyDetails
     .subscribe((policyResponse) => {
-      console.log('before sort',policyResponse)
       this.policyResponse =       policyResponse.sort((policy) => {
         const type =              policy.policyType.toUpperCase();
         if ( type == 'INACTIVE' ) {
@@ -49,7 +48,6 @@ export class MyInsuranceMainComponent implements OnInit {
           return -1;
         }
       });
-      console.log('after sort', this.policyResponse )
     });
 
     this.userService.$user
