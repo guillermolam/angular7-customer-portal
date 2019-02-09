@@ -1,6 +1,6 @@
 <mapfre-loading *ngIf="loading"></mapfre-loading>
-  <ng-container *ngFor="let policy of policyDetails  && !loading ">
-  <ng-container *ngIf="policy.policynumber.policynumber === policyId">
+  <ng-container *ngFor="let policy of policyDetails">
+  <ng-container *ngIf="policy.policynumber.policynumber === policyId && !loading ">
   <ng-container *ngIf="policy?.policyType.toUpperCase() == 'AUTO'">
     <mapfre-card 
       [singleCard]="false"
