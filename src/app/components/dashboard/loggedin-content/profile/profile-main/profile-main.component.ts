@@ -34,12 +34,11 @@ export class ProfileMainComponent implements OnInit {
     //   this.user = userResponse;
     // });
     this.loading = true;
-    this.userDetailsService.getUserDetailsByEmail().subscribe(()=>{
-      this.userDataService.$userData.subscribe((userData)=>{
-        this.user = userData;
-        this.loading = false;
-      });
-    })
+
+    this.userDataService.$userData.subscribe((userData)=>{
+      this.user = userData;
+      this.loading = false;
+    });
     
     this.profileConfirmModalService.$removeAccount
     .subscribe( (removeAccount) => {
