@@ -3,6 +3,9 @@ import { Component, enableProdMode, OnInit }  from '@angular/core';
 import { TranslateService }           from '@ngx-translate/core';
 import * as _                         from 'underscore';
 import { Language }                   from 'mapfre-design-library';
+import { environment }                from './../environments/environment';
+import { ErrorServiceService }        from './_services/error-service/error-service.service';
+
 
 @Component({
   selector: 'mapfre-root',
@@ -14,15 +17,14 @@ export class AppComponent implements OnInit {
   checkThisRoute:           boolean = false;
 
   constructor(
-    public translate:       TranslateService,
     public _languages:      Language,
     private activeRoute:    ActivatedRoute,
-    private router:         Router
+    private errorServices:  ErrorServiceService,
+    private router:         Router,
+    public translate:       TranslateService,
   ) {
      this.checkRoute();
   }
-
-  
 
   checkRoute() {
     /* ** ToDo: Create a better loop ** */
@@ -74,6 +76,7 @@ export class AppComponent implements OnInit {
     // if (localStorage.getItem('isLoggedIn') === 'true') {
     //   this.auth.renewTokens();
     // }
+    this.errorServices.noConsolesInProd(environment.production);
   }
 
 }

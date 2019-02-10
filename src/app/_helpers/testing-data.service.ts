@@ -1,18 +1,27 @@
 import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
+import {environment} from '../../environments/environment.doctest.dev';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestingDataService {
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   testDatafunction() {
+    if (environment.production ) {
+      return false;
+    }
     return this.testingPolicyInfol();
   }
 
   testDataClaimsDetail(): any {
+    if (environment.production ) {
+      return false;
+    }
     return [
       {
         "policynumber": {
@@ -257,6 +266,9 @@ export class TestingDataService {
   }
 
   testDataClaimsList(): any {
+    if (environment.production ) {
+      return false;
+    }
     return [
       {
         "description": "IV BACKING UP, COLLIDED WITH OV",
@@ -338,6 +350,9 @@ export class TestingDataService {
   }
 
   testDataClaims(type): any { 
+    if (environment.production ) {
+      return false;
+    }
     if(type == 'list') {
       return this.testDataClaimsList();
     }
@@ -347,6 +362,9 @@ export class TestingDataService {
   }
 
   testBankingInfo(): any {
+    if (environment.production ) {
+      return false;
+    }
     return {
       accountHolderName:"Default",
       accountNumber:{
@@ -369,6 +387,9 @@ export class TestingDataService {
   }
 
   testUserInfo(): any {
+    if (environment.production ) {
+      return false;
+    }
     return {
       address:null,
       email: {
@@ -384,6 +405,9 @@ export class TestingDataService {
   }
 
   testingPolicyInfol(): any {
+    if (environment.production ) {
+      return false;
+    }
     return [
       {
       "email": {

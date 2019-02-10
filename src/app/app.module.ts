@@ -161,6 +161,7 @@ import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-
 import { EmailModalComponent } from './components/forms/dynamic-forms/email-modal/email-modal.component';
 import { DocumentTypePipe } from './_helpers/_pipes/document-type.pipe';
 import { ErrorComponent } from './routes/error/error-pages.component';
+import { ErrorInterceptionService } from './_services/error-service/error-interception.service';
 
 if (environment.production) {
   enableProdMode();
@@ -323,6 +324,8 @@ export function tokenGetter() {
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
+    [ { provide: HTTP_INTERCEPTORS, useClass: 
+      ErrorInterceptionService, multi: true } ],
     AuthGuard,
     SignUpGuard,
     AuthenticationService,
