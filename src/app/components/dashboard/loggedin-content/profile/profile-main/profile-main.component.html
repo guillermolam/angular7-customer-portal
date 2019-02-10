@@ -1,3 +1,7 @@
+ <ng-container *ngIf="loading">
+        <mapfre-loading></mapfre-loading>
+  </ng-container>
+<ng-container *ngIf="!loading">
 <app-profile-confirm-modal [toDo]="'removeAccount'" *ngIf="confirmModal"></app-profile-confirm-modal>
 <div class="padding-left-right margin-bottom mb16">
 <div class="row text-center">
@@ -111,3 +115,4 @@
       </div>
   </div>
 </div>
+</ng-container>

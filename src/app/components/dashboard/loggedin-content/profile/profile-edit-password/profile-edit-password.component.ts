@@ -1,3 +1,4 @@
+import { UserDataService } from './../../../../../_services/data-services/user-data.service';
 import { ActivatedRoute }                         from '@angular/router';
 import { Component, OnInit }                      from '@angular/core';
 import { User }                                   from 'mapfre-design-library';
@@ -22,6 +23,7 @@ export class ProfileEditPasswordComponent implements OnInit {
     private createPasswordService:                CreateNewPasswordFormService,
     private passwordService:                      EditPasswordService,
     private userService:                          UserService,
+    private userDataService:                      UserDataService
   ) {}
 
   whereInTheProcessTitle(): string {
@@ -34,7 +36,14 @@ export class ProfileEditPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.$user.subscribe(
+    // this.userService.$user.subscribe(
+    //   (user) => {
+    //     this.user = user;
+    //   }
+    // );
+
+
+    this.userDataService.$userData.subscribe(
       (user) => {
         this.user = user;
       }
