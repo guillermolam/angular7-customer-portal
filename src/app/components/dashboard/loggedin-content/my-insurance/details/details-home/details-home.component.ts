@@ -3,6 +3,7 @@ import { DomSanitizer, SafeUrl }        from '@angular/platform-browser';
 import { FormGroup }                    from '@angular/forms';
 import { GetGooglePlaceService }        from 'mapfre-design-library';
 import * as isEqual                     from 'lodash.isequal';
+import { ValidateAddressService } from '../../../../../../_services/change-address/validate-address.service';
 
 @Component({
   selector: 'app-details-home',
@@ -31,12 +32,23 @@ export class DetailsHomeComponent implements OnInit {
 
   constructor(
     private sanitizer:                  DomSanitizer,
-    private googlePlaceService:         GetGooglePlaceService
+    private googlePlaceService:         GetGooglePlaceService,
+    private validateAddressService:     ValidateAddressService
+
   ) {
    }
 
-  getMailingOrResidentialAddress(updateAddress){
-    this.googlePlaceService.updateAddress(updateAddress);
+   getMailingOrResidentialAddress(updateAddress){
+    const address = {
+      streetName: updateAddress.streetName,
+      city: updateAddress.city,
+      state: updateAddress.stateCode,
+      zipCode: {
+        code: updateAddress.zipCode.code
+      }
+    }
+    this.validateAddressService.setAddress(address);
+    this.googlePlaceService.updateAddress(address);
   }
 
   getAddress(a: string[]): SafeUrl {

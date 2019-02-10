@@ -1,3 +1,4 @@
+import { UserDataService } from './../../data-services/user-data.service';
 import { UserService } from './../../user.service';
 import { Injectable }               from '@angular/core';
 import { FormBase, TextBox, GetGooglePlaceService }        from 'mapfre-design-library';
@@ -12,12 +13,12 @@ export class CheckingAccountService {
 
   constructor(
     private changeAddressService: ChangeAddressService,
-    private userService:            UserService,
+    private userDataService:            UserDataService,
     private getGooglePlaceService:  GetGooglePlaceService
     ) { }
 
   getInputs(){
-   return this.userService.$user.pipe(map((userResponse)=>{
+   return this.userDataService.$userData.pipe(map((userResponse)=>{
       let streetAddress: any = [];
       this.checkingAccount = userResponse.bankAccountDetails;
       if(this.checkingAccount.accountHolderName){

@@ -1,3 +1,6 @@
+import { UserDataService } from './../../../../../_services/data-services/user-data.service';
+import { StorageServiceObservablesService } from './../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { UserDetailsService } from './../../../../../_services/profile-settings/user-details.service';
 import { UserService } from './../../../../../_services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ProfileConfirmModalService } from '../../../../../_services/profile-settings/profile-confirm-modal.service';
@@ -13,7 +16,9 @@ export class ProfileMainComponent implements OnInit {
 
   constructor(
     private profileConfirmModalService: ProfileConfirmModalService,
-    private userService: UserService
+    private userService: UserService,
+    private userDetailsService: UserDetailsService,
+    private userDataService:    UserDataService
   ) { }
 
   onRemoveAccount() {
@@ -22,12 +27,16 @@ export class ProfileMainComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userService.$user
-    .subscribe( (userResponse) => {
+    // this.userService.$user
+    // .subscribe( (userResponse) => {
     
-      this.user = userResponse;
-    });
+    //   this.user = userResponse;
+    // });
 
+    this.userDataService.$userData.subscribe((userData)=>{
+      this.user = userData;
+    });
+    
     this.profileConfirmModalService.$removeAccount
     .subscribe( (removeAccount) => {
       this.confirmModal = removeAccount;

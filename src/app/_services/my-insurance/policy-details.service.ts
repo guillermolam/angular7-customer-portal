@@ -1,3 +1,4 @@
+import { DocumentsDataService } from './../data-services/documents-data.service';
 import { DashboardDataService } from './../data-services/dashboard-data.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -16,7 +17,8 @@ export class PolicyDetailsService {
   constructor(
     private http:                   HttpClient,
     private policyDataService:      PolicyDataService,
-    private billingDetailsService:  BillingDetailsService
+    private billingDetailsService:  BillingDetailsService,
+    private documentsDataService:  DocumentsDataService
   ) { }
 
   getPolicyDetailsByEmail(email: string){
@@ -36,6 +38,25 @@ export class PolicyDetailsService {
     })
   );
 }
+
+
+// getDocumentsDetailsByEmail(email: string, policyNumber: string){
+//   let documentsData: any;
+//   // const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;
+//   const url = `${environment.backend_server_url_policy}/${email}`;
+//   return this.http.get(url).pipe(map((policyResponse: any[]) => {
+//     policyResponse.forEach((policy) => {
+//       if(policy.policynumber.policynumber === policyNumber){
+//         this.getDocumentsByPolicy(policy.policynumber.policynumber)
+//       .subscribe((documentsResponse) => {
+//         documentsData.push(...documentsResponse);
+//       });
+//       this.documentsDataService.updateDocumentsDetails(documentsData);     
+//     }
+//     });
+//   })
+// );
+// }
 
   getDocumentsByPolicy(policyNumber: string): Observable<any>{
     // const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;

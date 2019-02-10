@@ -1,3 +1,4 @@
+import { UserDataService } from './../../data-services/user-data.service';
 import { UserService } from './../../user.service';
 import { BankAccountService } from './../../profile-settings/bank-account.service';
 import { FakeAccountSettings } from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
@@ -11,12 +12,12 @@ export class EditPhoneService {
   phoneNumber: string;
 
   constructor(
-    private userService: UserService
+    private userDataService: UserDataService
   ) { }
 
   getInputs(){
 
-    return this.userService.$user.pipe(map((userResponse)=>{
+    return this.userDataService.$userData.pipe(map((userResponse)=>{
       this.phoneNumber = userResponse.userDetails.phone ? userResponse.userDetails.phone.number : '';
       const inputs: FormBase<any>[] = [
         new TextBox({

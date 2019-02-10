@@ -14,7 +14,7 @@ export class PolicyDetailsComponent implements OnInit {
   loading:                              boolean = false;
   policyId:                             number;
   policyDetails:                        any;
-
+  policy:                               any;
   constructor(
     private activatedRoute:             ActivatedRoute,
     private policyDataService:          PolicyDataService,
@@ -27,17 +27,13 @@ export class PolicyDetailsComponent implements OnInit {
       this.policyId =                 params['policyid'];
     });
 
-    this.policyDataService.$policyDetails.pipe(
-      map((policyResponse: any) => policyResponse.filter((response) => response.policynumber.policynumber === this.policyId))
-    ).subscribe((policyDetails) => {
-      console.log('details',policyDetails)
-      // this.policyDetails =            policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
-      if(policyDetails){
-        this.policyDetails = policyDetails;
-      }
+    this.policyDataService.$policyDetails.subscribe((policyDetails) => {
+      this.policyDetails = policyDetails;
+      // if(this.policyDetails[0]){
+      //   this.policyDetails = this.policyDetails.filter((response) => response.policynumber.policynumber === this.policyId);
+      // }
       this.loading =                  false;
       // this.validateAddressService.setAddress(this.policyDetails[0].residentialAddress);
     })
-
   }
 }

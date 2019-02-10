@@ -24,12 +24,10 @@ export class MyInsuranceComponent implements OnInit {
     this.policyDetailsService
       .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
       .subscribe(()=>{
-
+        this.loading = false;
       },
       (err)=>{
-        
-      }).add(() => {
-                this.loading = false;
-              });;
+
+      })
   }
 }
