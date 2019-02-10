@@ -13,7 +13,6 @@ import { ProfileConfirmModalService } from '../../../../../_services/profile-set
 export class ProfileMainComponent implements OnInit {
   user: any = {};
   confirmModal: boolean;
-  loading:       boolean;
 
   constructor(
     private profileConfirmModalService: ProfileConfirmModalService,
@@ -33,11 +32,9 @@ export class ProfileMainComponent implements OnInit {
     
     //   this.user = userResponse;
     // });
-    this.loading = true;
 
     this.userDataService.$userData.subscribe((userData)=>{
       this.user = userData;
-      this.loading = false;
     });
     
     this.profileConfirmModalService.$removeAccount

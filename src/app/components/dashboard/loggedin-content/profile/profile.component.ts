@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
 
   showAlert: boolean;
   alertValue: any;
+  loading:       boolean;
 
 
   constructor(
@@ -25,15 +26,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
 
-
-    //can do it better
-    this.alertService.getMessage().subscribe((value)=>{
-      this.alertValue = value;
-    });
-
+    this.loading = true;
 
     this.userDetailsService.getUserDetailsByEmail().subscribe(()=>{
-     
+    this.loading = false;     
     });
 
     // this.router.events.subscribe((event) => {
