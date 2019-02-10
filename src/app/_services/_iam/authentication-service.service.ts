@@ -37,7 +37,7 @@ export class AuthenticationService {
     const
       user =                userObject.$user.source.value,
       // url =                 `https://mdv-doctest:8083/customers/accounts/${user.email}`,
-      url =                 `${environment.backend_server_url_account}/${user.email}`,
+      url =                 `${environment.backend_server_url_account}/${user.userDetails.email.address}`,
       userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
 
     return this.http.put(url, userSendObject, this.serviceHelpers.options)
@@ -50,7 +50,7 @@ export class AuthenticationService {
   createPassword(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.backend_server_url_account}/create/${user.email}`,
+      url =                 `${environment.backend_server_url_account}/create/${user.userDetails.email.address}`,
       userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.serviceHelpers.options);
@@ -148,7 +148,7 @@ export class AuthenticationService {
   verifyUser(userObject): Observable<object> {
     const user =          userObject.$user.source.value,
         userSendObject =  this.serviceHelpers.creatUserObject(user, 'verifyuser'),
-        url =             `${environment.backend_server_url_account}/${user.email}`;
+        url =             `${environment.backend_server_url_account}/${user.userDetails.email.address}`;
 
 
     return this.http
