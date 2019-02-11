@@ -28,12 +28,13 @@ export class ErrorInterceptionService implements HttpInterceptor {
           else {
             status = err.status;
           }
-          if (environment.production) {
-            this.errorRedirectionService.redirect(status);
+          if (environment.production  ) {
+            //this.errorRedirectionService.redirect(status);
           }
           else {
             console.error('errr - not in prod so no redirection',  err.status );
           }
+          console.log('req', req);
           Observable.throw(err); // send data to service which will inform the component of the error and in turn the user
         }
     });

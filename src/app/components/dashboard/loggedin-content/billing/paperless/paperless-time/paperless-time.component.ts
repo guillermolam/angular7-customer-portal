@@ -1,3 +1,4 @@
+import { TestingDataService }       from './../../../../../../_helpers/testing-data.service';
 import { StorageServiceObservablesService } from './../../../../../../_services/storage-service-observables/storage-service-observables.service';
 import { Component, OnInit }        from '@angular/core';
 import { concatMap }                from 'rxjs/operators';
@@ -32,7 +33,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
     private policyDataService:      PolicyDataService,
     private policyDetailsService:   PolicyDetailsService,
     private userService:            UserService,
-    private storageServiceObservablesService: StorageServiceObservablesService
+    private storageServiceObservablesService: StorageServiceObservablesService,
+    private testingDataService:     TestingDataService
   ) {
     this.endEnrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium cancel-enroll modal-dialog',
@@ -71,7 +73,9 @@ export class PaperlessFirstTimeComponent implements OnInit {
     return payOrBill;
   }
 
-  cancel(policyid, where, email): void {
+  cancel(policyid, where): void {
+    const email = this.storageServiceObservablesService.getUserFromStorage();
+
     if ( where == 'e-policy' ) {
       this.paperlessService
       .cancelPaperlessEPolicy(policyid, email)
@@ -110,7 +114,9 @@ export class PaperlessFirstTimeComponent implements OnInit {
     }
   }
 
-  enroll(policyid, where, email): void {
+  enroll(policyid, where): void {
+    const email = this.storageServiceObservablesService.getUserFromStorage();
+
     if ( where == 'e-policy' ) {
       this.paperlessService
       .enrollPaperlessEPolicy(policyid, email)
@@ -190,14 +196,17 @@ export class PaperlessFirstTimeComponent implements OnInit {
 
     this.user = this.storageServiceObservablesService.getUserFromStorage();
 
-    this.policyDetailsService.getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
+    this.policyDetailsService
+    .getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
     .subscribe( (policyInfo) => {
       this.policyInfo = policyInfo;
       // pls do not remove
       // this.firstTimeCheck(this.policyInfo);
-      this.allEPayMethod(policyInfo);
+      // this.allEPayMethod(this.policyInfo);
       this.loading = false;
     });
+
+     
   }
 
 }

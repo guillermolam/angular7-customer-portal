@@ -143,9 +143,10 @@ export class DetailsCarComponent implements OnInit {
   onSubmit(i, e): void {
     const policyInfo =                  this.policy,
           policyId =                    this.policyId,
-          form =                        this.updateMileage;
+          form =                        this.updateMileage,
+          email =                       this.storageService.getUserFromStorage();
     if (this.legalCheckbox) {
-      this.updateMileageById( policyInfo.email.address, policyId, form );
+      this.updateMileageById( policyId, form, email );
     }
   }
 
@@ -155,16 +156,17 @@ export class DetailsCarComponent implements OnInit {
 
   reSyncWithPolicyData(): void {
     this.policyDataService.clear();
+    this.loading = true;
     this.policyDetailsService
     .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
     .subscribe(
-      (success) => {
-        
+      () => {
+        this.loading = false;
       },
     );
   }
 
-  updateMileageById( email, policyId, form ) {
+  updateMileageById( policyId, form, email ) {
     this.alertLoad =                    true;
     const
       successArray =                    [],
