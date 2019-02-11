@@ -27,7 +27,7 @@ export class LoginFormComponent implements OnInit {
             returnUrl:                string;
             rememberMe:               boolean = false;
             user:                     User = {};
-
+            private token:  any;
   constructor(
     private _cookieService:           CookieService,
     private activatedRoute:           ActivatedRoute,
@@ -61,25 +61,28 @@ export class LoginFormComponent implements OnInit {
         .login (this.user.email, this.user.password)
         .subscribe (
           (accessToken) => {
-              // this.validateEmailService.checkActiveEmail(this.user.email, JSON.parse(accessToken).access_token.access_token).subscribe(()=>{
+            this.token
+            this.validateEmailService.checkActiveEmail(this.user.email, JSON.parse(accessToken).access_token.access_token).subscribe(()=>{
               localStorage.setItem('currentUser', accessToken);
               this.router.navigate([`/my-insurance`]);
-          //   },
-          //   (err)=>{
-          //     if (err.status === 400){
-          //       this.router.navigate(['/signup','validate-email']);
-          //     } else if(err.status === 404){
-          //       // this.createUserMongoService.createMongoUser(this.user.email, this.user.password).subscribe(()=>{
+            },
+            (err)=>{
+              if (err.status === 400){
+                this.router.navigate(['/signup','validate-email']);
+              } else if(err.status === 404){
+                this.createUserMongoService.createMongoUser(this.user.email, this.user.password).subscribe(
+                  ()=>{
 
-          //       // }, (err)=>{
+                  }
+                , (err)=>{
 
-          //       // })
-          //       localStorage.setItem('currentUser', accessToken.toString());
-          //       this.alertService.success('Successful Login', true);
-          //       this.router.navigate([`/my-insurance`]);
-          //     }
-          //   }
-          //  )
+                })
+                localStorage.setItem('currentUser', accessToken);
+                this.alertService.success('Successful Login', true);
+                this.router.navigate([`/my-insurance`]);
+              }
+            }
+           )
 
           },
           (err) => {
