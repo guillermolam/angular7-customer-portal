@@ -195,15 +195,24 @@ export class PaperlessFirstTimeComponent implements OnInit {
 
     this.user = this.storageServiceObservablesService.getUserFromStorage();
 
-    this.policyDetailsService
-    .getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
-    .subscribe( (policyInfo) => {
-      this.policyInfo = policyInfo;
-      // pls do not remove
-      // this.firstTimeCheck(this.policyInfo);
-      // this.allEPayMethod(this.policyInfo);
+    this.policyDataService.$policyDetails
+    .subscribe( (policyResponse) => {
+      this.policyInfo  = policyResponse;
       this.loading = false;
+    },
+    (err) => {
+      this.policyDetailsService
+      .getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
+      .subscribe( (policyInfo) => {
+        this.policyInfo = policyInfo;
+        // pls do not remove
+        // this.firstTimeCheck(this.policyInfo);
+        // this.allEPayMethod(this.policyInfo);
+        this.loading = false;
+      });
     });
+
+    
   }
 
 }
