@@ -20,6 +20,9 @@ export class ClaimsHomeComponent implements OnInit {
     this.claimsDataService.$claimsLossDetails
     .subscribe( (claimsLossDetails) => {
       this.claims =                 claimsLossDetails;
+    },
+    (err) => {
+      this.claims =                 false;
     });
   }
 }

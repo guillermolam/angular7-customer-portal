@@ -1,15 +1,15 @@
-import { ModalOptions } from 'mapfre-design-library';
-import { PolicyDetailsService } from './../../../../../_services/my-insurance/policy-details.service';
-import { BillingDetailsService } from './../../../../../_services/my-insurance/billing-details.service';
 import { DomSanitizer }             from '@angular/platform-browser';
 import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
+import { forkJoin }                 from 'rxjs';
+import { ModalOptions }             from 'mapfre-design-library';
 
 import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
 import { PolicyDataService }        from '../../../../../_services/data-services/policy-data.service';
 import { User }                     from '../../../../../_models/user';
 import { UserService }              from '../../../../../_services/user.service';
-import { forkJoin } from 'rxjs';
+import { PolicyDetailsService } from './../../../../../_services/my-insurance/policy-details.service';
+import { BillingDetailsService } from './../../../../../_services/my-insurance/billing-details.service';
 
 @Component({
   selector: 'app-billing',
@@ -87,15 +87,23 @@ export class BillingDetailsComponent implements OnInit {
       this.policyId = params['policyid'];
 
       forkJoin(
-        this.billingDetailsService.getScheduledBillsByPolicy(this.policyId),
         this.billingDetailsService.getHistoryBillsByPolicy(this.policyId),
         this.billingDetailsService.getPendingChecksByPolicy(this.policyId),
-        
-      ).subscribe(([scheduledBills, historyResponse, pendingCheckPayments]) => {  
-        this.billingHistory=       historyResponse;
-        this.scheduledBills=       scheduledBills;
-        this.pendingCheckPayments= pendingCheckPayments;
-        this.loading = false;
+      ).subscribe(([ historyResponse, pendingCheckPayments]) => {
+        this.billingHistory =         historyResponse;
+        this.pendingCheckPayments =   pendingCheckPayments;
+      });
+
+      this.billingDetailsService
+      .getScheduledBillsByPolicy(this.policyId)
+      .subscribe(
+        (scheduledBills) => {
+          this.scheduledBills =         scheduledBills;
+          this.loading =                false;
+        },
+        (err) => {
+          this.scheduledBills =         false;
+          this.loading =                false;
       });
     });
   }

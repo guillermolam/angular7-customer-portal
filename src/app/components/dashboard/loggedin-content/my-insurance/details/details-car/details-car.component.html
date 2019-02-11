@@ -9,7 +9,7 @@
           </h2>
           <p class="section-description">{{ 'POLICY_HOLDER_ONE' | translate}} <a routerLink="/my-insurance/{{policyId}}/documents"  class="underline">{{ 'POLICY_HOLDER_TWO' | translate}}</a> {{ 'POLICY_HOLDER_THREE' | translate}}</p>
           <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy.insured; let i = index">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-5">
+            <div class="col-lg-6 col-md-6 col-sm-4 col-5">
               <h3 class="title vehicle-name">{{ holder['Insured Name'] }}</h3>
             </div>
             

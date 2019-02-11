@@ -1,7 +1,7 @@
 import {Injectable}           from '@angular/core';
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest}
                               from '@angular/common/http';
-import { HttpErrorResponse }  from "@angular/common/http";
+import { HttpErrorResponse }  from '@angular/common/http';
 import { Observable }         from 'rxjs/Observable';
 import { ErrorRedirectionService } from './error-redirection.service';
 import { environment }        from '../../../environments/environment.prod';
@@ -20,7 +20,7 @@ export class ErrorInterceptionService implements HttpInterceptor {
     return next.handle(req).do (
       (event) => {},
       (err) => {
-        if(err instanceof HttpErrorResponse) { 
+        if (err instanceof HttpErrorResponse) {
           let status;
           if ( err.status == 0 || err.status == 400 || err.status == 404 ) {
             status = '500';
@@ -29,13 +29,16 @@ export class ErrorInterceptionService implements HttpInterceptor {
             status = err.status;
           }
           if (environment.production  ) {
-            //this.errorRedirectionService.redirect(status);
+            if ( req.url.includes('personal-policy-api') && err.status === 500 ) {
+              //this.errorRedirectionService.redirect(status);
+            }
+            else {
+              return true;
+            }
           }
           else {
             console.error('errr - not in prod so no redirection',  err.status );
           }
-          console.log('req', req);
-          Observable.throw(err); // send data to service which will inform the component of the error and in turn the user
         }
     });
   }
