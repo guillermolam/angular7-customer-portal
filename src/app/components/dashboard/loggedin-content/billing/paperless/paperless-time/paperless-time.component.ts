@@ -204,8 +204,6 @@ export class PaperlessFirstTimeComponent implements OnInit {
       // this.allEPayMethod(this.policyInfo);
       this.loading = false;
     });
-
-     
   }
 
 }

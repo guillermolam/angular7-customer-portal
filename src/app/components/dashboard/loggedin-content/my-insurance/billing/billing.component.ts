@@ -22,13 +22,13 @@ export class BillingDetailsComponent implements OnInit {
   loading:                  boolean;
   policyId:                 string;
   user:                     any;
-  billingData:            any;
-  policyDetails:          any;
-  currentBill:        any;
-  billingHistory:      any;
-  scheduledBills:       any;
-  pendingCheckPayments: any;
-  payNowModal:          any;
+  billingData:              any;
+  policyDetails:            any;
+  currentBill:              any;
+  billingHistory:           any;
+  scheduledBills:           any;
+  pendingCheckPayments:     any;
+  payNowModal:              any;
 
   constructor(
     private activatedRoute: ActivatedRoute,

@@ -46,36 +46,40 @@
             <div>{{ 'CONTACT_YOUR_AGENTS' | translate }}</div>
           </h2>
           <div class="font-small margin-bottom mb8">{{ 'FOR_POLICY_CHANGES_COVERAGES_DISCOUTS' | translate }}</div>
-
-          <ng-container *ngFor="let policy of user; let key = index ">
-            <!-- <ng-container *ngIf="policy?.agent.agentName[key] == policy?.agent.agentName[key +1] "> -->
-              <div class="agent-info  margin-bottom mb32">
-                  <div class="row agent-name margin-bottom mb8">
-                    <div class="col"> 
-                      {{ policy?.agent.agentName | titlecase }}
+          <ng-container *ngIf="loading">
+            <mapfre-loading></mapfre-loading>
+          </ng-container>
+          <div *ngIf="!loading">
+            <ng-container *ngFor="let policy of policies; let key = index ">
+              <!-- <ng-container *ngIf="policy?.agent.agentName[key] == policy?.agent.agentName[key +1] "> -->
+                <div class="agent-info  margin-bottom mb32">
+                    <div class="row agent-name margin-bottom mb8">
+                      <div class="col"> 
+                        {{ policy?.agent.agentName | titlecase }}
+                      </div>
+                    </div>
+                    <div class="row policy-info margin-bottom mb8">
+                      <div class="col">
+                          {{ policy?.policyType | translate }} &mdash; {{ policy?.policynumber.policynumber }}
+                      </div>
+                    </div>
+                    <div class="row agent-address margin-bottom mb8">
+                      <div class="col">
+                          {{ policy?.agent.address.streetName  | titlecase }} {{ policy?.agent.address.city | titlecase }} {{ policy?.agent.address.state | fullstateToAbv  }}, {{policy?.agent.address.zipCode.code}}
+                      </div>
+                    </div>
+                    <div class="row agent-phone margin-bottom mb8">
+                      <div class="col col-description">
+                          <strong>{{ 'PHONE' | translate }}:</strong>
+                      </div>
+                      <div class="col col-info">
+                          <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline blue-link">{{ policy?.agent.agentPhone.number }}</a>
+                      </div>
                     </div>
                   </div>
-                  <div class="row policy-info margin-bottom mb8">
-                    <div class="col">
-                        {{ policy?.policyType | translate }} &mdash; {{ policy?.policynumber.policynumber }}
-                    </div>
-                  </div>
-                  <div class="row agent-address margin-bottom mb8">
-                    <div class="col">
-                        {{ policy?.agent.address.streetName  | titlecase }} {{ policy?.agent.address.city | titlecase }} {{ policy?.agent.address.state | fullstateToAbv  }}, {{policy?.agent.address.zipCode.code}}
-                    </div>
-                  </div>
-                  <div class="row agent-phone margin-bottom mb8">
-                    <div class="col col-description">
-                        <strong>{{ 'PHONE' | translate }}:</strong>
-                    </div>
-                    <div class="col col-info">
-                        <a href="tel:{{policy?.agent.agentPhone.number}}" class="mapfre link underline blue-link">{{ policy?.agent.agentPhone.number }}</a>
-                    </div>
-                  </div>
-                </div>
-              <!--</ng-container>-->
-            </ng-container>
+                <!--</ng-container>-->
+              </ng-container>
+          </div>
         </div>
       </div>
     </div>
