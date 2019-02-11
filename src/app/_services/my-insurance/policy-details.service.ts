@@ -33,7 +33,6 @@ export class PolicyDetailsService {
             { billingDetails:       {...billingResponse}})]);
         });
       });
-      console.log('policyBillingDataAll',policyBillingDataAll);
       this.policyDataService.updatePolicyDetails(policyBillingDataAll);
     })
   );
