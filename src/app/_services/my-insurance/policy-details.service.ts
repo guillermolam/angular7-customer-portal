@@ -23,7 +23,6 @@ export class PolicyDetailsService {
 
   getPolicyDetailsByEmail(email: string){
     let policyBillingDataAll:     any[] = [];
-    // const url = `${this.backendUrl}/personal-policies/${email}`;
     const url = `${environment.backend_server_url_policy}/${email}`;
     return this.http.get(url).pipe(map((policyResponse: any[]) => {
       policyResponse.forEach((policy) => {
@@ -39,7 +38,6 @@ export class PolicyDetailsService {
     })
   );
 }
-
 
 // getDocumentsDetailsByEmail(email: string, policyNumber: string){
 //   let documentsData: any;
@@ -98,7 +96,5 @@ export class PolicyDetailsService {
     const url = `${environment.backend_server_url_policy}/${email}/${policyNumber}/add-policy`;    
     return this.http.post(url,{});
   }
-  
-
 
 }

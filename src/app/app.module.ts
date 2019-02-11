@@ -324,8 +324,8 @@ export function tokenGetter() {
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
-    // [ { provide: HTTP_INTERCEPTORS, useClass: 
-    //   ErrorInterceptionService, multi: true } ],
+     [ { provide: HTTP_INTERCEPTORS, useClass: 
+       ErrorInterceptionService, multi: true } ],
     AuthGuard,
     SignUpGuard,
     AuthenticationService,
