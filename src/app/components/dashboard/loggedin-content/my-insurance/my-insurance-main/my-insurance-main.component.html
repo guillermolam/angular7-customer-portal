@@ -50,7 +50,7 @@
                 </div>
                 <div class="policy-info">
                   <div class="policy-info-content">
-                    {{ policy.property[0].address.streetName }}, {{ policy.property[0].address.city }}, {{ policy.property[0].address.state }}, {{ policy.property[0].address.zipCode.code }}
+                    {{ policy.property[0].address.streetName }}, {{ policy.property[0].address.city }}, {{ policy.property[0].address.state | fullstateToAbv }}, {{ policy.property[0].address.zipCode.code }}
                   </div>
                 </div>
               </div>

@@ -77,11 +77,10 @@ export class BillingDetailsComponent implements OnInit {
     });
 
     this.loading = true;
-    
+
     this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
       this.policyDetails = policyResponse;
-    })
-
+    });
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];

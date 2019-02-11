@@ -11,8 +11,7 @@
               {{ claim.policyNumber.policynumber }}
           </ng-container>
           <ng-container *ngIf="type == 'details'">
-              <a [routerLink]="['opps', '502']"><strong>{{ claim.policyNumber.policynumber }}</strong></a>
-<!--              <a [routerLink]="['/my-insurance', claim.policyid, 'details']"><strong>{{ claim.policyNumber.policynumber }}</strong></a>-->
+              <a [routerLink]="['/my-insurance',  claim.policyNumber.policynumber, 'details']"><strong>{{ claim.policyNumber.policynumber }}</strong></a>
           </ng-container>
       </div> 
       <div class="date-loss">
@@ -22,9 +21,7 @@
   </div> 
   <ng-container *ngIf="type != 'details'">
     <div class="col-12  no-padding">
-    
-      <a [routerLink]="['opps', '502']" class="d-block claim-link margin-bottom mb32 padding-right pr16 margin-top mt16 waves-effect waves-red" mdbWavesEffect>
-      <!--<a [routerLink]="['/claims', claim.fileNumber.fileNumber, 'details']" class="d-block claim-link margin-bottom mb32 padding-right pr16 margin-top mt16 waves-effect waves-red" mdbWavesEffect>-->
+      <a [routerLink]="['/claims', claim.fileNumber.fileNumber, 'details']" class="d-block claim-link margin-bottom mb32 padding-right pr16 margin-top mt16 waves-effect waves-red" mdbWavesEffect>
         {{ 'CLAIM_DETAILS' | translate }}&nbsp;<svg-arror-right-svg></svg-arror-right-svg>
       </a>
     </div>
