@@ -57,7 +57,7 @@ export class AddPolicyComponent implements OnInit {
               );
             }
             else {
-              this.router.navigate(['signup', 'create-password']);
+              this.router.navigate(['signup', 'createnewpassword']);
             }
           },
           (err) => {

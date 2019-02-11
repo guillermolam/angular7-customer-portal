@@ -7,12 +7,12 @@
 </header>
 <section class="details-content row">
   <div class="col1 col">
-    <ng-container *ngIf="claims?.length != 0">
+    <!-- <ng-container *ngIf="claims?.length != 0"> -->
       <ng-container *ngFor="let claim of claims">
-        <ng-container *ngIf="claim.propertyOrAutoIndicator == 'Auto' ">
+        <ng-container *ngIf="claim?.propertyOrAutoIndicator.toLowerCase() == 'auto' ">
           <app-claims-home-car [claim]="claim"></app-claims-home-car>
         </ng-container>
-        <ng-container *ngIf="claim.propertyOrAutoIndicator == 'Property' ">
+        <ng-container *ngIf="claim?.propertyOrAutoIndicator.toLowerCase() == 'property' ">
           <app-claims-home-property [claim]="claim"></app-claims-home-property>
         </ng-container>
       </ng-container>
@@ -21,7 +21,7 @@
           <app-claims-report></app-claims-report>
         </div>
       </div>
-    </ng-container>
+    
     <ng-container *ngIf="claims?.length == 0">  
         <app-no-claims></app-no-claims>
     </ng-container>

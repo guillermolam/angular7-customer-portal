@@ -1,27 +1,30 @@
+    <ng-container *ngIf="loading">
+        <mapfre-loading></mapfre-loading>
+      </ng-container> 
+    <ng-container *ngFor="let policy of policyDetails">
+  <ng-container *ngIf="policy?.policynumber.policynumber === policyId && !loading">
     <mapfre-card 
       [singleCard]="false"
-      [additionalClasses]="'policy-details documents details ' + policyDetails?.policyType">
+      [additionalClasses]="'policy-details documents details ' + policy?.policyType">
       <header class="margin-bottom mb16 no-margins-hug hug-header">
         <div class="policy-background">
-          <div class="car" *ngIf="policyDetails?.policyType == 'AUTO'"></div>
-          <div class="house" *ngIf="policyDetails?.policyType == 'HOME'"></div>
+          <div class="car" *ngIf="policy?.policyType == 'AUTO'"></div>
+          <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
         </div>
         <div class="type-title">
           <h1 class="title">
-            {{ policyDetails?.policyType | translate}} &mdash; {{ policyDetails?.policynumber.policynumber }} 
+            {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
             <small>
-            <span [ngClass]="{'green-color': policyDetails?.policyStatus === 'ACTIVE', 
-              'red-color': policyDetails?.policyStatus === 'INACTIVE' }">
-              <small>{{policyDetails?.effDate | customDateFormat }} {{ 'TO' | translate }} {{policyDetails?.expDate | customDateFormat }}</small>
+            <span [ngClass]="{'green-color': policy?.policyStatus === 'ACTIVE', 
+              'red-color': policy?.policyStatus === 'INACTIVE' }">
+              <small>{{policy?.effDate | customDateFormat }} {{ 'TO' | translate }} {{policy?.expDate | customDateFormat }}</small>
             </span>
           </small>
           </h1>
         </div>
       </header>
       <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
-      <ng-container *ngIf="loading">
-        <mapfre-loading></mapfre-loading>
-      </ng-container> 
+      
       <ng-container *ngIf="documentsData?.length!==0" >
         <section class="documents-content details-content margin-top mt40 mobile-margins">
           
@@ -41,7 +44,7 @@
               <tbody> 
                 <tr class="row row-content" 
                   *ngFor="let doc of documentsData; let i = index"
-                  (click)="onDownloadDocument(doc.documentId, policyDetails?.policynumber.policynumber, doc.type)"
+                  (click)="onDownloadDocument(doc.documentId, policy?.policynumber.policynumber, doc.type)"
                   >
                     <td class="col  col-type" scope="row">
                         <div class="circle-with-type"> {{ doc.type | documentType }}</div>
@@ -80,3 +83,5 @@
         </section>
       </ng-container>
     </mapfre-card>
+</ng-container> 
+</ng-container> 

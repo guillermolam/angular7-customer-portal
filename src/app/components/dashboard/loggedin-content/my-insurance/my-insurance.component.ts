@@ -19,6 +19,7 @@ export class MyInsuranceComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.loading = true;
 
     this.policyDetailsService
@@ -28,6 +29,6 @@ export class MyInsuranceComponent implements OnInit {
       },
       (err)=>{
 
-      })
+      });
   }
 }

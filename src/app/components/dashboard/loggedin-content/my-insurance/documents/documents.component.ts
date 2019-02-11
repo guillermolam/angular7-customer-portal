@@ -9,7 +9,7 @@ import { ActivatedRoute, Params,
   Router }                          from '@angular/router';
 
 import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
-import { PolicyDataService }        from './../../../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDataService }        from './../../../../../_services/data-services/policy-data.service';
 import { PolicyDetailsService }     from './../../../../../_services/my-insurance/policy-details.service';
 import { saveAs }                   from 'file-saver';
 import { User }                     from '../../../../../_models/user';
@@ -37,7 +37,7 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   filterName:                       string = 'All Documents';
   loading:                          boolean = false;
   policyId:                         string;
-  policyDetails:                    any;
+  policyDetails:                    any = [];
   previous:                         any = [];
   showNoDocuments:                  boolean = false;
   user:                             any;
@@ -148,21 +148,24 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   ngOnInit() {
     // When logging in go a verify user
     // We will need this once the new endpoints are set.
-    this.loading = true;
+    // this.loading = true;
 
     this.userService.$user
     .subscribe( (user) => {
       this.user = user;
     });
 
+    this.loading = true;
+
+    this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
+      this.policyDetails  = policyResponse;      
+    })
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-      forkJoin(
-        this.policyDetailsService.getDocumentsByPolicy(this.policyId),
-        this.policyDetailsService.getPolicyDetailsByNumber(this.policyId)
-      ).subscribe(([documentResponse,policyResponse])=>{
+        this.policyDetailsService.getDocumentsByPolicy(this.policyId)
+      .subscribe((documentResponse)=>{
         this.documentsData  = documentResponse;
-        this.policyDetails  = policyResponse;
         this.loading = false;
       },
       (err)=>{

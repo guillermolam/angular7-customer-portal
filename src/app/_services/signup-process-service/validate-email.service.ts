@@ -14,10 +14,13 @@ export class ValidateEmailService {
   ) {
    }
 
-   checkActiveEmail(email: string){
+   checkActiveEmail(email: string, token: string){
     const url = `${environment.backend_server_url_account}/check-customer?email=${email}`;  
-    return this.http.get(url)
-      .pipe(
+    return this.http.get(url, {
+      headers : {
+        Authorization: `Bearer ${token}`,
+      }
+    }).pipe(
       map((info: any) => info),
       catchError( (error) => throwError(error))
     );

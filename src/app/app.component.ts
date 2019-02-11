@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
     // if (localStorage.getItem('isLoggedIn') === 'true') {
     //   this.auth.renewTokens();
     // }
-    this.errorServices.noConsolesInProd(environment.production);
+    // this.errorServices.noConsolesInProd(environment.production);
   }
 
 }

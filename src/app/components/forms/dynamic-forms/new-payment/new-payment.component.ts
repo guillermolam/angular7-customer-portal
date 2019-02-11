@@ -19,12 +19,13 @@ import { UserService }                from '../../../../_services/user.service';
 export class NewPaymentComponent implements OnInit {
 
   @Input()  inputs:                   FormBase<any>[] = [];
-            bankDetails:              any;
+  @Input()  checkingInfo:             any;
+  @Input()  bankDetails:              any;
+  @Input()  billingDetails:            any;
+            policyDetails:             any;
             checkAmount:              boolean = true;
-            checkingInfo:             any;
             editAccount:              boolean = false;
             showCustomAmount:         boolean = false;
-            policyDetails:            any;
             loading:                  boolean = false;
             newPaymentForm:           FormGroup;
             newPaymentRadioForm:      FormGroup;
@@ -54,7 +55,7 @@ export class NewPaymentComponent implements OnInit {
 
   checkAmountNow(e): void {
     const amount =                  parseInt(e.target.value),
-          minAmount =               this.policyDetails[0].billingDetails[0].minAmountDue;
+          minAmount =               this.billingDetails[0].minAmountDue;
     this.checkAmount =              amount > minAmount && !amount ? true : false;
   }
 
@@ -187,23 +188,30 @@ export class NewPaymentComponent implements OnInit {
       this.storeBankAccount =         bankAccountCheck;
     });
 
-    this.activatedRoute.params
-    .subscribe((params: Params) => {
-      this.policyId =                 params['policyid'];
-      this.policyDataService.$policyDetails
-      .subscribe((policyResponse) => {
-        this.policyDetails =          policyResponse.filter(
-          (response) =>               response.policynumber.policynumber === this.policyId);
-      });
-      this.userService.$user
-      .subscribe((userResponse) => {
-        this.checkingInfo =           userResponse;
-        if (this.checkingInfo.bankAccountDetails.accountHolderName) {
-          this.setValues(this.checkingInfo);
-        }
-        this.bankDetails =            this.checkingInfo.bankAccountDetails;
-      });
-    });
+    if (this.checkingInfo.accountHolderName) {
+      this.setValues(this.checkingInfo);
+    }
+
+    this.bankDetails = this.checkingInfo;
+
+
+    // this.activatedRoute.params
+    // .subscribe((params: Params) => {
+    //   this.policyId =                 params['policyid'];
+    //   this.policyDataService.$policyDetails
+    //   .subscribe((policyResponse) => {
+    //     this.policyDetails =          policyResponse.filter(
+    //       (response) =>               response.policynumber.policynumber === this.policyId);
+    //   });
+    //   this.userService.$user
+    //   .subscribe((userResponse) => {
+    //     this.checkingInfo =           userResponse;
+    //     if (this.checkingInfo.bankAccountDetails.accountHolderName) {
+    //       this.setValues(this.checkingInfo);
+    //     }
+    //     this.bankDetails =            this.checkingInfo.bankAccountDetails;
+    //   });
+    // });
 
     this.getGooglePlaceService.$address
     .subscribe((address) => {

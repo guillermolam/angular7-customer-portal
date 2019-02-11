@@ -51,6 +51,8 @@ export class CreatePasswordFormComponent implements OnInit {
       // this.userService.$user.subscribe((userData)=>{
         this.createPassword(this.userData);
       // });
+    }else if ( this.whereInTheProcess= 'createnewpassword'){
+        this.createNewAccount(this.userData);
     }
     else {
       this.updatePassword();
@@ -58,6 +60,23 @@ export class CreatePasswordFormComponent implements OnInit {
   }
 
   createPassword(userObject): void {
+    userObject.password =           this.createPasswordForm.value.createPassword;
+    this.userService.updateUser(userObject);
+    this.authenticationService
+      .confirmPolicyAndAccount(this.userService)
+      .subscribe (
+        (data) => {
+          // console.log("createPassword");
+          this.router.navigate(['signup', 'validate-email']);
+        },
+        (error) => {
+          // console.log(this.userService, error);
+        }
+      );
+  }
+
+
+  createNewAccount(userObject): void {
     userObject.password =           this.createPasswordForm.value.createPassword;
     this.userService.updateUser(userObject);
     this.authenticationService
@@ -72,6 +91,7 @@ export class CreatePasswordFormComponent implements OnInit {
         }
       );
   }
+
 
   /*updatePassword(): void {
     this.user.password =              this.createPasswordForm.value.createPassword;

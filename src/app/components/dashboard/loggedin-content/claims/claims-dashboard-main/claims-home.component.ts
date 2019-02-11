@@ -17,9 +17,9 @@ export class ClaimsHomeComponent implements OnInit {
 
   ngOnInit() {
     this.loading =                  true;
-    this.claimsDataService.$claimsList
-    .subscribe( (claimsList) => {
-      this.claims =                 claimsList;
+    this.claimsDataService.$claimsLossDetails
+    .subscribe( (claimsLossDetails) => {
+      this.claims =                 claimsLossDetails;
     });
   }
 }

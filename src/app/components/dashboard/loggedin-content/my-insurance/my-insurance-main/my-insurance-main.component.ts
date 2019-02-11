@@ -1,3 +1,5 @@
+import { StorageServiceObservablesService } from './../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { PolicyDetailsService } from './../../../../../_services/my-insurance/policy-details.service';
 import { PolicyDataService } from './../../../../../_services/data-services/policy-data.service';
 import { Component, OnInit }      from '@angular/core';
 import { ModalOptions }           from 'mapfre-design-library';
@@ -13,10 +15,12 @@ export class MyInsuranceMainComponent implements OnInit {
   payNowModal:                    ModalOptions;
   policyResponse:                 any;
   user:                           any;
-
+  loading:                        any;
   constructor(
     private userService:          UserService,
-    private policyDataService:  PolicyDataService
+    private policyDataService:  PolicyDataService,
+    private policyDetailsService: PolicyDetailsService,
+    private storageService: StorageServiceObservablesService
   ) {
     this.payNowModal =  new ModalOptions({
       additionalButtonClasses:    'ghost primary small pay-now-modal-button',
@@ -36,19 +40,31 @@ export class MyInsuranceMainComponent implements OnInit {
   ngOnInit() {
 
         this.policyDataService.$policyDetails.subscribe((policyResponse: any) => {
-          this.policyResponse =       policyResponse.sort((policy) => {
-            const type =              policy.policyType.toUpperCase();
-            if ( type == 'INACTIVE' ) {
-              return 1;
-            }
-            else if ( type == 'CANCELLED' ) {
-              return 0;
-            }
-            else {
-              return -1;
-            }
-          });
+          this.policyResponse =       policyResponse;
         });
+
+        // this.policyDetailsService
+        // .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
+        // .subscribe(()=>{
+        //    this.policyDataService.$policyDetails.subscribe((policyResponse: any) => {
+        //   this.policyResponse =       policyResponse.sort((policy) => {
+        //     const type =              policy.policyType.toUpperCase();
+        //     if ( type == 'INACTIVE' ) {
+        //       return 1;
+        //     }
+        //     else if ( type == 'CANCELLED' ) {
+        //       return 0;
+        //     }
+        //     else {
+        //       return -1;
+        //     }
+        //   });
+        //   this.loading = false;
+        // });
+        // },
+        // (err)=>{
+  
+        // })
 
     this.userService.$user
     .subscribe((user) => {

@@ -24,7 +24,7 @@ export class ClaimsService {
     return this.http.get(url);
   }
 
-  getClaimsDetails(email): Observable<any> {
+  getClaimsLossDetails(email): Observable<any> {
     let url =                     `${environment.backend_server_url_claims}/loss?email=${email}`;
     return this.http.get(url);
   }

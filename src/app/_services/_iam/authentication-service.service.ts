@@ -50,7 +50,7 @@ export class AuthenticationService {
   createPassword(userObject): Observable<any> {
     const
       user =                userObject.$user.source.value,
-      url =                 `${environment.backend_server_url_account}/create/${user.userDetails.email.address}`,
+      url =                 `${environment.backend_server_url_account}/create`,
       userSendObject =      this.serviceHelpers.creatUserObject(user, 'createaccount')
     ;
     return this.http.put(url, userSendObject, this.serviceHelpers.options);
@@ -91,13 +91,7 @@ export class AuthenticationService {
     })
       .pipe(
         map((access_token) => {
-          
-          if (access_token) {
             return JSON.stringify({ username, access_token });
-          }
-          else {
-            return false;
-          }
         }),
         catchError( (error) => throwError('Invalid email/password combination'))
       )

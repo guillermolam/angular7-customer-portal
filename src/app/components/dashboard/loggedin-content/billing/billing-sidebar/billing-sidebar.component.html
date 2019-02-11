@@ -3,7 +3,7 @@
     <h2 class="title margin-bottom mb16">
       {{ 'SAVE_TIME_AND_MONEY' | translate}}
     </h2>
-    <ng-container *ngIf="!policy?.policyFlags.isEft">
+    <ng-container *ngIf="!policy?.policyFlags?.isEft">
       <p class="text-center">{{ 'ENROLL_NOW_COPY' | translate}}</p>
       <div class="paperless row">
         <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 d-table">
@@ -41,7 +41,7 @@
         </div>
       </div>
     </ng-container>
-    <ng-container *ngIf="policy?.policyFlags.isEft">
+    <ng-container *ngIf="policy?.policyFlags?.isEft">
         <div class="paperless row">
           <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 d-table">
             <div class="d-table-cell paperless-icon">
@@ -97,10 +97,10 @@
         <strong>{{ 'QUESTIONS_ABOUT_POLICY' | translate }}</strong>
       </p>
       <p class="no-margin-bottom">
-        {{ policy?.agent.agentName }}
+        {{ policy?.agent?.agentName }}
       </p>
-      <p class="title-case no-margin-bottom">{{ policy?.agent.address.streetName | titlecase }} {{ policy.agent.address.city | titlecase }}, {{ policy.agent.address.state | fullstateToAbv }}, {{ policy.agent.address.zipCode.code }}</p>
-      <p class="no-margin-bottom">{{'PHONE' | translate }}: <a href="tel:{{ policy.agent.agentPhone.number }}" class="underline"> {{ policy.agent.agentPhone.number }}</a></p>
+      <p class="title-case no-margin-bottom">{{ policy?.agent?.address?.streetName | titlecase }} {{ policy?.agent?.address?.city | titlecase }}, {{ policy?.agent?.address?.state | fullstateToAbv }}, {{ policy?.agent?.address?.zipCode?.code }}</p>
+      <p class="no-margin-bottom">{{'PHONE' | translate }}: <a href="tel:{{ policy?.agent?.agentPhone?.number }}" class="underline"> {{ policy?.agent?.agentPhone?.number }}</a></p>
     </div>
   </div>
 </div>

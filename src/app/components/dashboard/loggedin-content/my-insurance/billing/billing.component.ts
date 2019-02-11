@@ -1,11 +1,14 @@
+import { PolicyDetailsService } from './../../../../../_services/my-insurance/policy-details.service';
+import { BillingDetailsService } from './../../../../../_services/my-insurance/billing-details.service';
 import { DomSanitizer }             from '@angular/platform-browser';
 import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 
 import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
-import { PolicyDataService }        from '../../../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDataService }        from '../../../../../_services/data-services/policy-data.service';
 import { User }                     from '../../../../../_models/user';
 import { UserService }              from '../../../../../_services/user.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-billing',
@@ -15,22 +18,29 @@ import { UserService }              from '../../../../../_services/user.service'
 export class BillingDetailsComponent implements OnInit {
   schedualOrHistory:        boolean = true;
   checkBillingVar:          boolean = false;
-  policyId:                 number;
+  loading:                  boolean;
+  policyId:                 string;
   user:                     any;
-  policyDetails:            any;
+  billingData:            any;
+  policyDetails:          any;
+  currentBill:        any;
+  billingHistory:      any;
+  scheduledBills:       any;
+  pendingCheckPayments: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService:    AuthenticationService,
     private policyDataService: PolicyDataService,
+    private policyDetailsService: PolicyDetailsService,
     private sanitizer:      DomSanitizer,
-    private userService:    UserService
+    private userService:    UserService,
+    private billingDetailsService:  BillingDetailsService
   ) { }
 
-  findOutstandingBalance(p): boolean {
+  findOutstandingBalance(billing): boolean {
     let returnBool;
-    const billing = p.billingDetails;
-    if ( billing[0] == undefined || billing[0].outstandingbalance == 0 || billing[0].outstandingbalance == undefined ) {
+    if ( !billing || billing.outstandingbalance == 0 || !billing.outstandingbalance) {
       returnBool = false;
     }
     else {
@@ -54,11 +64,26 @@ export class BillingDetailsComponent implements OnInit {
       this.user = user;
     });
 
+    this.loading = true;
+    
+    this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
+      this.policyDetails = policyResponse;
+    })
+
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-      this.policyDataService.$policyDetails
-      .subscribe((policyResponse) => {
-        this.policyDetails = policyResponse;
+
+      forkJoin(
+        this.billingDetailsService.getScheduledBillsByPolicy(this.policyId),
+        this.billingDetailsService.getHistoryBillsByPolicy(this.policyId),
+        this.billingDetailsService.getPendingChecksByPolicy(this.policyId),
+        
+      ).subscribe(([scheduledBills, historyResponse, pendingCheckPayments]) => {  
+        this.billingHistory=       historyResponse;
+        this.scheduledBills=       scheduledBills;
+        this.pendingCheckPayments= pendingCheckPayments;
+        this.loading = false;
       });
     });
   }

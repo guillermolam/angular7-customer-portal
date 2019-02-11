@@ -53,7 +53,7 @@ export class EditPolicyComponent implements OnInit {
           if (this.router.url==='/my-insurance/edit-policy-details') {
             this.router.navigate(['/my-insurance','validate-policy-rights']);
           }else {
-            this.router.navigate(['signup', 'create-password']);
+            this.router.navigate(['signup', 'createnewpassword']);
           }
         },
         (err) => {

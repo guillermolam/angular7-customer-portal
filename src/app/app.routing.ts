@@ -2,8 +2,17 @@
 import { Routes, RouterModule,  }         from '@angular/router';
 import { NgModule }                       from '@angular/core';
 import { 
-  Error404Component, Error504Component, Error400Component, Error401Component, Error403Component, 
-  Error408Component, Error410Component, Error502Component, Error503Component, Error500Component, ErrorMaintenceComponent 
+  Error404Component, 
+  Error504Component, 
+  Error400Component, 
+  Error401Component, 
+  Error403Component, 
+  Error408Component, 
+  Error410Component, 
+  Error502Component, 
+  Error503Component, 
+  Error500Component, 
+  ErrorMaintenceComponent 
 } 
                                           from 'mapfre-design-library';
 // ---- Guards ----- //
@@ -87,6 +96,7 @@ import { ErrorComponent }                 from './routes/error/error-pages.compo
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword',               component: CreateNewPasswordComponent },
+  { path: 'createnewpassword',               component: CreateNewPasswordComponent },
   { path: 'updatepassword',               component: CreateNewPasswordComponent },
   { path: 'login',                        component: LoginComponent },
   { path: 'opps',                         component: ErrorComponent,
@@ -107,22 +117,22 @@ const appRoutes: Routes = [
   { path: 'signup',                       component: SignupComponent,
     children: [
       { path: '',                         component: SignupProcessComponent },
-      { path: 'add-policy',               component: SignupAddPolicyComponent,    //canActivate: [SignUpGuard] 
+      { path: 'add-policy',               component: SignupAddPolicyComponent,    canActivate: [SignUpGuard] 
       },
-      { path: 'bop',                      component: SignupBopComponent, //canActivate: [SignUpGuard] 
+      { path: 'bop',                      component: SignupBopComponent, canActivate: [SignUpGuard] 
       },
-      { path: 'createpassword',           component: SignupCreatePasswordComponent, //canActivate: [SignUpGuard] 
+      { path: 'createpassword',           component: SignupCreatePasswordComponent, canActivate: [SignUpGuard] 
       },
-      { path: 'edit-policy',              component: SignupEditPolicyComponent, //canActivate: [SignUpGuard] 
+      { path: 'edit-policy',              component: SignupEditPolicyComponent, canActivate: [SignUpGuard] 
       },
-      { path: 'email-in-use',             component: SignupEmailInUseComponent, //canActivate: [SignUpGuard] 
+      { path: 'email-in-use',             component: SignupEmailInUseComponent, canActivate: [SignUpGuard] 
       },
-      { path: 'not-found',                component: SignupNotFoundComponent, //canActivate: [SignUpGuard] 
+      { path: 'not-found',                component: SignupNotFoundComponent, canActivate: [SignUpGuard] 
       },
-      { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent, //canActivate: [SignUpGuard] 
+      { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent, canActivate: [SignUpGuard] 
       },
       {
-        path: 'validate-email', component: ValidateEmailScreenComponent
+        path: 'validate-email', component: ValidateEmailScreenComponent, canActivate: [SignUpGuard]
       }
     ]
   },

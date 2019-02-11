@@ -24,18 +24,22 @@ export class JwtInterceptor implements HttpInterceptor {
     // add authorization header with jwt token if available
     const clientCredToken = this.clientCredentialsTokenService.getToken();
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${currentUser.access_token.access_token}`,
-        },
-      });
-    } else if(clientCredToken){
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${clientCredToken}`,
-        },
-      });
+    const searchString = 'grant_type';
+    if(request.urlWithParams.search(searchString)==-1){
+     if (currentUser) {
+        request = request.clone({
+          setHeaders: {
+            Authorization: `Bearer ${currentUser.access_token.access_token}`,
+          },
+        });
+      } 
+      else if(clientCredToken){
+        request = request.clone({
+          setHeaders: {
+            Authorization: `Bearer ${clientCredToken}`,
+          },
+        });
+      }
     }
 
     return next.handle(request)

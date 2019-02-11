@@ -40,7 +40,7 @@ export class ClaimsDetailComponent implements OnInit {
     this.loading =                  true;
     this.activeRoute.params.subscribe((params: Params) => {
       this.claimid =                params['claimid'];
-      this.claimsDataService.$claimsDetails
+      this.claimsDataService.$claimsLossDetails
       .subscribe( (claimsList) => {
         this.claims =               claimsList.filter((response) => response.LOSS_NUMBER === this.claimid);
         this.loading =              false;

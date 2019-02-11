@@ -7,19 +7,19 @@ import { BehaviorSubject }    from 'rxjs';
 export class ClaimsDataService {
   claimsDetails:              any;
   claimsList:                 any;
-  private claimsDetailsSource = new BehaviorSubject<any>(this.claimsDetails);
+  private claimsLossDetailsSource = new BehaviorSubject<any>(this.claimsDetails);
   private claimsListSource =  new BehaviorSubject<any>(this.claimsList);
-  $claimsDetails =            this.claimsDetailsSource.asObservable();
+  $claimsLossDetails =            this.claimsLossDetailsSource.asObservable();
   $claimsList =               this.claimsListSource.asObservable();
 
   constructor() { }
 
-  updateClaims(type, claims) {
+  updateClaims(claims, type) {
     if (type == 'list') {
       this.claimsListSource.next(claims);
     }
     else if( type == 'details') {
-      this.claimsDetailsSource.next(claims);
+      this.claimsLossDetailsSource.next(claims);
     }
   }
 

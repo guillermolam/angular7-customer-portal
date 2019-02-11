@@ -1,3 +1,4 @@
+import { StorageServiceObservablesService } from './../../../../../../_services/storage-service-observables/storage-service-observables.service';
 import { Component, OnInit }        from '@angular/core';
 import { concatMap }                from 'rxjs/operators';
 import { Observable, of }           from 'rxjs';
@@ -30,7 +31,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
     private paperlessService:       PaperlessService,
     private policyDataService:      PolicyDataService,
     private policyDetailsService:   PolicyDetailsService,
-    private userService:            UserService
+    private userService:            UserService,
+    private storageServiceObservablesService: StorageServiceObservablesService
   ) {
     this.endEnrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium cancel-enroll modal-dialog',
@@ -186,7 +188,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       this.user = userInfo;
     });
 
-    this.policyDataService.$policyDetails.pipe(
+    this.policyDetailsService.getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage()).pipe(
       concatMap((response)=>{
         return of(response);
       })

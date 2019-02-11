@@ -1,9 +1,7 @@
 <ng-container *ngIf="loading">
   <mapfre-loading></mapfre-loading>
 </ng-container>
-
-<ng-container *ngFor="let policy of policyDetails">
-  <ng-container *ngIf="policy.policynumber.policynumber == policyId && !loading">
+  <ng-container *ngIf="!loading">
     <header class="margin-bottom mb16">
       <div class="type-title">
         <h1 class="title">
@@ -16,7 +14,7 @@
     <section class="row policy-details-content">
       <div class="col col1">
         <ng-container *ngIf="(policy.billingDetails | json) != ({} | json)">
-          <app-new-payment-form [inputs]="inputs"></app-new-payment-form>  
+          <app-new-payment-form [inputs]="inputs" [checkingInfo]="checkingInfo" [billingDetails]="billingData"></app-new-payment-form>  
         </ng-container>
         <div class="margin-top mt16 d-table w-100" *ngIf="(policy.billingDetails | json) == ({} | json)">
           <div class="no-payment-svg d-table-cell padding pr16">
@@ -31,6 +29,4 @@
         <app-billing-sidebar [policy]="policy"></app-billing-sidebar>
       </div>
     </section>
-    
   </ng-container>
-</ng-container>

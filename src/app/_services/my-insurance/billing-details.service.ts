@@ -18,7 +18,7 @@ export class BillingDetailsService {
   ) {}
 
 
-  getAllDetailsByPolicy(policyNumber: string){
+  getAllBillingDetailsByPolicy(policyNumber: string){
     forkJoin(
       this.getCurrentBillByPolicy(policyNumber),
       this.getScheduledBillsByPolicy(policyNumber),
