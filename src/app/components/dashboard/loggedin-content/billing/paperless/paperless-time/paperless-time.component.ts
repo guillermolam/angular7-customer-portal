@@ -183,16 +183,15 @@ export class PaperlessFirstTimeComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
 
-    this.userService.$user
-    .subscribe( (userInfo) => {
-      this.user = userInfo;
-    });
+    // this.userService.$user
+    // .subscribe( (userInfo) => {
+    //   this.user = userInfo;
+    // });
 
-    this.policyDetailsService.getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage()).pipe(
-      concatMap((response)=>{
-        return of(response);
-      })
-    ).subscribe( (policyInfo) => {
+    this.user = this.storageServiceObservablesService.getUserFromStorage();
+
+    this.policyDetailsService.getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
+    .subscribe( (policyInfo) => {
       this.policyInfo = policyInfo;
       // pls do not remove
       // this.firstTimeCheck(this.policyInfo);

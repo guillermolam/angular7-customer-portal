@@ -1,3 +1,4 @@
+import { UserDetailsService } from './../../../../../_services/profile-settings/user-details.service';
 import { FormGroup }                          from '@angular/forms';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router }                             from '@angular/router';
@@ -37,7 +38,8 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     private getGooglePlaceService:    GetGooglePlaceService,
     private authenticationService:    AuthenticationService,
     private userService:              UserService,
-    private validateAddressService:   ValidateAddressService
+    private validateAddressService:   ValidateAddressService,
+    private userDetailsService:       UserDetailsService
     ) { }
   
 
@@ -96,18 +98,9 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
       this.bankAccountService
         .addBankAccount(email, bankAccountDetails)
         .subscribe((response) => {
-          this.authenticationService
-          .getUserDetailsByEmail(this.storageService.getUserFromStorage())
-          .subscribe(([userResponse, accountResponse]) => {
-            this.userService.updateUser(
-            {
-              userDetails:          {...userResponse},
-              bankAccountDetails:   {...accountResponse}
-            }
-            );
+            this.userDetailsService.getUserDetailsByEmail().subscribe();
             this.alertService.success('CHECKING_ACCOUNT_INFO_UPDATED');
             this.router.navigate(['/profile']);
-          });
       },
       (err) => {
         this.alertService.error(`ERROR_CHECKING_INFO`);

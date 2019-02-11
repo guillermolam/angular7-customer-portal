@@ -16,14 +16,14 @@
               name="paymentAmount"
               checked
               formControlName="paymentAmount"
-              [value]="policyDetails[0]?.billingDetails[0]?.minAmountDue"
+              [value]="billingDetails[0]?.minAmountDue"
               required="true"
               (change)="OnChangeShowCustomAmountField('min'); setDynamicInputValidation('min')">
             <label class="" for="paymentAmount-minimum">{{ 'MINIMUM_AMOUNT_DUE' | translate }}</label>
           </div>
         </div>
         <div class="col payment-amount text-right">
-          <strong>{{ policyDetails[0]?.billingDetails[0]?.minAmountDue | currency}}</strong>
+          <strong>{{ billingDetails[0]?.minAmountDue | currency}}</strong>
         </div>
       </div>
       <div class="row">
@@ -35,14 +35,14 @@
               id="paymentAmount-max"
               name="paymentAmount"
               formControlName="paymentAmount"
-              [value]="policyDetails[0]?.billingDetails[0].outstandingbalance || 0"
+              [value]="billingDetails[0]?.outstandingbalance || 0"
               required="true"
               (change)="OnChangeShowCustomAmountField('max'); setDynamicInputValidation('max')">
             <label class="" for="paymentAmount-max">{{ 'OUTSTANDING_POLICY_BALANCE' | translate }}</label>
           </div>
         </div>
         <div class="col payment-amount text-right">
-          <strong>{{ policyDetails[0]?.billingDetails[0].outstandingbalance | currency}}</strong>
+          <strong>{{ billingDetails[0]?.outstandingbalance | currency}}</strong>
         </div>
       </div>
       <div class="row">
@@ -82,7 +82,7 @@
             {{ 'NOT_IN_A_VALID_FORMAT' | translate }}
           </div>
           <div class="help-block" *ngIf="!checkAmount && newPaymentRadioForm.controls.otherAmount.touched">
-            {{ 'THIS_AMOUNT_IS_LESS_THAN_YOU_MIN' | translate }} {{policyDetails[0]?.billingDetails[0].minAmountDue | currency}}
+            {{ 'THIS_AMOUNT_IS_LESS_THAN_YOU_MIN' | translate }} {{billingDetails[0]?.minAmountDue | currency}}
           </div>
         </div>
       </div>

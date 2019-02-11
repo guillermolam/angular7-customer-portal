@@ -7,16 +7,16 @@
         <h1 class="title">
             {{ 'MAKE_A_CHECK_PAYMENT' | translate }}
         </h1>
-        <div class="margin-left ml8">{{ policy.policyType | translate}} &mdash; <strong>{{ policy.policynumber.policynumber }}</strong></div>
+        <div class="margin-left ml8">{{ policy?.policyType | translate}} &mdash; <strong>{{ policy?.policynumber.policynumber }}</strong></div>
       </div>
     </header>
 
     <section class="row policy-details-content">
       <div class="col col1">
-        <ng-container *ngIf="(policy.billingDetails | json) != ({} | json)">
+        <ng-container *ngIf="(billingData | json) != ({} | json)">
           <app-new-payment-form [inputs]="inputs" [checkingInfo]="checkingInfo" [billingDetails]="billingData"></app-new-payment-form>  
         </ng-container>
-        <div class="margin-top mt16 d-table w-100" *ngIf="(policy.billingDetails | json) == ({} | json)">
+        <div class="margin-top mt16 d-table w-100" *ngIf="(billingData | json) == ({} | json)">
           <div class="no-payment-svg d-table-cell padding pr16">
             <svg-check-icon-svg></svg-check-icon-svg> 
           </div>

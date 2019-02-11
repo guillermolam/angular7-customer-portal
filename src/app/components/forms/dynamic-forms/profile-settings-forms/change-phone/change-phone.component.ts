@@ -1,3 +1,4 @@
+import { UserDetailsService } from './../../../../../_services/profile-settings/user-details.service';
 import { Component, OnInit, Input }                         from '@angular/core';
 import { FormGroup }                                        from '@angular/forms';
 import { Router }                                           from '@angular/router';
@@ -28,7 +29,8 @@ constructor(
   private router:                       Router,
   private profileConfirmModalService:   ProfileConfirmModalService,
   private storageService:               StorageServiceObservablesService,
-  private userService:                  UserService
+  private userService:                  UserService,
+  private userDetailsService:           UserDetailsService
   ) { }
 
   onCheckDirty() {
@@ -47,16 +49,9 @@ constructor(
     this.changePhoneService
     .addUpdatePhone(this.storageService.getUserFromStorage(), this.phoneNumber)
     .subscribe((response) => {
-      this.authenticationService.getUserDetailsByEmail(this.storageService.getUserFromStorage())
-      .subscribe(([userResponse, accountResponse]) => {
-        this.userService.updateUser(
-        {
-          userDetails:         {...userResponse},
-          bankAccountDetails:  {...accountResponse}}
-        );
+        this.userDetailsService.getUserDetailsByEmail().subscribe();
         this.alertService.success('Phone number succesfully updated',true);
         this.router.navigate(['/profile']);
-      });
     });
   }
 

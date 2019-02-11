@@ -76,11 +76,31 @@
                       </tr>
                       <tr class="border-full grey-border no-border-top">
                         <td colspan="3" class="text-center no-border-top no-padding padding-bottom pb16">
-                          <mapfre-link
-                            additionalClasses="basic primary large btn w-75 mx-auto"
-                            [routerLink]="['/billing/' +  policy?.policynumber.policynumber + '/new-payment/']">
-                            {{ 'MAKE_A_PAYMENT' | translate}}
-                          </mapfre-link>
+                        <mapfre-modal 
+                        [modalOptions]="payNowModal">
+                        <div class="modal-body">
+                          <hr class="margin-bottom mb24 no-margin-top" />
+                          <div class="modal-body-content">
+                            <div class="row text-center margin-top mt16">
+                              <div class="col-md-6 col-sm-12">
+                                  <mapfre-link
+                                    [additionalClasses]="'ghost primary large btn'"
+                                    [routerLink]="['/billing/' +  policy?.policynumber.policynumber + '/new-payment/']">
+                                    {{ 'PAY_BY_CHECK' | translate}}
+                                  </mapfre-link>
+                              </div>
+                              <div class="col-md-6 col-sm-12">
+                                 <a class="mapfre link ghost primary large btn" target="_blank" 
+                                  [href]="'https://www.mapfreinsurance.com/b2cwebapp/view/billing?policyNumber=' + policy.policynumber.policynumber + '&source=makePayment&selectedTabIdx=1&fragments=main&mode=embedded'">
+                                  <span class="link-content"> 
+                                      {{ 'PAY_BY_CREDIT_CARD' | translate}}
+                                  </span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </mapfre-modal>
                         </td>
                       </tr>
                     </tbody>

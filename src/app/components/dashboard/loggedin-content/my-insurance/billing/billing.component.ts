@@ -1,3 +1,4 @@
+import { ModalOptions } from 'mapfre-design-library';
 import { PolicyDetailsService } from './../../../../../_services/my-insurance/policy-details.service';
 import { BillingDetailsService } from './../../../../../_services/my-insurance/billing-details.service';
 import { DomSanitizer }             from '@angular/platform-browser';
@@ -27,6 +28,7 @@ export class BillingDetailsComponent implements OnInit {
   billingHistory:      any;
   scheduledBills:       any;
   pendingCheckPayments: any;
+  payNowModal:          any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -36,7 +38,17 @@ export class BillingDetailsComponent implements OnInit {
     private sanitizer:      DomSanitizer,
     private userService:    UserService,
     private billingDetailsService:  BillingDetailsService
-  ) { }
+  ) {
+    this.payNowModal =  new ModalOptions({
+      additionalButtonClasses:    'basic primary large btn w-75 mx-auto',
+      additionalClasses:          'pay-now-modal  modal-medium modal-dialog center-on-page',
+      buttonCopy:                 'MAKE_A_PAYMENT',
+      modalId:                    'payNow',
+      modalTranslateCopy:         'MODAL_MAKE_A_PAYMENT',
+      size:                       'modal-medium',
+      typeOfModal:                'default'
+    });
+   }
 
   findOutstandingBalance(billing): boolean {
     let returnBool;

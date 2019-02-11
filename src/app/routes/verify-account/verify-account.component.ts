@@ -4,6 +4,8 @@ import { AlertService }             from 'mapfre-design-library';
 import { AuthenticationService }    from '../../_services/_iam/authentication-service.service';
 import { User }                     from '../../_models/user';
 import { UserService }              from '../../_services/user.service';
+import { ClientCredentialsService } from '../../_services/client-credentials/client-credentials.service';
+import { ClientCredentialsTokenService } from '../../_services/client-credentials/client-credentials-token.service';
 
 @Component({
   selector: 'app-verify-account',
@@ -19,6 +21,9 @@ export class VerifyAccountComponent implements OnInit {
     private authService:            AuthenticationService,
     private router:                 Router,
     private userService:            UserService,
+    private clientCredentialsService:   ClientCredentialsService,
+    private clientCredentialsTokenService: ClientCredentialsTokenService
+
   ) { }
 
   validateToken(email: string, token: string) {
@@ -36,20 +41,27 @@ export class VerifyAccountComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.$user.subscribe(
-      (user) => {
-        this.user = user;
-      }
-    );
-    this.activatedRoute.queryParams
-      .subscribe( (params) => {
-        if ( params ) {
-          if ( this.user == undefined ) {
-            this.user = params;
+
+    if(!this.clientCredentialsTokenService.getToken()){
+      this.clientCredentialsService.getToken().subscribe(()=>{
+        this.userService.$user.subscribe(
+          (user) => {
+            this.user = user;
           }
-          return this.validateToken( params.email, params.token );
-        }
-      }
-    );
+        );
+        this.activatedRoute.queryParams
+          .subscribe( (params) => {
+            if ( params ) {
+              if ( this.user == undefined ) {
+                this.user = params;
+              }
+              return this.validateToken( params.email, params.token );
+            }
+          }
+        );
+      });
+    }
+
+ 
   }
 }

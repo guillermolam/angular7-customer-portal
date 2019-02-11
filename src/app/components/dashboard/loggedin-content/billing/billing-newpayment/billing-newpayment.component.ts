@@ -1,3 +1,4 @@
+import { PaymentDataServiceService } from './../../../../../_services/data-services/payment-data-service.service';
 import { PolicyDetailsService } from './../../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService } from './../../../../../_services/storage-service-observables/storage-service-observables.service';
 import { BankAccountService } from './../../../../../_services/profile-settings/bank-account.service';
@@ -27,12 +28,12 @@ export class BillingNewpaymentComponent implements OnInit {
   policyId:                         string;
   user:                             User;
   showMessage:                      boolean = false;
-  policyDetails:                    any;
+  policy:                    any;
   billingData:                      any;
 
 
   constructor(
-    service:                        NewPaymentService,
+    private service:                        NewPaymentService,
     private activatedRoute:         ActivatedRoute,
     private alertService:           AlertService,
     private policyDetailsService:      PolicyDetailsService,
@@ -40,42 +41,28 @@ export class BillingNewpaymentComponent implements OnInit {
     private bankAccountService:     BankAccountService,
     private router:                 Router,
     private userService:            UserService,
-    private storageServiceObservablesService: StorageServiceObservablesService
+    private storageServiceObservablesService: StorageServiceObservablesService,
+    private paymentDataServiceService: PaymentDataServiceService
   ) {
-    this.inputs = service.getInputs();
    }
 
   ngOnInit() {
-    this.loading =                  true;
+     this.loading =                  true;
 
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.policyId =               params['policyid'];
+    this.inputs = this.service.getInputs();
 
-      forkJoin(
-        this.billingDetailsService.getCurrentBillByPolicy(this.policyId),
-        this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage()),
+      this.activatedRoute.params.subscribe((params: Params) => {
+        this.policyId =               params['policyid'];
 
-      ).subscribe(([billingData,userResponse]) => {
-        this.checkingInfo =         userResponse;
-        this.billingData =          billingData;
-        if ( Object.keys(this.billingData[0]).length === 0 ) {
-          this.router.navigate(['my-insurance',this.policyId,'billing' ]);
-        }
-        this.loading =              false;
-      });
-
-
-      // this.policyDataService.$policyDetails
-      // .subscribe((policyResponse) => {
-      //   this.policyDetails =        policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
-        
-       
-      // });
-      this.userService.$user
-      .subscribe((userResponse) => {
-        this.checkingInfo =         userResponse;
-        this.loading =              false;
-      });
+        this.billingDetailsService.getCurrentBillByPolicy(this.policyId).subscribe((billingData)=>{
+          this.billingData = billingData;
+        });
+        this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage()).subscribe((userResponse)=>{
+          this.checkingInfo = userResponse;
+        });
+        this.policyDetailsService.getPolicyDetailsByNumber(this.policyId).subscribe((policyResponse)=>{
+          this.policy = policyResponse;
+        });
     });
   }
 }
