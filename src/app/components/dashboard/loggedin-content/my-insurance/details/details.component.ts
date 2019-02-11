@@ -40,7 +40,7 @@ export class PolicyDetailsComponent implements OnInit {
     this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
       this.policyDetails  = policyResponse;
       this.loading = false;
-    })
+    });
 
     // this.policyDataService.$policyDetails.subscribe((policyDetails) => {
     //   this.policyDetails = policyDetails;

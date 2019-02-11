@@ -19,16 +19,24 @@ export class ContactScreenComponent implements OnInit {
     private policyDataService:    PolicyDataService,
     private policyDetailsService: PolicyDetailsService,
     private storageService:       StorageServiceObservablesService,
-    private userService:          UserService,
   ) { }
 
   ngOnInit() {
     this.loading = true;
-    this.policyDetailsService
-      .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
-      .subscribe((policyDetails) => {
-        this.policies = policyDetails;
+    this.policyDataService.$policyDetails
+    .subscribe(
+      (policyResponse) => {
+        this.policies  = policyResponse;
         this.loading = false;
-      });
+      },
+      (err) => {
+        this.policyDetailsService
+        .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
+        .subscribe( (policyInfo) => {
+          this.policies = policyInfo;
+          this.loading = false;
+        });
+      }
+    );
   }
 }

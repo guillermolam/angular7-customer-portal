@@ -182,13 +182,10 @@ export class DetailsCarComponent implements OnInit {
     this.policy.vehicle.forEach((vehicleDetail, i) => {
       const
         formController =                  form.controls.groups,
-        vehicleId =                       vehicleDetail.vehicleIdentificationNumber.Id,
-        odometerReading =                 vehicleDetail.odometerReading;
-      
-        console.log( 'this.policy.vehicle', i, vehicleDetail, vehicleDetail.odometerReading );
+        vehicleId =                       vehicleDetail.vehicleIdentificationNumber.Id;
       
       this.mileageService
-        .updateMileage( email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`], odometerReading )
+        .updateMileage( email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`], vehicleDetail.odometerReading )
         .subscribe(
           (success) => {
             successArray.splice(i, 0, true );
