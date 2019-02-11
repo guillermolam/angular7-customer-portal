@@ -70,6 +70,9 @@ export class LoginFormComponent implements OnInit {
               if (err.status === 400){
                 this.router.navigate(['/signup','validate-email']);
               } else if(err.status === 404){
+                localStorage.setItem('currentUser', accessToken);
+                this.alertService.success('Successful Login', true);
+                this.router.navigate([`/my-insurance`]);
                 this.createUserMongoService.createMongoUser(this.user.email, this.user.password).subscribe(
                   ()=>{
 
@@ -77,9 +80,6 @@ export class LoginFormComponent implements OnInit {
                 , (err)=>{
 
                 })
-                localStorage.setItem('currentUser', accessToken);
-                this.alertService.success('Successful Login', true);
-                this.router.navigate([`/my-insurance`]);
               }
             }
            )
