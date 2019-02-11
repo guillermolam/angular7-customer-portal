@@ -12,23 +12,13 @@ import { StorageServiceObservablesService } from './../../_services/storage-serv
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  policies:                       any;
   loading:                        boolean;
 
   constructor(
-    private policyDataService:    PolicyDataService,
-    private policyDetailsService: PolicyDetailsService,
-    private storageService:       StorageServiceObservablesService,
-    private userService:          UserService,
+   
   ) { }
 
   ngOnInit() {
-    this.loading = true;
-    this.policyDetailsService
-      .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
-      .subscribe((policyDetails) => {
-        this.policies = policyDetails;
-        this.loading = false;
-      });
+    
   }
 }
