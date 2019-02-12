@@ -41,6 +41,10 @@ export class ClaimsWrapperComponent implements OnInit {
     this.claimsService.getClaimsLossDetails(this.storageService.getUserFromStorage()).subscribe((response)=>{
       this.claimsDataService.updateClaims(response, 'details');
       this.loading = false;
+    },
+    (err)=> {
+      this.claimsDataService.updateClaims(false, 'details');
+      this.loading = false;
     })
   }
 
