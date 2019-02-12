@@ -96,7 +96,7 @@ import { ErrorComponent }                 from './routes/error/error-pages.compo
 const appRoutes: Routes = [
   { path: 'forgotpassword/:emailPrefill', component: ForgotPasswordComponent },
   { path: 'createpassword',               component: CreateNewPasswordComponent },
-  { path: 'createnewpassword',               component: CreateNewPasswordComponent },
+  { path: 'createnewpassword',            component: CreateNewPasswordComponent },
   { path: 'updatepassword',               component: CreateNewPasswordComponent },
   { path: 'login',                        component: LoginComponent },
   { path: 'opps',                         component: ErrorComponent,
