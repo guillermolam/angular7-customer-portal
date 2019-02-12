@@ -182,10 +182,11 @@ export class DetailsCarComponent implements OnInit {
     this.policy.vehicle.forEach((vehicleDetail, i) => {
       const
         formController =                  form.controls.groups,
-        vehicleId =                       vehicleDetail.vehicleIdentificationNumber.Id;
+        vehicleId =                       vehicleDetail.vehicleIdentificationNumber.Id,
+        odometerReading =                 vehicleDetail.odometerReading.toString();
       
       this.mileageService
-        .updateMileage( email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`], vehicleDetail.odometerReading )
+        .updateMileage( email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`], odometerReading )
         .subscribe(
           (success) => {
             successArray.splice(i, 0, true );
@@ -219,20 +220,6 @@ export class DetailsCarComponent implements OnInit {
           this.alertLoad =              false;
         });
     });
-
-    // Due to the subscription we want everything to have a chance to run.
-
-    /* setTimeout(() => {
-      if ( successArray.every((val, i, arr) => val === true) && successArray.length != 0 ) {
-        this.message =                `We\'ve updated you odemeters.`;
-        this.messageType =            'success';
-        this.showMessage =            true;
-      }
-      setTimeout(() => {
-        this.showMessage =            false;
-        this.alertLoad =              false;
-      }, 1000);
-    }, 500); */
   }
 
   ngOnInit() {
