@@ -23,20 +23,10 @@ export class ContactScreenComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.policyDataService.$policyDetails
-    .subscribe(
-      (policyResponse) => {
-        this.policies  = policyResponse;
-        this.loading = false;
-      },
-      (err) => {
-        this.policyDetailsService
-        .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
-        .subscribe( (policyInfo) => {
-          this.policies = policyInfo;
-          this.loading = false;
-        });
-      }
-    );
+    this.policyDetailsService.getPoliciesByEmail(this.storageService.getUserFromStorage()).
+    subscribe((policyResponse)=>{
+      this.policies  = policyResponse;
+      this.loading = false;
+    });
   }
 }
