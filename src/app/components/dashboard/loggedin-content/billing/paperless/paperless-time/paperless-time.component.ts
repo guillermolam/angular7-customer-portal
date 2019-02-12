@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit }        from '@angular/core';
 import { concatMap }                from 'rxjs/operators';
 import { Observable, of }           from 'rxjs';
@@ -23,7 +24,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
   firstTime:                        boolean = false;
   hideModal:                        boolean;
   loading:                          boolean = true;
-  policyInfo:                       any;
+  policyInfo$:                      any;
   user:                             any;
 
   constructor(
@@ -33,7 +34,8 @@ export class PaperlessFirstTimeComponent implements OnInit {
     private policyDetailsService:   PolicyDetailsService,
     private userService:            UserService,
     private storageServiceObservablesService: StorageServiceObservablesService,
-    private testingDataService:     TestingDataService
+    private testingDataService:     TestingDataService,
+    private http: HttpClient
   ) {
     this.endEnrollOptionsModal = new ModalOptions({
       additionalClasses:            'modal-medium cancel-enroll modal-dialog',
@@ -186,7 +188,6 @@ export class PaperlessFirstTimeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = true;
 
     // this.userService.$user
     // .subscribe( (userInfo) => {
@@ -196,23 +197,24 @@ export class PaperlessFirstTimeComponent implements OnInit {
     this.user = this.storageServiceObservablesService.getUserFromStorage();
 
     this.policyDataService.$policyDetails
-    .subscribe( (policyResponse) => {
-      this.policyInfo  = policyResponse;
-      this.loading = false;
-    },
-    (err) => {
-      this.policyDetailsService
-      .getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
-      .subscribe( (policyInfo) => {
-        this.policyInfo = policyInfo;
-        // pls do not remove
-        // this.firstTimeCheck(this.policyInfo);
-        // this.allEPayMethod(this.policyInfo);
-        this.loading = false;
-      });
-    });
+    .subscribe((policyInfo) => {
+      this.policyInfo$ = policyInfo;
+      },
+      (err) => {
+        this.policyDetailsService
+        .getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
+        .subscribe( (success) => {
+          this.policyDataService.$policyDetails
+          .subscribe((policyInfo) => {
+            this.policyInfo$ = policyInfo;
+              // pls do not remove
+              // this.firstTimeCheck(this.policyInfo);
+              // this.allEPayMethod(this.policyInfo);
+            });
+        });
+      })
+    ;
 
-    
   }
 
 }

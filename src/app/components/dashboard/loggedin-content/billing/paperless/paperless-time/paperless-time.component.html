@@ -20,11 +20,12 @@
   </div>
 </div>
 
-<ng-container *ngIf="loading">
-  <mapfre-loading></mapfre-loading>
-</ng-container>
 
-<div class="row margin-top mt24"  *ngIf="!firstTime && !loading">
+<ng-template #loading>
+    <mapfre-loading></mapfre-loading>
+  </ng-template>
+ 
+<div class="row margin-top mt24"  *ngIf="(policyInfo$) as policyInfo; else loading">
   <div class="col">
     <div>
       <h2 class="title no-border no-padding-bottom">{{ 'E-POLICY' | translate }}</h2>
@@ -32,78 +33,83 @@
       <table mdbTable class="paperless-table margin-bottom mb24">
         <tbody class="med-grey-color">
           <ng-container *ngFor="let pdetail of policyInfo">
-            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngIf="pdetail?.policyFlags.isEdfEligible.toUpperCase() === 'Y' && pdetail?.policyStatus.toUpperCase() === 'ACTIVE'">
+            <tr><td></td></tr>
+            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" >
               <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
                 <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail?.policyType == 'HOME'" />
                 <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail?.policyType == 'AUTO'" />
               </td>
-              <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8 width w-20">{{ pdetail?.policyType }} &ndash; {{ pdetail?.policynumber.policynumber }} </td>
-              <td class="no-padding green-text padding-vertical pv8 align-middle w-25 ">{{ pdetail?.effDate | date:'shortDate' }} {{ 'TO' | translate }} {{ pdetail?.expDate | date:'shortDate' }}</td>
-              <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail?.policyFlags.isEdf == 'ENROLLED'">
-                <mapfre-modal 
-                  [modalOptions]="endEnrollOptionsModal"
-                  [hideModal]="hideModal"
-                  (hideModalOutput)="resetHideModal($event)">
-                  <div class="modal-body">
-                    <hr class="margin-bottom mb24 no-margin-top" />
-                    <div class="margin-bottom mb24">
-                      {{ 'ARE_YOU_SURE_YOU_WANT_TO_REMOVE_POLICY' | translate }} <strong>{{ pdetail?.policynumber.policynumber }}</strong> {{ 'FROM_E-POLICY' | translate }}
-                    </div>
-                    <div class="mx-auto text-center">
-                      <mapfre-button 
-                        additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                        (click)="cancel(pdetail?.policynumber.policynumber, 'e-policy'); hideModalAction($event)">
-                        {{ 'REMOVE_FROM_E-POLICY' | translate }}
-                      </mapfre-button>
-                      <mapfre-button 
-                        additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
-                        (click)="hideModalAction($event)">
-                        {{ 'CANCEL' | translate }}
-                      </mapfre-button>
-                    </div>
-                  </div>
-                </mapfre-modal>
-                <div class="float-right align-middle enrolled-icon"><svg-check-icon-svg></svg-check-icon-svg> <span class="green-text">{{ 'ENROLLED_TEXT' | translate }}</span></div>
+              <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8 width w-20">
+                {{ pdetail?.policyType }} &ndash; {{ pdetail?.policynumber.policynumber }} 
               </td>
-              <td class="padding-vertical pv8 enroll-button align-middle pending" *ngIf="pdetail?.policyFlags.isEdf == 'ENROLLMENT-PENDING'">
-                <i class="fas fa-info-circle margin-right mr8"></i> <span>{{ 'PENDING_ENROLLMENT' | translate }}</span>
+              <td class="no-padding green-text padding-vertical pv8 align-middle w-25 ">
+                {{ pdetail?.effDate | date:'shortDate' }} {{ 'TO' | translate }} {{ pdetail?.expDate | date:'shortDate' }}
               </td>
-              <td class="padding-vertical pv8 enroll-button align-middle pending" *ngIf="pdetail?.policyFlags.isEdf == 'UNENROLLMENT-PENDING'">
-                  <i class="fas fa-info-circle margin-right mr8"></i> <span>{{ 'PENDING_REMOVAL' | translate }}</span>
-                </td>
-              <td class="padding-vertical pv8 enroll-button align-middle" *ngIf="pdetail?.policyFlags.isEdf == 'UNENROLLED' ">
-                <mapfre-modal 
-                  [modalOptions]="enrollOptionsModal"
-                  [hideModal]="hideModal"
-                  (hideModalOutput)="resetHideModal($event)">
-                  <div class="modal-body">
-                    <hr class="margin-bottom mb24 no-margin-top" />
-                    <div class="margin-bottom mb24">
-                      {{ 'PLEASE_CONFIRM_YOUR_REQUEST_TO_ENROLL_POLICY' | translate }} <strong>{{ pdetail?.policynumber.policynumber }}</strong> {{ 'IN_E-POLICY' | translate }}
-                    </div>
-                    <div class="mx-auto text-center">
-                      <mapfre-button 
-                        additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
-                        (click)="enroll(pdetail?.policynumber.policynumber, 'e-policy'); hideModalAction($event)">
-                        {{ 'CONFIRM_ENROLLMENT' | translate }}
-                      </mapfre-button>
-                      <mapfre-button 
-                        additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
-                        (click)="hideModalAction($event)">
-                        {{ 'CANCEL' | translate }}
-                      </mapfre-button>
-                    </div>
-                  </div>
-                </mapfre-modal>
+              <td class="padding-vertical pv8 enroll-button align-middle">
+                <ng-container *ngIf="pdetail?.policyFlags.isEdfEligible.toUpperCase() === 'Y' && pdetail?.policyStatus.toUpperCase() === 'ACTIVE'">
+                  <ng-container *ngIf="pdetail?.policyFlags.isEdf == 'ENROLLED'">
+                    <mapfre-modal 
+                      [modalOptions]="endEnrollOptionsModal"
+                      [hideModal]="hideModal"
+                      (hideModalOutput)="resetHideModal($event)">
+                      <div class="modal-body">
+                        <hr class="margin-bottom mb24 no-margin-top" />
+                        <div class="margin-bottom mb24">
+                          {{ 'ARE_YOU_SURE_YOU_WANT_TO_REMOVE_POLICY' | translate }} <strong>{{ pdetail?.policynumber.policynumber }}</strong> {{ 'FROM_E-POLICY' | translate }}
+                        </div>
+                        <div class="mx-auto text-center">
+                          <mapfre-button 
+                            additionalClasses="basic default padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
+                            (click)="cancel(pdetail?.policynumber.policynumber, 'e-policy'); hideModalAction($event)">
+                            {{ 'REMOVE_FROM_E-POLICY' | translate }}
+                          </mapfre-button>
+                          <mapfre-button 
+                            additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
+                            (click)="hideModalAction($event)">
+                            {{ 'CANCEL' | translate }}
+                          </mapfre-button>
+                        </div>
+                      </div>
+                    </mapfre-modal>
+                    <div class="float-right align-middle enrolled-icon"><svg-check-icon-svg></svg-check-icon-svg> <span class="green-text">{{ 'ENROLLED_TEXT' | translate }}</span></div>
+                  </ng-container>
+                  <ng-container *ngIf="pdetail?.policyFlags.isEdf == 'ENROLLMENT-PENDING'">
+                    <i class="fas fa-info-circle margin-right mr8"></i> <span>{{ 'PENDING_ENROLLMENT' | translate }}</span>
+                  </ng-container>
+                  <ng-container *ngIf="pdetail?.policyFlags.isEdf == 'UNENROLLMENT-PENDING'">
+                    <i class="fas fa-info-circle margin-right mr8"></i> <span>{{ 'PENDING_REMOVAL' | translate }}</span>
+                  </ng-container>
+                  <ng-container *ngIf="pdetail?.policyFlags.isEdf == 'UNENROLLED' ">
+                    <mapfre-modal 
+                      [modalOptions]="enrollOptionsModal"
+                      [hideModal]="hideModal"
+                      (hideModalOutput)="resetHideModal($event)">
+                      <div class="modal-body">
+                        <hr class="margin-bottom mb24 no-margin-top" />
+                        <div class="margin-bottom mb24">
+                          {{ 'PLEASE_CONFIRM_YOUR_REQUEST_TO_ENROLL_POLICY' | translate }} <strong>{{ pdetail?.policynumber.policynumber }}</strong> {{ 'IN_E-POLICY' | translate }}
+                        </div>
+                        <div class="mx-auto text-center">
+                          <mapfre-button 
+                            additionalClasses="basic primary padding-vertical pv16 margin-bottom mb24 w-50 waves-effect"
+                            (click)="enroll(pdetail?.policynumber.policynumber, 'e-policy'); hideModalAction($event)">
+                            {{ 'CONFIRM_ENROLLMENT' | translate }}
+                          </mapfre-button>
+                          <mapfre-button 
+                            additionalClasses="ghost secondary padding-vertical pv16  w-50 waves-effect"
+                            (click)="hideModalAction($event)">
+                            {{ 'CANCEL' | translate }}
+                          </mapfre-button>
+                        </div>
+                      </div>
+                    </mapfre-modal>
+                  </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="pdetail?.policyStatus.toUpperCase() === 'INACTIVE' || pdetail?.policyStatus.toUpperCase() === 'CANCELLED' || pdetail?.policyFlags.isEdfEligible.toUpperCase() === 'N' ">
+                    This Policy is not eligibe for paperless
+                </ng-container>
               </td>
-            </tr>
-            <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngIf="pdetail?.policyStatus.toUpperCase() === 'INACTIVE' || pdetail?.policyStatus.toUpperCase() === 'CANCELLED' || pdetail?.policyFlags.isEdfEligible.toUpperCase() === 'N' ">
-              <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
-                <img src="./assets/img/images/house_bg.png" width="20" *ngIf="pdetail?.policyType == 'HOME'" />
-                <img src="./assets/img/images/car_background.png" width="20" *ngIf="pdetail?.policyType == 'AUTO'" />
-              </td>
-              <td class="no-padding-left policy-type-id padding-vertical pv8 align-middle padding-right pr8">{{ pdetail?.policyType }} &ndash; {{ pdetail?.policynumber.policynumber }} </td>
-              <td class="no-padding red-text padding-vertical pv8 align-middle" colspan="2">This Policy is not eligibe for paperless</td>
             </tr>
           </ng-container>
         </tbody>
