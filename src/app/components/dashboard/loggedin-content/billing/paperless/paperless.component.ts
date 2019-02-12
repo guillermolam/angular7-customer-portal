@@ -2,6 +2,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit }      from '@angular/core';
 import { User }                   from './../../../../../_models/user';
 import { UserService }            from './../../../../../_services/user.service';
+import { StorageServiceObservablesService } from '../../../../../_services/storage-service-observables/storage-service-observables.service';
+import { PaymentDataServiceService } from '../../../../../_services/data-services/payment-data-service.service';
+import { PolicyDetailsService } from '../../../../../_services/my-insurance/policy-details.service';
 
 @Component({
   selector: 'app-paperless',
@@ -17,6 +20,9 @@ export class PaperlessComponent implements OnInit {
   constructor(
     private activatedRoute:       ActivatedRoute,
     private route:                Router,
+    private storageServiceObservablesService: StorageServiceObservablesService,
+    private paymentDataServiceService: PaymentDataServiceService,
+    private policyDetailsService: PolicyDetailsService
   ) { }
 
   checkPaperlessPage(): void {
@@ -48,7 +54,7 @@ export class PaperlessComponent implements OnInit {
 
   
   ngOnInit() {
-  
+
   }
 
 }
