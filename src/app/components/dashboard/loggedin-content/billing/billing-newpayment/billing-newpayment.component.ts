@@ -11,6 +11,7 @@ import { PolicyDataService }        from '../../../../../_services/my-insurance/
 import { User }                     from '../../../../../_models/user';
 import { UserService }              from './../../../../../_services/user.service';
 import { forkJoin } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector:     'app-billing-newpayment',
@@ -47,21 +48,30 @@ export class BillingNewpaymentComponent implements OnInit {
    }
 
   ngOnInit() {
-     this.loading =                  true;
+    //  this.loading =                  true;
 
     this.inputs = this.service.getInputs();
 
       this.activatedRoute.params.subscribe((params: Params) => {
         this.policyId =               params['policyid'];
 
-        this.billingDetailsService.getCurrentBillByPolicy(this.policyId).subscribe((billingData)=>{
-          this.billingData = billingData;
+
+        this.paymentDataServiceService.$checkingInfo.subscribe((checkingInfo)=>{
+          this.checkingInfo = checkingInfo;
         });
-        this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage()).subscribe((userResponse)=>{
-          this.checkingInfo = userResponse;
-        });
-        this.policyDetailsService.getPolicyDetailsByNumber(this.policyId).subscribe((policyResponse)=>{
-          this.policy = policyResponse;
+
+
+        this.paymentDataServiceService.$policyData.
+      // this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage()).
+        pipe(map((policyResponse:any)=> {
+          if(policyResponse){
+            return policyResponse.filter(
+              (policy) => policy.policynumber.policynumber==this.policyId)
+          }
+        })).
+        subscribe((policyResponse)=>{
+          if(policyResponse)
+          this.policy = policyResponse[0];
         });
     });
   }

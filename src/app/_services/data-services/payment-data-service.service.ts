@@ -9,10 +9,10 @@ export class PaymentDataServiceService {
   private checkingInfo:         string;
   private checkingInfoSub = new BehaviorSubject<any>(this.checkingInfo);
   $checkingInfo =         this.checkingInfoSub.asObservable();
-  billingData:           any;
+  private billingData:           any;
   private billingDataSub =   new BehaviorSubject<any>(this.billingData);
   $billingData =         this.billingDataSub.asObservable();
-  policyData:           any;
+  private policyData:           any;
   private policyDataSub =   new BehaviorSubject<any>(this.policyData);
   $policyData =         this.policyDataSub.asObservable();
 
