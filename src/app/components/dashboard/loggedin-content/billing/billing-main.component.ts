@@ -34,29 +34,18 @@ export class BillingMainComponent implements OnInit {
   ngOnInit() {
 
   //   this.loading = true;
-    
-  //   this.activatedRoute.params.subscribe((params: Params) => {
-  //     this.policyId =               params['policyid'];
-  //   forkJoin(
-  //     this.billingDetailsService.getCurrentBillByPolicy(this.policyId),
-  //     this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage()),
-  //     this.policyDetailsService.getPolicyDetailsByNumber(this.policyId)
-  //   ).subscribe(([billingData,userResponse, policyResponse]) => {
-  //     this.checkingInfo =         userResponse;
-  //     this.billingData =          billingData;
-  //     this.policyResponse =       policyResponse;
-  //     if ( Object.keys(this.billingData[0]).length === 0 ) {
-  //       this.router.navigate(['my-insurance',this.policyId,'billing' ]);
-  //     }
-  //     this.paymentDataServiceService.updateCheckingInfo(this.checkingInfo);
-  //     this.paymentDataServiceService.updateBillingAccount(this.billingData);
-  //     this.paymentDataServiceService.updatePolicyData(this.policyResponse);
-  //     this.loading =              false;
-  //   });
-
-  // });
-
-
+    forkJoin(
+      this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage()),
+      this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage())
+      // this.policyDetailsService.getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
+    ).subscribe(([checkingInfo, policyResponse]) => {
+      this.checkingInfo =         checkingInfo;
+      // this.billingData =          billingData;
+      this.policyResponse =       policyResponse;
+      this.paymentDataServiceService.updateCheckingInfo(this.checkingInfo);
+      // this.paymentDataServiceService.updateBillingAccount(this.billingData);
+      this.paymentDataServiceService.updatePolicyData(this.policyResponse);
+      this.loading =              false;
+    });
   }
-
 }

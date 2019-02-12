@@ -132,7 +132,7 @@ const appRoutes: Routes = [
       { path: 'policy-belongs-to-another', component: SignupPolicyBelongsToAnotherComponent, canActivate: [SignUpGuard] 
       },
       {
-        path: 'validate-email', component: ValidateEmailScreenComponent, canActivate: [SignUpGuard]
+        path: 'validate-email', component: ValidateEmailScreenComponent, //canActivate: [SignUpGuard]
       }
     ]
   },

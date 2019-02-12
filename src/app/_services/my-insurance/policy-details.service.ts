@@ -34,8 +34,14 @@ export class PolicyDetailsService {
         });
       });
       this.policyDataService.updatePolicyDetails(policyBillingDataAll);
+      return policyBillingDataAll;
     })
   );
+}
+
+getPoliciesByEmail(email){
+  const url = `${environment.backend_server_url_policy}/${email}`;
+  return this.http.get(url)
 }
 
 // getDocumentsDetailsByEmail(email: string, policyNumber: string){

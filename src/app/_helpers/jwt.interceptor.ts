@@ -1,3 +1,4 @@
+import { AlertService } from 'mapfre-design-library';
 import { HttpEvent, HttpHandler,
   HttpInterceptor, HttpRequest }  from '@angular/common/http';
 import { Injectable }             from '@angular/core';
@@ -15,7 +16,8 @@ export class JwtInterceptor implements HttpInterceptor {
 
   constructor(
     private router: Router,
-    private clientCredentialsTokenService: ClientCredentialsTokenService){
+    private clientCredentialsTokenService: ClientCredentialsTokenService,
+    private alertService: AlertService){
 
   }
 
@@ -44,7 +46,8 @@ export class JwtInterceptor implements HttpInterceptor {
 
     return next.handle(request)
     .pipe(catchError((e) => {
-      if((e.status == 401 && e.error.error === 'Invalid Request')){
+      if((e.status == 401)){
+        this.alertService.error('Invalid username/password', true);
         this.router.navigate(['/login']);
       }
         return throwError(e);     
