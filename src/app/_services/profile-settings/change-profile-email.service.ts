@@ -34,8 +34,8 @@ export class ChangeProfileEmailService {
   }
 
   checkEmailExists(oldEmail, newEmail): Observable<any> {
-   const url = `${environment.backend_server_url_identity}/change-email?email=${oldEmail}`;
-  //  const url =                   `${this.backendIdentity}/identity/users/change-email?email=${oldEmail}`;
+   const url = `${environment.backend_server_url_identity}/check-email?email=${oldEmail}`;
+  //  const url =                   `${this.backendIdentity}/identity/users/check-email?email=${oldEmail}`;
     const body = {
       email:                      newEmail,
       password:                   ''
