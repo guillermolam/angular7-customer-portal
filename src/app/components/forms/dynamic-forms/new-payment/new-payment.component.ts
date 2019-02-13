@@ -55,7 +55,7 @@ export class NewPaymentComponent implements OnInit {
 
   checkAmountNow(e): void {
     const amount =                  parseInt(e.target.value),
-          minAmount =               this.billingDetails[0].minAmountDue;
+          minAmount =               this.billingDetails.minAmountDue;
     this.checkAmount =              amount > minAmount && !amount ? true : false;
   }
 
@@ -188,7 +188,8 @@ export class NewPaymentComponent implements OnInit {
       this.storeBankAccount =         bankAccountCheck;
     });
 
-    if (this.checkingInfo.accountHolderName) {
+    if (this.checkingInfo && this.checkingInfo.accountHolderName) {
+      console.log(this.checkingInfo)
       this.setValues(this.checkingInfo);
     }
 

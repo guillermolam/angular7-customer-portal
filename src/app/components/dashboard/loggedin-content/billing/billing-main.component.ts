@@ -1,3 +1,4 @@
+import { PolicyDataService } from './../../../../_services/data-services/policy-data.service';
 import { PaymentDataServiceService } from './../../../../_services/data-services/payment-data-service.service';
 import { PolicyDetailsService } from './../../../../_services/my-insurance/policy-details.service';
 import { BillingDetailsService } from './../../../../_services/my-insurance/billing-details.service';
@@ -28,24 +29,27 @@ export class BillingMainComponent implements OnInit {
     private router:                 Router,
     private policyDetailsService: PolicyDetailsService,
     private storageServiceObservablesService: StorageServiceObservablesService,
-    private paymentDataServiceService: PaymentDataServiceService
+    private paymentDataServiceService: PaymentDataServiceService,
+    private policyDataService: PolicyDataService
   ) { }
 
   ngOnInit() {
 
   //   this.loading = true;
-    forkJoin(
-      this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage()),
+    // forkJoin(
+    //   this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage()),
       this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage())
-      // this.policyDetailsService.getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
-    ).subscribe(([checkingInfo, policyResponse]) => {
-      this.checkingInfo =         checkingInfo;
-      // this.billingData =          billingData;
-      this.policyResponse =       policyResponse;
-      this.paymentDataServiceService.updateCheckingInfo(this.checkingInfo);
-      // this.paymentDataServiceService.updateBillingAccount(this.billingData);
-      this.paymentDataServiceService.updatePolicyData(this.policyResponse);
-      this.loading =              false;
+    //   // this.policyDetailsService.getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
+    // )
+    .subscribe((policyResponse) => {
+    //   this.checkingInfo =         checkingInfo;
+    //   // this.billingData =          billingData;
+    //   this.policyResponse =       policyResponse;
+    // this.policyDataService.updatePolicyDetails(policyResponse);
+    //   this.paymentDataServiceService.updateCheckingInfo(this.checkingInfo);
+    //   // this.paymentDataServiceService.updateBillingAccount(this.billingData);
+      this.paymentDataServiceService.updatePolicyData(policyResponse);
+    //   this.loading =              false;
     });
   }
 }

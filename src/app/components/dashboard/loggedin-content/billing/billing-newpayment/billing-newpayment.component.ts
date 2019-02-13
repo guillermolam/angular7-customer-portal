@@ -56,9 +56,14 @@ export class BillingNewpaymentComponent implements OnInit {
         this.policyId =               params['policyid'];
 
 
-        this.paymentDataServiceService.$checkingInfo.subscribe((checkingInfo)=>{
+        this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage())
+        .subscribe((checkingInfo)=>{
           this.checkingInfo = checkingInfo;
         });
+
+        this.billingDetailsService.getCurrentBillByPolicy(this.policyId).subscribe((billingResponse)=>{
+          this.billingData = billingResponse[0];
+        })
 
 
         this.paymentDataServiceService.$policyData.
