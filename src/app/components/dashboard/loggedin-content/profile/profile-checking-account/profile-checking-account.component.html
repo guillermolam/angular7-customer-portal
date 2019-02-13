@@ -1,5 +1,5 @@
 <div class="change-address single-card-column">
-<div class="row text-center">
+  <div class="row text-center">
     <div class="col"> 
         <div class="header-icon full-icon">
             <svg-bank-svg></svg-bank-svg>
@@ -7,24 +7,11 @@
         <div>
             <h1 class="title-copy">{{ 'PROFILE_CHECKING_ACCOUNT_SAVE' | translate }}</h1>
         </div>        
-    </div>
-</div>
+      </div>
+  </div>
 
-<app-checking-account-form [inputs]="checkingAccountForm"></app-checking-account-form>
+  <app-checking-account-form [inputs]="checkingAccountForm"></app-checking-account-form>
 
-<!-- <div class="row margin-top mt24 text-center">
-    <div class="col">
-      <mapfre-button
-        (click)="onCheckDirty()"
-        additionalClasses="link-button small blue-link"
-        [customIcon]="'assets/img/icons/back-arrow.png'"
-        [iconClasses]="'align-middle'"
-        [routerLink]="['/profile']"
-        [showIconsCustom]="true"
-      >  {{ 'BACK' | translate }}
-      </mapfre-button>
-    </div>
-  </div> -->
 </div>
 <div class="margin-vertical mv32 text-center sub-title-copy checking-account-bottom">
   <hr />

@@ -3,7 +3,6 @@ import { UserService } from './../../user.service';
 import { Injectable }               from '@angular/core';
 import { FormBase, TextBox, GetGooglePlaceService }        from 'mapfre-design-library';
 import { ChangeAddressService }     from '../change-address/change-address.service';
-import { FakeAccountSettings }      from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { map } from 'rxjs/operators';
 
 @Injectable()

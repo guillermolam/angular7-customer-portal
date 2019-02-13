@@ -29,20 +29,8 @@ export class ProfileComponent implements OnInit {
     this.loading = true;
 
     this.userDetailsService.getUserDetailsByEmail().subscribe(()=>{
-    this.loading = false;     
+      this.loading = false;
     });
 
-    // this.router.events.subscribe((event) => {
-    //   if (event instanceof NavigationEnd) {
-    //       if(this.router.url==='/profile' && this.alertValue){
-    //         this.showAlert = true;
-    //         setTimeout(()=>{
-    //           this.showAlert = false;
-    //         },3000);
-    //       }else {
-    //         this.showAlert = false;
-    //       }
-    //     } 
-    //   });
     }
   }

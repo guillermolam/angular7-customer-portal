@@ -1,4 +1,3 @@
-import { UserDetailsService } from './../../../../../_services/profile-settings/user-details.service';
 import { FormGroup }                          from '@angular/forms';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router }                             from '@angular/router';
@@ -10,6 +9,8 @@ import { ProfileConfirmModalService }         from '../../../../../_services/pro
 import { AuthenticationService }              from '../../../../../_services/_iam/authentication-service.service';
 import { CheckingAccountService }             from '../../../../../_services/forms/profile-settings/checking-account.service';
 import { UserService }                        from '../../../../../_services/user.service';
+import { UserDetailsService }                 from './../../../../../_services/profile-settings/user-details.service';
+import { UserDataService }                    from './../../../../../_services/data-services/user-data.service';
 
 @Component({
   selector: 'app-checking-account-form',
@@ -19,10 +20,12 @@ import { UserService }                        from '../../../../../_services/use
 export class CheckingAccountFormComponent implements OnInit, OnDestroy {
 
   @Input()  inputs:                   FormBase<any>[] = [];
+  bankinfo;
             changeAddressError:       boolean;
             checkingAccountForm:      FormGroup;
             confirmModal:             boolean;
             mailingAddress:           any;
+            mailingAddressString: string;
             addressAlert:             boolean;
             addressInput:             string;
           //  addressObservable: any;
@@ -39,6 +42,7 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     private authenticationService:    AuthenticationService,
     private userService:              UserService,
     private validateAddressService:   ValidateAddressService,
+    private userDataService:          UserDataService,
     private userDetailsService:       UserDetailsService
     ) { }
   
@@ -89,7 +93,6 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     // if(!validateAddress){
     //   this.alertService.error('Please select address from dropdown',false);
     // }else {
-
     const validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
 
     if (validateAddress) {
@@ -108,27 +111,41 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
       }
       else {
         this.changeAddressError = true;
-        //this.alertService.error('PLEASE_ENTER_VALID_ADDRESS');
       }
   }
 
+
+
   setCheckingForm() {
+  
     this.checkingAccountForm.patchValue({
-      changeAddress: `${this.mailingAddress.streetName.split('|')[0]}, ${this.mailingAddress.city}, ${this.mailingAddress.stateCode}, USA`
-    });
+      changeAddress: `${this.mailingAddress.streetName.split('|')[0]}, ${this.mailingAddress.city}, ${this.mailingAddress.stateCode}, USA`,
+      });
+      this.checkingAccountForm.controls.changeAddress.markAsDirty()
+      this.checkingAccountForm.controls.changeAddress.updateValueAndValidity();
+    
   }
 
   ngOnInit() {
     this.checkingAccountForm = this.ipt.toFormGroup(this.inputs);
-    this.getGooglePlaceService.$address.subscribe((address) => {
-      this.mailingAddress = address;
-    });
+    
+    if(this.router.url.includes('edit')) {
+      this.getGooglePlaceService.$address.subscribe((address) => {
+        const m = address;
+        let street = [];
+        street = m.streetName.split('|');
+        this.mailingAddress = address;
+        this.mailingAddressString = `${street[0]}, ${m.city}, ${m.stateCode}, USA`
+      });
+    }
 
     this.validateAddressService.$address
     .subscribe((resp) => {
-        this.addressInput = resp === undefined ? this.mailingAddress : resp;
+      this.addressInput = resp === undefined ? this.mailingAddressString : resp;
     });
-    this.setCheckingForm();
+    if(this.router.url.includes('edit')) {
+      this.setCheckingForm();
+    }
   }
 
   ngOnDestroy(): void {

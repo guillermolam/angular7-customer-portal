@@ -21,7 +21,7 @@ export class ProfileCheckingAccountComponent implements OnInit {
 
     this.checkingAccountService.getInputs().subscribe((inputsResponse)=>{
       this.checkingAccountForm = inputsResponse;
-    })
+    });
   }
 
   onCheckDirty(){
