@@ -99,7 +99,7 @@
       <p class="no-margin-bottom">
         {{ policy?.agent?.agentName }}
       </p>
-      <p class="title-case no-margin-bottom">{{ policy?.agent?.address?.streetName | titlecase }} {{ policy?.agent?.address?.city | titlecase }}, {{ policy?.agent?.address?.state | fullstateToAbv }}, {{ policy?.agent?.address?.zipCode?.code }}</p>
+      <p class="title-case no-margin-bottom">{{ policy?.agent?.address?.streetName | titlecase }} {{ policy?.agent?.address?.city | titlecase }}, {{ policy?.agent?.address?.state }}, {{ policy?.agent?.address?.zipCode?.code }}</p>
       <p class="no-margin-bottom">{{'PHONE' | translate }}: <a href="tel:{{ policy?.agent?.agentPhone?.number }}" class="underline"> {{ policy?.agent?.agentPhone?.number }}</a></p>
     </div>
   </div>
