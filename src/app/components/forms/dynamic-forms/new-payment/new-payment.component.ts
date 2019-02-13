@@ -127,7 +127,7 @@ export class NewPaymentComponent implements OnInit {
   }
 
   setValues(checkingInfo): void {
-    const bDetails =                    checkingInfo.bankAccountDetails,
+    const bDetails =                    checkingInfo,
           apartmentNo =                 bDetails.mailingAddress.streetName.split('|'),
           address = {
           streetName:                   apartmentNo[0],
