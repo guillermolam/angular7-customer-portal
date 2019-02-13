@@ -184,7 +184,6 @@ export class DetailsCarComponent implements OnInit {
         formController =                  form.controls.groups,
         vehicleId =                       vehicleDetail.vehicleIdentificationNumber.Id,
         odometerReading =                 vehicleDetail.odometerReading.toString();
-      
       this.mileageService
         .updateMileage( email, policyId, vehicleId, formController.controls[`updateMileageInput_${i}`], odometerReading )
         .subscribe(

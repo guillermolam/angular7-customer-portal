@@ -23,13 +23,13 @@ import { StorageServiceObservablesService } from '../../../../_services/storage-
 })
 export class CreatePasswordFormComponent implements OnInit {
   @Input()  inputs:                 FormBase<any>[] = [];
-            userData:              any;
+            userData:               any;
             createPasswordForm:     FormGroup;
             email:                  string;
             token:                  string;
             user:                   any = {};
             whereInTheProcess:      string;
-            confirmModal:        boolean;
+            confirmModal:           boolean;
 
   @Output() confirmationOfPasswordCreation:   EventEmitter<boolean> = new EventEmitter();
 
@@ -51,7 +51,7 @@ export class CreatePasswordFormComponent implements OnInit {
       // this.userService.$user.subscribe((userData)=>{
         this.createPassword(this.userData);
       // });
-    }else if ( this.whereInTheProcess= 'createnewpassword'){
+    }else if ( this.whereInTheProcess == 'createnewpassword'){
         this.createNewAccount(this.userData);
     }
     else {
@@ -75,7 +75,6 @@ export class CreatePasswordFormComponent implements OnInit {
       );
   }
 
-
   createNewAccount(userObject): void {
     userObject.password =           this.createPasswordForm.value.createPassword;
     this.userService.updateUser(userObject);
@@ -92,69 +91,44 @@ export class CreatePasswordFormComponent implements OnInit {
       );
   }
 
-
-  /*updatePassword(): void {
-    this.user.password =              this.createPasswordForm.value.createPassword;
-    this.user.email =                 this.email;
-    this.authenticationService
-      .updatePassword (this.user, this.token)
-      .subscribe (
-        (data) => {
-          this.authenticationService
-            .login(this.user.email, this.user.password)
-            .subscribe((succ) => {
-              this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
-              this.router.navigate(['my-insurance']);
-            },
-            (err) => {
-              this.alertService.success('Login has failed', true);
-              this.router.navigate(['login']);
-            });
-        },
-        (error) => {
-          this.confirmationOfPasswordCreation.emit( false );
-          this.alertService.error(error.message);
-        }
-      );
-  }*/
-
   updatePassword(): void {
     let user = {
       password :             this.createPasswordForm.value.createPassword,
-      email    :               this.email || this.storageService.getUserFromStorage()
+      email    :             this.email || this.storageService.getUserFromStorage()
     };
-  
-    if(this.whereInTheProcess==='edit-password'){
+
+    if (this.whereInTheProcess === 'edit-password') {
       this.authenticationService
       .updatePassword(user)
-      .subscribe((data) => {
-      this.profileSettingsRoutingService.setChangePasswordAlert(true);
-      this.profileSettingsRoutingService.clearPasswordProcess();
-      this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
-      this.router.navigate(['/profile']);
-      })
-    }else {
-    this.authenticationService
-      .updatePassword (user)
-      .subscribe (
-        (data) => {
-          this.authenticationService
-            .login(user.email, user.password)
-            .subscribe((succ) => {
-              this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
-              this.router.navigate(['my-insurance']);
-            },
-            (err) => {
-              this.alertService.error('Login has failed', true);
-              this.router.navigate(['login']);
-            });
-        },
-        (error) => {
-          this.confirmationOfPasswordCreation.emit( false );
-          this.alertService.error(error.message);
-        }
-      );
-      }
+      .subscribe( (data) => {
+        this.profileSettingsRoutingService.setChangePasswordAlert(true);
+        this.profileSettingsRoutingService.clearPasswordProcess();
+        this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
+        this.router.navigate(['/profile']);
+      });
+    }
+    else {
+      this.authenticationService
+        .updatePassword (user)
+        .subscribe (
+          (data) => {
+            this.authenticationService
+              .login(user.email, user.password)
+              .subscribe((succ) => {
+                this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
+                this.router.navigate(['my-insurance']);
+              },
+              (err) => {
+                this.alertService.error('Login has failed', true);
+                this.router.navigate(['login']);
+              });
+          },
+          (error) => {
+            this.confirmationOfPasswordCreation.emit( false );
+            this.alertService.error(error.message);
+          }
+        );
+    }
   }
 
   onCheckDirty(){

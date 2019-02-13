@@ -13,14 +13,6 @@ import { User }                   from '../../_models/user';
 @Injectable()
 export class AuthenticationService {
 
-  // Anything that was originally using the backendAPI env is not being changed.
-
-  // backendApi:                     string = environment.backend_server_url;
-  // backendAuth:                    string = environment.backend_auth_server_url;
-  // backendCustomers:               string = environment.backend_server_cu;
-  // backendId:                      string = environment.backend_server_id;
-  // backendPerPol:                  string = environment.backend_server_pp;
-
   public token:                   string;
 
   constructor(
@@ -107,9 +99,7 @@ export class AuthenticationService {
     return this.http.post(url, {}, this.serviceHelpers.options);
   }
 
-  updatePassword(user: User) {
-    
-    // const url =           `https://mdv-doctest:8087/identity/users/password/${user.email}`;
+  updatePassword(user) {
     const url =           `${environment.backend_server_url_identity}/password/${user.email}`;
     return this.http.put(url, {} , {
       params : {
