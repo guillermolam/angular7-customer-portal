@@ -20,7 +20,7 @@ import { UserDataService }                    from './../../../../../_services/d
 export class CheckingAccountFormComponent implements OnInit, OnDestroy {
 
   @Input()  inputs:                   FormBase<any>[] = [];
-  bankinfo;
+            bankinfo;
             changeAddressError:       boolean;
             checkingAccountForm:      FormGroup;
             confirmModal:             boolean;
@@ -45,7 +45,6 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
     private userDataService:          UserDataService,
     private userDetailsService:       UserDetailsService
     ) { }
-  
 
   createBankAccountObject(){
     let bankAccount: any = {};
@@ -67,7 +66,6 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
       mailingAddress: this.mailingAddress
 
     };
-
     return bankAccount;
   }
 
@@ -114,22 +112,17 @@ export class CheckingAccountFormComponent implements OnInit, OnDestroy {
       }
   }
 
-
-
   setCheckingForm() {
-  
     this.checkingAccountForm.patchValue({
       changeAddress: `${this.mailingAddress.streetName.split('|')[0]}, ${this.mailingAddress.city}, ${this.mailingAddress.stateCode}, USA`,
-      });
-      this.checkingAccountForm.controls.changeAddress.markAsDirty()
-      this.checkingAccountForm.controls.changeAddress.updateValueAndValidity();
-    
+    });
+    this.checkingAccountForm.controls.changeAddress.markAsDirty();
+    this.checkingAccountForm.controls.changeAddress.updateValueAndValidity();
   }
 
   ngOnInit() {
     this.checkingAccountForm = this.ipt.toFormGroup(this.inputs);
-    
-    if(this.router.url.includes('edit')) {
+    if (this.router.url.includes('edit')) {
       this.getGooglePlaceService.$address.subscribe((address) => {
         const m = address;
         let street = [];

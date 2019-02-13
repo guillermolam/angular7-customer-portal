@@ -189,30 +189,10 @@ export class NewPaymentComponent implements OnInit {
     });
 
     if (this.checkingInfo && this.checkingInfo.accountHolderName) {
-      console.log(this.checkingInfo)
       this.setValues(this.checkingInfo);
     }
 
     this.bankDetails = this.checkingInfo;
-
-
-    // this.activatedRoute.params
-    // .subscribe((params: Params) => {
-    //   this.policyId =                 params['policyid'];
-    //   this.policyDataService.$policyDetails
-    //   .subscribe((policyResponse) => {
-    //     this.policyDetails =          policyResponse.filter(
-    //       (response) =>               response.policynumber.policynumber === this.policyId);
-    //   });
-    //   this.userService.$user
-    //   .subscribe((userResponse) => {
-    //     this.checkingInfo =           userResponse;
-    //     if (this.checkingInfo.bankAccountDetails.accountHolderName) {
-    //       this.setValues(this.checkingInfo);
-    //     }
-    //     this.bankDetails =            this.checkingInfo.bankAccountDetails;
-    //   });
-    // });
 
     this.getGooglePlaceService.$address
     .subscribe((address) => {

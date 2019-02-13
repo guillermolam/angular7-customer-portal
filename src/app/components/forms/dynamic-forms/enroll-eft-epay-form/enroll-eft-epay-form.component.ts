@@ -12,7 +12,7 @@ import { PolicyDataService }          from './../../../../_services/my-insurance
 import { PolicyDetailsService }       from '../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }   from '../../../../_services/storage-service-observables/storage-service-observables.service';
 import { UserService }                from './../../../../_services/user.service';
-
+import { BankAccountService }         from '../../../../_services/profile-settings/bank-account.service';
 
 @Component({
   selector: 'app-enroll-eft-epay-form',
@@ -35,6 +35,7 @@ export class EnrollEftEpayFormComponent implements OnInit {
     private activatedRoute:           ActivatedRoute,
     private alertService:             AlertService,
     private billingDataService:       BillingDataService,
+    private bankAccountService:       BankAccountService,
     private ipt:                      FormBaseControlService,
     private router:                   Router,
     private paperlessService:         PaperlessService,
@@ -45,7 +46,7 @@ export class EnrollEftEpayFormComponent implements OnInit {
   ) { }
 
   checkForPrefillData(eftData): void {
-    const bankDetails = eftData.bankAccountDetails || '';
+    const bankDetails = eftData || '';
     if (bankDetails != '') {
       this.enrollInEft.patchValue({
         enrollInEft_accountName:      bankDetails.accountHolderName,
@@ -145,13 +146,15 @@ export class EnrollEftEpayFormComponent implements OnInit {
     });
     this.policyDataService.$policyDetails
     .subscribe((policyResponse) => {
-      this.policyDetails =            policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
+      this.policyDetails =               policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
     });
-    this.userService.$user.subscribe((userResponse) => {
-      this.userData = userResponse;
-      this.accountType = userResponse.bankAccountDetails.accountType || '';
-      this.checkForPrefillData(userResponse);
-      this.loading = false;
+
+    this.bankAccountService
+    .getBankAccountByEmail(this.storageService.getUserFromStorage())
+    .subscribe((bankDetails) => {
+      this.accountType =                 (bankDetails as any).accountType || '';
+      this.checkForPrefillData(bankDetails);
+      this.loading =                     false;
     });
   }
 

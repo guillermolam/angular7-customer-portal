@@ -187,12 +187,6 @@ export class PaperlessFirstTimeComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-
-    // this.userService.$user
-    // .subscribe( (userInfo) => {
-    //   this.user = userInfo;
-    // });
-
     this.user = this.storageServiceObservablesService.getUserFromStorage();
 
     this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage()).
@@ -200,25 +194,6 @@ export class PaperlessFirstTimeComponent implements OnInit {
       this.policyInfo  = policyResponse;
       this.loading = false;
     });
-
-    // this.policyDataService.$policyDetails
-    // .subscribe( (policyResponse) => {
-    //   this.policyInfo  = policyResponse;
-    //   this.loading = false;
-    // },
-    // (err) => {
-    //   this.policyDetailsService
-    //   .getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
-    //   .subscribe( (policyInfo) => {
-    //     this.policyInfo = policyInfo;
-    //     // pls do not remove
-    //     // this.firstTimeCheck(this.policyInfo);
-    //     // this.allEPayMethod(this.policyInfo);
-    //     this.loading = false;
-    //   });
-    // });
-
-    
   }
 
 }

@@ -52,7 +52,6 @@ export class PaperlessComponent implements OnInit {
     this.paperlessPage = page;
   }
 
-  
   ngOnInit() {
 
   }

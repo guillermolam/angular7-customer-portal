@@ -6,25 +6,21 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class BankAccountService {
-  // backend:                    string = environment.backend_server_bl;
   constructor(
     private http:             HttpClient,
   ) { }
 
-  getBankAccountByEmail(email){
-    // const url = `https://mdv-doctest:8086/billing/${email}/bankaccount`;
+  getBankAccountByEmail(email) {
     const url = `${environment.backend_server_url_billing}/${email}/bankaccount`;
     return this.http.get(url);
   }
 
-  addBankAccount(email, bankAccountDetails){
-    // const url = `https://mdv-doctest:8086/billing/${email}/enroll-bankaccount`;
+  addBankAccount(email, bankAccountDetails) {
     const url = `${environment.backend_server_url_billing}/${email}/enroll-bankaccount`;
     return this.http.put(url,bankAccountDetails);
   }
 
-  deleteBankAccount(email){
-    // const url = `https://mdv-doctest:8086/billing/${email}/unenroll-bankaccount`;
+  deleteBankAccount(email) {
     const url = `${environment.backend_server_url_billing}/${email}/unenroll-bankaccount`;
     return this.http.post(url,{});
 

@@ -10,13 +10,10 @@ import { BillingDataService } from '../data-services/billing-data.service';
 })
 export class BillingDetailsService {
 
-  // billingURL:                   string = environment.backend_server_bl;
-
   constructor(
     private http:               HttpClient,
     private billingDataService: BillingDataService
   ) {}
-
 
   getAllBillingDetailsByPolicy(policyNumber: string){
     forkJoin(
@@ -24,17 +21,16 @@ export class BillingDetailsService {
       this.getScheduledBillsByPolicy(policyNumber),
       this.getHistoryBillsByPolicy(policyNumber),
       this.getPendingChecksByPolicy(policyNumber),
-    ).subscribe(([billingResponse, scheduledBills, historyResponse, pendingCheckPayments]) => {
-       let result = [    
+    ).subscribe(([billingResponse, scheduledResponse, historyResponse, pendingCheckPaymentsResponse]) => {
+       let result = [
            { billingDetails:       {...billingResponse}},
            { billingHistory:       historyResponse},
-           { scheduledBills:       scheduledBills },
-           { pendingCheckPayments: pendingCheckPayments }
+           { scheduledBills:       scheduledResponse },
+           { pendingCheckPayments: pendingCheckPaymentsResponse }
        ]
        this.billingDataService.updateBillingDetails({...result});
     });
   }
-
 
   getCurrentBillByPolicy(policyNumber: string){
     // const url = `${this.billingURL}/billing/${policyNumber}/currentbill`;
