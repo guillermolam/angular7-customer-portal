@@ -8,6 +8,7 @@ import { AuthenticationService }        from '../../../../../_services/_iam/auth
 import { ChangeAddressService }         from './../../../../../_services/change-address/change-address.service';
 import { UserService }                  from '../../../../../_services/user.service';
 import { User }                         from '../../../../../_models/user';
+import { UserDetailsService }           from '../../../../../_services/profile-settings/user-details.service';
 
 @Component({
   selector: 'app-change-address-form',
@@ -23,8 +24,8 @@ export class ChangeAddressComponent implements OnInit {
       loading:                          boolean = false;
       policyID:                         string;
       user:                             any;
-      addressObject:               any;
-      addressInput:                 any;
+      addressObject:                    any;
+      addressInput:                     any;
 
     constructor(
       private activatedRoute:           ActivatedRoute,
@@ -35,13 +36,12 @@ export class ChangeAddressComponent implements OnInit {
       private regExHelper:              RegExHelper,
       private router:                   Router,
       private userService:              UserService,
+      private userDetailsService:       UserDetailsService,
       private getGooglePlaceService:    GetGooglePlaceService,
       private validateAddressService:   ValidateAddressService
 
     ) {}
-
   changeAddress(): void {
-    // console.log(this.changeAddressForm);
     this.createAddressObject();
     if (this.addressType == 'residential') {
       this.residental(this.policyID);
@@ -51,7 +51,6 @@ export class ChangeAddressComponent implements OnInit {
     }
   }
 
-
   createAddressObject(){
     if(this.changeAddressForm.controls.changeAddressAPT.value) {
       this.addressObject.streetName = this.addressObject.streetName.split('|')[0] + '|' + this.changeAddressForm.controls.changeAddressAPT.value; 
@@ -59,19 +58,17 @@ export class ChangeAddressComponent implements OnInit {
     else {
       this.addressObject.streetName = this.addressObject.streetName.split('|')[0];
     }
-
-
   }
-
 
   mailing(policyid) {
 
     let validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
 
-
     if(validateAddress){
-    this.changeAddressService.updateMailingAddress(policyid, this.addressObject).subscribe((success) => {
-        // this.reSync(this.user.userDetails.email.address);
+      this.changeAddressService
+      .updateMailingAddress(policyid, this.addressObject)
+      .subscribe((success) => {
+        this.userDetailsService.getUserDetailsByEmail().subscribe();
         this.alertService.success('CHANGE_ADDRESS_ALERT_SUCCESS', true);
         this.router.navigate(['/my-insurance']);
       },
@@ -83,37 +80,21 @@ export class ChangeAddressComponent implements OnInit {
     }
   }
 
-  reSync(email): void {
-    this.userService.clearUser();
-    this.authenticationService
-      .getUserDetailsByEmail(email)
-      .subscribe(([userResponse, accountResponse]) => {
-        const response = {
-          userDetails:                {...userResponse},
-          bankAccountDetails:         {...accountResponse}
-        };
-        this.userService.updateUser(response);
-      });
-  }
-
   residental(policyid) {
+    let validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
 
-    //console.log(this.getGooglePlaceService, this.addressInput);
-      let validateAddress = this.validateAddressService.validateAddress(this.addressInput, this.getGooglePlaceService);
-
-      if(validateAddress){
-        this.changeAddressService.updateResidentialAddress(policyid, this.addressObject).subscribe((success) => {
-          // this.reSync(this.user.userDetails.email.address);
-          this.alertService.success('CHANGE_ADDRESS_ALERT_SUCCESS', true);
-          this.router.navigate(['/my-insurance']);
-        },
-        (err) => {
-          this.alertService.error('CHANGE_ADDRESS_ALERT_ERROR');
-        })
-      }else{
-        this.alertService.error('PLEASE_ENTER_VALID_ADDRESS',true);
-      }
-    
+    if(validateAddress){
+      this.changeAddressService.updateResidentialAddress(policyid, this.addressObject).subscribe((success) => {
+        this.userDetailsService.getUserDetailsByEmail().subscribe();
+        this.alertService.success('CHANGE_ADDRESS_ALERT_SUCCESS', true);
+        this.router.navigate(['/my-insurance']);
+      },
+      (err) => {
+        this.alertService.error('CHANGE_ADDRESS_ALERT_ERROR');
+      });
+    }else{
+      this.alertService.error('PLEASE_ENTER_VALID_ADDRESS',true);
+    }
   }
 
   ngOnInit() {
@@ -132,7 +113,7 @@ export class ChangeAddressComponent implements OnInit {
       this.policyID =                 params['policyid'];
       this.userService.$user.subscribe( (userinfo) => {
         this.user =                   userinfo;
-      })
+      });
     });
   }
 

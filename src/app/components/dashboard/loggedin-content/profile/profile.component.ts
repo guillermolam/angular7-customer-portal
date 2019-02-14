@@ -1,9 +1,9 @@
 import { AlertService } from 'mapfre-design-library';
-import { Location } from '@angular/common';
-import { ProfileSettingsRoutingService } from '../../../../_services/profile-settings/profile-settings-routing.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserDetailsService } from '../../../../_services/profile-settings/user-details.service';
+import { UserService } from '../../../../_services/user.service';
+import { TestingDataService } from '../../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,25 +12,16 @@ import { UserDetailsService } from '../../../../_services/profile-settings/user-
 })
 export class ProfileComponent implements OnInit {
 
-  showAlert: boolean;
-  alertValue: any;
   loading:       boolean;
 
-
   constructor(
-    private router: Router,
-    private alertService: AlertService,
     private userDetailsService: UserDetailsService,
-
   ) { }
 
   ngOnInit() {
-
     this.loading = true;
-
     this.userDetailsService.getUserDetailsByEmail().subscribe(()=>{
       this.loading = false;
     });
-
-    }
   }
+}

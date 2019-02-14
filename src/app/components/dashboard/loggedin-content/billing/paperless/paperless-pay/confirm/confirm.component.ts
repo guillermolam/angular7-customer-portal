@@ -24,20 +24,20 @@ export class PaperlessPayConfirmComponent implements OnInit {
   ) { }
 
   reSyncBilling(): void {
+
     this.authenticationService
       .getUserDetailsByEmail(this.storageService.getUserFromStorage())
       .subscribe(([userResponse, accountResponse]) => {
-        this.userService.clearUser();
-        this.userService.updateUser(
-        [{
+        const updatedUser = [{
           userDetails:              {...userResponse},
-          bankAccountDetails:       {...accountResponse}}]
-        );
+          bankAccountDetails:       {...accountResponse}
+        }];
+        this.userService.updateUser(updatedUser);
         this.alertService.success('Congrats! You\'ve enrolled! ', true);
         this.router.navigate(['/billing/paperless/e-pay']);
       },
       (err) => {
-        this.alertService.error(`Sorry, there was an issue and we could not enroll you. ${err} `, true);
+        this.alertService.error(`Sorry, there was an issue and we could not enroll you.`, true);
         this.router.navigate(['/billing/paperless/e-pay']);
       })
     ;

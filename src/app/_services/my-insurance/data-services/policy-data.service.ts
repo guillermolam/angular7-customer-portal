@@ -15,6 +15,6 @@ export class PolicyDataService {
   }
 
   clear() {
-    this.details.next('');
+    this.details.next(null);
   }
 }

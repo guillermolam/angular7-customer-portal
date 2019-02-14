@@ -44,13 +44,10 @@ export class ProfileEmailConfirmComponent implements OnInit {
     this.authenticationService
       .getUserDetailsByEmail(email)
       .subscribe(([userResponse, accountResponse]) => {
-        this.userService.clearUser();
-        this.userService.updateUser(
-        [{
+        const updatedUser = [{
           userDetails:              {...userResponse},
-          bankAccountDetails:       {...accountResponse}}]
-        );
-        this.changeProfileEmailService.clearEmail();
+          bankAccountDetails:       {...accountResponse}}];
+        this.userService.updateUser(updatedUser);
         this.router.navigate(['/profile']);
       })
     ;
