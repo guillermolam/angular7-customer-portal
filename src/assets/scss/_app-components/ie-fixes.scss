@@ -1,0 +1,32 @@
+@media all and (min-width: 992px) and (-ms-high-constrast:none), 
+all and (min-width: 992px) and (-ms-high-constrast:active) {
+  .ie-nav .nav-flex-icons.navbar-nav {
+    float: right !important;
+    top: 22px !important;
+  }
+
+  .container.loggedin {
+    position: relative;
+  }
+
+  .account.modal-small.help {
+    right: 0 !important;
+  }
+
+  input[type="radio"] {
+    visibility: visible;
+  }
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .col1 {
+    padding-left: 15px;
+  }
+
+  .col2 {
+    padding-right: 15px;
+  }
+}
