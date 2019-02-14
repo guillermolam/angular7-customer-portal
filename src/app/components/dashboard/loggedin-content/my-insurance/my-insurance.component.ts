@@ -1,6 +1,7 @@
 import { Component, OnInit }          from '@angular/core';
 import { PolicyDetailsService } from '../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService } from '../../../../_services/storage-service-observables/storage-service-observables.service';
+import { TestingDataService } from '../../../../_helpers/testing-data.service';
 
 
 @Component({
@@ -15,20 +16,17 @@ export class MyInsuranceComponent implements OnInit {
   constructor(
     private policyDetailsService:    PolicyDetailsService,
     private storageService:        StorageServiceObservablesService,
+    private testingData: TestingDataService
   ) {
   }
 
   ngOnInit() {
-
     this.loading = true;
-
     this.policyDetailsService
       .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
       .subscribe(()=>{
         this.loading = false;
       },
-      (err)=>{
-
-      });
+      (err)=>{});
   }
 }

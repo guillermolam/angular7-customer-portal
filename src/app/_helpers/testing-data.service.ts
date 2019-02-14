@@ -1,13 +1,48 @@
 import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment.doctest.dev';
+import { UserService } from '../_services/user.service';
+import { PolicyDataService } from '../_services/my-insurance/data-services/policy-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestingDataService {
 
-  constructor() {}
+  constructor(
+    private userService: UserService,
+    private policyDataService: PolicyDataService
+  ) {}
+
+  setUpTestingData(): any {
+    //based off of all the syntax around
+
+    if (environment.production ) {
+      return false;
+    }
+
+    //user and bank info
+    const updatedUser = [{
+      userDetails:              this.testUserInfo(),
+      bankAccountDetails:       this.testBankingInfo()
+    }];
+    this.userService.updateUser(updatedUser);
+
+    //policy info + current bill
+    const policyBillingDataAll = [];
+    policyBillingDataAll.push(...[Object.assign(
+      this.testingPolicyInfo(),
+      { billingDetails:       this.testCurrentBill() })
+    ]);
+
+    this.policyDataService.updatePolicyDetails(policyBillingDataAll);
+
+    // claims
+
+
+    // bills
+    
+  }
 
   testDataClaimsDetail(): any {
     if (environment.production ) {
@@ -143,7 +178,7 @@ export class TestingDataService {
       return false;
     }
     return {
-      address:null,
+      address: null,
       email: {
         address:"testmfre@gmail.com"
       },

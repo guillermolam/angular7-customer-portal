@@ -36,7 +36,6 @@ export class AddPolicyComponent implements OnInit {
   ) { }
 
   addPolicy(): void {
-    
     this.addPolicyToObject();
     if (this.legalCheckbox) {
       this.authService
@@ -47,7 +46,6 @@ export class AddPolicyComponent implements OnInit {
             // policy not linked and exists in as400
             if (this.router.url==='/my-insurance/link-policy') {
               // Need to resync the data
-              this.policyService.clear();
               this.policyDetailsService
               .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
               .subscribe(
@@ -72,11 +70,10 @@ export class AddPolicyComponent implements OnInit {
               }
               else if (err.status === 404){
                 // 404 - if the policy belongs to another account
-                // this.router.navigate(['signup', 'notfound']);
               this.router.navigate(['/my-insurance','validate-policy-rights']);
-              // this.router.navigate(['signup', 'policy-belongs-to-another']);
               }
-            }else {
+            }
+            else {
               if (err.status === 409) {
                 // Conflict, Policy is not found and name validation fails
                 this.router.navigate(['signup', 'not-found']);

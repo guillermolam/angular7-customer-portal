@@ -156,7 +156,6 @@ children: [
     { path: 'edit-policy-details',        component: EditPolicyDetailsComponent},
     { path: 'policy-in-process',          component: PolicyInProcessComponent},
     { path: 'validate-policy-rights',     component: ValidatePolicyRightsComponent},
-    // { path: 'validate-policy-rights',     component: PolicyBelongToAnotherScreenComponent},
     { path: ':policyid',
       children: [
         { path: '',                       redirectTo: 'details', pathMatch: 'full' },
@@ -177,7 +176,7 @@ children: [
     { path: 'change-address/:address-type', component: AddressChangeComponent},
     { path: 'enter-password',             component: ProfileEditPasswordComponent },
     { path: 'verify-password',            component: ProfileEditEmailComponent },
-    { path: 'edit-email',                 component: ProfileEditEmailComponent,     //canActivate: [ChangeProfileSettingsEmailGuard] 
+    { path: 'edit-email',                 component: ProfileEditEmailComponent,     canActivate: [ChangeProfileSettingsEmailGuard] 
     },
     { path: 'edit-password' ,             component: ProfileEditPasswordComponent,  //canActivate: [ChangeProfileSettingsPasswordGuard]
   },

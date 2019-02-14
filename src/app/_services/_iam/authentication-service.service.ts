@@ -123,7 +123,7 @@ export class AuthenticationService {
       policyNumber =    user.policyDetails[0].policynumber.policynumber,
       // url =             `https://mdv-doctest:8084/personal-policies/${policyNumber}/insureds/namevalidation`,
       url =             `${environment.backend_server_url_policy}/${policyNumber}/insureds/namevalidation`,
-      userSendObject =  this.serviceHelpers.creatUserObject(user, 'personalpolicy')
+      userSendObject =  this.serviceHelpers.creatUserObject(user[0], 'personalpolicy')
 
     ;
     return this.http.put(url, userSendObject);
