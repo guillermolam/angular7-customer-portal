@@ -30,7 +30,7 @@ export class ErrorInterceptionService implements HttpInterceptor {
           }
           if (environment.production  ) {
             if ( req.url.includes('personal-policy-api') && err.status === 500 ) {
-              //this.errorRedirectionService.redirect(status);
+              this.errorRedirectionService.redirect(status);
             }
             else {
               return true;
