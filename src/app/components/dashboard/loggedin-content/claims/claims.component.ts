@@ -1,8 +1,7 @@
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ClaimsDataService } from './../../../../_services/_claims/claims-data.service';
 import { ClaimsService } from './../../../../_services/_claims/claims.service';
-import { Component, OnInit }      from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { UserService }            from '../../../../_services/user.service';
 import { StorageServiceObservablesService } from '../../../../_services/storage-service-observables/storage-service-observables.service';
 
 @Component({
@@ -11,22 +10,21 @@ import { StorageServiceObservablesService } from '../../../../_services/storage-
   styleUrls: ['./claims.component.scss']
 })
 export class ClaimsWrapperComponent implements OnInit {
-  claims:                         any;
-  classForPage:                   string;
-  loading:                        boolean;
+  claims: any;
+  classForPage: string;
+  loading: boolean;
 
   constructor(
-    private activateRouter:       ActivatedRoute,
-    private router:               Router,
-    private userService:          UserService,
-    private claimsService:        ClaimsService,
-    private storageService:       StorageServiceObservablesService,
-    private claimsDataService:           ClaimsDataService
+    private activateRouter: ActivatedRoute,
+    private router: Router,
+    private claimsService: ClaimsService,
+    private storageService: StorageServiceObservablesService,
+    private claimsDataService: ClaimsDataService
   ) { }
 
   checkRoute(): void {
     let page;
-    if (this.router.url == '/claims/active' || this.router.url == '/claims/closed'){
+    if (this.router.url == '/claims/active' || this.router.url == '/claims/closed') {
       page = 'claims';
     }
     else {
@@ -38,14 +36,17 @@ export class ClaimsWrapperComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.checkRoute();
-    this.claimsService.getClaimsDetails(this.storageService.getUserFromStorage()).subscribe((response)=>{
-      this.claimsDataService.updateClaims(response);
-      this.loading = false;
-    },
-    (err)=> {
-      // this.claimsDataService.updateClaims(false);
-      // this.loading = false;
-    })
+    /*this.claimsService
+      .getClaimsDetails(this.storageService.getUserFromStorage())
+      .subscribe((response) => {
+        this.claimsDataService.updateClaims(response);
+        this.loading = false;
+      },
+      (err) => {
+        this.claimsDataService.updateClaims(false);
+        this.loading = false;
+      }
+    );*/
   }
 
 }

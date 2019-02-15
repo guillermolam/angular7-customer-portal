@@ -1,6 +1,7 @@
-import { Component, OnInit }        from '@angular/core';
-import { ClaimsDataService }        from '../../../../../_services/_claims/claims-data.service';
-import { UserService }              from '../../../../../_services/user.service';
+import { Component, OnInit }  from '@angular/core';
+import { ClaimsDataService }  from '../../../../../_services/_claims/claims-data.service';
+import { UserService }        from '../../../../../_services/user.service';
+import { TestingDataService } from '../../../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-claims-home',
@@ -8,23 +9,26 @@ import { UserService }              from '../../../../../_services/user.service'
   styleUrls: ['./claims-home.component.scss']
 })
 export class ClaimsHomeComponent implements OnInit {
-  claims:                           any;
-  loading:                          boolean;
+  claims: any;
+  loading: boolean;
+  
   constructor(
-    private claimsDataService:      ClaimsDataService,
-    private userService:            UserService,
+    private claimsDataService: ClaimsDataService,
+    private userService: UserService,
+    private testing: TestingDataService
   ) { }
 
   ngOnInit() {
     this.loading =                  true;
     this.claimsDataService.$claimsLossDetails
-    .subscribe( (claimsLossDetails) => {
-      this.claims =                 claimsLossDetails;
-      this.loading =                false;
-    },
-    (err) => {
-      this.claims =                 false;
-      this.loading =                false;
-    });
+      .subscribe((claimsLossDetails) => {
+        this.claims = claimsLossDetails;
+        this.loading = false;
+      },
+        (err) => {
+          this.claims = false;
+          this.loading = false;
+        });
+
   }
 }

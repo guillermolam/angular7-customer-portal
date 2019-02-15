@@ -13,7 +13,6 @@ import { StorageServiceObservablesService } from './../../../../../_services/sto
 import { BankAccountService }       from './../../../../../_services/profile-settings/bank-account.service';
 import { BillingDetailsService }    from './../../../../../_services/my-insurance/billing-details.service';
 
-
 @Component({
   selector:     'app-billing-newpayment',
   templateUrl:  './billing-newpayment.component.html',
@@ -44,7 +43,7 @@ export class BillingNewpaymentComponent implements OnInit {
     private router:                 Router,
     private userService:            UserService,
     private storageServiceObservablesService: StorageServiceObservablesService,
-    private paymentDataServiceService: PaymentDataServiceService
+    private paymentDataServiceService: PaymentDataServiceService,
   ) {
    }
 
@@ -72,7 +71,7 @@ export class BillingNewpaymentComponent implements OnInit {
         }
       })).
       subscribe((policyResponse) => {
-        if (policyResponse) this.policy = policyResponse[0];
+        if (policyResponse) { this.policy = policyResponse[0]; }
       });
     });
   }

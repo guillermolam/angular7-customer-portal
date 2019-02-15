@@ -1,9 +1,10 @@
 import { filter } from 'rxjs/operators';
-import { Component, OnInit }        from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
-import { DomSanitizer, SafeUrl }    from '@angular/platform-browser';
-import { ClaimsDataService }        from '../../../../../_services/_claims/claims-data.service';
-import { UserService }              from '../../../../../_services/user.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ClaimsDataService } from '../../../../../_services/_claims/claims-data.service';
+import { UserService } from '../../../../../_services/user.service';
+import { TestingDataService } from '../../../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-claims-detail',
@@ -12,41 +13,59 @@ import { UserService }              from '../../../../../_services/user.service'
 })
 export class ClaimsDetailComponent implements OnInit {
   claims;
-  claimid:                          string;
-  loading:                          boolean;
+  claimid: string;
+  loading: boolean;
+  totalAmountToDate;
 
   constructor(
-    private claimsDataService:      ClaimsDataService,
-    private userService:            UserService,
-    private activeRoute:            ActivatedRoute,
-    private sanitizer:              DomSanitizer,
+    private claimsDataService: ClaimsDataService,
+    private userService: UserService,
+    private activeRoute: ActivatedRoute,
+    private sanitizer: DomSanitizer,
   ) { }
 
   getAddress(a): SafeUrl {
     let address,
-        safeUrl:                    SafeUrl;
+      safeUrl: SafeUrl;
+    address = `${a.streetName}%20${a.city}%20${a.state}%20${a.zipCode.digits}`;
 
-    address =                       `${a.replace(/\s/g, '%20')}`;
+    const google = `https://maps.google.com/maps?q=`,
+      googleQuery = `&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+      url = `${google}${address}${googleQuery}`;
 
-    const google =                  `https://maps.google.com/maps?q=`,
-          googleQuery =             `&t=&z=13&ie=UTF8&iwloc=&output=embed`,
-          url =                     `${google}${address}${googleQuery}`;
-
-    safeUrl =                       this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     return safeUrl;
   }
 
   ngOnInit() {
-    this.loading =                  true;
+    let paymentToDate = [],
+      paymentToDateSum = 0;
+
+    // this.loading =                  true;
     this.activeRoute.params.subscribe((params: Params) => {
-      this.claimid =                params['claimid'];
+      this.claimid = params['claimid'].split('-');
       this.claimsDataService.$claimsLossDetails
       .subscribe( (claimsList) => {
-        this.claims =               claimsList.filter((response) => response.LOSS_NUMBER === this.claimid);
+        this.claims =               claimsList.filter((response) => response.number.number === this.claimid[0] );
         this.loading =              false;
       });
-      },
-      (err) => {
+      // claimid[0] is the claimid while claimid[1] is the specific claim exposure id
+      this.claims.forEach((claim) => {
+        claim.exposures.forEach((exposure) => {
+          if (exposure.exposureNumber.exposureNumber == this.claimid[1]) {
+            exposure.payments.forEach((payment) => {
+              paymentToDate.push(parseFloat(payment.checkAmount));
+            });
+          }
+        });
+      });
+
+      for (let i = 0; i < paymentToDate.length; i++) {
+        paymentToDateSum += paymentToDate[i];
+      }
+      this.totalAmountToDate = paymentToDateSum;
+    },
+    (err) => {
     });
   }
 }

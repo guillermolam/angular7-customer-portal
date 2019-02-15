@@ -40,7 +40,6 @@ export class BillingDetailsComponent implements OnInit {
     private sanitizer:      DomSanitizer,
     private userService:    UserService,
     private billingDetailsService:  BillingDetailsService,
-    private testing: TestingDataService
   ) {
     this.payNowModal =  new ModalOptions({
       additionalButtonClasses:    'basic primary large btn w-75 mx-auto',
@@ -55,7 +54,7 @@ export class BillingDetailsComponent implements OnInit {
 
   checkCurrentBill() {
     const bill = this.policyDetails.billingDetails;
-    if(!bill || bill.length > 0 || bill == {} ) {
+    if (!bill || bill.length > 0 || bill == {} ) {
       this.currentBillBool = false;
     }
     else if (bill[0].outstandingbalance === 0 || !bill[0].outstandingbalance) {
@@ -110,7 +109,6 @@ export class BillingDetailsComponent implements OnInit {
           this.loading =                false;
       });
     });
-   
   }
 
 }

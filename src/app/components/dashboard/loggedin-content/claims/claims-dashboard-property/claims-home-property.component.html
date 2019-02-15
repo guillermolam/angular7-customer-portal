@@ -1,36 +1,54 @@
-<div class="home row no-margins-hug" [ngClass]="{ 'hug-header': type == 'details', 'hug-content': type != 'details' }">
-  <div class="col-12 no-padding row">
-    <div class="policy-background col">
-        <div class="house"></div>
-    </div>
-    <div class="col">
-      <h2 class="claim-id">{{ claim.claimType | titlecase }} - <strong>#{{ claim.fileNumber.fileNumber }}</strong></h2>
-      <div class="policy-id">
-          {{ claim.propertyOrAutoIndicator | titlecase }} - 
-          <ng-container *ngIf="type != 'details'">
-            {{ claim.policyNumber.policynumber }}
-          </ng-container>
-          <ng-container *ngIf="type == 'details'">
-            <!--  <a [routerLink]="['/my-insurance', claim.policyid, 'details']"><strong>{{ claim.policyNumber.policynumber }}</strong></a>-->
-              <a [routerLink]="['opps', '502']"><strong>{{ claim.policyNumber.policynumber }}</strong></a>
-          </ng-container>
-      </div>
-      <div class="date-loss">
-          {{ 'DATE_OF_LOSS' | translate }}: {{ claim.lossDate | date }}
-      </div>
-    </div>
-  </div>
-  <ng-container *ngIf="type != 'details'">
-    <div class="col-12  no-padding">
-     <!-- <a [routerLink]="['/claims', claim.fileNumber.fileNumber, 'details']" class="d-block claim-link waves-light margin-bottom mb32 margin-top mt16 padding-right pr16"
-    mdbWavesEffect >-->
-    <a [routerLink]="['opps', '502']" class="d-block claim-link waves-light margin-bottom mb32 margin-top mt16 padding-right pr16"
-    mdbWavesEffect >
-        {{ 'CLAIM_DETAILS' | translate }}&nbsp;<svg-arror-right-svg></svg-arror-right-svg>
-      </a>  
-    </div>
+<ng-container *ngFor="let exposure of claim.exposures">
+  <ng-container *ngIf="exposure.coverage.code != '***No Claims Found***' ">
+    <ng-container *ngIf="type == 'details'; else claimdashboard ">
+      <ng-container *ngIf="exposure.exposureNumber.exposureNumber == claimid[1]">
+        <div class="home row no-margins-hug hug-header">
+          <div class="col-12 no-padding row">
+            <div class="policy-background col">
+              <div class="house"></div>
+            </div>
+            <div class="col">
+              <h2 class="claim-id">{{ exposure?.coverage.code | titlecase }} -
+                <strong>{{claim?.number.number}}-{{ exposure?.exposureNumber.exposureNumber }}</strong></h2>
+              <div class="policy-id">
+                {{'AUTO' | translate }} - <a
+                  [routerLink]="['/my-insurance',  claim?.policyNumber.policynumber, 'details']"><strong>{{ claim?.policyNumber.policynumber }}</strong></a>
+              </div>
+              <div class="date-loss">
+                {{ 'DATE_OF_LOSS' | translate }}: {{ claim?.date | date }}
+              </div>
+            </div>
+          </div>
+          <hr class="margin-top mb16 w-100" />
+        </div>
+      </ng-container>
+    </ng-container>
   </ng-container>
-  <ng-container *ngIf="type == 'details'">
-    <hr class="margin-top mb16 w-100 no-padding" />
-  </ng-container>
-</div>
+
+  <ng-template #claimdashboard>
+    <div class="home row no-margins-hug hug-content">
+      <div class="col-12 no-padding row">
+        <div class="policy-background col">
+          <div class="house"></div>
+        </div>
+        <div class="col">
+          <h2 class="claim-id">{{ exposure?.coverage.code | titlecase }} -
+            <strong>{{claim?.number.number}}-{{ exposure?.exposureNumber.exposureNumber }}</strong></h2>
+          <div class="policy-id">
+            {{'AUTO' | translate }} - {{ claim?.policyNumber.policynumber }}
+          </div>
+          <div class="date-loss">
+            {{ 'DATE_OF_LOSS' | translate }}: {{ claim?.date | date }}
+          </div>
+        </div>
+      </div>
+      <div class="col-12  no-padding">
+        <a [routerLink]="['/claims', claim?.number.number + '-' + exposure?.exposureNumber.exposureNumber, 'details']"
+          class="d-block claim-link margin-bottom mb32 padding-right pr16 margin-top mt16 waves-effect waves-red"
+          mdbWavesEffect>
+          {{ 'CLAIM_DETAILS' | translate }}&nbsp;<svg-arror-right-svg></svg-arror-right-svg>
+        </a>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>

@@ -3,196 +3,207 @@
 </ng-container>
 <ng-container *ngIf="!loading">
   <ng-container *ngFor="let claim of claims">
-    <ng-container *ngIf="claim?.LOSS_NUMBER == claimid">
-      <header class="margin-bottom mb16 w-100" >
-        <ng-container *ngIf="claim?.policytype == 'auto' ">
-          <app-claims-home-car [claim]="claim" type="details"></app-claims-home-car>
-        </ng-container>
 
-        <ng-container *ngIf="claim?.policytype == 'property' ">
-          <app-claims-home-property [claim]="claim" type="details"></app-claims-home-property>
-        </ng-container>
-      </header>
+    <ng-container *ngFor="let exposure of claim.exposures">
+      <ng-container *ngIf="exposure.exposureNumber.exposureNumber == claimid[1]">
+        <header class="margin-bottom mb16 w-100">
+          <app-claims-home-property [claim]="claim" type="details" [claimid]="claimid"></app-claims-home-property>
 
-      <section class="row details-content">
-        <div class="col col1">
-          <div class="row">
-            <div class="col">
-              <h2 class="title">
+          <ng-container *ngIf="claim?.propertyOrAutoIndicator == 'AUTO' ">
+            <app-claims-home-car [claim]="claim" type="details" [claimid]="claimid"></app-claims-home-car>
+          </ng-container>
+
+          <ng-container *ngIf="claim?.propertyOrAutoIndicator == 'PROPERTY' ">
+            <app-claims-home-property [claim]="claim" type="details" [claimid]="claimid"></app-claims-home-property>
+          </ng-container>
+        </header>
+
+        <section class="row details-content">
+          <div class="col col1">
+            <div class="row">
+              <div class="col">
+                <h2 class="title">
                   {{ 'INFORMATION' | translate }}
-                  <mapfre-tooltip
-                    additionalClasses="right float"
+                  <mapfre-tooltip additionalClasses="right float"
                     [tooltipCopy]="'For `collision` losses, a surcharge may apply depending on who is responsible for the accident.'"
-                    [placementLocation]="'right'"
-                  >
-                  {{ 'SURCHARGES_MAY_APPLY' | translate }} <svg-information-svg></svg-information-svg>
+                    [placementLocation]="'right'">
+                    {{ 'SURCHARGES_MAY_APPLY' | translate }} <svg-information-svg></svg-information-svg>
                   </mapfre-tooltip>
                 </h2>
-            </div>
-          </div>
-          <div class="claim-info">
-            <div class="row margin-bottom mb16 margin-top mt8">
-              <div class="col info-type">
-                  {{ 'CLAIMANT' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim?.details.claimant}}</strong></div>
               </div>
             </div>
-            <div class="row margin-bottom mb16">
-              <div class="col info-type">
-                  {{ 'PAYMENTS_TO_DATE' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim?.details.payments_to_date}}</strong></div>
+            <div class="claim-info">
+              <div class="row margin-bottom mb16 margin-top mt8">
+                <div class="col info-type">
+                  {{ 'CLAIMANT' | translate }}:<div class="margin-left ml16 d-inline">
+                    <strong>{{exposure?.claimant?.name}}</strong></div>
+                </div>
               </div>
-            </div>
-            <div class="row margin-bottom mb16"> 
-              <div class="col info-type">
-                  {{ 'LOCATION' | translate }}:<div class="margin-left ml16 d-inline"><strong>{{claim?.details.location}}</strong></div>
+              <div class="row margin-bottom mb16">
+                <div class="col info-type">
+                  {{ 'PAYMENTS_TO_DATE' | translate }}:
+                  <div class="margin-left ml16 d-inline">
+                    <strong>{{totalAmountToDate | currency }}</strong>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row margin-bottom mb16">
-              <div class="col">
-                <div id="map-container" class="z-depth-1-half" style="height: 150px">
-                  <iframe [src]="getAddress(claim?.details.location)"
-                  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="w-100"></iframe>
-                </div> 
+              <div class="row margin-bottom mb16">
+                <div class="col info-type">
+                  {{ 'LOCATION' | translate }}:<div class="margin-left ml16 d-inline">
+                    <strong>{{exposure?.address.streetName}}</strong></div>
+                </div>
               </div>
-            </div>
-            <div class="row margin-bottom mb16">
-              <div class="col info-type info-description">
+              <div class="row margin-bottom mb16">
+                <div class="col">
+                  <div id="map-container" class="z-depth-1-half" style="height: 150px">
+                    <iframe [src]="getAddress(exposure?.address)" frameborder="0" scrolling="no" marginheight="0"
+                      marginwidth="0" class="w-100"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="row margin-bottom mb16">
+                <div class="col info-type info-description">
                   {{ 'DESCRIPTION' | translate }}:
-              </div>
-              <div class="col info-data no-padding-left claim-description">
-                <strong>{{claim?.details.description}}</strong>
-              </div>
-            </div>
-
-            <div class="row margin-bottom mb16">
-              <div class="padding-left pl16 info-type info-description">
-                {{ 'CLAIMANT_ADJUSTER' | translate }}:
-              </div>
-              <div class="info-data adjuster-info">
-
-                <div class="row">
-                  <div class="col">
-                      <strong><a href="tel:{{claim?.details.claim_adjustter_number}}" class="mapfre link underline blue-link">{{ claim?.details.claim_adjustter_number | lowercase }}</a></strong>
-                  </div>
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <div>
-                        {{ 'EMAIL' | translate }}: 
-                    </div>
-                    <div>
-                      <strong><a href="mailto:{{ claim?.details.claim_adjustter_email | lowercase }}" class="mapfre link underline blue-link">{{ claim?.details.claim_adjustter_email | lowercase }}</a></strong>
+                <div class="col info-data no-padding-left claim-description">
+                  <strong>{{exposure?.description}}</strong>
+                </div>
+              </div>
+
+              <div class="row margin-bottom mb16">
+                <div class="padding-left pl16 info-type info-description">
+                  {{ 'CLAIMANT_ADJUSTER' | translate }}:
+                </div>
+                <div class="info-data adjuster-info">
+
+                  <div class="row">
+                    <div class="col">
+                      <strong><a href="tel:{{exposure?.adjuster?.phoneNumber.number}}"
+                          class="mapfre link underline blue-link">{{ exposure?.adjuster?.name }}</a></strong>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    {{ 'FAX' | translate | titlecase }}: <strong>{{claim?.details.claim_adjustter_fax}}</strong>
+                  <div class="row">
+                    <div class="col">
+                      <div>
+                        {{ 'EMAIL' | translate }}:
+                      </div>
+                      <div>
+                        <strong><a href="mailto:{{ exposure?.adjuster?.email?.address  | lowercase }}"
+                            class="mapfre link underline blue-link">{{ exposure?.adjuster?.email?.address | lowercase }}</a></strong>
+                      </div>
+                    </div>
                   </div>
+                  <div class="row">
+                    <div class="col">
+                      {{ 'FAX' | translate | titlecase }}: <strong>{{ exposure?.adjuster?.extensionAndFax}}</strong>
+                    </div>
+                  </div>
+
                 </div>
-
               </div>
             </div>
-          </div>
 
-          <div class="appraisal-info margin-top mt32">
-            <div class="row">
-              <div class="col">
-                <h2 class="title no-border">
-                    {{ 'APPRAISAL_INFORMATION' | translate }}
-                </h2>
-                <table mdbTable class="claims-table ">
-                  <thead class="lite-grey-color">
-                    <tr class="row-content border-full grey-border text-center">
-                      <td>  
-                          {{ 'NUMBER' | translate }}
-                      </td>
-                      <td class="text-center"> 
-                          {{ 'APPRAISER' | translate }}
-                      </td>
-                      <td class="text-center"> 
-                          {{ 'AMOUNT' | translate }}
-                      </td>
-                      <td class="text-center"> 
-                          {{ 'STATUS' | translate }}
-                      </td>
-                    </tr>
-                  </thead>
-                  <tbody class="med-grey-color">
-                    <tr *ngFor="let appraisal of claim?.details.appraisal" class="row-content border-full grey-border">
-                      <td class="text-center">
-                        {{appraisal.number}}
-                      </td>
-                      <td class="text-center">
-                        {{ appraisal.appraiser }}
-                      </td>
-                      <td class="text-center">
-                        {{ appraisal.amount | currency }}
-                      </td>
-                      <td class="text-center">
-                        {{appraisal.status}}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <div class="payment-info margin-top mt16 margin-bottom mb32">
-            <div class="row">
-              <div class="col">
+            <div class="appraisal-info margin-top mt32">
+              <div class="row">
+                <div class="col">
                   <h2 class="title no-border">
-                      {{ 'PAYMENT_INFORMATION' | translate }}
+                    {{ 'APPRAISAL_INFORMATION' | translate }}
                   </h2>
-                  <table mdbTable class="claims-table">
-                    <thead  class="lite-grey-color">
-                      <tr class="row-content  border-full grey-border">
-                        <td class="text-center">
-                            {{ 'CHECK' | translate }}
+                  <table mdbTable class="claims-table ">
+                    <thead class="lite-grey-color">
+                      <tr class="row-content border-full grey-border text-center">
+                        <td>
+                          {{ 'NUMBER' | translate }}
                         </td>
                         <td class="text-center">
-                            {{ 'DATE_PAID' | translate }}
+                          {{ 'APPRAISER' | translate }}
                         </td>
                         <td class="text-center">
-                            {{ 'AMOUNT' | translate }}
+                          {{ 'AMOUNT' | translate }}
                         </td>
                         <td class="text-center">
-                            {{ 'STATUS' | translate }}
+                          {{ 'STATUS' | translate }}
                         </td>
                       </tr>
                     </thead>
                     <tbody class="med-grey-color">
-                      <tr *ngFor="let payment of claim?.details.payments" class="row-content border-full grey-border">
+                      <tr *ngFor="let appraisal of exposure?.appraisals" class="row-content border-full grey-border">
                         <td class="text-center">
-                          {{ payment.check }}
+                          {{appraisal.number.number}}
                         </td>
                         <td class="text-center">
-                          {{ payment.datepaid | date }}
+                          {{ appraisal.appraiser.name }}
                         </td>
                         <td class="text-center">
-                          {{ payment.amount | currency }}
+                          {{ appraisal.appraisalAmount | currency }}
                         </td>
                         <td class="text-center">
-                          {{ payment.status }}
+                          {{appraisal.status}}
                         </td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="payment-info margin-top mt16 margin-bottom mb32">
+              <div class="row">
+                <div class="col">
+                  <h2 class="title no-border">
+                    {{ 'PAYMENT_INFORMATION' | translate }}
+                  </h2>
+                  <table mdbTable class="claims-table">
+                    <thead class="lite-grey-color">
+                      <tr class="row-content  border-full grey-border">
+                        <td class="text-center">
+                          {{ 'CHECK' | translate }}
+                        </td>
+                        <td class="text-center">
+                          {{ 'DATE_PAID' | translate }}
+                        </td>
+                        <td class="text-center">
+                          {{ 'AMOUNT' | translate }}
+                        </td>
+                        <td class="text-center">
+                          {{ 'STATUS' | translate }}
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody class="med-grey-color">
+                      <tr *ngFor="let payment of exposure?.payments" class="row-content border-full grey-border">
+                        <td class="text-center">
+                          {{ payment?.checkNumber }}
+                        </td>
+                        <td class="text-center">
+                          {{ payment?.checkDate | date }}
+                        </td>
+                        <td class="text-center">
+                          {{ payment?.checkAmount | currency }}
+                        </td>
+                        <td class="text-center">
+                          {{ payment?.status.code }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col col2">
+            <div class="row claims-faq">
+              <div class="col">
+                <app-claims-accordian-faq></app-claims-accordian-faq>
               </div>
             </div>
           </div>
-        
-        </div>
-      
-        <div class="col col2">
-          <div class="row claims-faq">
-            <div class="col">
-              <app-claims-accordian-faq></app-claims-accordian-faq>
-            </div>
-          </div>
-        </div>
 
-      </section>
+        </section>
+      </ng-container>
     </ng-container>
   </ng-container>
 </ng-container>
+<!--</ng-container>-->
