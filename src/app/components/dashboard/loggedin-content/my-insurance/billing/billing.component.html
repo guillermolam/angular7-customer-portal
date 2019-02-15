@@ -2,7 +2,7 @@
         <mapfre-loading></mapfre-loading>
       </ng-container> 
      <ng-container *ngFor="let policy of policyDetails">
-  <!--<ng-container *ngIf="policy?.policynumber.policynumber === policyId && !loading">-->
+    <ng-container *ngIf="policy?.policynumber.policynumber === policyId && !loading">
       <mapfre-card 
         [singleCard]="false"
         [additionalClasses]="'policy-details billing details ' + policy?.policyType">
@@ -241,6 +241,5 @@
           </div>
         </section>
     </mapfre-card>
-     <!-- </ng-container> -->
-      </ng-container> 
-    
+  </ng-container>
+</ng-container> 
