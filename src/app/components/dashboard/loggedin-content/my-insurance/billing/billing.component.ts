@@ -10,6 +10,7 @@ import { User }                     from '../../../../../_models/user';
 import { UserService }              from '../../../../../_services/user.service';
 import { PolicyDetailsService } from './../../../../../_services/my-insurance/policy-details.service';
 import { BillingDetailsService } from './../../../../../_services/my-insurance/billing-details.service';
+import { TestingDataService } from '../../../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-billing',
@@ -17,6 +18,7 @@ import { BillingDetailsService } from './../../../../../_services/my-insurance/b
   styleUrls: ['./billing.component.scss']
 })
 export class BillingDetailsComponent implements OnInit {
+  currentBillBool:              boolean;
   schedualOrHistory:        boolean = true;
   checkBillingVar:          boolean = false;
   loading:                  boolean;
@@ -37,7 +39,8 @@ export class BillingDetailsComponent implements OnInit {
     private policyDetailsService: PolicyDetailsService,
     private sanitizer:      DomSanitizer,
     private userService:    UserService,
-    private billingDetailsService:  BillingDetailsService
+    private billingDetailsService:  BillingDetailsService,
+    private testing: TestingDataService
   ) {
     this.payNowModal =  new ModalOptions({
       additionalButtonClasses:    'basic primary large btn w-75 mx-auto',
@@ -50,15 +53,17 @@ export class BillingDetailsComponent implements OnInit {
     });
    }
 
-  findOutstandingBalance(billing): boolean {
-    let returnBool;
-    if ( !billing || billing.outstandingbalance == 0 || !billing.outstandingbalance) {
-      returnBool = false;
+  checkCurrentBill() {
+    const bill = this.policyDetails.billingDetails;
+    if(!bill || bill.length > 0 || bill == {} ) {
+      this.currentBillBool = false;
+    }
+    else if (bill[0].outstandingbalance === 0 || !bill[0].outstandingbalance) {
+      this.currentBillBool = false;
     }
     else {
-      returnBool = true;
+      this.currentBillBool = true;
     }
-    return returnBool;
   }
 
   switchHistories(type): void {
@@ -71,15 +76,15 @@ export class BillingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true
     this.userService.$user
     .subscribe( (user) => {
       this.user = user;
     });
 
-    this.loading = true;
-
     this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
       this.policyDetails = policyResponse;
+      this.checkCurrentBill();
     });
 
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -105,6 +110,7 @@ export class BillingDetailsComponent implements OnInit {
           this.loading =                false;
       });
     });
+   
   }
 
 }

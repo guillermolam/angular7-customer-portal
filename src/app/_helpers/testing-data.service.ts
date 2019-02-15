@@ -174,9 +174,7 @@ export class TestingDataService {
   }
 
   testUserInfo(): any {
-    if (environment.production ) {
-      return false;
-    }
+    
     return {
       address: null,
       email: {
@@ -192,9 +190,7 @@ export class TestingDataService {
   }
 
   testingPolicyInfo(): any {
-    if (environment.production ) {
-      return false;
-    }
+   
     return { 
       "policynumber": {
             "policynumber": "GHQ004"
@@ -272,9 +268,7 @@ export class TestingDataService {
   }
 
   testCurrentBill(): any {
-    if (environment.production ) {
-      return false;
-    }
+   
     return [{
       amountStillDue: 13.5,
       minAmountDue: 13.5,
@@ -285,9 +279,7 @@ export class TestingDataService {
   }
 
   testPendingBills(): any {
-    if (environment.production ) {
-      return false;
-    }
+    
     return [
       {
         "bankAccount": {
@@ -317,10 +309,8 @@ export class TestingDataService {
   }
 
  
-  /*testHistoryBills(): any {
-    if (environment.production ) {
-      return false;
-    }
+  testHistoryBills(): any {
+   
     return [{
         "noticeData": "          EFP                                         99.17                MPMP09/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
         "amountStillDue": 9,
@@ -339,205 +329,12 @@ export class TestingDataService {
         "transactionType": "",
         "dateApplied": "",
         "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         99.17                MPMP10/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 9,
-        "minAmountDue": 0,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 9,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         99.17                MPMP11/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 9,
-        "minAmountDue": 0,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 9,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         99.17                MPMP12/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 9,
-        "minAmountDue": 0,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 9,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         99.17                MPMP01/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 9,
-        "minAmountDue": 0,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 9,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         99.17                MPMP02/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 9,
-        "minAmountDue": 0,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 9,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         99.17                MPMP03/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 9,
-        "minAmountDue": 0,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 9,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         99.17                MPMP04/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 9,
-        "minAmountDue": 0,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 9,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         109.66               MPMP05/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 1,
-        "minAmountDue": 0,
-        "amountApplied": 109.66,
-        "amountPaid": 109.66,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 1,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         140.99               MPMP06/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 1,
-        "minAmountDue": 0,
-        "amountApplied": 140.99,
-        "amountPaid": 140.99,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 1,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      },
-      {
-        "noticeData": "          EFP                                         140.99               MPMP07/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "amountStillDue": 1,
-        "minAmountDue": 0,
-        "amountApplied": 140.99,
-        "amountPaid": 140.99,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "  ",
-        "successCode": "  ",
-        "bnIndicator": "MP",
-        "billBalance": 1,
-        "tempNoticeType": "EFP",
-        "dueDate": "",
-        "currentDateIssued": "          ",
-        "transactionType": "",
-        "dateApplied": "",
-        "paymentType": "EFP"
-      }
-    ],
-  } */
+      }];
+  }
 
 
-  /*testSchedualBills(): any {
-    if (environment.production ) {
-      return false;
-    }
+  testSchedualBills(): any {
+    
     return [
       {
         "noticeData": "09/15/2016EFT01       09/15/2016      99.17    1179.00      99.17DIRMSCZ   00BN09/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
@@ -559,238 +356,6 @@ export class TestingDataService {
         "dueDate": "09/15/2016",
         "billingNoticePayDate": "09/15/2016",
         "currentDateIssued": "09/15/2016"
-      },
-      {
-        "noticeData": "10/15/2016EFT02       10/15/2016      99.17    1080.83      99.17DIRMSCZ   00BN10/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 1080.83,
-        "minAmountDue": 99.17,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "10",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 1080.83,
-        "tempNoticeType": "EFT02",
-        "billingNoticeDateIssued": "10/15/2016",
-        "dueDate": "10/15/2016",
-        "billingNoticePayDate": "10/15/2016",
-        "currentDateIssued": "10/15/2016"
-      },
-      {
-        "noticeData": "11/15/2016EFT03       11/15/2016      99.17     982.66      99.17DIRMSCZ   00BN11/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 982.66,
-        "minAmountDue": 99.17,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "11",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 982.66,
-        "tempNoticeType": "EFT03",
-        "billingNoticeDateIssued": "11/15/2016",
-        "dueDate": "11/15/2016",
-        "billingNoticePayDate": "11/15/2016",
-        "currentDateIssued": "11/15/2016"
-      },
-      {
-        "noticeData": "12/15/2016EFT04       12/15/2016      99.17     884.49      99.17DIRMSCZ   00BN12/15/2016N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 884.49,
-        "minAmountDue": 99.17,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "12",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 884.49,
-        "tempNoticeType": "EFT04",
-        "billingNoticeDateIssued": "12/15/2016",
-        "dueDate": "12/15/2016",
-        "billingNoticePayDate": "12/15/2016",
-        "currentDateIssued": "12/15/2016"
-      },
-      {
-        "noticeData": "01/15/2017EFT05       01/15/2017      99.17     786.32      99.17DIRMSCZ   00BN01/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 786.32,
-        "minAmountDue": 99.17,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "01",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 786.32,
-        "tempNoticeType": "EFT05",
-        "billingNoticeDateIssued": "01/15/2017",
-        "dueDate": "01/15/2017",
-        "billingNoticePayDate": "01/15/2017",
-        "currentDateIssued": "01/15/2017"
-      },
-      {
-        "noticeData": "02/15/2017EFT06       02/15/2017      99.17     688.15      99.17DIRMSCZ   00BN02/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 688.15,
-        "minAmountDue": 99.17,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "02",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 688.15,
-        "tempNoticeType": "EFT06",
-        "billingNoticeDateIssued": "02/15/2017",
-        "dueDate": "02/15/2017",
-        "billingNoticePayDate": "02/15/2017",
-        "currentDateIssued": "02/15/2017"
-      },
-      {
-        "noticeData": "03/15/2017EFT07       03/15/2017      99.17     589.98      99.17DIRMSCZ   00BN03/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 589.98,
-        "minAmountDue": 99.17,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "03",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 589.98,
-        "tempNoticeType": "EFT07",
-        "billingNoticeDateIssued": "03/15/2017",
-        "dueDate": "03/15/2017",
-        "billingNoticePayDate": "03/15/2017",
-        "currentDateIssued": "03/15/2017"
-      },
-      {
-        "noticeData": "04/15/2017EFT08       04/15/2017      99.17     533.81      99.17DIRMSCZ   00BN04/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 533.81,
-        "minAmountDue": 99.17,
-        "amountApplied": 99.17,
-        "amountPaid": 99.17,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "04",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 533.81,
-        "tempNoticeType": "EFT08",
-        "billingNoticeDateIssued": "04/15/2017",
-        "dueDate": "04/15/2017",
-        "billingNoticePayDate": "04/15/2017",
-        "currentDateIssued": "04/15/2017"
-      },
-      {
-        "noticeData": "05/15/2017EFT09       05/15/2017     109.66     529.64     109.66DIRMSCZ   00BN05/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 529.64,
-        "minAmountDue": 109.66,
-        "amountApplied": 109.66,
-        "amountPaid": 109.66,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "05",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 529.64,
-        "tempNoticeType": "EFT09",
-        "billingNoticeDateIssued": "05/15/2017",
-        "dueDate": "05/15/2017",
-        "billingNoticePayDate": "05/15/2017",
-        "currentDateIssued": "05/15/2017"
-      },
-      {
-        "noticeData": "06/15/2017EFT10       06/15/2017     140.99     420.98     140.99DIRMSCZ   00BN06/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 420.98,
-        "minAmountDue": 140.99,
-        "amountApplied": 140.99,
-        "amountPaid": 140.99,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "06",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 420.98,
-        "tempNoticeType": "EFT10",
-        "billingNoticeDateIssued": "06/15/2017",
-        "dueDate": "06/15/2017",
-        "billingNoticePayDate": "06/15/2017",
-        "currentDateIssued": "06/15/2017"
-      },
-      {
-        "noticeData": "07/15/2017EFT11       07/15/2017     140.99     280.99     140.99DIRMSCZ   00BN07/15/2017N                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
-        "noticeType": "",
-        "amountStillDue": 280.99,
-        "minAmountDue": 140.99,
-        "amountApplied": 140.99,
-        "amountPaid": 140.99,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "07",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 280.99,
-        "tempNoticeType": "EFT11",
-        "billingNoticeDateIssued": "07/15/2017",
-        "dueDate": "07/15/2017",
-        "billingNoticePayDate": "07/15/2017",
-        "currentDateIssued": "07/15/2017"
-      },
-      {
-        "noticeData": "08/15/2017EFT12 08/15/2017 141.00 140.00  .00DIRMSCZ   00BN N",
-        "noticeType": "",
-        "amountStillDue": 140,
-        "minAmountDue": 141,
-        "amountApplied": 0,
-        "amountPaid": 0,
-        "noticeIssued": "",
-        "noticePayDate": "",
-        "bhIndicator": "/1",
-        "successCode": "08",
-        "billPlan": "",
-        "currentNoticeDate": "          ",
-        "bnIndicator": "BN",
-        "billBalance": 140,
-        "tempNoticeType": "EFT12",
-        "billingNoticeDateIssued": "08/15/2017",
-        "dueDate": "08/15/2017",
-        "billingNoticePayDate": "",
-        "currentDateIssued": "08/15/2017"
-      }
-    ]
-  } */
+      }];
+  }
 }

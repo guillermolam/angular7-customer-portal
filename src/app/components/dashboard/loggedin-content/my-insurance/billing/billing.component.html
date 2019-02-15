@@ -2,7 +2,7 @@
         <mapfre-loading></mapfre-loading>
       </ng-container> 
      <ng-container *ngFor="let policy of policyDetails">
-  <ng-container *ngIf="policy?.policynumber.policynumber === policyId && !loading">
+  <!--<ng-container *ngIf="policy?.policynumber.policynumber === policyId && !loading">-->
       <mapfre-card 
         [singleCard]="false"
         [additionalClasses]="'policy-details billing details ' + policy?.policyType">
@@ -29,14 +29,14 @@
             <div class="row">
               <div class="col">
                 
-                <h2 class="title" [ngClass]="{'no-border': !policy?.billingDetails || policy?.billingDetails[0].outstandingbalance == 0 || !policy?.billingDetails[0].outstandingbalance || (policy?.billingDetails | json) == ({} | json) || policy?.billingDetails.length > 0 }">
+                <h2 class="title" [ngClass]="{'no-border': !currentBillBool  }">
                   <div class="policy-icon">
                       <svg-money-mono-color-svg></svg-money-mono-color-svg>
                     </div>
                   {{ 'BILLING_OVERVIEW' | translate }}
                 </h2>
 
-                <ng-container *ngIf="!policy?.billingDetails || policy?.billingDetails[0].outstandingbalance == 0 || !policy?.billingDetails[0].outstandingbalance || (policy?.billingDetails | json) == ({} | json) || policy?.billingDetails.length > 0; else currentBalance">
+                <ng-container *ngIf="!currentBillBool; else currentBalance">
                   <div class="margin-top mt16 d-table w-100">
                     <div class="no-payment-svg d-table-cell padding pr16">
                       <svg-check-icon-svg></svg-check-icon-svg> 
@@ -241,6 +241,6 @@
           </div>
         </section>
     </mapfre-card>
-      </ng-container> 
+     <!-- </ng-container> -->
       </ng-container> 
     
