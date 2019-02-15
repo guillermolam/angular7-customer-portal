@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { PolicyDetailsService } from '../../../../_services/my-insurance/policy-details.service';
+import { Component, OnInit }      from '@angular/core';
+import { PolicyDetailsService }   from '../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService } from '../../../../_services/storage-service-observables/storage-service-observables.service';
-import { TestingDataService } from '../../../../_helpers/testing-data.service';
-import { UserService } from '../../../../_services/user.service';
+import { TestingDataService }     from '../../../../_helpers/testing-data.service';
+import { UserService }            from '../../../../_services/user.service';
+import { PolicyDataService }      from '../../../../_services/data-services/policy-data.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class MyInsuranceComponent implements OnInit {
   loading: boolean;
 
   constructor(
+    private policyDataService: PolicyDataService,
     private policyDetailsService: PolicyDetailsService,
     private storageService: StorageServiceObservablesService,
     private testingData: TestingDataService,
@@ -29,6 +31,6 @@ export class MyInsuranceComponent implements OnInit {
       .subscribe(() => {
         this.loading = false;
       },
-      (err)=>{});
+      (err) => {});
   }
 }

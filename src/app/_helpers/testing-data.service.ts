@@ -37,8 +37,8 @@ export class TestingDataService {
       this.testingPolicyInfo(),
       { billingDetails: this.testCurrentBill() })
     ]);
-
     this.policyDataService.updatePolicyDetails(policyBillingDataAll);
+    console.log('policyBillingDataAll',policyBillingDataAll);
 
     // claims
     this.claimsDataService.updateClaims(this.testDataClaimsDetail());

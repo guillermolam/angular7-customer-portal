@@ -11,11 +11,13 @@ import { UserService } from '../../../../../_services/user.service';
   styleUrls: ['./my-insurance-main.component.scss']
 })
 export class MyInsuranceMainComponent implements OnInit {
-  hideOrShow: boolean = false;
-  payNowModal: ModalOptions;
-  policyResponse: any;
-  user: any;
-  loading: any;
+  currentBillBool:  boolean;
+  hideOrShow:       boolean = false;
+  payNowModal:      ModalOptions;
+  policyResponse:   any;
+  user:             any;
+  loading:          any;
+
   constructor(
     private userService: UserService,
     private policyDataService: PolicyDataService,
@@ -33,15 +35,27 @@ export class MyInsuranceMainComponent implements OnInit {
     });
   }
 
+  checkCurrentBill() {
+    const bill = this.policyResponse.billingDetails;
+    if (!bill || bill.length > 0 || bill == {} ) {
+      this.currentBillBool = false;
+    }
+    else if (bill[0].outstandingbalance === 0 || !bill[0].outstandingbalance) {
+      this.currentBillBool = false;
+    }
+    else {
+      this.currentBillBool = true;
+    }
+  }
+
   showMore(e): void {
     this.hideOrShow = !this.hideOrShow;
   }
 
   ngOnInit() {
-
     this.policyDataService.$policyDetails.subscribe((policyResponse: any) => {
       this.policyResponse = policyResponse;
-      console.log(policyResponse)
+      this.checkCurrentBill();
     });
 
     this.userService.$user

@@ -4,9 +4,9 @@
 <ng-container *ngIf="!loading">
   <ng-container *ngFor="let policy of policyResponse">
 
-    <mapfre-card [singleCard]="false" [additionalClasses]="'pay dashboard-policies'">
+    <mapfre-card [singleCard]="false" [additionalClasses]="'dashboard-policies'">
 
-      <div class="row">
+      <div class="row" [ngClass]="{ 'no-pay': !currentBillBool , 'pay':  currentBillBool }">
         <div class="policy-background col">
           <div class="car" *ngIf="policy.policyType === 'AUTO'"></div>
           <div class="house" *ngIf="policy.policyType === 'HOME'"></div>
@@ -78,17 +78,17 @@
               </div>
               <div class="policy-info">
                 <ng-container
-                  *ngIf="!policy.billingDetails[0] || (policy.billingDetails[0] && policy.billingDetails[0].outstandingbalance == 0)">
+                  *ngIf="!policy.billingDetails[0] || (policy.billingDetails[0] && policy.billingDetails[0]?.outstandingbalance == 0)">
                   {{ 'BALANCE' | translate}} <span class="green-color">{{'NO_PAYMENTS_DUE' | translate}}</span>
                 </ng-container>
-                <ng-container *ngIf="policy.billingDetails[0] && policy.billingDetails[0].outstandingbalance != 0">
+                <ng-container *ngIf="policy.billingDetails[0] && policy.billingDetails[0]?.outstandingbalance != 0">
                   {{ 'OUTSTANDING_BALANCE' | translate}}:
-                  <strong>{{ policy.billingDetails[0].outstandingbalance | currency }}</strong>
+                  <strong>{{ policy.billingDetails[0]?.outstandingbalance | currency }}</strong>
                 </ng-container>
               </div>
             </div>
           </div>
-          <ng-container *ngIf="policy.billingDetails[0] && policy.billingDetails[0].outstandingbalance != 0">
+          <ng-container *ngIf="policy.billingDetails[0] && policy.billingDetails[0]?.outstandingbalance != 0">
             <div class="row policy-row">
               <div class="col">
                 <div class="policy-icon">
@@ -96,8 +96,8 @@
                 </div>
                 <div class="policy-info pay-now">
                   <div class="date-amount">
-                    {{ 'NEXT' | translate}} : {{policy.billingDetails[0].paymentDueDate |  customDateFormat }} :
-                    <strong>{{policy.billingDetails[0].minAmountDue | currency}}</strong>
+                    {{ 'NEXT' | translate}} : {{policy.billingDetails[0]?.paymentDueDate |  customDateFormat }} :
+                    <strong>{{policy.billingDetails[0]?.minAmountDue | currency}}</strong>
                   </div>
                   <div class="pay-now-button">
                     <mapfre-modal [modalOptions]="payNowModal">
