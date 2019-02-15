@@ -19,13 +19,9 @@ export class ClaimsService {
     private serviceHelpers:       ServiceHelpersService,
   ) { }
 
-  getClaimsList(email): Observable<any> {
-    let url =                     `${environment.backend_server_url_claims}/?email=${email}`;
+  getClaimsDetails(email): Observable<any> {
+    let url =                     `${environment.backend_server_url_claims}/claims?email=${email}`;
     return this.http.get(url);
   }
 
-  getClaimsLossDetails(email): Observable<any> {
-    let url =                     `${environment.backend_server_url_claims}/loss?email=${email}`;
-    return this.http.get(url);
-  }
 }

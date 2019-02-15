@@ -10,6 +10,6 @@ export const environment = {
   backend_server_url_identity_2: `${env}/identity-api`,
   backend_server_url_policy: `${env}/personal-policy-api`,
   backend_server_url_billing: `${env}/billing-api`,
-  backend_server_url_claims: `${env}/claims-api`
+  backend_server_url_claims: `${env}/claims-livo`
 
 };
