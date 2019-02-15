@@ -38,13 +38,13 @@ export class ClaimsWrapperComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.checkRoute();
-    this.claimsService.getClaimsLossDetails(this.storageService.getUserFromStorage()).subscribe((response)=>{
-      this.claimsDataService.updateClaims(response, 'details');
+    this.claimsService.getClaimsDetails(this.storageService.getUserFromStorage()).subscribe((response)=>{
+      this.claimsDataService.updateClaims(response);
       this.loading = false;
     },
     (err)=> {
-      this.claimsDataService.updateClaims(false, 'details');
-      this.loading = false;
+      // this.claimsDataService.updateClaims(false);
+      // this.loading = false;
     })
   }
 

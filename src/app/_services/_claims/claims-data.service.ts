@@ -11,7 +11,7 @@ export class ClaimsDataService {
 
   constructor() { }
 
-  updateClaims(claims, type) {
+  updateClaims(claims) {
       this.claimsLossDetailsSource.next(claims);
   }
 
