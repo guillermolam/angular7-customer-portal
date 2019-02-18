@@ -38,16 +38,24 @@ export class BillingMainComponent implements OnInit {
   //   this.loading = true;
     // forkJoin(
     //   this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage()),
-      this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage())
+    //  this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage())
     //   // this.policyDetailsService.getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
     // )
-    .subscribe((policyResponse) => {
+   // .subscribe((policyResponse) => {
     //   this.checkingInfo =         checkingInfo;
     //   // this.billingData =          billingData;
     //   this.policyResponse =       policyResponse;
     // this.policyDataService.updatePolicyDetails(policyResponse);
     //   this.paymentDataServiceService.updateCheckingInfo(this.checkingInfo);
     //   // this.paymentDataServiceService.updateBillingAccount(this.billingData);
+
+    //  this.paymentDataServiceService.updatePolicyData(policyResponse);
+    //   this.loading =              false;
+    // });
+
+   // this.loading = true;
+    this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage())
+    .subscribe((policyResponse) => {
       this.paymentDataServiceService.updatePolicyData(policyResponse);
     //   this.loading =              false;
     });

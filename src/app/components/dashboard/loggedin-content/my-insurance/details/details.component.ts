@@ -3,7 +3,7 @@ import { Component, OnInit }              from '@angular/core';
 import { ActivatedRoute, Params }         from '@angular/router';
 import { PolicyDataService }              from '../../../../../_services/data-services/policy-data.service';
 import { ValidateAddressService }         from '../../../../../_services/change-address/validate-address.service';
-import { filter, map } from 'rxjs/operators';
+import { filter, map }                    from 'rxjs/operators';
 
 @Component({
   selector: 'app-policy-details-screen',
@@ -24,7 +24,7 @@ export class PolicyDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loading = true;
+    //this.loading = true;
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId =                 params['policyid'];
     //   this.policyDetailsService.getPolicyDetailsByNumber(this.policyId).subscribe((policyResponse)=>{

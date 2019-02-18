@@ -1,7 +1,7 @@
        <ng-container *ngIf="loading">
         <mapfre-loading></mapfre-loading>
       </ng-container> 
-     <ng-container *ngFor="let policy of policyDetails">
+  <ng-container *ngFor="let policy of policyDetails">
     <ng-container *ngIf="policy?.policynumber.policynumber === policyId && !loading">
       <mapfre-card 
         [singleCard]="false"
@@ -29,16 +29,17 @@
             <div class="row">
               <div class="col">
                 
-                <h2 class="title" [ngClass]="{'no-border': !currentBillBool  }">
+                <h2 class="title" [ngClass]="{'no-border no-padding-bottom': !policy?.billingDetails[0]  }">
                   <div class="policy-icon">
                       <svg-money-mono-color-svg></svg-money-mono-color-svg>
                     </div>
                   {{ 'BILLING_OVERVIEW' | translate }}
                 </h2>
 
-                <ng-container *ngIf="!currentBillBool; else currentBalance">
-                  <div class="margin-top mt16 d-table w-100">
-                    <div class="no-payment-svg d-table-cell padding pr16">
+                <ng-container *ngIf="!policy?.billingDetails[0]; else currentBalance">
+                  <hr class="margin-bottom margin-top mb16 mt12" />
+                  <div class="d-table w-100">
+                    <div class="no-payment-svg d-table-cell padding-right pr24">
                       <svg-check-icon-svg></svg-check-icon-svg> 
                     </div>
                     <div class="green-color font-medium d-table-cell align-middle">
@@ -65,13 +66,13 @@
                     <tbody class="med-grey-color">
                       <tr class="row-content border-full grey-border  no-border-bottom">
                         <td>
-                          <strong>{{ policy?.billingDetails[0].outstandingbalance | currency }}</strong>
+                          <strong>{{ policy?.billingDetails[0]?.outstandingbalance | currency }}</strong>
                         </td>
                         <td class="text-center">
-                            <strong>{{ policy?.billingDetails[0].paymentDueDate | date }}</strong>
+                            <strong>{{ policy?.billingDetails[0]?.paymentDueDate | date }}</strong>
                         </td>
                         <td class="text-right">
-                            <strong>{{ policy?.billingDetails[0].minAmountDue | currency }}</strong>
+                            <strong>{{ policy?.billingDetails[0]?.minAmountDue | currency }}</strong>
                         </td>
                       </tr>
                       <tr class="border-full grey-border no-border-top">
@@ -133,10 +134,10 @@
                       <ng-container *ngFor="let historyPayment of billingHistory">
                       <tr class="row-content border-full grey-border">
                         <td>
-                          <strong>{{ historyPayment.amountPaid | currency }}</strong>
+                          <strong>{{ historyPayment?.amountPaid | currency }}</strong>
                         </td>
                         <td class="text-right"> 
-                          <strong>{{ historyPayment.paymentDate |  date }}</strong>
+                          <strong>{{ historyPayment?.paymentDate |  date }}</strong>
                         </td>
                       </tr>
                       </ng-container>
@@ -171,10 +172,10 @@
                       <ng-container *ngFor="let scheduledPayment of scheduledBills">
                         <tr class="row-content border-full grey-border">
                           <td>
-                            <strong>{{ scheduledPayment.minAmountDue | currency }}</strong>
+                            <strong>{{ scheduledPayment?.minAmountDue | currency }}</strong>
                           </td>
                           <td class="text-right"> 
-                              <strong>{{ scheduledPayment.dueDate |  date }}</strong>
+                              <strong>{{ scheduledPayment?.dueDate |  date }}</strong>
                           </td>
                         </tr>
                       </ng-container>
@@ -193,10 +194,10 @@
                       <ng-container *ngFor="let historyPayment of billingHistory">
                       <tr class="row-content border-full grey-border">
                         <td>
-                          <strong>{{ historyPayment.amountPaid | currency }}</strong>
+                          <strong>{{ historyPayment?.amountPaid | currency }}</strong>
                         </td>
                         <td class="text-right"> 
-                          <strong>{{ historyPayment.paymentDate | date }}</strong>
+                          <strong>{{ historyPayment?.paymentDate | date }}</strong>
                         </td>
                       </tr>
                       </ng-container>
@@ -227,10 +228,10 @@
                   <ng-container *ngFor="let pendingCheckPayment of pendingCheckPayments ">
                     <tr class="row-content border-full grey-border">
                       <td>
-                        <small><strong>{{ pendingCheckPayment.paymentAmount | currency }}</strong></small>
+                        <small><strong>{{ pendingCheckPayment?.paymentAmount | currency }}</strong></small>
                       </td>
                       <td class="text-right"> 
-                          <small><strong>{{ pendingCheckPayment.paymentDateTime | date }}</strong></small>
+                          <small><strong>{{ pendingCheckPayment?.paymentDateTime | date }}</strong></small>
                       </td>
                     </tr>
                   </ng-container>

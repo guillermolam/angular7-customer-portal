@@ -2,7 +2,6 @@ import { Component, OnInit }      from '@angular/core';
 import { User }                   from 'mapfre-design-library';
 import { CheckingAccountService } from '../../../../../_services/forms/profile-settings/checking-account.service';
 
-
 @Component({
   selector: 'app-profile-checking-account',
   templateUrl: './profile-checking-account.component.html',
@@ -18,18 +17,9 @@ export class ProfileCheckingAccountComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-
-    this.checkingAccountService.getInputs().subscribe((inputsResponse)=>{
+    this.checkingAccountService.getInputs()
+    .subscribe((inputsResponse) => {
       this.checkingAccountForm = inputsResponse;
     });
   }
-
-  onCheckDirty(){
-    
-  }
-
-  onKeyPress(value){
-    
-  }  
-
 }

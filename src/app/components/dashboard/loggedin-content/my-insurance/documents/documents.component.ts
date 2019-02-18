@@ -155,7 +155,7 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
       this.user = user;
     });
 
-    this.loading = true;
+    //this.loading = true;
 
     this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
       this.policyDetails  = policyResponse;      
@@ -163,14 +163,12 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-        this.policyDetailsService.getDocumentsByPolicy(this.policyId)
-      .subscribe((documentResponse)=>{
+      this.policyDetailsService.getDocumentsByPolicy(this.policyId)
+      .subscribe((documentResponse) => {
         this.documentsData  = documentResponse;
         this.loading = false;
       },
-      (err)=>{
-
-      });
+      (err)=>{});
     });
   }
 }

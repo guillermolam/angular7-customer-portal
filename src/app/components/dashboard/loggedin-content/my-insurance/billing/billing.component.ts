@@ -2,6 +2,7 @@ import { DomSanitizer }             from '@angular/platform-browser';
 import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { forkJoin }                 from 'rxjs';
+import { filter, map }              from 'rxjs/operators';
 import { ModalOptions }             from 'mapfre-design-library';
 
 import { AuthenticationService }    from '../../../../../_services/_iam/authentication-service.service';
@@ -40,6 +41,7 @@ export class BillingDetailsComponent implements OnInit {
     private sanitizer:      DomSanitizer,
     private userService:    UserService,
     private billingDetailsService:  BillingDetailsService,
+    private testingDataService: TestingDataService
   ) {
     this.payNowModal =  new ModalOptions({
       additionalButtonClasses:    'basic primary large btn w-75 mx-auto',
@@ -75,19 +77,25 @@ export class BillingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = true
+    // this.loading = true
     this.userService.$user
     .subscribe( (user) => {
       this.user = user;
     });
 
-    this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
-      this.policyDetails = policyResponse;
-      this.checkCurrentBill();
-    });
-
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
+
+      this.policyDataService.$policyDetails
+      .pipe(
+        map( (policyResponse) => {
+          return policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
+      }))
+      .subscribe((policyResponse) => {
+        this.policyDetails = policyResponse;
+        this.checkCurrentBill();
+        //this.loading = false;
+      });
 
       forkJoin(
         this.billingDetailsService.getHistoryBillsByPolicy(this.policyId),
@@ -96,6 +104,9 @@ export class BillingDetailsComponent implements OnInit {
         this.billingHistory =         historyResponse;
         this.pendingCheckPayments =   pendingCheckPayments;
       });
+
+      this.billingHistory = this.testingDataService.testHistoryBills();
+      this.pendingCheckPayments =  this.testingDataService.testPendingBills();
 
       this.billingDetailsService
       .getScheduledBillsByPolicy(this.policyId)

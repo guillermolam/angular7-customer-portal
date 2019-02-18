@@ -26,21 +26,14 @@ export class ProfileMainComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    // this.userService.$user
-    // .subscribe( (userResponse) => {
-    
-    //   this.user = userResponse;
-    // });
-
     this.userDataService.$userData.subscribe((userData)=>{
       this.user = userData;
     });
-    
+
     this.profileConfirmModalService.$removeAccount
     .subscribe( (removeAccount) => {
       this.confirmModal = removeAccount;
-    })
+    });
   }
 
 }

@@ -25,7 +25,7 @@ export class MyInsuranceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = true;
+    //this.loading = true;
     this.policyDetailsService
       .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
       .subscribe(() => {

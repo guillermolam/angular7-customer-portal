@@ -31,13 +31,7 @@ export class DashboardMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.router.url === '/my-insurance') {
-      this.reportClaim = true;
-      this.showAlert = true;
-    }
-    else {
-      this.reportClaim = false;
-    }
+  
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -55,41 +49,6 @@ export class DashboardMainComponent implements OnInit {
       }
     });
 
-    // this.policyDetailsService
-    //   .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
-    //   .subscribe(
-    //     (success) => {}
-    //   ).add(() => {
-    //     this.authenticationService
-    //       .getUserDetailsByEmail(this.storageService.getUserFromStorage())
-    //       .subscribe(([userResponse, accountResponse]) => {
-    //         const response = {
-    //           userDetails:                  {...userResponse},
-    //           bankAccountDetails:           {...accountResponse}
-    //         };
-
-    //         // Claim List
-    //         this.claimsService
-    //         .getClaimsList(this.storageService.getUserFromStorage())
-    //         .subscribe( (claimsList) => {
-    //           this.claimsDataService.updateClaims('list', claimsList);
-    //         });
-
-    //         // Claim Details
-    //         this.claimsService
-    //         .getClaimsDetails(this.storageService.getUserFromStorage())
-    //         .subscribe( (claimsList) => {
-    //           this.claimsDataService.updateClaims('details', claimsList);
-    //         });
-
-    //         this.userService.updateUser(response);
-    //       },
-    //       (err) => {
-
-    //       }).add(() => {
-    //         this.loading = false;
-    //       });
-    //   });
   }
 
 }
