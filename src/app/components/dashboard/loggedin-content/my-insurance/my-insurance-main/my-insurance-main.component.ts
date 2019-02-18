@@ -35,33 +35,20 @@ export class MyInsuranceMainComponent implements OnInit {
     });
   }
 
-  checkCurrentBill() {
-    const bill = this.policyResponse.billingDetails;
-    if (!bill || bill.length > 0 || bill == {} ) {
-      this.currentBillBool = false;
-    }
-    else if (bill[0].outstandingbalance === 0 || !bill[0].outstandingbalance) {
-      this.currentBillBool = false;
-    }
-    else {
-      this.currentBillBool = true;
-    }
-  }
-
   showMore(e): void {
     this.hideOrShow = !this.hideOrShow;
   }
 
   ngOnInit() {
-    this.policyDataService.$policyDetails.subscribe((policyResponse: any) => {
+    this.policyDataService.$policyDetails
+    .subscribe((policyResponse: any) => {
       this.policyResponse = policyResponse;
-      this.checkCurrentBill();
     });
 
     this.userService.$user
-      .subscribe((user) => {
-        this.user = user;
-      });
+    .subscribe((user) => {
+      this.user = user;
+    });
 
     // this.policyDetailsService
     // .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())

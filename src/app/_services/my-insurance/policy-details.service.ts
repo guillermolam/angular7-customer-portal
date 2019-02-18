@@ -1,66 +1,52 @@
-import { DocumentsDataService } from './../data-services/documents-data.service';
-import { DashboardDataService } from './../data-services/dashboard-data.service';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient }               from '@angular/common/http';
+import { Injectable }               from '@angular/core';
 import { Observable, forkJoin, of, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { BillingDetailsService } from './billing-details.service';
-import { PolicyDataService } from '../data-services/policy-data.service';
-import { environment } from '../../../environments/environment';
-
+import { map, catchError }          from 'rxjs/operators';
+import { BillingDetailsService }    from './billing-details.service';
+import { PolicyDataService }        from '../data-services/policy-data.service';
+import { DocumentsDataService }     from './../data-services/documents-data.service';
+import { DashboardDataService }     from './../data-services/dashboard-data.service';
+import { environment }              from '../../../environments/environment';
 
 @Injectable()
 export class PolicyDetailsService {
-
-  // private backendUrl:               string = environment.backend_server_pp;
 
   constructor(
     private http:                   HttpClient,
     private policyDataService:      PolicyDataService,
     private billingDetailsService:  BillingDetailsService,
-    private documentsDataService:  DocumentsDataService
+    private documentsDataService:   DocumentsDataService
   ) { }
 
-  getPolicyDetailsByEmail(email: string){
+  getPolicyDetailsByEmail(email: string) {
     let policyBillingDataAll:     any[] = [];
     const url = `${environment.backend_server_url_policy}/${email}`;
     return this.http.get(url).pipe(map((policyResponse: any[]) => {
       policyResponse.forEach((policy) => {
-          this.billingDetailsService.getCurrentBillByPolicy(policy.policynumber.policynumber)
+        this.billingDetailsService
+        .getCurrentBillByPolicy(policy.policynumber.policynumber)
         .subscribe((billingResponse) => {
           policyBillingDataAll.push(...[Object.assign(
             policy,
-            { billingDetails:       {...billingResponse}})]);
+            { billingDetails:       {...billingResponse}})
+          ]);
+        },
+        (err) => {
+          policyBillingDataAll.push(...[Object.assign(
+            policy,
+            { billingDetails:       false })
+          ]);
         });
       });
       this.policyDataService.updatePolicyDetails(policyBillingDataAll);
       return policyBillingDataAll;
-    })
-  );
-}
+    }));
+  }
 
-getPoliciesByEmail(email){
-  const url = `${environment.backend_server_url_policy}/${email}`;
-  return this.http.get(url)
-}
-
-// getDocumentsDetailsByEmail(email: string, policyNumber: string){
-//   let documentsData: any;
-//   // const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;
-//   const url = `${environment.backend_server_url_policy}/${email}`;
-//   return this.http.get(url).pipe(map((policyResponse: any[]) => {
-//     policyResponse.forEach((policy) => {
-//       if(policy.policynumber.policynumber === policyNumber){
-//         this.getDocumentsByPolicy(policy.policynumber.policynumber)
-//       .subscribe((documentsResponse) => {
-//         documentsData.push(...documentsResponse);
-//       });
-//       this.documentsDataService.updateDocumentsDetails(documentsData);     
-//     }
-//     });
-//   })
-// );
-// }
+  getPoliciesByEmail(email){
+    const url = `${environment.backend_server_url_policy}/${email}`;
+    return this.http.get(url);
+  }
 
   getDocumentsByPolicy(policyNumber: string): Observable<any>{
     // const url = `${this.backendUrl}/personal-policies/${policyNumber}/documents`;
