@@ -27,28 +27,16 @@ export class PolicyDetailsComponent implements OnInit {
     //this.loading = true;
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId =                 params['policyid'];
-    //   this.policyDetailsService.getPolicyDetailsByNumber(this.policyId).subscribe((policyResponse)=>{
-    //   this.policy  = policyResponse;
-    //   this.loading = false;
-    //   },
-    //   (err)=>{
-
-    //   }
-    // );
+      this.policyDataService.$policyDetails
+      .pipe(
+        map( (policyResponse) => {
+          return policyResponse.filter((response) => response.policynumber.policynumber === this.policyId);
+        })
+      )
+      .subscribe((policyResponse) => {
+        this.policyDetails = policyResponse;
+        this.loading = false;
+      });
     });
-
-    this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
-      this.policyDetails  = policyResponse;
-      this.loading = false;
-    });
-
-    // this.policyDataService.$policyDetails.subscribe((policyDetails) => {
-    //   this.policyDetails = policyDetails;
-    //   // if(this.policyDetails[0]){
-    //   //   this.policyDetails = this.policyDetails.filter((response) => response.policynumber.policynumber === this.policyId);
-    //   // }
-    //   this.loading =                  false;
-    //   // this.validateAddressService.setAddress(this.policyDetails[0].residentialAddress);
-    // })
   }
 }

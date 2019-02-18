@@ -23,7 +23,7 @@ import { RoutingModule }                        from './app.routing';
 import { environment }                          from '../environments/environment.dev';
 import { AuthenticationService }                from './_services/_iam/authentication-service.service';
 import { AuthGuard }                            from './_guards/auth.guard';
-import { SignUpGuard }                            from './_guards/signup.guard';
+import { SignUpGuard }                          from './_guards/signup.guard';
 import { JwtInterceptor }                       from './_helpers/jwt.interceptor';
 import { UserService }                          from './_services/user.service'; 
 import { WalletCardService }                    from './_services/_iam/wallet-card.service';
@@ -38,6 +38,8 @@ import { ValidateAddressService }               from './_services/change-address
 import { PolicyDocumentsDataService }           from './_services/my-insurance/data-services/policy-documents-data.service';
 import { FullstateToAbvPipe }                   from './_helpers/_pipes/fullstate-to-abv.pipe';
 import { AbvToFulstatePipe }                    from './_helpers/_pipes/abv-to-fulstate.pipe';
+import { DocumentTypePipe }                     from './_helpers/_pipes/document-type.pipe';
+import { ErrorInterceptionService }             from './_services/error-service/error-interception.service';
 // ----- Account ----- //
 import { DashboardMainComponent }               from './components/dashboard/dashboard-main.component';
 // ----- Routes ----- //
@@ -65,7 +67,7 @@ import { SignupEditPolicyComponent }            from './routes/signup/signup-pro
 import { SignupEmailInUseComponent }            from './routes/signup/signup-process/signup-email-in-use/signup-email-in-use.component';
 import { SignupPolicyBelongsToAnotherComponent } from './routes/signup/signup-process/signup-policy-belongs-to-another/signup-policy-belongs-to-another.component';
 import { SignupNotFoundComponent }              from './routes/signup/signup-process/signup-not-found/signup-not-found.component';
-
+import { ErrorComponent }                       from './routes/error/error-pages.component';
 // ----- Components ----- //
 import { LoginFormComponent }                   from './components/forms/dynamic-forms/login-form/login-form.component';
 import { CreatePasswordFormComponent }          from './components/forms/dynamic-forms/create-password-form/create-password-form.component';
@@ -159,9 +161,6 @@ import { DetailsCarComponent } from './components/dashboard/loggedin-content/my-
 import { CarHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/car-header/car-header.component';
 import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component';
 import { EmailModalComponent } from './components/forms/dynamic-forms/email-modal/email-modal.component';
-import { DocumentTypePipe } from './_helpers/_pipes/document-type.pipe';
-import { ErrorComponent } from './routes/error/error-pages.component';
-import { ErrorInterceptionService } from './_services/error-service/error-interception.service';
 
 if (environment.production) {
   enableProdMode();

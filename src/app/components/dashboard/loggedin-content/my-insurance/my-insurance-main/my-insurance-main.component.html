@@ -6,27 +6,29 @@
 
     <mapfre-card [singleCard]="false" [additionalClasses]="'dashboard-policies'">
 
-      <div class="row" [ngClass]="{ 'no-pay': !currentBillBool , 'pay':  currentBillBool }">
+      <div class="row" [ngClass]="{ 
+        'no-pay': !policy?.billingDetails[0] || (policy?.billingDetails[0] && policy?.billingDetails[0]?.outstandingbalance == 0), 
+        'pay':   policy?.billingDetails[0] && policy?.billingDetails[0]?.outstandingbalance != 0 }">
         <div class="policy-background col">
-          <div class="car" *ngIf="policy.policyType === 'AUTO'"></div>
-          <div class="house" *ngIf="policy.policyType === 'HOME'"></div>
+          <div class="car" *ngIf="policy?.policyType === 'AUTO'"></div>
+          <div class="house" *ngIf="policy?.policyType === 'HOME'"></div>
         </div>
         <div class="policy-content col">
           <h2 class="row">
-            <div class="col-6 title">{{ policy.policyType | translate}} &ndash; <strong>
-                {{ policy.policynumber.policynumber }} </strong></div>
-            <div class="text-right col-6" [ngClass]="{'green-color': policy.policyStatus === 'ACTIVE', 
-                'red-color': policy.policyStatus !== 'ACTIVE' }">
-              <ng-container *ngIf="policy.policyStatus !== 'ACTIVE' ">
-                <small>{{policy.policyStatus | translate}}</small>
+            <div class="col-6 title">{{ policy?.policyType | translate}} &ndash; <strong>
+                {{ policy?.policynumber.policynumber }} </strong></div>
+            <div class="text-right col-6" [ngClass]="{'green-color': policy?.policyStatus === 'ACTIVE', 
+                'red-color': policy?.policyStatus !== 'ACTIVE' }">
+              <ng-container *ngIf="policy?.policyStatus !== 'ACTIVE' ">
+                <small>{{policy?.policyStatus | translate}}</small>
               </ng-container>
-              <ng-container *ngIf="policy.policyStatus == 'ACTIVE'">
-                <small>{{policy.effDate | customDateFormat }} {{ 'TO' |translate }}
-                  {{policy.expDate | customDateFormat }}</small>
+              <ng-container *ngIf="policy?.policyStatus == 'ACTIVE'">
+                <small>{{policy?.effDate | customDateFormat }} {{ 'TO' |translate }}
+                  {{policy?.expDate | customDateFormat }}</small>
               </ng-container>
             </div>
           </h2>
-          <div [ngSwitch]="policy.policyType">
+          <div [ngSwitch]="policy?.policyType">
             <div class="row policy-row" *ngSwitchCase="'AUTO'">
               <div class="col">
                 <div class="policy-icon">
@@ -34,7 +36,7 @@
                 </div>
                 <div class="policy-info">
                   <div class="policy-info-content" [class.show-more-detail]="hideOrShow">
-                    <ng-container *ngFor="let vehicles of policy.vehicle; let last = last">
+                    <ng-container *ngFor="let vehicles of policy?.vehicle; let last = last">
                       {{ vehicles.vehicle }}<ng-container *ngIf="!last">, </ng-container>
                     </ng-container>
                   </div>
@@ -48,9 +50,9 @@
                 </div>
                 <div class="policy-info">
                   <div class="policy-info-content">
-                    {{ policy.property[0].address.streetName }}, {{ policy.property[0].address.city }},
-                    {{ policy.property[0].address.state | fullstateToAbv }},
-                    {{ policy.property[0].address.zipCode.code }}
+                    {{ policy?.property[0].address.streetName }}, {{ policy?.property[0].address.city }},
+                    {{ policy?.property[0].address.state | fullstateToAbv }},
+                    {{ policy?.property[0].address.zipCode.code }}
                   </div>
                 </div>
               </div>
@@ -64,7 +66,7 @@
               </div>
               <div class="policy-info">
                 <div class="policy-info-content" [class.show-more-detail]="hideOrShow">
-                  <ng-container *ngFor="let insured of policy.insured; let last = last">
+                  <ng-container *ngFor="let insured of policy?.insured; let last = last">
                     {{insured['Insured Name'] | titlecase }}<ng-container *ngIf="!last">, </ng-container>
                   </ng-container>
                 </div>
@@ -78,17 +80,17 @@
               </div>
               <div class="policy-info">
                 <ng-container
-                  *ngIf="!policy.billingDetails[0] || (policy.billingDetails[0] && policy.billingDetails[0]?.outstandingbalance == 0)">
+                  *ngIf="!policy?.billingDetails[0] || (policy?.billingDetails[0] && policy?.billingDetails[0]?.outstandingbalance == 0)">
                   {{ 'BALANCE' | translate}} <span class="green-color">{{'NO_PAYMENTS_DUE' | translate}}</span>
                 </ng-container>
-                <ng-container *ngIf="policy.billingDetails[0] && policy.billingDetails[0]?.outstandingbalance != 0">
+                <ng-container *ngIf="policy?.billingDetails[0] && policy?.billingDetails[0]?.outstandingbalance != 0">
                   {{ 'OUTSTANDING_BALANCE' | translate}}:
-                  <strong>{{ policy.billingDetails[0]?.outstandingbalance | currency }}</strong>
+                  <strong>{{ policy?.billingDetails[0]?.outstandingbalance | currency }}</strong>
                 </ng-container>
               </div>
             </div>
           </div>
-          <ng-container *ngIf="policy.billingDetails[0] && policy.billingDetails[0]?.outstandingbalance != 0">
+          <ng-container *ngIf="policy?.billingDetails[0] && policy?.billingDetails[0]?.outstandingbalance != 0">
             <div class="row policy-row">
               <div class="col">
                 <div class="policy-icon">
@@ -96,8 +98,8 @@
                 </div>
                 <div class="policy-info pay-now">
                   <div class="date-amount">
-                    {{ 'NEXT' | translate}} : {{policy.billingDetails[0]?.paymentDueDate |  customDateFormat }} :
-                    <strong>{{policy.billingDetails[0]?.minAmountDue | currency}}</strong>
+                    {{ 'NEXT' | translate}} : {{policy?.billingDetails[0]?.paymentDueDate |  customDateFormat }} :
+                    <strong>{{policy?.billingDetails[0]?.minAmountDue | currency}}</strong>
                   </div>
                   <div class="pay-now-button">
                     <mapfre-modal [modalOptions]="payNowModal">
@@ -107,13 +109,13 @@
                           <div class="row text-center margin-top mt16">
                             <div class="col-md-6 col-sm-12">
                               <mapfre-link [additionalClasses]="'ghost primary large btn'"
-                                [routerLink]="['/billing/' +  policy.policynumber.policynumber + '/new-payment/']">
+                                [routerLink]="['/billing/' +  policy?.policynumber.policynumber + '/new-payment/']">
                                 {{ 'PAY_BY_CHECK' | translate}}
                               </mapfre-link>
                             </div>
                             <div class="col-md-6 col-sm-12">
                               <a class="mapfre link ghost primary large btn" target="_blank"
-                                [href]="'https://www.mapfreinsurance.com/b2cwebapp/view/billing?policyNumber=' + policy.policynumber.policynumber + '&source=makePayment&selectedTabIdx=1&fragments=main&mode=embedded'">
+                                [href]="'https://www.mapfreinsurance.com/b2cwebapp/view/billing?policyNumber=' + policy?.policynumber.policynumber + '&source=makePayment&selectedTabIdx=1&fragments=main&mode=embedded'">
                                 <span class="link-content">
                                   {{ 'PAY_BY_CREDIT_CARD' | translate}}
                                 </span>
@@ -131,7 +133,7 @@
         </div>
       </div>
       <div class="clear-fix"></div>
-      <a mdbWavesEffect [routerLink]="['/my-insurance', policy.policynumber.policynumber, 'details']"
+      <a mdbWavesEffect [routerLink]="['/my-insurance', policy?.policynumber.policynumber, 'details']"
         class="policy-link  waves-light d-block">
         {{ 'Details_Billing_Documents' | translate }}
         <svg-arror-right-svg></svg-arror-right-svg>

@@ -1,12 +1,14 @@
+import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { PolicyDataService } from './../../../../_services/data-services/policy-data.service';
 import { PaymentDataServiceService } from './../../../../_services/data-services/payment-data-service.service';
 import { PolicyDetailsService } from './../../../../_services/my-insurance/policy-details.service';
 import { BillingDetailsService } from './../../../../_services/my-insurance/billing-details.service';
 import { BankAccountService } from './../../../../_services/profile-settings/bank-account.service';
-import { Component, OnInit } from '@angular/core';
-import { forkJoin } from 'rxjs';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+
 import { StorageServiceObservablesService } from '../../../../_services/storage-service-observables/storage-service-observables.service';
+import { TestingDataService } from '../../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-billing-main',
@@ -27,37 +29,19 @@ export class BillingMainComponent implements OnInit {
     private billingDetailsService:  BillingDetailsService,
     private bankAccountService:     BankAccountService,
     private router:                 Router,
-    private policyDetailsService: PolicyDetailsService,
+    private policyDetailsService:   PolicyDetailsService,
     private storageServiceObservablesService: StorageServiceObservablesService,
     private paymentDataServiceService: PaymentDataServiceService,
-    private policyDataService: PolicyDataService
+    private policyDataService:       PolicyDataService,
+    private testingData:             TestingDataService
   ) { }
 
   ngOnInit() {
-
-  //   this.loading = true;
-    // forkJoin(
-    //   this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage()),
-    //  this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage())
-    //   // this.policyDetailsService.getPolicyDetailsByEmail(this.storageServiceObservablesService.getUserFromStorage())
-    // )
-   // .subscribe((policyResponse) => {
-    //   this.checkingInfo =         checkingInfo;
-    //   // this.billingData =          billingData;
-    //   this.policyResponse =       policyResponse;
-    // this.policyDataService.updatePolicyDetails(policyResponse);
-    //   this.paymentDataServiceService.updateCheckingInfo(this.checkingInfo);
-    //   // this.paymentDataServiceService.updateBillingAccount(this.billingData);
-
-    //  this.paymentDataServiceService.updatePolicyData(policyResponse);
-    //   this.loading =              false;
-    // });
-
-   // this.loading = true;
+    this.loading = true;
     this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage())
     .subscribe((policyResponse) => {
       this.paymentDataServiceService.updatePolicyData(policyResponse);
-    //   this.loading =              false;
+         this.loading =              false;
     });
   }
 }

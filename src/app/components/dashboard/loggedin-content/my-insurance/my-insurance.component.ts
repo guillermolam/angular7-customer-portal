@@ -16,11 +16,11 @@ export class MyInsuranceComponent implements OnInit {
   loading: boolean;
 
   constructor(
-    private policyDataService: PolicyDataService,
+    private policyDataService:    PolicyDataService,
     private policyDetailsService: PolicyDetailsService,
-    private storageService: StorageServiceObservablesService,
-    private testingData: TestingDataService,
-    private userService: UserService
+    private storageService:       StorageServiceObservablesService,
+    private testingData:          TestingDataService,
+    private userService:          UserService
   ) {
   }
 
@@ -31,6 +31,7 @@ export class MyInsuranceComponent implements OnInit {
       .subscribe(() => {
         this.loading = false;
       },
-      (err) => {});
+      (err) => {}
+    );
   }
 }

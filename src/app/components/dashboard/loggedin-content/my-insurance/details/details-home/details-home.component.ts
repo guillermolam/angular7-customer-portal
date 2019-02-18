@@ -18,6 +18,7 @@ export class DetailsHomeComponent implements OnInit {
             alertLoad:                  boolean = false;
             alerton:                    any;
             apt:                        string = 'apt';
+            aptDiv:                     boolean;
             input:                      object;
             isItTheSameAddress:         boolean;
             message:                    string;
@@ -65,6 +66,7 @@ export class DetailsHomeComponent implements OnInit {
   }
 
   getApartmentAndState(data): void {
+    console.log("address", data);
     if(data.property != undefined) {
       const streetAddress =               data.property[0].address.streetName;
       let   addressArray =                [];
@@ -73,8 +75,12 @@ export class DetailsHomeComponent implements OnInit {
         addressArray =                    streetAddress.split('|');
         this.address =                    addressArray[0];
         this.apt =                        addressArray[1];
+        this.aptDiv =                     true;
       }
       else {
+        this.aptDiv =                     false;
+      }
+      /* else {
         addressArray =                    streetAddress.split(' ');
         this.address =                    `${addressArray[0]} ${addressArray[1]} ${addressArray[2]}`;
         if (addressArray[3] == 'apt' ) {
@@ -83,7 +89,7 @@ export class DetailsHomeComponent implements OnInit {
         else {
           this.apt =                      addressArray[3];
         }
-      }
+      }*/
     }
   }
 
@@ -106,8 +112,8 @@ export class DetailsHomeComponent implements OnInit {
   ngOnInit() {
     this.getApartmentAndState(this.policy);
     this.isAddressEqual(this.policy);
+    // This will need to be refactored.
     this.policyId =                       this.policyIdInput;
-
   }
 
 }
