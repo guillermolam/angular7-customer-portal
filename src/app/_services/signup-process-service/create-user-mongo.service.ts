@@ -11,12 +11,11 @@ export class CreateUserMongoService {
     private http:HttpClient
   ) { }
 
-
   createMongoUser(email, password){
-
+    const btoaPass = window.btoa(password);
     const body = {
       email: email,
-      password: password
+      password: btoaPass
     }
 
     const url = `${environment.backend_server_url_identity_2}/login`;  

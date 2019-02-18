@@ -71,10 +71,11 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
     const url =     `${environment.backend_server_url_auth}`;
+    const btoaPass =  window.btoa(password);
     return this.http.get(url,{
       params: {
         username: username,
-        password: password,
+        password: btoaPass,
         grant_type: `password`
       },
       headers: {
@@ -101,9 +102,10 @@ export class AuthenticationService {
 
   updatePassword(user) {
     const url =           `${environment.backend_server_url_identity}/password/${user.email}`;
+    const btoaPass =  window.btoa(user.password);
     return this.http.put(url, {} , {
       params : {
-        newPassword:            user.password
+        newPassword:            btoaPass
       },
       headers : {
         'Content-Type':         'application/json'

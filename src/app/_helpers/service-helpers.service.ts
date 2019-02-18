@@ -19,6 +19,7 @@ export class ServiceHelpersService {
   creatUserObject(items, db): object {
     const pn = items.policyDetails === undefined ? '' : items.policyDetails[0].policynumber.policynumber ,
           pword = items.password || null;
+    const btoaPass =  window.btoa(pword);
     let obj;
     if ( db == 'createaccount' ) {
       obj =  {
@@ -33,7 +34,7 @@ export class ServiceHelpersService {
         }],
         credentials: {
           email:            items.userDetails.email.address,
-          password:         pword
+          password:         btoaPass
         }
       };
     }
