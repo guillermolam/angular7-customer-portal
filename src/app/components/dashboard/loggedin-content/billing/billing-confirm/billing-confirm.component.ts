@@ -1,11 +1,12 @@
 import { Component, OnInit }              from '@angular/core';
 import { Router, Params, ActivatedRoute}  from '@angular/router';
+import { filter, map }                    from 'rxjs/operators';
 import { AlertService }                   from 'mapfre-design-library';
 import { AuthenticationService }          from '../../../../../_services/_iam/authentication-service.service';
 import { BankAccountService }             from '../../../../../_services/profile-settings/bank-account.service';
-import { BillingDataService }             from './../../../../../_services/my-insurance/data-services/billing-data.service';
+import { BillingDataService }             from './../../../../../_services/data-services/billing-data.service';
 import { BillingDetailsService }          from './../../../../../_services/my-insurance/billing-details.service';
-import { PolicyDataService }              from './../../../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDataService }              from './../../../../../_services/data-services/policy-data.service';
 import { PolicyDetailsService }           from '../../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }
                                           from '../../../../../_services/storage-service-observables/storage-service-observables.service';
@@ -88,8 +89,8 @@ export class BillingConfirmComponent implements OnInit {
   sendPayment(): void {
     this.loading =                    true;
     if (this.storeBankAccount) {
-      if ( this.payment(this.billing, this.user.userDetails.email.address, this.policyId) ) {
-        if ( this.saveCheckingAccount(this.user.userDetails.email.address, this.billing.bankAccount) ) {
+      if ( this.payment(this.billing, this.storageService.getUserFromStorage(), this.policyId) ) {
+        if ( this.saveCheckingAccount(this.storageService.getUserFromStorage(), this.billing) ) {
           this.loading =              false;
           this.alertService.success('Congrats! You\'ve paid your bill and saved your bank information!', true);
           this.router.navigate(['/my-insurance']);
@@ -107,7 +108,7 @@ export class BillingConfirmComponent implements OnInit {
       }
     }
     else {
-      if ( this.payment( this.billing, this.user.userDetails.email.address, this.policyId ) ) {
+      if ( this.payment( this.billing, this.storageService.getUserFromStorage(), this.policyId ) ) {
         this.loading =                false;
         this.alertService.success('Congrats! You\'ve paid your bill!', true);
         this.router.navigate(['/my-insurance']);

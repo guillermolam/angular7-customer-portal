@@ -5,7 +5,7 @@ import { ActivatedRoute, Router, Params }
                                       from '@angular/router';
 import { AlertService, RegExHelper, FormBase, FormBaseControlService, GetGooglePlaceService } 
                                       from 'mapfre-design-library';
-import { BillingDataService }         from './../../../../_services/my-insurance/data-services/billing-data.service';
+import { BillingDataService }         from './../../../../_services/data-services/billing-data.service';
 import { Billing }                    from '../../../../_models/billing';
 import { PolicyDataService }          from '../../../../_services/my-insurance/data-services/policy-data.service';
 import { UserService }                from '../../../../_services/user.service';
@@ -90,7 +90,7 @@ export class NewPaymentComponent implements OnInit {
   newPaymentFormSubmit(): void {
     let radioAmount,
         paymentObj =                    {};
-    const bankingInfo =                 this.checkingInfo.bankAccountDetails,
+    const bankingInfo =                 this.checkingInfo,
           nPForm =                      this.newPaymentForm,
           errorString =                 `'ACCOUNT_NUMBER_CONFIRM_DO_NOT_MATCH' | translate`; 
 
@@ -183,6 +183,10 @@ export class NewPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.policyId =                 params['policyid'];
+    });
+
     this.newPaymentForm =             this.ipt.toFormGroup(this.inputs);
     this.billingDataService.$storeBankAccount.subscribe((bankAccountCheck) => {
       this.storeBankAccount =         bankAccountCheck;
@@ -192,7 +196,7 @@ export class NewPaymentComponent implements OnInit {
       this.setValues(this.checkingInfo);
     }
 
-    this.bankDetails = this.checkingInfo;
+    this.bankDetails =                this.checkingInfo;
 
     this.getGooglePlaceService.$address
     .subscribe((address) => {
