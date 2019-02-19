@@ -1,4 +1,4 @@
-<ng-container *ngFor="let exposure of claim.exposures">
+
     <ng-container *ngIf="exposure.coverage.code != '***No Claims Found***' ">
       <ng-container *ngIf="type == 'details'; else claimdashboard ">
         <ng-container *ngIf="exposure.exposureNumber.exposureNumber == claimid[1]">
@@ -51,4 +51,3 @@
         </div>
       </div>
     </ng-template>
-  </ng-container>

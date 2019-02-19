@@ -7,8 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ClaimsHomeCarComponent implements OnInit {
   @Input() claim;
-  @Input() type: string = 'header';
   @Input() claimid;
+  @Input() exposure;
+  @Input() type: string = 'header';
 
   constructor() { }
 

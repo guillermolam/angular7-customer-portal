@@ -3,6 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.doctest.dev';
 import { UserService } from '../_services/user.service';
+import { UserDataService } from '../_services/data-services/user-data.service';
 import { PolicyDataService } from '../_services/my-insurance/data-services/policy-data.service';
 
 @Injectable({
@@ -12,6 +13,7 @@ export class TestingDataService {
 
   constructor(
     private userService: UserService,
+    private userDataService: UserDataService,
     private policyDataService: PolicyDataService,
     private claimsDataService: ClaimsDataService,
 
@@ -25,13 +27,32 @@ export class TestingDataService {
     }
 
     //user and bank info
+    this.setUpTestUser();
+
+    //policy info + current bill
+    this.setUpTestPolicy();
+
+    // claims
+    this.setUpTestClaims();
+
+    // bills
+
+
+  }
+
+  setUpTestClaims() {
+    this.claimsDataService.updateClaims(this.testFullClaimsData());
+  }
+
+  setUpTestUser(): void {
     const updatedUser = [{
       userDetails: this.testUserInfo(),
       bankAccountDetails: this.testBankingInfo()
     }];
-    this.userService.updateUser(updatedUser);
+    this.userDataService.updateUserDetails(updatedUser);
+  }
 
-    //policy info + current bill
+  setUpTestPolicy() {
     const policyBillingDataAll = [];
     policyBillingDataAll.push(...[Object.assign(
       this.testingPolicyInfo(),
@@ -39,338 +60,6 @@ export class TestingDataService {
     ]);
     this.policyDataService.updatePolicyDetails(policyBillingDataAll);
     console.log('policyBillingDataAll',policyBillingDataAll);
-
-    // claims
-    this.claimsDataService.updateClaims(this.testDataClaimsDetail());
-
-    // bills
-
-
-  }
-
-  testDataClaimsDetail(): any {
-
-    return [
-      {
-        "number": {
-          "number": "PRAK16"
-        },
-        "exposures": [
-          {
-            "coverage": {
-              "code": "***No Claims Found***"
-            },
-            "description": "Other Vehicle, backing up, collided with Insured Vehicle ",
-            "address": {
-              "streetName": "      ***No Claims Found***                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ",
-              "city": "",
-              "state": "UNKNOWN",
-              "zipCode": {
-                "digits": "00000"
-              }
-            },
-            "claimant": {
-              "name": "***"
-            },
-            "exposureNumber": {
-              "exposureNumber": ""
-            },
-            "payments": [],
-            "appraisals": [],
-            "adjuster": {
-              "name": "",
-              "extensionAndFax": "15450,1-508-949-5930",
-              "adjusterId": {
-                "id": ""
-              },
-              "email": {
-                "address": "CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM"
-              },
-              "phoneNumber": {
-                "number": "999-999-9999"
-              }
-            }
-          }
-        ],
-        "policyNumber": {
-          "policynumber": "GHQ004"
-        },
-        "date": "2018-04-25T00:00:00.000+0000",
-        "propertyOrAutoIndicator": "13 SUBA FORESTER"
-      },
-      {
-        "number": {
-          "number": "RAJX49"
-        },
-        "exposures": [
-          {
-            "coverage": {
-              "code": "Comprehensive"
-            },
-            "description": "Object from Other Vehicle hit Insured Vehicle ",
-            "address": {
-              "streetName": "N41573612102018 ,  ",
-              "city": "",
-              "state": "UNKNOWN",
-              "zipCode": {
-                "digits": "00000"
-              }
-            },
-            "claimant": {
-              "name": "JOSE MIGUEL MARTI"
-            },
-            "exposureNumber": {
-              "exposureNumber": "NXKAX1"
-            },
-            "payments": [
-              {
-                "status": {
-                  "code": "CASHED",
-                  "date": "2018-01-21T00:12:00.000+0000"
-                },
-                "deductibleCode": "APL",
-                "address": {
-                  "streetName": "default",
-                  "city": "default",
-                  "state": "MASSACHUSETTS",
-                  "zipCode": {
-                    "digits": "00000"
-                  }
-                },
-                "exposureNumber": "PA",
-                "checkNumber": "0027640949",
-                "checkAmount": 416.8,
-                "paymentReason": "COMPREHENSIVE",
-                "checkPayee": "GLENVILLE TERRACE AUTO BODY",
-                "checkDate": "2018-01-10T00:12:00.000+0000"
-              },
-              {
-                "status": {
-                  "code": "N/A",
-                  "date": null
-                },
-                "deductibleCode": "N/A",
-                "address": {
-                  "streetName": "default",
-                  "city": "default",
-                  "state": "MASSACHUSETTS",
-                  "zipCode": {
-                    "digits": "00000"
-                  }
-                },
-                "exposureNumber": "PA",
-                "checkNumber": "0959365773",
-                "checkAmount": 221.55,
-                "paymentReason": "",
-                "checkPayee": "Hertz Bulk Rental via ACH",
-                "checkDate": null
-              }
-            ],
-            "appraisals": [
-              {
-                "type": "APPRAISAL",
-                "number": {
-                  "number": "A0PVHYJ"
-                },
-                "status": "CLOSE",
-                "appraiser": {
-                  "name": "GLENVILLE TERRACE AUTO    "
-                },
-                "appraisalAmount": 0,
-                "exposureNumber": "AP",
-                "variableAmount": null
-              }
-            ],
-            "adjuster": {
-              "name": "JENNIFER GOMES",
-              "extensionAndFax": "15736,508-671-3736",
-              "adjusterId": {
-                "id": "JGOMES"
-              },
-              "email": {
-                "address": "JGOMES@MAPFREUSA.COM"
-              },
-              "phoneNumber": {
-                "number": "999-999-9999"
-              }
-            }
-          },
-          {
-            "coverage": {
-              "code": "Rental reimb"
-            },
-            "description": "Object from Other Vehicle hit Insured Vehicle ",
-            "address": {
-              "streetName": "N41573612202018 ,  ",
-              "city": "",
-              "state": "UNKNOWN",
-              "zipCode": {
-                "digits": "00000"
-              }
-            },
-            "claimant": {
-              "name": "JOSE MIGUEL MARTI"
-            },
-            "exposureNumber": {
-              "exposureNumber": "NXKPA4"
-            },
-            "payments": [
-              {
-                "status": {
-                  "code": "CASHED",
-                  "date": "2018-01-21T00:12:00.000+0000"
-                },
-                "deductibleCode": "APL",
-                "address": {
-                  "streetName": "default",
-                  "city": "default",
-                  "state": "MASSACHUSETTS",
-                  "zipCode": {
-                    "digits": "00000"
-                  }
-                },
-                "exposureNumber": "PA",
-                "checkNumber": "0027640949",
-                "checkAmount": 416.8,
-                "paymentReason": "COMPREHENSIVE",
-                "checkPayee": "GLENVILLE TERRACE AUTO BODY",
-                "checkDate": "2018-01-10T00:12:00.000+0000"
-              },
-              {
-                "status": {
-                  "code": "N/A",
-                  "date": null
-                },
-                "deductibleCode": "N/A",
-                "address": {
-                  "streetName": "default",
-                  "city": "default",
-                  "state": "MASSACHUSETTS",
-                  "zipCode": {
-                    "digits": "00000"
-                  }
-                },
-                "exposureNumber": "PA",
-                "checkNumber": "0959365773",
-                "checkAmount": 221.55,
-                "paymentReason": "",
-                "checkPayee": "Hertz Bulk Rental via ACH",
-                "checkDate": null
-              }
-            ],
-            "appraisals": [
-              {
-                "type": "APPRAISAL",
-                "number": {
-                  "number": "A0PVHYJ"
-                },
-                "status": "CLOSE",
-                "appraiser": {
-                  "name": "GLENVILLE TERRACE AUTO    "
-                },
-                "appraisalAmount": 0,
-                "exposureNumber": "AP",
-                "variableAmount": null
-              }
-            ],
-            "adjuster": {
-              "name": "JENNIFER GOMES",
-              "extensionAndFax": "15736,508-671-3736",
-              "adjusterId": {
-                "id": "JGOMES"
-              },
-              "email": {
-                "address": "JGOMES@MAPFREUSA.COM"
-              },
-              "phoneNumber": {
-                "number": "999-999-9999"
-              }
-            }
-          }
-        ],
-        "policyNumber": {
-          "policynumber": "GHQ004"
-        },
-        "date": "2018-11-21T00:00:00.000+0000",
-        "propertyOrAutoIndicator": "13 SUBA FORESTER"
-      }
-    ]
-  }
-
-  testDataClaimsList(): any {
-    if (environment.production) {
-      return false;
-    }
-    return [
-      {
-        "number": {
-          "number": "NJH830"
-        },
-        "exposures": [
-          {
-            "coverage": {
-              "code": "Glass"
-            },
-            "description": "Glass - windshield ",
-            "claimant": {
-              "name": "ROBIN E RIESSMAN"
-            },
-            "exposureNumber": {
-              "exposureNumber": "JWCH13"
-            },
-            "payments": [],
-            "appraisals": [],
-            "adjusterId": {
-              "id": ""
-            }
-          }
-        ],
-        "policyNumber": {
-          "policynumber": "XH0021"
-        },
-        "date": "2008-01-08T05:00:00.000+0000"
-      },
-      {
-        "number": {
-          "number": "VWY134"
-        },
-        "exposures": [
-          {
-            "coverage": {
-              "code": "Glass"
-            },
-            "description": "Glass - mirror ",
-            "claimant": {
-              "name": "DAVID SOUSA"
-            },
-            "exposureNumber": {
-              "exposureNumber": "RRAC39"
-            },
-            "payments": [],
-            "appraisals": [],
-            "adjusterId": {
-              "id": ""
-            }
-          }
-        ],
-        "policyNumber": {
-          "policynumber": "XH0786"
-        },
-        "date": "2010-08-14T04:00:00.000+0000"
-      }
-    ];
-  }
-
-  testDataClaims(type): any {
-    if (environment.production) {
-      return false;
-    }
-    if (type == 'list') {
-      return this.testDataClaimsList();
-    }
-    else {
-      return this.testDataClaimsDetail();
-    }
   }
 
   testBankingInfo(): any {
@@ -399,7 +88,6 @@ export class TestingDataService {
   }
 
   testUserInfo(): any {
-
     return {
       address: null,
       email: {
@@ -584,249 +272,238 @@ export class TestingDataService {
   }
 
   testFullClaimsData() {
-    return [
+    return [  
       {
         "number": {
-          "number": ""
+            "number": "KKPK61"
         },
         "exposures": [
-          {
-            "coverage": {
-              "code": "***No Claims Found***"
-            },
-            "description": "Loss        is not found on the Commerce database. ",
-            "address": {
-              "streetName": "      ***No Claims Found***                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ",
-              "city": "",
-              "state": "UNKNOWN",
-              "zipCode": {
-                "digits": "00000"
-              }
-            },
-            "claimant": {
-              "name": "***"
-            },
-            "exposureNumber": {
-              "exposureNumber": ""
-            },
-            "payments": [],
-            "appraisals": [],
-            "adjusterId": {
-              "id": ""
-            }
-          }
-        ],
-        "policyNumber": {
-          "policynumber": "BGZHSK"
-        },
-        "date": "2019-02-15T01:04:48.658+0000"
-      },
-      {
-        "number": {
-          "number": "PRAK16"
-        },
-        "exposures": [
-          {
-            "coverage": {
-              "code": "***No Claims Found***"
-            },
-            "description": "Other Vehicle, backing up, collided with Insured Vehicle ",
-            "address": {
-              "streetName": "      ***No Claims Found***                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ",
-              "city": "",
-              "state": "UNKNOWN",
-              "zipCode": {
-                "digits": "00000"
-              }
-            },
-            "claimant": {
-              "name": "***"
-            },
-            "exposureNumber": {
-              "exposureNumber": ""
-            },
-            "payments": [],
-            "appraisals": [],
-            "adjusterId": {
-              "id": ""
-            }
-          }
-        ],
-        "policyNumber": {
-          "policynumber": "GHQ004"
-        },
-        "date": "2018-04-25T00:00:00.000+0000"
-      },
-      {
-        "number": {
-          "number": "RAJX49"
-        },
-        "exposures": [
-          {
-            "coverage": {
-              "code": "Rental reimb"
-            },
-            "description": "Object from Other Vehicle hit Insured Vehicle ",
-            "address": {
-              "streetName": "N41573612202018 ,  ",
-              "city": "",
-              "state": "UNKNOWN",
-              "zipCode": {
-                "digits": "00000"
-              }
-            },
-            "claimant": {
-              "name": "JOSE MIGUEL MARTI"
-            },
-            "exposureNumber": {
-              "exposureNumber": "NXKPA4"
-            },
-            "payments": [
-              {
-                "status": {
-                  "code": "CASHED",
-                  "date": "2018-01-21T00:12:00.000+0000"
+            {
+                "coverage": {
+                    "code": "Property damage"
                 },
-                "deductibleCode": "APL",
+                "description": "Insured Vehicle collided with Other parked vehicle ",
                 "address": {
-                  "streetName": "default",
-                  "city": "default",
-                  "state": "MASSACHUSETTS",
-                  "zipCode": {
-                    "digits": "00000"
-                  }
+                    "streetName": "",
+                    "city": "SOMERVILLE",
+                    "state": "MA",
+                    "zipCode": {
+                        "digits": "00000"
+                    }
                 },
-                "paymentReason": "COMPREHENSIVE",
-                "checkNumber": "0027640949",
-                "checkPayee": "GLENVILLE TERRACE AUTO BODY",
-                "checkDate": "2018-01-10T00:12:00.000+0000",
-                "checkAmount": 416.8
+                "claimant": {
+                    "name": "CIANO DEVELOPMENT"
+                },
+                "exposureNumber": {
+                    "exposureNumber": "HYAPY3"
+                },
+                "payments": [
+                    {
+                        "status": {
+                            "code": "CASHED",
+                            "date": "2015-01-09T05:11:00.000+0000"
+                        },
+                        "deductibleCode": "N/A",
+                        "address": {
+                            "streetName": "default",
+                            "city": "default",
+                            "state": "UNKNOWN",
+                            "zipCode": {
+                                "digits": "00000"
+                            }
+                        },
+                        "exposureType": "Property damage",
+                        "checkNumber": "0025932363",
+                        "checkAmount": 466.78,
+                        "paymentReason": "PROPERTY DAMAGE                       033585133",
+                        "checkPayee": "ARBELLA MUTUAL INSURANCE AS SUBROGEE OF CIANO DEVELOPMENT LLC",
+                        "checkDate": "2015-01-05T05:11:00.000+0000"
+                    }
+                ],
+                "appraisals": [],
+                "adjuster": {
+                    "name": "",
+                    "extensionAndFax": "1-508-949-5930 ext 15450",
+                    "adjusterId": {
+                        "id": ""
+                    },
+                    "email": {
+                        "address": "CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM"
+                    },
+                    "phoneNumber": {
+                        "number": "999-999-9999"
+                    }
+                },
+                "propertyOrAutoIndicator": "AUTO"
+            }
+        ],
+        "policyNumber": {
+            "policynumber": "DMC793"
+        },
+        "date": "2015-05-01T04:00:00.000+0000"
+    },
+    {
+      "number": {
+          "number": "KPCA80"
+      },
+      "exposures": [
+          {
+              "coverage": {
+                  "code": "Collision"
               },
-              {
-                "status": {
-                  "code": "N/A",
-                  "date": null
-                },
-                "deductibleCode": "N/A",
-                "address": {
-                  "streetName": "default",
-                  "city": "default",
-                  "state": "MASSACHUSETTS",
+              "description": "Insured veh rear-ended Other veh ",
+              "address": {
+                  "streetName": "",
+                  "city": "ARLINGTON",
+                  "state": "MA",
                   "zipCode": {
-                    "digits": "00000"
+                      "digits": "00000"
                   }
-                },
-                "paymentReason": "",
-                "checkNumber": "0959365773",
-                "checkPayee": "Hertz Bulk Rental via ACH",
-                "checkDate": null,
-                "checkAmount": 221.55
-              }
-            ],
-            "appraisals": [
-              {
-                "type": "APPRAISAL",
-                "number": {
-                  "number": "A0PVHYJ"
-                },
-                "status": "CLOSE",
-                "appraiser": {
-                  "name": "GLENVILLE TERRACE AUTO    "
-                },
-                "appraisalAmount": 0,
-                "variableAmount": null
-              }
-            ],
-            "adjusterId": {
-              "id": "JGOMES"
-            }
+              },
+              "claimant": {
+                  "name": "MONICA A NOLAN"
+              },
+              "exposureNumber": {
+                  "exposureNumber": "JCTTN5"
+              },
+              "payments": [
+                  {
+                      "status": {
+                          "code": "N/A",
+                          "date": "0002-12-31T05:00:00.000+0000"
+                      },
+                      "deductibleCode": "APL",
+                      "address": {
+                          "streetName": "default",
+                          "city": "default",
+                          "state": "UNKNOWN",
+                          "zipCode": {
+                              "digits": "00000"
+                          }
+                      },
+                      "exposureType": "Collision",
+                      "checkNumber": "3338084122",
+                      "checkAmount": 760,
+                      "paymentReason": "",
+                      "checkPayee": "THE SALVAGE CENTER, INC.",
+                      "checkDate": "0002-12-31T05:00:00.000+0000"
+                  },
+                  {
+                      "status": {
+                          "code": "CASHED",
+                          "date": "2015-01-24T05:09:00.000+0000"
+                      },
+                      "deductibleCode": "APL",
+                      "address": {
+                          "streetName": "default",
+                          "city": "default",
+                          "state": "UNKNOWN",
+                          "zipCode": {
+                              "digits": "00000"
+                          }
+                      },
+                      "exposureType": "Collision",
+                      "checkNumber": "0025838666",
+                      "checkAmount": 10271.22,
+                      "paymentReason": "RELEASE OF ALL COLLISION CLAIMS",
+                      "checkPayee": "MONICA A NOLAN",
+                      "checkDate": "2015-01-09T05:09:00.000+0000"
+                  }
+              ],
+              "appraisals": [
+                  {
+                      "appraiser": {
+                          "name": "HOME & AUTO APPR. BUREAU  "
+                      },
+                      "appraisalAmount": 8197.79,
+                      "variableAmount": null,
+                      "exposureType": "Collision",
+                      "appraisalNumber": {
+                          "number": "A0N19PY"
+                      },
+                      "appraisalType": "APPRAISAL",
+                      "appraisalStatus": "CLOSE"
+                  }
+              ],
+              "adjuster": {
+                  "name": "Test it",
+                  "extensionAndFax": "1-508-949-5930 ext 15450",
+                  "adjusterId": {
+                      "id": ""
+                  },
+                  "email": {
+                      "address": "CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM"
+                  },
+                  "phoneNumber": {
+                      "number": "999-999-9999"
+                  }
+              },
+              "propertyOrAutoIndicator": "AUTO"
           },
           {
-            "coverage": {
-              "code": "Comprehensive"
-            },
-            "description": "Object from Other Vehicle hit Insured Vehicle ",
-            "address": {
-              "streetName": "N41573612102018 ,  ",
-              "city": "",
-              "state": "UNKNOWN",
-              "zipCode": {
-                "digits": "00000"
-              }
-            },
-            "claimant": {
-              "name": "JOSE MIGUEL MARTI"
-            },
-            "exposureNumber": {
-              "exposureNumber": "NXKAX1"
-            },
-            "payments": [
-              {
-                "status": {
-                  "code": "CASHED",
-                  "date": "2018-01-21T00:12:00.000+0000"
-                },
-                "deductibleCode": "APL",
-                "address": {
-                  "streetName": "default",
-                  "city": "default",
-                  "state": "MASSACHUSETTS",
-                  "zipCode": {
-                    "digits": "00000"
-                  }
-                },
-                "paymentReason": "COMPREHENSIVE",
-                "checkNumber": "0027640949",
-                "checkPayee": "GLENVILLE TERRACE AUTO BODY",
-                "checkDate": "2018-01-10T00:12:00.000+0000",
-                "checkAmount": 416.8
+              "coverage": {
+                  "code": "Rental reimb"
               },
-              {
-                "status": {
-                  "code": "N/A",
-                  "date": null
-                },
-                "deductibleCode": "N/A",
-                "address": {
-                  "streetName": "default",
-                  "city": "default",
-                  "state": "MASSACHUSETTS",
+              "description": "Insured veh rear-ended Other veh ",
+              "address": {
+                  "streetName": "",
+                  "city": "ARLINGTON",
+                  "state": "MA",
                   "zipCode": {
-                    "digits": "00000"
+                      "digits": "00000"
                   }
-                },
-                "paymentReason": "",
-                "checkNumber": "0959365773",
-                "checkPayee": "Hertz Bulk Rental via ACH",
-                "checkDate": null,
-                "checkAmount": 221.55
-              }
-            ],
-            "appraisals": [
-              {
-                "type": "APPRAISAL",
-                "number": {
-                  "number": "A0PVHYJ"
-                },
-                "status": "CLOSE",
-                "appraiser": {
-                  "name": "GLENVILLE TERRACE AUTO    "
-                },
-                "appraisalAmount": 0,
-                "variableAmount": null
-              }
-            ],
-            "adjusterId": {
-              "id": "JGOMES"
-            }
+              },
+              "claimant": {
+                  "name": "MONICA A NOLAN"
+              },
+              "exposureNumber": {
+                  "exposureNumber": "JJKWM2"
+              },
+              "payments": [
+                  {
+                      "status": {
+                          "code": "CASHED",
+                          "date": "2015-01-30T05:11:00.000+0000"
+                      },
+                      "deductibleCode": "N/A",
+                      "address": {
+                          "streetName": "default",
+                          "city": "default",
+                          "state": "UNKNOWN",
+                          "zipCode": {
+                              "digits": "00000"
+                          }
+                      },
+                      "exposureType": "Rental reimb",
+                      "checkNumber": "0025962655",
+                      "checkAmount": 1170,
+                      "paymentReason": "RENTAL REIMB                          21W6WG",
+                      "checkPayee": "ENTERPRISE RENT A CAR",
+                      "checkDate": "2015-01-23T05:11:00.000+0000"
+                  }
+              ],
+              "appraisals": [],
+              "adjuster": {
+                  "name": "",
+                  "extensionAndFax": "1-508-949-5930 ext 15450",
+                  "adjusterId": {
+                      "id": ""
+                  },
+                  "email": {
+                      "address": "CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM"
+                  },
+                  "phoneNumber": {
+                      "number": "999-999-9999"
+                  }
+              },
+              "propertyOrAutoIndicator": "AUTO"
           }
         ],
         "policyNumber": {
-          "policynumber": "GHQ004"
+            "policynumber": "DMC793"
         },
-        "date": "2018-11-21T00:00:00.000+0000"
-      }
-    ];
+        "date": "2015-05-01T04:00:00.000+0000"
+    }];
   }
 
   testFullPolicyObject(): any {

@@ -43,6 +43,7 @@ export class MyInsuranceMainComponent implements OnInit {
     this.policyDataService.$policyDetails
     .subscribe((policyResponse: any) => {
       this.policyResponse = policyResponse;
+     
     });
 
     this.userService.$user

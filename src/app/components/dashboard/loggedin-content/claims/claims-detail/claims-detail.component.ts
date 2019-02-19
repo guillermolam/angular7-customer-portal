@@ -68,5 +68,7 @@ export class ClaimsDetailComponent implements OnInit {
     },
     (err) => {
     });
+      this.claims = this.testing.testFullClaimsData();
+      this.loading = false;
   }
 }

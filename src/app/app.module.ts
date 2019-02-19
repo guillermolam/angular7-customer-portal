@@ -40,6 +40,7 @@ import { FullstateToAbvPipe }                   from './_helpers/_pipes/fullstat
 import { AbvToFulstatePipe }                    from './_helpers/_pipes/abv-to-fulstate.pipe';
 import { DocumentTypePipe }                     from './_helpers/_pipes/document-type.pipe';
 import { ErrorInterceptionService }             from './_services/error-service/error-interception.service';
+import { UsableFaxWithExtensionPipe }           from './_helpers/_pipes/usable-fax-with-extension.pipe';
 // ----- Account ----- //
 import { DashboardMainComponent }               from './components/dashboard/dashboard-main.component';
 // ----- Routes ----- //
@@ -300,6 +301,7 @@ export function tokenGetter() {
     EmailModalComponent,
     DocumentTypePipe,
     NoPolicyTypeComponent,
+    UsableFaxWithExtensionPipe,
     
   ],
   imports: [
