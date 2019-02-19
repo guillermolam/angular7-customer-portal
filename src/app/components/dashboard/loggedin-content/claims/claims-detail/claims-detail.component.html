@@ -7,7 +7,6 @@
     <ng-container *ngFor="let exposure of claim.exposures">
       <ng-container *ngIf="exposure.exposureNumber.exposureNumber == claimid[1]">
         <header class="margin-bottom mb16 w-100">
-          <app-claims-home-property [claim]="claim" type="details" [claimid]="claimid"></app-claims-home-property>
 
           <ng-container *ngIf="claim?.propertyOrAutoIndicator == 'AUTO' ">
             <app-claims-home-car [claim]="claim" type="details" [claimid]="claimid"></app-claims-home-car>
@@ -16,6 +15,11 @@
           <ng-container *ngIf="claim?.propertyOrAutoIndicator == 'PROPERTY' ">
             <app-claims-home-property [claim]="claim" type="details" [claimid]="claimid"></app-claims-home-property>
           </ng-container>
+
+          <ng-container *ngIf="claim?.propertyOrAutoIndicator == null || !claim?.propertyOrAutoIndicator ">
+            <app-no-policy-type [claim]="claim" type="details" [claimid]="claimid"></app-no-policy-type>
+          </ng-container>
+
         </header>
 
         <section class="row details-content">

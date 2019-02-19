@@ -1,0 +1,54 @@
+<ng-container *ngFor="let exposure of claim.exposures">
+    <ng-container *ngIf="exposure.coverage.code != '***No Claims Found***' ">
+      <ng-container *ngIf="type == 'details'; else claimdashboard ">
+        <ng-container *ngIf="exposure.exposureNumber.exposureNumber == claimid[1]">
+          <div class="no-policy-type row no-margins-hug hug-content">
+            <div class="col-12 no-padding row">
+              <div class="policy-background col">
+                <div> &nbsp; </div>
+              </div>
+              <div class="col">
+                <h2 class="claim-id">{{ exposure?.coverage.code | titlecase }} -
+                  <strong>{{claim?.number.number}}-{{ exposure?.exposureNumber.exposureNumber }}</strong></h2>
+                <div class="policy-id">
+                  {{'POLICY_INFO_NUMBER' | translate }} - <a
+                    [routerLink]="['/my-insurance',  claim?.policyNumber.policynumber, 'details']"><strong>{{ claim?.policyNumber.policynumber }}</strong></a>
+                </div>
+                <div class="date-loss">
+                  {{ 'DATE_OF_LOSS' | translate }}: {{ claim?.date | date }}
+                </div>
+              </div>
+            </div>
+            <hr class="margin-top mb16 w-100" />
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  
+    <ng-template #claimdashboard>
+      <div class="no-policy-type row no-margins-hug hug-header">
+        <div class="col-12 no-padding row">
+          <div class="policy-background col">
+              <div> &nbsp; </div>
+          </div>
+          <div class="col">
+            <h2 class="claim-id">{{ exposure?.coverage.code | titlecase }} -
+              <strong>{{claim?.number.number}}-{{ exposure?.exposureNumber.exposureNumber }}</strong></h2>
+            <div class="policy-id">
+              {{'POLICY_INFO_NUMBER' | translate }} - {{ claim?.policyNumber.policynumber }}
+            </div>
+            <div class="date-loss">
+              {{ 'DATE_OF_LOSS' | translate }}: {{ claim?.date | date }}
+            </div>
+          </div>
+        </div>
+        <div class="col-12  no-padding">
+          <a [routerLink]="['/claims', claim?.number.number + '-' + exposure?.exposureNumber.exposureNumber, 'details']"
+            class="d-block claim-link margin-bottom mb32 padding-right pr16 margin-top mt16 waves-effect waves-red"
+            mdbWavesEffect>
+            {{ 'CLAIM_DETAILS' | translate }}&nbsp;<svg-arror-right-svg></svg-arror-right-svg>
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>

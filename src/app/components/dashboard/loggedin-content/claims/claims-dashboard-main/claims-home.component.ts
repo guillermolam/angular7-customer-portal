@@ -32,6 +32,7 @@ export class ClaimsHomeComponent implements OnInit {
         this.claims = false;
         this.loading = false;
       });
+
     console.log( 'claims object this will be removed', this.claims, 'this.claimsObject', this.claimsObject );
   }
 }

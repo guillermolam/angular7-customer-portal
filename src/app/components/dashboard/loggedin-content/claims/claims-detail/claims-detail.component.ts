@@ -22,6 +22,7 @@ export class ClaimsDetailComponent implements OnInit {
     private userService: UserService,
     private activeRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
+    private testing: TestingDataService
   ) { }
 
   getAddress(a): SafeUrl {

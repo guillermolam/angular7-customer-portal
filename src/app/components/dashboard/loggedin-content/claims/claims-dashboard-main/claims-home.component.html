@@ -7,14 +7,21 @@
 </header>
 <section class="details-content row">
   <div class="col1 col">
-    <ng-container *ngIf="claimsObject === true ; else noclaims ">
+    <ng-container *ngIf="claimsObject === true; else noclaims ">
       <ng-container *ngFor="let claim of claims">
-        <ng-container *ngIf="claim?.propertyOrAutoIndicato == 'AUTO' ">
+
+        <ng-container *ngIf="claim?.propertyOrAutoIndicator == 'AUTO' ">
           <app-claims-home-car [claim]="claim"></app-claims-home-car>
         </ng-container>
-        <ng-container *ngIf="claim?.propertyOrAutoIndicato == 'PROPERTY' ">
+
+        <ng-container *ngIf="claim?.propertyOrAutoIndicator == 'PROPERTY' ">
           <app-claims-home-property [claim]="claim"></app-claims-home-property>
         </ng-container>
+
+        <ng-container *ngIf="claim?.propertyOrAutoIndicator == null || !claim?.propertyOrAutoIndicator ">
+          <app-no-policy-type [claim]="claim"></app-no-policy-type>
+        </ng-container>
+
       </ng-container>
       <div class="row report-claim margin-top mt40">
         <div class="col">

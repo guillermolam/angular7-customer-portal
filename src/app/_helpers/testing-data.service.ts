@@ -18,19 +18,20 @@ export class TestingDataService {
   ) { }
 
   setUpTestingData(): any {
-    // based off of all the syntax around
+    //based off of all the syntax around
+
     if (environment.production) {
       return;
     }
 
-    // user and bank info
+    //user and bank info
     const updatedUser = [{
       userDetails: this.testUserInfo(),
       bankAccountDetails: this.testBankingInfo()
     }];
     this.userService.updateUser(updatedUser);
 
-    // policy info + current bill
+    //policy info + current bill
     const policyBillingDataAll = [];
     policyBillingDataAll.push(...[Object.assign(
       this.testingPolicyInfo(),
