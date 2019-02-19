@@ -9,8 +9,9 @@ import { TestingDataService } from '../../../../../_helpers/testing-data.service
   styleUrls: ['./claims-home.component.scss']
 })
 export class ClaimsHomeComponent implements OnInit {
-  claims: any;
-  loading: boolean;
+  claims:       any;
+  claimsObject: boolean;
+  loading:      boolean;
   
   constructor(
     private claimsDataService: ClaimsDataService,
@@ -22,13 +23,15 @@ export class ClaimsHomeComponent implements OnInit {
     this.loading =                  true;
     this.claimsDataService.$claimsLossDetails
       .subscribe((claimsLossDetails) => {
+        this.claimsObject = true;
         this.claims = claimsLossDetails;
         this.loading = false;
       },
-        (err) => {
-          this.claims = false;
-          this.loading = false;
-        });
-    console.log('claims this will be removed',this.claims)
+      (err) => {
+        this.claimsObject = false;
+        this.claims = false;
+        this.loading = false;
+      });
+    console.log( 'claims object this will be removed', this.claims, 'this.claimsObject', this.claimsObject );
   }
 }
