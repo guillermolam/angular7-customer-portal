@@ -72,7 +72,7 @@ export class DashboardMainComponent implements OnInit {
     //         this.loading = false;
     //       });
     //   });
-    this.loading = true;
+    // this.loading = true;
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/my-insurance') {

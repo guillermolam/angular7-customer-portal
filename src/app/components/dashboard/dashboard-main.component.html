@@ -4,9 +4,7 @@
     <app-loggedin-sidenav></app-loggedin-sidenav>
     <div class="col main-column">
       <mapfre-alert *ngIf="showAlert" [notTop]="false"></mapfre-alert>
-      <ng-container *ngIf="!loading">
         <router-outlet></router-outlet>
-      </ng-container>
     </div>
     <div class="col-sm-12 col column-misc" *ngIf="reportClaim">
       <app-misc-column></app-misc-column>
