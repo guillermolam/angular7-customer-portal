@@ -73,6 +73,14 @@ export class DashboardMainComponent implements OnInit {
     //       });
     //   });
     // this.loading = true;
+    if (this.router.url === '/my-insurance') {
+      this.reportClaim = true;
+      this.showAlert = true;
+    }
+    else {
+      this.reportClaim = false;
+    }
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/my-insurance') {
@@ -88,6 +96,7 @@ export class DashboardMainComponent implements OnInit {
         }
       }
     });
+
   }
 
 }
