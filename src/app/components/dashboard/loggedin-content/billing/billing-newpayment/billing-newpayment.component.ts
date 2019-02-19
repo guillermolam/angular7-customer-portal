@@ -66,13 +66,11 @@ export class BillingNewpaymentComponent implements OnInit {
       (policyResponse) => {
         this.policy = policyResponse[0];
         this.billingData = this.policy.billingDetails[0];
-        this.checkingInfo = this.testingDataService.testBankingInfo();
-        console.log(this.checkingInfo)
 
-        /*this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage())
+        this.bankAccountService.getBankAccountByEmail(this.storageServiceObservablesService.getUserFromStorage())
         .subscribe((checkingInfo) => {
           this.checkingInfo = checkingInfo;
-        });*/
+        });
       },
       () => {
         this.loading = false;

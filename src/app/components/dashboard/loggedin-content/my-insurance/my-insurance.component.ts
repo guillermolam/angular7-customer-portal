@@ -33,9 +33,5 @@ export class MyInsuranceComponent implements OnInit {
       },
       (err) => {}
     );
-    this.loading = false;
-    
-    this.policyDataService.updatePolicyDetails(this.testingData.testFullPolicyObject());
-    console.log('policyBillingDataAll',this.testingData.testFullPolicyObject());
   }
 }
