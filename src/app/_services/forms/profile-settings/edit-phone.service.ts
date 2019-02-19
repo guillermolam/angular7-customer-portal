@@ -1,10 +1,7 @@
-import { UserDataService } from './../../data-services/user-data.service';
-import { UserService } from './../../user.service';
-import { BankAccountService } from './../../profile-settings/bank-account.service';
-import { FakeAccountSettings } from '../../../_helpers/_testing-helpers/_services/_testing-helpers/account-settings.model';
 import { Injectable } from '@angular/core';
 import { FormBase, TextBox } from 'mapfre-design-library';
 import { map } from 'rxjs/operators';
+import { UserDataService } from './../../data-services/user-data.service';
 
 @Injectable()
 export class EditPhoneService {
@@ -33,7 +30,6 @@ export class EditPhoneService {
           validationMessageError: 'Please enter valid phone number'
         })
       ];
-  
     return inputs;
     }));
   }

@@ -760,8 +760,8 @@ h1.title-cta {
 .no-margins-hug {
   &.hug-content {
     @media (min-width: 1200px) {
-      margin-left: -40px;
-      margin-right: -40px;
+      margin-left: -24px;
+      margin-right: -24px;
     }
   }
 
@@ -773,6 +773,15 @@ h1.title-cta {
     @media (min-width: 1200px) {
       margin-left: -40px;
       margin-right: -40px;
+    }
+  }
+}
+
+.policy-details-nav, .auto-header, .home-header {
+  &.no-margins-hug {
+    &.hug-header {
+      margin-left: -24px;
+      margin-right: -24px;
     }
   }
 }
