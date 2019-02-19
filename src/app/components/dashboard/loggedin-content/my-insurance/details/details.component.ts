@@ -24,7 +24,7 @@ export class PolicyDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    //this.loading = true;
+    this.loading = true;
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId =                 params['policyid'];
       this.policyDataService.$policyDetails

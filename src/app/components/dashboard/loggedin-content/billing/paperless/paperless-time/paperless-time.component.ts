@@ -186,7 +186,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.loading = true;
+    this.loading = true;
     this.user = this.storageServiceObservablesService.getUserFromStorage();
 
     this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage()).

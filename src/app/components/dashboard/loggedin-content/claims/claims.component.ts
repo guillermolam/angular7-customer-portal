@@ -34,7 +34,7 @@ export class ClaimsWrapperComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.loading = true;
+    this.loading = true;
     this.checkRoute();
     this.claimsService
       .getClaimsDetails(this.storageService.getUserFromStorage())

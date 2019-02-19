@@ -143,7 +143,7 @@ const appRoutes: Routes = [
   { path: 'walletcard',                   component: WalletCardComponent},
   { path: 'profile/change-email',         component: ChangeEmailComponent},
 // when logged in
-{ path: '', component: DashboardMainComponent, // canActivate: [AuthGuard],
+{ path: '', component: DashboardMainComponent,  canActivate: [AuthGuard],
 children: [
 { path: '',                               component: LoggedinContentComponent, children: [
   { path: '',                             redirectTo: 'my-insurance', pathMatch: 'full' },

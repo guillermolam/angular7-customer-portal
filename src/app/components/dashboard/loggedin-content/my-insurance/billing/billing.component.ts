@@ -77,7 +77,7 @@ export class BillingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.loading = true
+    this.loading = true
     this.userService.$user
     .subscribe( (user) => {
       this.user = user;

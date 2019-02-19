@@ -146,20 +146,16 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   }
 
   ngOnInit() {
-    // When logging in go a verify user
-    // We will need this once the new endpoints are set.
-    // this.loading = true;
+    this.loading = true;
 
     this.userService.$user
     .subscribe( (user) => {
       this.user = user;
     });
 
-    //this.loading = true;
-
     this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
-      this.policyDetails  = policyResponse;      
-    })
+      this.policyDetails  = policyResponse;
+    });
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];

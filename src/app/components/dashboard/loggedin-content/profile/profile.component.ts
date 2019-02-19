@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   // this.loading = true;
+    this.loading = true;
     this.userDetailsService
     .getUserDetailsByEmail()
     .subscribe(() => {
