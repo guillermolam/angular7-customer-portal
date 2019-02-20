@@ -74,6 +74,5 @@ export class MyInsuranceMainComponent implements OnInit {
 
     // })
 
-
   }
 }

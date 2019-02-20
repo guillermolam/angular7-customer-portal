@@ -1,12 +1,10 @@
-    <ng-container *ngIf="loading">
-        <mapfre-loading></mapfre-loading>
-      </ng-container> 
-    <ng-container *ngFor="let policy of policyDetails">
-  <ng-container *ngIf="policy?.policynumber.policynumber === policyId && !loading">
+
+<ng-container *ngFor="let policy of policyDetails">
+  <ng-container *ngIf="policy?.policynumber.policynumber === policyId">
     <mapfre-card 
       [singleCard]="false"
       [additionalClasses]="'policy-details documents details ' + policy?.policyType">
-      <header class="margin-bottom mb16 no-margins-hug hug-header">
+      <header class="margin-bottom mb16 no-margins-hug hug-header home-header">
         <div class="policy-background">
           <div class="car" *ngIf="policy?.policyType == 'AUTO'"></div>
           <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
@@ -24,64 +22,70 @@
         </div>
       </header>
       <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
+
+      <ng-container *ngIf="loading">
+        <mapfre-loading></mapfre-loading>
+      </ng-container>
+      <ng-container *ngIf="!loading">
+        <ng-container *ngIf="documentsData?.length!==0" >
+            <section class="documents-content details-content margin-top mt40 mobile-margins">
+              
+                <table mdbTable class="documents-table">
+                  <thead>
+                    <th class="row" colspan="4">
+                      <div class="row mapfre-card-download-button w-100">
+                        <div class="col col-left">
+                          <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
+                        </div>
+                        <div class="col col-right">
+                          <app-onboarding-wallet-modal [policyNumber]="policyId"></app-onboarding-wallet-modal>
+                        </div>
+                      </div>
+                    </th>
+                  </thead>
+                  <tbody> 
+                    <tr class="row row-content" 
+                      *ngFor="let doc of documentsData; let i = index"
+                      (click)="onDownloadDocument(doc.documentId, policy?.policynumber.policynumber, doc.type)"
+                      >
+                        <td class="col  col-type" scope="row">
+                            <div class="circle-with-type"> {{ doc.type | documentType }}</div>
+                        </td>
+                        <td class="col col-name">{{doc.description}}</td>
+                        <td class="col col-date text-right">{{doc.transactionDate | date}}</td>
+                        <td class="col col-view text-right">
+                          <span class="align-top">VIEW</span>
+                          <i class="material-icons align-top">keyboard_arrow_right</i> 
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+              
+            </section>
+        </ng-container>
+        <ng-container *ngIf="documentsData?.length===0">
+          <section class="details-content documents-content no-documents">
+            <div class="no-documents-container">
+              <div class="row mapfre-card-download-button">
+                <div class="col col-left">
+                  <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
+                </div>
+                <div class="col col-right">
+                  <app-onboarding-wallet-modal [policyNumber]="policyId"></app-onboarding-wallet-modal>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <img src="./assets/img/images/no-documents.png">
+                  <h1 class="title margin-vertical mv16">{{ 'NO_DOCUMENTS_TITLE' | translate }}</h1>
+                  <p>{{ 'NO_DOCUMENTS_PARAGRAPH' | translate }}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ng-container>
+      </ng-container>
       
-      <ng-container *ngIf="documentsData?.length!==0" >
-        <section class="documents-content details-content margin-top mt40 mobile-margins">
-          
-            <table mdbTable class="documents-table">
-              <thead>
-                <th class="row" colspan="4">
-                  <div class="row mapfre-card-download-button w-100">
-                    <div class="col col-left">
-                      <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
-                    </div>
-                    <div class="col col-right">
-                      <app-onboarding-wallet-modal [policyNumber]="policyId"></app-onboarding-wallet-modal>
-                    </div>
-                  </div>
-                </th>
-              </thead>
-              <tbody> 
-                <tr class="row row-content" 
-                  *ngFor="let doc of documentsData; let i = index"
-                  (click)="onDownloadDocument(doc.documentId, policy?.policynumber.policynumber, doc.type)"
-                  >
-                    <td class="col  col-type" scope="row">
-                        <div class="circle-with-type"> {{ doc.type | documentType }}</div>
-                    </td>
-                    <td class="col col-name">{{doc.description}}</td>
-                    <td class="col col-date text-right">{{doc.transactionDate | date}}</td>
-                    <td class="col col-view text-right">
-                      <span class="align-top">VIEW</span>
-                      <i class="material-icons align-top">keyboard_arrow_right</i> 
-                    </td>
-                </tr>
-              </tbody>
-            </table>
-          
-        </section>
-      </ng-container>
-      <ng-container *ngIf="documentsData?.length===0">
-        <section class="details-content documents-content no-documents">
-          <div class="no-documents-container">
-            <div class="row mapfre-card-download-button">
-              <div class="col col-left">
-                <img src="/assets/img/images/mapfre-card-logo-color.png" width="177">
-              </div>
-              <div class="col col-right">
-                <app-onboarding-wallet-modal [policyNumber]="policyId"></app-onboarding-wallet-modal>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <img src="./assets/img/images/no-documents.png">
-                <h1 class="title margin-vertical mv16">{{ 'NO_DOCUMENTS_TITLE' | translate }}</h1>
-                <p>{{ 'NO_DOCUMENTS_PARAGRAPH' | translate }}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </ng-container>
     </mapfre-card>
-</ng-container> 
+  </ng-container> 
 </ng-container> 

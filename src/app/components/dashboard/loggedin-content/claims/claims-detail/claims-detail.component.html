@@ -8,19 +8,15 @@
         <ng-container *ngIf="exposure.exposureNumber.exposureNumber == claimid[1]">
   
           <header class="margin-bottom mb16 w-100">
-  
             <ng-container *ngIf="exposure?.propertyOrAutoIndicator == 'AUTO' ">
               <app-claims-home-car [claim]="claim" type="details" [claimid]="claimid" [exposure]="exposure"></app-claims-home-car>
             </ng-container>
-  
             <ng-container *ngIf="exposure?.propertyOrAutoIndicator == 'HOME' ">
               <app-claims-home-property [claim]="claim" type="details" [claimid]="claimid" [exposure]="exposure"></app-claims-home-property>
             </ng-container>
-  
             <ng-container *ngIf="exposure?.propertyOrAutoIndicator != 'HOME' && exposure?.propertyOrAutoIndicator != 'AUTO'">
               <app-no-policy-type [claim]="claim" type="details" [claimid]="claimid" [exposure]="exposure"></app-no-policy-type>
             </ng-container>
-  
           </header>
   
           <section class="row details-content">
@@ -48,7 +44,7 @@
                   <div class="col info-type">
                     {{ 'PAYMENTS_TO_DATE' | translate }}:
                     <div class="margin-left ml16 d-inline">
-                      <strong>{{totalAmountToDate | currency }}</strong>
+                      <strong>{{ totalAmountToDate | currency }}</strong>
                     </div>
                   </div>
                 </div>
@@ -207,7 +203,6 @@
                   </div>
                 </div>
               </div>
-  
             </div>
   
             <div class="col col2">
@@ -223,3 +218,4 @@
       </ng-container>
     </ng-container>
   </ng-container>
+  

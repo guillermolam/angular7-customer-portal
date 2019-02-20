@@ -1,12 +1,9 @@
-       <ng-container *ngIf="loading">
-        <mapfre-loading></mapfre-loading>
-      </ng-container> 
-  <ng-container *ngFor="let policy of policyDetails">
-    <ng-container *ngIf="policy?.policynumber.policynumber === policyId && !loading">
+<ng-container *ngFor="let policy of policyDetails">
+    <ng-container *ngIf="policy?.policynumber.policynumber === policyId">
       <mapfre-card 
         [singleCard]="false"
         [additionalClasses]="'policy-details billing details ' + policy?.policyType">
-        <header class="margin-bottom mb16 no-margins-hug hug-header">
+        <header class="margin-bottom mb16 no-margins-hug hug-header home-header">
           <div class="policy-background">
             <div class="car" *ngIf="policy?.policyType == 'AUTO'"></div>
             <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
@@ -24,7 +21,12 @@
           </div>
         </header>
         <app-dashboard-nav [policyId]="policyId"></app-dashboard-nav>
-        <section class="row details-content margin-top mt40 mobile-margin"> 
+
+        <ng-container *ngIf="loading">
+          <mapfre-loading></mapfre-loading>
+        </ng-container> 
+
+        <section class="row details-content margin-top mt40 mobile-margin" *ngIf="!loading"> 
           <div class="col col1 margin-bottom mb24">
             <div class="row">
               <div class="col">
