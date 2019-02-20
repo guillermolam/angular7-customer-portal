@@ -92,7 +92,7 @@ export class NewPaymentComponent implements OnInit {
         paymentObj =                    {};
     const bankingInfo =                 this.checkingInfo,
           nPForm =                      this.newPaymentForm,
-          errorString =                 `'ACCOUNT_NUMBER_CONFIRM_DO_NOT_MATCH' | translate`; 
+          errorString =                 'ACCOUNT_NUMBER_CONFIRM_DO_NOT_MATCH'; 
 
     if (this.newPaymentRadioForm.controls['paymentAmount'].value == 'other' ) {
       radioAmount =                     this.newPaymentRadioForm.controls['otherAmount'].value;
@@ -107,22 +107,14 @@ export class NewPaymentComponent implements OnInit {
 
     this.getGooglePlaceService.updateAddress(this.mailingAddress);
 
-    if ( bankingInfo.accountNumber.digits == nPForm.controls['newPayment_accountNumber'].value) {
+    if (nPForm.controls['newPayment_confirmAccountNumber'].value != nPForm.controls['newPayment_accountNumber'].value) {
+      this.alertService.error(errorString);
+    }
+    else {
       paymentObj =                      this.createBankDetailsObject();
       paymentObj['paymentAmount'] =     parseFloat(radioAmount);
       this.billingDataService.updateBillingDetails(paymentObj);
       this.router.navigate(['/billing', this.policyId, 'confirm']);
-    }
-    else {
-      if (nPForm.controls['newPayment_confirmAccountNumber'].value != nPForm.controls['newPayment_accountNumber'].value) {
-        this.alertService.error(errorString);
-      }
-      else {
-        paymentObj =                      this.createBankDetailsObject();
-        paymentObj['paymentAmount'] =     parseFloat(radioAmount);
-        this.billingDataService.updateBillingDetails(paymentObj);
-        this.router.navigate(['/billing', this.policyId, 'confirm']);
-      }
     }
   }
 

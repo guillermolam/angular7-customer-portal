@@ -22,7 +22,7 @@ import { TestingDataService }       from './../../../../../_helpers/testing-data
 })
 export class BillingNewpaymentComponent implements OnInit {
   alerton;
-  checkingInfo:                     any;
+  checkingInfo:                     any = '';
   input:                            object;
   inputs:                           any[];
   loading:                          boolean;
