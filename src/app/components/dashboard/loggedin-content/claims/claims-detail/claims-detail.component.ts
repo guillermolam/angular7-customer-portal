@@ -1,10 +1,11 @@
-import { filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ClaimsDataService } from '../../../../../_services/_claims/claims-data.service';
 import { UserService } from '../../../../../_services/user.service';
 import { TestingDataService } from '../../../../../_helpers/testing-data.service';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-claims-detail',
@@ -46,8 +47,13 @@ export class ClaimsDetailComponent implements OnInit {
     this.activeRoute.params.subscribe((params: Params) => {
       this.claimid = params['claimid'].split('-');
       this.claimsDataService.$claimsLossDetails
+      /*.pipe(
+        map( (claimsList) => {
+          return claimsList.filter((response) => response.policyNumber.policynumber === this.claimid[0] );
+        })
+      )*/
       .subscribe( (claimsList) => {
-        this.claims =               claimsList.filter((response) => response.number.number === this.claimid[0] );
+        this.claims =               claimsList;
         this.loading =              false;
       });
       // claimid[0] is the claimid while claimid[1] is the specific claim exposure id
