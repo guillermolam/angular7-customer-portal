@@ -21,11 +21,10 @@ export class ClaimsHomeComponent implements OnInit {
 
   ngOnInit() {
     this.loading =                  true;
-   /* this.claimsDataService.$claimsLossDetails
+    this.claimsDataService.$claimsLossDetails
       .subscribe((claimsLossDetails) => {
         this.claims = claimsLossDetails;
         if ( this.claims.length == 0 ) {
-
           this.claimsObject = false;
         }
         else {
@@ -37,9 +36,9 @@ export class ClaimsHomeComponent implements OnInit {
         this.claimsObject = true;
         this.claims = false;
         this.loading = false;
-    });*/
-    this.claimsObject = true;
-    this.claims = this.testing.testFullClaimsData();
-    this.loading = false;
+    });
+    // this.claimsObject = true;
+    // this.claims = this.testing.testFullClaimsData();
+    // this.loading = false;
   }
 }
