@@ -19,7 +19,7 @@ export class MyInsuranceComponent implements OnInit {
     private policyDataService:    PolicyDataService,
     private policyDetailsService: PolicyDetailsService,
     private storageService:       StorageServiceObservablesService,
-    private testingData:          TestingDataService,
+    //private testingData:          TestingDataService,
     private userService:          UserService
   ) {
   }
@@ -33,5 +33,9 @@ export class MyInsuranceComponent implements OnInit {
       },
       (err) => {}
     );
+    //this.loading = false;
+    
+    //this.policyDataService.updatePolicyDetails(this.testingData.testFullPolicyObject());
+    //console.log('policyBillingDataAll',this.testingData.testFullPolicyObject());
   }
 }

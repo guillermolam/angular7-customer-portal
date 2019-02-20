@@ -23,7 +23,7 @@ export class ClaimsDetailComponent implements OnInit {
     private userService: UserService,
     private activeRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private testing: TestingDataService
+    //private testing: TestingDataService
   ) { }
 
   getAddress(a): SafeUrl {
@@ -43,7 +43,7 @@ export class ClaimsDetailComponent implements OnInit {
     let paymentToDate = [],
       paymentToDateSum = 0;
 
-    // this.loading =                  true;
+    this.loading =                  true;
     this.activeRoute.params.subscribe((params: Params) => {
       this.claimid = params['claimid'].split('-');
       this.claimsDataService.$claimsLossDetails
@@ -54,26 +54,26 @@ export class ClaimsDetailComponent implements OnInit {
       )*/
       .subscribe( (claimsList) => {
         this.claims =               claimsList;
+        this.claims.forEach((claim) => {
+          claim.exposures.forEach((exposure) => {
+            if (exposure.exposureNumber.exposureNumber == this.claimid[1]) {
+              exposure.payments.forEach((payment) => {
+                paymentToDate.push(parseFloat(payment.checkAmount));
+              });
+            }
+          });
+        });
+
+        for (let i = 0; i < paymentToDate.length; i++) {
+          paymentToDateSum += paymentToDate[i];
+        }
+        this.totalAmountToDate = paymentToDateSum;
         this.loading =              false;
       });
       // claimid[0] is the claimid while claimid[1] is the specific claim exposure id
-      this.claims.forEach((claim) => {
-        claim.exposures.forEach((exposure) => {
-          if (exposure.exposureNumber.exposureNumber == this.claimid[1]) {
-            exposure.payments.forEach((payment) => {
-              paymentToDate.push(parseFloat(payment.checkAmount));
-            });
-          }
-        });
-      });
 
-      for (let i = 0; i < paymentToDate.length; i++) {
-        paymentToDateSum += paymentToDate[i];
-      }
-      this.totalAmountToDate = paymentToDateSum;
     },
     (err) => {
     });
-    
   }
 }

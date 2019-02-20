@@ -92,8 +92,7 @@ export class NewPaymentComponent implements OnInit {
         paymentObj =                    {};
     const bankingInfo =                 this.checkingInfo,
           nPForm =                      this.newPaymentForm,
-          errorString =                 'ACCOUNT_NUMBER_CONFIRM_DO_NOT_MATCH'; 
-
+          errorString =                 'ACCOUNT_NUMBER_CONFIRM_DO_NOT_MATCH';
     if (this.newPaymentRadioForm.controls['paymentAmount'].value == 'other' ) {
       radioAmount =                     this.newPaymentRadioForm.controls['otherAmount'].value;
     }

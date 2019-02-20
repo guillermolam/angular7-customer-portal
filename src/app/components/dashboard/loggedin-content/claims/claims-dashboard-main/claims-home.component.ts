@@ -25,6 +25,7 @@ export class ClaimsHomeComponent implements OnInit {
       .subscribe((claimsLossDetails) => {
         this.claims = claimsLossDetails;
         if ( this.claims.length == 0 ) {
+
           this.claimsObject = false;
         }
         else {
@@ -37,6 +38,5 @@ export class ClaimsHomeComponent implements OnInit {
         this.claims = false;
         this.loading = false;
     });
-
   }
 }

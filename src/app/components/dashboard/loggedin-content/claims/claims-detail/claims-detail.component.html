@@ -1,43 +1,49 @@
 <ng-container *ngIf="loading">
-    <mapfre-loading></mapfre-loading>
-  </ng-container>
-  <ng-container *ngIf="!loading">
-    <ng-container *ngFor="let claim of claims">
-  
-      <ng-container *ngFor="let exposure of claim.exposures">
-        <ng-container *ngIf="exposure.exposureNumber.exposureNumber == claimid[1]">
-  
-          <header class="margin-bottom mb16 w-100">
-            <ng-container *ngIf="exposure?.propertyOrAutoIndicator == 'AUTO' ">
-              <app-claims-home-car [claim]="claim" type="details" [claimid]="claimid" [exposure]="exposure"></app-claims-home-car>
-            </ng-container>
-            <ng-container *ngIf="exposure?.propertyOrAutoIndicator == 'HOME' ">
-              <app-claims-home-property [claim]="claim" type="details" [claimid]="claimid" [exposure]="exposure"></app-claims-home-property>
-            </ng-container>
-            <ng-container *ngIf="exposure?.propertyOrAutoIndicator != 'HOME' && exposure?.propertyOrAutoIndicator != 'AUTO'">
-              <app-no-policy-type [claim]="claim" type="details" [claimid]="claimid" [exposure]="exposure"></app-no-policy-type>
-            </ng-container>
-          </header>
-  
-          <section class="row details-content">
-            <div class="col col1">
-              <div class="row">
-                <div class="col">
-                  <h2 class="title">
-                    {{ 'INFORMATION' | translate }}
-                    <mapfre-tooltip additionalClasses="right float"
-                      [tooltipCopy]="'For `collision` losses, a surcharge may apply depending on who is responsible for the accident.'"
-                      [placementLocation]="'right'">
-                      {{ 'SURCHARGES_MAY_APPLY' | translate }} <svg-information-svg></svg-information-svg>
-                    </mapfre-tooltip>
-                  </h2>
+  <mapfre-loading></mapfre-loading>
+</ng-container>
+<ng-container *ngIf="!loading">
+  <ng-container *ngFor="let claim of claims">
+    <ng-container *ngFor="let exposure of claim.exposures">
+      <ng-container *ngIf="exposure.exposureNumber.exposureNumber == claimid[1]">
+
+        <header class="margin-bottom mb16 w-100">
+          <ng-container *ngIf="exposure?.propertyOrAutoIndicator == 'AUTO' ">
+            <app-claims-home-car [claim]="claim" type="details" [claimid]="claimid" [exposure]="exposure"></app-claims-home-car>
+          </ng-container>
+          <ng-container *ngIf="exposure?.propertyOrAutoIndicator == 'HOME' ">
+            <app-claims-home-property [claim]="claim" type="details" [claimid]="claimid" [exposure]="exposure"></app-claims-home-property>
+          </ng-container>
+          <ng-container *ngIf="exposure?.propertyOrAutoIndicator != 'HOME' && exposure?.propertyOrAutoIndicator != 'AUTO'">
+            <app-no-policy-type [claim]="claim" type="details" [claimid]="claimid" [exposure]="exposure"></app-no-policy-type>
+          </ng-container>
+        </header>
+
+        <section class="row details-content">
+          <div class="col col1">
+            <div class="row">
+              <div class="col">
+                <h2 class="title">
+                  {{ 'INFORMATION' | translate }}
+                  <mapfre-tooltip additionalClasses="right float"
+                    [tooltipCopy]="'For `collision` losses, a surcharge may apply depending on who is responsible for the accident.'"
+                    [placementLocation]="'right'">
+                    {{ 'SURCHARGES_MAY_APPLY' | translate }} <svg-information-svg></svg-information-svg>
+                  </mapfre-tooltip>
+                </h2>
+              </div>
+            </div>
+            <div class="claim-info">
+              <div class="row margin-bottom mb16 margin-top mt16">
+                <div class="col info-type">
+                  {{ 'CLAIMANT' | translate }}:<div class="margin-left ml16 d-inline">
+                    <strong>{{exposure?.claimant?.name}}</strong></div>
                 </div>
               </div>
-              <div class="claim-info">
-                <div class="row margin-bottom mb16 margin-top mt16">
-                  <div class="col info-type">
-                    {{ 'CLAIMANT' | translate }}:<div class="margin-left ml16 d-inline">
-                      <strong>{{exposure?.claimant?.name}}</strong></div>
+              <div class="row margin-bottom mb16">
+                <div class="col info-type">
+                  {{ 'PAYMENTS_TO_DATE' | translate }}:
+                  <div class="margin-left ml16 d-inline">
+                    <strong>{{ totalAmountToDate | currency }}</strong>
                   </div>
                 </div>
                 <div class="row margin-bottom mb16">
@@ -110,7 +116,6 @@
                   </div>
                 </div>
               </div>
-  
               <div class="appraisal-info margin-top mt32" *ngIf="exposure?.appraisals.length != 0">
                 <div class="row">
                   <div class="col">
@@ -201,6 +206,7 @@
                       </tbody>
                     </table>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -218,4 +224,5 @@
       </ng-container>
     </ng-container>
   </ng-container>
-  
+</ng-container>
+
