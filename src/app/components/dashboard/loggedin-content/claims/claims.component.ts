@@ -3,6 +3,7 @@ import { Router, ActivatedRoute }             from '@angular/router';
 import { ClaimsDataService }                  from './../../../../_services/_claims/claims-data.service';
 import { ClaimsService }                      from './../../../../_services/_claims/claims.service';
 import { StorageServiceObservablesService }   from '../../../../_services/storage-service-observables/storage-service-observables.service';
+import { TestingDataService } from '../../../../_helpers/testing-data.service';
 
 @Component({
   selector: 'app-claims-wrapper',
@@ -19,7 +20,8 @@ export class ClaimsWrapperComponent implements OnInit {
     private router:                           Router,
     private claimsService:                    ClaimsService,
     private storageService:                   StorageServiceObservablesService,
-    private claimsDataService:                ClaimsDataService
+    private claimsDataService:                ClaimsDataService,
+    //private testing:                          TestingDataService
   ) { }
 
   checkRoute(): void {
@@ -47,6 +49,8 @@ export class ClaimsWrapperComponent implements OnInit {
         this.loading = false;
       }
     );
+    //this.claimsDataService.updateClaims(this.testing.testFullClaimsData());
+    
   }
 
 }

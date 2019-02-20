@@ -105,8 +105,8 @@ export class BillingDetailsComponent implements OnInit {
         this.pendingCheckPayments =   pendingCheckPayments;
       });
 
-      this.billingHistory = this.testingDataService.testHistoryBills();
-      this.pendingCheckPayments =  this.testingDataService.testPendingBills();
+      //this.billingHistory = this.testingDataService.testHistoryBills();
+      //this.pendingCheckPayments =  this.testingDataService.testPendingBills();
 
       this.billingDetailsService
       .getScheduledBillsByPolicy(this.policyId)

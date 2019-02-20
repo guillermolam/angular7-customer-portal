@@ -12,6 +12,7 @@ export class ClaimsDataService {
   constructor() { }
 
   updateClaims(claims) {
+    console.log('claims data',claims);
       this.claimsLossDetailsSource.next(claims);
   }
 

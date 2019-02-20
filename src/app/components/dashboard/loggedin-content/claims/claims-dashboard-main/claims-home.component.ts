@@ -23,8 +23,13 @@ export class ClaimsHomeComponent implements OnInit {
     this.loading =                  true;
     this.claimsDataService.$claimsLossDetails
       .subscribe((claimsLossDetails) => {
-        this.claimsObject = true;
         this.claims = claimsLossDetails;
+        if( this.claims.length == 0 ) {
+          this.claimsObject = false;
+        }
+        else {
+          this.claimsObject = true;
+        }
         this.loading = false;
       },
       (err) => {
@@ -32,6 +37,5 @@ export class ClaimsHomeComponent implements OnInit {
         this.claims = false;
         this.loading = false;
     });
-
   }
 }

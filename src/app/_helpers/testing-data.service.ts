@@ -273,237 +273,171 @@ export class TestingDataService {
 
   testFullClaimsData() {
     return [  
-      {
-        "number": {
-            "number": "KKPK61"
-        },
-        "exposures": [
-            {
-                "coverage": {
-                    "code": "Property damage"
-                },
-                "description": "Insured Vehicle collided with Other parked vehicle ",
-                "address": {
-                    "streetName": "",
-                    "city": "SOMERVILLE",
-                    "state": "MA",
-                    "zipCode": {
-                        "digits": "00000"
-                    }
-                },
-                "claimant": {
-                    "name": "CIANO DEVELOPMENT"
-                },
-                "exposureNumber": {
-                    "exposureNumber": "HYAPY3"
-                },
-                "payments": [
-                    {
-                        "status": {
-                            "code": "CASHED",
-                            "date": "2015-01-09T05:11:00.000+0000"
-                        },
-                        "deductibleCode": "N/A",
-                        "address": {
-                            "streetName": "default",
-                            "city": "default",
-                            "state": "UNKNOWN",
-                            "zipCode": {
-                                "digits": "00000"
-                            }
-                        },
-                        "exposureType": "Property damage",
-                        "checkNumber": "0025932363",
-                        "checkAmount": 466.78,
-                        "paymentReason": "PROPERTY DAMAGE                       033585133",
-                        "checkPayee": "ARBELLA MUTUAL INSURANCE AS SUBROGEE OF CIANO DEVELOPMENT LLC",
-                        "checkDate": "2015-01-05T05:11:00.000+0000"
-                    }
-                ],
-                "appraisals": [],
-                "adjuster": {
-                    "name": "",
-                    "extensionAndFax": "1-508-949-5930 ext 15450",
-                    "adjusterId": {
-                        "id": ""
-                    },
-                    "email": {
-                        "address": "CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM"
-                    },
-                    "phoneNumber": {
-                        "number": "999-999-9999"
-                    }
-                },
-                "propertyOrAutoIndicator": "AUTO"
+      {  
+         "number":{  
+            "number":"PRWH62"
+         },
+         "exposures":[  
+            {  
+               "coverage":{  
+                  "code":"Rental reimb"
+               },
+               "description":"Other Veh proceeding from Signal/Sign Collided w/Insured Veh ",
+               "address":{  
+                  "streetName":"",
+                  "city":"SOMERVILLE",
+                  "state":"MA",
+                  "zipCode":{  
+                     "digits":"00000"
+                  }
+               },
+               "claimant":{  
+                  "name":"GUILLERMO LAM-MAR"
+               },
+               "exposureNumber":{  
+                  "exposureNumber":"NNMTY5"
+               },
+               "payments":[  
+                  {  
+                     "status":{  
+                        "code":"N/A",
+                        "date":null
+                     },
+                     "deductibleCode":"N/A",
+                     "address":{  
+                        "streetName":"default",
+                        "city":"default",
+                        "state":"UNKNOWN",
+                        "zipCode":{  
+                           "digits":"00000"
+                        }
+                     },
+                     "exposureType":"Rental reimb",
+                     "checkAmount":608.15,
+                     "paymentReason":"",
+                     "checkDate":null,
+                     "checkNumber":"0907136963",
+                     "checkPayee":"Hertz Bulk Rental via ACH"
+                  }
+               ],
+               "appraisals":[  
+   
+               ],
+               "adjuster":{  
+                  "name":"JENNIFER GOMES",
+                  "extensionAndFax":"508-671-3736 ext 15736",
+                  "adjusterId":{  
+                     "id":"JGOMES"
+                  },
+                  "email":{  
+                     "address":"JGOMES@MAPFREUSA.COM"
+                  },
+                  "phoneNumber":{  
+                     "number":"1-800-221-1605;15450"
+                  }
+               },
+               "propertyOrAutoIndicator":"AUTO"
+            },
+            {  
+               "coverage":{  
+                  "code":"Collision"
+               },
+               "description":"Other Veh proceeding from Signal/Sign Collided w/Insured Veh ",
+               "address":{  
+                  "streetName":"",
+                  "city":"SOMERVILLE",
+                  "state":"MA",
+                  "zipCode":{  
+                     "digits":"00000"
+                  }
+               },
+               "claimant":{  
+                  "name":"GUILLERMO LAM-MAR"
+               },
+               "exposureNumber":{  
+                  "exposureNumber":"NNKRN0"
+               },
+               "payments":[  
+                  {  
+                     "status":{  
+                        "code":"CASHED",
+                        "date":"2018-01-24T00:07:00.000+0000"
+                     },
+                     "deductibleCode":"APL",
+                     "address":{  
+                        "streetName":"default",
+                        "city":"default",
+                        "state":"UNKNOWN",
+                        "zipCode":{  
+                           "digits":"00000"
+                        }
+                     },
+                     "exposureType":"Collision",
+                     "checkAmount":3149.8,
+                     "paymentReason":"COLLISION",
+                     "checkDate":"2018-01-18T00:07:00.000+0000",
+                     "checkNumber":"0027440275",
+                     "checkPayee":"LONG SUBARU COLLISION CENTER"
+                  },
+                  {  
+                     "status":{  
+                        "code":"CASHED",
+                        "date":"2018-01-07T00:08:00.000+0000"
+                     },
+                     "deductibleCode":"WAI",
+                     "address":{  
+                        "streetName":"default",
+                        "city":"default",
+                        "state":"UNKNOWN",
+                        "zipCode":{  
+                           "digits":"00000"
+                        }
+                     },
+                     "exposureType":"Collision",
+                     "checkAmount":500.0,
+                     "paymentReason":"COLLISION                             DEDUCTIBLE REIMBURSEME",
+                     "checkDate":"2018-01-31T00:07:00.000+0000",
+                     "checkNumber":"0027456846",
+                     "checkPayee":"LONG SUBARU COLLISION CENTER"
+                  }
+               ],
+               "appraisals":[  
+                  {  
+                     "type":"APPRAISAL",
+                     "number":{  
+                        "number":"A0PM3MA"
+                     },
+                     "status":"CLOSE",
+                     "appraiser":{  
+                        "name":"LONG SUBARU INC           "
+                     },
+                     "appraisalAmount":3649.8,
+                     "exposureType":"Collision",
+                     "variableAmount":null
+                  }
+               ],
+               "adjuster":{  
+                  "name":"JENNIFER GOMES",
+                  "extensionAndFax":"508-671-3736 ext 15736",
+                  "adjusterId":{  
+                     "id":"JGOMES"
+                  },
+                  "email":{  
+                     "address":"JGOMES@MAPFREUSA.COM"
+                  },
+                  "phoneNumber":{  
+                     "number":"1-800-221-1605;15450"
+                  }
+               },
+               "propertyOrAutoIndicator":"AUTO"
             }
-        ],
-        "policyNumber": {
-            "policynumber": "DMC793"
-        },
-        "date": "2015-05-01T04:00:00.000+0000"
-    },
-    {
-      "number": {
-          "number": "KPCA80"
-      },
-      "exposures": [
-          {
-              "coverage": {
-                  "code": "Collision"
-              },
-              "description": "Insured veh rear-ended Other veh ",
-              "address": {
-                  "streetName": "",
-                  "city": "ARLINGTON",
-                  "state": "MA",
-                  "zipCode": {
-                      "digits": "00000"
-                  }
-              },
-              "claimant": {
-                  "name": "MONICA A NOLAN"
-              },
-              "exposureNumber": {
-                  "exposureNumber": "JCTTN5"
-              },
-              "payments": [
-                  {
-                      "status": {
-                          "code": "N/A",
-                          "date": "0002-12-31T05:00:00.000+0000"
-                      },
-                      "deductibleCode": "APL",
-                      "address": {
-                          "streetName": "default",
-                          "city": "default",
-                          "state": "UNKNOWN",
-                          "zipCode": {
-                              "digits": "00000"
-                          }
-                      },
-                      "exposureType": "Collision",
-                      "checkNumber": "3338084122",
-                      "checkAmount": 760,
-                      "paymentReason": "",
-                      "checkPayee": "THE SALVAGE CENTER, INC.",
-                      "checkDate": "0002-12-31T05:00:00.000+0000"
-                  },
-                  {
-                      "status": {
-                          "code": "CASHED",
-                          "date": "2015-01-24T05:09:00.000+0000"
-                      },
-                      "deductibleCode": "APL",
-                      "address": {
-                          "streetName": "default",
-                          "city": "default",
-                          "state": "UNKNOWN",
-                          "zipCode": {
-                              "digits": "00000"
-                          }
-                      },
-                      "exposureType": "Collision",
-                      "checkNumber": "0025838666",
-                      "checkAmount": 10271.22,
-                      "paymentReason": "RELEASE OF ALL COLLISION CLAIMS",
-                      "checkPayee": "MONICA A NOLAN",
-                      "checkDate": "2015-01-09T05:09:00.000+0000"
-                  }
-              ],
-              "appraisals": [
-                  {
-                      "appraiser": {
-                          "name": "HOME & AUTO APPR. BUREAU  "
-                      },
-                      "appraisalAmount": 8197.79,
-                      "variableAmount": null,
-                      "exposureType": "Collision",
-                      "appraisalNumber": {
-                          "number": "A0N19PY"
-                      },
-                      "appraisalType": "APPRAISAL",
-                      "appraisalStatus": "CLOSE"
-                  }
-              ],
-              "adjuster": {
-                  "name": "Test it",
-                  "extensionAndFax": "1-508-949-5930 ext 15450",
-                  "adjusterId": {
-                      "id": ""
-                  },
-                  "email": {
-                      "address": "CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM"
-                  },
-                  "phoneNumber": {
-                      "number": "999-999-9999"
-                  }
-              },
-              "propertyOrAutoIndicator": "AUTO"
-          },
-          {
-              "coverage": {
-                  "code": "Rental reimb"
-              },
-              "description": "Insured veh rear-ended Other veh ",
-              "address": {
-                  "streetName": "",
-                  "city": "ARLINGTON",
-                  "state": "MA",
-                  "zipCode": {
-                      "digits": "00000"
-                  }
-              },
-              "claimant": {
-                  "name": "MONICA A NOLAN"
-              },
-              "exposureNumber": {
-                  "exposureNumber": "JJKWM2"
-              },
-              "payments": [
-                  {
-                      "status": {
-                          "code": "CASHED",
-                          "date": "2015-01-30T05:11:00.000+0000"
-                      },
-                      "deductibleCode": "N/A",
-                      "address": {
-                          "streetName": "default",
-                          "city": "default",
-                          "state": "UNKNOWN",
-                          "zipCode": {
-                              "digits": "00000"
-                          }
-                      },
-                      "exposureType": "Rental reimb",
-                      "checkNumber": "0025962655",
-                      "checkAmount": 1170,
-                      "paymentReason": "RENTAL REIMB                          21W6WG",
-                      "checkPayee": "ENTERPRISE RENT A CAR",
-                      "checkDate": "2015-01-23T05:11:00.000+0000"
-                  }
-              ],
-              "appraisals": [],
-              "adjuster": {
-                  "name": "",
-                  "extensionAndFax": "1-508-949-5930 ext 15450",
-                  "adjusterId": {
-                      "id": ""
-                  },
-                  "email": {
-                      "address": "CWEB_CLAIMS_CONTACT@COMMERCEINSURANCE.COM"
-                  },
-                  "phoneNumber": {
-                      "number": "999-999-9999"
-                  }
-              },
-              "propertyOrAutoIndicator": "AUTO"
-          }
-        ],
-        "policyNumber": {
-            "policynumber": "DMC793"
-        },
-        "date": "2015-05-01T04:00:00.000+0000"
-    }];
+         ],
+         "policyNumber":{  
+            "policynumber":"BG4863"
+         },
+         "date":"2018-07-08T00:00:00.000+0000"
+      }
+   ];
   }
 
   testFullPolicyObject(): any {

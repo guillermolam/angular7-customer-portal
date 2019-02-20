@@ -41,7 +41,7 @@ export class BillingMainComponent implements OnInit {
     this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage())
     .subscribe((policyResponse) => {
       this.paymentDataServiceService.updatePolicyData(policyResponse);
-         this.loading =              false;
+      this.loading =              false;
     });
   }
 }
