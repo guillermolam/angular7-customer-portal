@@ -1,3 +1,4 @@
+import { UpdatePasswordService } from './../../../../_services/signup-process-service/update-password.service';
 import { CreateUserMongoService } from './../../../../_services/signup-process-service/create-user-mongo.service';
 // --- Angular ---//
 import { Component, Input, OnInit }   from '@angular/core';
@@ -37,8 +38,7 @@ export class LoginFormComponent implements OnInit {
     private regExHelper:              RegExHelper,
     private router:                   Router,
     private userService:              UserService,
-    private createUserMongoService: CreateUserMongoService,
-    private validateEmailService:     ValidateEmailService
+    private updatePasswordService:    UpdatePasswordService
   ) {}
 
   getCookie(): void {
@@ -61,27 +61,8 @@ export class LoginFormComponent implements OnInit {
         .login (this.user.email, this.user.password)
         .subscribe (
           (accessToken) => {
-            this.validateEmailService.checkActiveEmail(this.user.email, JSON.parse(accessToken).access_token.access_token).subscribe(()=>{
-              localStorage.setItem('currentUser', accessToken);
-              this.router.navigate([`/my-insurance`]);
-            },
-            (err)=>{
-              if (err.status === 400){
-                this.router.navigate(['/signup','validate-email']);
-              } else if(err.status === 404){
-                localStorage.setItem('currentUser', accessToken);
-                this.alertService.success('Successful Login', true);
-                this.router.navigate([`/my-insurance`]);
-                this.createUserMongoService.createMongoUser(this.user.email, this.user.password).subscribe(
-                  ()=>{
-
-                  }
-                , (err)=>{
-
-                })
-              }
-            }
-           )
+            
+            this.updatePasswordService.createLocalStorageUser(accessToken, this.user.email, this.user.password);
           },
           (err) => {
             this.alertService.error('INVALID_EMAIL_PASSWORD');

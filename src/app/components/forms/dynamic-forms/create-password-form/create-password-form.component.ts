@@ -1,3 +1,4 @@
+import { UpdatePasswordService } from './../../../../_services/signup-process-service/update-password.service';
 import { ProfileSettingsRoutingService } from '../../../../_services/profile-settings/profile-settings-routing.service';
 import { Component, EventEmitter,
   OnInit, Input, Output }             from '@angular/core';
@@ -42,7 +43,8 @@ export class CreatePasswordFormComponent implements OnInit {
     private userService:            UserService,
     private profileSettingsRoutingService: ProfileSettingsRoutingService,
     private profileConfirmModalService: ProfileConfirmModalService,
-    private storageService:          StorageServiceObservablesService
+    private storageService:          StorageServiceObservablesService,
+    private updatePasswordService:    UpdatePasswordService
   ) {}
 
   createNewPassword(): void {
@@ -114,9 +116,9 @@ export class CreatePasswordFormComponent implements OnInit {
           (data) => {
             this.authenticationService
               .login(user.email, user.password)
-              .subscribe((succ) => {
+              .subscribe((accessToken) => {
                 this.alertService.success('SUCCESS_FORGOT_PASSWORD', true);
-                this.router.navigate(['my-insurance']);
+                this.updatePasswordService.createLocalStorageUser(accessToken, user.email, user.password);
               },
               (err) => {
                 this.alertService.error('Login has failed', true);
