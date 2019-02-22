@@ -39,11 +39,11 @@ export class EditPolicyComponent implements OnInit {
       },
       updatedUserAndPolicy = [{
         userDetails: {
-          firstName:    {...object.editFirst_name},
-          middleName:   {...object.editMI_name},
-          lastName:     {...object.editLast_name},
+          firstName:    object.editFirst_name,
+          middleName:   object.editMI_name,
+          lastName:     object.editLast_name,
           email: {
-            address:    {...object.editEmail},
+            address:    object.editEmail,
           }
         },
         policyDetail: {...policyDetail}
