@@ -33,8 +33,8 @@ export class PolicyNotFoundComponent implements OnInit {
     this.addPolicyDataService.$newPolicy
     .subscribe( (userData) => {
       console.log(userData)
-      this.policyHolderName =         `${userData[0].userDetails.firstName} ${userData[0].userDetails.middleName || ''} ${userData[0].userDetails.lastName}`;
-      this.policyNumber =             `${userData[0].policyDetail.policynumber.policynumber}`;
+      this.policyHolderName =         `${userData.userDetails.firstName} ${userData.userDetails.middleName || ''} ${userData.userDetails.lastName}`;
+      this.policyNumber =             `${userData.policyDetail.policynumber.policynumber}`;
       this.userData = userData;
       this.userData.addPolicyAttempts = userData.addPolicyAttempts || 0;
     });

@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router  }                  from '@angular/router';
-
+import { AddPolicyDataService }     from './../../../../_services/signup-process-service/add-policy-data.service';
 import { AuthenticationService }    from '../../../../_services/_iam/authentication-service.service';
 import { UserService }              from '../../../../_services/user.service';
 import { User }                     from '../../../../_models/user';
-import { PolicyDataService } from '../../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDataService }        from '../../../../_services/my-insurance/data-services/policy-data.service';
 import { Location }                       from '@angular/common';
 
 
@@ -14,12 +14,13 @@ import { Location }                       from '@angular/common';
   styleUrls: ['./policy-not-found-screen.component.scss']
 })
 export class PolicyNotFoundScreenComponent implements OnInit {
-  @Input()  userData:               User;
-            amountOfTries:          number;
-            policyHolderName:       string;
-            policyNumber:           string;
+    userData:               any;
+    amountOfTries:          number;
+    policyHolderName:       string;
+    policyNumber:           string;
 
   constructor(
+    private addPolicyDataService:   AddPolicyDataService,
     private authService:            AuthenticationService,
     private router:                 Router,
     private userService:            UserService,
@@ -29,7 +30,7 @@ export class PolicyNotFoundScreenComponent implements OnInit {
 
   getObservableData(userData): void {
     this.policyHolderName =         `${userData.userDetails.firstName} ${userData.userDetails.middleName} ${userData.userDetails.lastName}`;
-    this.policyNumber =             `${userData.policyDetails[0].policynumber.policynumber}`;
+    this.policyNumber =             `${userData.policyDetails.policynumber.policynumber}`;
   }
 
   goBackAPage(){
@@ -81,18 +82,15 @@ export class PolicyNotFoundScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.$user.subscribe((user)=>{
-      if (!user.addPolicyAttempts)
-      user.addPolicyAttempts = 0;
-      // console.log(user);
+    this.userService.$user.subscribe((user) => {
+      if (!user.addPolicyAttempts) user.addPolicyAttempts = 0;
       this.updateObservable(user);
-    })
+    });
 
-    // this.policyService.$policyDetails.subscribe((details)=>{
-    //   this.policyDetails = details;
-    //   console.log(details);
-    //   // this.policyHolderName = this.policyDetails.
-    // });
+    this.addPolicyDataService.$newPolicy.subscribe((userData) => {
+      this.userData = userData;
+    });
+
     this.getObservableData(this.userData);
   }
 

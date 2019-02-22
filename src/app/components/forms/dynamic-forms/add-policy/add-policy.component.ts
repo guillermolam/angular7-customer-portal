@@ -7,8 +7,9 @@ import { FormBase , FormBaseControlService }  from 'mapfre-design-library';
 import { AddPolicyDataService } from './../../../../_services/signup-process-service/add-policy-data.service';
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
 import { UserDataService }            from '../../../../_services/data-services/user-data.service';
-import { PolicyDetailsService }               from '../../../../_services/my-insurance/policy-details.service';
-import { StorageServiceObservablesService }   from '../../../../_services/storage-service-observables/storage-service-observables.service';
+import { PolicyDetailsService }       from '../../../../_services/my-insurance/policy-details.service';
+import { StorageServiceObservablesService } from '../../../../_services/storage-service-observables/storage-service-observables.service';
+import { UserService }                from './../../../../_services/user.service';
 import { User }                       from '../../../../_models/user';
 
 @Component({
@@ -18,6 +19,10 @@ import { User }                       from '../../../../_models/user';
   providers: [ FormBaseControlService ]
 })
 export class AddPolicyComponent implements OnInit {
+  /* Information
+     AddPolicyDataService - is for updates and anything beyond this point
+     UserService - create account
+ */
   @Input()  inputs:                   FormBase<any>[] = [];
   // @Input()  userData:                 Observable<User>;
             email:                    string;
@@ -31,10 +36,11 @@ export class AddPolicyComponent implements OnInit {
     private ipt:                      FormBaseControlService,
     private router:                   Router,
     private userDataService:          UserDataService,
+    private userService:              UserService,
     private storageService:           StorageServiceObservablesService,
     private policyDetailsService:     PolicyDetailsService,
   ) {
-    this.email = this.storageService.getUserFromStorage();
+    this.email = this.storageService.getUserFromStorage() || '';
    }
 
   addPolicy(): void {
@@ -102,7 +108,7 @@ export class AddPolicyComponent implements OnInit {
         policynumber : { policynumber: this.addPolicyForm.value.addPolicy }
       },
       userAndPolicy = [{
-        userDetails: {...this.user[0].userDetails},
+        userDetails: {...this.user.userDetails},
         policyDetail: {...policyDetail}
       }]
     ;
@@ -115,10 +121,18 @@ export class AddPolicyComponent implements OnInit {
 
   ngOnInit() {
     this.addPolicyForm = this.ipt.toFormGroup(this.inputs);
-    this.userDataService.$userData.subscribe((user)=>{
-      this.user = user;
-    });
-    
+    if (this.router.url === '/my-insurance/link-policy') {
+      // Logged in
+      this.userDataService.$userData.subscribe((user)=>{
+        this.user = user[0];
+      });
+    }
+    else { 
+      // Create Account
+      this.userService.$user.subscribe((user)=>{
+        this.user = user;
+      });
+    }
     console.log(this.user);
   }
 }
