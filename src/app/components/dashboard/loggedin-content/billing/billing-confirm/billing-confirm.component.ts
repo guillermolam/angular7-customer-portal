@@ -21,6 +21,7 @@ import { UserService }                    from './../../../../../_services/user.
 export class BillingConfirmComponent implements OnInit {
   billing:                                any;
   checkAmount:                            boolean;
+  email:                                  string;
   loading:                                boolean;
   policyId:                               string;
   policyDetails:                          any;
@@ -38,7 +39,9 @@ export class BillingConfirmComponent implements OnInit {
     private router:                       Router,
     private storageService:               StorageServiceObservablesService,
     private userService:                  UserService,
-) { }
+) {
+  this.email = this.storageService.getUserFromStorage();
+ }
 
   checkMethodForMinAmount(bill, billingDetails): void {
     if (bill > billingDetails) {
@@ -49,10 +52,10 @@ export class BillingConfirmComponent implements OnInit {
     }
   }
 
-  payment(billing, email, policyId): boolean  {
+  payment( billing ): boolean  {
     let boolForSub;
     this.billingDetailsService
-      .makeECheckPayment( billing, email, policyId )
+      .makeECheckPayment( billing, this.email, this.policyId )
       .subscribe( (response) => {
         boolForSub =                      true;
         this.billingDataService.clearBilling();
@@ -64,13 +67,13 @@ export class BillingConfirmComponent implements OnInit {
     return boolForSub;
   }
 
-  saveCheckingAccount(email, bankAccountDetails): boolean {
+  saveCheckingAccount(bankAccountDetails ): boolean {
     let boolForSub;
     this.bankAccountService
-    .addBankAccount(email, bankAccountDetails)
+    .addBankAccount(this.email, bankAccountDetails)
     .subscribe( (response) => {
       this.authenticationService
-      .getUserDetailsByEmail(this.storageService.getUserFromStorage())
+      .getUserDetailsByEmail( this.email )
       .subscribe(([userResponse, accountResponse]) => {
         const resObject = {
           userDetails:              {...userResponse},
@@ -89,8 +92,8 @@ export class BillingConfirmComponent implements OnInit {
   sendPayment(): void {
     this.loading =                    true;
     if (this.storeBankAccount) {
-      if ( this.payment(this.billing, this.storageService.getUserFromStorage(), this.policyId) ) {
-        if ( this.saveCheckingAccount(this.storageService.getUserFromStorage(), this.billing) ) {
+      if ( this.payment( this.billing ) ) {
+        if ( this.saveCheckingAccount( this.billing ) ) {
           this.loading =              false;
           this.alertService.success('Congrats! You\'ve paid your bill and saved your bank information!', true);
           this.router.navigate(['/my-insurance']);
@@ -108,7 +111,7 @@ export class BillingConfirmComponent implements OnInit {
       }
     }
     else {
-      if ( this.payment( this.billing, this.storageService.getUserFromStorage(), this.policyId ) ) {
+      if ( this.payment( this.billing ) ) {
         this.loading =                false;
         this.alertService.success('Congrats! You\'ve paid your bill!', true);
         this.router.navigate(['/my-insurance']);
