@@ -5,7 +5,7 @@ import { Observable }                 from 'rxjs';
 import { FormBase , FormBaseControlService }  from 'mapfre-design-library';
 // --- Components | Services | Models --- //
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
-import { UserService }                from '../../../../_services/user.service';
+import { UserDataService }            from '../../../../_services/data-services/user-data.service';
 import { PolicyDataService }          from '../../../../_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }               from '../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }   from '../../../../_services/storage-service-observables/storage-service-observables.service';
@@ -21,6 +21,7 @@ import { User }                       from '../../../../_models/user';
 export class AddPolicyComponent implements OnInit {
   @Input()  inputs:                   FormBase<any>[] = [];
   // @Input()  userData:                 Observable<User>;
+            email:                    string;
             addPolicyForm:            FormGroup;
             legalCheckbox:            boolean = false;
             loading:                  boolean = false;
@@ -29,25 +30,27 @@ export class AddPolicyComponent implements OnInit {
     private authService:              AuthenticationService,
     private ipt:                      FormBaseControlService,
     private router:                   Router,
-    private userService:              UserService,
+    private userDataService:              UserDataService,
     private policyService:            PolicyDataService,
     private storageService:           StorageServiceObservablesService,
     private policyDetailsService:     PolicyDetailsService,
-  ) { }
+  ) {
+    this.email = this.storageService.getUserFromStorage();
+   }
 
   addPolicy(): void {
-    this.addPolicyToObject();
+    const userAndPolicy = this.addPolicyToObject();
     if (this.legalCheckbox) {
       this.authService
-        .verifyPolicy(this.userService)
+        .verifyPolicy(userAndPolicy)
         .subscribe(
           (response) => {
-            this.policyService.updatePolicyDetails(response);
+            // this.policyService.updatePolicyDetails(response);
             // policy not linked and exists in as400
             if (this.router.url==='/my-insurance/link-policy') {
               // Need to resync the data
               this.policyDetailsService
-              .getPolicyDetailsByEmail( this.storageService.getUserFromStorage())
+              .getPolicyDetailsByEmail( this.email )
               .subscribe(
                 (success) => {
                   this.router.navigate(['/my-insurance', 'validate-policy-rights']);
@@ -59,7 +62,7 @@ export class AddPolicyComponent implements OnInit {
             }
           },
           (err) => {
-            if (this.router.url==='/my-insurance/link-policy') {
+            if (this.router.url === '/my-insurance/link-policy') {
               if (err.status === 409) {
                 // Conflict, Policy is not found and name validation fails
                 this.router.navigate(['/my-insurance','policy-not-found']);
@@ -94,12 +97,17 @@ export class AddPolicyComponent implements OnInit {
     }
   }
 
-  addPolicyToObject(): void {
-    const policyDetail = [{
-      policynumber : { policynumber: this.addPolicyForm.value.addPolicy }
-    }];
-    this.user.policyDetails = policyDetail;
-    this.userService.updateUser(this.user);
+  addPolicyToObject() {
+    const
+      policyDetail = {
+        policynumber : { policynumber: this.addPolicyForm.value.addPolicy }
+      },
+      userAndPolicy = [{
+        userDetails: {...this.user[0].userDetails},
+        policyDetail: {...policyDetail}
+      }]
+    ;
+    return userAndPolicy;
   }
 
   getLegalCheckBoxValue(e): void {
@@ -108,9 +116,10 @@ export class AddPolicyComponent implements OnInit {
 
   ngOnInit() {
     this.addPolicyForm = this.ipt.toFormGroup(this.inputs);
-    this.userService.$user.subscribe((user)=>{
-          this.user = user;
+    this.userDataService.$userData.subscribe((user)=>{
+      this.user = user;
     });
+    
+    console.log(this.user);
   }
-
 }

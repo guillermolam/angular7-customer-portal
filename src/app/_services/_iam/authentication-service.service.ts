@@ -121,12 +121,9 @@ export class AuthenticationService {
 
   verifyPolicy(userObject): Observable<object> {
     const
-      user =            userObject.$user.source.value,
-      policyNumber =    user.policyDetails[0].policynumber.policynumber,
-      // url =             `https://mdv-doctest:8084/personal-policies/${policyNumber}/insureds/namevalidation`,
+      policyNumber =    userObject[0].policyDetail.policynumber.policynumber,
       url =             `${environment.backend_server_url_policy}/${policyNumber}/insureds/namevalidation`,
-      userSendObject =  this.serviceHelpers.creatUserObject(user[0], 'personalpolicy')
-
+      userSendObject =  this.serviceHelpers.creatUserObject(userObject[0], 'personalpolicy')
     ;
     return this.http.put(url, userSendObject);
   }
@@ -135,7 +132,6 @@ export class AuthenticationService {
     const user =          userObject.$user.source.value,
         userSendObject =  this.serviceHelpers.creatUserObject(user, 'verifyuser'),
         url =             `${environment.backend_server_url_account}/${user.userDetails.email.address}`;
-
 
     return this.http
       .post(url, userSendObject, this.serviceHelpers.options)
