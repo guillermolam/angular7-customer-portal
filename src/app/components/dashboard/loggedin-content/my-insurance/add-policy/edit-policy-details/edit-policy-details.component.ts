@@ -1,10 +1,9 @@
 
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { EditPolicyService } from './../../../../../../_services/forms/create-account/edit-policy.service';
-import { ModalOptions, User } from 'mapfre-design-library';
-import { UserService } from './../../../../../../_services/user.service';
-
+import { Component, OnInit }            from '@angular/core';
+import { ActivatedRoute }               from '@angular/router';
+import { ModalOptions, User }           from 'mapfre-design-library';
+import { EditPolicyService }            from './../../../../../../_services/forms/create-account/edit-policy.service';
+import { AddPolicyDataService }         from './../../../../../../_services/signup-process-service/add-policy-data.service';
 
 @Component({
   selector: 'app-edit-policy-details',
@@ -13,13 +12,13 @@ import { UserService } from './../../../../../../_services/user.service';
 })
 export class EditPolicyDetailsComponent implements OnInit {
 
-  editPolicyDetails:                      any[];
+  editPolicyDetails:                   any[];
   whereToFindModalOptions:             ModalOptions;
   user:                                User  = {};
 
   constructor(
     private activatedRoute:            ActivatedRoute,
-    private userService:               UserService,
+    private addPolicyDataService:      AddPolicyDataService,
     editPolicyService:                 EditPolicyService
   ) {
     this.editPolicyDetails = editPolicyService.getInputs();
@@ -36,9 +35,10 @@ export class EditPolicyDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.$user.subscribe(
-      (user) => {
-        this.user =  user;
+    this.addPolicyDataService.$newPolicy.subscribe(
+      (userAndPolicy) => {
+        console.log(userAndPolicy);
+        this.user =  userAndPolicy;
       }
     );
   }
