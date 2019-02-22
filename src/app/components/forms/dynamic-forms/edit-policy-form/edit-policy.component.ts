@@ -5,6 +5,7 @@ import { FormBase, FormBaseControlService } from 'mapfre-design-library';
 
 // --- Components | Services | Models --- //
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
+import { AddPolicyDataService }       from './../../../../_services/signup-process-service/add-policy-data.service';
 import { User }                       from '../../../../_models/user';
 import { UserService }                from '../../../../_services/user.service';
 
@@ -17,47 +18,57 @@ import { UserService }                from '../../../../_services/user.service';
 
 export class EditPolicyComponent implements OnInit {
   @Input()  inputs:                     FormBase<any>[] = [];
-  // @Input()  userData:                   User;
+  @Input()  userData:                   any;
             editPolicyForm:             FormGroup;
             loading:                    boolean = false;
             user:                       any  = {};
 
   constructor(
+    private addPolicyDataService:       AddPolicyDataService,
     private authService:                AuthenticationService,
     private ipt:                        FormBaseControlService,
     private router:                     Router,
     private userService:                UserService
   ) { }
 
-  createUserObject(object): void {
+  createUserObject(object): object {
     // console.log(this.user)
-    this.user.addPolicyAttempts = this.user.addPolicyAttempts + 1;
-    this.user.userDetails.firstName = object.editFirst_name
-    this.user.userDetails.middleName = object.editMI_name
-    this.user.userDetails.lastName =  object.editLast_name
-    this.user.userDetails.email.address = object.editEmail
-    this.user.policyDetails =  [{
-      policynumber:                   { policynumber: object.editPolicyNumber }
-    }];
-    this.userService.updateUser(this.user);
+    const
+      policyDetail = {
+        policynumber : { policynumber: object.editPolicyNumber }
+      },
+      updatedUserAndPolicy = [{
+        userDetails: {
+          firstName:    {...object.editFirst_name},
+          middleName:   {...object.editMI_name},
+          lastName:     {...object.editLast_name},
+          email: {
+            address:    {...object.editEmail},
+          }
+        },
+        policyDetail: {...policyDetail}
+      }];
+    return updatedUserAndPolicy;
   }
 
   editPolicy(): void {
-      this.createUserObject(this.editPolicyForm.value);
-      this.authService
-      .verifyPolicy(this.userService)
+    const updatedUserAndPolicy = this.createUserObject(this.editPolicyForm.value);
+    this.addPolicyDataService.updateAddPolicy(updatedUserAndPolicy);
+    this.authService
+      .verifyPolicy(updatedUserAndPolicy)
       .subscribe(
         (response) => {
           // this.policyService.updatePolicyDetails(response); //new code
           // policy not linked and exists in as400
-          if (this.router.url==='/my-insurance/edit-policy-details') {
-            this.router.navigate(['/my-insurance','validate-policy-rights']);
-          }else {
+          if (this.router.url === '/my-insurance/edit-policy-details') {
+            this.router.navigate(['/my-insurance', 'validate-policy-rights']);
+          }
+          else {
             this.router.navigate(['signup', 'createnewpassword']);
           }
         },
         (err) => {
-          if (this.router.url==='/my-insurance/edit-policy-details') {
+          if (this.router.url === '/my-insurance/edit-policy-details') {
             if (err.status === 409) {
               // Conflict, Policy is not found and name validation fails
               this.router.navigate(['/my-insurance','policy-not-found']);
@@ -68,11 +79,10 @@ export class EditPolicyComponent implements OnInit {
             }
             else if (err.status === 404){
               // 404 - if the policy belongs to another account
-              // this.router.navigate(['signup', 'notfound']);
-            this.router.navigate(['/my-insurance','validate-policy-rights']);
-            // this.router.navigate(['signup', 'policy-belongs-to-another']);
+              this.router.navigate(['/my-insurance','validate-policy-rights']);
             }
-          }else {
+          }
+          else {
             if (err.status === 409) {
               // Conflict, Policy is not found and name validation fails
               this.router.navigate(['signup', 'not-found']);
@@ -83,31 +93,24 @@ export class EditPolicyComponent implements OnInit {
             }
             else if (err.status === 404){
               // 404 - if the policy belongs to another account
-              // this.router.navigate(['signup', 'notfound']);
               this.router.navigate(['signup', 'policy-belongs-to-another']);
             }
-
           }
-         
         }
-      )
-    ;
-    
+      );
   }
 
   prefillData(prefillData): void {
-    this.editPolicyForm.get('editFirst_name').setValue(prefillData.userDetails.firstName);
-    this.editPolicyForm.get('editMI_name').setValue(prefillData.userDetails.middleName);
-    this.editPolicyForm.get('editLast_name').setValue(prefillData.userDetails.lastName);
-    this.editPolicyForm.get('editPolicyNumber').setValue(prefillData.policyDetails[0].policynumber.policynumber);
+    console.log(prefillData)
+    this.editPolicyForm.get('editFirst_name').setValue(prefillData[0].userDetails.firstName);
+    this.editPolicyForm.get('editMI_name').setValue(prefillData[0].userDetails.middleName);
+    this.editPolicyForm.get('editLast_name').setValue(prefillData[0].userDetails.lastName);
+    this.editPolicyForm.get('editPolicyNumber').setValue(prefillData[0].policyDetail.policynumber.policynumber);
   }
 
   ngOnInit() {
     this.editPolicyForm = this.ipt.toFormGroup(this.inputs);
-    this.userService.$user.subscribe((user)=>{
-      this.prefillData(user);
-      this.user = user;
-    })
+    this.prefillData(this.userData);
   }
 
 }
