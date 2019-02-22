@@ -49,7 +49,7 @@ export class CreateAccountFormComponent implements OnInit {
      
     }
     else {
-      this.user.policyDetails = numbers;
+      this.user.policyDetail = numbers;
     }
     this.userData.placeUserInfoInStorage(this.user);
     this.userData.updateUser(this.user);

@@ -107,10 +107,10 @@ export class AddPolicyComponent implements OnInit {
       policyDetail = {
         policynumber : { policynumber: this.addPolicyForm.value.addPolicy }
       },
-      userAndPolicy = [{
+      userAndPolicy = {
         userDetails: {...this.user.userDetails},
         policyDetail: {...policyDetail}
-      }]
+      }
     ;
     return userAndPolicy;
   }

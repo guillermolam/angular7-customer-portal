@@ -37,7 +37,7 @@ export class EditPolicyComponent implements OnInit {
       policyDetail = {
         policynumber : { policynumber: object.editPolicyNumber }
       },
-      updatedUserAndPolicy = [{
+      updatedUserAndPolicy = {
         userDetails: {
           firstName:    object.editFirst_name,
           middleName:   object.editMI_name,
@@ -47,7 +47,7 @@ export class EditPolicyComponent implements OnInit {
           }
         },
         policyDetail: {...policyDetail}
-      }];
+      };
     return updatedUserAndPolicy;
   }
 
@@ -101,16 +101,17 @@ export class EditPolicyComponent implements OnInit {
   }
 
   prefillData(prefillData): void {
-    console.log(prefillData)
-    this.editPolicyForm.get('editFirst_name').setValue(prefillData[0].userDetails.firstName);
-    this.editPolicyForm.get('editMI_name').setValue(prefillData[0].userDetails.middleName);
-    this.editPolicyForm.get('editLast_name').setValue(prefillData[0].userDetails.lastName);
-    this.editPolicyForm.get('editPolicyNumber').setValue(prefillData[0].policyDetail.policynumber.policynumber);
+    this.editPolicyForm.get('editFirst_name').setValue(prefillData.userDetails.firstName);
+    this.editPolicyForm.get('editMI_name').setValue(prefillData.userDetails.middleName);
+    this.editPolicyForm.get('editLast_name').setValue(prefillData.userDetails.lastName);
+    this.editPolicyForm.get('editPolicyNumber').setValue(prefillData.policyDetail.policynumber.policynumber);
   }
 
   ngOnInit() {
     this.editPolicyForm = this.ipt.toFormGroup(this.inputs);
-    this.prefillData(this.userData);
+    this.addPolicyDataService.$newPolicy.subscribe((userData) => {
+      this.prefillData(userData);
+    });
   }
 
 }
