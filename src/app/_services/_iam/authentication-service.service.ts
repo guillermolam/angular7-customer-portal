@@ -121,9 +121,9 @@ export class AuthenticationService {
 
   verifyPolicy(userObject): Observable<object> {
     const
-      policyNumber =    userObject[0].policyDetail.policynumber.policynumber,
+      policyNumber =    userObject.policyDetail.policynumber.policynumber,
       url =             `${environment.backend_server_url_policy}/${policyNumber}/insureds/namevalidation`,
-      userSendObject =  this.serviceHelpers.creatUserObject(userObject[0], 'personalpolicy')
+      userSendObject =  this.serviceHelpers.creatUserObject(userObject, 'personalpolicy')
     ;
     return this.http.put(url, userSendObject);
   }
