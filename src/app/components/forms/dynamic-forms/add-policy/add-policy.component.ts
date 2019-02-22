@@ -4,12 +4,11 @@ import { Router }                     from '@angular/router';
 import { Observable }                 from 'rxjs';
 import { FormBase , FormBaseControlService }  from 'mapfre-design-library';
 // --- Components | Services | Models --- //
+import { AddPolicyDataService } from './../../../../_services/signup-process-service/add-policy-data.service';
 import { AuthenticationService }      from '../../../../_services/_iam/authentication-service.service';
 import { UserDataService }            from '../../../../_services/data-services/user-data.service';
-import { PolicyDataService }          from '../../../../_services/my-insurance/data-services/policy-data.service';
 import { PolicyDetailsService }               from '../../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService }   from '../../../../_services/storage-service-observables/storage-service-observables.service';
-
 import { User }                       from '../../../../_models/user';
 
 @Component({
@@ -27,11 +26,11 @@ export class AddPolicyComponent implements OnInit {
             loading:                  boolean = false;
             user:                     any;
   constructor(
+    private addPolicyDataService:     AddPolicyDataService,
     private authService:              AuthenticationService,
     private ipt:                      FormBaseControlService,
     private router:                   Router,
-    private userDataService:              UserDataService,
-    private policyService:            PolicyDataService,
+    private userDataService:          UserDataService,
     private storageService:           StorageServiceObservablesService,
     private policyDetailsService:     PolicyDetailsService,
   ) {
@@ -41,13 +40,13 @@ export class AddPolicyComponent implements OnInit {
   addPolicy(): void {
     const userAndPolicy = this.addPolicyToObject();
     if (this.legalCheckbox) {
+      this.addPolicyDataService.updateAddPolicy(userAndPolicy);
       this.authService
         .verifyPolicy(userAndPolicy)
         .subscribe(
           (response) => {
-            // this.policyService.updatePolicyDetails(response);
             // policy not linked and exists in as400
-            if (this.router.url==='/my-insurance/link-policy') {
+            if (this.router.url === '/my-insurance/link-policy') {
               // Need to resync the data
               this.policyDetailsService
               .getPolicyDetailsByEmail( this.email )
