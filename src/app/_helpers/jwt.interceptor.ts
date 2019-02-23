@@ -46,8 +46,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
     return next.handle(request)
     .pipe(catchError((e) => {
-      if((e.status == 401)){
-        this.alertService.error('Invalid username/password', true);
+      if((e.status == 0)){
         this.router.navigate(['/login']);
       }
         return throwError(e);     
