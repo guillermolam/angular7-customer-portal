@@ -8,8 +8,8 @@
               </h2>
               
               <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insured; let i = index">
-                <div class="col col-name">
-                  <strong>{{ holder['Insured Name'] }}</strong>
+                <div class="col-auto">
+                    <h3 class="title vehicle-name">{{ holder['Insured Name'] }}</h3>
                 </div>
                 
                 <div class="col" *ngIf="holder?.isPrimaryInsured">

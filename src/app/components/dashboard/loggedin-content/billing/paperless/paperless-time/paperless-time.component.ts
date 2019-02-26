@@ -215,9 +215,7 @@ export class PaperlessFirstTimeComponent implements OnInit {
       this.policyInfo  = policyResponse;
       this.loading = false;
     });
-    //this.loading = false;
-    //this.policyDataService.$policyDetails.subscribe((policyResponse) => this.policyInfo  = policyResponse);
-    //console.log(this.policyInfo);
+    
     this.checkAllPoliciesForEligibilty();
   }
 
