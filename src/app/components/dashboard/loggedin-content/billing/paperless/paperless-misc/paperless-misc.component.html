@@ -1,34 +1,38 @@
 <mapfre-card 
   [singleCard]="false" 
   [additionalClasses]="'paperless-sidebar misc-content'">
-  <div class="">
-    <div class="icon-title">
-      <div class="alarm svg-container float-left">
+  <div class="row align-items-center">
+    <div class="col-md-12 col-auto icon-title text-center">
+      <div class="alarm svg-container mx-auto">
           <img src="./assets/img/images/paperless.png" />
       </div>
-      <div class="float-left paperless-copy">
-        <div class="grey-color small-font">
-          {{ 'ENROLL_IN_OUR_PAPERLESS_PLAN' | translate }}
+    </div>
+    <div class="col-md-12 col">
+      <div class="row">
+        <div class="col-12 paperless-copy">
+          <div class="grey-color enroll-headline margin-vertical mv8 text-left text-md-center">
+            {{ 'ENROLL_IN_OUR_PAPERLESS_PLAN' | translate }}
+          </div>
         </div>
-        <div class="green-text">
-          {{ 'AND_SAVE_UP_TO_3%' | translate }}
+        <div class="col-12">
+          <div class="green-text savings-amount margin-bottom mb16 text-left text-md-center">
+            {{ 'AND_SAVE_UP_TO_3%' | translate }}
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="paperless-desktop misc-desktop float-right">
+    <div class="col-md-12 col paperless-desktop misc-desktop text-right text-md-center">
       <mapfre-link
         additionalClasses="blue-link underline" 
         routerLink="/billing/paperless">
-        {{ 'PAPERLESS_SETTINGS' | translate }}
-        <i class="fas fa-angle-right"></i>
+        {{ 'PAPERLESS_SETTINGS' | translate }}<i class="material-icons">keyboard_arrow_right</i>
       </mapfre-link>
     </div>
 
-    <div class="paperless-mobile misc-mobile float-right margin-right mr16">
+    <div class="col-md-12 col paperless-mobile misc-mobile text-right text-md-center">
       <a class="mapfre link blue-link">
-        <span>{{ 'SETTINGS' | translate }}</span>
-        <i class="fas fa-angle-right"></i>
+        <span>{{ 'SETTINGS' | translate }}</span><i class="material-icons">keyboard_arrow_right</i>
       </a>
     </div>
   </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit }        from '@angular/core';
-import { concatMap }                from 'rxjs/operators';
+import { concatMap, flatMap }                from 'rxjs/operators';
 import { Observable, of }           from 'rxjs';
 import { AlertService, ModalOptions } from 'mapfre-design-library';
-import { PolicyDataService }        from '../../../../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDataService }        from '../../../../../../_services/data-services/policy-data.service';
 import { PaperlessService }         from '../../../../../../_services/_iam/paperless.service';
 import { PolicyDetailsService }     from '../../../../../../_services/my-insurance/policy-details.service';
 import { User }                     from './../../../../../../_models/user';
@@ -17,6 +17,7 @@ import { StorageServiceObservablesService } from './../../../../../../_services/
 })
 
 export class PaperlessFirstTimeComponent implements OnInit {
+  checkForEligibility:              boolean = true;
   emailaddress:                     string;
   endEnrollOptionsModal:            ModalOptions;
   enrollOptionsModal:               ModalOptions;
@@ -70,6 +71,26 @@ export class PaperlessFirstTimeComponent implements OnInit {
       payOrBill =                   false;
     }
     return payOrBill;
+  }
+
+  checkAllPoliciesForEligibilty(): any {
+    let allPoliciesEligible;
+
+    this.policyInfo.forEach( (policy) => {
+      if ( policy.policyFlags.length == 0 ) {
+        allPoliciesEligible = false;
+      }
+      else {
+        if ( policy.policyFlags.isEbillEligible == 'N' && policy.policyFlags.isEdfEligible == 'N' && policy.policyFlags.isEftEligible == 'N' ) {
+          allPoliciesEligible = false;
+        }
+        else {
+          allPoliciesEligible = true;
+          return;
+        }
+      }
+    });
+    this.checkForEligibility = allPoliciesEligible;
   }
 
   cancel(policyid, where): void {
@@ -187,13 +208,17 @@ export class PaperlessFirstTimeComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.user = this.storageServiceObservablesService.getUserFromStorage();
+    this.user = 'bijoyeft@mail.com' //this.storageServiceObservablesService.getUserFromStorage();
 
     this.policyDetailsService.getPoliciesByEmail(this.storageServiceObservablesService.getUserFromStorage()).
     subscribe((policyResponse)=>{
       this.policyInfo  = policyResponse;
       this.loading = false;
     });
+    //this.loading = false;
+    //this.policyDataService.$policyDetails.subscribe((policyResponse) => this.policyInfo  = policyResponse);
+    //console.log(this.policyInfo);
+    this.checkAllPoliciesForEligibilty();
   }
 
 }
