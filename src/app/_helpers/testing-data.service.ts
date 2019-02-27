@@ -1,10 +1,10 @@
-import { ClaimsDataService } from './../_services/_claims/claims-data.service';
 import { Observable, throwError } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.doctest.dev';
-import { UserService } from '../_services/user.service';
-import { UserDataService } from '../_services/data-services/user-data.service';
-import { PolicyDataService } from '../_services/my-insurance/data-services/policy-data.service';
+import { Injectable }         from '@angular/core';
+import { environment }        from '../../environments/environment';
+import { UserService }        from '../_services/user.service';
+import { UserDataService }    from '../_services/data-services/user-data.service';
+import { PolicyDataService }  from '../_services/my-insurance/data-services/policy-data.service';
+import { ClaimsDataService }  from './../_services/_claims/claims-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +39,7 @@ export class TestingDataService {
   }
 
   setUpTestClaims() {
+    console.log('setUpTestClaims', this.testFullClaimsData())
     this.claimsDataService.updateClaims(this.testFullClaimsData());
   }
 

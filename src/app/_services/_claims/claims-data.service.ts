@@ -13,7 +13,7 @@ export class ClaimsDataService {
 
   updateClaims(claims) {
     console.log('claims data',claims);
-      this.claimsLossDetailsSource.next(claims);
+    this.claimsLossDetailsSource.next(claims);
   }
 
 }

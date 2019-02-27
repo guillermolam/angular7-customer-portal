@@ -4,7 +4,11 @@
   (ngSubmit)="addPolicyForm.valid && addPolicy()">
   <div class="">
     <div *ngFor="let input of inputs" class="input">
-      <mapfre-validation [input]="input" [form]="addPolicyForm"></mapfre-validation>
+      <mapfre-validation 
+        [input]="input"
+        [form]="addPolicyForm"
+        [maximumLength]="'6'"
+      ></mapfre-validation>
     </div>
   </div>
   <div class="form-check margin-bottom mb24">
