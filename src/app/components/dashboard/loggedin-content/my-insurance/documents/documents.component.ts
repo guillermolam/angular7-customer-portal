@@ -16,6 +16,7 @@ import { User }                     from '../../../../../_models/user';
 import { UserService }              from '../../../../../_services/user.service';
 import { WalletCardService }        from '../../../../../_services/_iam/wallet-card.service';
 import { forkJoin } from 'rxjs';
+import { TestingDataService } from './../../../../../_helpers/testing-data.service';
 
 
 @Component({
@@ -60,7 +61,8 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
     private userService:            UserService,
     private walletCardService:      WalletCardService,
     private storageServiceObservablesService: StorageServiceObservablesService,
-    private documentsDataService:   DocumentsDataService
+    private documentsDataService:   DocumentsDataService,
+    private testingData:            TestingDataService
     ) {}
 
   asALink(url): void {
@@ -86,7 +88,9 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
     .getDocumentById(documentId)
     .subscribe((byteArray: BlobPart) => {
       const blob =            new Blob([byteArray], {type: 'application/pdf'});
-      saveAs(blob, `document-${policyId}-${documentType}.pdf`,);
+      const fileURL =         URL.createObjectURL(blob);
+      window.open(fileURL, '_blank');
+      // saveAs(blob, `document-${policyId}-${documentType}.pdf`,);
     });
   }
 
@@ -159,6 +163,8 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
 
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
+      //this.documentsData = this.testingData.testDocumentsObject();
+      this.loading = false;
       this.policyDetailsService.getDocumentsByPolicy(this.policyId)
       .subscribe((documentResponse) => {
         this.documentsData  = documentResponse;

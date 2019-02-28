@@ -94,7 +94,7 @@ export class TestingDataService {
         address: "bijoyeft@mail.com"
       },
       firstName: "Bijoy",
-      lastName: "Joseph",
+      lastName: "joseph",
       middleName: "",
       phone: {
         number: "1254122222"
@@ -271,6 +271,28 @@ export class TestingDataService {
       }];
   }
 
+  testDocumentsObject(): any {
+    return [
+      {
+        'type': 'TYPE',
+        'description': 'Everyday ',
+        'transactionDate': '1995-12-17T03:24:00',
+        'documentId': '123456'
+      },
+      {
+        'type': 'ONE',
+        'description': 'Everyday carry fanny pack selvage small batch.',
+        'transactionDate': '1995-12-17T03:24:00',
+        'documentId': '789012'
+      },
+      {
+        'type': 'BLUE',
+        'description': 'Everyday carry fanny',
+        'transactionDate': '1995-12-17T03:24:00',
+        'documentId': '345678'
+      },
+    ];
+  }
   testFullClaimsData() {
     return [  
       {  
@@ -481,7 +503,7 @@ export class TestingDataService {
             "Insured Name": "JOSE MIGUEL MARTINEZ"
           }
          ],
-         "policyStatus":"ACTIVE",
+         "policyStatus":"INACTIVE",
          "policyFlags":{  
             "isEft":"UNENROLLED",
             "isEftEligible":"",
@@ -566,7 +588,7 @@ export class TestingDataService {
                "Insured Name":"RICHARD GOODALE"
             }
          ],
-         "policyStatus":"ACTIVE",
+         "policyStatus":"CANCELLED",
          "policyFlags":{  
             "isEft":"UNENROLLED",
             "isEftEligible":"N",
@@ -1139,7 +1161,7 @@ export class TestingDataService {
                "Insured Name":"PAUL D BROWN"
             }
          ],
-         "policyStatus":"ACTIVE",
+         "policyStatus":"INACTIVE",
          "policyFlags":{  
             "isEft":"UNENROLLED",
             "isEftEligible":"Y",
@@ -1773,7 +1795,7 @@ export class TestingDataService {
                "Insured Name":"MARK JOSEPH POWERS"
             }
          ],
-         "policyStatus":"ACTIVE",
+         "policyStatus":"INACTIVE",
          "policyFlags":{  
             "isEft":"UNENROLLED",
             "isEftEligible":"N",
@@ -2090,7 +2112,7 @@ export class TestingDataService {
                "Insured Name":"JOEL THOMAS GROSSMAN"
             }
          ],
-         "policyStatus":"ACTIVE",
+         "policyStatus":"CANCELLED",
          "policyFlags":{  
             "isEft":"ENROLLED",
             "isEftEligible":"Y",
@@ -2297,4 +2319,5 @@ export class TestingDataService {
    ];
    
   }
+
 }

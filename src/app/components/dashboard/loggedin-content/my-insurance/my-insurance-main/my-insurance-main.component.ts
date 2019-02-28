@@ -4,6 +4,7 @@ import { StorageServiceObservablesService } from './../../../../../_services/sto
 import { PolicyDetailsService } from './../../../../../_services/my-insurance/policy-details.service';
 import { PolicyDataService } from './../../../../../_services/data-services/policy-data.service';
 import { UserService } from '../../../../../_services/user.service';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-my-insurance-main',
@@ -40,39 +41,22 @@ export class MyInsuranceMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.policyDataService.$policyDetails
+    /*this.policyDataService.$policyDetails
     .subscribe((policyResponse: any) => {
-      this.policyResponse = policyResponse;
-     
-    });
+      this.policyResponse =         _.sortBy(policyResponse, 'policyStatus');
+      this.loading = false;
+    });*/
 
-    this.userService.$user
-    .subscribe((user) => {
-      this.user = user;
-    });
-
-    // this.policyDetailsService
-    // .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
-    // .subscribe(()=>{
-    //    this.policyDataService.$policyDetails.subscribe((policyResponse: any) => {
-    //   this.policyResponse =       policyResponse.sort((policy) => {
-    //     const type =              policy.policyType.toUpperCase();
-    //     if ( type == 'INACTIVE' ) {
-    //       return 1;
-    //     }
-    //     else if ( type == 'CANCELLED' ) {
-    //       return 0;
-    //     }
-    //     else {
-    //       return -1;
-    //     }
-    //   });
-    //   this.loading = false;
-    // });
-    // },
-    // (err)=>{
-
-    // })
+    this.policyDetailsService
+    .getPolicyDetailsByEmail(this.storageService.getUserFromStorage())
+    .subscribe(() => {
+      this.policyDataService.$policyDetails
+      .subscribe((policyResponse: any) => {
+        this.policyResponse =         _.sortBy(policyResponse, 'policyStatus');
+        this.loading = false;
+      });
+    },
+    (err) => { });
 
   }
 }

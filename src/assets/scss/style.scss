@@ -192,7 +192,7 @@ h1.title-cta {
     
     .logo {
       @media (max-width:1190px) {
-        padding-left: 16px;
+        padding-left: 1rem;
       }
     }
   }
@@ -204,26 +204,20 @@ h1.title-cta {
 
 .center-on-page {
   @media (max-width: 991px) {
-    margin: auto;
-  }
-}
-
-.col.main-column {
-  @media (max-width: 376px){
-     //padding-right: 0;
+    margin:           auto;
   }
 }
 
 .container-fluid {
   @media (max-width: 376px){ 
-    overflow: hidden;
+    overflow:         hidden;
   }
 }
 
 .custom-select {
-  border-radius: 0;
-  border: none;
-  border-bottom: 0.125rem solid $dark-grey;
+  border-radius:      0;
+  border:             none;
+  border-bottom:      0.125rem solid $dark-grey;
 }
 
 .dashboard-navigation {
@@ -237,15 +231,15 @@ h1.title-cta {
     position:       relative;
 
     i {
-      font-size:    24px;
+      font-size:        24px;
     }
 
     .active-icon {
-      display:      none;
+      display:         none;
     }
 
     .icon-content {
-      margin:       auto;
+      margin:          auto;
     }
 
     .nav-icon {
@@ -847,10 +841,6 @@ h1.title-cta {
   margin-top: -16px;
 }
 
-.billing.details .col1 {
-  //wpadding-left: 16px;
-}
-
-.billing.details .col2 {
-  //padding-right: 16px;
+.sub-title-copy {
+  text-transform: capitalize;
 }

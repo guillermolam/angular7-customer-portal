@@ -1,10 +1,10 @@
 import { Component, OnInit }      from '@angular/core';
-import { PolicyDataService }      from './../../../_services/my-insurance/data-services/policy-data.service';
+import { PolicyDataService }      from './../../../_services/data-services/policy-data.service';
 import { User }                   from '../../../_models/user';
 import { UserService }            from '../../../_services/user.service';
 import { PolicyDetailsService }   from '../../../_services/my-insurance/policy-details.service';
 import { StorageServiceObservablesService } from './../../../_services/storage-service-observables/storage-service-observables.service';
-
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-contact-screen',
@@ -25,8 +25,18 @@ export class ContactScreenComponent implements OnInit {
     this.loading = true;
     this.policyDetailsService.getPoliciesByEmail(this.storageService.getUserFromStorage()).
     subscribe((policyResponse)=>{
-      this.policies  = policyResponse;
+      const outPutOne = _.uniq(policyResponse, (item, key, agent) => {
+        return item.agent.agentName;
+      });
+      //this.policies = _.sortBy(outPutOne, 'policyStatus');
       this.loading = false;
     });
+    /*this.policyDataService.$policyDetails.subscribe((policies) => {
+      const outPutOne = _.uniq(policies, (item, key, agent) => {
+        return item.agent.agentName;
+      });
+
+      this.policies = _.sortBy(outPutOne, 'policyStatus');
+    });*/
   }
 }
