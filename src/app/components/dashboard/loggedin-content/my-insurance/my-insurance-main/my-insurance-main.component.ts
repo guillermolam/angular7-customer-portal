@@ -26,13 +26,13 @@ export class MyInsuranceMainComponent implements OnInit {
     private storageService: StorageServiceObservablesService
   ) {
     this.payNowModal = new ModalOptions({
-      additionalButtonClasses: 'ghost primary small pay-now-modal-button',
-      additionalClasses: 'pay-now-modal  modal-medium modal-dialog center-on-page',
-      buttonCopy: 'PAY_NOW',
-      modalId: 'payNow',
-      modalTranslateCopy: 'MODAL_MAKE_A_PAYMENT',
-      size: 'modal-medium',
-      typeOfModal: 'default'
+      additionalButtonClasses:  'ghost primary w100 h24 no-padding x-small-btn',
+      additionalClasses:        'pay-now-modal  modal-medium modal-dialog center-on-page',
+      buttonCopy:               'PAY_NOW',
+      modalId:                  'payNow',
+      modalTranslateCopy:       'MODAL_MAKE_A_PAYMENT',
+      size:                     'modal-medium',
+      typeOfModal:              'default'
     });
   }
 
@@ -44,7 +44,6 @@ export class MyInsuranceMainComponent implements OnInit {
     /*this.policyDataService.$policyDetails
     .subscribe((policyResponse: any) => {
       this.policyResponse =         _.sortBy(policyResponse, 'policyStatus');
-      this.loading = false;
     });*/
 
     this.policyDetailsService
@@ -57,6 +56,6 @@ export class MyInsuranceMainComponent implements OnInit {
       });
     },
     (err) => { });
-
+    
   }
 }

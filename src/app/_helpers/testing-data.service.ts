@@ -377,7 +377,7 @@ export class TestingDataService {
                   "name":"GUILLERMO LAM-MAR"
                },
                "exposureNumber":{  
-                  "exposureNumber":"NNKRN0"
+                  "exposureNumber":"NNKRN1"
                },
                "payments":[  
                   {  
@@ -455,10 +455,174 @@ export class TestingDataService {
             }
          ],
          "policyNumber":{  
-            "policynumber":"BG4863"
+            "policynumber":"XL7102"
          },
          "date":"2018-07-08T00:00:00.000+0000"
-      }
+      },
+      {  
+        "number":{  
+           "number":"PRWH61"
+        },
+        "exposures":[  
+           {  
+              "coverage":{  
+                 "code":"Rental reimb"
+              },
+              "description":"Other Veh proceeding from Signal/Sign Collided w/Insured Veh ",
+              "address":{  
+                 "streetName":"",
+                 "city":"SOMERVILLE",
+                 "state":"MA",
+                 "zipCode":{  
+                    "digits":"00000"
+                 }
+              },
+              "claimant":{  
+                 "name":"GUILLERMO LAM-MAR"
+              },
+              "exposureNumber":{  
+                 "exposureNumber":"NNM666"
+              },
+              "payments":[  
+                 {  
+                    "status":{  
+                       "code":"N/A",
+                       "date":null
+                    },
+                    "deductibleCode":"N/A",
+                    "address":{  
+                       "streetName":"default",
+                       "city":"default",
+                       "state":"UNKNOWN",
+                       "zipCode":{  
+                          "digits":"00000"
+                       }
+                    },
+                    "exposureType":"Rental reimb",
+                    "checkAmount":608.15,
+                    "paymentReason":"",
+                    "checkDate":null,
+                    "checkNumber":"0907136963",
+                    "checkPayee":"Hertz Bulk Rental via ACH"
+                 }
+              ],
+              "appraisals":[  
+  
+              ],
+              "adjuster":{  
+                 "name":"JENNIFER GOMES",
+                 "extensionAndFax":"508-671-3736 ext 15736",
+                 "adjusterId":{  
+                    "id":"JGOMES"
+                 },
+                 "email":{  
+                    "address":"JGOMES@MAPFREUSA.COM"
+                 },
+                 "phoneNumber":{  
+                    "number":"1-800-221-1605;15450"
+                 }
+              },
+              "propertyOrAutoIndicator":"HOME"
+           },
+           {  
+              "coverage":{  
+                 "code":"Collision"
+              },
+              "description":"Other Veh proceeding from Signal/Sign Collided w/Insured Veh ",
+              "address":{  
+                 "streetName":"",
+                 "city":"SOMERVILLE",
+                 "state":"MA",
+                 "zipCode":{  
+                    "digits":"00000"
+                 }
+              },
+              "claimant":{  
+                 "name":"GUILLERMO LAM-MAR"
+              },
+              "exposureNumber":{  
+                 "exposureNumber":"NNKR88"
+              },
+              "payments":[  
+                 {  
+                    "status":{  
+                       "code":"CASHED",
+                       "date":"2018-01-24T00:07:00.000+0000"
+                    },
+                    "deductibleCode":"APL",
+                    "address":{  
+                       "streetName":"default",
+                       "city":"default",
+                       "state":"UNKNOWN",
+                       "zipCode":{  
+                          "digits":"00000"
+                       }
+                    },
+                    "exposureType":"Collision",
+                    "checkAmount":3149.8,
+                    "paymentReason":"COLLISION",
+                    "checkDate":"2018-01-18T00:07:00.000+0000",
+                    "checkNumber":"0027440275",
+                    "checkPayee":"LONG SUBARU COLLISION CENTER"
+                 },
+                 {  
+                    "status":{  
+                       "code":"CASHED",
+                       "date":"2018-01-07T00:08:00.000+0000"
+                    },
+                    "deductibleCode":"WAI",
+                    "address":{  
+                       "streetName":"default",
+                       "city":"default",
+                       "state":"UNKNOWN",
+                       "zipCode":{  
+                          "digits":"00000"
+                       }
+                    },
+                    "exposureType":"Collision",
+                    "checkAmount":500.0,
+                    "paymentReason":"COLLISION                             DEDUCTIBLE REIMBURSEME",
+                    "checkDate":"2018-01-31T00:07:00.000+0000",
+                    "checkNumber":"0027456846",
+                    "checkPayee":"LONG SUBARU COLLISION CENTER"
+                 }
+              ],
+              "appraisals":[  
+                 {  
+                    "type":"APPRAISAL",
+                    "number":{  
+                       "number":"A0PM3MA"
+                    },
+                    "status":"CLOSE",
+                    "appraiser":{  
+                       "name":"LONG SUBARU INC           "
+                    },
+                    "appraisalAmount":3649.8,
+                    "exposureType":"Collision",
+                    "variableAmount":null
+                 }
+              ],
+              "adjuster":{  
+                 "name":"JENNIFER GOMES",
+                 "extensionAndFax":"508-671-3736 ext 15736",
+                 "adjusterId":{  
+                    "id":"JGOMES"
+                 },
+                 "email":{  
+                    "address":"JGOMES@MAPFREUSA.COM"
+                 },
+                 "phoneNumber":{  
+                    "number":"1-800-221-1605;15450"
+                 }
+              },
+              "propertyOrAutoIndicator":"HOME"
+           }
+        ],
+        "policyNumber":{  
+           "policynumber":"XL6411"
+        },
+        "date":"2018-07-08T00:00:00.000+0000"
+     }
    ];
   }
 
@@ -658,13 +822,13 @@ export class TestingDataService {
             }
          },
          "insured":[  
-            {  
-               "firstName":"",
-               "middleName":"",
-               "lastName":"",
-               "isPrimaryInsured":false,
-               "Insured Name":" "
-            },
+          {  
+            "firstName":"GERALDINE",
+            "middleName":"H",
+            "lastName":"COPE",
+            "isPrimaryInsured":true,
+            "Insured Name":"GERALDINE H COPE"
+         },
             {  
                "firstName":"GERALDINE",
                "middleName":"H",

@@ -19,7 +19,7 @@ export class MyInsuranceComponent implements OnInit {
     private policyDataService:    PolicyDataService,
     private policyDetailsService: PolicyDetailsService,
     private storageService:       StorageServiceObservablesService,
-    //private testingData:          TestingDataService,
+    private testingData:          TestingDataService,
     private userService:          UserService
   ) {
   }

@@ -9,14 +9,12 @@
             <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
           </div>
           <div class="type-title">
-            <h1 class="title">
-              {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
-              <small>
+            <h1 class="title text-capitalize">
+              {{ policy?.policyType | translate | titlecase }} - {{ policy?.policynumber.policynumber }} 
               <span [ngClass]="{'green-color': policy?.policyStatus === 'ACTIVE', 
                 'red-color': policy?.policyStatus === 'INACTIVE' }">
                 <small>{{ policy?.effDate | customDateFormat }} {{ 'TO' | translate }} {{ policy?.expDate | customDateFormat }}</small>
               </span>
-            </small>
             </h1>
           </div>
         </header>
@@ -26,105 +24,102 @@
           <mapfre-loading></mapfre-loading>
         </ng-container> 
 
-        <section class="row details-content margin-top mt40 mobile-margin" *ngIf="!loading"> 
+        <section class="row details-content no-padding no-margin-horizontal margin-top mt40 mobile-margin" *ngIf="!loading"> 
           <div class="col col1 margin-bottom mb24">
-            <div class="row">
-              <div class="col">
-                
-                <h2 class="title" [ngClass]="{'no-border no-padding-bottom': !policy?.billingDetails[0]  }">
-                  <div class="policy-icon">
-                      <svg-money-mono-color-svg></svg-money-mono-color-svg>
-                    </div>
-                  {{ 'BILLING_OVERVIEW' | translate }}
-                </h2>
-
-                <ng-container *ngIf="!policy?.billingDetails[0]; else currentBalance">
-                  <hr class="margin-bottom margin-top mb16 mt12" />
-                  <div class="d-table w-100">
-                    <div class="no-payment-svg d-table-cell padding-right pr24">
-                      <svg-check-icon-svg></svg-check-icon-svg> 
-                    </div>
-                    <div class="green-color font-medium d-table-cell align-middle">
-                      {{ 'NO_PAYMENTS' | translate }}
-                    </div>
+            
+            <div>
+              <h2 class="title" [ngClass]="{'no-border no-padding-bottom': !policy?.billingDetails || policy?.billingDetails.length != 0  }">
+                <div class="">
+                    <svg-money-mono-color-svg></svg-money-mono-color-svg>
                   </div>
-                </ng-container>
+                {{ 'BILLING_OVERVIEW' | translate }}
+              </h2>
 
-               <ng-template #currentBalance>
-                  <table mdbTable class="claims-table">
-                    <thead class="lite-grey-color">
-                      <tr class="row-content border-full grey-border">
-                        <td>  
-                            {{ 'CUSTOMER_BALANCE' | translate }}
-                        </td>
-                        <td class="text-center"> 
-                            {{ 'DUE_DATE' | translate }}
-                        </td>
-                        <td class="text-right"> 
-                            {{ 'AMOUNT' | translate }}
-                        </td>
-                      </tr>
-                    </thead>
-                    <tbody class="med-grey-color">
-                      <tr class="row-content border-full grey-border  no-border-bottom">
-                        <td>
-                          <strong>{{ policy?.billingDetails[0]?.outstandingbalance | currency }}</strong>
-                        </td>
-                        <td class="text-center">
-                            <strong>{{ policy?.billingDetails[0]?.paymentDueDate | date }}</strong>
-                        </td>
-                        <td class="text-right">
-                            <strong>{{ policy?.billingDetails[0]?.minAmountDue | currency }}</strong>
-                        </td>
-                      </tr>
-                      <tr class="border-full grey-border no-border-top">
-                        <td colspan="3" class="text-center no-border-top no-padding padding-bottom pb16">
-                        <mapfre-modal 
-                        [modalOptions]="payNowModal">
-                        <div class="modal-body">
-                          <hr class="margin-bottom mb24 no-margin-top" />
-                          <div class="modal-body-content">
-                            <div class="row text-center margin-top mt16">
-                              <div class="col-md-6 col-sm-12">
-                                  <mapfre-link
-                                    [additionalClasses]="'ghost primary large btn'"
-                                    [routerLink]="['/billing/' +  policy?.policynumber.policynumber + '/new-payment/']">
-                                    {{ 'PAY_BY_CHECK' | translate}}
-                                  </mapfre-link>
-                              </div>
-                              <div class="col-md-6 col-sm-12">
-                                 <a class="mapfre link ghost primary large btn" target="_blank" 
-                                  [href]="'https://www.mapfreinsurance.com/b2cwebapp/view/billing?policyNumber=' + policy.policynumber.policynumber + '&source=makePayment&selectedTabIdx=1&fragments=main&mode=embedded'">
-                                  <span class="link-content"> 
-                                      {{ 'PAY_BY_CREDIT_CARD' | translate}}
-                                  </span>
-                                </a>
-                              </div>
+              <ng-container *ngIf="policy?.billingDetails.length == 0 ; else currentBalance">
+                <hr class="margin-bottom margin-top mb16 mt12" />
+                <div class="d-table w-100">
+                  <div class="no-payment-svg d-table-cell padding-right pr24">
+                    <svg-check-icon-svg></svg-check-icon-svg> 
+                  </div>
+                  <div class="green-color font-medium d-table-cell align-middle">
+                    {{ 'NO_PAYMENTS' | translate }}
+                  </div>
+                </div>
+              </ng-container>
+
+              <ng-template #currentBalance>
+                <div class="billing-mobile-table">
+                <table mdbTable class="billing-table margin-top mt8">
+                  <thead class="lite-grey-color">
+                    <tr class="row-content border-full grey-border">
+                      <td>  
+                          {{ 'CUSTOMER_BALANCE' | translate }}
+                      </td>
+                      <td class="text-center"> 
+                          {{ 'DUE_DATE' | translate }}
+                      </td>
+                      <td class="text-right"> 
+                          {{ 'AMOUNT' | translate }}
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody class="fake-black-color">
+                    <tr class="row-content border-full grey-border  no-border-bottom">
+                      <td>
+                        <strong>{{ policy?.billingDetails[0]?.outstandingbalance | currency }}</strong>
+                      </td>
+                      <td class="text-center">
+                          <strong>{{ policy?.billingDetails[0]?.paymentDueDate | date }}</strong>
+                      </td>
+                      <td class="text-right">
+                          <strong>{{ policy?.billingDetails[0]?.minAmountDue | currency }}</strong>
+                      </td>
+                    </tr>
+                    <tr class="border-full grey-border no-border-top">
+                      <td colspan="3" class="text-center no-border-top no-padding padding-bottom pb16">
+                      <mapfre-modal 
+                      [modalOptions]="payNowModal">
+                      <div class="modal-body">
+                        <hr class="margin-bottom mb24 no-margin-top" />
+                        <div class="modal-body-content">
+                          <div class="row text-center margin-top mt16">
+                            <div class="col-md-6 col-sm-12">
+                                <mapfre-link
+                                  [additionalClasses]="'ghost primary large btn'"
+                                  [routerLink]="['/billing/' +  policy?.policynumber.policynumber + '/new-payment/']">
+                                  {{ 'PAY_BY_CHECK' | translate}}
+                                </mapfre-link>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <a class="mapfre link ghost primary large btn" target="_blank" 
+                                [href]="'https://www.mapfreinsurance.com/b2cwebapp/view/billing?policyNumber=' + policy.policynumber.policynumber + '&source=makePayment&selectedTabIdx=1&fragments=main&mode=embedded'">
+                                <span class="link-content"> 
+                                    {{ 'PAY_BY_CREDIT_CARD' | translate}}
+                                </span>
+                              </a>
                             </div>
                           </div>
                         </div>
-                      </mapfre-modal>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-               </ng-template>
-
+                      </div>
+                    </mapfre-modal>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+              </ng-template>
             </div>
-            <div class=" margin-top mt40 w-100">
-              <div class="">
-
-                <ng-container *ngIf="!scheduledBills; else showSchedule">
-                  
-                  <h2 class="title no-border">
-                    <div class="policy-icon">
-                      <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
-                    </div>
-                    {{ 'PAYMENT_HISTORY' | translate }}
-                  </h2>
-                  <table mdbTable class="claims-table">
-                    <tbody class="med-grey-color">
+            <div class="margin-top mt40 w-100">
+              <ng-container *ngIf="!scheduledBills; else showSchedule">
+                <h2 class="title no-border">
+                  <div class="">
+                    <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>  
+                  </div>
+                  {{ 'PAYMENT_HISTORY' | translate }}
+                </h2>
+                <div class="billing-mobile-table">
+                  <table mdbTable class="billing-table">
+                    <tbody class="fake-black-color">
                       <tr class="row-content border-full grey-border lite-grey-color">
                         <td>  
                             {{ 'AMOUNT' | translate }}
@@ -145,8 +140,8 @@
                       </ng-container>
                     </tbody>
                   </table>
-                </ng-container>
-
+                </div>
+              </ng-container>
 
                 <ng-template #showSchedule>
                   <nav class="tab-accordian-navigation w-100">
@@ -161,52 +156,53 @@
                       </ul>
                     </div>
                   </nav>
-                  <table mdbTable class="claims-table w-100" *ngIf="schedualOrHistory">
-                    <tbody class="med-grey-color">
-                      <tr class="row-content border-full grey-border lite-grey-color">
-                        <td>  
-                            {{ 'AMOUNT' | translate }}
-                        </td>
-                        <td class="text-right"> 
-                            {{ 'DATE' | translate }}
-                        </td>
-                      </tr>
-                      <ng-container *ngFor="let scheduledPayment of scheduledBills">
-                        <tr class="row-content border-full grey-border">
-                          <td>
-                            <strong>{{ scheduledPayment?.minAmountDue | currency }}</strong>
+                  <div class="billing-mobile-table">
+                    <table mdbTable class="claims-table w-100" *ngIf="schedualOrHistory">
+                      <tbody class="fake-black-color">
+                        <tr class="row-content border-full grey-border lite-grey-color">
+                          <td>  
+                              {{ 'AMOUNT' | translate }}
                           </td>
                           <td class="text-right"> 
-                              <strong>{{ scheduledPayment?.dueDate |  date }}</strong>
+                              {{ 'DATE' | translate }}
                           </td>
                         </tr>
-                      </ng-container>
-                    </tbody>
-                  </table>
-                  <table mdbTable class="claims-table w-100" *ngIf="!schedualOrHistory">
-                    <tbody class="med-grey-color">
-                      <tr class="row-content border-full grey-border lite-grey-color">
-                        <td>  
-                            {{ 'AMOUNT' | translate }}
-                        </td>
-                        <td class="text-right"> 
-                            {{ 'DATE' | translate }}
-                        </td>
-                      </tr>
-                      <ng-container *ngFor="let historyPayment of billingHistory">
-                      <tr class="row-content border-full grey-border">
-                        <td>
-                          <strong>{{ historyPayment?.amountPaid | currency }}</strong>
-                        </td>
-                        <td class="text-right"> 
-                          <strong>{{ historyPayment?.paymentDate | date }}</strong>
-                        </td>
-                      </tr>
-                      </ng-container>
-                    </tbody>
-                  </table>
+                        <ng-container *ngFor="let scheduledPayment of scheduledBills">
+                          <tr class="row-content border-full grey-border">
+                            <td>
+                              <strong>{{ scheduledPayment?.minAmountDue | currency }}</strong>
+                            </td>
+                            <td class="text-right"> 
+                                <strong>{{ scheduledPayment?.dueDate |  date }}</strong>
+                            </td>
+                          </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                    <table mdbTable class="claims-table w-100" *ngIf="!schedualOrHistory">
+                      <tbody class="fake-black-color">
+                        <tr class="row-content border-full grey-border lite-grey-color">
+                          <td>  
+                              {{ 'AMOUNT' | translate }}
+                          </td>
+                          <td class="text-right"> 
+                              {{ 'DATE' | translate }}
+                          </td>
+                        </tr>
+                        <ng-container *ngFor="let historyPayment of billingHistory">
+                        <tr class="row-content border-full grey-border">
+                          <td>
+                            <strong>{{ historyPayment?.amountPaid | currency }}</strong>
+                          </td>
+                          <td class="text-right"> 
+                            <strong>{{ historyPayment?.paymentDate | date }}</strong>
+                          </td>
+                        </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
                 </ng-template>
-              </div>
             </div>
           </div>
           
@@ -215,30 +211,32 @@
               <h2 class="title no-border">
                 {{ 'PENDING_CHECKS' | translate }}
               </h2>
-              <table mdbTable class="claims-table w-100">
-                <thead class="lite-grey-color">
-                  <tr class="row-content border-full grey-border">
-                    <td>  
-                        {{ 'AMOUNT' | translate }}
-                    </td>
-                    <td class="text-right"> 
-                        {{ 'DATE' | translate }}
-                    </td>
-                  </tr>
-                </thead>
-                <tbody class="med-grey-color">
-                  <ng-container *ngFor="let pendingCheckPayment of pendingCheckPayments ">
+              <div class="billing-mobile-table">
+                <table mdbTable class="claims-table w-100">
+                  <thead class="lite-grey-color">
                     <tr class="row-content border-full grey-border">
-                      <td>
-                        <small><strong>{{ pendingCheckPayment?.paymentAmount | currency }}</strong></small>
+                      <td>  
+                          {{ 'AMOUNT' | translate }}
                       </td>
                       <td class="text-right"> 
-                          <small><strong>{{ pendingCheckPayment?.paymentDateTime | date }}</strong></small>
+                          {{ 'DATE' | translate }}
                       </td>
                     </tr>
-                  </ng-container>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody class="fake-black-color">
+                    <ng-container *ngFor="let pendingCheckPayment of pendingCheckPayments ">
+                      <tr class="row-content border-full grey-border">
+                        <td>
+                          <small><strong>{{ pendingCheckPayment?.paymentAmount | currency }}</strong></small>
+                        </td>
+                        <td class="text-right"> 
+                            <small><strong>{{ pendingCheckPayment?.paymentDateTime | date }}</strong></small>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <app-billing-sidebar [policy]="policy"></app-billing-sidebar>
           </div>

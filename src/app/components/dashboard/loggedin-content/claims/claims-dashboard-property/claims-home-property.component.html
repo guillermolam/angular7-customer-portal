@@ -2,10 +2,10 @@
   <ng-container *ngIf="exposure.coverage.code != '***No Claims Found***' ">
     <ng-container *ngIf="type == 'details'; else claimdashboard ">
       <ng-container *ngIf="exposure.exposureNumber.exposureNumber == claimid[1]">
-        <div class="home row no-margins-hug hug-header">
+        <div class="home row no-margins-hug hug-content">
           <div class="col-12 no-padding row">
             <div class="policy-background col">
-              <div class="house"></div>
+              <div class="house claim"></div>
             </div>
             <div class="col">
               <h2 class="claim-id">{{ exposure?.coverage.code | titlecase }} -
@@ -26,7 +26,7 @@
   </ng-container>
 
   <ng-template #claimdashboard>
-    <div class="home row no-margins-hug hug-content">
+    <div class="home row no-margins-hug hug-claims">
       <div class="col-12 no-padding row">
         <div class="policy-background col">
           <div class="house"></div>

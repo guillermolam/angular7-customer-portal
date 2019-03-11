@@ -1,13 +1,8 @@
-.payment-amount {
-  max-width: 130px;
-}
-
-.billing header {
-  padding-left: 12px;
-}
-
-.policy-details.billing header {
-  padding-left: 0;
+.billing-mobile-table {
+  @media (max-width: 574px) {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
 }
 
 .no-payment-svg svg {

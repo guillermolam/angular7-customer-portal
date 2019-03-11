@@ -18,7 +18,7 @@
           </ng-container>
         </header>
 
-        <section class="row details-content">
+        <section class="row details-content no-padding no-margin">
           <div class="col col1">
             <div class="row">
               <div class="col">
@@ -77,15 +77,9 @@
                   </div>
                   <div class="info-data adjuster-info">
                     <div class="row">
-                      <div class="col">
+                      <div class="col text-capitilize">
                         <ng-container *ngIf="exposure?.adjuster?.name != ''">
-                            <strong><a href="tel:{{exposure?.adjuster?.phoneNumber.number}}"
-                              class="mapfre link underline blue-link">{{ exposure?.adjuster?.name }}</a></strong>
-                        </ng-container>
-                        <ng-container *ngIf="exposure?.adjuster?.name == ''">
-                            {{ 'PHONE' | translate }}:
-                            <strong><a href="tel:{{exposure?.adjuster?.phoneNumber.number}}"
-                              class="mapfre link underline blue-link">{{ exposure?.adjuster?.phoneNumber.number }}</a></strong>
+                            <strong>{{ exposure?.adjuster?.name | titlecase }}</strong>
                         </ng-container>
                       </div>
                     </div>
@@ -95,15 +89,31 @@
                           {{ 'EMAIL' | translate }}:
                         </div>
                         <div>
-                          <strong><a href="mailto:{{ exposure?.adjuster?.email?.address | lowercase }}"
-                              class="mapfre link underline blue-link">{{ exposure?.adjuster?.email?.address | lowercase }}</a></strong>
+                          <a href="mailto:{{ exposure?.adjuster?.email?.address | lowercase }}?subject=Claim%20Number:%20{{claim?.number.number}}-{{ exposure?.exposureNumber.exposureNumber }}"
+                              class="mapfre link underline blue-link">{{ exposure?.adjuster?.email?.address | lowercase }}</a>
                         </div>
                       </div>
                     </div>
                     <div class="row">
+                        <div class="col">
+                          <div>
+                            {{ 'PHONE' | translate }}:
+                          </div>
+                          <div>
+                            <a href="tel:{{exposure?.adjuster?.phoneNumber.number}}"
+                              class="mapfre link underline blue-link">{{exposure?.adjuster?.phoneNumber.number | viewableExtension }}</a>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="row">
                       <div class="col">
-                        {{ 'FAX' | translate | titlecase }}: <strong><a href="tel:{{ exposure?.adjuster?.extensionAndFax | usableFaxWithExtension }}"
-                        class="mapfre link underline blue-link">{{ exposure?.adjuster?.extensionAndFax }}</a></strong>
+                        <div>
+                          {{ 'FAX' | translate | titlecase }}:
+                        </div>
+                        <div>
+                          <a href="tel:{{ exposure?.adjuster?.extensionAndFax | usableFaxWithExtension }}"
+                            class="mapfre link underline blue-link">{{ exposure?.adjuster?.extensionAndFax }}</a>
+                          </div>
                       </div>
                     </div>
   
@@ -133,7 +143,7 @@
                           </td>
                         </tr>
                       </thead>
-                      <tbody class="med-grey-color">
+                      <tbody class="fake-black-color">
                         <tr *ngFor="let appraisal of exposure?.appraisals" class="row-content border-full grey-border">
                           <td class="text-center">
                             {{appraisal?.number?.number}}
@@ -177,14 +187,14 @@
                           </td>
                         </tr>
                       </thead>
-                      <tbody class="med-grey-color">
+                      <tbody class="fake-black-color">
                         <tr *ngFor="let payment of exposure?.payments" class="row-content border-full grey-border">
                           <td class="text-center">
                             {{ payment?.checkNumber }}
                           </td>
                           <td class="text-center">
                             <ng-container *ngIf="payment?.status?.date !== null">
-                                {{ payment?.status?.date | date }}
+                              {{ payment?.status?.date | date }}
                             </ng-container>
                             <ng-container *ngIf="payment?.status?.date === null">
                               -

@@ -49,7 +49,7 @@ export class JwtInterceptor implements HttpInterceptor {
       if((e.status == 0)){
         this.router.navigate(['/login']);
       }
-        return throwError(e);     
+        return throwError(e);
     }))
   }
 }

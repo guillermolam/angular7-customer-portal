@@ -12,7 +12,7 @@
           <div class="wallet-footer margin-top mt24">
               <div class="margin-bottom mb24">
                   <mapfre-button 
-                    additionalClasses="ghost white large waves-effect"
+                    additionalClasses="ghost white w280 h48 no-margin"
                     (click)="goToWalletPassModal($event)">
                     {{ 'WALLET_GET_MY_CARD' | translate }}
                   </mapfre-button>
@@ -21,30 +21,34 @@
           </div>
           <div class="wallet-skip-button">
             <mapfre-button
-              additionalClasses="white-link link-button underline normal-link"
+              additionalClasses="white-link link-button underline normal-link text-capitalize"
               (click)="hideModalAction($event)">
               {{ 'WALLET_SKIP' | translate }}
             </mapfre-button>
           </div>
       </div>
-      <div class="wallet wallet-back">
+      <div class="wallet wallet-back d-flex align-items-center">
         <div class="wallet-back-button">
           <a (click)="goToWalletPassModal($event)">
             <img src="assets/img/icons/back-arrow.png" />
           </a>
         </div>
-        <div class="wallet-content back">
-          <div class="first-slide-title">
-            <div class="margin-bottom mb8">{{ 'WALLETBACK_TITLE' | translate }}</div>
-            <div class="margin-bottom mb24">
-              <img src="assets/img/images/mapfre-card-logo-color.png" style="margin-left:-30px" />
+        <div class="mx-auto">
+          <div class="wallet-content back">
+            <div class="wallet-back-headline">
+              <div class="margin-bottom mb8 back-slide-title">
+                {{ 'WALLETBACK_TITLE' | translate }}
+              </div>
+              <div class="margin-bottom mb40">
+                <img src="assets/img/images/mapfre-card-logo-color.png"  width="233" />
+              </div>
             </div>
+            <app-onboarding-wallet-back [policyNumber]="policyNumber"></app-onboarding-wallet-back>
           </div>
-          <app-onboarding-wallet-back [policyNumber]="policyNumber"></app-onboarding-wallet-back>
         </div>
         <div class="wallet-skip-button">
           <mapfre-button
-            additionalClasses="blue-link link-button underline normal-link"
+            additionalClasses="blue-link link-button underline normal-link text-capitalize"
             (click)="hideModalAction($event)">
             {{ 'WALLET_SKIP' | translate }}
           </mapfre-button>

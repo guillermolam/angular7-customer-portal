@@ -41,11 +41,11 @@ export class DetailsHomeComponent implements OnInit {
 
    getMailingOrResidentialAddress(updateAddress){
     const address = {
-      streetName: updateAddress.streetName,
-      city: updateAddress.city,
-      state: updateAddress.stateCode,
+      streetName:   updateAddress.streetName,
+      city:         updateAddress.city,
+      state:        updateAddress.stateCode,
       zipCode: {
-        code: updateAddress.zipCode.code
+        code:       updateAddress.zipCode.code
       }
     }
     this.validateAddressService.setAddress(address);
@@ -66,7 +66,6 @@ export class DetailsHomeComponent implements OnInit {
   }
 
   getApartmentAndState(data): void {
-    console.log("address", data);
     if(data.property != undefined) {
       const streetAddress =               data.property[0].address.streetName;
       let   addressArray =                [];
@@ -78,6 +77,7 @@ export class DetailsHomeComponent implements OnInit {
         this.aptDiv =                     true;
       }
       else {
+        this.address =                    streetAddress;
         this.aptDiv =                     false;
       }
       /* else {

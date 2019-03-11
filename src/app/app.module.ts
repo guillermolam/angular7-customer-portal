@@ -163,6 +163,8 @@ import { CarHeaderComponent } from './components/dashboard/loggedin-content/my-i
 import { HomeHeaderComponent } from './components/dashboard/loggedin-content/my-insurance/myinsurance-headers/home-header/home-header.component';
 import { EmailModalComponent } from './components/forms/dynamic-forms/email-modal/email-modal.component';
 import { NoPolicyTypeComponent } from './components/dashboard/loggedin-content/claims/no-policy-type/no-policy-type.component';
+import { ViewableExtensionPipe } from './_helpers/_pipes/viewable-extension.pipe';
+import { SortPipe } from './_helpers/_pipes/sort.pipe';
 
 if (environment.production) {
   enableProdMode();
@@ -302,6 +304,8 @@ export function tokenGetter() {
     DocumentTypePipe,
     NoPolicyTypeComponent,
     UsableFaxWithExtensionPipe,
+    ViewableExtensionPipe,
+    SortPipe,
     
   ],
   imports: [

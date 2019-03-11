@@ -31,7 +31,7 @@
         <h2 class="title no-border no-padding-bottom">{{ 'E-POLICY' | translate }}</h2>
         <div class="margin-bottom mb8">{{ 'PAPERLESS_SIX' | translate }}</div>
         <table mdbTable class="paperless-table margin-bottom mb24">
-          <tbody class="med-grey-color">
+          <tbody class="fake-black-color">
             <ng-container *ngFor="let pdetail of policyInfo">
               <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngIf="pdetail?.policyFlags.isEdfEligible.toUpperCase() === 'Y' && pdetail?.policyStatus.toUpperCase() === 'ACTIVE'">
                 <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
@@ -115,7 +115,7 @@
         <h2 class="title no-border no-padding-bottom">{{ 'E-PAY' | translate }}</h2>
         <div class="margin-bottom mb8">{{ 'PAPERLESS_EIGHT' | translate }}</div>
         <table mdbTable class="paperless-table margin-bottom mb24">
-          <tbody class="med-grey-color">
+          <tbody class="fake-black-color">
             <ng-container *ngFor="let pdetail of policyInfo">
             <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngIf="pdetail?.policyFlags.isEftEligible.toUpperCase()==='Y' && pdetail?.policyStatus.toUpperCase() === 'ACTIVE'">
               <td class="no-padding-left padding-right pr8 padding-vertical pv8 type-image">
@@ -186,7 +186,7 @@
         <h2 class="title no-border no-padding-bottom">{{ 'E-BILL' | translate }}</h2>
         <div class="margin-bottom mb8">{{ 'PAPERLESS_SEVEN' | translate }}</div>
         <table mdbTable class="paperless-table margin-bottom mb24">
-          <tbody class="med-grey-color">
+          <tbody class="fake-black-color">
             <ng-container *ngFor="let pdetail of policyInfo">
               <tr class="row-content border-full grey-border property enroll padding-vertical pv8" *ngIf="pdetail?.policyFlags.isEbillEligible.toUpperCase()==='Y' && pdetail?.policyStatus.toUpperCase() === 'ACTIVE'">
               

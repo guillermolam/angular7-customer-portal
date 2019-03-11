@@ -10,14 +10,12 @@
           <div class="house" *ngIf="policy?.policyType == 'HOME'"></div>
         </div>
         <div class="type-title">
-          <h1 class="title">
-            {{ policy?.policyType | translate}} &mdash; {{ policy?.policynumber.policynumber }} 
-            <small>
+          <h1 class="title text-capitalize">
+            {{ policy?.policyType | translate | titlecase }} - {{ policy?.policynumber.policynumber }} 
             <span [ngClass]="{'green-color': policy?.policyStatus === 'ACTIVE', 
               'red-color': policy?.policyStatus === 'INACTIVE' }">
               <small>{{policy?.effDate | customDateFormat }} {{ 'TO' | translate }} {{policy?.expDate | customDateFormat }}</small>
             </span>
-          </small>
           </h1>
         </div>
       </header>
@@ -86,3 +84,4 @@
     </mapfre-card>
   </ng-container> 
 </ng-container> 
+

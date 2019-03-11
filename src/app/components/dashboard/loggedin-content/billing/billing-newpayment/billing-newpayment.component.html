@@ -7,11 +7,11 @@
       <h1 class="title">
           {{ 'MAKE_A_CHECK_PAYMENT' | translate }}
       </h1>
-      <div class="margin-left ml8">{{ policy?.policyType | translate}} &mdash; <strong>{{ policy?.policynumber.policynumber }}</strong></div>
+      <div class="sub-title">{{ policy?.policyType | translate | titlecase }} &mdash; <strong>{{ policy?.policynumber.policynumber }}</strong></div>
     </div>
   </header>
 
-  <section class="row details-content">
+  <section class="row details-content no-padding no-margin">
     <div class="col col1">
       <ng-container *ngIf="(billingData | json) != ({} | json)">
         <app-new-payment-form [inputs]="inputs" [checkingInfo]="checkingInfo" [billingDetails]="billingData"></app-new-payment-form>  

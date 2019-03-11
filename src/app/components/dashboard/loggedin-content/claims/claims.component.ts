@@ -21,7 +21,7 @@ export class ClaimsWrapperComponent implements OnInit {
     private claimsService:                    ClaimsService,
     private storageService:                   StorageServiceObservablesService,
     private claimsDataService:                ClaimsDataService,
-    //private testing:                          TestingDataService
+    private testing:                          TestingDataService
   ) { }
 
   checkRoute(): void {
@@ -49,7 +49,7 @@ export class ClaimsWrapperComponent implements OnInit {
         this.loading = false;
       }
     );
-    //this.claimsDataService.updateClaims(this.testing.testFullClaimsData());
+    // this.claimsDataService.updateClaims(this.testing.testFullClaimsData());
     
   }
 

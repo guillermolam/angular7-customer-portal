@@ -1,4 +1,4 @@
-<section class="row details-content margin-top mt40 mobile-margin">
+<section class="row details-content no-padding no-margin-horizontal margin-top mt40 mobile-margin">
     <div class="col-sm-12 col-md col1">
       
         <div class="row margin-bottom mb16 policy-holders row-section">
@@ -7,9 +7,9 @@
                 <svg-holder-mono-color-svg></svg-holder-mono-color-svg> {{ 'POLICY_HOLDER' | translate }}
               </h2>
               
-              <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insured; let i = index">
-                <div class="col-auto">
-                    <h3 class="title vehicle-name">{{ holder['Insured Name'] }}</h3>
+              <div class="policy-holder margin-bottom mb8 row" *ngFor="let holder of policy?.insured | sort: 'isPrimaryInsured'">
+                <div class="col-auto"> 
+                    <h3 class="title vehicle-name text-capitalize">{{ holder['Insured Name'] | titlecase }}</h3>
                 </div>
                 
                 <div class="col" *ngIf="holder?.isPrimaryInsured">
@@ -97,7 +97,7 @@
                   <p>{{ 'PAPERLESS_PARTIAL' | translate}}</p>
                   <div class="paperless row">
                     <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 d-table">
-                      <div class="d-table-cell paperless-icon">
+                      <div class="d-table-cell paperless-icon  padding-right pr16">
                           <div class="svg-container">
                               <svg width="40px" height="32px" viewBox="0 0 40 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -133,7 +133,7 @@
               <ng-container *ngIf="policy?.policyFlags.isEft">
                   <div class="paperless row">
                     <div class="margin-bottom mb16 paperless-cta col-lg-12 col-md-12 col-sm-6 d-table">
-                      <div class="d-table-cell paperless-icon">
+                      <div class="d-table-cell paperless-icon padding-right pr16">
                           <div class="svg-container">
                               <svg width="40px" height="32px" viewBox="0 0 40 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -198,7 +198,7 @@
                     <div class="col address-copy text-capitalize">
                         {{ policy?.mailingAddress.streetName | titlecase }}  {{ policy?.mailingAddress.city | titlecase }}, {{ policy?.mailingAddress.state | fullstateToAbv }}, {{ policy?.mailingAddress.zipCode.code }}
                     </div>
-                    <div class="col edit-address">
+                    <div class="col-auto edit-address no-padding-left text-right">
                         <a [routerLink]="['/my-insurance', policyId , 'change-address', 'mailing']" (click)="getMailingOrResidentialAddress(policy?.mailingAddress)"><i class="far fa-edit"></i></a>
                     </div>
                   </div>
@@ -215,7 +215,7 @@
                       {{ 'SAME_AS_MAILING' | translate}}
                     </div>
                   </ng-template>
-                  <div class="col edit-address">
+                  <div class="col-auto edit-address no-padding-left text-right">
                       <a [routerLink]="['/my-insurance', policyId , 'change-address', 'residential']" (click)="getMailingOrResidentialAddress(policy?.residentialAddress)"><i class="far fa-edit"></i></a>
                   </div>
                 </div>

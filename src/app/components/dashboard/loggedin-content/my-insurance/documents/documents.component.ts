@@ -152,25 +152,26 @@ export class DocumentDetailsComponent implements OnInit, AfterViewInit  {
   ngOnInit() {
     this.loading = true;
 
-    this.userService.$user
-    .subscribe( (user) => {
-      this.user = user;
-    });
-
-    this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
-      this.policyDetails  = policyResponse;
-    });
-
     this.activatedRoute.params.subscribe((params: Params) => {
       this.policyId = params['policyid'];
-      //this.documentsData = this.testingData.testDocumentsObject();
-      this.loading = false;
+      
       this.policyDetailsService.getDocumentsByPolicy(this.policyId)
       .subscribe((documentResponse) => {
         this.documentsData  = documentResponse;
         this.loading = false;
       },
       (err)=>{});
+
+      this.userService.$user.subscribe( (user) => {
+        this.user = user;
+      });
+
+      this.policyDataService.$policyDetails.subscribe((policyResponse)=>{
+        this.policyDetails  = policyResponse;
+      });
+
+      //this.loading = false;
+      //this.documentsData = this.testingData.testDocumentsObject();
     });
   }
 }

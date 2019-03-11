@@ -96,7 +96,6 @@ export class DashboardMainComponent implements OnInit {
         }
       }
     });
-
   }
 
 }

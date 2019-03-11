@@ -2,18 +2,19 @@
   max-width:              216px;
   width:                  100%;
   padding:                0;
+  margin-left: 16px;
 
   @media (max-width: 575px) {
-    padding-right:        16px;
+   // padding-right:        16px;
   }
 
   @media (min-width: 576px) and (max-width: 767px) {
-    padding-right:        32px;
+    //padding-right:        16px;
   }
 
   @media (max-width: 767px) {
     max-width:            initial;
-    margin-left:          16px;
+    margin-left:          0;
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
@@ -21,7 +22,7 @@
   }
 
   @media (min-width: 768px) {
-    margin-right:         16px;
+    //margin-right:         16px;
   }
 
   i {

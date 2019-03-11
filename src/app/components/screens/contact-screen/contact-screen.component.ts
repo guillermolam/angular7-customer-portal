@@ -28,15 +28,16 @@ export class ContactScreenComponent implements OnInit {
       const outPutOne = _.uniq(policyResponse, (item, key, agent) => {
         return item.agent.agentName;
       });
-      //this.policies = _.sortBy(outPutOne, 'policyStatus');
+      this.policies = outPutOne;
       this.loading = false;
     });
-    /*this.policyDataService.$policyDetails.subscribe((policies) => {
+
+    this.policyDataService.$policyDetails.subscribe((policies) => {
       const outPutOne = _.uniq(policies, (item, key, agent) => {
         return item.agent.agentName;
       });
 
-      this.policies = _.sortBy(outPutOne, 'policyStatus');
-    });*/
+      //this.policies = _.sortBy(outPutOne, 'policyStatus');
+    });
   }
 }

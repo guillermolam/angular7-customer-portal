@@ -15,9 +15,9 @@
         </div>
         <div class="policy-content col">
           <h2 class="row">
-            <div class="col-6 title">{{ policy?.policyType | translate}} &ndash; <strong>
+            <div class="col-6 title">{{ policy?.policyType | translate | titlecase }} &ndash; <strong>
                 {{ policy?.policynumber.policynumber }} </strong></div>
-            <div class="text-right col-6" [ngClass]="{'green-color': policy?.policyStatus === 'ACTIVE', 
+            <div class="text-right col-6 text-capitalize" [ngClass]="{'green-color': policy?.policyStatus === 'ACTIVE', 
                 'red-color': policy?.policyStatus !== 'ACTIVE' }">
               <ng-container *ngIf="policy?.policyStatus !== 'ACTIVE' ">
                 <small>{{policy?.policyStatus | translate}}</small>
@@ -31,7 +31,7 @@
           <div [ngSwitch]="policy?.policyType">
             <div class="row policy-row" *ngSwitchCase="'AUTO'">
               <div class="col">
-                <div class="policy-icon">
+                <div class="policy-icon float-left margin-right mr8">
                   <svg-car-mono-color-small-svg></svg-car-mono-color-small-svg>
                 </div>
                 <div class="policy-info">
@@ -45,7 +45,7 @@
             </div>
             <div class="row policy-row" *ngSwitchCase="'HOME'">
               <div class="col">
-                <div class="policy-icon home-icon">
+                <div class="policy-icon float-left margin-right mr8">
                   <svg-house-mono-color-small-svg></svg-house-mono-color-small-svg>
                 </div>
                 <div class="policy-info">
@@ -61,7 +61,7 @@
 
           <div class="row policy-row">
             <div class="col">
-              <div class="policy-icon holder-icon">
+              <div class="policy-icon float-left margin-right mr8">
                 <svg-holder-mono-color-svg></svg-holder-mono-color-svg>
               </div>
               <div class="policy-info">
@@ -75,7 +75,7 @@
           </div>
           <div class="row policy-row">
             <div class="col">
-              <div class="policy-icon">
+              <div class="policy-icon float-left margin-right mr8">
                 <svg-money-mono-color-svg></svg-money-mono-color-svg>
               </div>
               <div class="policy-info">
@@ -93,11 +93,11 @@
           <ng-container *ngIf="policy?.billingDetails[0] && policy?.billingDetails[0]?.outstandingbalance != 0">
             <div class="row policy-row">
               <div class="col">
-                <div class="policy-icon">
+                <div class="policy-icon float-left margin-right mr8">
                   <svg-calendar-mono-color-svg></svg-calendar-mono-color-svg>
                 </div>
                 <div class="policy-info pay-now">
-                  <div class="date-amount">
+                  <div class="date-amount margin-right mr16">
                     {{ 'NEXT' | translate}} : {{policy?.billingDetails[0]?.paymentDueDate |  customDateFormat }} :
                     <strong>{{policy?.billingDetails[0]?.minAmountDue | currency}}</strong>
                   </div>

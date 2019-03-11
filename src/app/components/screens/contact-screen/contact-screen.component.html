@@ -45,13 +45,12 @@
           <h2 class="title margin-bottom mb16 ">
             <div>{{ 'CONTACT_YOUR_AGENTS' | translate }}</div>
           </h2>
-          <div class="font-small margin-bottom mb8">{{ 'FOR_POLICY_CHANGES_COVERAGES_DISCOUTS' | translate }}</div>
+          <div class="med-grey font-small margin-bottom mb8">{{ 'FOR_POLICY_CHANGES_COVERAGES_DISCOUTS' | translate }}</div>
           <ng-container *ngIf="loading">
             <mapfre-loading></mapfre-loading>
           </ng-container>
           <div *ngIf="!loading">
             <ng-container *ngFor="let policy of policies; let key = index ">
-              <!-- <ng-container *ngIf="policy?.agent.agentName[key] == policy?.agent.agentName[key +1] "> -->
                 <div class="agent-info  margin-bottom mb32">
                     <div class="row agent-name margin-bottom mb8">
                       <div class="col"> 
@@ -59,8 +58,8 @@
                       </div>
                     </div>
                     <div class="row policy-info margin-bottom mb8">
-                      <div class="col">
-                          {{ policy?.policyType | translate }} &mdash; {{ policy?.policynumber.policynumber }}
+                      <div class="col text-capitalize">
+                          {{ policy?.policyType | translate | titlecase }} &mdash; {{ policy?.policynumber.policynumber }}
                       </div>
                     </div>
                     <div class="row agent-address margin-bottom mb8">
@@ -77,7 +76,6 @@
                       </div>
                     </div>
                   </div>
-                <!--</ng-container>-->
               </ng-container>
           </div>
         </div>

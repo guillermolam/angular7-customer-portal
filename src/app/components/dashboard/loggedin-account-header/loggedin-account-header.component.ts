@@ -21,7 +21,7 @@ export class LoggedinAccountHeaderComponent implements OnInit {
   ) {
     this.headerAccountModalOptions = new ModalOptions({
       additionalClasses:          'account modal-small help',
-      additionalButtonClasses:    'header-flat account',
+      additionalButtonClasses:    'header-flat no-margin account',
       animatePosition:            'top',
       buttonCopy:                 'ACCOUNT',
       modalId:                    'accountModal',
@@ -36,9 +36,7 @@ export class LoggedinAccountHeaderComponent implements OnInit {
 
   hideModalAction(event, activePath): void {
     const currentUrl = this.router.url;
-    // if (event && activePath == currentUrl) { ---what was this for?
       this.hideModalOnRoute = !this.hideModalOnRoute;
-    // }
   }
 
   logout() {

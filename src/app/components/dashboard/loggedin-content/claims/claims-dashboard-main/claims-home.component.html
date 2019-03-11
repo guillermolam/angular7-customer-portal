@@ -5,7 +5,7 @@
     </h1>
   </div>
 </header>
-<section class="details-content row">
+<section class="details-content row no-margin">
   <div class="col1 col">
     <ng-container *ngIf="claimsObject === true; else noclaims ">
       <ng-container *ngFor="let claim of claims">
@@ -26,7 +26,7 @@
         </ng-container>
       </ng-container>
       <div class="row report-claim margin-top mt40">
-        <div class="col">
+        <div class="col"> 
           <app-claims-report></app-claims-report>
         </div>
       </div>
