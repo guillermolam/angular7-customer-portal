@@ -1,4 +1,4 @@
-# MAPFRE CUSTOMER PORTAL
+# CUSTOMER PORTAL
 
 ## Table of contents
 * [Components](#markdown-header-components)
@@ -18,13 +18,6 @@ Temporary "documentation" for all of the components [Components on Trello](https
 ### Dynamic Forms
 
 Standard information https://angular.io/guide/dynamic-form
-
-### Mapfre Design Libray
-
-**Developers repo** https://bitbucket.org/mapfre-usa-b2c/design-system-development-suite/src/master/
-What you should be using for update. Please check out the readme for more information.
-
-**Build Repo** https://bitbucket.org/mapfre-usa-b2c/design-library/src/master/
 
 ---
 
@@ -212,7 +205,6 @@ You may find other packages that are dependencies of other packages. All the nee
 * @types/cucumber
 * @types/jasmine
 * @types/jasminewd2
-* @types/mapfre-design-library": "git+https://bitbucket.org/mapfre-usa-b2c/design-library.git"
 * @types/node
 * chai
 * chai-as-promised
@@ -228,7 +220,6 @@ You may find other packages that are dependencies of other packages. All the nee
 * karma-jasmine-html-reporter
 * karma-junit-reporter
 * lighthouse
-* mapfre-design-library": "git+https://bitbucket.org/mapfre-usa-b2c/design-library.git"
 * protractor
 * protractor-cucumber-framework
 * ts-node
