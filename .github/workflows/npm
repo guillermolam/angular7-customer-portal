@@ -1,0 +1,162 @@
+name: Auto Resolve Merge Conflicts
+
+on:
+  # Run when a pull request is assigned the "needs-merge-resolution" label
+  pull_request:
+    types: [labeled]
+
+jobs:
+  resolve-conflicts:
+    if: github.event.label.name == 'needs-merge-resolution'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Setup Git
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          
+      - name: Merge master into PR branch
+        run: |
+          git fetch origin master:master
+          git merge master --no-edit
+
+      - name: Auto-resolve dependency conflicts
+        run: |
+          # Find files with merge conflicts
+          FILES_WITH_CONFLICTS=$(git diff --name-only --diff-filter=U)
+          
+          echo "Files with conflicts: $FILES_WITH_CONFLICTS"
+          
+          # Process each file with conflicts
+          for FILE in $FILES_WITH_CONFLICTS; do
+            echo "Processing conflicts in $FILE"
+            
+            # Check if it's a package.json file
+            if [[ "$FILE" == *package.json* || "$FILE" == *package-lock.json* ]]; then
+              echo "Found package.json conflict, resolving..."
+              
+              # Use grep to extract conflict markers and content
+              CONFLICT_BLOCKS=$(grep -n -A 1 "^<<<<<<< " "$FILE" | grep -B 1 "^=======$")
+              
+              if [ -n "$CONFLICT_BLOCKS" ]; then
+                # Process for package.json dependency versions
+                while IFS= read -r line; do
+                  # Extract line numbers
+                  START_LINE=$(echo "$line" | grep -o '^[0-9]\+' | head -1)
+                  
+                  if [ -n "$START_LINE" ]; then
+                    CONFLICT_LINES=$(sed -n "${START_LINE},+10p" "$FILE" | grep -n -A 2 "^<<<<<<< " | grep -B 2 "^>>>>>>> ")
+                    
+                    # Extract the dependabot and master versions
+                    DEPENDABOT_LINE=$(echo "$CONFLICT_LINES" | grep -A 1 "^<<<<<<< dependabot" | tail -1)
+                    MASTER_LINE=$(echo "$CONFLICT_LINES" | grep -A 1 "^=======" | tail -1)
+                    
+                    # Extract package name
+                    PACKAGE_NAME=$(echo "$DEPENDABOT_LINE" | grep -o '"[^"]*":' | sed 's/":$//' | tr -d '"')
+                    echo "Package name: $PACKAGE_NAME"
+                    
+                    # Extract version numbers (handle caret and tilde)
+                    DEPENDABOT_VERSION=$(echo "$DEPENDABOT_LINE" | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+' | head -1)
+                    MASTER_VERSION=$(echo "$MASTER_LINE" | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+' | head -1)
+                    
+                    echo "Dependabot version: $DEPENDABOT_VERSION"
+                    echo "Master version: $MASTER_VERSION"
+                    
+                    # Choose the lower version + small increment
+                    if [ -n "$DEPENDABOT_VERSION" ] && [ -n "$MASTER_VERSION" ]; then
+                      DEPENDABOT_MAJOR=$(echo "$DEPENDABOT_VERSION" | cut -d. -f1)
+                      DEPENDABOT_MINOR=$(echo "$DEPENDABOT_VERSION" | cut -d. -f2)
+                      DEPENDABOT_PATCH=$(echo "$DEPENDABOT_VERSION" | cut -d. -f3)
+                      
+                      MASTER_MAJOR=$(echo "$MASTER_VERSION" | cut -d. -f1)
+                      MASTER_MINOR=$(echo "$MASTER_VERSION" | cut -d. -f2)
+                      MASTER_PATCH=$(echo "$MASTER_VERSION" | cut -d. -f3)
+                      
+                      # Strategy: Choose the lower MAJOR version to maintain compatibility
+                      if [ "$DEPENDABOT_MAJOR" -lt "$MASTER_MAJOR" ]; then
+                        # Use dependabot with minor version bump
+                        NEW_MINOR=$((DEPENDABOT_MINOR + 1))
+                        NEW_VERSION="$DEPENDABOT_MAJOR.$NEW_MINOR.0"
+                        echo "Using dependabot base with minor bump: $NEW_VERSION"
+                        
+                        # Create new line with updated version
+                        NEW_LINE=$(echo "$DEPENDABOT_LINE" | sed "s/$DEPENDABOT_VERSION/$NEW_VERSION/")
+                        
+                        # Replace the conflict with the new line
+                        sed -i "${START_LINE},+10s/<<<<<<< dependabot\/npm_and_yarn\/.*\n.*\n=======\n.*\n>>>>>>> master/$NEW_LINE/" "$FILE"
+                      else
+                        if [ "$MASTER_MAJOR" -lt "$DEPENDABOT_MAJOR" ]; then
+                          # Use master with minor version bump
+                          NEW_MINOR=$((MASTER_MINOR + 1))
+                          NEW_VERSION="$MASTER_MAJOR.$NEW_MINOR.0"
+                          echo "Using master base with minor bump: $NEW_VERSION"
+                          
+                          # Create new line with updated version
+                          NEW_LINE=$(echo "$MASTER_LINE" | sed "s/$MASTER_VERSION/$NEW_VERSION/")
+                          
+                          # Replace the conflict with the new line
+                          sed -i "${START_LINE},+10s/<<<<<<< dependabot\/npm_and_yarn\/.*\n.*\n=======\n.*\n>>>>>>> master/$NEW_LINE/" "$FILE"
+                        else
+                          # Same major version, choose lower minor version + 1
+                          if [ "$DEPENDABOT_MINOR" -lt "$MASTER_MINOR" ]; then
+                            NEW_MINOR=$((DEPENDABOT_MINOR + 1))
+                            NEW_VERSION="$DEPENDABOT_MAJOR.$NEW_MINOR.0"
+                            NEW_LINE=$(echo "$DEPENDABOT_LINE" | sed "s/$DEPENDABOT_VERSION/$NEW_VERSION/")
+                          else
+                            NEW_MINOR=$((MASTER_MINOR + 1))
+                            NEW_VERSION="$MASTER_MAJOR.$NEW_MINOR.0"
+                            NEW_LINE=$(echo "$MASTER_LINE" | sed "s/$MASTER_VERSION/$NEW_VERSION/")
+                          fi
+                          echo "Using incremented version: $NEW_VERSION"
+                          
+                          # Replace the conflict with the new line
+                          sed -i "${START_LINE},+10s/<<<<<<< dependabot\/npm_and_yarn\/.*\n.*\n=======\n.*\n>>>>>>> master/$NEW_LINE/" "$FILE"
+                        fi
+                      fi
+                    fi
+                  fi
+                done <<< "$CONFLICT_BLOCKS"
+              fi
+            else
+              echo "Non-package.json conflict, applying generic resolution..."
+              # For non-package.json files, choose the incoming changes
+              sed -i -e '/<<<<<<< /,/>>>>>>> /{ /<<<<<<< /d; /=======$/,/>>>>>>> /d; }' "$FILE"
+            fi
+            
+            # Check if conflicts were resolved
+            if grep -q "^<<<<<<< " "$FILE"; then
+              echo "⚠️ Couldn't automatically resolve all conflicts in $FILE"
+            else
+              echo "✅ Successfully resolved conflicts in $FILE"
+              git add "$FILE"
+            fi
+          done
+
+      - name: Commit and push if changes exist
+        run: |
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-resolve merge conflicts - using safe version increments"
+            git push
+            echo "Pushed conflict resolution"
+          fi
+
+      - name: Remove resolution label
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              name: 'needs-merge-resolution'
+            })
