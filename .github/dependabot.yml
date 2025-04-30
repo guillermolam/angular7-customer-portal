@@ -1,0 +1,57 @@
+version: 2
+updates:
+  # npm configuration for Angular 7 customer portal
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "04:00"
+      # Removed explicit timezone - will use UTC by default
+    open-pull-requests-limit: 5
+    # Use widen strategy for Angular 7 which has more specific version requirements
+    versioning-strategy: "widen"
+    # Group Angular dependencies to prevent mismatched versions
+    groups:
+      angular-core:
+        patterns:
+          - "@angular*"
+      testing-packages:
+        patterns:
+          - "karma*"
+          - "jasmine*"
+          - "protractor"
+    # Enable automated testing and merging
+    auto-merge: true
+    auto-merge-options:
+      require-checks-to-pass: true
+    # Specific settings for Angular 7 SPA
+    ignore:
+      # Angular 8+ would break compatibility, so ignore major versions
+      - dependency-name: "@angular/*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "rxjs"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "zone.js"
+        update-types: ["version-update:semver-major"]
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "angular"
+      
+  # Configuration for package-lock.json updates
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-branch: "develop"
+    allow:
+      - dependency-type: "all"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "devDeps"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "lockfile"
