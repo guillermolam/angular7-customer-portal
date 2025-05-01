@@ -21,9 +21,10 @@ updates:
           - "jasmine*"
           - "protractor"
     # Enable automated testing and merging
-    auto-merge: true
-    auto-merge-options:
-      require-checks-to-pass: true
+    auto-merge-settings:
+      enabled: true
+      merge-method: "squash"
+      require-checks: true
     # Specific settings for Angular 7 SPA
     ignore:
       # Angular 8+ would break compatibility, so ignore major versions
